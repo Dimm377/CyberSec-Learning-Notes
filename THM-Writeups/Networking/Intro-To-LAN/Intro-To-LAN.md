@@ -21,6 +21,11 @@ Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di r
   <img src="../../../Assets/Images/star-topology.png" width="400">
 
 - Bus Topology (perangkat terhubung melalui kabel yang sama, karena bergantung ke satu koneksi (kabel backbone) ) biaya murah tapi akan down jika perangkat mengirimkan banyak data secara bersamaan
+
+<img src="../../../Assets/Images/Bus-topology.png" width="400">
+
 - Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar, mengirim data dari satu perangkat ke perangkat lainnya dalam satu arah di sepanjang jalur sampai mencapai tujuan) mudah untuk mendeteksi kesalahan dalam lalu lintas data, jika satu perangkat mengalami masalah maka seluruh jaringa juga akan terpengaruh
+
+<img src="../../../Assets/Images/Ring-topology.png" width="400">
 
 ### 2. Networking Device
