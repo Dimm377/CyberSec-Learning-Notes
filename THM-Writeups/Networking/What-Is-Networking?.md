@@ -6,7 +6,11 @@
 
 ## Overview
 
--
+- Membahas tentang fundamental paling dasar tentang apa itu networking
+- **Simulasi wifi hotel:** Praktek langsung untuk memahami alur data pada jaringan wifi hotel melalui 2 skenario pengguna:
+- **Pengguna 1 (Sudah bayar layanan wifi):** router akan mengizinkan dan mengirimkan data dengan baik
+- **Pengguna 2 (Belum membayar Layanan wifi):** setiap kali pengguna 2 mengirim data maka permintaan nya akan ditolak oleh router
+- Identitas perangkat (Mengenal peran penting IP address dan MAC adress untuk memastikan data agar sampai tujuan secara tepat)
 
 ## Task Summary & Key Concept
 
