@@ -24,7 +24,7 @@ Jaringan bisa ditemukan di berbagai tempat, termasuk rumah, kantor, sekolah, fas
 
 ### Identity networks
 
-#### IP Address
+#### IP Address (Internet Protocol Address)
 
 IP Address (Internet protocol address) adalah serangkaian angka yang digunakan untuk menghidentifikasi perangkat di jaringan, agar perangkat di alamat ini bisa saling berkomunikasi dan bertukar data melalui internet, ada 2 jenis alamat IP
 
@@ -32,3 +32,24 @@ IP Address (Internet protocol address) adalah serangkaian angka yang digunakan u
 
 - **IPv6:** versi terbaru dari IP address yang dibuat untuk mengatasi keterbatasan IPv4, Menggunakan alamat 128-bit, mendukung jumlah alamat unik yang jauh lebih besar dibanding IPv4, Alamat ini terdiri dari 8 kelompok 4 digit heksadesimal yang dipisahkan oleh simbol titik dua (`:`)
   **contoh:(`2001:0db8:85a3:0000:0000:8a2e:0370:7334`)`**
+
+#### MAC Adress (Media Acess Control Address)
+
+MAC Adress (Media Acess Control Address) adalah identitas fisik jaringan permanen yang unik, dapat di temukan id setiap perangkat jaringan, alamat ini sudah ditentukan oleh pabrik yang membuat perangkat tersebut, menggunakan alamat 48-bit yang terdiri dari 12 karakter hexadesimal yang dipisahkan dengan titik dua (`:`)
+
+### Ping (ICMP)
+
+Ping adalah salah satu alat jaringanh paling dasar, ping menggunakan paket ICMP (Internet Control Message Protocol) digunakan untuk mendiagnosis masalah konektivitas, mengukur latensi jaringan, dan menentukn apakah perangkat berada dalam jangkauan jaringan
+
+syntax untuk menggunakan ping yaitu:
+
+```
+$ ping website url / IP address
+```
+
+<p align="center">
+<img src="../../Assets/Images/ping.png" width="400">
+</p>
+
+di gambar itu aku melakukan ping ke website url `google.com`, ping memberitahu bahwa
+google membalas menggunakan alamat IPv6 bahwa aku mengirimkan 8 packet ICMP dengan waktu mencapai 39.4 ms
