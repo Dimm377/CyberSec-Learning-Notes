@@ -14,4 +14,10 @@ Membahas tentang dasar-dasar jaringan seperti Local area Network (LAN), apa itu 
 
 Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di rumah, kantor atau sekolah. LAN memungkinkan perangkat komputer untuk saling berkomunikasi dan berbagi sumber daya seperti upload file dan mengirim file dengan kecepatan tinggi, memiliki biaya yang rendah dibandingkan dengan jenis jaringan lainnya
 
+### Jenis-Jenis topologi LAN
+
+- Star Topology (perangkat terhubung secara individu melalui perangkat jaringan pusat seperti switch atau hub) paling umum digunakan tapi biaya mahal
+- Bus Topology (perangkat terhubung melalui kabel yang sama, karena bergantung ke satu koneksi (kabel backbone) ) biaya murah tapi akan down jika perangkat mengirimkan banyak data secara bersamaan
+- Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar, mengirim data dari satu perangkat ke perangkat lainnya dalam satu arah di sepanjang jalur sampai mencapai tujuan) hemat kabel dan tidak ketergantungan perangkat keras seperti di star topology,
+
 ### 2. Networking Device
