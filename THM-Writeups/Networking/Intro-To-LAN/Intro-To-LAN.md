@@ -6,7 +6,9 @@
 
 ## Overview
 
-Membahas tentang dasar-dasar jaringan seperti Local area Network (LAN), apa itu Topologi dan jenis" nya (Star, Bus, Ring) dan juga perangkat jaringan (Switch, Hub, )
+- Membahas tentang dasar-dasar jaringan seperti Local area Network (LAN), apa itu Topologi dan jenis" nya (Star, Bus, Ring) perangkat jaringan (Switch, Hub, Router)
+
+- Panduan dasar tentang subnetting (mmebagi jaringan menjadi lebih kecil) dan juga mengetahui tentang protokol jaringan ARP & DHCP
 
 ## Task Summary & Key Concept
 
