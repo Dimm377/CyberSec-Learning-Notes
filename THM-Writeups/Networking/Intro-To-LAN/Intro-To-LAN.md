@@ -18,7 +18,7 @@ Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di r
 
 - Star Topology (perangkat terhubung secara individu melalui perangkat jaringan pusat seperti switch atau hub) paling umum digunakan tapi biaya mahal
 
-  <p align="center">
+<p align="center">
 <img src="../../../Assets/Images/star-topology.png" width="400">
 </p>
 
