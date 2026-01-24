@@ -17,4 +17,4 @@
 
 ---
 
-_Last Update: $(date)_
+
