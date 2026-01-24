@@ -21,3 +21,14 @@ Proses menghubungkan komputer atau perangkat lain sehingga dapat berkomunikasi d
 ### Where can the network be found?
 
 Jaringan bisa ditemukan di berbagai tempat, termasuk rumah, kantor, sekolah, fasilitas umum, dan infrastruktur seperti sistem transportasi, jaringan listrik, dan internet.
+
+### Identity networks
+
+#### IP Address
+
+IP Address (Internet protocol address) adalah serangkaian angka yang digunakan untuk menghidentifikasi perangkat di jaringan, agar perangkat di alamat ini bisa saling berkomunikasi dan bertukar data melalui internet, ada 2 jenis alamat IP
+
+- **IPv4:** terdiri dari 4 kelompok angka yang dipisahkan oleh titik atau disebut octet **contoh: (`192.168.1.1`)**, menggunakan alamat 32-bit sehingga bisa mendukung 4,3 miliar angka alamat unik
+
+- **IPv6:** versi terbaru dari IP address yang dibuat untuk mengatasi keterbatasan IPv4, Menggunakan alamat 128-bit, mendukung jumlah alamat unik yang jauh lebih besar dibanding IPv4, Alamat ini terdiri dari 8 kelompok 4 digit heksadesimal yang dipisahkan oleh simbol titik dua (`:`)
+  **contoh:(`2001:0db8:85a3:0000:0000:8a2e:0370:7334`)`**
