@@ -35,3 +35,11 @@ Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di r
 </p>
 
 ### 2. Networking Device
+
+Digunakan untuk menghubungkan dan mengelola jaringan komputer
+
+### Contoh-contoh networking devices
+
+- **Switch:** (Alat yang menghubungkan beberapa perangkat lain seperti komputer, printer,atau perangkat lain yang bisa terhubung ke dalam LAN, menggunakan MAC Address untuk hanya mengirimkan paket data ke perangkat tujuan secara spesifik)
+
+- **Router:** (Tugas router adalah menghubungkan jaringan dan meneruskan data diantara jaringan menggunakan proses yang disebut routing, fungsi routing adalah menentukan jalur terbaik bagi paket data untuk melewati jaringan agar sampai tujuan dengan sukses)
