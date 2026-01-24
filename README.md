@@ -9,10 +9,6 @@
 - [ ] **Burp Suite Mastery**
 - [ ] **Network Security**
 
-### 🛠️ Lab Environment
-
-- **OS:** Arch Linux (Hyprland WM)
-- **Tools:** Nmap, Metasploit, Burp Suite
 - **Target:** 8 Hours Daily Grind
 
 ---
