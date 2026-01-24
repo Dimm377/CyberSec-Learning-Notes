@@ -3,7 +3,7 @@
 **Identity:** WhoisD | Cybersecurity Student at Udinus
 
 ### 📊 Progress Tracker
-
+- [ ] **Introduction To LAN**
 - [ ] **Introduction to Pentesting** (Currently Learning)
 - [ ] **Web Hacking Fundamentals**
 - [ ] **Burp Suite Mastery**
