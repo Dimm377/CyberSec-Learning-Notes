@@ -26,6 +26,8 @@ Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di r
 
 - Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar, mengirim data dari satu perangkat ke perangkat lainnya dalam satu arah di sepanjang jalur sampai mencapai tujuan) mudah untuk mendeteksi kesalahan dalam lalu lintas data, jika satu perangkat mengalami masalah maka seluruh jaringa juga akan terpengaruh
 
+<p align="center">
 <img src="../../../Assets/Images/Ring-topology.png" width="400">
+</p>
 
 ### 2. Networking Device
