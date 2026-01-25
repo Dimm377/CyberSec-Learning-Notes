@@ -45,3 +45,7 @@ Digunakan untuk menghubungkan dan mengelola jaringan komputer
 - **Switch:** (Alat yang menghubungkan beberapa perangkat lain seperti komputer, printer,atau perangkat lain yang bisa terhubung ke dalam LAN, switch menggunakan MAC Address untuk hanya mengirimkan paket data ke perangkat tujuan secara spesifik)
 
 - **Router:** (Tugas router adalah menghubungkan jaringan dan meneruskan data diantara jaringan menggunakan proses yang disebut routing, fungsi routing adalah menentukan jalur terbaik bagi paket data untuk melewati jaringan agar sampai tujuan dengan sukses)
+
+### ARP (Address Resolution Protocol)
+
+Adalah protokol untuk menghubungkan IP Address dengan MAC Address di dalam jarinngan lokal, ketika sebuah perangkat ingin mengirim data ke IP Address tertentu maka ARP akan mencari MAC Address yang cocok, jika MAC Address terkait tidak ada di tabel ARP, perangkat akan mengirimkan permintaan (ARP Request) ke semua perangkat di jaringan. Perangkat yang memiliki alamat IP yang diminta ARP akan membalas dengan MAC Address nya, sehingga perangkat dapat mengirim data ke tujuan yang tepat
