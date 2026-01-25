@@ -7,3 +7,7 @@
 ## Overview
 
 -
+
+### What is OSI Model ?
+
+Osi Model (Open System Interconnection Model) adalah konseptual yang membagi jaringan menjadi 7 lapisan: Physical, Data Link, Network, Transport, Session, Presentation, Application
