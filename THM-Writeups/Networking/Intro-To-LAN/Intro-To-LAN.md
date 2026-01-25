@@ -57,7 +57,7 @@ Protokol jaringan yang digunakan untuk secara otomatis memberikan IP Address dan
 Proses DHCP server
 
 <p align="center">
-<img src="../../../Assets/Images/DHCP.png" width="400">
+<img src="../../../Assets/Images/DHCP1.png" width="400">
 </p>
 
 **DHCP Discover:** Perangkat akan mengirimkan pesan DHCP Discover untuk mencari server DHCP yang ada
