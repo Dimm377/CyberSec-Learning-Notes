@@ -51,3 +51,19 @@ Digunakan untuk menghubungkan dan mengelola jaringan komputer
 Adalah protokol untuk menghubungkan IP Address dengan MAC Address di dalam jarinngan lokal, ketika sebuah perangkat ingin mengirim data ke IP Address tertentu maka ARP akan mencari MAC Address yang cocok, jika MAC Address terkait tidak ada di tabel ARP, perangkat akan mengirimkan permintaan (ARP Request) ke semua perangkat di jaringan. Perangkat yang memiliki alamat IP yang diminta ARP akan membalas dengan MAC Address nya, sehingga perangkat dapat mengirim data ke tujuan yang tepat
 
 ### DHCP (**D**ynamic **H**ost **C**onfiguration **P**rotocol)
+
+Protokol jaringan yang digunakan untuk secara otomatis memberikan IP Address dan informasi konfigurasi jaringan ke perangkat yang terhubung ke jaringan, DHCP server akan memberikan IP Address yang tersedia dan juga informasi lain seperti subnet mask, gateway dan DNS
+
+Proses DHCP server
+
+<p align="center">
+<img src="../../../Assets/Images/DHCP.png" width="400">
+</p>
+
+**DHCP Discover:** Perangkat akan mengirimkan pesan DHCP Discover untuk mencari server DHCP yang ada
+
+**DHCP Offer:** Server DHCP yang menerima pesan dari DHCP Discover akan mengirimkan pesan yang berisi IP Address yang tersedia dan juga informasi lainnya (DHCP Offer)
+
+**DHCP Request:** Perangkat menerima tawaran IP Address dan mengirimkan pesan DHCP Request ke server DHCP untuk meminta IP Address yang diatawarkan
+
+**DHCP ACK:** Server DHCP mengonfirmasi dengan mengirimkan pesan yand disebut ACK (Acknowledgment) yang menyatakan bahwa perangkat sudah diberi IP Address
