@@ -12,9 +12,9 @@
 
 ## Task Summary & Key Concept
 
-### 1. What is a LAN ?
+### 1. What is a LAN ? (**L**ocal **A**rea **N**etwork)
 
-Jenis jaringan yang menghubungkan perangkat dengan jarak yang dekat seperti di rumah, kantor atau sekolah. LAN memungkinkan perangkat komputer untuk saling berkomunikasi dan berbagi sumber daya seperti upload file dan mengirim file dengan kecepatan tinggi, memiliki biaya yang rendah dibandingkan dengan jenis jaringan lainnya
+Jenis jaringan lokal yang menghubungkan perangkat dengan jarak yang dekat seperti di rumah, kantor atau sekolah. LAN memungkinkan perangkat komputer untuk saling berkomunikasi dan berbagi sumber daya seperti upload file dan mengirim file dengan kecepatan tinggi, memiliki biaya yang rendah dibandingkan dengan jenis jaringan lainnya
 
 ### Jenis-Jenis topologi LAN
 
@@ -46,6 +46,8 @@ Digunakan untuk menghubungkan dan mengelola jaringan komputer
 
 - **Router:** (Tugas router adalah menghubungkan jaringan dan meneruskan data diantara jaringan menggunakan proses yang disebut routing, fungsi routing adalah menentukan jalur terbaik bagi paket data untuk melewati jaringan agar sampai tujuan dengan sukses)
 
-### ARP (Address Resolution Protocol)
+### ARP (**A**ddress **R**esolution **P**rotocol)
 
 Adalah protokol untuk menghubungkan IP Address dengan MAC Address di dalam jarinngan lokal, ketika sebuah perangkat ingin mengirim data ke IP Address tertentu maka ARP akan mencari MAC Address yang cocok, jika MAC Address terkait tidak ada di tabel ARP, perangkat akan mengirimkan permintaan (ARP Request) ke semua perangkat di jaringan. Perangkat yang memiliki alamat IP yang diminta ARP akan membalas dengan MAC Address nya, sehingga perangkat dapat mengirim data ke tujuan yang tepat
+
+### DHCP (**D**ynamic **H**ost **C**onfiguration **P**rotocol)
