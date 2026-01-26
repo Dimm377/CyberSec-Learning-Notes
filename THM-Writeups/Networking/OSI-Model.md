@@ -56,3 +56,13 @@ terdapat 2 protokol di lapisan Transport yaitu:
 | **Pengiriman Ulang**  | Mengirim ulang data yang hilang/rusak    | Tidak mengirim ulang data yang hilang    |
 | **Urutan Data**       | Data diterima sesuai urutan yang dikirim | Data bisa diterima berantakan/tidak urut |
 | **Contoh Penggunaan** | Web (HTTP), Email, Transfer File         | Streaming Video, Game Online, VoIP       |
+
+5. **Session:** Lapisan kelima ini fungsinya untuk mengelola sesi antar 2 perangkat, menetapkan, memepertahankan, dan mengakhiri koneksi agar aplikasi berkomunikasi dengan lancar, simple nya di lapisan Session ini membantu menjaga komunikasi yang teratur antara aplikasi yang berbeda
+
+Protokol yang ada di lapisan ini yaitu:
+
+1. **RCP (Remote Procedure Call):** Protokol ini memungkinkan suatu program untuk meminta layanan dari program lain di komputer yang berbeda jaringan, intinya menyederhanakan komunikasi antar aplikasi tanpa harus mengelola detail jaringan
+
+2. **SMB (Server Message Block):** Protokol ini digunakan untuk berbagi file, printer, dan sumber daya lainnya di dalam jaringan, dengan adanya SMB kita dapat mengelola dan mengakses data dengan mudah di jaringan tanpa harus berpindah tempat
+
+3. **Presentation:**
