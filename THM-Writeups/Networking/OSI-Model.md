@@ -47,3 +47,12 @@ terdapat 2 protokol di lapisan Transport yaitu:
 1. **TCP (Transmission Control Protocol):** Protokol yang menyediakan pengiriman data secara handal dan teratur dengan menjamin bahwa data sampai ke tujuan dalam urutan yang benar
 
 2. **UDP (User Datagram Protocol):** Protokol yang lebih cepat dari TCP tapi tidak menjamin pengiriman data yang handal dan urutan data yang teratur
+
+| Perbedaan             | TCP (Transmission Control Protocol)      | UDP (User Datagram Protocol)             |
+| :-------------------- | :--------------------------------------- | :--------------------------------------- |
+| **Keandalan**         | Sangat Handal (Reliable)                 | Tidak Handal (Unreliable)                |
+| **Koneksi**           | Connection-oriented                      | Connectionless                           |
+| **Kecepatan**         | Lebih Lambat (Banyak proses pengecekan)  | Sangat Cepat (Tanpa hambatan)            |
+| **Pengiriman Ulang**  | Mengirim ulang data yang hilang/rusak    | Tidak mengirim ulang data yang hilang    |
+| **Urutan Data**       | Data diterima sesuai urutan yang dikirim | Data bisa diterima berantakan/tidak urut |
+| **Contoh Penggunaan** | Web (HTTP), Email, Transfer File         | Streaming Video, Game Online, VoIP       |
