@@ -26,4 +26,4 @@ OSI Model (Open System Interconnection Model) adalah kerangka konsep yang membag
 
 2. **Data Link:** Lapisan kedua yang berfokus pada pengalamatan fisik transmisi data, lapisan ini menerima data dari lapisan jaringan dan menambahkan MAC Address agar data perangkat saling mengenali, simple nya lapisan ini memebantu perangkat yang terhubung ke jaringan agar bisa saling berkomunikasi
 
-3. **Network:**
+3. **Network:** Lapisan kedua yang bertugas untuk mengarahkan data dari satu perangkat ke perangkat lainnya di jaringan yang berbeda, menggunakan IP Address untuk menentukan rute terbaik untuk mengirimkan data di jaringan yang kompleks
