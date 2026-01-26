@@ -44,6 +44,6 @@ ada 5 protokol dari yang ku pelajari yaitu:
 
 terdapat 2 protokol di lapisan Transport yaitu:
 
-1. **TCP (Transmission Control Protocol):**
+1. **TCP (Transmission Control Protocol):** Protokol yang menyediakan pengiriman data secara handal dan teratur dengan menjamin bahwa data sampai ke tujuan dalam urutan yang benar
 
-2. **UDP (User Datagram Protocol):**
+2. **UDP (User Datagram Protocol):** Protokol yang lebih cepat dari TCP tapi tidak menjamin pengiriman data yang handal dan urutan data yang teratur
