@@ -97,7 +97,3 @@ tujuannya memeberitahu server dan mengajak sinkronisasi sebelum data dikirim
 | **4** | **DATA**    | Proses pengiriman data aktual setelah koneksi terjalin (Established).                     |
 | **5** | **FIN**     | Paket untuk menutup koneksi secara bersih setelah transfer data selesai.                  |
 | **#** | **RST**     | Paket untuk mengakhiri komunikasi secara mendadak jika terjadi error atau masalah sistem. |
-
-<p align="center">
-<img src="../../../CyberSec-Learning-Notes/Assets/Images/Handshake.png" width="400">
-</p>
