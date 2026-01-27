@@ -26,4 +26,24 @@ firewall dapat memblokir atau mengizinkan lalu lintas jaringan tergantung bebera
 
 - **Protokol apa yang digunakan lalu lintas? (apakah firewall telah diberitahu untuk menerima/menolak lalu lintas UDP, TCP atau keduanya?)**
 
-Firewall melakukan pemeriksaan paket untuk menentukan jawaban atas pertanyaan-pertanyaan ini, Firewall dapat dikategorikan
+Firewall melakukan pemeriksaan paket untuk menentukan jawaban atas pertanyaan-pertanyaan ini, Firewall dapat dikategorikan 2 sampai 5 kategori
+
+- **Stateful Firewall:** Firewall jenis ini memeriksa seluruh informasi dari koneksi, stateful firewall dapat memberikan perlindungan yang lebih baik terhadap serangan dan memastikan bahwa hanya sesi yang sah yang diizinkan untuk berkomunikasi
+
+- **Stateless Firewall:** jenis Firewall yang cuma memeriksa setiap paket data sevara individu tanpa peduli status koneksi, lebih sederhana dan cepat tetapi kurang efektif mencegah serangan yang lebih kompleks
+
+### VPN (Virtual Private Network)
+
+VPN adalah teknologi yeng memungkinkan koneksi yang aman dan terenkripsi antara perangkat dan jaringan, VPN menciptakan jalur yang melindungi data pengguna saat mengirim informasi melalui internet sehingga menjaga privasi dan juga keamanan data
+
+Manfaat VPN yaitu:
+
+- **Memungkinkan jaringan di lokasi geografis yang berbeda untuk terhubung (Region Lock)**
+
+- **Menawarkan privasi:** Teknologi VPN menawarkan enkripsi untuk melindungi data, berguna jika ingin mengakses jaringan publik agar tidak disadap
+
+- **Menawarkan Anonimitas:** VPN akan menyembunyikan IP Address asli pengguna dan mengganti nya dengan IP Address VPN Server
+
+Teknologi VPN sudah berkembang dari Tahun ke tahun, ini beberapa Teknologi yang digunakan oleh VPN:
+
+- **PPP ():**
