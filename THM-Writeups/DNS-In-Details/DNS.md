@@ -22,4 +22,12 @@ struktur Domain Hierarchy:
 
 ### 1. Root Domain
 
-Root domain adalah tingkat tertinggi dalam sistem domain hierarchy, diwakili oleh tanda titik (`.`) dan berada di puncak nama domain
+Root domain adalah tingkat tertinggi dalam sistem domain hierarchy, diwakili oleh tanda titik (`.`) dan berada di puncak nama domain, contoh `domain.com`, `.` adalah root domain ,Root domain sangat penting untuk resolusi DNS, karena membantu menavigasi seluruh struktur domain
+
+### 2. TLD (Top Level Domain)
+
+TLD adalah bagian paling kanan dari nama domain, contoh `domain.com`, tepat setelah titik terakhir `.com`,
+
+TLD dibagi menjadi dua kategori utama:
+
+1. **gTLID (Generic Top Level Domain):**
