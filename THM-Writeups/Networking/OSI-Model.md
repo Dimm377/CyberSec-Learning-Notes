@@ -10,11 +10,13 @@
 
 ## Overview
 
+- OSI Model adalah kerangka konsep yang membuat sistem komunikasi di jaringan memiliki bahasa yang sama, Tujuan nya adalah memastikan sistem agar bisa saling berkomunikasi memakai protokol yang sudah disepakati secara global
+
 ### What is OSI Model ?
 
 OSI Model (Open System Interconnection Model) adalah kerangka konsep yang membagi jaringan menjadi 7 lapisan: Physical, Data Link, Network, Transport, Session, Presentation, Application
 
-#### Ini gambaran 7 layer OSI Model:
+#### 7 layer OSI Model:
 
 <p align="center">
 <img src="../../Assets/Images/OSI.png" width="400">
