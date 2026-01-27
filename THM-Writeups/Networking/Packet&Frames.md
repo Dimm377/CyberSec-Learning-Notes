@@ -45,3 +45,31 @@ Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada
 - **Pencegahan Bottleneck:** Dengan memecah data jadi potongan kecil (Packet/Frame), risiko kemacetan di jaringan jadi jauh lebih rendah dibanding mengriim satu file besar sekaligus
 
 - **Integrity:** Setiap lapisan bisa ngecek apakah bungkusan miliknya rusak atau nggak tanpa harus ngebongkar seluruh isi datanya
+
+### TCP/IP & Three way handshake
+
+**TCP/IP:** Protokol ini sangat mirip dengan OSI model, Protokol TCP/IP terdiri dari empat lapisan, simple nya ini kayak versi ringkasan dari OSI Model
+
+Lapisan-lapisan nya terdiri dari:
+
+- **Application:** Lapisan paling atas tempat aplikasi beroperasi
+
+- **Transport:** Tempat di mana TCP mengelola pengiriman data dan memastikan reliabilitasnya
+
+- **Internet:** Tempat perutean (routing) data menggunakan alamat IP
+
+- **Network Interface:** Lapisan paling bawah yang menangani hubungan fisik dengan perangkat keras jaringan
+
+### **TCP Packet Headers**
+
+| Header                     | Description                                                                               |
+| :------------------------- | :---------------------------------------------------------------------------------------- |
+| **Source Port**            | Port yang dibuka oleh pengirim (dipilih acak dari 0-65535 yang tidak terpakai).           |
+| **Destination Port**       | Nomor port aplikasi/layanan di host tujuan (misal: port 80 untuk web server).             |
+| **Source IP**              | Alamat IP dari perangkat yang mengirimkan paket.                                          |
+| **Destination IP**         | Alamat IP dari perangkat yang dituju oleh paket tersebut.                                 |
+| **Sequence Number**        | Angka acak yang diberikan pada potongan data pertama yang dikirimkan.                     |
+| **Acknowledgement Number** | Angka untuk potongan data berikutnya (Sequence Number + 1) sebagai tanda terima.          |
+| **Checksum**               | Nilai kalkulasi matematis untuk menjaga integritas data (memastikan data tidak korup).    |
+| **Data**                   | Tempat penyimpanan isi data aktual (bytes) dari file yang sedang dikirim.                 |
+| **Flag**                   | Instruksi khusus yang menentukan bagaimana paket harus ditangani selama proses handshake. |
