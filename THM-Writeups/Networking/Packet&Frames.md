@@ -1,6 +1,6 @@
 # TryHackMe: Packet & Frames
 
-**Room Link:** [OSI Model](https://tryhackme.com/room/packetsframes)
+**Room Link:** [Packet&Frames](https://tryhackme.com/room/packetsframes)
 **Category:** Networking / Fundamental
 **Difficulty:** easy
 
