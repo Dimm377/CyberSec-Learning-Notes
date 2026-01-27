@@ -46,4 +46,9 @@ Manfaat VPN yaitu:
 
 Teknologi VPN sudah berkembang dari Tahun ke tahun, ini beberapa Teknologi yang digunakan oleh VPN:
 
-- **PPP ():**
+- **PPP (Point To Point Protocol):** Teknologi ini digunakan oleh PPTP untuk memungkinkan otentikasi dan menyediakan enkripsi data, VPN bekerja dengan menggunakan kunci pribadi dan sertifikat publik (mirip dengan SSH), Kunci pribadi & sertifikat harus cocok agar Anda dapat terhubung, Teknologi ini tidak bisa meninggalkan suatu jaringan dengan sendirinya (non-routable)
+
+- **PPTP (Point To Point Tunneling Protocol):** teknologi yang memungkinkan data dari PPP berpindah dan meninggalkan jaringan, PPTP sangat mudah diatur dan didukung oleh sebagian besar perangkat. tapi enkripsinya lemah dibandingkan dengan alternatif lain
+
+- **IPSec (Internet Protocol Security):** mengenkripsi data menggunakan kerangka Protokol Internet (IP) yang ada,
+  IPSec sulit diatur dibandingkan dengan alternatif lain, jika berhasil akan memiliki enkripsi yang kuat dan juga didukung di banyak perangkat.
