@@ -6,6 +6,8 @@
 
 # Overview
 
+membahas tentang bagaimana data dipecah menjadi bagian kecil (Packets dan Frames) untuk mencegah bottleneck di jaringan. Kita juga mempelajari protokol bernama TCP dan cara ia membangun koneksi melalui Three-way Handshake.
+
 ### What is Packet & Frames ?
 
 Paket & Frames adalah bagian kecil dari sebuah data yang mana ketika digabungkan akan membentuk suatu informasi / pesan yang lebih besar, tapi keduanya merupakan dua hal yang berbeda di dalam OSI Model
@@ -78,7 +80,14 @@ Lapisan-lapisan nya terdiri dari:
 
 three way handshake adalah proses tiga tahap (SYN, SYN/ACK, ACK) yang digunakan oleh TCP untuk membangun koneksi yang stabil dan sinkron antara kedua perangkat sebelum data asli di transfer
 
-### **TCP Handshake & Communication Steps**
+**SYN (Synchronize):** Client mengirim dengan flag SYN yang berisi sequence number acak
+tujuannya memeberitahu server dan mengajak sinkronisasi sebelum data dikirim
+
+**SYN/ACK:** Servere membalas dengan mengirim paket yang mengaktifkan dua flags sekaligus (SYN/ACK), Tujuan nya yaitu mmeberitahu client bahwa permintaan sinkronisasi nya diterima
+
+**ACK:** Client mengirim packet terakhir dengan flags ACK, tujuannya mengonfirmasi bahwa client sudah menerima nomor urut dari server. Begitu tahap ini selesai, status koneksi resmi menjadi ESTABLISHED (terjalin) dan transfer data asli bisa dimulai
+
+### **Three-Way Handshake & Communication Steps**
 
 | Step  | Message     | Description                                                                               |
 | :---- | :---------- | :---------------------------------------------------------------------------------------- |
@@ -88,3 +97,7 @@ three way handshake adalah proses tiga tahap (SYN, SYN/ACK, ACK) yang digunakan 
 | **4** | **DATA**    | Proses pengiriman data aktual setelah koneksi terjalin (Established).                     |
 | **5** | **FIN**     | Paket untuk menutup koneksi secara bersih setelah transfer data selesai.                  |
 | **#** | **RST**     | Paket untuk mengakhiri komunikasi secara mendadak jika terjadi error atau masalah sistem. |
+
+<p align="center">
+<img src="../../../CyberSec-Learning-Notes/Assets/Images/Handshake.png" width="400">
+</p>
