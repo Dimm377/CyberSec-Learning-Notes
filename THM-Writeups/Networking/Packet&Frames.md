@@ -37,3 +37,11 @@ Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada
 - **Data Link Layer (Frame):** Packet dimasukkan ke dalam bungkusan terakhir yang berisi MAC Address,Unit data ini disebut Frame
 
 - **Physical Layer (Bits):** Frame diubah menjadi sinyal listrik atau cahaya (bit 0 dan 1) untuk dikirim lewat kabel.
+
+### Why is Encapsulation Necessary?
+
+- **Standarisasi:** Memastikan miliaran perangkat di internet punya aturan yang sama agar tidak terjadi gangguan komunikasi
+
+- **Pencegahan Bottleneck:** Dengan memecah data jadi potongan kecil (Packet/Frame), risiko kemacetan di jaringan jadi jauh lebih rendah dibanding mengriim satu file besar sekaligus
+
+- **Integrity:** Setiap lapisan bisa ngecek apakah bungkusan miliknya rusak atau nggak tanpa harus ngebongkar seluruh isi datanya
