@@ -30,4 +30,20 @@ TLD adalah bagian paling kanan dari nama domain, contoh `domain.com`, tepat sete
 
 TLD dibagi menjadi dua kategori utama:
 
-1. **gTLID (Generic Top Level Domain):**
+1. **gTLID (Generic Top Level Domain):** Digunakan untuk memberitahu pengguna tentang tujuan atau bidang situs tersebut
+
+Contoh:
+
+- **.com:** Digunakan untuk tujuan komersial (Commercial)
+
+- **.org:** Digunakan untuk situs organisasi (Organitation)
+
+- **.edu:** Digunakan untuk instansi pendidikan (Education)
+
+- **.gov:** Digunakan untuk instansi pemerintah (Goverment)
+
+2. **ccTLD (Country Code Top Level Domain):** Digunakan untuk menunjukkan lokasi geografis atau asal negara dari sebuah situs (domain)
+
+contoh:
+
+- **.co.uk:** Untuk situs yang berbasis di Inggris (United Kingdom)
