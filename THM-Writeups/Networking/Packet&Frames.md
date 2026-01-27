@@ -14,6 +14,14 @@ Paket & Frames adalah bagian kecil dari sebuah data yang mana ketika digabungkan
 
 2. **Frames:** Frames adalah unit data yang ada di lapisan ke 3 (Data link layer)
 
+### Analogi Sistem pos (packet & frames)
+
+**Surat (Packet):** Isi pesan yang sudah diberi alamat tujuan (IP Address)
+
+**Amplop (Frame):** isi surat (Packet) harus dibungkus menggunakan amplop agar bisa dipindahkan secara fisik, di amplop ini punya informasi untuk rute pengiriman (MAC Address)
+
+**Proses membungkus (Encapsulation):** Tindakan memasukkan surat ke dalam amplop yang disebut Encapsulation
+
 ### Encapsulation
 
 Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada saat data tersebut bergerak turun dari lapisan atas ke lapisan bawah
@@ -28,4 +36,4 @@ Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada
 
 - **Data Link Layer (Frame):** Packet dimasukkan ke dalam bungkusan terakhir yang berisi MAC Address,Unit data ini disebut Frame
 
-- **Physical Layer (Bits):** Frame diubah menjadi sinyal listrik atau cahaya (bit 0 dan 1) untuk beneran dikirim lewat kabel.
+- **Physical Layer (Bits):** Frame diubah menjadi sinyal listrik atau cahaya (bit 0 dan 1) untuk dikirim lewat kabel.
