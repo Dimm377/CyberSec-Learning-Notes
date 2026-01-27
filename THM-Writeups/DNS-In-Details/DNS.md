@@ -8,7 +8,7 @@
 
 ### What is DNS ?
 
-DNS (Domain Name System) memberikan cara sederhana bagi kita untuk berkomunikasi dengan perangkat di internet tanpa mengingat angka-angka kompleks.
+DNS (Domain Name System) memberikan cara sederhana bagi kita untuk berkomunikasi dengan perangkat di internet tanpa mengingat angka-angka kompleks
 
 ### Domain Hierarchy
 
@@ -47,3 +47,15 @@ Contoh:
 contoh:
 
 - **.co.uk:** Untuk situs yang berbasis di Inggris (United Kingdom)
+
+- **.id:** Untuk situs negaraku yaitu indonesia
+
+### Nama domain di era Modern (sekarang)
+
+- .online
+
+- .club
+
+- .biz
+
+- dan banyak
