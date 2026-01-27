@@ -46,9 +46,9 @@ Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada
 
 - **Integrity:** Setiap lapisan bisa ngecek apakah bungkusan miliknya rusak atau nggak tanpa harus ngebongkar seluruh isi datanya
 
-### TCP/IP & Three way handshake
+### TCP/IP
 
-**TCP/IP:** Protokol ini sangat mirip dengan OSI model, Protokol TCP/IP terdiri dari empat lapisan, simple nya ini kayak versi ringkasan dari OSI Model
+**TCP/IP:** Protokol ini sangat mirip dengan OSI model, Protokol TCP/IP terdiri dari empat lapisan, simple nya ini kayak versi ringkasan dari OSI Model, TCP bersifat Connection-Oriented
 
 Lapisan-lapisan nya terdiri dari:
 
@@ -73,3 +73,18 @@ Lapisan-lapisan nya terdiri dari:
 | **Checksum**               | Nilai kalkulasi matematis untuk menjaga integritas data (memastikan data tidak korup).    |
 | **Data**                   | Tempat penyimpanan isi data aktual (bytes) dari file yang sedang dikirim.                 |
 | **Flag**                   | Instruksi khusus yang menentukan bagaimana paket harus ditangani selama proses handshake. |
+
+### Three Way handshake
+
+three way handshake adalah proses tiga tahap (SYN, SYN/ACK, ACK) yang digunakan oleh TCP untuk membangun koneksi yang stabil dan sinkron antara kedua perangkat sebelum data asli di transfer
+
+### **TCP Handshake & Communication Steps**
+
+| Step  | Message     | Description                                                                               |
+| :---- | :---------- | :---------------------------------------------------------------------------------------- |
+| **1** | **SYN**     | Pesan awal untuk memulai koneksi dan menyinkronkan perangkat.                             |
+| **2** | **SYN/ACK** | Paket dari server untuk mengakui upaya sinkronisasi dari client.                          |
+| **3** | **ACK**     | Paket konfirmasi bahwa pesan/paket telah berhasil diterima.                               |
+| **4** | **DATA**    | Proses pengiriman data aktual setelah koneksi terjalin (Established).                     |
+| **5** | **FIN**     | Paket untuk menutup koneksi secara bersih setelah transfer data selesai.                  |
+| **#** | **RST**     | Paket untuk mengakhiri komunikasi secara mendadak jika terjadi error atau masalah sistem. |
