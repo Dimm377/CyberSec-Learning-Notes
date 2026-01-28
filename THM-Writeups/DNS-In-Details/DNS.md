@@ -1,4 +1,4 @@
-# TryHackMe: Intro To LAN
+# TryHackMe: DNS In Details
 
 **Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
 **Category:** How The Web Works
@@ -59,3 +59,17 @@ contoh:
 - .biz
 
 - dan banyak
+
+### DNS Record Types
+
+DNS menggunakan berbagai tipe record untuk menyimpan data spesifik. Berikut adalah daftar informasi yang paling umum ditemukan
+
+- **A Record:** Catatan ini ditetapkan ke alamat IPv4, misalnya 104.26.10.229
+
+- **AAAA Record:** Catatan ini ditetapkan ke alamat IPv6, misalnya 2606:4700:20::681a:be5
+
+- **CNAME Record:** CNAME (Canonical Name) adalah tipe resource record yang berfungsi untuk memetakan sebuah nama alias (nama samaran) ke nama domain lain yang bersifat canonical (nama asli). Berbeda dengan A Record yang langsung mengarah pada alamat IP, CNAME mengarahkan query ke entitas domain lainnya
+
+- **MX Record:** MX (Mail Exchange) Record adalah tipe catatan sumber daya yang berfungsi untuk menetapkan server pengiriman surat (mail server) yang bertanggung jawab atas penerimaan email untuk sebuah domain
+
+- **TXT Record:**
