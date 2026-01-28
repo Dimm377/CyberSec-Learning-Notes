@@ -60,3 +60,23 @@ Accept: text/html
 - **Line 3:** `User-Agent` untuk memberitahu server kalau user sedang menggunakan browser `Mozilla/5.0` di Arch Linux
 
 - **Line 4:** `Accept` untuk memberitahu server tipe konten apa yang bisa diterima `(misal: text/html)`
+
+Contoh Response:
+
+```HTTP/1.1 200 OK
+Server: Dimm-Arch-Server/2026.01
+Date: Wed, 28 Jan 2026 19:31:21 GMT
+X-Powered-By: Hyprland
+Content-Type: text/html
+Content-Length: 173
+
+<html>
+<head>
+    <title>Dimm377's Lab</title>
+</head>
+<body>
+    <h1>Welcome to Dimm Server !</h1>
+    <p>Status: Online</p>
+</body>
+</html>
+```
