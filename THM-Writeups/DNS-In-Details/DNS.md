@@ -72,4 +72,4 @@ DNS menggunakan berbagai tipe record untuk menyimpan data spesifik. Berikut adal
 
 - **MX Record:** MX (Mail Exchange) Record adalah tipe catatan sumber daya yang berfungsi untuk menetapkan server pengiriman surat (mail server) yang bertanggung jawab atas penerimaan email untuk sebuah domain
 
-- **TXT Record:**
+- **TXT Record:** (Text) Record adalah tipe DNS yang memungkinkan pemilik domain untuk memasukkan informasi berbasis teks ke dalam sistem DNS, Berbeda dengan catatan DNS lainnya yang memiliki struktur kaku untuk alamat IP atau server, TXT record merupakan kolom teks bebas yang sangat fleksibel untuk berbagai keperluan administratif dan keamanan.
