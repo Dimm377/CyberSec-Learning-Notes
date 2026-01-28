@@ -78,6 +78,26 @@ DNS menggunakan berbagai tipe record untuk menyimpan data spesifik. Berikut adal
 
 Proses ini adalah urutan langkah yang dilakukan oleh sistem untuk menerjemahkan nama domain menjadi IP Address, melibatkan koordinasi antara beberapa server DNS yang berbeda
 
-1. **Local Cache Check:**
+1. **Local Cache Check:** Sebelum melakukan permintaan ke jaringan luar, sistem akan melakukan pemeriksaan internal, Ini adalah mekanisme pertahanan pertama untuk meminimalkan latensi dan beban lalu lintas internet
 
-2. **Recursive Resolver:** Bertindak sebagai titik kontak pertama bagi client. Resolver bertanggung jawab untuk mengelola seluruh siklus pencarian, Jika jawaban tidak tersedia dalam cache lokal, resolver akan melakukan query iteratif ke server lain atas nama client
+2. **Recursive Resolver:** Jika informasi tidak ditemukan secara lokal, tugas pencarian diserahkan kepada Recursive Resolver. Ini adalah server yang bertindak sebagai perantara bagi client
+
+3. **The Root Server:** Root Name Server merupakan infrastruktur yang berfungsi sebagai tulang punggung (backbone) dari seluruh sistem DNS di internet. Berada di puncak hierarki DNS, server ini menjadi otoritas pertama yang menangani permintaan jika informasi tidak ditemukan dalam cache.
+
+4. **TLD (Top Level Domaim Server):** TLD Name Server berfungsi sebagai jembatan antara infrastruktur pusat (Root) dan server spesifik milik organisasi. Server ini bertanggung jawab untuk mengelola informasi mengenai semua domain yang berada di bawah satu ekstensi tertentu (seperti .com, .org, atau .id).
+
+5. **Authoritative DNS Server:** Authoritative DNS server adalah server yang bertanggung jawab menyimpan DNS record untuk nama domain tertentu, Server ini menyimpan basis data asli dari berbagai tipe record (seperti A, MX, TXT). dan Segala bentuk perubahan, penambahan, atau penghapusan catatan DNS pada domain Anda hanya dapat dilakukan dan ditetapkan pada server otoritatif ini.
+
+### TTL (Time To Live)
+
+TTL adalah parameter numerik dalam setiap DNS Record yang menentukan durasi (dalam satuan detik) validitas informasi tersebut sebelum dianggap kedaluwarsa oleh sistem caching
+
+Mekanisme kerja TTL:
+
+1. **Penerimaan Data:** Saat Recursive Resolver mendapatkan jawaban dari Authoritative Server, jawaban tersebut datang bersama nilai TTL (misalnya: 3600, yang berarti 1 jam).
+
+2. **Caching:** Resolver akan menyimpan data tersebut di memorinya dan mulai menghitung mundur dari 3600 ke 0.
+
+3. **Penggunaan Cache:** Selama angka tersebut belum mencapai 0, jika ada orang lain yang menanyakan domain yang sama, Resolver akan langsung memberikan jawaban dari memorinya tanpa bertanya lagi ke server otoritatif.
+
+4. **Refresh:** Begitu angka mencapai 0, data dianggap "basi". Resolver akan menghapus data tersebut dan melakukan proses pencarian ulang (Re-query) untuk memastikan alamat IP-nya masih sama atau sudah berubah.
