@@ -63,7 +63,7 @@ Accept: text/html
 
 Contoh Response:
 
-```HTTP/1.1 200 OK
+```http HTTP/1.1 200 OK
 Server: Dimm-Arch-Server/2026.01
 Date: Wed, 28 Jan 2026 19:31:21 GMT
 X-Powered-By: Hyprland
