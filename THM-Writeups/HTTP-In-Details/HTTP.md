@@ -63,12 +63,14 @@ Accept: text/html
 
 Contoh Response:
 
-```http HTTP/1.1 200 OK
-Server: Dimm-Arch-Server/2026.01
-Date: Wed, 28 Jan 2026 19:31:21 GMT
-X-Powered-By: Hyprland
+```http
+HTTP/1.1 200 OK
+Date: Wed, 28 Jan 2026 19:40:00 GMT
+Server: Dimm-Arch-Server/2.4
 Content-Type: text/html
 Content-Length: 173
+Connection: keep-alive
+Cache-Control: public, max-age=3600
 
 <html>
 <head>
@@ -80,3 +82,14 @@ Content-Length: 173
 </body>
 </html>
 ```
+
+- **Line 1:** `(HTTP/1.1 200 OK)`: Baris status utama. `HTTP/1.1` adalah versi protokol, dan `200 OK` adalah status code yang memberitahu client bahwa permintaan berhasil diproses tanpa masalah
+
+- **Line 2:** `(Date: Wed, 28 Jan 2026...):` Menunjukkan waktu (timestamp) kapan respon
+  tersebut dibuat oleh server.
+
+- **Line 3:** `(Server: Dimm-Arch-Server/2026.01):` Memberitahu client jenis dan versi perangkat lunak web server yang digunakan (dalam hal ini, server custom milik ku di ekosistem Arch).
+
+- **Line 4:** `(Content-Type: text/html):` Menjelaskan format data yang dikirim. Label `text/html` menginstruksikan browser untuk merender isi body sebagai halaman web.
+
+- **Line 5:** `(Content-Length: 173):` Memberitahu ukuran muatan (payload) data dalam satuan byte. Angka ini harus akurat agar browser tahu kapan proses download data selesai.
