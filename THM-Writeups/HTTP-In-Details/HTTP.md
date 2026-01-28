@@ -120,9 +120,7 @@ Beberapa metode HTTP yang umum digunakan antara lain:
 
 HTTP Status Codes adalah kode berupa angka yang dikirim oleh server sebagai bagian dari respons terhadap permintaan HTTP. Kode ini memberikan informasi tentang hasil dari permintaan yang dilakukan oleh client.
 
-### Task 4: HTTP Status Codes
-
-Setiap kali permintaan dibuat, server akan merespons dengan kode status tiga digit. Kode-kode ini dikelompokkan ke dalam lima kategori berbeda berdasarkan angka pertamanya untuk memudahkan identifikasi status komunikasi.
+Kode-kode ini dikelompokkan ke dalam lima kategori berbeda berdasarkan angka pertamanya untuk memudahkan identifikasi status komunikasi.
 
 | Rentang     | Kategori                 | Deskripsi (TryHackMe Reference)                                                                                                                 |
 | :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
