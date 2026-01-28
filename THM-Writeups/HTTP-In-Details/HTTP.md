@@ -76,7 +76,7 @@ Cache-Control: public, max-age=3600
 
 <html>
 <head>
-    <title>Dimm377's Lab</title>
+    <title>Dimm HTTP Response</title>
 </head>
 <body>
     <h1>Welcome to Dimm Server !</h1>
