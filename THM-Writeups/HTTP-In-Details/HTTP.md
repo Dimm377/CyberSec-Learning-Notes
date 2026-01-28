@@ -45,7 +45,7 @@ Berikut fitur-fitur yang ada di URL:
 
 Contoh Request:
 
-```
+```http
 GET /index.html HTTP/1.1
 Host: domain.com
 User-Agent: Mozilla/5.0 (Arch Linux)
