@@ -26,3 +26,15 @@ Berikut fitur-fitur yang ada di URL:
 <p align="center">
 <img src="../../Assets/Images/URL.png" width="400">
 </p>
+
+-
+
+- **Scheme:** Ini menginstruksikan protokol apa yang digunakan untuk mengakses sumber daya seperti HTTP, HTTPS, FTP (File Transfer Protocol).
+
+- **User:** Beberapa layanan memerlukan authentikasi untuk login, kita dapat memasukkan nama pengguna dan kata sandi ke dalam URL untuk login.
+
+- **Host:** Nama domain atau alamat IP server yang ingin diakses.
+
+- **Port:** Port yang akan disambungkan, biasanya 80 untuk HTTP dan 443 untuk HTTPS, tetapi ini dapat dihosting di port mana pun antara 1 - 65535.
+
+- **path:** Nama file atau lokasi sumber daya yang kita coba akses
