@@ -37,4 +37,17 @@ Berikut fitur-fitur yang ada di URL:
 
 - **Port:** Port yang akan disambungkan, biasanya 80 untuk HTTP dan 443 untuk HTTPS, tetapi ini dapat dihosting di port mana pun antara 1 - 65535.
 
-- **path:** Nama file atau lokasi sumber daya yang kita coba akses
+- **Path:** Nama file atau lokasi sumber daya yang kita coba akses
+
+- **Query String:** Sedikit informasi tambahan yang dapat dikirim ke jalur yang diminta. Misalnya, /blog?id=1 akan memberi tahu jalur blog bahwa kita ingin menerima artikel blog dengan id 1.
+
+### HTTP Request & Response
+
+Contoh Request:
+
+```
+GET /index.html HTTP/1.1
+Host: domain.com
+User-Agent: Mozilla/5.0 (Arch Linux)
+Accept: text/html
+```
