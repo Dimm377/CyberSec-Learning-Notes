@@ -115,3 +115,32 @@ Beberapa metode HTTP yang umum digunakan antara lain:
 3. **POST (Update):** Digunakan untuk memperbarui atau mengganti informasi yang sudah ada di server.
 
 4. **DELETE (Delete):** Digunakan untuk menghapus sumber daya atau informasi tertentu dari server secara permanen.
+
+### HTTP Status Code
+
+HTTP Status Codes adalah kode berupa angka yang dikirim oleh server sebagai bagian dari respons terhadap permintaan HTTP. Kode ini memberikan informasi tentang hasil dari permintaan yang dilakukan oleh client.
+
+### Task 4: HTTP Status Codes
+
+Setiap kali permintaan dibuat, server akan merespons dengan kode status tiga digit. Kode-kode ini dikelompokkan ke dalam lima kategori berbeda berdasarkan angka pertamanya untuk memudahkan identifikasi status komunikasi.
+
+| Rentang     | Kategori                 | Deskripsi (TryHackMe Reference)                                                                                                                 |
+| :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **100-199** | **Information Response** | Memberitahu klien bahwa permintaan telah diterima dan mereka harus terus mengirimkan sisa permintaan. Kode ini sudah jarang ditemukan saat ini. |
+| **200-299** | **Success**              | Menunjukkan bahwa permintaan klien telah berhasil diproses oleh server dengan sukses.                                                           |
+| **300-399** | **Redirection**          | Digunakan untuk mengalihkan permintaan klien ke sumber daya lain, baik halaman web atau website yang berbeda.                                   |
+| **400-499** | **Client Errors**        | Digunakan untuk menginformasikan klien bahwa terdapat kesalahan pada permintaan yang mereka kirimkan.                                           |
+| **500-599** | **Server Errors**        | Menandakan masalah besar yang terjadi di sisi server saat mencoba menangani permintaan tersebut.                                                |
+
+#### **Daftar Status Code Populer**
+
+Berikut adalah beberapa kode status yang wajib dipahami dalam analisis trafik web:
+
+- **200 OK**: Permintaan berhasil diproses secara sempurna.
+- **201 Created**: Berhasil membuat data baru di server (misalnya setelah registrasi akun).
+- **301 Moved Permanently**: Halaman yang diminta telah pindah ke URL baru secara permanen.
+- **401 Unauthorized**: Akses ditolak karena klien belum melakukan login/autentikasi.
+- **403 Forbidden**: Klien tidak memiliki izin akses ke halaman tersebut meskipun sudah login.
+- **404 Not Found**: Server tidak dapat menemukan halaman atau file yang diminta oleh klien.
+- **500 Internal Server Error**: Terjadi kesalahan teknis umum pada sistem di sisi server.
+- **503 Service Unavailable**: Server sedang tidak tersedia karena kelebihan beban atau sedang dalam pemeliharaan.
