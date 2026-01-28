@@ -6,6 +6,8 @@
 
 # Overview
 
+Room HTTP in Detail di berfokus pada pemahaman mendalam tentang protokol komunikasi paling mendasar di internet: **Hypertext Transfer Protocol (HTTP).** disini mempelajari bagaimana data ditransmisikan antara browser dan web server, serta memahami anatomi di balik setiap permintaan yang kita buat di web.
+
 ### What is HTTP ? (Hypertext Transfer Protocol)
 
 HTTP adalah protokol yang digunakan setiap kali kita mengunjungi sebuah situs web, Protokol ini dikembangkan oleh Tim Berners-Lee dan timnya antara tahun 1989-1991. HTTP adalah serangkaian aturan yang digunakan untuk berkomunikasi dengan server web untuk mentransmisikan data halaman web, baik itu HTML, gambar, video, dan sebagainya.
@@ -99,3 +101,17 @@ Cache-Control: public, max-age=3600
 - **Line 7** `(Cache-Control: public, max-age=3600):` Mengatur kebijakan penyimpanan sementara (caching). Ini memberitahu browser bahwa konten ini boleh disimpan di memori selama 3600 detik (1 jam).
 
 - **Line 8** `(Blank Line):` Baris kosong wajib yang berfungsi sebagai pemisah mutlak antara bagian headers (informasi administratif) dengan bagian body (isi konten).
+
+### HTTP Methods
+
+HTTP method adalah cara yang digunakan oleh klien (seperti browser) untuk berkomunikasi dengan server web. Metode ini menentukan jenis tindakan yang ingin dilakukan pada sumber daya tertentu.
+
+Beberapa metode HTTP yang umum digunakan antara lain:
+
+1. **GET (Read):** Digunakan untuk meminta atau mengambil data/informasi dari server.
+
+2. **PUT (Cread):** Digunakan untuk mengirimkan data baru ke server web dan membuat record baru
+
+3. **POST (Update):** Digunakan untuk memperbarui atau mengganti informasi yang sudah ada di server.
+
+4. **DELETE (Delete):** Digunakan untuk menghapus sumber daya atau informasi tertentu dari server secara permanen.
