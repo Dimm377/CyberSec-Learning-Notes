@@ -83,13 +83,19 @@ Cache-Control: public, max-age=3600
 </html>
 ```
 
-- **Line 1:** `(HTTP/1.1 200 OK)`: Baris status utama. `HTTP/1.1` adalah versi protokol, dan `200 OK` adalah status code yang memberitahu client bahwa permintaan berhasil diproses tanpa masalah
+- **Line 1** `(HTTP/1.1 200 OK)`: Baris status utama. `HTTP/1.1` adalah versi protokol, dan `200 OK` adalah status code yang memberitahu client bahwa permintaan berhasil diproses tanpa masalah
 
-- **Line 2:** `(Date: Wed, 28 Jan 2026...):` Menunjukkan waktu (timestamp) kapan respon
+- **Line 2** `(Date: Wed, 28 Jan 2026...):` Menunjukkan waktu (timestamp) kapan respon
   tersebut dibuat oleh server.
 
-- **Line 3:** `(Server: Dimm-Arch-Server/2026.01):` Memberitahu client jenis dan versi perangkat lunak web server yang digunakan (dalam hal ini, server custom milik ku di ekosistem Arch).
+- **Line 3** `(Server: Dimm-Arch-Server/2026.01):` Memberitahu client jenis dan versi perangkat lunak web server yang digunakan (dalam hal ini, server custom milik ku di ekosistem Arch).
 
-- **Line 4:** `(Content-Type: text/html):` Menjelaskan format data yang dikirim. Label `text/html` menginstruksikan browser untuk merender isi body sebagai halaman web.
+- **Line 4** `(Content-Type: text/html):` Menjelaskan format data yang dikirim. Label `text/html` menginstruksikan browser untuk merender isi body sebagai halaman web.
 
-- **Line 5:** `(Content-Length: 173):` Memberitahu ukuran muatan (payload) data dalam satuan byte. Angka ini harus akurat agar browser tahu kapan proses download data selesai.
+- **Line 5** `(Content-Length: 173):` Memberitahu ukuran muatan (payload) data dalam satuan byte. Angka ini harus akurat agar browser tahu kapan proses download data selesai.
+
+- **Line 6** `(Connection: keep-alive):` Instruksi agar koneksi antara browser dan server tetap terbuka untuk permintaan selanjutnya, sehingga akses terasa lebih cepat dan efisien.
+
+- **Line 7** `(Cache-Control: public, max-age=3600):` Mengatur kebijakan penyimpanan sementara (caching). Ini memberitahu browser bahwa konten ini boleh disimpan di memori selama 3600 detik (1 jam).
+
+- **Line 8** `(Blank Line):` Baris kosong wajib yang berfungsi sebagai pemisah mutlak antara bagian headers (informasi administratif) dengan bagian body (isi konten).
