@@ -46,8 +46,17 @@ Berikut fitur-fitur yang ada di URL:
 Contoh Request:
 
 ```http
+
 GET /index.html HTTP/1.1
 Host: domain.com
 User-Agent: Mozilla/5.0 (Arch Linux)
 Accept: text/html
 ```
+
+- **Line 1:** Berisi Method `(GET)`, Path target `(/index.html)`, dan versi protokol `(HTTP/1.1)`
+
+- **Line 2:** Header `Host` untuk menentukan alamat server tujuan
+
+- **Line 3:** `User-Agent` untuk memberitahu server kalau user sedang menggunakan browser `Mozilla/5.0` di Arch Linux
+
+- **Line 4:** `Accept` untuk memberitahu server tipe konten apa yang bisa diterima `(misal: text/html)`
