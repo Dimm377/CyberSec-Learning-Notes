@@ -30,4 +30,33 @@ Website terbagi menjadi dua bagian yang memiliki peran berbeda namun saling mele
 - **Front-End (Client-Side):** Segala sesuatu yang dirender dan ditampilkan oleh browser. Ini adalah komponen visual yang langsung berinteraksi dengan pengguna.
 - **Back-End (Server-Side):** Server yang memproses permintaan dan mengelola data di balik layar sebelum dikirimkan kembali sebagai respon.
 
-> **Mindset Tip:** Sebagai orang yang belajar Cyber Security, ingatlah bahwa kode **Front-end** berjalan di sisi klien sehingga bisa dilihat dan dimanipulasi oleh siapa pun, sedangkan **Back-end** adalah area tertutup yang menyimpan logika utama aplikasi.
+### HTML (HyperText Markup Language)
+
+Website pada dasarnya dibangun menggunakan tiga teknologi utama:
+
+- **HTML:** Digunakan untuk membangun struktur dan mendefinisikan kerangka website.
+- **CSS:** Digunakan untuk mempercantik tampilan dengan menambahkan gaya atau _styling_.
+- **JavaScript:** Digunakan untuk mengimplementasikan fitur kompleks dan interaktivitas pada halaman.
+
+#### **Struktur Dasar HTML**
+
+HTML menggunakan elemen atau **tags** untuk memberi tahu browser cara menampilkan konten, Berikut adalah komponen utama dalam dokumen HTML:
+
+| Tag               | Deskripsi                                                  |
+| :---------------- | :--------------------------------------------------------- |
+| `<!DOCTYPE html>` | Mendefinisikan bahwa halaman adalah dokumen HTML5.         |
+| `<html>`          | Elemen akar (_root_) dari seluruh halaman HTML.            |
+| `<head>`          | Berisi informasi metadata tentang halaman (seperti judul). |
+| `<body>`          | Berisi semua konten yang akan ditampilkan di browser.      |
+| `<h1>`            | Digunakan untuk mendefinisikan judul besar (_heading_).    |
+| `<p>`             | Digunakan untuk membuat sebuah paragraf.                   |
+
+#### **Mengenal Attributes**
+
+Setiap tag dapat memiliki atribut untuk memberikan informasi tambahan atau gaya:
+
+- **Class (`class`):** Digunakan untuk memberikan gaya yang sama pada banyak elemen sekaligus.
+- **Src (`src`):** Digunakan pada tag gambar (`<img>`) untuk menentukan lokasi file gambar.
+- **ID (`id`):** Bersifat **unik**. Satu elemen hanya boleh memiliki satu ID tertentu untuk membedakannya dari elemen lain. Digunakan untuk _styling_ khusus dan identifikasi oleh JavaScript.
+
+> **Note:** Hacker sering menggunakan fitur "View Page Source" (Ctrl+U) untuk mencari informasi sensitif yang tidak sengaja ditinggalkan developer di dalam komentar HTML.
