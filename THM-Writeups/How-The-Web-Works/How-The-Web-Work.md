@@ -78,10 +78,10 @@ Kode JavaScript dapat dimasukkan ke dalam halaman web dengan dua cara:
 JavaScript dapat mencari elemen berdasarkan **ID** dan mengubah isinya secara dinamis. Contohnya:
 
 ```javascript
-document.getElementById("demo").innerHTML = "Hack the Planet";
+document.getElementById("demo").innerHTML = "Element has been changed";
 ```
 
-_Kode di atas mencari elemen dengan ID "demo" dan mengubah teks di dalamnya menjadi "Hack the Planet"_.
+_Kode di atas mencari elemen dengan ID "demo" dan mengubah teks di dalamnya menjadi "Element has been changed"_.
 
 #### **3. Events (Kejadian)**
 
