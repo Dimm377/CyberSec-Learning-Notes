@@ -61,7 +61,7 @@ Setiap tag dapat memiliki atribut untuk memberikan informasi tambahan atau gaya:
 
 ### JavaScript
 
-### Task 3: JavaScript (Functionality & Interactivity)
+### JavaScript (Functionality & Interactivity)
 
 JavaScript digunakan untuk mengontrol fungsionalitas halaman web. Tanpa JavaScript, halaman web akan menjadi statis dan tidak interaktif.
 
