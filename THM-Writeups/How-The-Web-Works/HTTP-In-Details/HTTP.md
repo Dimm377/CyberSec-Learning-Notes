@@ -169,3 +169,19 @@ HTTP headers adalah informasi tambahan yang dikirim bersama dengan request atau 
 - **Content-Type:** Jenis format data yang dikembalikan (HTML, CSS, dll).
 
 - **Content-Encoding:** Metode kompresi yang digunakan oleh server.
+
+### Cookies
+
+HTTP adalah protokol **stateless**, yang berarti server tidak mengingat permintaan sebelumnya dari client yang sama. Cookies diciptakan untuk mengatasi masalah ini dengan menyimpan informasi kecil di sisi browser client.
+
+#### **Cara Kerja Cookies**
+
+1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` yang berisi ID unik (session token).
+2. **Storage:** Browser akan menyimpan token itu di memori lokal.
+3. **Cookie (Request):** Setiap kali client buka halaman baru di situs yang sama, browser otomatis menyelipkan header `Cookie` berisi token tadi buat mengkonfirmasi kalau yang buka halaman masih orang yang sama.
+
+#### **Kegunaan Utama Cookies**
+
+- **Session Management:** Menjaga status login atau isi keranjang belanja.
+- **Personalization:** Mengingat preferensi user (seperti Dark Mode atau bahasa).
+- **Tracking:** Merekam aktivitas user untuk kepentingan analitik atau iklan.
