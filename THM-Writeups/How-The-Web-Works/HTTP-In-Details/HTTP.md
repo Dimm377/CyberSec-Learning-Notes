@@ -142,3 +142,30 @@ Berikut adalah beberapa kode status yang wajib dipahami dalam analisis trafik we
 - **404 Not Found**: Server tidak dapat menemukan halaman atau file yang diminta oleh klien.
 - **500 Internal Server Error**: Terjadi kesalahan teknis umum pada sistem di sisi server.
 - **503 Service Unavailable**: Server sedang tidak tersedia karena kelebihan beban atau sedang dalam pemeliharaan.
+
+### HTTP Headers
+
+HTTP headers adalah informasi tambahan yang dikirim bersama dengan request atau respons HTTP. Headers ini memberikan konteks dan metadata tentang data yang sedang ditransfer.
+
+### **Request Headers**
+
+- **Host:** adalah header yang memberi tahu server nama domain yang diinginkan oleh client saat membuat request, contoh nya (`domain.com`)
+
+- **User-Agent:** adalah header yang mengidentifikasi jenis perangkat, sistem operasi,
+  dan aplikasi client yang digunakan untuk mengakses server.
+
+- **Content-Length:** Memberitahu server seberapa besar data yang dikirim (misal saat mengisi formulir) agar server tahu berapa banyak data yang harus diterima.
+
+- **Accept-Encoding:** Memberitahu server jenis kompresi apa yang didukung oleh browser (seperti gzip) agar data bisa dikirim lebih cepat.
+
+- **Cookie:** Data yang dikirim kembali ke server untuk membantu server mengingat informasi client sebelumnya
+
+#### **Response Headers**
+
+- **Set-Cookie:** Perintah bagi browser untuk menyimpan cookie.
+
+- **Cache-Control:** Durasi penyimpanan data di cache browser.
+
+- **Content-Type:** Jenis format data yang dikembalikan (HTML, CSS, dll).
+
+- **Content-Encoding:** Metode kompresi yang digunakan oleh server.
