@@ -31,4 +31,4 @@ Secara garis besar, urutan prosesnya adalah:
 4. Terhubung ke server melalui **Port 80/443**.
 5. Server memproses permintaan dan berinteraksi dengan **Database**.
 
-> **Mindset Tip:** Memahami infrastruktur ini sangat penting bagi seorang pentester untuk mengetahui titik lemah mana yang bisa dieksploitasi, apakah itu di level DNS, WAF bypass, atau Database injection.
+> **Note:** Memahami infrastruktur ini sangat penting bagi seorang pentester untuk mengetahui titik lemah mana yang bisa dieksploitasi, apakah itu di level DNS, WAF bypass, atau Database injection.
