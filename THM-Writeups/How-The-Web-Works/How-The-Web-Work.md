@@ -117,3 +117,21 @@ Developer sering kali lupa menghapus data penting selama proses Developing, sepe
 Salah satu hal pertama yang harus dilakukan saat menilai keamanan aplikasi web adalah meninjau kode sumber halaman (_Page Source Code_) untuk mencari kebocoran data.
 
 > **Note:** Penyerang dapat memanfaatkan informasi yang bocor ini untuk melakukan eskalasi akses ke komponen _backend_ atau bagian aplikasi lainnya.
+
+### HTML Injection
+
+HTML Injection adalah kerentanan yang terjadi ketika input pengguna ditampilkan pada halaman web tanpa melalui proses filtrasi atau sanitasi yang tepat. Hal ini memungkinkan penyerang untuk "menyuntikkan" kode HTML mereka sendiri ke dalam situs web korban.
+
+#### **Cara Kerja HTML Injection**
+
+1. **Input:** Pengguna memasukkan tag HTML (misal: `<h1>Hacked</h1>`) ke dalam kolom input (seperti kolom komentar atau nama).
+2. **Failure to Sanitize:** Server menerima input tersebut dan menyimpannya atau langsung menampilkannya kembali tanpa mengubah karakter khusus menjadi teks aman.
+3. **Execution:** Browser menginterpretasikan input tersebut sebagai kode HTML asli dan merendernya, sehingga tampilan halaman berubah sesuai keinginan penyerang.
+
+#### **Dampak dari HTML Injection:**
+
+- **Defacement:** Mengubah konten visual website (misal: mengganti gambar atau teks).
+- **Phishing:** Menyuntikkan formulir login palsu untuk mencuri data pengguna lain.
+- **Redirection:** Mengarahkan pengguna ke situs berbahaya menggunakan tag `<a>`.
+
+> **Note:** **"All User Input is Evil."** Jangan pernah menampilkan input user secara langsung tanpa proses _encoding_ atau _filtering_ di sisi server.
