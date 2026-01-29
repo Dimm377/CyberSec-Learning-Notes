@@ -10,8 +10,6 @@ mempelajari proses fundamental dalam pembuatan situs web, termasuk bagaimana bro
 
 ### How The Web Works ?
 
-### How The Web Works ?
-
 Pada dasarnya, web bekerja menggunakan model **Client-Server**. Ini adalah interaksi terus-menerus antara browser yang sedang digunakan dengan sebuah komputer di lokasi lain yang menyediakan data.
 
 #### **1. Siklus Request & Response**
@@ -60,3 +58,44 @@ Setiap tag dapat memiliki atribut untuk memberikan informasi tambahan atau gaya:
 - **ID (`id`):** Bersifat **unik**. Satu elemen hanya boleh memiliki satu ID tertentu untuk membedakannya dari elemen lain. Digunakan untuk _styling_ khusus dan identifikasi oleh JavaScript.
 
 > **Note:** Hacker sering menggunakan fitur "View Page Source" (Ctrl+U) untuk mencari informasi sensitif yang tidak sengaja ditinggalkan developer di dalam komentar HTML.
+
+### JavaScript
+
+### Task 3: JavaScript (Functionality & Interactivity)
+
+JavaScript digunakan untuk mengontrol fungsionalitas halaman web. Tanpa JavaScript, halaman web akan menjadi statis dan tidak interaktif.
+
+#### **1. Cara Menambahkan JavaScript**
+
+Kode JavaScript dapat dimasukkan ke dalam halaman web dengan dua cara:
+
+- **Internal:** Langsung di dalam tag `<script>`.
+- **Remote:** Menggunakan atribut `src` untuk memuat file eksternal:
+  `<script src="/location/of/javascript_file.js"></script>`
+
+#### **2. Memanipulasi Elemen HTML**
+
+JavaScript dapat mencari elemen berdasarkan **ID** dan mengubah isinya secara dinamis. Contohnya:
+
+```javascript
+document.getElementById("demo").innerHTML = "Hack the Planet";
+```
+
+_Kode di atas mencari elemen dengan ID "demo" dan mengubah teks di dalamnya menjadi "Hack the Planet"_.
+
+#### **3. Events (Kejadian)**
+
+Elemen HTML dapat memicu JavaScript melalui sebuah "Event", seperti:
+
+- **onclick:** Terjadi saat elemen di-klik.
+- **onhover:** Terjadi saat kursor berada di atas elemen.
+
+**Contoh implementasi pada tombol:**
+
+```html
+<button onclick='document.getElementById("demo").innerHTML = "Button Clicked";'>
+  Click Me!
+</button>
+```
+
+_Saat tombol di-klik, teks pada elemen dengan ID "demo" akan berubah menjadi "Button Clicked"_.
