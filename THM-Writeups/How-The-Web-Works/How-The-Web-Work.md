@@ -99,3 +99,21 @@ Elemen HTML dapat memicu JavaScript melalui sebuah "Event", seperti:
 ```
 
 _Saat tombol di-klik, teks pada elemen dengan ID "demo" akan berubah menjadi "Button Clicked"_.
+
+### Sensitive Data Exposure
+
+Sensitive Data Exposure terjadi ketika informasi sensitif dalam bentuk teks biasa (_clear-text_) terpapar di kode sumber _frontend_ yang dapat diakses oleh publik.
+
+#### **Mengapa Hal Ini Terjadi?**
+
+Developer sering kali lupa menghapus data penting selama proses Developing, seperti:
+
+- **Credential Login:** Username atau password yang tertulis langsung di kode HTML/JavaScript.
+- **Tautan Tersembunyi:** Link menuju halaman privat yang tidak seharusnya diketahui pengguna umum.
+- **Komentar HTML:** Catatan internal pengembang yang berisi informasi sensitif.
+
+#### **Langkah Penilaian Keamanan (Reconnaissance):**
+
+Salah satu hal pertama yang harus dilakukan saat menilai keamanan aplikasi web adalah meninjau kode sumber halaman (_Page Source Code_) untuk mencari kebocoran data.
+
+> **Note:** Penyerang dapat memanfaatkan informasi yang bocor ini untuk melakukan eskalasi akses ke komponen _backend_ atau bagian aplikasi lainnya.
