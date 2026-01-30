@@ -65,4 +65,4 @@ Linux adalah sistem multi-user, sehingga hak akses sangat krusial untuk keamanan
 
 Bagian ini merangkum pentingnya penguasaan terminal untuk efisiensi kerja di Linux. Pemahaman tentang SSH dan Permissions adalah pondasi utama sebelum melangkah ke materi yang lebih kompleks seperti _Privilege Escalation_ atau _Server Configuration_.
 
-> **Mindset Tip:** Di Linux, "Everything is a file". Jika kamu menguasai cara mengelola file dan izinnya, kamu menguasai sistem tersebut.
+> **Note:** Di Linux, "Everything is a file". Jika kamu menguasai cara mengelola file dan izinnya, kamu menguasai sistem tersebut.

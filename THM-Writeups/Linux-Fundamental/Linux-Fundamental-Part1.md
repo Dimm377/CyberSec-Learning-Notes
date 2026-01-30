@@ -62,4 +62,4 @@ Operator memungkinkan kita untuk mengarahkan output atau menggabungkan beberapa 
 
 Menguasai dasar-dasar ini adalah syarat mutlak sebelum mempelajari administrasi sistem atau keamanan tingkat lanjut. Perintah-perintah sederhana inilah yang nantinya akan digunakan untuk mengeksploitasi sistem atau melakukan _privilege escalation_.
 
-> **Mindset Tip:** Terminal bukan sekadar cara berinteraksi dengan komputer, terminal adalah cara tercepat dan paling efisien untuk mengendalikan sistem secara total.
+> **Note:** Terminal bukan sekadar cara berinteraksi dengan komputer, terminal adalah cara tercepat dan paling efisien untuk mengendalikan sistem secara total.
