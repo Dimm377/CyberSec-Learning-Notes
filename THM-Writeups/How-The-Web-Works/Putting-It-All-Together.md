@@ -12,14 +12,18 @@ Room ini merangkum seluruh proses komunikasi web, mulai dari permintaan pengguna
 
 Selain Client dan Server, terdapat komponen penting lainnya:
 
-- **Load Balancer:** Mendistribusikan trafik ke beberapa server dan melakukan **Health Check**.
-- **CDN:** Mempercepat akses dengan mengirimkan file statis dari lokasi server terdekat.
-- **WAF:** Melindungi web server dari serangan siber (Hacking/DoS).
+- **Load Balancer:** Mendistribusikan traffic ke beberapa server dan melakukan **Health Check**.
+- **CDN (Content Delivery Networks):** Mempercepat akses dengan mengirimkan file statis dari lokasi server terdekat.
+- **WAF (Web Application Firewall):** Melindungi web server dari serangan cyber (Hacking/DoS).
 - **Database:** Menyimpan data dinamis yang diproses oleh aplikasi backend.
 
 #### **2. Mekanisme Web Server**
 
 Web server menggunakan **Virtual Hosts** untuk menjalankan beberapa situs web pada satu server fisik yang sama dengan membedakan permintaan berdasarkan nama domain.
+
+- **Static vs Dynamic Content:**
+  - **Static:** File yang dikirim langsung apa adanya (HTML, CSS, Gambar).
+  - **Dynamic:** Konten yang bisa berubah-ubah tergantung permintaan user (hasil pencarian, profil user), biasanya diproses oleh aplikasi backend.
 
 #### **3. Alur Permintaan Website**
 
