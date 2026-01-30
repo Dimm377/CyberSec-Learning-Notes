@@ -6,13 +6,13 @@
 
 ---
 
-## # Overview
+# Overview
 
-Selamat datang di babak final! Room ini fokus pada alat-alat utilitas yang akan sering digunakan sehari-hari, cara mengelola proses sistem, hingga mengotomatisasi tugas agar sistem tetap berjalan optimal.
+Room ini fokus pada alat-alat utility yang akan sering digunakan sehari-hari, cara mengelola proses sistem, hingga mengotomatisasi tugas agar sistem tetap berjalan optimal.
 
 ---
 
-## ### Task 2: Terminal Text Editors
+### Terminal Text Editors
 
 Mengedit file langsung lewat terminal adalah skill wajib. Room ini memperkenalkan dua editor utama:
 
@@ -21,7 +21,7 @@ Mengedit file langsung lewat terminal adalah skill wajib. Room ini memperkenalka
 
 ---
 
-## ### Task 3: General/Useful Utilities
+### General/Useful Utilities
 
 Linux menyediakan banyak alat kecil yang sangat berguna untuk transfer data dan komunikasi:
 
@@ -31,7 +31,7 @@ Linux menyediakan banyak alat kecil yang sangat berguna untuk transfer data dan 
 
 ---
 
-## ### Task 4: Processes 101
+### Processes 101
 
 Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan di latar belakang:
 
@@ -44,7 +44,7 @@ Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan di latar be
 
 ---
 
-## ### Task 5: Maintaining Your System: Automation
+### Task 5: Maintaining Your System: Automation
 
 Agar tidak perlu mengerjakan tugas yang sama berulang kali, Linux menggunakan **cron**.
 
@@ -52,7 +52,7 @@ Agar tidak perlu mengerjakan tugas yang sama berulang kali, Linux menggunakan **
 
 ---
 
-## ### Task 6: Maintaining Your System: Package Management
+### Task 6: Maintaining Your System: Package Management
 
 Mengatur perangkat lunak pada distribusi berbasis Debian/Ubuntu:
 
@@ -71,4 +71,4 @@ Sistem Linux mencatat segala aktivitas di dalam file log yang biasanya berada di
 
 Dengan selesainya room ini, kita sudah memiliki pondasi yang kuat untuk mengoperasikan Linux secara profesional. Perjalanan selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
 
-> **Mindset Tip:** Automate everything. Jangan habiskan waktu untuk tugas manual jika kamu bisa menuliskan satu baris perintah di crontab.
+> **Note:** Automate everything. Jangan habiskan waktu untuk tugas manual jika kamu bisa menuliskan satu baris perintah di crontab.
