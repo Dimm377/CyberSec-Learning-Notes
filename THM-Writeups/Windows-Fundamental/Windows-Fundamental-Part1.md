@@ -74,4 +74,4 @@ Utilitas utama untuk memantau kesehatan performa dan mendeteksi anomali pada sis
 
 Menguasai Windows Fundamentals memberikan perspektif baru tentang bagaimana sistem operasi paling populer di dunia ini bekerja. Pemahaman tentang struktur file dan manajemen proses adalah langkah awal yang solid untuk menjadi seorang analis keamanan.
 
-> **Mindset Tip:** Jangan hanya melihat Windows sebagai user; lihatlah sebagai sistem yang bisa diaudit. Setiap klik di GUI sebenarnya memicu eksekusi proses yang berada di System32.
+> **Note:** Jangan hanya melihat Windows sebagai user; lihatlah sebagai sistem yang bisa diaudit. Setiap klik di GUI sebenarnya memicu eksekusi proses yang berada di System32.
