@@ -67,7 +67,7 @@ Sistem Linux mencatat segala aktivitas di dalam file log yang biasanya berada di
 
 ---
 
-## ### Task 8: Conclusions & Summaries
+### Conclusions & Summaries
 
 Dengan selesainya room ini, kita sudah memiliki pondasi yang kuat untuk mengoperasikan Linux secara profesional. Perjalanan selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
 
