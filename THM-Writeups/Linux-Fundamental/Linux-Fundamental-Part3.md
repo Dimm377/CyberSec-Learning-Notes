@@ -44,7 +44,7 @@ Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan di latar be
 
 ---
 
-### Task 5: Maintaining Your System: Automation
+### Maintaining Your System: Automation
 
 Agar tidak perlu mengerjakan tugas yang sama berulang kali, Linux menggunakan **cron**.
 
@@ -52,7 +52,7 @@ Agar tidak perlu mengerjakan tugas yang sama berulang kali, Linux menggunakan **
 
 ---
 
-### Task 6: Maintaining Your System: Package Management
+### Maintaining Your System: Package Management
 
 Mengatur perangkat lunak pada distribusi berbasis Debian/Ubuntu:
 
@@ -61,7 +61,7 @@ Mengatur perangkat lunak pada distribusi berbasis Debian/Ubuntu:
 
 ---
 
-## ### Task 7: Maintaining Your System: Logs
+### Maintaining Your System: Logs
 
 Sistem Linux mencatat segala aktivitas di dalam file log yang biasanya berada di direktori `/var/log`. Memeriksa log adalah langkah krusial saat melakukan troubleshooting atau investigasi keamanan.
 
