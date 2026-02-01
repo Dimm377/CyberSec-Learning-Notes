@@ -8,7 +8,7 @@
 
 ## # Overview
 
-Room ini adalah pondasi utama untuk memahami cara kerja **Burp Suite**, alat wajib bagi setiap _Pentester_ atau _Bug Hunter_. Lu bakal belajar gimana cara "berdiri di tengah" antara browser dan server untuk memanipulasi trafik web sesuai keinginan lu. Mengingat lu pake **Arch Linux + Hyprland**, menguasai alat ini bakal bikin alur kerja lu makin gahar.
+Room ini adalah pondasi utama untuk memahami cara kerja **Burp Suite**, alat wajib bagi setiap _Pentester_ atau _Bug Hunter_. disini bakal belajar gimana cara "berdiri di tengah" antara browser dan server untuk memanipulasi trafik web sesuai keinginan
 
 ---
 
