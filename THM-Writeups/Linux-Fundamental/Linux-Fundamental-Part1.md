@@ -12,7 +12,7 @@ Room ini memberikan pengenalan dasar tentang sistem operasi Linux, mulai dari se
 
 ---
 
-## ### Task 2: A Bit of Background on Linux
+## A Bit of Background on Linux
 
 Linux dikembangkan oleh Linus Torvalds pada tahun 1991. Sistem ini bersifat open-source dan memiliki banyak distribusi (distros) seperti Ubuntu, Debian, Fedora, dan favorit para "sepuh", Arch Linux.
 
