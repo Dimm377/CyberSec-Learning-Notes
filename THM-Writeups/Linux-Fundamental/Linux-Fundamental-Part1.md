@@ -12,13 +12,13 @@ Room ini memberikan pengenalan dasar tentang sistem operasi Linux, mulai dari se
 
 ---
 
-## A Bit of Background on Linux
+### A Bit of Background on Linux
 
 Linux dikembangkan oleh Linus Torvalds pada tahun 1991. Sistem ini bersifat open-source dan memiliki banyak distribusi (distros) seperti Ubuntu, Debian, Fedora, dan favorit para "sepuh", Arch Linux.
 
 ---
 
-## ### Task 4: Running Your First Commands
+### Running Your First Commands
 
 Langkah pertama dalam menggunakan Linux adalah memahami perintah dasar terminal:
 
@@ -27,7 +27,7 @@ Langkah pertama dalam menggunakan Linux adalah memahami perintah dasar terminal:
 
 ---
 
-## ### Task 5: Interacting With the Filesystem
+### Interacting With the Filesystem
 
 Navigasi di Linux dilakukan melalui terminal dengan memanipulasi direktori dan file:
 
@@ -38,7 +38,7 @@ Navigasi di Linux dilakukan melalui terminal dengan memanipulasi direktori dan f
 
 ---
 
-## ### Task 6: Searching for Files
+### Searching for Files
 
 Mencari data secara efisien adalah skill kunci bagi seorang pentester:
 
@@ -47,7 +47,7 @@ Mencari data secara efisien adalah skill kunci bagi seorang pentester:
 
 ---
 
-## ### Task 7: An Introduction to Shell Operators
+### An Introduction to Shell Operators
 
 Operator memungkinkan kita untuk mengarahkan output atau menggabungkan beberapa perintah sekaligus:
 
@@ -58,7 +58,7 @@ Operator memungkinkan kita untuk mengarahkan output atau menggabungkan beberapa 
 
 ---
 
-## ### Task 8: Conclusions & Summaries
+### Task 8: Conclusions & Summaries
 
 Menguasai dasar-dasar ini adalah syarat mutlak sebelum mempelajari administrasi sistem atau keamanan tingkat lanjut. Perintah-perintah sederhana inilah yang nantinya akan digunakan untuk mengeksploitasi sistem atau melakukan _privilege escalation_.
 
