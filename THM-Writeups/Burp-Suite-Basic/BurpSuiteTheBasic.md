@@ -37,7 +37,7 @@ Proxy adalah fitur paling ikonik. Dia bertindak sebagai _Man-in-the-Middle_:
 Agar fokus dan nggak menuh-menuhin log dengan trafik yang nggak penting (kayak _update_ _background_), lu butuh **Scoping**:
 
 - **Site Map**: Memberikan gambaran hierarki struktur folder dan file dari aplikasi web target.
-- **Scope**: Memungkinkan lu untuk memfilter trafik agar Burp cuma mencatat domain yang sedang lu serang.
+- **Scope**: Memungkinkan kita untuk memfilter trafik agar Burp cuma mencatat domain yang sedang kita serang.
 
 ---
 
@@ -46,7 +46,7 @@ Agar fokus dan nggak menuh-menuhin log dengan trafik yang nggak penting (kayak _
 Repeater adalah tempat favorit buat yang suka ngulik manual:
 
 - **Function**: Mengirimkan satu _request_ berkali-kali dengan modifikasi parameter yang berbeda tanpa harus _refresh_ browser.
-- **Shortcut**: Tekan `Ctrl + R` untuk mengirim _request_ dari Proxy ke Repeater secara instan.
+- **Shortcut**: `Ctrl + R` untuk mengirim _request_ dari Proxy ke Repeater secara instan.
 
 ---
 
@@ -65,6 +65,6 @@ Alat pendukung yang bikin Burp Suite makin lengkap:
 
 - **Decoder**: Digunakan untuk melakukan _encoding/decoding_ data (Base64, URL, Hex) secara cepat.
 - **Comparer**: Membandingkan dua _response_ HTTP yang berbeda untuk mencari perbedaan tipis (seperti saat _blind SQL injection_).
-- **Extender (BApp Store)**: Tempat memasang ekstensi tambahan seperti **Logger++** atau **Turbo Intruder** untuk meningkatkan kemampuan Burp lu.
+- **Extender (BApp Store)**: Tempat memasang ekstensi tambahan seperti **Logger++** atau **Turbo Intruder** untuk meningkatkan kemampuan Burp suite.
 
 > **Note:** Alat hebat nggak bakal berguna di tangan orang yang nggak paham konsep dasarnya. Pahami protokol HTTP, maka lu bakal paham cara merusaknya.
