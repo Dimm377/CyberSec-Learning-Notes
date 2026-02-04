@@ -8,7 +8,7 @@
 
 ## # Overview
 
-Room ini adalah pondasi utama untuk memahami cara kerja **Burp Suite**, alat wajib bagi setiap _Pentester_ atau _Bug Hunter_. disini bakal belajar gimana cara "berdiri di tengah" antara browser dan server untuk memanipulasi trafik web sesuai keinginan
+Room ini adalah pondasi utama untuk memahami cara kerja **Burp Suite**, alat wajib bagi setiap _Pentester_ atau _Bug Hunter_. disini bakal belajar gimana cara "berdiri di tengah" antara browser dan server untuk memanipulasi traffic web sesuai keinginan
 
 ---
 
@@ -24,7 +24,7 @@ Dashboard adalah pusat kendali Burp Suite. Di versi **Community 2026.1.1** yang 
 
 ### The Power of Burp Proxy
 
-Proxy adalah fitur paling ikonik. Dia bertindak sebagai _Man-in-the-Middle_:
+Proxy adalah fitur paling iconic. Dia bertindak sebagai _Man-in-the-Middle_:
 
 - **Interception**: Menghentikan _request_ sebelum sampai ke server agar bisa dimodifikasi.
 - **HTTP History**: Menyimpan log setiap _request_ yang lewat untuk dianalisis nanti.
@@ -34,10 +34,10 @@ Proxy adalah fitur paling ikonik. Dia bertindak sebagai _Man-in-the-Middle_:
 
 ### Target Scoping & Site Map
 
-Agar fokus dan nggak menuh-menuhin log dengan trafik yang nggak penting (kayak _update_ _background_), lu butuh **Scoping**:
+Target Scope adalah fitur di Burp Suite yang digunakan intuk mementukan URL atau domain mana aja yang akan dijadikan target utama / prioritas
 
 - **Site Map**: Memberikan gambaran hierarki struktur folder dan file dari aplikasi web target.
-- **Scope**: Memungkinkan kita untuk memfilter trafik agar Burp cuma mencatat domain yang sedang kita serang.
+- **Scope**: Memungkinkan kita untuk memfilter traffic agar Burp cuma mencatat domain yang sedang kita serang.
 
 ---
 

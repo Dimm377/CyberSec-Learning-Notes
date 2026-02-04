@@ -1,5 +1,5 @@
 # TryHackMe: Burp Suite Basics
 
-**Room Link:** [SQL-Injection](https://tryhackme.com/room/burpsuitebasics)
+**Room Link:** [SQL-Injection](w
 **Category:** Web Security
 **Difficulty:** Medium
