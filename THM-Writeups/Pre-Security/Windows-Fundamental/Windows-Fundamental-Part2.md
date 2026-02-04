@@ -1,6 +1,8 @@
 # Windows Fundamentals Part 2: System Administration & Internals
 
 **Room Link:** [TryHackMe](https://tryhackme.com/room/windowsfundamentals2x0x)
+**Category:** Windows Fundamental
+**Difficulty:** easy
 
 ---
 
