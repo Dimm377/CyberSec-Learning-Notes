@@ -14,7 +14,8 @@ OSI Model adalah kerangka kerja konseptual yang memebagi proses komunikasi jarin
 - **Layer 3 (Network):** Bertanggung jawab untuk merutekan paket ke jaringan yang tepat menggunakan IP Address
 - **Layer 2 (Data Link):** Mengatur perpindahan data antar perangkat di segmen jaringan yang sama (MAC Address).
 - **Layer 6 (Presentation):** Menangani encoding, kompresi, dan enkripsi data aplikasi.
-  > **mnemonic:** "**P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way", (Physical, Data Link, Network, Transport, Session, Presentation, Application).
+
+> **mnemonic:** "**P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way", (Physical, Data Link, Network, Transport, Session, Presentation, Application).
 
 ## TCP/IP Model
 
