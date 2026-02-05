@@ -12,7 +12,7 @@ Room ini membahas protokol-protokol inti yang sering ditemui di dunia nyata, mul
 
 ---
 
-## Task 2: DNS (Remembering Addresses)
+## Task 2: Remembering Addresses (DNS)
 
 DNS menerjemahkan nama domain menjadi IP address agar perangkat kita bisa berkomunikasi.
 
