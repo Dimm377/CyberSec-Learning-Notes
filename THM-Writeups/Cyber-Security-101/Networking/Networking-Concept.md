@@ -31,3 +31,10 @@ Identitas unik yang ada di setiap perangkat di jaringan
 - **IPv4:** Alamat 32-bit yang dibagi menjadi 4 oktet.
 - **Private IP:** Digunakan dalam jaringan lokal (LAN) dan tidak dapat diakses langsung dari internet (misal: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 - **IPv4:** Alamat 32-bit yang dibagi menjadi 4 oktet.
+
+### TCP, UDP, and Ports
+
+Protokol transport yang menentukan bagaimana data dikirimkan
+
+- **TCP (Transmission Control Protocol):** Berorientasi koneksi, reliable, dan menggunakan _Three-way Handshake_ (SYN, SYN-ACK, ACK)
+- **UDP (User Datagram Protocol):** Tidak berorientasi koneksi, cepat, namun tidak menjamin paket sampai
