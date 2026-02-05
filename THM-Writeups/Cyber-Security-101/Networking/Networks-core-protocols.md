@@ -64,6 +64,4 @@ Protokol yang menangani pengiriman dan pengambilan pesan email.
 - **The Flag (POP3):** Mengambil pesan ke-4 dengan perintah `RETR 4` menghasilkan flag **`THM{TELNET_RETR_EMAIL}`**.
 - **IMAP (Synchronizing):** Lebih canggih dari POP3 karena mensinkronisasi email antar perangkat. Perintah untuk mengambil pesan ke-4 adalah `FETCH 4 body[]`.
 
----
-
-> **Mindset Tip:** "The flag is in the details." Jangan cuma jalankan perintah, tapi amati respon servernya. Itulah cara seorang pro menemukan anomali.
+> **Tip:** "The flag is in the details."
