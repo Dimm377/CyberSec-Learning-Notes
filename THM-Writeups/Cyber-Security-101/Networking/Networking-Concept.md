@@ -23,3 +23,11 @@ Berbeda dengan OSI Model yang konseptual, TCP/IP adalah model yang benar-benar d
 - **Application Layer:** Gabungan dari layer 5, 6, dan 7 OSI. Protokol seperti HTTP, FTP, dan DNS berada di sini.
 - **Internet Layer:** Setara dengan Layer 3 OSI, fokus pada pengalamatan logis (IP).
 - **Encapsulation:** Proses di mana setiap layer menambahkan header ke data dari layer di atasnya sebelum dikirim ke layer bawah.
+
+### IP Addresses & Subnets
+
+Identitas unik yang ada di setiap perangkat di jaringan
+
+- **IPv4:** Alamat 32-bit yang dibagi menjadi 4 oktet.
+- **Private IP:** Digunakan dalam jaringan lokal (LAN) dan tidak dapat diakses langsung dari internet (misal: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+- **IPv4:** Alamat 32-bit yang dibagi menjadi 4 oktet.
