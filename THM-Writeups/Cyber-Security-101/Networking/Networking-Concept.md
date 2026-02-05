@@ -38,3 +38,9 @@ Protokol transport yang menentukan bagaimana data dikirimkan
 
 - **TCP (Transmission Control Protocol):** Berorientasi koneksi, reliable, dan menggunakan _Three-way Handshake_ (SYN, SYN-ACK, ACK)
 - **UDP (User Datagram Protocol):** Tidak berorientasi koneksi, cepat, namun tidak menjamin paket sampai
+- **Data Units:** Data pada TCP disebut **Segment**, sedangkan pada UDP disebut **Datagram**.
+- **Ports:** Ada sekitar **65.535** port yang tersedia untuk mengarahkan trafik ke layanan spesifik.
+
+### Connecting to a Web Server
+
+Praktek menggunakan perintah dasar untuk berinteraksi dengan layanan yang terbuka
