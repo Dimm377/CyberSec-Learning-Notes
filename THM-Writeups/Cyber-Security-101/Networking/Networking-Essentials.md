@@ -52,3 +52,11 @@ Protokol yang otomatis memberikan IP Address kepada perangkat di jaringan
 * **AAAA Record:** Memetakan nama domain ke IPv6.
 * **CNAME:** Alias untuk satu domain ke domain lainnya.
 * **MX Record:** Menentukan server yang bertanggung jawab untuk urusan email.
+
+### Task 7: Network Troubleshooting
+
+Tools dasar untuk mendiagnosis masalah koneksi yang sangat berguna saat melakukan Reconnaissance
+
+- **Ping:** Menggunakan protokol ICMP untuk mengecek konektivitas dasar ke sebuah host
+- **Traceroute:** Melacak setiap router (hop) yang dilewati paket untuk mengidentifikasi jalur jaringan.
+- **Nslookup:** Melakukan query manual terhadap DNS records untuk mendapatkan informasi domain target.
