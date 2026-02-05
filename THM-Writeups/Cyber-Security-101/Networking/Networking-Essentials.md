@@ -38,5 +38,12 @@ Protokol krusia yang menjembatani komunikasi antara Layer 2 dan Layer 3.
 
 Protokol yang otomatis memberikan IP Address kepada perangkat di jaringan
 
-- **DORA Process:** DHCP bekerja melalui empat tahap: **D**iscover, **O**ffer, **R**equest, dan **A**cknowledge.
-- **Lease Time:** Jangka waktu tertentu di mana sebuah perangkat "meminjam" IP Address tersebut sebelum harus memperbaruinya.
+- **DORA Process:** DHCP bekerja melalui empat tahap: **D**iscover, **O**ffer, **R**equest, dan **A**cknowledge
+- **Lease Time:** Jangka waktu tertentu di mana sebuah perangkat "meminjam" IP Address tersebut sebelum harus memperbaruinya
+
+### Task 6: Domain Name System (DNS)
+
+"Buku telepon" internet yang menerjemahkan nama domain (google.com) menjadi IP Address
+
+- **Root Servers:** Tingkat tertinggi dalam hierarki DNS yang mengarahkan query ke TLD (Top Level Domain) yang tepat.
+- **Record Types:**
