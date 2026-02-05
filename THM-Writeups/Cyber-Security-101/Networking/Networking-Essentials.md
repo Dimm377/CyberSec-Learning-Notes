@@ -21,3 +21,5 @@ Memahami perbedaan antara perangkat yang menghubungkan jaringan
 Identitas fisik permanen yang tertanam pada kartu jaringan (NIC)
 
 - **Format:** Terdiri dari 48-bit (6 oktet) yang direpresentasikan dalam heksadesimal.
+- **OUI (Organizationally Unique Identifier):** 3 oktet pertama menunjukkan siapa produsen perangkat tersebut.
+- **Red Team Tip:** MAC Address bisa dimanipulasi (MAC Spoofing) untuk melewati filter keamanan di jaringan lokal.
