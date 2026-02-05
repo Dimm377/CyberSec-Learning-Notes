@@ -15,3 +15,9 @@ Memahami perbedaan antara perangkat yang menghubungkan jaringan
 - **Hubs:** Perangkat "bodoh" yang mengirimkan paket ke semua port yang tersedia (Broadcast). Ini adalah mimpi buruk untuk keamanan jaringan karena memudahkan sniffing
 - **Switches:** Perangkat yang lebih pintar karena menyimpan tabel MAC Address dan hanya mengirimkan data ke port tujuan yang benar
 - **Routers:** Menghubungkan berbagai jaringan yang berbeda dan bertanggung jawab untuk menentukan jalur terbaik bagi paket data (Routing)
+
+### Task 3: MAC Addresses
+
+Identitas fisik permanen yang tertanam pada kartu jaringan (NIC)
+
+- **Format:** Terdiri dari 48-bit (6 oktet) yang direpresentasikan dalam heksadesimal.
