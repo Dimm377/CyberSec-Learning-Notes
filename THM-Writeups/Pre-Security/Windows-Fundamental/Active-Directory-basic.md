@@ -47,7 +47,7 @@ GPO digunakan untuk menerapkan konfigurasi keamanan secara otomatis ke seluruh p
 AD menggunakan dua protokol utama untuk proses login dan akses sumber daya.
 
 - **Kerberos:** Protokol default yang menggunakan sistem tiket (Ticket Granting Ticket/TGT) untuk meminimalisir pengiriman kredensial di jaringan.
-- **NTLM:** Protokol tantangan-respons (challenge-response) yang lebih tua namun masih sering digunakan untuk kompatibilitas ke belakang.
+- **NTLM:** Protokol challenge-response yang lebih tua namun masih sering digunakan untuk kompatibilitas ke belakang.
 - **Security Fact:** Baik Kerberos maupun NTLM dirancang agar password dalam bentuk teks asli (plaintext) tidak pernah dikirimkan melalui jaringan.
 
 ---
