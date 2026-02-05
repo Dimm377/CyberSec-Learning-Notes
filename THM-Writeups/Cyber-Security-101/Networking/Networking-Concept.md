@@ -10,4 +10,4 @@
 
 OSI Model adalah kerangka kerja konseptual yang memebagi proses komunikasi jaringan menjadi 7 layer
 
-- **mnemonic:**
+- **mnemonic:** "**P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way"
