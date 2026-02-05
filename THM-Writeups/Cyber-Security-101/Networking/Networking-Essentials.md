@@ -47,3 +47,8 @@ Protokol yang otomatis memberikan IP Address kepada perangkat di jaringan
 
 - **Root Servers:** Tingkat tertinggi dalam hierarki DNS yang mengarahkan query ke TLD (Top Level Domain) yang tepat.
 - **Record Types:**
+
+* **A Record:** Memetakan nama domain ke IPv4.
+* **AAAA Record:** Memetakan nama domain ke IPv6.
+* **CNAME:** Alias untuk satu domain ke domain lainnya.
+* **MX Record:** Menentukan server yang bertanggung jawab untuk urusan email.
