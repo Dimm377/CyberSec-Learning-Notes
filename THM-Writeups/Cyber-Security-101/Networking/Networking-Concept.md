@@ -6,4 +6,8 @@
 
 # Overview
 
-###
+### OSI Model
+
+OSI Model adalah kerangka kerja konseptual yang memebagi proses komunikasi jaringan menjadi 7 layer
+
+- **mnemonic:**
