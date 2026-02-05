@@ -43,4 +43,7 @@ Protokol transport yang menentukan bagaimana data dikirimkan
 
 ### Connecting to a Web Server
 
-Praktek menggunakan perintah dasar untuk berinteraksi dengan layanan yang terbuka
+Praktek menggunakan perintah dasar untuk berinteraksi dengan tools networking
+
+- **Netcat (nc):** _Swiss-army knife_ untuk jaringan. Digunakan untuk membaca atau menulis data di koneksi jaringan.
+- **Telnet:** Protokol lama untuk akses _remote_ teks, sekarang sering digunakan untuk mengecek apakah sebuah port TCP terbuka.
