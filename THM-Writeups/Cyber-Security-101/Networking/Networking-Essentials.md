@@ -8,7 +8,7 @@
 
 Setelah memahami konsep dasar, room ini membawa kita lebih dalam ke perangkat keras dan protokol inti yang membuat internet bekerja, memahami cara kerja Switch, Router, dan protokol seperti DNS adalah hal wajib agar bisa melakukan enumerasi jaringan dengan efektif.
 
-### Task 2: Network Hardware
+## Task 2: Network Hardware
 
 Memahami perbedaan antara perangkat yang menghubungkan jaringan
 
@@ -16,7 +16,7 @@ Memahami perbedaan antara perangkat yang menghubungkan jaringan
 - **Switches:** Perangkat yang lebih pintar karena menyimpan tabel MAC Address dan hanya mengirimkan data ke port tujuan yang benar
 - **Routers:** Menghubungkan berbagai jaringan yang berbeda dan bertanggung jawab untuk menentukan jalur terbaik bagi paket data (Routing)
 
-### Task 3: MAC Addresses
+## Task 3: MAC Addresses
 
 Identitas fisik permanen yang tertanam pada kartu jaringan (NIC)
 
@@ -24,7 +24,7 @@ Identitas fisik permanen yang tertanam pada kartu jaringan (NIC)
 - **OUI (Organizationally Unique Identifier):** 3 oktet pertama menunjukkan siapa produsen perangkat tersebut.
   > Red Team Tip: MAC Address bisa dimanipulasi (MAC Spoofing) untuk melewati filter keamanan di jaringan lokal.
 
-### Task 4: Address Resolution Protocol (ARP)
+## Task 4: Address Resolution Protocol (ARP)
 
 Protokol krusia yang menjembatani komunikasi antara Layer 2 dan Layer 3.
 
@@ -34,14 +34,14 @@ Protokol krusia yang menjembatani komunikasi antara Layer 2 dan Layer 3.
 
 > Security Insight: ARP tidak memiliki fitur verifikasi, sehingga rentan terhadap serangan ARP Spoofing/Poisoning yang memungkinkan teknik Man-in-the-Middle (MITM).
 
-### Task 5: Dynamic Host Configuration Protocol (DHCP)
+## Task 5: Dynamic Host Configuration Protocol (DHCP)
 
 Protokol yang otomatis memberikan IP Address kepada perangkat di jaringan
 
 - **DORA Process:** DHCP bekerja melalui empat tahap: **D**iscover, **O**ffer, **R**equest, dan **A**cknowledge
 - **Lease Time:** Jangka waktu tertentu di mana sebuah perangkat "meminjam" IP Address tersebut sebelum harus memperbaruinya
 
-### Task 6: Domain Name System (DNS)
+## Task 6: Domain Name System (DNS)
 
 "Buku telepon" internet yang menerjemahkan nama domain (google.com) menjadi IP Address
 
@@ -53,7 +53,7 @@ Protokol yang otomatis memberikan IP Address kepada perangkat di jaringan
 * **CNAME:** Alias untuk satu domain ke domain lainnya.
 * **MX Record:** Menentukan server yang bertanggung jawab untuk urusan email.
 
-### Task 7: Network Troubleshooting
+## Task 7: Network Troubleshooting
 
 Tools dasar untuk mendiagnosis masalah koneksi yang sangat berguna saat melakukan Reconnaissance
 

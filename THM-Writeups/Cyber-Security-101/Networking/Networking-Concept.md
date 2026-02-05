@@ -6,7 +6,7 @@
 
 # Overview
 
-### OSI Model
+## OSI Model
 
 OSI Model adalah kerangka kerja konseptual yang memebagi proses komunikasi jaringan menjadi 7 layer
 
@@ -16,7 +16,7 @@ OSI Model adalah kerangka kerja konseptual yang memebagi proses komunikasi jarin
 - **Layer 2 (Data Link):** Mengatur perpindahan data antar perangkat di segmen jaringan yang sama (MAC Address).
 - **Layer 6 (Presentation):** Menangani encoding, kompresi, dan enkripsi data aplikasi.
 
-### TCP/IP Model
+## TCP/IP Model
 
 Berbeda dengan OSI Model yang konseptual, TCP/IP adalah model yang benar-benar diimplementasikan di internet saat ini
 
@@ -24,7 +24,7 @@ Berbeda dengan OSI Model yang konseptual, TCP/IP adalah model yang benar-benar d
 - **Internet Layer:** Setara dengan Layer 3 OSI, fokus pada pengalamatan logis (IP).
 - **Encapsulation:** Proses di mana setiap layer menambahkan header ke data dari layer di atasnya sebelum dikirim ke layer bawah.
 
-### IP Addresses & Subnets
+## IP Addresses & Subnets
 
 Identitas unik yang ada di setiap perangkat di jaringan
 
@@ -32,7 +32,7 @@ Identitas unik yang ada di setiap perangkat di jaringan
 - **Private IP:** Digunakan dalam jaringan lokal (LAN) dan tidak dapat diakses langsung dari internet (misal: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 - **IPv4:** Alamat 32-bit yang dibagi menjadi 4 oktet.
 
-### TCP, UDP, and Ports
+## TCP, UDP, and Ports
 
 Protokol transport yang menentukan bagaimana data dikirimkan
 
@@ -41,7 +41,7 @@ Protokol transport yang menentukan bagaimana data dikirimkan
 - **Data Units:** Data pada TCP disebut **Segment**, sedangkan pada UDP disebut **Datagram**.
 - **Ports:** Ada sekitar **65.535** port yang tersedia untuk mengarahkan trafik ke layanan spesifik.
 
-### Connecting to a Web Server
+## Connecting to a Web Server
 
 Praktek menggunakan perintah dasar untuk berinteraksi dengan tools networking
 
