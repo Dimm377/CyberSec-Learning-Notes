@@ -69,6 +69,7 @@
 | 1. | [Networking Concept](THM-Writeups/Cyber-Security-101/Networking/Networking-Concept.md) | Core networking concepts |
 | 2. | [Networking Essentials](THM-Writeups/Cyber-Security-101/Networking/Networking-Essentials.md) | Essential protocols & tools |
 | 3. | [Networks Core Protocols](THM-Writeups/Cyber-Security-101/Networking/Networks-core-protocols.md) | Protocol deep dive |
+| 4. | [Networking Secure Protocols](THM-Writeups/Cyber-Security-101/Networking/Networking-Secure-Protocols.md) | Secure networking protocols |
 
 </details>
 
