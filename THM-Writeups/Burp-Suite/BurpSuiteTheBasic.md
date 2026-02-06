@@ -67,4 +67,4 @@ Alat pendukung yang bikin Burp Suite makin lengkap:
 - **Comparer**: Membandingkan dua _response_ HTTP yang berbeda untuk mencari perbedaan tipis (seperti saat _blind SQL injection_).
 - **Extender (BApp Store)**: Tempat memasang ekstensi tambahan seperti **Logger++** atau **Turbo Intruder** untuk meningkatkan kemampuan Burp suite.
 
-> **Note:** Alat hebat nggak bakal berguna di tangan orang yang nggak paham konsep dasarnya. Pahami protokol HTTP, maka lu bakal paham cara merusaknya.
+> **Note:** Alat hebat nggak bakal berguna di tangan orang yang nggak paham konsep dasarnya. Pahami protokol HTTP, maka akan paham cara merusaknya.
