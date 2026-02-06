@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="https://tryhackme-badges.s3.amazonaws.com/TheRedPowerRanger.png" alt="TryHackMe">
 </p>
+=======
+# Road to OSCP & CWES Journey
+>>>>>>> 92ddcf017b38e2c2f1dc9e38ffef3415575dbdaf
 
 <h1 align="center">🛡️ Road to OSCP & CWES Journey</h1>
 
