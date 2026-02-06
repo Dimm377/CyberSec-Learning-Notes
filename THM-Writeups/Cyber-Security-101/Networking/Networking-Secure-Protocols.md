@@ -54,3 +54,5 @@ Mengamankan komunikasi email dari pengintaian menggunakan enkripsi SSL/TLS.
   - **Port:** 995.
   - **Fungsi:** Digunakan untuk **mengunduh** email dari server ke perangkat lokal.
   - **Detail:** Secara tradisional menghapus email dari server setelah berhasil diunduh ke client lokal.
+
+> **Tip:** "Encryption is not a wall, it's a puzzle" Hanya karena datanya terenkripsi, bukan berarti sistemnya tidak bisa ditembus
