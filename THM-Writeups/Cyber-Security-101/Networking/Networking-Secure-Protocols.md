@@ -23,3 +23,10 @@ Versi aman dari HTTP yang digunakan hampir oleh seluruh website modern saat ini
 - **SSL/TLS:** HTTPS menggunakan sertifikat SSL/TLS untuk mengenkripsi traffic antara browser dan server
 - **Port:** Secara default berjalan pada **Port 443**
 - **Integritas:** Menjamin bahwa data yang dikirim tidak dimanipulasi di tengah jalan (Integrity)
+
+## Task 4: SFTP & FTPS (Secure File Transfer)
+
+Dua cara berbeda untuk mengamankan protokol FTP yang sangat tidak aman
+
+- **SFTP (SSH File Transfer Protocol):** Berjalan di atas protokol SSH (Port 22). Sangat populer karena hanya butuh satu port terbuka
+- **FTPS (FTP over SSL):** Menggunakan SSL/TLS untuk mengenkripsi koneksi FTP standar (Port 990 atau 21 dengan STARTTLS)
