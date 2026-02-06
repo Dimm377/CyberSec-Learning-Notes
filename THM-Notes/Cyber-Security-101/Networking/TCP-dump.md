@@ -46,7 +46,7 @@ Menggabungkan beberapa filter menggunakan operator logika (Boolean).
   - Contoh: `port 80 and host 10.10.1.1`.
 - **OR (`or` atau `||`):** Menampilkan paket yang memenuhi salah satu kriteria.
 - **EXCEPT (`not` atau `!`):** Mengecualikan trafik tertentu.
-  - Contoh: `not port 22` (Sembunyikan trafik SSH agar tidak mengganggu analisis).
+  - Contoh: `not port 22` (Sembunyikan traffic SSH agar tidak mengganggu analisis).
 
 ---
 
@@ -56,7 +56,7 @@ Dalam bagian praktik, lu bakal diminta buat nyari informasi spesifik di dalam fi
 
 - **Analisis HTTP:** Gunakan `-A` untuk melihat request GET/POST dan mencari flag yang tersembunyi.
 - **Cek Bendera TCP:** Kita bisa mencari paket dengan flag tertentu, seperti paket `SYN` atau `RST` untuk mendeteksi adanya scanning port.
-  **Pro:** Gunakan `-X` jika lu mau liat data dalam bentuk Hex dan ASCII secara berdampingan untuk analisis malware yang lebih dalam.
+  > **Pro tips:** Gunakan `-X` jika lu mau liat data dalam bentuk Hex dan ASCII secara berdampingan untuk analisis malware yang lebih dalam.
 
 ---
 
