@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <p align="center">
   <img src="https://tryhackme-badges.s3.amazonaws.com/TheRedPowerRanger.png" alt="TryHackMe">
 </p>
-=======
-# Road to OSCP & CWES Journey
->>>>>>> 92ddcf017b38e2c2f1dc9e38ffef3415575dbdaf
 
 <h1 align="center">🛡️ Road to OSCP & CWES Journey</h1>
 
@@ -33,7 +29,7 @@
 ## 🎯 TryHackMe Writeups
 
 <details open>
-<summary><b>▶ Pre-Security</b></summary>
+<summary><b>Pre-Security</b></summary>
 
 <br>
 
@@ -89,7 +85,7 @@
 ---
 
 <details>
-<summary><b>▶ Cyber Security 101</b></summary>
+<summary><b>Cyber Security 101</b></summary>
 
 <br>
 
@@ -109,7 +105,7 @@
 ---
 
 <details>
-<summary><b>▶ Burp Suite</b></summary>
+<summary><b>Burp Suite</b></summary>
 
 <br>
 
@@ -122,7 +118,7 @@
 ---
 
 <details>
-<summary><b>▶ SQL Injection</b></summary>
+<summary><b>SQL Injection</b></summary>
 
 <br>
 
