@@ -47,3 +47,5 @@ Dalam praktik ini, kita belajar memanipulasi header `User-Agent` atau parameter 
 
 - **Tip:** Perhatikan perbedaan antara respon `200 OK` dan `404 Not Found` saat lu mengubah path URL.
 - **Flag Capture:** Biasanya melibatkan pengubahan header tertentu yang diminta oleh soal untuk memicu flag muncul di respon
+
+> **Tip:** "Don't just send, observe." Setiap byte dalam respon server bisa menjadi kunci untuk eksploitasi selanjutnya.
