@@ -32,3 +32,18 @@ Repeater menyediakan berbagai cara untuk melihat data request dan response.
 - **Hex:** Berguna untuk melihat karakter non-printable atau byte mentah.
 - **Render:** Menampilkan respon HTML seolah-olah di dalam browser (visual).
 - **Headers:** Daftar header HTTP yang disusun secara sistematis agar mudah dibaca.
+
+## Task 5: Inspector
+
+Panel **Inspector** di sisi kanan memudahkan kita untuk memodifikasi elemen request tanpa harus mengedit teks mentahnya.
+
+- **Query Parameters:** Memungkinkan penambahan, penghapusan, atau pengeditan parameter URL (GET) secara instan.
+- **Body Parameters:** Memodifikasi data yang dikirim melalui metode POST.
+- **Attributes:** Mengedit detail protokol seperti versi HTTP.
+
+## Task 6: Practical Example
+
+Dalam praktik ini, kita belajar memanipulasi header `User-Agent` atau parameter tertentu untuk melihat bagaimana server memberikan respon yang berbeda.
+
+- **Tip:** Perhatikan perbedaan antara respon `200 OK` dan `404 Not Found` saat lu mengubah path URL.
+- **Flag Capture:** Biasanya melibatkan pengubahan header tertentu yang diminta oleh soal untuk memicu flag muncul di respon
