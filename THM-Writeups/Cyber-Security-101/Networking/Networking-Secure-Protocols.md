@@ -11,3 +11,7 @@ Setelah mempelajari protokol inti (core), room ini membahas versi secure nya dar
 ## Task 2: SSH (Secure Shell)
 
 SSH adalah pengganti Telnet yang jauh lebih aman untuk akses via remote terminal
+
+- **Enkripsi:** Berbeda dengan Telnet yang mengirimkan password dalam bentuk _plain-text_, SSH mengenkripsi seluruh sesi communication
+- **Port:** Secara default berjalan pada **Port 22**.
+- **Autentikasi:** Mendukung penggunaan _Public Key Authentication_ yang jauh lebih aman daripada sekadar password biasa
