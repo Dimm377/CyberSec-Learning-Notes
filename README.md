@@ -1,32 +1,11 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="https://tryhackme-badges.s3.amazonaws.com/TheRedPowerRanger.png" alt="TryHackMe">
 </p>
+=======
+>>>>>>> f5315987c548e6979ee13c1725a5e1b23eb8effd
 
-<h1 align="center">🛡️ Road to OSCP & CWES Journey</h1>
-
-<p align="center">
-  <b>Target:</b> 6-8 Hours Daily Grind 🔥
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Writeups-20-blue?style=for-the-badge" alt="Total Writeups">
-  <img src="https://img.shields.io/badge/TryHackMe-4%20Paths-orange?style=for-the-badge" alt="THM Paths">
-  <img src="https://img.shields.io/badge/Status-In%20Progress-green?style=for-the-badge" alt="Status">
-</p>
-
----
-
-## 📚 Table of Contents
-
-- [TryHackMe Writeups](#-tryhackme-writeups)
-  - [Pre-Security](#-pre-security)
-  - [Cyber Security 101](#-cyber-security-101)
-  - [Burp Suite](#-burp-suite)
-  - [SQL Injection](#-sql-injection)
-
----
-
-## 🎯 TryHackMe Writeups
+# 🎯 TryHackMe Writeups
 
 <details open>
 <summary><b>Pre-Security</b></summary>
@@ -82,8 +61,6 @@
 
 </details>
 
----
-
 <details>
 <summary><b>Cyber Security 101</b></summary>
 
@@ -102,8 +79,6 @@
 
 </details>
 
----
-
 <details>
 <summary><b>Burp Suite</b></summary>
 
@@ -114,8 +89,6 @@
 | 1. | [BurpSuite The Basic](THM-Writeups/Burp-Suite/BurpSuiteTheBasic.md) | Burp Suite fundamentals |
 
 </details>
-
----
 
 <details>
 <summary><b>SQL Injection</b></summary>
@@ -128,20 +101,3 @@
 
 </details>
 
----
-
-## 📊 Progress Stats
-
-| Category | Writeups | Status |
-|----------|:--------:|:------:|
-| Pre-Security | 15 | ✅ Complete |
-| Cyber Security 101 | 3 | 🔄 In Progress |
-| Burp Suite | 1 | 🔄 In Progress |
-| SQL Injection | 1 | 🔄 In Progress |
-| **Total** | **20** | - |
-
----
-
-<p align="center">
-  <i>🚀 Grinding towards OSCP & CWES certification!</i>
-</p>
