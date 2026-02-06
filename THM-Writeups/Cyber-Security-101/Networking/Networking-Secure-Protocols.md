@@ -37,3 +37,20 @@ Protokol yang bekerja di level network (Layer 3) untuk mengamankan seluruh traff
 
 - **VPN (Virtual Private Network):** Menciptakan tunnel terenkripsi di atas jaringan publik (Internet)
 - **IPsec:** Kumpulan protokol yang digunakan untuk autentikasi dan enkripsi paket IP, Sering digunakan dalam koneksi Site-to-Site VPN
+
+## Task 6: Secure Email (SMTPS, IMAPS, POP3S)
+
+Mengamankan komunikasi email dari pengintaian menggunakan enkripsi SSL/TLS.
+
+- **SMTPS (Simple Mail Transfer Protocol Secure):**
+  - **Port:** 465.
+  - **Fungsi:** Digunakan untuk **pengiriman** email dari client ke server atau antar server secara aman.
+  - **Detail:** Menggunakan _Implicit TLS_ untuk mengenkripsi seluruh sesi komunikasi sejak awal koneksi dibuat.
+- **IMAPS (Internet Message Access Protocol Secure):**
+  - **Port:** 993.
+  - **Fungsi:** Digunakan untuk **pengambilan dan sinkronisasi** email dari server secara dua arah.
+  - **Detail:** Memungkinkan sinkronisasi email antar perangkat, sehingga pesan tetap tersimpan di server.
+- **POP3S (Post Office Protocol v3 Secure):**
+  - **Port:** 995.
+  - **Fungsi:** Digunakan untuk **mengunduh** email dari server ke perangkat lokal.
+  - **Detail:** Secara tradisional menghapus email dari server setelah berhasil diunduh ke client lokal.
