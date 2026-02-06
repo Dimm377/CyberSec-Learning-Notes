@@ -71,6 +71,8 @@
 | 3. | [Networks Core Protocols](THM-Notes/Cyber-Security-101/Networking/Networks-core-protocols.md) | Protocol deep dive |
 | 4. | [Networking Secure Protocols](THM-Notes/Cyber-Security-101/Networking/Networking-Secure-Protocols.md) | Secure networking protocols |
 | 5. | [Wireshark Basic](THM-Notes/Cyber-Security-101/Networking/Wireshark-basic.md) | Wireshark fundamentals |
+| 6. | [Nmap Basic](THM-Notes/Cyber-Security-101/Networking/Nmap-Basic.md) | Nmap fundamentals |
+| 7. | [TCPdump](THM-Notes/Cyber-Security-101/Networking/TCP-dump.md) | TCPdump basics |
 
 </details>
 
