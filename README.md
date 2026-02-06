@@ -83,6 +83,7 @@
 | No. | Writeup | Description |
 |:---:|---------|-------------|
 | 1. | [BurpSuite The Basic](THM-Writeups/Burp-Suite/BurpSuiteTheBasic.md) | Burp Suite fundamentals |
+| 2. | [BurpSuite Repeater](THM-Writeups/Burp-Suite/BurpSuiteRepeater.md) | Burp Suite Repeater tool |
 
 </details>
 
