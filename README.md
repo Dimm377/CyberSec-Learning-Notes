@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<p align="center">
-  <img src="https://tryhackme-badges.s3.amazonaws.com/TheRedPowerRanger.png" alt="TryHackMe">
-</p>
-=======
->>>>>>> f5315987c548e6979ee13c1725a5e1b23eb8effd
+
 
 # 🎯 TryHackMe Writeups
 
