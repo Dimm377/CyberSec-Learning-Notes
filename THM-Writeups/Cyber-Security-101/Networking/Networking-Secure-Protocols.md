@@ -30,3 +30,10 @@ Dua cara berbeda untuk mengamankan protokol FTP yang sangat tidak aman
 
 - **SFTP (SSH File Transfer Protocol):** Berjalan di atas protokol SSH (Port 22). Sangat populer karena hanya butuh satu port terbuka
 - **FTPS (FTP over SSL):** Menggunakan SSL/TLS untuk mengenkripsi koneksi FTP standar (Port 990 atau 21 dengan STARTTLS)
+
+## Task 5: IPsec & VPNs
+
+Protokol yang bekerja di level network (Layer 3) untuk mengamankan seluruh traffic antar dua titik
+
+- **VPN (Virtual Private Network):** Menciptakan tunnel terenkripsi di atas jaringan publik (Internet)
+- **IPsec:** Kumpulan protokol yang digunakan untuk autentikasi dan enkripsi paket IP, Sering digunakan dalam koneksi Site-to-Site VPN
