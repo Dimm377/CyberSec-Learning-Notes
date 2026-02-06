@@ -14,3 +14,21 @@ Repeater memungkinkan kita melakukan manipulasi request secara manual.
 
 - **Manual Testing:** Berbeda dengan Intruder yang otomatis, Repeater digunakan untuk pengujian manual yang lebih teliti.
 - **Efficiency:** Kita bisa menyimpan riwayat request dan memodifikasi parameter tertentu tanpa harus mengulang proses intercept di browser.
+
+## Task 3: Basic Usage
+
+Proses dasar penggunaan Repeater dalam workflow penetration testing:
+
+1. **Capture:** Tangkap request menggunakan **Proxy** (Intercept On).
+2. **Send to Repeater:** Tekan `Ctrl + R` (atau klik kanan -> Send to Repeater).
+3. **Modify & Send:** Pindah ke tab Repeater, ubah isi request, lalu klik **Send**.
+4. **Analysis:** Amati respon server di panel sebelah kanan untuk mencari kejanggalan.
+
+## Task 4: Views & Layouts
+
+Repeater menyediakan berbagai cara untuk melihat data request dan response.
+
+- **Raw:** Tampilan teks murni (pure HTTP request/response).
+- **Hex:** Berguna untuk melihat karakter non-printable atau byte mentah.
+- **Render:** Menampilkan respon HTML seolah-olah di dalam browser (visual).
+- **Headers:** Daftar header HTTP yang disusun secara sistematis agar mudah dibaca.
