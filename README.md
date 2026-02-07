@@ -76,6 +76,15 @@
 
 </details>
 
+<details>
+<summary>🔐 Cryptography</summary>
+
+| No. | Note | Description |
+|:---:|------|-------------|
+| 1. | [Cryptography Basic](THM-Notes/Cyber-Security-101/Cryptography/Cryptogarphy-Basic.md) | Cryptography fundamentals |
+
+</details>
+
 </details>
 
 <details>
