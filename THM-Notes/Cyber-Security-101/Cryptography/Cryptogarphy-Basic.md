@@ -33,7 +33,7 @@ Selain itu, kriptografi juga dipake buat memenuhi standar regulasi internasional
 
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** ???
->**Penjelasan:** Untuk menemukan jawaban dan memahami standar ini lebih lanjut, coba BACA dokumen panduan resmi ini: [Standard required for Large Organizations](https://www.pcisecuritystandards.org/documents/PCI_DSS_for_Large_Organizations_v1.pdf)
+>**Clue:** Untuk menemukan jawaban dan memahami standar ini lebih lanjut, coba BACA dokumen panduan resmi ini: [Standard required for Large Organizations](https://www.pcisecuritystandards.org/documents/PCI_DSS_for_Large_Organizations_v1.pdf)
 
 ## Task 3: Plaintext to Ciphertext
 
@@ -103,4 +103,4 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 
 - **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
-  > (Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Pdv Zrzr Shfolqwd vdclw` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
+  > (Clue: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Pdv Zrzr Shfolqwd vdclw` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
