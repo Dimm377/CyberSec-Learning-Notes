@@ -71,6 +71,14 @@ Ini adalah salah satu teknik paling tua dan paling simpel
 - **Contoh:** Dengan pergeseran 3 (Shift 3), huruf 'A' akan menjadi 'D', 'B' menjadi 'E', dan seterusnya.
 - **ROT13:** Varian populer dari Caesar Cipher yang menggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, menjalankan ROT13 dua kali pada pesan yang sama akan mengembalikannya ke teks asli
 
+<p align="center">
+<img src="../../../Assets/Images/Encryption.png" width="400">
+</p>
+
+<p align="center">
+<img src="../../../Assets/Images/Decryption.png" width="400">
+</p>
+
 ### 2. Vigenère Cipher
 
 Metode ini sedikit lebih canggih karena menggunakan kata kunci (keyword) untuk menentukan jumlah pergeseran.
