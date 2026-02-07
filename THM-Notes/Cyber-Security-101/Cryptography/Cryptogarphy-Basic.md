@@ -33,7 +33,7 @@ Selain itu, kriptografi juga dipake buat memenuhi standar regulasi internasional
 
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** ???
->**Clue:** Untuk menemukan jawaban dan memahami standar ini lebih lanjut, coba BACA dokumen panduan resmi ini: [Standard required for Large Organizations](https://www.pcisecuritystandards.org/documents/PCI_DSS_for_Large_Organizations_v1.pdf)
+  > **Clue:** Untuk menemukan jawaban dan memahami standar ini lebih lanjut, coba BACA dokumen panduan resmi ini: [Standard required for Large Organizations](https://www.pcisecuritystandards.org/documents/PCI_DSS_for_Large_Organizations_v1.pdf)
 
 ## Task 3: Plaintext to Ciphertext
 
@@ -103,7 +103,7 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 
 - **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
-<<<<<<< HEAD
+  <<<<<<< HEAD
   > (Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Pdv Zrzr Shfolqwd vdclw` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
 
 ## Task 5: Types of Encryption
@@ -120,6 +120,10 @@ Menggunakan **kunci yang sama** untuk proses enkripsi dan dekripsi (disebut juga
   - **3DES (Triple DES):** Menjalankan DES tiga kali. Kunci 168-bit (efektivitas 112-bit). Sudah mulai ditinggalkan sejak 2019.
   - **AES (Advanced Encryption Standard):** Standar global saat ini (diadopsi tahun **2001**). Menggunakan kunci 128, 192, atau 256 bit. Sangat aman dan efisien.
 
+<p align="center">
+<img src="../../../Assets/Images/Symmetric.png" width="400">
+</p>
+
 ### 2. Asymmetric Encryption
 
 Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _Private Key_ (untuk mendekripsi/membuka).
@@ -130,6 +134,10 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
   - **Diffie-Hellman:** Digunakan untuk pertukaran kunci secara aman.
   - **ECC (Elliptic Curve Cryptography):** Lebih efisien; kunci 256-bit ECC setara kekuatannya dengan RSA 3072-bit.
 
+<p align="center">
+<img src="../../../Assets/Images/Asymmetric.png" width="400">
+</p>
+
 ---
 
 **Answer the questions below:**
@@ -139,7 +147,5 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
   _(Penjelasan: Karena panjang kuncinya yang hanya 56-bit, DES sudah tidak lagi aman terhadap serangan brute force dengan komputasi modern.)_
 
 - **Question:** When was AES adopted as an encryption standard?
-- **Answer:** ???
-=======
+- # **Answer:** ???
   > (Clue: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Xld Hzhz Apntyel dlhte` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
->>>>>>> 3f46f3786a61391d365a3bb35f357e16fbfc2645
