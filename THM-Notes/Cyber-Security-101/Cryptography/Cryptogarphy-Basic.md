@@ -93,7 +93,7 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 **Answer the questions below:**
 
 - **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
-- **Answer:** ROT13
+- **Answer:** ???
 
 - **Question:** Which cipher uses a keyword to decide the alphabet shift?
 - **Answer:** ???
@@ -103,4 +103,4 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 
 - **Question:** Knowing that PDV ZRZR SHFOLQWD VDCLW was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
-  _(Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual, Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukin ciphertext `XRPCTCRGNEI` dan cari pergeseran (shift) yang menghasilkan kata bermakna (dalam kasus ini, **Shift 15** ke kiri atau **Shift 11** ke kanan).)_
+  >(Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual, Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukin ciphertext `XRPCTCRGNEI` dan cari pergeseran (shift) yang menghasilkan kata bermakna (dalam kasus ini, **Shift 15** ke kiri atau **Shift 11** ke kanan).)_
