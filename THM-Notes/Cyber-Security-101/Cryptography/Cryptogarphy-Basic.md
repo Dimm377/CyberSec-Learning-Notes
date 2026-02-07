@@ -104,3 +104,38 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 - **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
   > (Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Pdv Zrzr Shfolqwd vdclw` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
+
+## Task 5: Types of Encryption
+
+Dalam cryptografi modern, terdapat dua kategori utama enkripsi: **Symmetric** (Simetris) dan **Asymmetric** (Asimetris).
+
+### 1. Symmetric Encryption
+
+Menggunakan **kunci yang sama** untuk proses enkripsi dan dekripsi (disebut juga _private key cryptography_).
+
+- **Kelemahan:** Tantangan dalam mendistribusikan kunci secara aman kepada penerima.
+- **Algoritma Utama:**
+  - **DES (Data Encryption Standard):** Diadopsi tahun 1977, menggunakan kunci 56-bit. Sudah berhasil di-crack tahun 1999 dalam waktu kurang dari 24 jam.
+  - **3DES (Triple DES):** Menjalankan DES tiga kali. Kunci 168-bit (efektivitas 112-bit). Sudah mulai ditinggalkan sejak 2019.
+  - **AES (Advanced Encryption Standard):** Standar global saat ini (diadopsi tahun **2001**). Menggunakan kunci 128, 192, atau 256 bit. Sangat aman dan efisien.
+
+### 2. Asymmetric Encryption
+
+Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _Private Key_ (untuk mendekripsi/membuka).
+
+- **Konsep:** Hanya pemilik _Private Key_ yang bisa membuka data yang dikunci dengan _Public Key_-nya.
+- **Algoritma Utama:**
+  - **RSA:** Menggunakan problem matematika faktorisasi bilangan prima besar. Rekomendasi kunci minimal 2048-bit.
+  - **Diffie-Hellman:** Digunakan untuk pertukaran kunci secara aman.
+  - **ECC (Elliptic Curve Cryptography):** Lebih efisien; kunci 256-bit ECC setara kekuatannya dengan RSA 3072-bit.
+
+---
+
+**Answer the questions below:**
+
+- **Question:** Should you trust DES? (Yea/Nay)
+- **Answer:** Nay
+  _(Penjelasan: Karena panjang kuncinya yang hanya 56-bit, DES sudah tidak lagi aman terhadap serangan brute force dengan komputasi modern.)_
+
+- **Question:** When was AES adopted as an encryption standard?
+- **Answer:** ???
