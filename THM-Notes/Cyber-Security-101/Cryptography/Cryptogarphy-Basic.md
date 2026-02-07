@@ -52,7 +52,7 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 
 **Answer the questions below:**
 
-- **Question:** What is the process of turning ciphertext back into plaintext called?
+- **Question:** What do you call the encrypted plaintext?
 - **Answer:** ???
 
 - **Question:** What is the process of turning plaintext into ciphertext called?
