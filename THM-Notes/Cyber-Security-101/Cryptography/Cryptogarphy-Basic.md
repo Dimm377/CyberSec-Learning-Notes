@@ -72,11 +72,8 @@ Ini adalah salah satu teknik paling tua dan paling simpel
 - **ROT13:** Varian populer dari Caesar Cipher yang menggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, menjalankan ROT13 dua kali pada pesan yang sama akan mengembalikannya ke teks asli
 
 <p align="center">
-<img src="../../../Assets/Images/Encryption.png" width="400">
-</p>
-
-<p align="center">
-<img src="../../../Assets/Images/Decryption.png" width="400">
+  <img src="../../../Assets/Images/Encryption.png" width="45%">
+  <img src="../../../Assets/Images/Decryption.png" width="45%">
 </p>
 
 ### 2. Vigenère Cipher
