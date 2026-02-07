@@ -34,3 +34,5 @@ Selain itu, kriptografi juga dipake buat memenuhi standar regulasi internasional
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** PCI DSS
   _(Penjelasan: PCI DSS atau Payment Card Industry Data Security Standard adalah standar keamanan wajib bagi siapa pun yang menyimpan atau memproses data kartu kredit)_
+
+## Task 3: Plaintext to Ciphertext
