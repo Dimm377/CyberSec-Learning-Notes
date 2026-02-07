@@ -93,7 +93,7 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 **Answer the questions below:**
 
 - **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
-- **Answer:** ROT13
+- **Answer:** ???
 
 - **Question:** Which cipher uses a keyword to decide the alphabet shift?
 - **Answer:** ???
