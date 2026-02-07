@@ -12,4 +12,6 @@ Room ini adalah yang pertama dari tiga room pengantar tentang cryptography, Di s
 
 - Istilah-istilah penting dalam cryptography
 - Pentingnya cryptography dalam dunia digital
-- Mengenal Caesar Cipher dan algoritma historical lainnya
+- Mengenal Caesar Cipher dan algoritma historic lainnya
+- Standar cipher simetris (AES, DES, 3DES)
+- Cipher asimetris umum
