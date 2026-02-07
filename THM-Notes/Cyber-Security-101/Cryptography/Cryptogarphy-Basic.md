@@ -3,3 +3,7 @@
 **Room Link:** [TryHackMe](https://tryhackme.com/room/cryptographybasics)
 **Category:** Cryptography / Security
 **Difficulty:** Easy
+
+## Task 1: Introduction
+
+Room ini adalah yang pertama dari tiga room pengantar tentang cryptography, Di sini kita bakal belajar dasar-dasar yang krusial sebelum masuk ke penjelasan yang lebih kompleks
