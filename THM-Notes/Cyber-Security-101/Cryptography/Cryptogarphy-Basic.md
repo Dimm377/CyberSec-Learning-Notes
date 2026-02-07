@@ -10,5 +10,6 @@ Room ini adalah yang pertama dari tiga room pengantar tentang cryptography, Di s
 
 **Materi yang akana dipelajari:**
 
-- Istilah-istilah penting dalam kriptografi
-- Pentingnya kriptografi dalam dunia digital
+- Istilah-istilah penting dalam cryptography
+- Pentingnya cryptography dalam dunia digital
+- Mengenal Caesar Cipher dan algoritma historical lainnya
