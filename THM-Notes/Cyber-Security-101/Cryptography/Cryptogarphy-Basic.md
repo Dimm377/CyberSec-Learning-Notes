@@ -149,3 +149,7 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
 - **Question:** When was AES adopted as an encryption standard?
 - # **Answer:** ???
   > (Clue: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Xld Hzhz Apntyel dlhte` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0852bdb07f7c33a00515b21d74f470654137d97
