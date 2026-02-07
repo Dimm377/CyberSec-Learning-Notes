@@ -84,3 +84,18 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 
 - **Cara Kerja:** Menggunakan sistem rotor yang terus berputar setiap kali tombol ditekan, sehingga satu huruf yang sama bisa berubah menjadi huruf yang berbeda berkali-kali.
 - **Sejarah:** Enigma dianggap mustahil dipecahkan sampai akhirnya tim yang dipimpin oleh Alan Turing berhasil memecahkannya, yang kemudian menjadi cikal bakal komputer modern
+
+**Answer the questions below:**
+
+- **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
+- **Answer:** ROT13
+
+- **Question:** Which cipher uses a keyword to decide the alphabet shift?
+- **Answer:** ???
+
+- **Question:** What was the name of the machine the Germans used in World War 2 to encrypt messages?
+- **Answer:** ???
+
+- **Question:** Knowing that XRPCTCRGNEI was encrypted using Caesar Cipher, what is the original plaintext?
+- **Answer:** ???
+  _(Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual, Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukin ciphertext `XRPCTCRGNEI` dan cari pergeseran (shift) yang menghasilkan kata bermakna (dalam kasus ini, **Shift 15** ke kiri atau **Shift 11** ke kanan).)_
