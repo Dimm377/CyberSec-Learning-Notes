@@ -143,11 +143,52 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
 
 - **Question:** Should you trust DES? (Yea/Nay)
 - **Answer:** Nay
-  _(Penjelasan: Karena panjang kuncinya yang hanya 56-bit, DES sudah tidak lagi aman terhadap serangan brute force dengan komputasi modern.)_
+
+  > (Penjelasan: Karena panjang kuncinya yang hanya 56-bit, DES sudah tidak lagi aman terhadap serangan brute force dengan komputasi modern.)\_
 
 - **Question:** When was AES adopted as an encryption standard?
-- # **Answer:** ???
-  > (Clue: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Xld Hzhz Apntyel dlhte` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
-  # <<<<<<< HEAD
+- **Answer:** ???
 
-> > > > > > > f0852bdb07f7c33a00515b21d74f470654137d97
+## Task 6: Basic Math
+
+Modern kriptografi dibangun di atas fondasi matematika. Task ini membahas dua operasi logika dan aritmatika yang paling sering muncul dalam algoritma keamanan.
+
+### 1. XOR Operation (Exclusive OR)
+
+XOR adalah operasi logika biner yang membandingkan dua bit.
+
+- **Aturan Main:** Menghasilkan **1** jika kedua bit berbeda, dan **0** jika kedua bit sama.
+- **Simbol:** $\oplus$ atau `^`.
+
+**Truth Table XOR:**
+| A | B | A $\oplus$ B |
+| :--- | :--- | :--- |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
+
+- **Kegunaan di Kriptografi:** XOR sering digunakan sebagai algoritma enkripsi simetris sederhana. Jika kita punya Plaintext ($P$) dan Secret Key ($K$), maka Ciphertext ($C$) adalah $P \oplus K = C$. Untuk mendapatkan kembali Plaintext, cukup lakukan $C \oplus K = P$.
+
+### 2. Modulo Operation (%)
+
+Modulo adalah operasi untuk mencari **sisa bagi** dari sebuah pembagian.
+
+- **Contoh:** $23 \pmod 6 = 5$ (karena 23 dibagi 6 adalah 3 dengan sisa 5).
+- **Sifat Penting:** Modulo tidak dapat dibalik (_not reversible_). Jika $x \pmod 5 = 4$, nilai $x$ bisa berupa 4, 9, 14, dan seterusnya hingga tak terhingga.
+
+---
+
+**Answer the questions below:**
+
+- **Question:** What's 1001 $\oplus$ 1010?
+- **Answer:** 0011
+  _(Cara Hitung: 1$\oplus$1=0, 0$\oplus$0=0, 0$\oplus$1=1, 1$\oplus$0=1)_
+
+- **Question:** What's 118613842 % 9091?
+- **Answer:** 3565
+  _(Cara Hitung: Lu bisa pake Python di terminal Kitty lu: `python3 -c "print(118613842 % 9091)"`)_
+
+- **Question:** What's 60 % 12?
+- **Answer:** 0
+  _(Cara Hitung: 60 habis dibagi 12, jadi sisanya adalah 0)_
