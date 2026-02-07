@@ -15,3 +15,14 @@ Room ini adalah yang pertama dari tiga room pengantar tentang cryptography, Di s
 - Mengenal Caesar Cipher dan algoritma historic lainnya
 - Standar cipher simetris (AES, DES, 3DES)
 - Cipher asimetris umum
+- Matematika dasar yang sering dipake di kriptografi (XOR & Modulo)
+
+## Task 2: Importance of Cryptography
+
+Cryptography didefinisikan sebagai praktek dan studi tentang teknik komunikasi yang aman dan perlindungan data di mana terdapat pihak ketiga (lawan), Intinya, lawan tidak boleh sampai melihat (disclose) atau mengubah (alter) isi pesan tersebut
+
+Kriptografi jadi vital di era digital karena menjamin tiga hal utama:
+
+1. **Confidentiality (Kerahasiaan):** Cuma orang yang berhak yang bisa baca datanya
+2. **Integrity (Integritas):** Memastikan data nggak berubah pas lagi dikirim
+3. **Authenticity (Keaslian):** Memastikan kalau pengirim data emang beneran orang yang dia klaim
