@@ -46,6 +46,10 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 - **Encryption (Enkripsi):** Proses mengubah **Plaintext** menjadi **Ciphertext** menggunakan algoritma dan kunci tertentu
 - **Key (Kunci):** Informasi yang digunakan oleh algoritma kriptografi untuk membuat proses enkripsi/dekripsi menjadi unik
 
+<p align="center">
+<img src="../../../Assets/Images/chiper.png" width="400">
+</p>
+
 **Answer the questions below:**
 
 - **Question:** What is the process of turning ciphertext back into plaintext called?
