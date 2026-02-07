@@ -26,3 +26,11 @@ Kriptografi jadi vital di era digital karena menjamin tiga hal utama:
 1. **Confidentiality (Kerahasiaan):** Cuma orang yang berhak yang bisa baca datanya
 2. **Integrity (Integritas):** Memastikan data nggak berubah pas lagi dikirim
 3. **Authenticity (Keaslian):** Memastikan kalau pengirim data emang beneran orang yang dia klaim
+
+Selain itu, kriptografi juga dipake buat memenuhi standar regulasi internasional
+
+**Answer the questions below:**
+
+- **Question:** What is the standard required for handling credit card information?
+- **Answer:** PCI DSS
+  _(Penjelasan: PCI DSS atau Payment Card Industry Data Security Standard adalah standar keamanan wajib bagi siapa pun yang menyimpan atau memproses data kartu kredit)_
