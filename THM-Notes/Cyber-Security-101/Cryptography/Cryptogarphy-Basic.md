@@ -101,6 +101,6 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 - **Question:** What was the name of the machine the Germans used in World War 2 to encrypt messages?
 - **Answer:** ???
 
-- **Question:** Knowing that XRPCTCRGNEI was encrypted using Caesar Cipher, what is the original plaintext?
+- **Question:** Knowing that PDV ZRZR SHFOLQWD VDCLW was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
   _(Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual, Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukin ciphertext `XRPCTCRGNEI` dan cari pergeseran (shift) yang menghasilkan kata bermakna (dalam kasus ini, **Shift 15** ke kiri atau **Shift 11** ke kanan).)_
