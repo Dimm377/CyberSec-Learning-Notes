@@ -44,3 +44,12 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 - **Plaintext:** Data asli atau pesan sebelum dienkripsi. Pesan ini masih bisa dibaca oleh siapa saja (readable) misalnya teks "hello", foto pribadi, informasi penting, dll
 - **Ciphertext:** Hasil dari proses enkripsi. Pesan ini kelihatan berantakan dan nggak punya arti bagi siapa pun yang nggak punya kuncinya (unreadable)
 - **Encryption (Enkripsi):** Proses mengubah **Plaintext** menjadi **Ciphertext** menggunakan algoritma dan kunci tertentu
+- **Key (Kunci):** Informasi yang digunakan oleh algoritma kriptografi untuk membuat proses enkripsi/dekripsi menjadi unik
+
+**Answer the questions below:**
+
+- **Question:** What is the process of turning ciphertext back into plaintext called?
+- **Answer:** **\_\_\_**
+
+- **Question:** What is the process of turning plaintext into ciphertext called?
+- **Answer:** **\_\_\_**
