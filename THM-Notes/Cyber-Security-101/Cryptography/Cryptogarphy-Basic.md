@@ -70,3 +70,17 @@ Ini adalah salah satu teknik paling tua dan paling simpel
 - **Cara Kerja:** Melakukan pergeseran (shift) setiap huruf dalam alfabet dengan jumlah tertentu.
 - **Contoh:** Dengan pergeseran 3 (Shift 3), huruf 'A' akan menjadi 'D', 'B' menjadi 'E', dan seterusnya.
 - **ROT13:** Varian populer dari Caesar Cipher yang menggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, menjalankan ROT13 dua kali pada pesan yang sama akan mengembalikannya ke teks asli
+
+### 2. Vigenère Cipher
+
+Metode ini sedikit lebih canggih karena menggunakan kata kunci (keyword) untuk menentukan jumlah pergeseran.
+
+- **Cara Kerja:** Disebut sebagai polyalphabetic substitution karena setiap huruf dalam plaintext bisa digeser dengan jumlah yang berbeda-beda tergantung pada huruf yang sesuai pada keyword-nya.
+- **Keunggulan:** Lebih sulit dipecahkan daripada Caesar Cipher karena frekuensi kemunculan hurufnya tidak berpola tetap.
+
+### 3. Enigma Machine
+
+Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
+
+- **Cara Kerja:** Menggunakan sistem rotor yang terus berputar setiap kali tombol ditekan, sehingga satu huruf yang sama bisa berubah menjadi huruf yang berbeda berkali-kali.
+- **Sejarah:** Enigma dianggap mustahil dipecahkan sampai akhirnya tim yang dipimpin oleh Alan Turing berhasil memecahkannya, yang kemudian menjadi cikal bakal komputer modern
