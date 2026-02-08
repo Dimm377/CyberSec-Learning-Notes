@@ -4,66 +4,62 @@
 **Category:** Cryptography / Security
 **Difficulty:** Easy
 
-## Task 1: Introduction
+# TryHackMe Room Write-up: Public Key Cryptography Basics
 
-Di room sebelumnya (Cryptography Basics), kita udah belajar tentang enkripsi simetris (Symmetric Encryption), di mana satu kunci yang sama dipake buat ngunci (encrypt) dan buka (decrypt) data.
+## 1. Overview
 
-Tapi, enkripsi simetris punya masalah besar: **Gimana cara kita ngasih kunci rahasia itu ke temen kita tanpa ketauan orang lain?** Kalau kita kirim kuncinya lewat internet biasa, bisa aja ada _hacker_ yang ngintip dan nyolong kuncinya. Begitu kuncinya bocor, semua komunikasi kita jadi nggak aman lagi.
+Room **Public Key Cryptography Basics** di platform TryHackMe merupakan modul fundamental yang dirancang untuk memberikan pemahaman mendalam mengenai sistem kriptografi asimetris. Fokus utama dari room ini adalah melatih praktisi keamanan dalam memahami bagaimana pasangan kunci publik dan privat digunakan untuk menjamin aspek **Authentication**, **Authenticity**, dan **Integrity** dalam komunikasi data modern.
 
-Nah, di room ini kita bakal belajar solusi cerdas buat masalah itu, yaitu **Public Key Cryptography** (atau Asymmetric Encryption). Kita bakal bahas algoritma sakti kayak **Diffie-Hellman Key Exchange** dan **RSA**, yang jadi pondasi keamanan internet modern (termasuk HTTPS yang lu pake sekarang).
+## 2. Key Concepts Learned
 
-_(No Answer Needed)_
+- **Asymmetric vs Symmetric Encryption**: Perbedaan mendasar terletak pada penggunaan kunci. Kriptografi asimetris menggunakan sepasang kunci (publik dan privat), sedangkan simetris hanya menggunakan satu kunci.
+- **Key Exchange Performance**: Enkripsi asimetris secara komputasi lebih lambat dibandingkan simetris. Oleh karena itu, kegunaan utamanya adalah untuk melakukan pertukaran kunci simetris yang akan digunakan untuk enkripsi data massal selanjutnya.
+- **Integer Factorization**: Dasar keamanan algoritma RSA yang mengandalkan tingkat kesulitan matematis dalam memfaktorkan perkalian dua bilangan prima besar ($p$ dan $q$).
+- **Modular Exponentiation**: Operasi matematika utama dalam Diffie-Hellman yang memungkinkan dua pihak menyepakati rahasia bersama tanpa pernah mengirimkan rahasia tersebut melalui jaringan publik.
 
----
+## 3. Step-by-Step Walkthrough
 
-## Task 2: Common Use of Asymmetric Encryption
+### Task 1 & 2: Introduction and Common Use
 
-Task ini menjelaskan kegunaan utama dari enkripsi asimetris dalam komunikasi modern.
+Pada bagian awal, dilakukan pemahaman mengenai analogi gembok (lock).
 
-### Konsep Utama:
+- **Methodology**: Memahami bahwa kunci publik adalah gembok terbuka yang dapat digunakan siapa saja untuk mengunci pesan, namun hanya pemegang kunci privat yang memiliki kunci fisik untuk membukanya.
+- **Reasoning**: Asimetris digunakan sebagai "handshake" awal untuk memverifikasi identitas sebelum beralih ke enkripsi simetris yang lebih cepat.
 
-1. **Kecepatan:** Enkripsi asimetris jauh lebih **lambat** dibandingkan enkripsi simetris.
-2. **Kegunaan Utama:** Karena lambat, kita nggak pake asimetris buat kirim data berukuran besar. Kita pake asimetris buat **bernegosiasi dan menyepakati kunci simetris** (Key Exchange) yang bakal dipake buat sesi komunikasi selanjutnya.
-3. **Analogi Pertemuan Bisnis:** Room ini pake analogi meeting buat jelasin 4 pilar keamanan:
-   - **Authentication:** Memastikan identitas lawan bicara.
-   - **Authenticity:** Memastikan pesan bener-bener dari pengirim yang sah.
-   - **Integrity:** Memastikan pesan nggak diubah di tengah jalan.
-   - **Confidentiality:** Memastikan cuma pihak berwenang yang bisa denger/baca.
+### Task 3: RSA
 
-### Analogi Gembok:
+Tantangan pada bagian ini adalah melakukan perhitungan manual untuk menentukan komponen kunci RSA.
 
-Kalo lu mau temen lu kirim pesan rahasia, lu kasih dia sebuah **gembok** yang terbuka. Cuma lu yang pegang kuncinya. Temen lu masukin pesan ke kotak, lalu dikunci pake gembok itu
+- **Langkah 1**: Menentukan Modulus ($n$) dengan rumus $n = p \times q$.
+- **Langkah 2**: Menentukan Euler's Totient ($\phi(n)$) dengan rumus $\phi(n) = (p - 1) \times (q - 1)$.
+- **Insight**: Ketelitian dalam perhitungan prima sangat krusial karena kesalahan satu angka akan membatalkan seluruh proses enkripsi dan dekripsi.
 
-## Task 3: RSA
+### Task 4: Diffie-Hellman Key Exchange
 
-RSA (Rivest-Shamir-Adleman) adalah algoritma asimetris yang keamanannya bergantung pada kesulitan memfaktorkan perkalian dua bilangan prima besar.
+Fokus pada tugas ini adalah memahami alur pertukaran nilai publik untuk menghasilkan kunci rahasia bersama.
 
-### Komponen Utama:
+- **Proses**: Masing-masing pihak menghitung nilai publik mereka sendiri ($A$ dan $B$) menggunakan generator ($g$), modulus ($p$), dan kunci rahasia masing-masing ($a$ atau $b$).
+- **Hasil Akhir**: Melalui rumus $Key = B^a \pmod p$ atau $Key = A^b \pmod p$, kedua pihak akan mendapatkan nilai kunci yang identik.
 
-- **$p$ & $q$**: Dua bilangan prima rahasia.
-- **$n$ (Modulus)**: Dihitung dengan $n = p \times q$.
-- **$\phi(n)$ (Euler's Totient)**: Dihitung dengan $\phi(n) = (p - 1) \times (q - 1)$.
-- **$e$ (Public Exponent)**: Bagian dari kunci publik untuk enkripsi.
-- **$d$ (Private Exponent)**: Bagian dari kunci privat untuk dekripsi.
+### Task 5: SSH Implementation
 
-## Task 4: Diffie-Hellman Key Exchange
+Penerapan praktis dilakukan dengan menginspeksi file kunci privat yang tersedia pada sistem target.
 
-Diffie-Hellman adalah metode untuk bertukar kunci kriptografi secara aman melalui saluran publik. Algoritma ini tidak digunakan untuk enkripsi data secara langsung, melainkan untuk menyepakati sebuah kunci rahasia bersama.
+- **Approach**: Menggunakan utilitas pembaca teks untuk memeriksa struktur file kunci.
+- **Analysis**: Identifikasi algoritma dilakukan dengan melihat _header_ file. Keberadaan string `-----BEGIN RSA PRIVATE KEY-----` secara eksplisit menunjukkan penggunaan algoritma RSA.
 
-### Parameter Utama:
+## 4. Tools & Commands Used
 
-- **p**: Bilangan prima besar (modulus).
-- **g**: Generator (bilangan dasar).
-- **a & b**: Kunci rahasia milik Alice dan Bob.
-- **A & B**: Nilai publik yang dikirimkan satu sama lain.
+- **SSH**: Protokol komunikasi aman yang dianalisis penggunaannya terhadap kriptografi asimetris.
+- **cat**: Digunakan untuk menampilkan konten file sensitif guna mengidentifikasi _cryptographic headers_.
+- **Linux Terminal**: Lingkungan eksekusi utama untuk melakukan navigasi direktori dan manajemen kunci.
 
-### Perhitungan Langkah demi Langkah:
+## 5. Security Takeaways
 
-1. **Menghitung Nilai Publik Alice (A):**
-   $A = g^a \pmod p$
-2. **Menghitung Nilai Publik Bob (B):**
-   $B = g^b \pmod p$
-3. **Menghitung Kunci Rahasia Bersama:**
-   - Alice menghitung: $Key = B^a \pmod p$
-   - Bob menghitung: $Key = A^b \pmod p$
-     _(Hasil akhirnya harus sama)_
+- **Private Key Hygiene**: Kunci privat tidak boleh meninggalkan mesin lokal dan harus dilindungi dengan izin file yang ketat (seperti `chmod 600`).
+- **Algorithm Selection**: Meskipun RSA masih standar, algoritma berbasis _Elliptic Curve_ mulai lebih disukai karena menawarkan keamanan yang setara dengan ukuran kunci yang lebih kecil.
+- **Manual Calculation Awareness**: Memahami matematika di balik enkripsi membantu analis keamanan dalam mengidentifikasi potensi kelemahan pada implementasi kustom.
+
+## 6. Conclusion
+
+Penyelesaian room ini memberikan pemahaman konkret bahwa keamanan internet modern tidak hanya bergantung pada kekuatan algoritma, tetapi pada cara kunci-kunci tersebut dipertukarkan dan disimpan. Keterampilan dalam mengidentifikasi tipe kunci dan memahami alur pertukaran rahasia adalah aset vital bagi setiap praktisi keamanan ofensif maupun defensif.
