@@ -59,6 +59,9 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 - **Question:** What is the process of turning plaintext into ciphertext called?
 - **Answer:** ???
 
+- **Question:** What do you call the process that returns the plaintext?
+- **Answer:** ???
+  
 ## Task 4: Historical Cipher
 
 Room ini membahas metode enkripsi kuno yang menjadi dasar bagi kriptografi modern. Meskipun sekarang dianggap lemah, memahami logika di baliknya sangat penting
@@ -103,7 +106,7 @@ Sebuah mesin enkripsi yang digunakan oleh tentara Jerman selama Perang Dunia II.
 
 - **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
 - **Answer:** ???
-  > (Penjelasan: bisa pake tool online buat nge-crack ini tanpa perlu ngitung manual. Coba pake [Cryptii](https://cryptii.com/pipes/caesar-cipher) atau [dCode](https://www.dcode.fr/caesar-cipher). Masukkan ciphertext `Pdv Zrzr Shfolqwd vdclw` dan gunakan **Shift 3** ke arah kiri (atau pergeseran alfabet mundur 3 langkah) untuk mendapatkan teks aslinya)\_
+  > (Penjelasan: Bisa pake tool online seperti [Cryptii](https://cryptii.com/pipes/caesar-cipher). Masukkan ciphertext `Xld Hzhz Apntyel dlhte` dan gunakan **Shift 11** ke arah kanan untuk mendapatkan teks aslinya)\_
 
 ## Task 5: Types of Encryption
 
@@ -149,6 +152,11 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
 - **Question:** When was AES adopted as an encryption standard?
 - **Answer:** ???
 
+- **Question:** What is the name of the cipher that uses 3 keys and 3 execution stages?
+- **Answer:** ???
+
+- **Question:** Which encryption standard uses the same key to encrypt and decrypt?
+- **Answer:** ???
 ## Task 6: Basic Math
 
 Modern kriptografi dibangun di atas fondasi matematika. Task ini membahas dua operasi logika dan aritmatika yang paling sering muncul dalam algoritma keamanan.
