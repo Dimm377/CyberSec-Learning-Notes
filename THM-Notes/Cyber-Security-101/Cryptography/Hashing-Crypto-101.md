@@ -57,3 +57,25 @@ Collision terjadi saat **dua input berbeda menghasilkan output yang sama**.
 *   **SHA256 Hash `passport.jpg`:** `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
 *   **MD5 Output Size:** 128 bit = **16 bytes**.
 *   **Possible values 8-bit:** 2^8 = **256**.
+
+---
+
+## Task 3: Insecure Password Storage & Hashing Uses
+
+**Pentingnya Hashing untuk Password:**
+Menyimpan password dalam bentuk **Plaintext** atau **Encrypted** (yang kuncinya bisa dicuri) sangat berbahaya. Jika database bocor, semua akun user bisa diambil alih.
+
+**Solusi: Hashing**
+*   Server hanya menyimpan **Hash** dari password.
+*   Attacker yang mencuri database hanya dapat hash acak, bukan password asli.
+*   Untuk login, server meng-hash password yang diinput user dan membandingkannya dengan hash di database.
+
+**Kelemahan Hashing Polos (tanpa Salt):**
+1.  **Duplicate Passwords:** Jika dua user punya password sama (misal "password123"), hash-nya juga akan sama. Attacker langsung tau mereka pakai password yang sama.
+2.  **Rainbow Tables:** Tabel raksasa yang berisi jutaan password umum beserta hash-nya. Attacker tinggal "mencocokkan" hash yang dicuri dengan tabel ini untuk menemukan password asli dalam hitungan detik.
+
+**Solusi Lanjutan: Salting**
+Menambahkan string acak unik (**Salt**) ke setiap password sebelum di-hash.
+*   User A: Hash("password123" + "SaltA")
+*   User B: Hash("password123" + "SaltB")
+Hasil hash akan berbeda meskipun password aslinya sama! Ini mematikan serangan Rainbow Table.
