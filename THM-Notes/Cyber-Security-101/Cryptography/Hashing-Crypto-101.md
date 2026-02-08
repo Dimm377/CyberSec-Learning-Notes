@@ -21,25 +21,39 @@
 ## Task 2: What is a hash function?
 
 **Definisi:**
-Fungsi hash adalah algoritma matematika yang mengambil input (berapapun ukurannya) dan menghasilkan output dengan ukuran tetap (fixed-size).
+Fungsi hash berbeda dengan enkripsi. **Tidak ada kunci**, dan dimaksudkan agar **mustahil (atau secara komputasi tidak praktis)** untuk mengembalikan output menjadi input.
 
-**Analogi Utama: Digital Fingerprint** (Sidik Jari Digital)
-Sama seperti sidik jari manusia yang unik untuk setiap orang, hash adalah "sidik jari" unik untuk setiap file/data.
-*   Jika dua file berbeda 1 bit saja, "sidik jari" (hash)nya akan berubah total.
-*   Kita bisa mengenali file dari hash-nya tanpa perlu melihat isi filenya.
+Fungsi hash mengambil input data dengan ukuran berapapun dan membuat ringkasan (digest) dari data tersebut. Outputnya memiliki **ukuran tetap (fixed size)**.
+*   Mudah menghitung output dari input.
+*   Sangat sulit menentukan input dari output.
+*   Perubahan kecil pada input (bahkan 1 bit) menyebabkan perubahan drastis pada output.
 
-**Karakteristik Kunci:**
-1.  **Fixed-size:** Input 1 huruf atau 100GB videonya, output hash-nya tetap sama panjangnya (misal MD5 = 32 karakter hex).
-2.  **One-way (Irreversible):** Tidak bisa dibalik. Kamu tidak bisa mengambil hash dan mengubahnya kembali menjadi file asli. (Seperti membuat jus buah, tidak bisa dikembalikan jadi buah utuh).
-3.  **Avalanche Effect:** Perubahan sangat kecil pada input menghasilkan perubahan drastis pada output hash.
-4.  **No Key:** Berbeda dengan enkripsi, hashing tidak menggunakan kunci.
+**Contoh Perubahan 1 Bit:**
+Di terminal, kita bisa melihat dua file `file1.txt` (isi "T") dan `file2.txt` (isi "U").
+*   Huruf **T** (Hex 54) = Binary `01010100`
+*   Huruf **U** (Hex 55) = Binary `01010101`
+Hanya beda **1 bit** terakhir, tapi hash-nya berubah total:
+*   MD5 File 1: `b9ece18c950afbfa6b0fdbfa4ff731d3`
+*   MD5 File 2: `4c614360da93c0a041b22e537de151eb`
 
-**Kegunaan:**
-*   **Integrity Check:** Memastikan file tidak korup/diubah saat didownload.
-*   **Password Storage:** Menyimpan password dalam bentuk hash, bukan teks asli.
+**Output Encoding:**
+Output asli hash adalah raw bytes, yang kemudian di-encode (biasanya Base64 atau Hexadecimal).
+*   Contoh: `md5sum` menghasilkan format Hexadecimal (setiap byte direpresentasikan dengan 2 digit hex).
 
-**Contoh Kasus (Q&A Room):**
-*   **SHA256 Hash `passport.jpg`:** Gunakan `sha256sum passport.jpg`.
-    *   Result: `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
-*   **MD5 Output Size:** 128 bit = 16 bytes.
-*   **Possible values 8-bit:** 2^8 = 256.
+**Why is Hashing Important?**
+Hashing bekerja di latar belakang untuk melindungi integritas data & kerahasiaan password.
+*   **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Saat login, sistem menghitung hash password yang dimasukkan dan membandingkannya dengan hash yang tersimpan.
+
+**Hash Collision:**
+Collision terjadi saat **dua input berbeda menghasilkan output yang sama**.
+*   **Pigeonhole Effect (Efek Sarang Burung Merpati):** Karena jumlah input tidak terbatas tapi jumlah output terbatas (fixed size), pasti ada input yang "berbagi" output yang sama.
+*   Contoh: Jika hash cuma 4-bit (16 kemungkinan nilai) tapi ada 21 input, pasti ada collision.
+
+**Insecure Algorithms:**
+*   **MD5 & SHA1:** Sudah dianggap tidak aman karena collision bisa direkayasa (engineered collision).
+*   Jangan gunakan keduanya untuk password atau data sensitif.
+
+**Q&A Room:**
+*   **SHA256 Hash `passport.jpg`:** `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
+*   **MD5 Output Size:** 128 bit = **16 bytes**.
+*   **Possible values 8-bit:** 2^8 = **256**.
