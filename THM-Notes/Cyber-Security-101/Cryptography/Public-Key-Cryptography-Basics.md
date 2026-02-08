@@ -48,18 +48,6 @@ Penerapan praktis dilakukan dengan menginspeksi file kunci privat yang tersedia 
 - **Approach**: Menggunakan utilitas pembaca teks untuk memeriksa struktur file kunci.
 - **Analysis**: Identifikasi algoritma dilakukan dengan melihat _header_ file. Keberadaan string `-----BEGIN RSA PRIVATE KEY-----` secara eksplisit menunjukkan penggunaan algoritma RSA.
 
-## 4. Tools & Commands Used
-
-- **SSH**: Protokol komunikasi aman yang dianalisis penggunaannya terhadap kriptografi asimetris.
-- **cat**: Digunakan untuk menampilkan konten file sensitif guna mengidentifikasi _cryptographic headers_.
-- **Linux Terminal**: Lingkungan eksekusi utama untuk melakukan navigasi direktori dan manajemen kunci.
-
-## 5. Security Takeaways
-
-- **Private Key Hygiene**: Kunci privat tidak boleh meninggalkan mesin lokal dan harus dilindungi dengan izin file yang ketat (seperti `chmod 600`).
-- **Algorithm Selection**: Meskipun RSA masih standar, algoritma berbasis _Elliptic Curve_ mulai lebih disukai karena menawarkan keamanan yang setara dengan ukuran kunci yang lebih kecil.
-- **Manual Calculation Awareness**: Memahami matematika di balik enkripsi membantu analis keamanan dalam mengidentifikasi potensi kelemahan pada implementasi kustom.
-
 ## 6. Conclusion
 
 Penyelesaian room ini memberikan pemahaman konkret bahwa keamanan internet modern tidak hanya bergantung pada kekuatan algoritma, tetapi pada cara kunci-kunci tersebut dipertukarkan dan disimpan. Keterampilan dalam mengidentifikasi tipe kunci dan memahami alur pertukaran rahasia adalah aset vital bagi setiap praktisi keamanan ofensif maupun defensif.
