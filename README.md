@@ -83,6 +83,7 @@
 |:---:|------|-------------|
 | 1. | [Cryptography Basic](THM-Notes/Cyber-Security-101/Cryptography/Cryptogarphy-Basic.md) | Cryptography fundamentals |
 | 2. | [Public Key Cryptography](THM-Notes/Cyber-Security-101/Cryptography/Public-Key-Cryptography.md) | RSA, SSH keys, Diffie-Hellman |
+| 3. | [Hashing - Crypto 101](THM-Notes/Cyber-Security-101/Cryptography/Hashing-Crypto-101.md) | Hashing fundamentals (Task 1 & 2) |
 
 </details>
 
