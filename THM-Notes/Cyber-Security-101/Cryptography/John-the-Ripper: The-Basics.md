@@ -40,3 +40,27 @@ Sebelum memulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 3.  **Hash Identifier:**
     *   Sebelum me-crack hash, kita HARUS tahu dulu jenis algoritmanya (apakah MD5? SHA256? NTLM?).
     *   Tools seperti `hash-identifier` atau layanan online bisa membantu mengenali jenis hash dari format/panjangnya.
+
+---
+
+## Task 3: Setting Up Your System
+
+Pada task ini, kita akan mempersiapkan environment untuk menggunakan John the Ripper.
+
+**1. Instalasi John the Ripper:**
+Jika belum terinstall (biasanya sudah ada di Kali Linux/Parrot), bisa diinstall dengan command:
+```bash
+sudo apt install john
+```
+
+**2. Wordlist RockYou:**
+Wordlist yang paling umum digunakan untuk CTF dan belajar adalah `rockyou.txt`.
+*   **Lokasi:** `/usr/share/wordlists/`
+*   **Decompress:** Jika masih dalam bentuk `.gz`, perlu diekstrak dulu:
+    ```bash
+    sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
+    ```
+
+**Pertanyaan:**
+*   **Which website's breach was the rockyou.txt wordlist created from?**
+    *   Jawaban: `rockyou.com` (Wordlist ini berasal dari data breach situs sosial media RockYou pada tahun 2009).
