@@ -79,3 +79,36 @@ Menambahkan string acak unik (**Salt**) ke setiap password sebelum di-hash.
 *   User A: Hash("password123" + "SaltA")
 *   User B: Hash("password123" + "SaltB")
 Hasil hash akan berbeda meskipun password aslinya sama! Ini mematikan serangan Rainbow Table.
+
+---
+
+## Task 4: Recognising Password Hashes
+
+**Goal:** Identify different password hash formats commonly found in Unix and Windows systems.
+
+### Unix Hash Formats
+- `$1$` – MD5‑crypt
+- `$2a$`, `$2b$`, `$2y$` – BCrypt
+- `$5$` – SHA‑256‑crypt
+- `$6$` – SHA‑512‑crypt (default 5000 rounds)
+
+### Windows Hash Formats
+- **LM Hash** – legacy, weak, 16‑character hex string.
+- **NTLM Hash** – 32‑character hex string (MD4 of the UTF‑16LE password).
+
+### Common Tools & Pitfalls
+- **hashid** can guess hash types but may fail for custom formats.
+- Context matters: MD5 often appears in web apps, NTLM in Windows SAM.
+
+### Example Questions (from the room)
+1. What is the default number of rounds for `$6$` (sha512crypt) hashes?
+2. Identify the length of a Windows NTLM hash.
+3. Which hashcat mode is used for Citrix Netscaler hashes?
+
+### Practical Exercise
+- Use an online hash identifier to test a sample `$6$` hash.
+- Manually compare a captured NTLM hash against a rainbow table.
+
+> **Note:** Always add a unique **salt** to passwords before hashing to prevent rainbow‑table attacks.
+
+---
