@@ -132,3 +132,43 @@ Bayangkan dua orang memasak "Sup Ayam" (Password sama).
 - Capture a Windows NTLM hash from a SAM dump and attempt a dictionary attack with `hashcat -m 1000`.
 
 ---
+
+## Task 6: Password Cracking
+
+**Konsep:**
+Hashing adalah fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
+*   **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), meng-hash satu per satu, lalu mencocokkan hasilnya dengan hash target.
+
+**Tools Populer:**
+1.  **Hashcat:** Tool cracking tercepat (berbasis GPU).
+    *   Contoh Command (SHA256): `hashcat -m 1400 -a 0 hash.txt wordlist.txt`
+2.  **John the Ripper (JtR):** Tool klasik, sangat fleksibel (berbasis CPU/GPU).
+    *   Contoh Command: `john --format=raw-sha256 hash.txt --wordlist=rockyou.txt`
+
+**Wordlists:**
+*   **rockyou.txt:** Wordlist paling legendaris, berisi 14 juta password yang bocor dari situs RockYou (2009). Hampir semua CTF pemula pakai ini.
+
+**Practical Exercise (Room):**
+*   **Hash:** `$2a$06$79...` (Identifikasi: `bcrypt`)
+*   **Hash:** `5e884...` (Identifikasi: `SHA-256`) -> `halloween`
+
+---
+
+## Task 7: Hashing for Integrity Checking
+
+**Goal:** Memastikan file asli dan tidak dimodifikasi (tampered).
+
+**Checksum:**
+Nilai hash dari sebuah file disebut **Checksum**.
+*   Jika download file `installer.exe` dari internet, website biasanya menyertakan checksum (misal SHA256).
+*   Setelah download, user meng-hash file lokal. Jika hash-nya sama persis, berarti file **aman & korup tidak**.
+*   Beda 1 bit saja di file = Hash berubah total.
+
+**HMAC (Keyed-Hash Message Authentication Code):**
+Hashing standar hanya menjamin **Integritas** (file tidak berubah), tapi tidak menjamin **Autentikasi** (siapa pengirimnya).
+*   **HMAC = Hash + Secret Key.**
+*   Hanya orang yang punya "Key" yang bisa membuat HMAC yang valid.
+*   Menjamin **Integrity** AND **Authenticity**.
+
+**Example Question:**
+*   **HMAC-SHA512 Mode (Hashcat):** `1750`
