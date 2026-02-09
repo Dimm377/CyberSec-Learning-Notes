@@ -98,3 +98,28 @@ Berikut adalah jawaban untuk latihan hash yang diberikan:
 *   **Hash 4 (Whirlpool):**
     *   Identifikasi: Hash terdeteksi sebagai **Whirlpool**.
     *   Command: `john --format=whirlpool --wordlist=/usr/share/wordlists/rockyou.txt hash4.txt`
+
+---
+
+## Task 5: Cracking Windows Authentication
+
+Task ini membahas cara crack hash otentikasi Windows, atau sering disebut **NTLM**.
+
+**1. Apa itu NTLM?**
+NTLM (New Technology LAN Manager) adalah protokol otentikasi lama yang digunakan oleh Windows. Meski sudah ada Kerberos, NTLM masih sering ditemukan.
+
+**2. Identifikasi & Format:**
+*   Hash NTLM biasanya disimpan di file seperti `ntlm.txt`.
+*   Format John the Ripper untuk NTLM adalah `NT`.
+
+**3. Cracking Process:**
+Untuk latihan ini, kita diminta men-crack file `ntlm.txt`.
+
+*   **Command:**
+    ```bash
+    john --format=NT --wordlist=/usr/share/wordlists/rockyou.txt ntlm.txt
+    ```
+    *(Ganti path wordlist sesuai lokasi rockyou.txt di komputer kamu)*
+
+*   **Hasil:**
+    Setelah command jalan, password akan muncul di terminal.
