@@ -290,6 +290,11 @@ Sama seperti ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
     ssh2john id_rsa > ssh_hash.txt
     ```
     *(Note: Jika command `ssh2john` tidak ditemukan, coba cari script python-nya pakai `locate ssh2john` atau `find / -name ssh2john*`)*
+    
+    > [!TIP]
+    > **Pro Tip:** Biar gak ribet ngetik path panjang, bikin alias aja:
+    > `echo "alias ssh2john='python ~/JohnTheRipper/run/ssh2john.py'" >> ~/.zshrc`
+    > Lalu reload terminal.
 
 *   **Step 2: Cracking**
     Crack file hash tersebut.
