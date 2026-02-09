@@ -1,5 +1,8 @@
 # TryHackMe: Linux Fundamentals Part 1
 
+
+---
+
 **Room Link:** [Linux Fundamentals Part 1](https://tryhackme.com/room/linuxfundamentalspart1)
 **Category:** Linux / Fundamental
 **Difficulty:** Easy

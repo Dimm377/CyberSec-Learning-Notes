@@ -1,8 +1,13 @@
 # TryHackMe: Windows Active Directory Basics:
 
+
+---
+
 **Room Link:** [TryHackMe](https://tryhackme.com/room/winadbasics)
 **Category:** Windows / Active Directory
 **Difficulty:** easy
+
+---
 
 ---
 

@@ -1,8 +1,13 @@
 # TryHackMe: What Is Networking?
 
+
+---
+
 **Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
 **Category:** Networking / Fundamental
 **Difficulty:** easy
+
+---
 
 ## Overview
 

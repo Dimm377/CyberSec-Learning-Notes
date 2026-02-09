@@ -1,8 +1,13 @@
 # TryHackMe: Windows Fundamentals Part 1
 
+
+---
+
 **Room Link:** [TryHackMe](https://tryhackme.com/room/windowsfundamentals1xbx)
 **Category:** Windows Fundamental
 **Difficulty:** easy
+
+---
 
 ---
 

@@ -1,8 +1,13 @@
 # TryHackMe: DNS In Details
 
+
+---
+
 **Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
 **Category:** How The Web Works
 **Difficulty:** easy
+
+---
 
 # Overview
 

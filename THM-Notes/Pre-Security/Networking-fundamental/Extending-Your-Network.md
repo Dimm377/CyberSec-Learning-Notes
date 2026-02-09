@@ -1,8 +1,13 @@
 # TryHackMe: Extending Your Network
 
+
+---
+
 **Room Link:** [ExtendingYourNetwork](https://tryhackme.com/room/extendingyournetwork)
 **Category:** Networking / Fundamental
 **Difficulty:** easy
+
+---
 
 # Overview
 

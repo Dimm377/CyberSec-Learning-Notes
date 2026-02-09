@@ -1,5 +1,8 @@
 # TryHackMe: John the Ripper - The Basics
 
+
+---
+
 **Room Link:** [John the Ripper Basics](https://tryhackme.com/room/johntheripperbasics)  
 **Category:** Cryptography / Password Cracking  
 **Difficulty:** Easy  
@@ -15,7 +18,7 @@ John the Ripper adalah salah satu tool "password cracker" paling populer dan fle
 *   **Open Source:** Gratis dan bisa dimodifikasi.
 
 **Prasyarat:**
-Untuk menggunakan JtR dengan efektif, kita perlu paham dasar-dasar:
+Untuk menggunakan JtR dengan efektif, perlu memahami dasar-dasar:
 1.  **Command Line (Linux/Unix):** Navigasi folder, menjalankan command.
 2.  **Hashing Basics:** Paham bedanya hashing vs enkripsi.
 
@@ -23,7 +26,7 @@ Untuk menggunakan JtR dengan efektif, kita perlu paham dasar-dasar:
 
 ## Task 2: Basic Terms
 
-Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
+Sebelum memulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 
 1.  **Hash:**
     *   Hash adalah representasi data (seperti password) yang telah diubah menjadi string karakter dengan panjang tetap (fixed-length) menggunakan algoritma matematika tertentu (MD5, SHA1, SHA256, dll).
