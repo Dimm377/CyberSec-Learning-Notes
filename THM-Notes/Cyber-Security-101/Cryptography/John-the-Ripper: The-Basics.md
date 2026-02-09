@@ -268,3 +268,34 @@ Mengubah file RAR jadi format hash untuk John.
 
 *   **Step 3: Hasil**
     Password file RAR akan muncul. Gunakan untuk ekstrak (`unrar x secure.rar`).
+
+---
+
+## Task 11: Cracking SSH Keys
+
+Task terakhir ini mengajarkan cara crack private key SSH (`id_rsa`) yang diproteksi passphrase.
+
+**1. Tool: ssh2john**
+Sama seperti ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
+
+**2. Langkah-langkah:**
+
+*   **Step 1: Convert to Hash**
+    Ubah file private key menjadi format hash John.
+    ```bash
+    ssh2john [id_rsa] > [output_hash]
+    ```
+    *Contoh:*
+    ```bash
+    ssh2john id_rsa > ssh_hash.txt
+    ```
+    *(Note: Jika command `ssh2john` tidak ditemukan, coba cari script python-nya pakai `locate ssh2john` atau `find / -name ssh2john*`)*
+
+*   **Step 2: Cracking**
+    Crack file hash tersebut.
+    ```bash
+    john --wordlist=/home/dimm/wordlists/rockyou.txt ssh_hash.txt
+    ```
+
+*   **Step 3: Hasil**
+    Passphrase untuk key SSH tersebut akan muncul.
