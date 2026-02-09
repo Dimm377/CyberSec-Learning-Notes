@@ -85,19 +85,19 @@ Berikut adalah jawaban untuk latihan hash yang diberikan:
 
 *   **Hash 1 (MD5):**
     *   Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **MD5**.
-    *   Command: `john --format=raw-md5 --wordlist=~/wordlists/rockyou.txt hash1.txt`
+    *   Command: `john --format=raw-md5 --wordlist=/home/dimm/wordlists/rockyou.txt hash1.txt`
 
 *   **Hash 2 (SHA1):**
     *   Identifikasi: Hash terdeteksi sebagai **SHA1**.
-    *   Command: `john --format=raw-sha1 --wordlist=~/wordlists/rockyou.txt hash2.txt`
+    *   Command: `john --format=raw-sha1 --wordlist=/home/dimm/wordlists/rockyou.txt hash2.txt`
 
 *   **Hash 3 (SHA256):**
     *   Identifikasi: Hash terdeteksi sebagai **SHA256**.
-    *   Command: `john --format=raw-sha256 --wordlist=~/wordlists/rockyou.txt hash3.txt`
+    *   Command: `john --format=raw-sha256 --wordlist=/home/dimm/wordlists/rockyou.txt hash3.txt`
 
 *   **Hash 4 (Whirlpool):**
     *   Identifikasi: Hash terdeteksi sebagai **Whirlpool**.
-    *   Command: `john --format=whirlpool --wordlist=~/wordlists/rockyou.txt hash4.txt`
+    *   Command: `john --format=whirlpool --wordlist=/home/dimm/wordlists/rockyou.txt hash4.txt`
 
 ---
 
@@ -117,7 +117,7 @@ Untuk latihan ini, kita diminta men-crack file `ntlm.txt`.
 
 *   **Command:**
     ```bash
-    john --format=NT --wordlist=~/wordlists/rockyou.txt ntlm.txt
+    john --format=NT --wordlist=/home/dimm/wordlists/rockyou.txt ntlm.txt
     ```
     *(Ganti path wordlist sesuai lokasi rockyou.txt di komputer kamu)*
 
@@ -147,7 +147,7 @@ Task ini mengajarkan cara crack password user di Linux dengan menggabungkan file
 *   **Step 2: Cracking**
     Setelah jadi satu file, langsung crack pakai John (biasanya auto-detect format `sha512crypt` atau sejenisnya).
     ```bash
-    john --wordlist=~/wordlists/rockyou.txt unshadowed.txt
+    john --wordlist=/home/dimm/wordlists/rockyou.txt unshadowed.txt
     ```
 
 *   **Step 3: Hasil**
@@ -233,8 +233,38 @@ Kita pakai tool bernama `zip2john` untuk mengubah file ZIP menjadi format hash y
 *   **Step 2: Cracking**
     Crack file hash tersebut seperti biasa.
     ```bash
-    john --wordlist=~/wordlists/rockyou.txt zip_hash.txt
+    john --wordlist=/home/dimm/wordlists/rockyou.txt zip_hash.txt
     ```
 
 *   **Step 3: Hasil**
     Password file ZIP akan muncul. Gunakan password itu untuk ekstrak file aslinya (`unzip secure.zip`).
+
+---
+
+## Task 10: Cracking RAR Archive
+
+Mirip dengan ZIP, untuk file RAR kita butuh tool perantara bernama `rar2john`.
+
+**1. Tool: rar2john**
+Mengubah file RAR jadi format hash untuk John.
+
+**2. Langkah-langkah:**
+
+*   **Step 1: Convert to Hash**
+    Gunakan `rar2john` untuk ekstrak hash dari file RAR.
+    ```bash
+    rar2john [file_rar] > [output_hash]
+    ```
+    *Contoh:*
+    ```bash
+    rar2john secure.rar > rar_hash.txt
+    ```
+
+*   **Step 2: Cracking**
+    Crack file hash tersebut.
+    ```bash
+    john --wordlist=/home/dimm/wordlists/rockyou.txt rar_hash.txt
+    ```
+
+*   **Step 3: Hasil**
+    Password file RAR akan muncul. Gunakan untuk ekstrak (`unrar x secure.rar`).
