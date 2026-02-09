@@ -86,19 +86,15 @@ Berikut adalah jawaban untuk latihan hash yang diberikan:
 *   **Hash 1 (MD5):**
     *   Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **MD5**.
     *   Command: `john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash1.txt`
-    *   Password: `biscuit`
 
 *   **Hash 2 (SHA1):**
     *   Identifikasi: Hash terdeteksi sebagai **SHA1**.
     *   Command: `john --format=raw-sha1 --wordlist=/usr/share/wordlists/rockyou.txt hash2.txt`
-    *   Password: `kangeroo`
 
 *   **Hash 3 (SHA256):**
     *   Identifikasi: Hash terdeteksi sebagai **SHA256**.
     *   Command: `john --format=raw-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hash3.txt`
-    *   Password: `microphone`
 
 *   **Hash 4 (Whirlpool):**
     *   Identifikasi: Hash terdeteksi sebagai **Whirlpool**.
     *   Command: `john --format=whirlpool --wordlist=/usr/share/wordlists/rockyou.txt hash4.txt`
-    *   Password: `colossal`
