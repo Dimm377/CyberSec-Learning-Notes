@@ -181,3 +181,30 @@ Task ini membahas **Single Crack Mode**, fitur JtR untuk men-crack password yang
 
 *   **Step 3: Hasil**
     JtR akan mencoba variasi "Joker" (seperti "Joker1", "joker", dll) sampai ketemu passwordnya.
+
+---
+
+## Task 8: Custom Rules
+
+Task ini mengajarkan cara membuat aturan (rules) sendiri untuk memodifikasi wordlist. Ini berguna kalau kita tahu pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
+
+**1. Lokasi Config:**
+Rules didefinisikan di file konfigurasi John, biasanya di `/etc/john/john.conf`.
+
+**2. Syntax Dasar:**
+*   `[0-9]`: Menambahkan angka 0-9.
+*   `A0`: Menyisipkan sesuatu di awal.
+*   `Az`: Menyisipkan sesuatu di akhir.
+*   `c`: Capitalize (huruf pertama jadi besar).
+
+**3. Contoh Penggunaan:**
+Misal kita mau bikin rule bernama `THMRules` yang menambahkan angka di belakang kata.
+*   Edit `john.conf`, tambahkan di bagian `[List.Rules:THMRules]`:
+    ```
+    [List.Rules:THMRules]
+    Az"[0-9]"
+    ```
+*   Jalankan John dengan flag `--rule`:
+    ```bash
+    john --wordlist=wordlist.txt --rule=THMRules hash.txt
+    ```
