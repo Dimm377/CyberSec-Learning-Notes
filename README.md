@@ -83,7 +83,8 @@
 |:---:|------|-------------|
 | 1. | [Cryptography Basic](THM-Notes/Cyber-Security-101/Cryptography/Cryptogarphy-Basic.md) | Cryptography fundamentals |
 | 2. | [Public Key Cryptography](THM-Notes/Cyber-Security-101/Cryptography/Public-Key-Cryptography.md) | RSA, SSH keys, Diffie-Hellman |
-| 3. | [Hashing - Basic](THM-Notes/Cyber-Security-101/Cryptography/Hashing-Crypto-101.md) | Hashing fundamentals |
+| 3. | [Hashing - Basic](THM-Notes/Cyber-Security-101/Cryptography/Hashing-basic.md) | Hashing fundamentals |
+| 4. | [John the Ripper Basics](THM-Notes/Cyber-Security-101/Cryptography/John-the-Ripper:%20The-Basics.md) | Password cracking tool |
 
 </details>
 
