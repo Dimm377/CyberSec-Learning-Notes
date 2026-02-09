@@ -161,7 +161,7 @@ Hashing adalah fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 **Checksum:**
 Nilai hash dari sebuah file disebut **Checksum**.
 *   Jika download file `installer.exe` dari internet, website biasanya menyertakan checksum (misal SHA256).
-*   Setelah download, user meng-hash file lokal. Jika hash-nya sama persis, berarti file **aman & korup tidak**.
+*   Setelah download, user meng-hash file lokal. Jika hash-nya sama persis, berarti file **aman & tidak corrupt**.
 *   Beda 1 bit saja di file = Hash berubah total.
 
 **HMAC (Keyed-Hash Message Authentication Code):**
