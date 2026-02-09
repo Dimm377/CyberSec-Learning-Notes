@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
-**Category:** How The Web Works
-**Difficulty:** easy
+- **Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
+- **Category:** How The Web Works
+- **Difficulty:** easy
 
 ---
 

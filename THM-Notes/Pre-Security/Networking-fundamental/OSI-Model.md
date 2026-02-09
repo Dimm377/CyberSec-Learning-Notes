@@ -5,9 +5,9 @@
 
 ---
 
-**Room Link:** [OSI Model](https://tryhackme.com/room/osimodelzi)
-**Category:** Networking / Fundamental
-**Difficulty:** easy
+- **Room Link:** [OSI Model](https://tryhackme.com/room/osimodelzi)
+- **Category:** Networking / Fundamental
+- **Difficulty:** easy
 
 ---
 

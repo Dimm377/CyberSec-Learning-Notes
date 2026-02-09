@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
-**Category:** Networking / Fundamental
-**Difficulty:** easy
+- **Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
+- **Category:** Networking / Fundamental
+- **Difficulty:** easy
 
 ---
 

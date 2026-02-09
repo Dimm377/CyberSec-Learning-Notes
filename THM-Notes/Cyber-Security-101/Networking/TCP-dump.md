@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/tcpdump)
-**Category:** Networking / Analysis
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/tcpdump)
+- **Category:** Networking / Analysis
+- **Difficulty:** Easy
 
 ---
 

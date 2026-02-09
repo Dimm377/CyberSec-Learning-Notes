@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [Linux Fundamentals Part 3](https://tryhackme.com/room/linuxfundamentalspart3)
-**Category:** Linux / Fundamental
-**Difficulty:** Easy
+- **Room Link:** [Linux Fundamentals Part 3](https://tryhackme.com/room/linuxfundamentalspart3)
+- **Category:** Linux / Fundamental
+- **Difficulty:** Easy
 
 ---
 

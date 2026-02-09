@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [Burp Suite Basics](https://tryhackme.com/room/burpsuitebasics)
-**Category:** Web Security / Tools
-**Difficulty:** Easy
+- **Room Link:** [Burp Suite Basics](https://tryhackme.com/room/burpsuitebasics)
+- **Category:** Web Security / Tools
+- **Difficulty:** Easy
 
 ---
 

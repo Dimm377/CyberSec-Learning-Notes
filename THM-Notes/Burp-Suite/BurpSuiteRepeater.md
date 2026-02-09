@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/burpsuiterepeater)
-**Category:** Web Hacking / Tools
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/burpsuiterepeater)
+- **Category:** Web Hacking / Tools
+- **Difficulty:** Easy
 
 ---
 
@@ -50,7 +50,7 @@ Panel **Inspector** di sisi kanan memudahkan kita untuk memodifikasi elemen requ
 
 Dalam praktik ini, kita belajar memanipulasi header `User-Agent` atau parameter tertentu untuk melihat bagaimana server memberikan respon yang berbeda.
 
-- **Tip:** Perhatikan perbedaan antara respon `200 OK` dan `404 Not Found` saat lu mengubah path URL.
+- **Tip:** Perhatikan perbedaan antara respon `200 OK` dan `404 Not Found` saat sedang mengubah path URL.
 - **Flag Capture:** Biasanya melibatkan pengubahan header tertentu yang diminta oleh soal untuk memicu flag muncul di respon
 
 > **Tip:** "Don't just send, observe." Setiap byte dalam respon server bisa menjadi kunci untuk eksploitasi selanjutnya.

@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/networkingessentials)
-**Category:** Cyber Security 101 Path
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/networkingessentials)
+- **Category:** Cyber Security 101 Path
+- **Difficulty:** Easy
 
 ---
 

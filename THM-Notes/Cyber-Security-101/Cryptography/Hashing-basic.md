@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/hashingbasics)
-**Category:** Cryptography
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/hashingbasics)
+- **Category:** Cryptography
+- **Difficulty:** Easy
 
 ---
 

@@ -3,8 +3,8 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/wiresharkthebasics)
-**Category:** Networking / Analysis tool
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/wiresharkthebasics)
+- **Category:** Networking / Analysis tool
+- **Difficulty:** Easy
 
 ---

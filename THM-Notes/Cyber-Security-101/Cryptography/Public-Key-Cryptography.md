@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/publickeycrypto)
-**Category:** Cryptography
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/publickeycrypto)
+- **Category:** Cryptography
+- **Difficulty:** Easy
 
 ---
 

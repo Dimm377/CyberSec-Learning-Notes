@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [John the Ripper Basics](https://tryhackme.com/room/johntheripperbasics)  
-**Category:** Cryptography / Password Cracking  
-**Difficulty:** Easy  
+- **Room Link:** [John the Ripper Basics](https://tryhackme.com/room/johntheripperbasics)
+- **Category:** Cryptography / Password Cracking
+- **Difficulty:** Easy
 
 ---
 

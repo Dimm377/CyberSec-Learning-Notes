@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/networkingcoreprotocols)
-**Category:** Networking / Protocols
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/networkingcoreprotocols)
+- **Category:** Networking / Protocols
+- **Difficulty:** Easy
 
 ---
 

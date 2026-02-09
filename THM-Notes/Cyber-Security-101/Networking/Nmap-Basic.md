@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/nmap)
-**Category:** Networking / Tools
-**Difficulty:** Easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/nmap)
+- **Category:** Networking / Tools
+- **Difficulty:** Easy
 
 ---
 

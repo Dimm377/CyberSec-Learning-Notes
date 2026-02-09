@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/winadbasics)
-**Category:** Windows / Active Directory
-**Difficulty:** easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/winadbasics)
+- **Category:** Windows / Active Directory
+- **Difficulty:** easy
 
 ---
 

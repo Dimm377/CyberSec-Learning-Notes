@@ -3,9 +3,9 @@
 
 ---
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/windowsfundamentals1xbx)
-**Category:** Windows Fundamental
-**Difficulty:** easy
+- **Room Link:** [TryHackMe](https://tryhackme.com/room/windowsfundamentals1xbx)
+- **Category:** Windows Fundamental
+- **Difficulty:** easy
 
 ---
 
