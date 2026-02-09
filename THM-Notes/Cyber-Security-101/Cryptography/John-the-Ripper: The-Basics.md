@@ -208,3 +208,33 @@ Misal kita mau bikin rule bernama `THMRules` yang menambahkan angka di belakang 
     ```bash
     john --wordlist=wordlist.txt --rule=THMRules hash.txt
     ```
+
+---
+
+## Task 9: Cracking ZIP Password
+
+Task ini membahas cara crack file ZIP yang di-password. John tidak bisa baca file ZIP langsung, jadi butuh "perantara".
+
+**1. Tool: zip2john**
+Kita pakai tool bernama `zip2john` untuk mengubah file ZIP menjadi format hash yang bisa dibaca John.
+
+**2. Langkah-langkah:**
+
+*   **Step 1: Convert to Hash**
+    Gunakan `zip2john` dan simpan outputnya ke file teks (misal `zip_hash.txt`).
+    ```bash
+    zip2john [file_zip] > [output_hash]
+    ```
+    *Contoh:*
+    ```bash
+    zip2john secure.zip > zip_hash.txt
+    ```
+
+*   **Step 2: Cracking**
+    Crack file hash tersebut seperti biasa.
+    ```bash
+    john --wordlist=~/wordlists/rockyou.txt zip_hash.txt
+    ```
+
+*   **Step 3: Hasil**
+    Password file ZIP akan muncul. Gunakan password itu untuk ekstrak file aslinya (`unzip secure.zip`).
