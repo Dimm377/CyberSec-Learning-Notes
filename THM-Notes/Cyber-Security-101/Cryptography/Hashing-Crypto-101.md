@@ -1,6 +1,6 @@
 # TryHackMe: Hashing Basic
 
-**Room Link:** [TryHackMe](https://tryhackme.com/room/hashingbasics)  
+**Room Link:** [Hashing Basic](https://tryhackme.com/room/hashingbasics)  
 **Category:** Cryptography  
 **Difficulty:** Easy  
 
