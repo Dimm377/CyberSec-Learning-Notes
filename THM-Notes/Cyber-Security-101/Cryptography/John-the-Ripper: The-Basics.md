@@ -123,3 +123,32 @@ Untuk latihan ini, kita diminta men-crack file `ntlm.txt`.
 
 *   **Hasil:**
     Setelah command jalan, password akan muncul di terminal.
+
+---
+
+## Task 6: Cracking /etc/shadow
+
+Task ini mengajarkan cara crack password user di Linux dengan menggabungkan file `/etc/passwd` dan `/etc/shadow`.
+
+**1. Konsep Dasar:**
+*   `/etc/passwd`: Berisi informasi user (bisa dibaca semua user).
+*   `/etc/shadow`: Berisi hash password (hanya bisa dibaca root).
+*   Untuk cracking, John butuh kedua file ini digabung agar formatnya dikenali.
+
+**2. Langkah-langkah:**
+
+*   **Step 1: Unshadow**
+    Kita harus menggabungkan kedua file tersebut menjadi satu file (misal `unshadowed.txt`) menggunakan command `unshadow`.
+    ```bash
+    unshadow [path_passwd] [path_shadow] > unshadowed.txt
+    ```
+    *(Untuk latihan ini, gunakan `local_passwd` dan `local_shadow` yang ada di folder hasil ekstrak tadi)*
+
+*   **Step 2: Cracking**
+    Setelah jadi satu file, langsung crack pakai John (biasanya auto-detect format `sha512crypt` atau sejenisnya).
+    ```bash
+    john --wordlist=~/wordlists/rockyou.txt unshadowed.txt
+    ```
+
+*   **Step 3: Hasil**
+    Password user yang berhasil dicrack akan muncul.
