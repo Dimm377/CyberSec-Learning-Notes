@@ -11,7 +11,7 @@
 
 ## Task 1: Brief
 
-**SQL Injection (SQLi)** adalah kerentanan keamanan web yang memungkinkan penyerang untuk mengganggu query yang dibuat aplikasi ke databasenya. Hal ini memungkinkan penyerang untuk melihat data yang biasanya tidak bisa mereka ambil, seperti data milik pengguna lain, atau data apa pun yang dapat diakses oleh aplikasi itu sendiri. Dalam banyak kasus, penyerang dapat memodifikasi atau menghapus data ini, menyebabkan perubahan permanen pada konten atau perilaku aplikasi.
+**SQL Injection (SQLi)** adalah kerentanan keamanan web yang memungkinkan penyerang untuk memanipulasi query yang dibuat aplikasi ke databasenya. Hal ini memungkinkan penyerang untuk melihat data yang biasanya tidak bisa mereka ambil, seperti data milik pengguna lain, atau data apa pun yang dapat diakses oleh aplikasi itu sendiri. Dalam banyak kasus, penyerang dapat memodifikasi atau menghapus data ini, menyebabkan perubahan permanen pada konten atau aplikasi.
 
 ---
 
