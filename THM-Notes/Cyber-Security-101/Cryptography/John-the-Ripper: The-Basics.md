@@ -152,3 +152,32 @@ Task ini mengajarkan cara crack password user di Linux dengan menggabungkan file
 
 *   **Step 3: Hasil**
     Password user yang berhasil dicrack akan muncul.
+
+---
+
+## Task 7: Single Crack Mode
+
+Task ini membahas **Single Crack Mode**, fitur JtR untuk men-crack password yang mirip dengan username-nya.
+
+**1. Konsep:**
+*   Berguna jika password user adalah variasi dari nama pengguna (misal: user `admin` punya password `Admin123`).
+*   Tidak butuh wordlist eksternal, JtR akan memanipulasi (mangle) username untuk menebak password.
+
+**2. Langkah-langkah:**
+
+*   **Step 1: Siapkan File**
+    Single Crack Mode butuh format `username:hash`.
+    File `hash7.txt` isinya cuma hash, jadi kita harus tambah username di depannya.
+    *(Clue: Username-nya adalah `Joker`)*
+    ```bash
+    echo "Joker:7bf6d9bb82bed1302f331fc6b816aada" > hash7-siap.txt
+    ```
+
+*   **Step 2: Cracking**
+    Gunakan flag `--single`. Kita juga perlu kasih tahu format hash-nya (MD5).
+    ```bash
+    john --single --format=raw-md5 hash7-siap.txt
+    ```
+
+*   **Step 3: Hasil**
+    JtR akan mencoba variasi "Joker" (seperti "Joker1", "joker", dll) sampai ketemu passwordnya.
