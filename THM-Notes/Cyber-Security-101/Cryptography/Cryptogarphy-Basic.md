@@ -1,8 +1,13 @@
 # TryHackMe: Cryptography Basic
 
+
+---
+
 **Room Link:** [TryHackMe](https://tryhackme.com/room/cryptographybasics)
 **Category:** Cryptography / Security
 **Difficulty:** Easy
+
+---
 
 ## Task 1: Introduction
 
