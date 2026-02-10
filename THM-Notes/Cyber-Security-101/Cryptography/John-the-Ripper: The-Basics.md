@@ -67,7 +67,7 @@ Wordlist yang paling umum digunakan untuk CTF dan belajar adalah `rockyou.txt`.
 **Pertanyaan:**
 
 - **Which website's breach was the rockyou.txt wordlist created from?**
-  - Jawaban: `rockyou.com` (Wordlist ini berasal dari data breach situs sosial media RockYou pada tahun 2009).
+  - Jawaban: `?`
 
 ---
 
@@ -89,19 +89,19 @@ Gunakan command: `john --format=[format] --wordlist=[path_wordlist] [file_hash]`
 Berikut adalah jawaban untuk latihan hash yang diberikan:
 
 - **Hash 1 (MD5):**
-  - Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **MD5**.
+  - Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **?**.
   - Command: `john --format=raw-md5 --wordlist=/home/dimm/wordlists/rockyou.txt hash1.txt`
 
 - **Hash 2 (SHA1):**
-  - Identifikasi: Hash terdeteksi sebagai **SHA1**.
+  - Identifikasi: Hash terdeteksi sebagai **?**.
   - Command: `john --format=raw-sha1 --wordlist=/home/dimm/wordlists/rockyou.txt hash2.txt`
 
 - **Hash 3 (SHA256):**
-  - Identifikasi: Hash terdeteksi sebagai **SHA256**.
+  - Identifikasi: Hash terdeteksi sebagai **?**.
   - Command: `john --format=raw-sha256 --wordlist=/home/dimm/wordlists/rockyou.txt hash3.txt`
 
 - **Hash 4 (Whirlpool):**
-  - Identifikasi: Hash terdeteksi sebagai **Whirlpool**.
+  - Identifikasi: Hash terdeteksi sebagai **?**.
   - Command: `john --format=whirlpool --wordlist=/home/dimm/wordlists/rockyou.txt hash4.txt`
 
 ---
