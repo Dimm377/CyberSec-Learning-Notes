@@ -150,7 +150,7 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
 **Answer the questions below:**
 
 - **Question:** Should you trust DES? (Yea/Nay)
-- **Answer:** Nay
+- **Answer:** ?
 
   > (Penjelasan: Karena panjang kuncinya yang hanya 56-bit, DES sudah tidak lagi aman terhadap serangan brute force dengan komputasi modern.)\_
 
@@ -195,13 +195,13 @@ Modulo adalah operasi untuk mencari **sisa bagi** dari sebuah pembagian.
 **Answer the questions below:**
 
 - **Question:** What's 1001 $\oplus$ 1010?
-- **Answer:** 0011
+- **Answer:** ?
   _(Cara Hitung: 1$\oplus$1=0, 0$\oplus$0=0, 0$\oplus$1=1, 1$\oplus$0=1)_
 
 - **Question:** What's 118613842 % 9091?
-- **Answer:** 3565
+- **Answer:** ?
   _(Cara Hitung: Lu bisa pake Python di terminal Kitty lu: `python3 -c "print(118613842 % 9091)"`)_
 
 - **Question:** What's 60 % 12?
-- **Answer:** 0
+- **Answer:** ?
   _(Cara Hitung: 60 habis dibagi 12, jadi sisanya adalah 0)_
