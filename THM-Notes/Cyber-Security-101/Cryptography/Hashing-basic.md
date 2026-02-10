@@ -219,4 +219,4 @@ Hashing standar hanya menjamin **Integritas** (file tidak berubah), tapi tidak m
 **Practical Exercise:**
 
 - **Soal:** Decode string `RU5jb2RlREVjb2RlCg==`
-- **Jawaban:** `?`
+- **Answer:** `?`
