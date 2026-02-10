@@ -93,8 +93,8 @@
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
-| 1. | [Metasploit Introduction](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Introduction.md) | Metasploit Framework basics |
-| 2. | [Moniker Link (CVE-2024-21413)](THM-Notes/Cyber-Security-101/Exploitation-Basics/Moniker-Links.md) | Outlook Moniker Link vulnerability |
+| 1. | [Moniker Link (CVE-2024-21413)](THM-Notes/Cyber-Security-101/Exploitation-Basics/Moniker-Links.md) | Outlook Moniker Link vulnerability |
+| 2. | [Metasploit Introduction](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Introduction.md) | Metasploit Framework basics |
 
 </details>
 
