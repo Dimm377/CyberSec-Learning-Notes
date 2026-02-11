@@ -96,6 +96,7 @@
 | 1. | [Moniker Link (CVE-2024-21413)](THM-Notes/Cyber-Security-101/Exploitation-Basics/Moniker-Links.md) | Outlook Moniker Link vulnerability |
 | 2. | [Metasploit Introduction](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Introduction.md) | Metasploit Framework basics |
 | 3. | [Metasploit Exploitation](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Exploitation.md) | Scanning, Database, Msfvenom |
+| 4. | [Metasploit Meterpreter](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Meterpreter.md) | Post-Exploitation payload |
 
 </details>
 
