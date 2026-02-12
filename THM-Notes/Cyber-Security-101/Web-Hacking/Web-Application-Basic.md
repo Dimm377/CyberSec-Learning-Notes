@@ -199,9 +199,64 @@ Contoh header yang sering muncul:
 ### 2. HTTP Body
 Ini isi paketannya. Biasanya dipake kalo kita kirim data (pake method POST).
 Format isinya wajib dikasih tau lewat header **Content-Type**:
-- **application/x-www-form-urlencoded:** Format standar HTML form (kayak query string).
-- **multipart/form-data:** Buat upload file gede/gambar.
-- **application/json:** Format data modern (sering dipake API).
+
+**a. application/x-www-form-urlencoded**
+Format paling standar, mirip query string.
+```http
+POST /profile HTTP/1.1
+Host: tryhackme.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33
+
+name=Aleksandra&age=27&country=US
+```
+
+**b. multipart/form-data**
+Buat upload file. Ada batas pemisah (boundary) antar datanya.
+```http
+POST /upload HTTP/1.1
+Host: tryhackme.com
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="username"
+
+aleksandra
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="profile_pic"; filename="aleksandra.jpg"
+Content-Type: image/jpeg
+
+[Binary Data Here representing the image]
+----WebKitFormBoundary7MA4YWxkTrZu0gW--
+```
+
+**c. application/json**
+Format data modern, pake kurung kurawal `{}`. Sering dipake API.
+```http
+POST /api/user HTTP/1.1
+Host: tryhackme.com
+Content-Type: application/json
+
+{
+    "name": "Aleksandra",
+    "age": 27,
+    "country": "US"
+}
+```
+
+**d. application/xml**
+Format agak jadul, pake tag HTML-style `<>`.
+```http
+POST /api/user HTTP/1.1
+Host: tryhackme.com
+Content-Type: application/xml
+
+<user>
+    <name>Aleksandra</name>
+    <age>27</age>
+    <country>US</country>
+</user>
+```
 
 **Answer the questions below:**
 
