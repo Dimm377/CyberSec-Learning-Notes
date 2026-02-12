@@ -72,7 +72,7 @@ Misal ada URL: `https://www.tryhackme.com/room/network?join=true#task1`
 1.  **Scheme / Protocol (`https://`):**
     - Aturan main komunikasinya.
     - **HTTP:** Biasa aja, nggak dienkripsi (bahaya buat kirim password).
-    - **HTTPS:** Aman, dienkripsi (gembok ijo).
+    - **HTTPS:** Aman, dienkripsi .
 
 2.  **User (`user:password@`):**
     - Jarang dipake sekarang. Dulu buat login langsung lewat URL (misal FTP).
@@ -99,7 +99,7 @@ Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` b
 
 - **Question:** Which protocol provides encrypted communication to ensure secure data transmission between a web browser and a web server?
 - **Answer:** ?
-  _(Clue: Protokol yang ada 'S'-nya, Secure)_
+  _(Clue: Protokol yang ada 'S'-nya)_
 
 - **Question:** What term describes the practice of registering domain names that are misspelled variations of popular websites to exploit user errors and potentially engage in fraudulent activities?
 - **Answer:** ?
@@ -119,15 +119,15 @@ Ada dua jenis pesan utama:
 
 1.  **HTTP Request (Permintaan):**
     - Pesan yang dikirim **Client (Browser)** ke Server.
-    - Isinya: "Eh server, gue minta halaman ini dong!" atau "Nih gue kirim data login".
+    - Isinya: "Eh server, minta halaman ini dong!" atau "Nih gw kirim data login".
 
 2.  **HTTP Response (Jawaban):**
     - Pesan balasan dari **Server** ke Client.
-    - Isinya: "Oke, ini halamannya" atau "Waduh, file-nya nggak ketemu (404)".
+    - Isinya: "Oke, ini halamannya wir" atau "Waduh, file-nya nggak ketemu le (404)".
 
 **Struktur Pesan HTTP:**
 
-Sebuah pesan HTTP biasanya punya format kayak gini:
+Sebuah pesan HTTP biasanya punya format seperti ini:
 
 1.  **Start Line:** Baris pertama. Isinya jenis request (GET/POST) atau status response (200 OK).
 2.  **Headers:** Info tambahan. Kayak metadata (Jenis browser, bahasa, cookies, dll).
@@ -148,7 +148,7 @@ Sebuah pesan HTTP biasanya punya format kayak gini:
 
 ## Task 5: HTTP Request (Method & Request Line)
 
-Task ini ngebahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya ada 3 bagian penting:
+membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya ada 3 bagian penting:
 
 `GET /room/webapplicationbasics HTTP/1.1`
 
@@ -170,11 +170,11 @@ Task ini ngebahas komponen paling atas dari HTTP Request, yaitu **Request Line**
 
 - **Question:** What is the most common HTTP version used?
 - **Answer:** ?
-  _(Clue: Versi 1.1)_
+  _(Clue: HTTP yang umum dipakai)_
 
 - **Question:** What HTTP verb is used to request the options available for a given service?
 - **Answer:** ?
-  _(Clue: Method buat nanya opsi?)_
+  _(Clue: Method untuk nanya opsi?)_
 
 - **Question:** Which part of the HTTP request indicates the resource the client wants to access?
 - **Answer:** ?
