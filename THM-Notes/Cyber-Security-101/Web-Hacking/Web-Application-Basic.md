@@ -10,49 +10,52 @@
 
 ## Task 1: Introduction
 
-Room ini bertujuan untuk memberikan pemahaman dasar tentang bagaimana aplikasi web bekerja.
+Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
 
-**Learning Objectives:**
+**Apa aja yang bakal dipelajari:**
 
-1.  Memahami apa itu Web Application.
-2.  Komponen URL.
-3.  Cara kerja HTTP (Request & Response).
-4.  HTTP Methods dan Response Codes.
-5.  Pentingnya HTTP Headers dan Cookies.
+1.  Paham apa itu Web Application.
+2.  Bedah anatomi URL.
+3.  Gimana cara HTTP kerja (Request & Response).
+4.  Apa itu HTTP Methods dan kode-kode response-nya.
+5.  Kenapa HTTP Headers dan Cookies itu penting.
 
 ---
 
 ## Task 2: Web Application Overview
 
-Aplikasi web bekerja dengan konsep **Client-Server**.
+Intinya, aplikasi web itu kerjanya pakai konsep **Client-Server**. Ada yang minta (kita), ada yang ngelayanin (server).
 
 **Analogi (Planet):**
-Bayangkan sebuah planet 🌍.
+Biar gampang, bayangin web app itu kayak sebuah planet 🌍.
 
-- **Permukaan Planet (Front-End):** Bagian yang terlihat, bisa dipijak, dan dinikmati pemandangannya. Ini seperti apa yang kita lihat di browser (HTML/CSS).
-- **Inti Planet (Back-End):** Bagian dalam planet yang menopang semuanya. Ada struktur geologi dan magma yang bekerja agar planet tetap "hidup", tapi tidak terlihat langsung dari permukaan.
+- **Permukaan Planet (Front-End):** Bagian luar yang kelihatan, bisa kita injak, dan kita nikmati pemandangannya. Ini ibarat **Front-End** yang kita lihat di browser (tampilan website, tombol, warna-warni HTML/CSS).
+- **Inti Planet (Back-End):** Bagian dalem planet yang nggak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang bikin planetnya tetep "hidup" dan utuh. Ini ibarat **Back-End** (server & database) yang ngerjain semua proses di balik layar.
 
 **Komponen Utama:**
 
 1.  **Front-End (Client-Side):**
-    - Bagian yang dilihat dan diinteraksikan oleh pengguna.
-    - Dijalankan di browser.
-    - Teknologi: **HTML** (Struktur), **CSS** (Tampilan), **JavaScript** (Interaksi).
+    - Ini bagian yang kita liat dan klik-klik.
+    - Jalan di browser laptop/hp kita.
+    - Teknologinya: **HTML** (Kerangkanya), **CSS** (Bajunya/Tampilannya), **JavaScript** (Otaknya/Interaksinya).
 
 2.  **Back-End (Server-Side):**
-    - Bagian di balik layar yang memproses logika bisnis dan data.
-    - Komponen:
-      - **Web Server:** Mengirimkan konten web ke pengguna (Contoh: Apache, Nginx).
-      - **Database:** Menyimpan data aplikasi (Contoh: MySQL, PostgreSQL).
-      - **WAF (Web Application Firewall):** Komponen keamanan opsional untuk menyaring trafik jahat.
+    - Bagian "dapur" yang ngeracik data & logika bisnis.
+    - Isinya ada:
+      - **Web Server:** Tukang kirim konten web ke kita (Contoh: Apache, Nginx).
+      - **Database:** Gudang penyimpanan data (Contoh: MySQL, PostgreSQL).
+      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker.
 
 **Answer the questions below:**
 
 - **Question:** Which component on a computer is responsible for hosting and delivering content for web applications?
 - **Answer:** ?
+  *(Clue: Web Server)*
 
 - **Question:** Which tool is used to access and interact with web applications?
 - **Answer:** ?
+  *(Clue: Web Browser)*
 
 - **Question:** Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the web application?
 - **Answer:** ?
+  *(Clue: Web Application Firewall)*
