@@ -10,7 +10,7 @@
 
 ## Task 1: Introduction
 
-Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
+Room ini bakal ngajarin kita basic-basic tentang cara kerja aplikasi web itu
 
 **Apa aja yang bakal dipelajari:**
 
@@ -27,35 +27,32 @@ Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu.
 Intinya, aplikasi web itu kerjanya pakai konsep **Client-Server**. Ada yang minta (kita), ada yang ngelayanin (server).
 
 **Analogi (Planet):**
-Biar gampang, bayangin web app itu kayak sebuah planet 🌍.
+Biar gampang, bayangin web app itu seperti sebuah planet.
 
 - **Permukaan Planet (Front-End):** Bagian luar yang kelihatan, bisa kita injak, dan kita nikmati pemandangannya. Ini ibarat **Front-End** yang kita lihat di browser (tampilan website, tombol, warna-warni HTML/CSS).
-- **Inti Planet (Back-End):** Bagian dalem planet yang nggak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang bikin planetnya tetep "hidup" dan utuh. Ini ibarat **Back-End** (server & database) yang ngerjain semua proses di balik layar.
+- **Inti Planet (Back-End):** Bagian dalem planet yang nggak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang bikin planetnya tetep hidup dan utuh. Ini ibarat **Back-End** (server & database) yang mengerjakan semua proses di balik layar.
 
 **Komponen Utama:**
 
 1.  **Front-End (Client-Side):**
-    - Ini bagian yang kita liat dan klik-klik.
+    - Ini bagian yang kita liat dan bisa kita interaksi.
     - Jalan di browser laptop/hp kita.
     - Teknologinya: **HTML** (Kerangkanya), **CSS** (Bajunya/Tampilannya), **JavaScript** (Otaknya/Interaksinya).
 
 2.  **Back-End (Server-Side):**
-    - Bagian "dapur" yang ngeracik data & logika bisnis.
+    - Bagian dapur yang ngeracik data & logika sebuah aplikasi.
     - Isinya ada:
       - **Web Server:** Tukang kirim konten web ke kita (Contoh: Apache, Nginx).
       - **Database:** Gudang penyimpanan data (Contoh: MySQL, PostgreSQL).
-      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker.
+      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker, sebenarnya bukan opsional kalo buat zaman sekarang wkwk
 
 **Answer the questions below:**
 
 - **Question:** Which component on a computer is responsible for hosting and delivering content for web applications?
 - **Answer:** ?
-  *(Clue: Web Server)*
 
 - **Question:** Which tool is used to access and interact with web applications?
 - **Answer:** ?
-  *(Clue: Web Browser)*
 
 - **Question:** Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the web application?
 - **Answer:** ?
-  *(Clue: Web Application Firewall)*
