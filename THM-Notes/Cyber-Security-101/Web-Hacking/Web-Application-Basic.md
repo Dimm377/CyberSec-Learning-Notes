@@ -403,3 +403,71 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
 - **Question:** Which HTTP header directive is used to prevent browsers from interpreting files as a different MIME type than what is specified by the server, thereby mitigating content type sniffing attacks?
 - **Answer:** ?
   _(Clue: no...)_
+
+---
+
+## Task 10: Practical Task: Making HTTP Requests
+
+Nah, sekarang saatnya praktek! Di task ini kita bakal mainan sama **Mini Emulator** buat simulasi kirim request ke API.
+
+**Skenario:**
+Kita punya akses ke sistem manajemen user sederhana.
+
+### 1. GET Request (Ambil Data)
+Misi: Ambil daftar semua user.
+- **Method:** GET
+- **URL/Endpoint:** `/api/users`
+- **Caranya:** Pilih method GET, ketik endpoint-nya, klick Send.
+- **Hasil:** Dapet list user + Flag 1.
+
+### 2. POST Request (Update Data)
+Misi: Ubah data user "Bob" (ID 2) biar negaranya jadi "US".
+- **Method:** POST
+- **URL/Endpoint:** `/api/user/2`
+- **Body/Data:** `country=US`
+- **Caranya:**
+    - Pilih method POST.
+    - Ketik endpoint-nya.
+    - Masukin data di bagian Body/Parameters.
+    - Klik Send.
+- **Hasil:** Data keupdate + Flag 2.
+
+### 3. DELETE Request (Hapus Data)
+Misi: Hapus user dengan ID 1.
+- **Method:** DELETE
+- **URL/Endpoint:** `/api/user/1`
+- **Caranya:** Pilih method DELETE, ketik endpoint-nya, klik Send.
+- **Hasil:** User kehapus + Flag 3.
+
+**Answer the questions below:**
+
+- **Question:** Make a GET request to /api/users. What is the flag?
+- **Answer:** ?
+  _(Clue: THM{YOU_HAVE_JUST_FOUND_THE_...})_
+
+- **Question:** Make a POST request to /api/user/2 and update the country of Bob from UK to US. What is the flag?
+- **Answer:** ?
+  _(Clue: THM{YOU_HAVE_MODIFIED_THE_...})_
+
+- **Question:** Make a DELETE request to /api/user/1 to delete the user. What is the flag?
+- **Answer:** ?
+  _(Clue: THM{YOU_HAVE_DELETED_...})_
+
+---
+
+## Task 11: Conclusion
+
+Hore! Kelar juga room Web Application Basics ini. 🎉
+
+**Ringkasan yang udah kita pelajari:**
+1.  **Web App:** Interaksi Client-Server (Planet Analogy).
+2.  **HTTP:** Bahasa komunikasinya (Request & Response).
+3.  **URL:** Alamat lengkap resource.
+4.  **Methods:** GET, POST, PUT, DELETE (Cara kita ngomong).
+5.  **Headers:** Info tambahan (Cookie, User-Agent, Security Headers).
+6.  **Status Codes:** 200 (OK), 404 (Not Found), 500 (Error).
+
+Pondasi ini bakal kepake banget buat materi selanjutnya kayak **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya. Jangan lupa santuy dan terus belajar! ☕
+
+---
+
