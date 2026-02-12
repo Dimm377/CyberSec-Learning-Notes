@@ -187,6 +187,7 @@ membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya 
 Setelah baris pertama (Request Line), ada **Headers** dan **Body**.
 
 ### 1. HTTP Headers
+
 Ini kayak label paketan. Ngasih tau info tambahan soal paketnya.
 Contoh header yang sering muncul:
 
@@ -197,11 +198,13 @@ Contoh header yang sering muncul:
 - **Cookie:** Tiket/token identitas kita (biar server tau kita udah login).
 
 ### 2. HTTP Body
+
 Ini isi paketannya. Biasanya dipake kalo kita kirim data (pake method POST).
 Format isinya wajib dikasih tau lewat header **Content-Type**:
 
 **a. application/x-www-form-urlencoded**
 Format paling standar, mirip query string.
+
 ```http
 POST /profile HTTP/1.1
 Host: tryhackme.com
@@ -213,6 +216,7 @@ name=Aleksandra&age=27&country=US
 
 **b. multipart/form-data**
 Buat upload file. Ada batas pemisah (boundary) antar datanya.
+
 ```http
 POST /upload HTTP/1.1
 Host: tryhackme.com
@@ -232,6 +236,7 @@ Content-Type: image/jpeg
 
 **c. application/json**
 Format data modern, pake kurung kurawal `{}`. Sering dipake API.
+
 ```http
 POST /api/user HTTP/1.1
 Host: tryhackme.com
@@ -246,6 +251,7 @@ Content-Type: application/json
 
 **d. application/xml**
 Format agak jadul, pake tag HTML-style `<>`.
+
 ```http
 POST /api/user HTTP/1.1
 Host: tryhackme.com
@@ -262,15 +268,12 @@ Content-Type: application/xml
 
 - **Question:** What header is used to specify the domain name of the web server?
 - **Answer:** ?
-  _(Clue: Tuan rumah)_
 
 - **Question:** Which header identifies the client software (browser) making the request?
 - **Answer:** ?
-  _(Clue: Agen pengguna)_
 
 - **Question:** What is the Content-Type for standard HTML form submissions?
 - **Answer:** ?
-  _(Clue: application/x-www-form-ur...)_
 
 ---
 
@@ -282,6 +285,7 @@ Contoh Status Line:
 `HTTP/1.1 200 OK`
 
 Isinya ada 3 macem:
+
 1.  **HTTP Version:** Protokol yang dipake (biasanya HTTP/1.1).
 2.  **Status Code:** Angka ajaib yang nunjukin hasil requestnya (sukses/gagal).
 3.  **Status Message:** Penjelasan singkat dari kodenya (misal "OK", "Not Found").
@@ -292,21 +296,21 @@ Isinya ada 3 macem:
   - Jarang banget kita liat langsung.
 
 - **2xx (Success):** "Mantap, berhasil!"
-  - **200 OK:** Request sukses, ini yang kita harapkan.
+  - **200 OK:** Request sukses
 
-- **3xx (Redirection):** "Pindah lapak ya."
+- **3xx (Redirection):** "Pindah page ya."
   - **301 Moved Permanently:** Halaman udah pindah selamanya.
   - **302 Found:** Pindah sementara.
 
 - **4xx (Client Error):** "Salah lu wir." (Error dari sisi kita/browser)
-  - **400 Bad Request:** Request kita nggak jelas/ngaco.
-  - **401 Unauthorized:** Belum login atau nggak boleh masuk.
-  - **403 Forbidden:** Login sih udah, tapi tetep dilarang masuk (hak akses kurang).
+  - **400 Bad Request:** Request nggak jelas/ngaco.
+  - **401 Unauthorized:** Belum login atau nggak boleh masuk,
+  - **403 Forbidden:** Login udah, tapi tetep dilarang masuk (lu siapa mpruy).
   - **404 Not Found:** Halaman yang dicari nggak ada (klasik nih).
 
 - **5xx (Server Error):** "Salah gue wir." (Error dari sisi server)
-  - **500 Internal Server Error:** Server-nya error, codingan backend-nya mbledos.
-  - **503 Service Unavailable:** Server lagi down atau keberatan beban.
+  - **500 Internal Server Error:** Server-nya error, codingan backend-nya ngawur.
+  - **503 Service Unavailable:** Server lagi down atau keberatan beban (gara ga ada dana).
 
 **Answer the questions below:**
 
@@ -316,4 +320,41 @@ Isinya ada 3 macem:
 
 - **Question:** Which category of HTTP response codes indicates that the web server encountered an internal error?
 - **Answer:** ?
-  _(Clue: Kode kepala 5xx)_
+  _(Clue: Kode 5xx)_
+
+---
+
+## Task 8: HTTP Response (Headers & Body)
+
+Sama kayak Request, Response juga punya **Headers** dan **Body**.
+
+### 1. HTTP Response Headers
+Buat ngasih informasi tambahan dari server ke browser.
+Contoh penting:
+
+- **Server:** Ngasih tau server pake software apa (misal Apache/Nginx). *Bahaya kalo ketauan version-nya, bisa dicari celahnya!*
+- **Set-Cookie:** Server nyuruh browser buat nyimpen tiket/cookie.
+  - **Secure:** Cookie cuma boleh dikirim lewat HTTPS (biar aman).
+  - **HttpOnly:** Cookie nggak boleh diakses sama JavaScript (biar gak kena hack XSS).
+- **Content-Length:** Ukuran file/halaman yang dikirim.
+- **Content-Type:** Jenis file yang dikirim (misal `text/html` atau `application/json`).
+
+### 2. HTTP Response Body
+Isi surat balesan dari server. Biasanya berupa:
+- Kode HTML halaman webnya.
+- File gambar/PDF.
+- Data JSON (kalo API).
+
+**Answer the questions below:**
+
+- **Question:** Which HTTP response header can reveal information about the web server's software and version, potentially exposing it to security risks if not removed?
+- **Answer:** ?
+  _(Clue: Header nama software server)_
+
+- **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to ensure they are only transmitted over HTTPS, protecting them from being exposed during unencrypted transmissions?
+- **Answer:** ?
+  _(Clue: Flag biar aman/secure)_
+
+- **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to prevent client-side scripts (like JavaScript) from accessing them, thereby mitigating XSS attacks?
+- **Answer:** ?
+  _(Clue: Cuma HTTP aja)_
