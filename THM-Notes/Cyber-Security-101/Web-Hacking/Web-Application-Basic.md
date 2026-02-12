@@ -108,3 +108,38 @@ Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` b
 - **Question:** What part of a URL is used to pass additional information, such as search terms or form inputs, to the web server?
 - **Answer:** ?
   *(Clue: Yang diawali tanda tanya `?`)*
+
+---
+
+## Task 4: HTTP Messages
+
+HTTP itu kayak bahasa yang dipake Client dan Server buat ngobrol. Obrolan mereka bentuknya pesan teks sederhana.
+
+Ada dua jenis pesan utama:
+
+1.  **HTTP Request (Permintaan):**
+    - Pesan yang dikirim **Client (Browser)** ke Server.
+    - Isinya: "Eh server, gue minta halaman ini dong!" atau "Nih gue kirim data login".
+
+2.  **HTTP Response (Jawaban):**
+    - Pesan balasan dari **Server** ke Client.
+    - Isinya: "Oke, ini halamannya" atau "Waduh, file-nya nggak ketemu (404)".
+
+**Struktur Pesan HTTP:**
+
+Sebuah pesan HTTP biasanya punya format kayak gini:
+
+1.  **Start Line:** Baris pertama. Isinya jenis request (GET/POST) atau status response (200 OK).
+2.  **Headers:** Info tambahan. Kayak metadata (Jenis browser, bahasa, cookies, dll).
+3.  **Empty Line (Baris Kosong):** Ini PENTING! Pemisah antara Header dan Body.
+4.  **Body:** Isinya data benerannya (misal kode HTML halaman web, atau data form yang kita kirim).
+
+**Answer the questions below:**
+
+- **Question:** Which HTTP message is returned by the web server after processing a client's request?
+- **Answer:** ?
+  *(Clue: Kebalikannya Request)*
+
+- **Question:** What follows the headers in an HTTP message?
+- **Answer:** ?
+  *(Clue: Pemisah sebelum body)*
