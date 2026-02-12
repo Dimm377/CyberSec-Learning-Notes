@@ -10,7 +10,7 @@
 
 ## Task 1: Introduction
 
-Room ini bakal ngajarin kita basic-basic tentang cara kerja aplikasi web itu
+Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
 
 **Apa aja yang bakal dipelajari:**
 
@@ -27,32 +27,84 @@ Room ini bakal ngajarin kita basic-basic tentang cara kerja aplikasi web itu
 Intinya, aplikasi web itu kerjanya pakai konsep **Client-Server**. Ada yang minta (kita), ada yang ngelayanin (server).
 
 **Analogi (Planet):**
-Biar gampang, bayangin web app itu seperti sebuah planet.
+Biar gampang, bayangin web app itu kayak sebuah planet 🌍.
 
 - **Permukaan Planet (Front-End):** Bagian luar yang kelihatan, bisa kita injak, dan kita nikmati pemandangannya. Ini ibarat **Front-End** yang kita lihat di browser (tampilan website, tombol, warna-warni HTML/CSS).
-- **Inti Planet (Back-End):** Bagian dalem planet yang nggak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang bikin planetnya tetep hidup dan utuh. Ini ibarat **Back-End** (server & database) yang mengerjakan semua proses di balik layar.
+- **Inti Planet (Back-End):** Bagian dalem planet yang nggak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang bikin planetnya tetep "hidup" dan utuh. Ini ibarat **Back-End** (server & database) yang ngerjain semua proses di balik layar.
 
 **Komponen Utama:**
 
 1.  **Front-End (Client-Side):**
-    - Ini bagian yang kita liat dan bisa kita interaksi.
+    - Ini bagian yang kita liat dan klik-klik.
     - Jalan di browser laptop/hp kita.
     - Teknologinya: **HTML** (Kerangkanya), **CSS** (Bajunya/Tampilannya), **JavaScript** (Otaknya/Interaksinya).
 
 2.  **Back-End (Server-Side):**
-    - Bagian dapur yang ngeracik data & logika sebuah aplikasi.
+    - Bagian "dapur" yang ngeracik data & logika bisnis.
     - Isinya ada:
       - **Web Server:** Tukang kirim konten web ke kita (Contoh: Apache, Nginx).
       - **Database:** Gudang penyimpanan data (Contoh: MySQL, PostgreSQL).
-      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker, sebenarnya bukan opsional kalo buat zaman sekarang wkwk
+      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker.
 
 **Answer the questions below:**
 
 - **Question:** Which component on a computer is responsible for hosting and delivering content for web applications?
 - **Answer:** ?
+  *(Clue: Web Server)*
 
 - **Question:** Which tool is used to access and interact with web applications?
 - **Answer:** ?
+  *(Clue: Web Browser)*
 
 - **Question:** Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the web application?
 - **Answer:** ?
+  *(Clue: Web Application Firewall)*
+
+---
+
+## Task 3: Uniform Resource Locator (URL)
+
+URL itu sebenernya alamat lengkap buat nyari resource di internet/web server. Ibaratnya kayak alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
+
+**Bedah Anatomi URL:**
+Misal ada URL: `https://www.tryhackme.com/room/network?join=true#task1`
+
+1.  **Scheme / Protocol (`https://`):**
+    - Aturan main komunikasinya.
+    - **HTTP:** Biasa aja, nggak dienkripsi (bahaya buat kirim password).
+    - **HTTPS:** Aman, dienkripsi (gembok ijo).
+
+2.  **User (`user:password@`):**
+    - Jarang dipake sekarang. Dulu buat login langsung lewat URL (misal FTP).
+
+3.  **Host / Domain (`www.tryhackme.com`):**
+    - Nama server yang kita tuju. Ini di-resolve jadi IP Address sama DNS.
+
+4.  **Port (`:443`):**
+    - Pintu masuk ke server. Defaultnya HTTP=80, HTTPS=443 (biasanya disembunyiin/otomatis).
+
+5.  **Path (`/room/network`):**
+    - Lokasi file atau halaman yang kita minta di server itu.
+
+6.  **Query String (`?join=true`):**
+    - Info tambahan yang kita kirim ke server. Mulai pake tanda tanya `?`.
+
+7.  **Fragment (`#task1`):**
+    - Penunjuk lokasi spesifik di dalam halaman itu sendiri (scroll otomatis ke bagian tertentu).
+
+**Hati-hati sama Typosquatting!**
+Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` bukan `google.com`) buat nipu orang. Jadi mata harus jeli liat URL!
+
+**Answer the questions below:**
+
+- **Question:** Which protocol provides encrypted communication to ensure secure data transmission between a web browser and a web server?
+- **Answer:** ?
+  *(Clue: Protokol yang ada 'S'-nya, Secure)*
+
+- **Question:** What term describes the practice of registering domain names that are misspelled variations of popular websites to exploit user errors and potentially engage in fraudulent activities?
+- **Answer:** ?
+  *(Clue: Typo...)*
+
+- **Question:** What part of a URL is used to pass additional information, such as search terms or form inputs, to the web server?
+- **Answer:** ?
+  *(Clue: Yang diawali tanda tanya `?`)*
