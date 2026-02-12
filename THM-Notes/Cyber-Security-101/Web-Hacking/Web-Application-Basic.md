@@ -15,7 +15,7 @@ Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu.
 **Apa aja yang bakal dipelajari:**
 
 1.  Paham apa itu Web Application.
-2.  Bedah anatomi URL.
+2.  Bedah apa yang ada di URL.
 3.  Gimana cara HTTP kerja (Request & Response).
 4.  Apa itu HTTP Methods dan kode-kode response-nya.
 5.  Kenapa HTTP Headers dan Cookies itu penting.
