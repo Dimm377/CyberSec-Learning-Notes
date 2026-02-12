@@ -216,3 +216,49 @@ Format isinya wajib dikasih tau lewat header **Content-Type**:
 - **Question:** What is the Content-Type for standard HTML form submissions?
 - **Answer:** ?
   _(Clue: application/x-www-form-ur...)_
+
+---
+
+## Task 7: HTTP Response (Status Line & Codes)
+
+Pas server ngebales request kita, dia kirim **HTTP Response**. Baris pertamanya namanya **Status Line**.
+
+Contoh Status Line:
+`HTTP/1.1 200 OK`
+
+Isinya ada 3 macem:
+1.  **HTTP Version:** Protokol yang dipake (biasanya HTTP/1.1).
+2.  **Status Code:** Angka ajaib yang nunjukin hasil requestnya (sukses/gagal).
+3.  **Status Message:** Penjelasan singkat dari kodenya (misal "OK", "Not Found").
+
+**Kamus Status Code (Wajib Hapal dikit-dikit):**
+
+- **1xx (Informational):** "Bentar ya, lagi diproses."
+  - Jarang banget kita liat langsung.
+
+- **2xx (Success):** "Mantap, berhasil!"
+  - **200 OK:** Request sukses, ini yang kita harapkan.
+
+- **3xx (Redirection):** "Pindah lapak ya."
+  - **301 Moved Permanently:** Halaman udah pindah selamanya.
+  - **302 Found:** Pindah sementara.
+
+- **4xx (Client Error):** "Salah lu wir." (Error dari sisi kita/browser)
+  - **400 Bad Request:** Request kita nggak jelas/ngaco.
+  - **401 Unauthorized:** Belum login atau nggak boleh masuk.
+  - **403 Forbidden:** Login sih udah, tapi tetep dilarang masuk (hak akses kurang).
+  - **404 Not Found:** Halaman yang dicari nggak ada (klasik nih).
+
+- **5xx (Server Error):** "Salah gue wir." (Error dari sisi server)
+  - **500 Internal Server Error:** Server-nya error, codingan backend-nya mbledos.
+  - **503 Service Unavailable:** Server lagi down atau keberatan beban.
+
+**Answer the questions below:**
+
+- **Question:** What part of an HTTP response provides the HTTP version, status code, and a brief explanation of the response's outcome?
+- **Answer:** ?
+  _(Clue: Baris paling atas di response)_
+
+- **Question:** Which category of HTTP response codes indicates that the web server encountered an internal error?
+- **Answer:** ?
+  _(Clue: Kode kepala 5xx)_
