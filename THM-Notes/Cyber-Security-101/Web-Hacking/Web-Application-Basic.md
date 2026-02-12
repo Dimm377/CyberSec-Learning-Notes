@@ -179,3 +179,40 @@ membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya 
 - **Question:** Which part of the HTTP request indicates the resource the client wants to access?
 - **Answer:** ?
   _(Clue: Bagian tengah di request line)_
+
+---
+
+## Task 6: HTTP Request (Headers & Body)
+
+Setelah baris pertama (Request Line), ada **Headers** dan **Body**.
+
+### 1. HTTP Headers
+Ini kayak label paketan. Ngasih tau info tambahan soal paketnya.
+Contoh header yang sering muncul:
+
+- **Host:** Wajib ada! Ngasih tau kita mau ke domain mana (misal `tryhackme.com`).
+- **User-Agent:** Identitas browser yang kita pake (misal Chrome, Firefox, atau script Python/curl).
+- **Referer:** Ngasih tau kita dateng dari link mana (asal muasal).
+- **Accept-Encoding:** Client bilang "gue bisa baca file yang dikompres pake format gzip lho".
+- **Cookie:** Tiket/token identitas kita (biar server tau kita udah login).
+
+### 2. HTTP Body
+Ini isi paketannya. Biasanya dipake kalo kita kirim data (pake method POST).
+Format isinya wajib dikasih tau lewat header **Content-Type**:
+- **application/x-www-form-urlencoded:** Format standar HTML form (kayak query string).
+- **multipart/form-data:** Buat upload file gede/gambar.
+- **application/json:** Format data modern (sering dipake API).
+
+**Answer the questions below:**
+
+- **Question:** What header is used to specify the domain name of the web server?
+- **Answer:** ?
+  _(Clue: Tuan rumah)_
+
+- **Question:** Which header identifies the client software (browser) making the request?
+- **Answer:** ?
+  _(Clue: Agen pengguna)_
+
+- **Question:** What is the Content-Type for standard HTML form submissions?
+- **Answer:** ?
+  _(Clue: application/x-www-form-ur...)_
