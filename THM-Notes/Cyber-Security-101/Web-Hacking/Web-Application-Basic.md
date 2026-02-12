@@ -358,3 +358,48 @@ Isi surat balesan dari server. Biasanya berupa:
 - **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to prevent client-side scripts (like JavaScript) from accessing them, thereby mitigating XSS attacks?
 - **Answer:** ?
   _(Clue: Cuma HTTP aja)_
+
+---
+
+## Task 9: Security Headers
+
+Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tambahan buat website kita. Ini penting banget buat ngehalau serangan kayak XSS, Clickjacking, dll.
+
+**Beberapa Security Header Penting:**
+
+1.  **Strict-Transport-Security (HSTS):**
+    - Header ini maksa browser buat SELALU pake HTTPS kalo mau ngakses website kita.
+    - Jadi kalo ada user iseng ngetik `http://`, browser bakal otomatis ngubah jadi `https://`.
+    - Biar aman total (termasuk subdomain), biasanya ditambahin opsi `includeSubDomains`.
+
+2.  **Content-Security-Policy (CSP):**
+    - Ini rajanya security header buat client-side.
+    - Dia ngontrol resource apa aja yang boleh diload sama browser.
+    - Misal: "Cuma boleh load gambar dari domain gue tsendiri, script dari google.com boleh, sisanya BLOKIR!".
+    - Berguna banget buat nyegah **XSS (Cross-Site Scripting)**.
+    - Directive penting:
+        - `script-src`: Ngatur sumber script (JavaScript) yang boleh jalan.
+        - `img-src`: Ngatur sumber gambar.
+
+3.  **X-Content-Type-Options:**
+    - Kadang browser itu "sotoy". Kita kirim file text, dia malah nebak itu HTML trus dijalanin. Bahaya kan?
+    - Nah, header ini bilang ke browser: "Eh, jangan sotoy! Baca tipe file sesuai yang gue kasih tau aja (`Content-Type`). Jangan ditebak-tebak (sniffing)".
+    - Valuenya cuma satu: `nosniff`.
+
+4.  **X-Frame-Options:**
+    - Buat nyegah website kita di-embed di dalam `<iframe>` website orang lain.
+    - Ini buat nyegah serangan **Clickjacking** (orang bikin layer transparan di atas website kita buat nipu user suruh klik tombol).
+
+**Answer the questions below:**
+
+- **Question:** In a Content Security Policy (CSP) configuration, which property can be set to define where scripts can be loaded from?
+- **Answer:** ?
+  _(Clue: src untuk script)_
+
+- **Question:** When configuring the Strict-Transport-Security (HSTS) header to ensure that all subdomains of a site also use HTTPS, which directive should be included to apply the security policy to both the main domain and its subdomains?
+- **Answer:** ?
+  _(Clue: include+Sub+Domains)_
+
+- **Question:** Which HTTP header directive is used to prevent browsers from interpreting files as a different MIME type than what is specified by the server, thereby mitigating content type sniffing attacks?
+- **Answer:** ?
+  _(Clue: no...)_
