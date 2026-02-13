@@ -100,7 +100,7 @@
 
 </details>
 
-</details>
+
 
 <details>
 <summary>🌐 Web Hacking</summary>
