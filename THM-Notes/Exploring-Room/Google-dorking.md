@@ -135,24 +135,45 @@ File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, 
 
 ---
 
+---
+
 ## Task 6: What is Google Dorking?
 
 Ini dia menu utamanya: **Google Dorking**.
-Teknik pake operator pencarian Google buat nemuin hasil yang spesifik banget.
+Teknik pake operator pencarian Google buat nemuin hasil yang spesifik banget. Di dunia security, ini dipake buat **Reconnaissance** (nyari info target).
 
-**Operator Dasar:**
-1.  **site:** Nyari cuma di website tertentu.
-    *   Contoh: `site:tryhackme.com` (Cuma nampilin hasil dari THM).
-2.  **filetype:** Nyari jenis file tertentu.
-    *   Contoh: `filetype:pdf` (Cuma nampilin file PDF).
-3.  **intitle:** Nyari halaman yang JUDULNYA mengandung kata tertentu.
-    *   Contoh: `intitle:login` (Nyari halaman login).
-4.  **inurl:** Nyari URL yang mengandung kata tertentu.
-    *   Contoh: `inurl:admin` (Nyari URL yang ada kata admin-nya).
+### 1. Basic Operators (Operator Dasar)
+- **`site:`** -> Nyari di domain spesifik.
+  - Contoh: `site:tryhackme.com` (Cuma hasil dari THM).
+  - Contoh: `site:.go.id` (Cuma hasil dari domain pemerintah Indonesia).
+- **`filetype:`** (atau `ext:`) -> Nyari jenis file tertentu.
+  - Contoh: `filetype:pdf` (Dokumen PDF).
+  - Contoh: `ext:log` (File log, bahaya kalo bocor!).
+- **`inurl:`** -> Nyari kata di dalam URL.
+  - Contoh: `inurl:admin` (Kemungkinan halaman admin).
+- **`intitle:`** -> Nyari kata di Judul Halaman (Tab Browser).
+  - Contoh: `intitle:login` (Halaman login).
+- **`intext:`** -> Nyari kata di dalam isi artikel/body halaman.
+  - Contoh: `intext:"password"` (Nyari kata password di halaman).
 
-**Contoh Dork Sakti:**
-*   `site:gov.id filetype:pdf "rahasia"` -> Nyari PDF rahasia di situs pemerintah (Jangan disalahgunain ya!).
-*   `intitle:"index of" "backup"` -> Nyari server yang bocor (directory listing) isinya backup.
+### 2. Advanced Combinations (Combo Sakti)
+Gabungin operator di atas buat hasil yang ngeri.
+
+**a. Nyari Halaman Login / Admin Panel:**
+- `site:target.com intitle:"login"` -> Halaman login di target.
+- `inurl:admin intitle:"login"` -> Halaman login admin secara umum.
+
+**b. Nyari File Sensitif / Bocor:**
+- `filetype:log intext:"password"` -> Nyari file log yang isinya ada kata password.
+- `intitle:"index of" "backup"` -> **Directory Listing** (Folder kebuka) yang isinya file backup.
+- `site:gov.id filetype:pdf "rahasia"` -> Dokumen rahasia instansi pemerintah (Jangan disalahgunain!).
+
+**c. Nyari Config File:**
+- `ext:conf` atau `ext:cnf` -> File konfigurasi server.
+- `inurl:wp-config.txt` -> Konfigurasi WordPress yang bocor.
+
+### 3. Google Dorking Database (GHDB)
+Ada database isinya ribuan dork yang udah ditemuin orang lain: **Exploit-DB (GHDB)**. Isinya dork buat nyari CCTV, printer online, password, dll.
 
 **Answer the questions below:**
 
