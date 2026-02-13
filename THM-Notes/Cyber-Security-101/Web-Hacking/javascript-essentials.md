@@ -138,25 +138,32 @@ Ilustrasinya ada kode JS buat nambahin angka.
 
 ## Task 4: Integrating JavaScript in HTML
 
-Ada 2 cara utama buat masukin kode JS ke dalam HTML:
+Di task ini, kita diminta buat eksperimen pake file yang udah disediain: `external_test.html`.
+Tujuannya biar paham bedanya **Internal** vs **External** JS.
 
 **1. Internal JavaScript**
-Kode ditulis langsung di dalam file HTML, di antara tag `<script>`.
-```html
-<script>
-    console.log("Hello from Internal JS");
-</script>
-```
-*   **Cocok buat:** Kode pendek, testing.
-*   **Minus:** Bikin file HTML jadi penuh/berantakan.
+Kode JS ditulis langsung di dalem file HTML pake tag `<script>`.
+*   **Contoh:**
+    ```html
+    <!-- Di dalam file HTML -->
+    <script>
+        console.log("Hello from Internal JS");
+    </script>
+    ```
 
 **2. External JavaScript**
-Kode ditulis di file terpisah (ekstensi `.js`), terus dipanggil di HTML pake atribut `src`.
-```html
-<script src="script.js"></script>
-```
-*   **Cocok buat:** Proyek besar, *Code Reusability* (satu file JS bisa dipake banyak halaman).
-*   **Plus:** Rapi, caching browser lebih optimal.
+Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake atribut `src`.
+*   **Skenario Room:**
+    *   Kita punya file HTML: `external_test.html`.
+    *   Kita punya file JS: `thm_external.js`.
+    *   Cara nge-link-nya:
+        ```html
+        <!-- Di dalam external_test.html -->
+        <script src="thm_external.js"></script>
+        ```
+*   **Kenapa pake External?**
+    *   Bisa dipake ulang di banyak halaman (Reusability).
+    *   Kode lebih rapi & bersih.
 
 **Answer the questions below:**
 
