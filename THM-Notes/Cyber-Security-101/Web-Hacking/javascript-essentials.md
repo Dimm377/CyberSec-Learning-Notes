@@ -29,3 +29,9 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa mmebuat website itu
 - Gunakan **Let** ketika ingin nilai di dalam nya berubah
 - Pakai **Const** kalau ingin nilai nya tetap
 - Lupakan **Var** Udah kuno ngapain make ini yang penting 2 diatas itu sekarang
+
+### Data Types
+
+di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
+
+**Contoh Tipe Data:**
