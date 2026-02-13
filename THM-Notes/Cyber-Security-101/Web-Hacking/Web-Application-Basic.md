@@ -12,13 +12,13 @@
 
 Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
 
-**Apa aja yang bakal dipelajari:**
+**Learning Objectives:**
 
-1.  Paham apa itu Web Application.
-2.  Bedah apa yang ada di URL.
-3.  Gimana cara HTTP kerja (Request & Response).
-4.  Apa itu HTTP Methods dan kode-kode response-nya.
-5.  Kenapa HTTP Headers dan Cookies itu penting.
+- Paham apa itu Web Application.
+- Bedah apa yang ada di URL.
+- Gimana cara HTTP bekerja (Request & Response).
+- Apa itu HTTP Methods dan kode-kode response-nya.
+- Kenapa HTTP Headers dan Cookies itu penting.
 
 ---
 
@@ -329,10 +329,11 @@ Isinya ada 3 macem:
 Sama kayak Request, Response juga punya **Headers** dan **Body**.
 
 ### 1. HTTP Response Headers
+
 Buat ngasih informasi tambahan dari server ke browser.
 Contoh penting:
 
-- **Server:** Ngasih tau server pake software apa (misal Apache/Nginx). *Bahaya kalo ketauan version-nya, bisa dicari celahnya!*
+- **Server:** Ngasih tau server pake software apa (misal Apache/Nginx). _Bahaya kalo ketauan version-nya, bisa dicari celahnya!_
 - **Set-Cookie:** Server nyuruh browser buat nyimpen tiket/cookie.
   - **Secure:** Cookie cuma boleh dikirim lewat HTTPS (biar aman).
   - **HttpOnly:** Cookie nggak boleh diakses sama JavaScript (biar gak kena hack XSS).
@@ -340,7 +341,9 @@ Contoh penting:
 - **Content-Type:** Jenis file yang dikirim (misal `text/html` atau `application/json`).
 
 ### 2. HTTP Response Body
+
 Isi surat balesan dari server. Biasanya berupa:
+
 - Kode HTML halaman webnya.
 - File gambar/PDF.
 - Data JSON (kalo API).
@@ -378,8 +381,8 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
     - Misal: "Cuma boleh load gambar dari domain gue tsendiri, script dari google.com boleh, sisanya BLOKIR!".
     - Berguna banget buat nyegah **XSS (Cross-Site Scripting)**.
     - Directive penting:
-        - `script-src`: Ngatur sumber script (JavaScript) yang boleh jalan.
-        - `img-src`: Ngatur sumber gambar.
+      - `script-src`: Ngatur sumber script (JavaScript) yang boleh jalan.
+      - `img-src`: Ngatur sumber gambar.
 
 3.  **X-Content-Type-Options:**
     - Kadang browser itu "sotoy". Kita kirim file text, dia malah nebak itu HTML trus dijalanin. Bahaya kan?
@@ -414,26 +417,35 @@ Nah, sekarang saatnya praktek! Di task ini kita bakal mainan sama **Mini Emulato
 Kita punya akses ke sistem manajemen user sederhana.
 
 ### 1. GET Request (Ambil Data)
+
 Misi: Ambil daftar semua user.
+
 - **Method:** GET
 - **URL/Endpoint:** `/api/users`
 - **Caranya:** Pilih method GET, ketik endpoint-nya, klick Send.
 - **Hasil:** Dapet list user + Flag 1.
 
 ### 2. POST Request (Update Data)
+
 Misi: Ubah data user "Bob" (ID 2) biar negaranya jadi "US".
+
 - **Method:** POST
 - **URL/Endpoint:** `/api/user/2`
+  - _Angka `2` di URL itu ID-nya si Bob. Jadi kita gak perlu tulis "Bob" di datanya._
 - **Body/Data:** `country=US`
 - **Caranya:**
-    - Pilih method POST.
-    - Ketik endpoint-nya.
-    - Masukin data di bagian Body/Parameters.
-    - Klik Send.
+  - Pilih method POST.
+  - Ketik endpoint-nya `/api/user/2`.
+  - Di bagian **Parameters** (atau Body):
+    - **Key:** `country`
+    - **Value:** `US`
+  - Klik Send.
 - **Hasil:** Data keupdate + Flag 2.
 
 ### 3. DELETE Request (Hapus Data)
+
 Misi: Hapus user dengan ID 1.
+
 - **Method:** DELETE
 - **URL/Endpoint:** `/api/user/1`
 - **Caranya:** Pilih method DELETE, ketik endpoint-nya, klik Send.
@@ -443,15 +455,12 @@ Misi: Hapus user dengan ID 1.
 
 - **Question:** Make a GET request to /api/users. What is the flag?
 - **Answer:** ?
-  _(Clue: THM{YOU_HAVE_JUST_FOUND_THE_...})_
 
 - **Question:** Make a POST request to /api/user/2 and update the country of Bob from UK to US. What is the flag?
 - **Answer:** ?
-  _(Clue: THM{YOU_HAVE_MODIFIED_THE_...})_
 
 - **Question:** Make a DELETE request to /api/user/1 to delete the user. What is the flag?
 - **Answer:** ?
-  _(Clue: THM{YOU_HAVE_DELETED_...})_
 
 ---
 
@@ -460,6 +469,7 @@ Misi: Hapus user dengan ID 1.
 Hore! Kelar juga room Web Application Basics ini. 🎉
 
 **Ringkasan yang udah kita pelajari:**
+
 1.  **Web App:** Interaksi Client-Server (Planet Analogy).
 2.  **HTTP:** Bahasa komunikasinya (Request & Response).
 3.  **URL:** Alamat lengkap resource.
@@ -470,4 +480,3 @@ Hore! Kelar juga room Web Application Basics ini. 🎉
 Pondasi ini bakal kepake banget buat materi selanjutnya kayak **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya. Jangan lupa santuy dan terus belajar! ☕
 
 ---
-
