@@ -296,7 +296,7 @@ Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan mai
 
 ## Task 9: Conclusion
 
-Selesai sudah room **Javascript Essentials** ini! 🥳
+Selesai sudah room **Javascript Essentials** ini!
 
 **Kita udah belajar:**
 1.  **Basic JS:** Variable, Data Types, Functions, Loops.
@@ -307,7 +307,7 @@ Selesai sudah room **Javascript Essentials** ini! 🥳
     *   Minification & Obfuscation.
     *   Bahaya nyimpen rahasia di JS.
 
-JavaScript itu powerful banget buat bikin web interaktif, tapi kalau nggak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!* 🚀
+JavaScript itu powerful banget buat bikin web interaktif, tapi kalau nggak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!*
 
 
 
