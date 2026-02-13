@@ -200,6 +200,74 @@ JavaScript punya 3 fungsi bawaan buat nampilin pop-up (dialogue box) ke user. In
 3.  **`confirm("Yakin?")`**
     *   Nampilin pilihan OK (return `true`) atau Cancel (return `false`).
 
+**Skenario di Room:**
+Kita dikasih file `invoice.html` yang isinya ada script nakal.
+Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
+
+**Answer the questions below:**
+
+- **Question:** In the file "invoice.html", how many times does the code show the alert "Hacked"?
+- **Answer:** ?
+  _(Clue: 5)_
+
+- **Question:** Which of the JS interactive elements should be used to display a dialogue box that asks the user for input?
+- **Answer:** ?
+  _(Clue: prompt)_
+
+- **Question:** If the user enters "Tesla", what value is stored in the carName variable in `carName = prompt("What is your car name?")`?
+- **Answer:** ?
+  _(Clue: Tesla)_
+
+---
+
+## Task 6: Bypassing Control Flow Statements
+
+Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma ngandelin JS doang itu **GAK AMAN**.
+
+**Konsep:**
+*   Website pake `if-else` buat ngecek sesuatu (misal: Umur > 18, Password bener/salah).
+*   Kita bisa manipulasi alur ini lewat **Browser Console** atau **Debugger**.
+*   Caranya: Ubah nilai variabel di tengah jalan, atau ubah logikanya.
+
+**Skenario Room:**
+*   Ada pengecekan umur.
+*   Ada form login admin.
+
+**Answer the questions below:**
+
+- **Question:** What is the message displayed if you enter the age less than 18?
+- **Answer:** ?
+  _(Clue: You are a minor.)_
+
+- **Question:** What is the password for the user admin?
+- **Answer:** ?
+  _(Clue: ComplexPassword)_
+
+---
+
+## Task 7: Exploring Minified Files
+
+Kode JS di production biasanya di-**Minify** dan di-**Obfuscate**.
+*   **Minification:** Hapus spasi, enter, komentar. Tujuannya biar file kecil & load cepet.
+*   **Obfuscation:** Bikin kode jadi ribet dibaca manusia (ubah nama variabel jadi `a`, `b`, `x`, dll). Tujuannya biar susah dicolong/dibaca orang lain.
+
+**Cara Baca (Deobfuscate):**
+*   Pake fitur **"Pretty Print"** (tanda `{}` di DevTools Chrome/Firefox).
+*   Pake tool online kayak **JSNice** atau **Beautifier**.
+
+**Skenario Room:**
+Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus baca nilai variabel `age` dari kode hex yang ribet.
+
+**Answer the questions below:**
+
+- **Question:** What is the alert message shown after running the file "hello.html"?
+- **Answer:** ?
+  _(Clue: Welcome to THM)_
+
+- **Question:** What is the value of the age variable in the following obfuscated code snippet?
+- **Answer:** ?
+  _(Clue: 21)_
+
 
 
 
