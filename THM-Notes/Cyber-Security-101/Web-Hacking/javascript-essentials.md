@@ -18,7 +18,7 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa mmebuat website itu
 - Bypassing Control Flow Statements
 - Exploring Minified files
 
-## Essentials Concept
+## Task 2: Essentials Concept
 
 ### Variables
 
@@ -63,3 +63,47 @@ sapaDunia();
 - Organized: Kode nya jadi lebih rapi dan lebih mudah dibaca nantinya
 
 - Modular: memecah mecah masalah besar jadi tugas-tugas kecil yang lebih gampang di maintenance.
+
+### Loops
+
+Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali selama kondisi tertentu terpenuhi. Ini sangat berguna buat ngurangin redundansi kode.
+
+**Jenis-jenis Loops di JavaScript:**
+
+1.  **For Loop:** Paling umum dipake, kita tau berapa kali loop harus jalan.
+    ```javascript
+    // Struktur: for (inisialisasi; kondisi; increment)
+    for (let i = 0; i < 5; i++) {
+        console.log("Perulangan ke-" + i);
+    }
+    // Output: 0, 1, 2, 3, 4
+    ```
+
+2.  **While Loop:** Jalan terus selama kondisinya `true`.
+    ```javascript
+    let i = 0;
+    while (i < 5) {
+        console.log("While loop ke-" + i);
+        i++;
+    }
+    ```
+
+3.  **Do...While Loop:** Mirip `while`, tapi minimal jalan **sekali** dulu baru cek kondisi.
+    ```javascript
+    let i = 0;
+    do {
+        console.log("Do-While loop ke-" + i);
+        i++;
+    } while (i < 5);
+    ```
+
+4.  **For...Of Loop (Array):** Enak banget buat nge-loop isi array.
+    ```javascript
+    const buah = ["Apel", "Jeruk", "Mangga"];
+    for (const item of buah) {
+        console.log("Buah: " + item);
+    }
+    ```
+
+---
+
