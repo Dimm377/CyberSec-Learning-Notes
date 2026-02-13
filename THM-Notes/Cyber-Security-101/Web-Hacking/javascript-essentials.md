@@ -183,4 +183,39 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake a
 - **Answer:** ?
   _(Clue: src)_
 
+---
+
+## Task 5: Abusing Dialogue Functions
+
+JavaScript punya 3 fungsi bawaan buat nampilin pop-up (dialogue box) ke user. Ini sering dipake buat interaksi, tapi bisa juga disalahgunain buat nge-prank (atau serangan XSS).
+
+**3 Fungsi Utama:**
+1.  **`alert("Pesan")`**
+    *   Cuma nampilin pesan + tombol OK.
+    *   *Abuse:* Kalo ditaruh di loop tanpa henti (`while(true)`), browser bakal hang/crash karena pop-up muncul terus.
+2.  **`prompt("Input Sesuatu")`**
+    *   Minta input teks dari user.
+    *   Nilai yang diinput bisa disimpen di variabel.
+    *   Contoh: `let nama = prompt("Siapa nama kamu?");`
+3.  **`confirm("Yakin?")`**
+    *   Nampilin pilihan OK (return `true`) atau Cancel (return `false`).
+
+**Skenario di Room:**
+Kita dikasih file `invoice.html` yang isinya ada script nakal.
+Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
+
+**Answer the questions below:**
+
+- **Question:** In the file "invoice.html", how many times does the code show the alert "Hacked"?
+- **Answer:** ?
+  _(Clue: 5)_
+
+- **Question:** Which of the JS interactive elements should be used to display a dialogue box that asks the user for input?
+- **Answer:** ?
+  _(Clue: prompt)_
+
+- **Question:** If the user enters "Tesla", what value is stored in the carName variable in `carName = prompt("What is your car name?")`?
+- **Answer:** ?
+  _(Clue: Tesla)_
+
 
