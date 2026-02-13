@@ -200,22 +200,6 @@ JavaScript punya 3 fungsi bawaan buat nampilin pop-up (dialogue box) ke user. In
 3.  **`confirm("Yakin?")`**
     *   Nampilin pilihan OK (return `true`) atau Cancel (return `false`).
 
-**Skenario di Room:**
-Kita dikasih file `invoice.html` yang isinya ada script nakal.
-Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
 
-**Answer the questions below:**
-
-- **Question:** In the file "invoice.html", how many times does the code show the alert "Hacked"?
-- **Answer:** ?
-  _(Clue: 5)_
-
-- **Question:** Which of the JS interactive elements should be used to display a dialogue box that asks the user for input?
-- **Answer:** ?
-  _(Clue: prompt)_
-
-- **Question:** If the user enters "Tesla", what value is stored in the carName variable in `carName = prompt("What is your car name?")`?
-- **Answer:** ?
-  _(Clue: Tesla)_
 
 

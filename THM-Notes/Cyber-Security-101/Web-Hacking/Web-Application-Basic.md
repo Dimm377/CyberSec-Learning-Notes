@@ -466,7 +466,6 @@ Misi: Hapus user dengan ID 1.
 
 ## Task 11: Conclusion
 
-Hore! Kelar juga room Web Application Basics ini. 🎉
 
 **Ringkasan yang udah kita pelajari:**
 
