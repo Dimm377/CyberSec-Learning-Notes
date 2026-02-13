@@ -39,4 +39,18 @@ di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
 - Number: Mewakili bilangan integer dan float (misalnya 42, 3.14)
 - String: Mewakili rangkaian karakter, ditahdai dengan tanda kutip (misalnya, 'halo', "dunia")
 - Boolean: Tipe data yang hanya ada 2 value **True & False**, sering digunakan untuk memvalidasi sebuah kondisi
-- Object:
+- Object: objek adalah kumpulan properti, di mana setiap properti didefinisikan sebagai pasangan nilai kunci. Objek memungkinkan kita mengelompokkan data dan fungsi terkait menjadi satu, contoh `{ name: 'Alice', age: 25 }`
+- Array: arrayc adalah tipe objek khusus yang digunakan untuk menyimpan daftar nilai dalam satu variabel, contoh `let numbers = [1, 2, 3, 4, 5];`
+- Undefined: Variabel yang sudah dideklarasikan namun belum diberi nilai, contoh `let x;`
+
+### Functions
+
+Functions dalam JavaScript adalah blok kode yang dapat digunakan kembali untuk melakukan tugas tertentu
+
+### Why do you have to use functions?
+
+- Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan kayak prinsip **DRY (Don't Repeat yourself)**
+
+- Organized: Kode nya jadi lebih rapi dan lebih mudah dibaca nantinya
+
+- Modular: memecah mecah masalah besar jadi tugas-tugas kecil yang lebih gampang di maintenance.
