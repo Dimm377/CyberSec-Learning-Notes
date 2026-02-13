@@ -108,9 +108,20 @@
 | No. | Writeup | Description |
 |:---:|---------|-------------|
 | 1. | [Web Application Basics](THM-Notes/Cyber-Security-101/Web-Hacking/Web-Application-Basic.md) | Introduction to Web Apps (Complete Room) |
-| 2. | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md) | JS Basics for Hacking |
+| 2. | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md) | JS Basics for Hacking (Complete Room) |
 
 </details>
+
+</details>
+
+<details>
+<summary><b>Exploring Room</b></summary>
+
+<br>
+
+| No. | Writeup | Description |
+|:---:|---------|-------------|
+| 1. | [Google Dorking](THM-Notes/Exploring-Room/Google-dorking.md) | Google Search Hacking (Complete Room)|
 
 </details>
 
