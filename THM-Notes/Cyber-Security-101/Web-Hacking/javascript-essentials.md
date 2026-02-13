@@ -115,4 +115,23 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
 
 ---
 
+## Task 3: JavaScript Overview
+
+Task ini sebenernya cuma review singkat dan demo script sederhana.
+Ilustrasinya ada kode JS buat nambahin angka.
+
+**Poin Penting:**
+*   **Interpreted Language:** JavaScript itu bahasa yang diterjemahkan baris per baris saat dijalankan (oleh browser), bukan dicompile jadi file binary dulu kayak C++ atau Java.
+*   **Variable Manipulation:** Kita bisa ubah nilai variabel kapan aja (kalau pake `let` atau `var`).
+
+**Answer the questions below:**
+
+- **Question:** What is the code output if the value of x is changed to 10?
+- **Answer:** ?
+  _(Clue: 10 + 10)_
+
+- **Question:** Is JavaScript a compiled or interpreted language?
+- **Answer:** ?
+  _(Clue: Dieksekusi langsung oleh browser)_
+
 
