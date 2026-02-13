@@ -128,10 +128,52 @@ Ilustrasinya ada kode JS buat nambahin angka.
 
 - **Question:** What is the code output if the value of x is changed to 10?
 - **Answer:** ?
-  _(Clue: 10 + 10)_
+
 
 - **Question:** Is JavaScript a compiled or interpreted language?
 - **Answer:** ?
   _(Clue: Dieksekusi langsung oleh browser)_
+
+---
+
+## Task 4: Integrating JavaScript in HTML
+
+Ada 2 cara utama buat masukin kode JS ke dalam HTML:
+
+**1. Internal JavaScript**
+Kode ditulis langsung di dalam file HTML, di antara tag `<script>`.
+```html
+<script>
+    console.log("Hello from Internal JS");
+</script>
+```
+*   **Cocok buat:** Kode pendek, testing.
+*   **Minus:** Bikin file HTML jadi penuh/berantakan.
+
+**2. External JavaScript**
+Kode ditulis di file terpisah (ekstensi `.js`), terus dipanggil di HTML pake atribut `src`.
+```html
+<script src="script.js"></script>
+```
+*   **Cocok buat:** Proyek besar, *Code Reusability* (satu file JS bisa dipake banyak halaman).
+*   **Plus:** Rapi, caching browser lebih optimal.
+
+**Answer the questions below:**
+
+- **Question:** Which type of JavaScript integration places the code directly within the HTML document?
+- **Answer:** ?
+  _(Clue: Internal)_
+
+- **Question:** Which method is better for reusing JS across multiple web pages?
+- **Answer:** ?
+  _(Clue: External)_
+
+- **Question:** What is the name of the external JS file that is being called by "external_test.html"?
+- **Answer:** ?
+  _(Clue: thm_external.js)_
+
+- **Question:** What attribute links an external JS file in the script tag?
+- **Answer:** ?
+  _(Clue: src)_
 
 
