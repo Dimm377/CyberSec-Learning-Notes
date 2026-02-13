@@ -1,6 +1,6 @@
 
 
-# 🎯 TryHackMe Notes
+# TryHackMe Notes
 
 <details open>
 <summary><b>Pre-Security</b></summary>
@@ -8,7 +8,7 @@
 <br>
 
 <details>
-<summary>🌐 How The Web Works</summary>
+<summary>How The Web Works</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -20,7 +20,7 @@
 </details>
 
 <details>
-<summary>🐧 Linux Fundamental</summary>
+<summary>Linux Fundamental</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -31,7 +31,7 @@
 </details>
 
 <details>
-<summary>🌍 Networking Fundamental</summary>
+<summary>Networking Fundamental</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -44,7 +44,7 @@
 </details>
 
 <details>
-<summary>🪟 Windows Fundamental</summary>
+<summary>Windows Fundamental</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -62,7 +62,7 @@
 <br>
 
 <details>
-<summary>📡 Networking</summary>
+<summary>Networking</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -77,7 +77,7 @@
 </details>
 
 <details>
-<summary>🔐 Cryptography</summary>
+<summary>Cryptography</summary>
 
 | No. | Note | Description |
 |:---:|------|-------------|
@@ -89,7 +89,7 @@
 </details>
 
 <details>
-<summary>💥 Exploitation Basics</summary>
+<summary>Exploitation Basics</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
@@ -103,7 +103,7 @@
 
 
 <details>
-<summary>🌐 Web Hacking</summary>
+<summary>Web Hacking</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
