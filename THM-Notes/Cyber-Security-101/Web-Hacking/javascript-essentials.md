@@ -47,6 +47,15 @@ di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
 
 Functions dalam JavaScript adalah blok kode yang dapat digunakan kembali untuk melakukan tugas tertentu
 
+```javascript
+function sapaDunia() {
+  console.log("Halo, selamat belajar JavaScript!");
+}
+
+// Cara manggilnya:
+sapaDunia();
+```
+
 ### Why do you have to use functions?
 
 - Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan kayak prinsip **DRY (Don't Repeat yourself)**
