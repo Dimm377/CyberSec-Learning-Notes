@@ -8,6 +8,75 @@
 
 ---
 
+## Task 1: Ye Ol' Search Engine
+
+Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-jalan terus di internet buat nyatet semua website yang dia temui.
+
+Cara kerjanya:
+1.  **Crawling:** Bot jalan-jalan nyari konten.
+2.  **Indexing:** Konten disimpen di database raksasa Google.
+3.  **Searching:** Pas kita ngetik di Google, dia nyari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
+
+---
+
+## Task 2: Let's Learn About Crawlers
+
+Crawler itu kayak agen rahasia yang tugasnya ngumpulin informasi.
+
+**Istilah Penting:**
+*   **Crawler / Spider:** Program yang otomatis jelajahin internet.
+*   **Index:** Database tempat nyimpen hasil jelajah si crawler.
+
+**Apa yang diambil Crawler?**
+Dia ngambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keywords ini Google tau website kita itu tentang apa (misal: "Resep Masakan", "Tutorial Hacking", dll).
+
+**Answer the questions below:**
+
+- **Question:** Name the key term of what a "Crawler" is used to do?
+- **Answer:** ?
+  _(Clue: Tujuannya buat ngisi database...)_
+
+- **Question:** What is the name of the technique that "Search Engines" use to retrieve this information about websites?
+- **Answer:** ?
+  _(Clue: Nama lain jalan-jalannya spider)_
+
+- **Question:** What is an example of the type of contents that could be gathered from a website?
+- **Answer:** ?
+  _(Clue: Kata kunci)_
+
+---
+
+## Task 3: Enter: Search Engine Optimisation (SEO)
+
+SEO itu seni bikin website kita disukai sama Google biar muncul di halaman pertama.
+
+**Topik SEO:**
+1.  **Keywords:** Kata kunci yang relevan.
+2.  **Meta Title:** Judul halaman yang muncul di tab browser & hasil pencarian.
+3.  **Sitemap:** Peta situs.
+
+Task ini sebenernya nyuruh kita pake tool kayak "SEO Site Checkup" buat ngecek performa website `tryhackme.com` vs `googledorking.cmnatic.co.uk`.
+
+**Answer the questions below:**
+
+- **Question:** Using the SEO Site Checkup tool on "tryhackme.com", does TryHackMe pass the "Meta Title Test"? (Yea / Nay)
+- **Answer:** ?
+  _(Clue: Yea)_
+
+- **Question:** Does "tryhackme.com" pass the "Keywords Usage Test?" (Yea / Nay)
+- **Answer:** ?
+  _(Clue: Nay)_
+
+- **Question:** From a "rating score" perspective alone, what website would list first? tryhackme.com or googledorking.cmnatic.co.uk
+- **Answer:** ?
+  _(Clue: Yang skornya lebih gede)_
+
+- **Question:** With the same tool and domain in Question #3 (previous) How many pages use "flash"?
+- **Answer:** ?
+  _(Clue: 0)_
+
+---
+
 ## Task 4: Beepboop - robots.txt
 
 Task ini ngebahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
@@ -52,6 +121,49 @@ File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, 
 - **Answer:** ?
   _(Clue: Pake perintah Disallow)_
 
-- **Question:** What is the extension of a Unix/Linux system configuration file that we might want to hide from "Crawlers"?
+- **Question:** What is the typical file structure of a "Sitemap"?
 - **Answer:** ?
-  _(Clue: Ekstensi 4 huruf)_
+  _(Clue: Format file sitemap)_
+
+- **Question:** What real life example can "Sitemaps" be compared to?
+- **Answer:** ?
+  _(Clue: Peta konvensional)_
+
+- **Question:** Name the keyword for the path taken for content on a website.
+- **Answer:** ?
+  _(Clue: Awalannya R)_
+
+---
+
+## Task 6: What is Google Dorking?
+
+Ini dia menu utamanya: **Google Dorking**.
+Teknik pake operator pencarian Google buat nemuin hasil yang spesifik banget.
+
+**Operator Dasar:**
+1.  **site:** Nyari cuma di website tertentu.
+    *   Contoh: `site:tryhackme.com` (Cuma nampilin hasil dari THM).
+2.  **filetype:** Nyari jenis file tertentu.
+    *   Contoh: `filetype:pdf` (Cuma nampilin file PDF).
+3.  **intitle:** Nyari halaman yang JUDULNYA mengandung kata tertentu.
+    *   Contoh: `intitle:login` (Nyari halaman login).
+4.  **inurl:** Nyari URL yang mengandung kata tertentu.
+    *   Contoh: `inurl:admin` (Nyari URL yang ada kata admin-nya).
+
+**Contoh Dork Sakti:**
+*   `site:gov.id filetype:pdf "rahasia"` -> Nyari PDF rahasia di situs pemerintah (Jangan disalahgunain ya!).
+*   `intitle:"index of" "backup"` -> Nyari server yang bocor (directory listing) isinya backup.
+
+**Answer the questions below:**
+
+- **Question:** What would be the format used to query the site bbc.co.uk about flood defences?
+- **Answer:** ?
+  _(Clue: site:bbc.co.uk ...)_
+
+- **Question:** What term would you use to search by file type?
+- **Answer:** ?
+  _(Clue: filetype:)_
+
+- **Question:** What term can we use to look for login pages?
+- **Answer:** ?
+  _(Clue: intitle: ...)_
