@@ -100,12 +100,15 @@
 
 </details>
 
+</details>
+
 <details>
 <summary>🌐 Web Hacking</summary>
 
 | No. | Writeup | Description |
 |:---:|---------|-------------|
-| 1. | [Web Application Basics](THM-Notes/Cyber-Security-101/Web-Hacking/Web-Application-Basic.md) | Introduction to Web Apps (Tasks 1-2) |
+| 1. | [Web Application Basics](THM-Notes/Cyber-Security-101/Web-Hacking/Web-Application-Basic.md) | Introduction to Web Apps (Complete Room) |
+| 2. | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md) | JS Basics for Hacking |
 
 </details>
 
