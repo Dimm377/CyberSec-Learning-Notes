@@ -105,5 +105,14 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
     }
     ```
 
+    ```
+
+**Answer the questions below:**
+
+- **Question:** What term allows you to run a code block multiple times as long as it is a condition?
+- **Answer:** ?
+  _(Clue: Perulangan dalam bahasa Inggris)_
+
 ---
+
 
