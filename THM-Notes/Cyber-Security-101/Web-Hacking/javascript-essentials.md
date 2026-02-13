@@ -268,6 +268,48 @@ Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus bac
 - **Answer:** ?
   _(Clue: 21)_
 
+---
+
+## Task 8: Best Practices
+
+Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan main (Best Practices):
+
+1.  **Don't rely solely on Client-Side Validation**
+    *   Jangan cuma ngandelin JS buat validasi (kayak cek umur atau password tadi).
+    *   *Alasannya:* JS berjalan di browser user, jadi user bisa matiin atau manipulasi kodenya. Validasi WAJIB lakuin lagi di **Server-Side**.
+
+2.  **Don't Include Untrusted Libraries**
+    *   Hati-hati kalau ngambil script dari internet (CDN atau library asing).
+    *   Kalau script itu disusupi malware, website kita juga kena dampaknya (Supply Chain Attack).
+
+3.  **Hati-hati nyimpen Secrets**
+    *   JANGAN PERNAH simpen API Key, Password, atau Token di dalam kode JS.
+    *   Ingat, **View Source** itu gampang banget. Siapapun bisa liat.
+
+**Answer the questions below:**
+
+- **Question:** Is it a good practice to blindly include JS in your code from any source (yea/nay)?
+- **Answer:** ?
+  _(Clue: nay)_
+
+---
+
+## Task 9: Conclusion
+
+Selesai sudah room **Javascript Essentials** ini! 🥳
+
+**Kita udah belajar:**
+1.  **Basic JS:** Variable, Data Types, Functions, Loops.
+2.  **HTML Integration:** Internal vs External JS.
+3.  **Dialogue Functions:** `alert`, `prompt`, `confirm`.
+4.  **Security Concepts:**
+    *   Client-Side Bypass (Control Flow).
+    *   Minification & Obfuscation.
+    *   Bahaya nyimpen rahasia di JS.
+
+JavaScript itu powerful banget buat bikin web interaktif, tapi kalau nggak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!* 🚀
+
+
 
 
 
