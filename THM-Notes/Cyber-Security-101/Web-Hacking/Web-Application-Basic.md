@@ -476,6 +476,6 @@ Misi: Hapus user dengan ID 1.
 5.  **Headers:** Info tambahan (Cookie, User-Agent, Security Headers).
 6.  **Status Codes:** 200 (OK), 404 (Not Found), 500 (Error).
 
-Pondasi ini bakal kepake banget buat materi selanjutnya kayak **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya. Jangan lupa santuy dan terus belajar! ☕
+Pondasi ini bakal kepake banget buat materi selanjutnya kayak **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya. Jangan lupa santuy dan terus belajar!
 
 ---
