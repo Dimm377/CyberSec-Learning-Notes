@@ -35,3 +35,8 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa mmebuat website itu
 di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
 
 **Contoh Tipe Data:**
+
+- Number: Mewakili bilangan integer dan float (misalnya 42, 3.14)
+- String: Mewakili rangkaian karakter, ditahdai dengan tanda kutip (misalnya, 'halo', "dunia")
+- Boolean: Tipe data yang hanya ada 2 value **True & False**, sering digunakan untuk memvalidasi sebuah kondisi
+- Object:
