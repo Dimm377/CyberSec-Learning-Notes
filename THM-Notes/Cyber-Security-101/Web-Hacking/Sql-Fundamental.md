@@ -87,3 +87,13 @@ Semua data yang disimpan dalam relational database akan disimpan di sebuah tabel
 </p>
 
 Saat merancang tabel, kita perlu menetapkan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya akan menjadi kolom. Setiap kolom ini wajib memiliki tipe data tertentu. Jika ada data yang masuk dengan tipe yang tidak sesuai, sistem secara otomatis akan menolaknya untuk menjaga konsistensi data, secara umum ada empat tipe data inti yang selalu digunakan: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+
+setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, untuk buku `Android Security Internals` dengan ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukkan, seluruh informasi ini akan tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel tersebut.
+
+### Primary and Foreign Keys
+
+Ketika data semakin banyak, kita bisa memisahkan informasi ke berbagai tabel, contohnya tabel `Buku` dan tabel `Penulis`, Agar informasi di kedua tabel ini tetap sinkron misalnya kita ingin tau buku tertentu ditulis oleh siapa—kita harus menghubungkan keduanya melalui kunci **(Keys)**. Ada dua jenis kunci yang perlu dipahami:
+
+<p align="center">
+<img src="../../../Assets/Images/P&K-key.png" width="400">
+</p>
