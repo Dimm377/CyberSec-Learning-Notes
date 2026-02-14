@@ -66,7 +66,7 @@ CREATE TABLE login_attempts (
 ```JSON
 {
     "_id": ObjectId("65ccba12f3d4567890abcdef"),
-    "nama": { "depan": "John", "belakang": "Doe" },
+    "nama": { "first_name": "John", "last_name": "Doe" },
     "jurusan": "Teknik Informatika",
     "hobi": ["Cyber Security", "Gaming", "Gym"],
     "stats_game": {
