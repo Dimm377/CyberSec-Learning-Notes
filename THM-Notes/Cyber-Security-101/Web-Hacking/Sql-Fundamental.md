@@ -29,7 +29,9 @@ Seperti yang sudah dijelaskan di task 1, Database itu ada di hampir setiap siste
 
 Ada cukup banyak jenis database yang bisa dibuat, tapi untuk ini, kita hanya fokus pada dua tipe utama: **Relational Databases (atau SQL)** vs **Non-Relational Databases (atau NoSQL)**
 
-![Different Types of Databases](../../../Assets/Images/database-type.png)
+<p align="center">
+<img src="../../../Assets/Images/database-type.png" width="400">
+</p>
 
 **Relational Databases:** Menyimpan data yang terstruktur, yang artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu, Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`. Relational databases paling cocok untuk Menyimpan Data Terstruktur, menghubungkan Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses
 
@@ -80,7 +82,9 @@ CREATE TABLE login_attempts (
 
 Semua data yang disimpan dalam relational database akan disimpan di sebuah tabel, misalnya kumpulan buku yang ada di toko buku maka disimpan dalam tabel bernama “Buku”
 
-![Tables, Rows and Columns](../../../Assets/Images/TRC.png)
+<p align="center">
+<img src="../../../Assets/Images/TRC.png" width="400">
+</p>
 
 Saat merancang tabel, kita perlu menetapkan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya akan menjadi kolom. Setiap kolom ini wajib memiliki tipe data tertentu. Jika ada data yang masuk dengan tipe yang tidak sesuai, sistem secara otomatis akan menolaknya untuk menjaga konsistensi data, secara umum ada empat tipe data inti yang selalu digunakan: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
@@ -90,4 +94,6 @@ setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data perta
 
 Ketika data semakin banyak, kita bisa memisahkan informasi ke berbagai tabel, contohnya tabel `Buku` dan tabel `Penulis`, Agar informasi di kedua tabel ini tetap sinkron misalnya kita ingin tau buku tertentu ditulis oleh siapa—kita harus menghubungkan keduanya melalui kunci **(Keys)**. Ada dua jenis kunci yang perlu dipahami:
 
-![Primary and Foreign Keys](../../../Assets/Images/P%26K-key.png)
+<p align="center">
+<img src="../../../Assets/Images/PK-key.png" width="400">
+</p>
