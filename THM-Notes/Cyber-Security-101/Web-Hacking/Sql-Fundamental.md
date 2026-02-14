@@ -252,3 +252,22 @@ mysql> DESCRIBE book_inventory;
 +------------------+--------------+------+-----+---------+----------------+
 3 rows in set (0.02 sec)
 ```
+
+- **ALTER**
+
+Dalam pengembangan database, sangat wajar jika kebutuhan data kita berubah seiring waktu. daripada tabel nya dihapus dan membuat ulang dari awal yang akan membuang waktu dan data, kita bisa menggunakan perintah `ALTER`.
+
+```SQL
+ALTER TABLE book_inventory
+ADD page_count INT;
+```
+
+`ALTER` statment digunakan untuk melakukan perubahan pada tabel, seperti mengganti nama kolom, mengubah tipe data pada kolom, atau menghapus kolom.
+
+- **DROP**
+
+Mirip dengan menghapus database, kita juga bisa menghapus tabel menggunakan statment `DROP`. , sintaks nya seperti ini:
+
+```SQL
+mysql> DROP TABLE table_name;
+```
