@@ -86,7 +86,7 @@ Semua data yang disimpan dalam relational database akan disimpan di sebuah tabel
 <img src="../../../Assets/Images/TRC.png" width="400">
 </p>
 
-Saat merancang tabel, kita perlu menetapkan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya akan menjadi kolom. Setiap kolom ini wajib memiliki tipe data tertentu. Jika ada data yang masuk dengan tipe yang tidak sesuai, sistem secara otomatis akan menolaknya untuk menjaga konsistensi data, secara umum ada empat tipe data inti yang selalu digunakan: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+Saat membuat tabel, kita perlu menetapkan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya akan menjadi kolom. Setiap kolom ini wajib memiliki tipe data tertentu. Jika ada data yang masuk dengan tipe yang tidak sesuai, sistem secara otomatis akan menolaknya untuk menjaga konsistensi data, secara umum ada empat tipe data inti yang selalu digunakan: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
 setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, untuk buku `Android Security Internals` dengan ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukkan, seluruh informasi ini akan tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel tersebut.
 
@@ -101,3 +101,19 @@ Ketika data semakin banyak, kita bisa memisahkan informasi ke berbagai tabel, co
 - **Primary Key:** digunakan untuk menjamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus memiliki satu nilai khusus yang menjadi pengenal tetap dan tidak boleh sama dengan data lainnya. Dalam setiap tabel, kita wajib memilih satu kolom sebagai Primary Key, biasanya kolom `id` adalah pilihan terbaik karena nilai ini dibuat khusus untuk setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa saja memiliki kemiripan.
 
 - **Foreign Key:** adalah kolom (atau kumpulan kolom) yang berfungsi sebagai penghubung antara dua tabel dalam sebuah database. Contohnya, kita bisa menambahkan kolom`id_penulis` di tabel Buku, kolom ini bertindak sebagai **Foreign Key** karena nilainya merujuk langsung ke kolom id di tabel Penulis, Foreign Key inilah yang memungkinkan terciptanya hubungan antar tabel dalam relational database ,dalam satu tabel kita boleh memiliki lebih dari satu Foreign Key.
+
+## Task 3: SQL
+
+### What is SQL?
+
+Semua teori tadi emang terdengar bagus, tapi dalam praktek, bagaimana sih cara database itu benar-benar bekerja? Bagaimana cara kita membuat tabel pertama dan mengisinya dengan data? Alat apa yang sebenarnya kita gunakan?
+
+Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebagai pusat kendali atau jembatan antara kita (pengguna) dengan database yang ada. DBMS adalah perangkat lunak yang memungkinkan kita untuk narik, ganti, dan ngatur data yang tersimpan dengan mudah
+
+**Contoh DBMS yang Sering Dipakai:**
+
+- MySQL & MariaDB: Si paling populer buat relational database (SQL).
+
+- MongoDB: Andalan buat database non-relational (NoSQL) yang fleksibel.
+
+- Oracle Database: Biasanya dipakai oleh perusahaan-perusahaan besar untuk skala raksasa.
