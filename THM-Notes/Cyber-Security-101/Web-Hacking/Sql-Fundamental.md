@@ -200,9 +200,9 @@ Sama seperti logika pembuatan database, untuk membuat tabel kita juga menggunaka
 
 ```SQL
 CREATE TABLE nama_tabel (
-    nama_kolom1 tipe_data,
-    nama_kolom2 tipe_data,
-    nama_kolom3 tipe_data
+    column_name1 data_type,
+    column_name2 data_type,
+    column_name3 data_type
 );
 ```
 
@@ -217,3 +217,5 @@ CREATE TABLE book_inventory (
 );
 
 ```
+
+statmentini akan membuat tabel `book_inventory` dengan tiga kolom: `book_id`, `book_name`, dan `publication_date`. `book_id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `book_id 1`, buku kedua yang disisipkan akan diberi `book_id 2`, dan seterusnya.
