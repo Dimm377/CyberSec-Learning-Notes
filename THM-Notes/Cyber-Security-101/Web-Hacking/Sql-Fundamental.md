@@ -33,7 +33,7 @@ Ada cukup banyak jenis database yang bisa dibuat, tapi untuk ini, kita hanya fok
 <img src="../../../Assets/Images/database-type.png" width="400">
 </p>
 
-**Relational Databases:** Menyimpan data yang terstruktur, yang artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu, Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`
+**Relational Databases:** Menyimpan data yang terstruktur, yang artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu, Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`. Relational databases paling cocok untuk Menyimpan Data Terstruktur, menghubungkan Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses
 
 ```SQL
 -- Membuat tabel user dengan struktur yang tetap
