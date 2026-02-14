@@ -117,3 +117,17 @@ Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebaga
 - MongoDB: Andalan buat database non-relational (NoSQL) yang fleksibel.
 
 - Oracle Database: Biasanya dipakai oleh perusahaan-perusahaan besar untuk skala raksasa.
+
+Untuk bisa 'ngobrol' atau berinteraksi dengan database, kita menggunakan SQL (Structured Query Language). SQL sendiri adalah bahasa komunikasi khusus untuk database yang fungsinya buat manggil, mengatur, hingga mengolah data yang tersimpan di dalam relational database
+
+### The Benefits of SQL and Relational Databases
+
+Berikut adalah beberapa manfaat yang diperoleh dengan mempelajari dan menggunakan SQL:
+
+- **SQL itu cepat:** relational database (yang menggunakan SQL) sanggup menarik data dalam jumlah besar hampir seketika, Hal ini bisa terjadi karena format penyimpanannya yang sangat efisien (nggak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
+
+- **Easy to learn:** Berbeda dengan banyak bahasa pemrograman lain, SQL ditulis menggunakan bahasa Inggris sederhana **(plain English)**, sehingga jauh lebih mudah untuk dipahami, Sifat bahasanya yang sangat mudah dibaca membuat kita bisa lebih fokus untuk mempelajari fungsi dan logikanya saja
+
+- **Reliable:** Seperti yang sudah dibahas sebelumnya, relational database menjamin tingkat akurasi data yang tinggi, ini karena adanya aturan struktur yang ketat, setiap kumpulan data wajib memenuhi kriteria struktur tersebut agar bisa masuk ke dalam sistem
+
+- **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal menanyakan (querying) database, hal ini memungkinkan pengguna untuk menjalankan tugas analisis data yang luas secara sangat efisien
