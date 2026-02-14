@@ -109,6 +109,7 @@
 |:---:|---------|-------------|
 | 1. | [Web Application Basics](THM-Notes/Cyber-Security-101/Web-Hacking/Web-Application-Basic.md) | Introduction to Web Apps (Complete Room) |
 | 2. | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md) | JS Basics for Hacking (Complete Room) |
+| 3. | [Sql Fundamental](THM-Notes/Cyber-Security-101/Web-Hacking/Sql-Fundamental.md) | Introduction to Databases & SQL |
 
 </details>
 
