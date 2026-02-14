@@ -218,4 +218,37 @@ CREATE TABLE book_inventory (
 
 ```
 
-statmentini akan membuat tabel `book_inventory` dengan tiga kolom: `book_id`, `book_name`, dan `publication_date`. `book_id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `book_id 1`, buku kedua yang disisipkan akan diberi `book_id 2`, dan seterusnya.
+statmentini akan membuat tabel `book_inventory` dengan tiga kolom: `book_id`, `book_name`, dan `publication_date`. `book_id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `book_id 1`, buku kedua yang disisipkan akan diberi `book_id 2`, dan seterusnya. Terakhir, `book_id` ditetapkan sebagai `PRIMARY KEY` karena ini akan menjadi cara kita secara
+unik mengidentifikasi catatan buku di tabel kita (dan catatan utama harus ada di tabel)
+
+`Book_name` mempunyai tipe data `VARCHAR(255)`, artinya dapat menggunakan karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi jika seseorang mencoba memasukkan record ke dalam tabel ini tetapi book_name kosong maka akan ditolak. `publication_date` diatur sebagai tipe data `DATE`)
+
+- **SHOW TABLES**
+
+Sama seperti kita dapat membuat daftar database menggunakan pernyataan `SHOW`, kita juga dapat membuat daftar tabel dalam database yang sedang aktif (database yang terakhir kali kita gunakan pernyataan `USE`). Jalankan perintah berikut, kita bisa melihat tabel yang baru saja dibuat:
+
+```SQL
+mysql> SHOW TABLES;
+```
+
+- **DESCRIBE**
+
+Jika kita ingin mengetahui kolom apa saja yang terdapat dalam sebuah tabel (dan tipe datanya), kita dapat mendeskripsikannya menggunakan perintah `DESCRIBE` (yang juga bisa disingkat `DESC`). untuk menjelaskan tabel yang baru saja dibuat menggunakan perintah berikut:
+
+```SQL
+mysql> DESCRIBE book_inventory;
+```
+
+Ini akan menampilkan detail tabel seperti ini:
+
+```SQL
+mysql> DESCRIBE book_inventory;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| book_id          | int          | NO   | PRI | NULL    | auto_increment |
+| book_name        | varchar(255) | NO   |     | NULL    |                |
+| publication_date | date         | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.02 sec)
+```
