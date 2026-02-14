@@ -27,6 +27,53 @@ Seperti yang sudah dijelaskan di task 1, Database itu ada di hampir setiap siste
 
 ### Different Types of Databases
 
+Ada cukup banyak jenis database yang bisa dibuat, tapi untuk ini, kita hanya fokus pada dua tipe utama: **Relational Databases (atau SQL)** vs **Non-Relational Databases (atau NoSQL)**
+
 <p align="center">
 <img src="../../../Assets/Images/database-type.png" width="400">
 </p>
+
+**Relational Databases:** Menyimpan data yang terstruktur, yang artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu, Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`
+
+```SQL
+-- Membuat tabel user dengan struktur yang tetap
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email_address VARCHAR(100),
+    occupation VARCHAR(100)
+);
+
+-- Memasukkan data (entry) ke dalam tabel mengikuti struktur tersebut
+INSERT INTO users (user_id, first_name, last_name, email_address, occupation)
+VALUES (1, 'Thomas', 'Anderson', 'neo@matrix.com', 'Cyber Security');
+
+INSERT INTO users (user_id, first_name, last_name, email_address, occupation)
+VALUES (2, 'John', 'Doe', 'doe@thm.ac.id', 'Student');
+
+-- Membuat tabel relasi (contoh: riwayat login)
+CREATE TABLE login_attempts (
+    attempt_id INT PRIMARY KEY,
+    user_id INT,
+    status VARCHAR(20),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+```
+
+**Non-Relational Databases:** Kalau SQL tadi ibarat tabel Excel yang kaku, NoSQL ini lebih ke arah folder berisi dokumen-dokumen yang isinya bisa beda-beda formatnya, Cocok banget kalau kita punya data yang isinya bervariasi. Contohnya, hasil scan dokumen yang tipe dan jumlah datanya beda-beda setiap lembar, jadi butuh database yang nggak memaksa data harus masuk ke kolom tertentu
+
+```JSON
+{
+    "_id": ObjectId("65ccba12f3d4567890abcdef"),
+    "nama": { "depan": "John", "belakang": "Doe" },
+    "jurusan": "Teknik Informatika",
+    "hobi": ["Cyber Security", "Gaming", "Gym"],
+    "stats_game": {
+        "level": 7,
+        "rank": "Newbie",
+        "total_playtime_seconds": NumberLong(12500430)
+    },
+    "is_active": true
+}
+```
