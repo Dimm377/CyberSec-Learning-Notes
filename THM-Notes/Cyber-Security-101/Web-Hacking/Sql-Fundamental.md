@@ -77,3 +77,11 @@ CREATE TABLE login_attempts (
     "is_active": true
 }
 ```
+
+### Tables, Rows and Columns
+
+Semua data yang disimpan dalam relational database akan disimpan di sebuah tabel, misalnya kumpulan buku yang ada di toko buku maka disimpan dalam tabel bernama “Buku”
+
+<p align="center">
+<img src="../../../Assets/Images/TRC.png" width="400">
+</p>
