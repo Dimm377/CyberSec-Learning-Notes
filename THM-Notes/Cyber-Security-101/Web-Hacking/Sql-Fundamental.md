@@ -131,3 +131,45 @@ Berikut adalah beberapa manfaat yang diperoleh dengan mempelajari dan menggunaka
 - **Reliable:** Seperti yang sudah dibahas sebelumnya, relational database menjamin tingkat akurasi data yang tinggi, ini karena adanya aturan struktur yang ketat, setiap kumpulan data wajib memenuhi kriteria struktur tersebut agar bisa masuk ke dalam sistem
 
 - **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal menanyakan (querying) database, hal ini memungkinkan pengguna untuk menjalankan tugas analisis data yang luas secara sangat efisien
+
+## Task 4: Databases And Table Statment
+
+### Time to Learn
+
+Saatnya untuk mulai mempelajari SQL dan cara menggunakannya untuk berinteraksi dengan database. di task ini, kita akan mulai dengan belajar menggunakan database dan pernyataan tabel. Bagaimanapun, pernyataan inilah yang pertama-tama kita perlukan untuk membuat database/tabel dan memulai.
+
+### Database Statements
+
+- **CREATE DATABASE**
+
+Kalau ingin sebuah database baru, langkah pertama yang kita ambil adalah membuatnya. caranya di dalam SQL menggunakan pernyataan CREATE DATABASE, Syntax nya seperti ini:
+
+```SQL
+
+mysql> CREATE DATABASE database_name;
+
+```
+
+disini contoh aku akan membuat database bernama `bookstore_db`
+
+```SQL
+
+mysql> CREATE DATABASE bookstore_db;
+
+```
+
+- **SHOW DATABASES**
+
+kita dapat melihatnya database yang sebelumnya dibuat menggunakan statment `SHOW DATABASES`. statment `SHOW DATABASES` akan mengembalikan daftar database yang ada, cara nya:
+
+```SQL
+
+mysql> SHOW DATABASES;
+
+```
+
+Di daftar yang muncul, kita bakal nemuin database yang baru aja dibikin plus beberapa database default kayak `mysql`, `information_schema`, `performance_schema`, dan `sys`. Database bawaan ini penting untuk MySQL agar bisa berfungsi.
+
+- **USE DATABASES**
+
+Setelah database dibuat, kita harus kasih tahu MySQL database mana yang mau kita pakai supaya perintah-perintah selanjutnya dieksekusi di tempat yang benar. Untuk mengaktifkan database yang baru kita buat, kita gunakan perintah USE seperti ini: USE nama_database;
