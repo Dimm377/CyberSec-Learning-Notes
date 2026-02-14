@@ -50,15 +50,12 @@ Biar gampang, bayangin web app itu seperti sebuah planet.
 
 - **Question:** Which component on a computer is responsible for hosting and delivering content for web applications?
 - **Answer:** ?
-  _(Clue: Web Server)_
 
 - **Question:** Which tool is used to access and interact with web applications?
 - **Answer:** ?
-  _(Clue: Web Browser)_
 
 - **Question:** Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the web application?
 - **Answer:** ?
-  _(Clue: Web Application Firewall)_
 
 ---
 
@@ -99,15 +96,12 @@ Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` b
 
 - **Question:** Which protocol provides encrypted communication to ensure secure data transmission between a web browser and a web server?
 - **Answer:** ?
-  _(Clue: Protokol yang ada 'S'-nya)_
 
 - **Question:** What term describes the practice of registering domain names that are misspelled variations of popular websites to exploit user errors and potentially engage in fraudulent activities?
 - **Answer:** ?
-  _(Clue: Typo...)_
 
 - **Question:** What part of a URL is used to pass additional information, such as search terms or form inputs, to the web server?
 - **Answer:** ?
-  _(Clue: Yang diawali tanda tanya `?`)_
 
 ---
 
@@ -138,11 +132,9 @@ Sebuah pesan HTTP biasanya punya format seperti ini:
 
 - **Question:** Which HTTP message is returned by the web server after processing a client's request?
 - **Answer:** ?
-  _(Clue: Kebalikan Request)_
 
 - **Question:** What follows the headers in an HTTP message?
 - **Answer:** ?
-  _(Clue: Pemisah sebelum body)_
 
 ---
 
@@ -170,15 +162,12 @@ membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya 
 
 - **Question:** What is the most common HTTP version used?
 - **Answer:** ?
-  _(Clue: HTTP yang umum dipakai)_
 
 - **Question:** What HTTP verb is used to request the options available for a given service?
 - **Answer:** ?
-  _(Clue: Method untuk nanya opsi?)_
 
 - **Question:** Which part of the HTTP request indicates the resource the client wants to access?
 - **Answer:** ?
-  _(Clue: Bagian tengah di request line)_
 
 ---
 
@@ -316,11 +305,9 @@ Isinya ada 3 macem:
 
 - **Question:** What part of an HTTP response provides the HTTP version, status code, and a brief explanation of the response's outcome?
 - **Answer:** ?
-  _(Clue: Baris paling atas di response)_
 
 - **Question:** Which category of HTTP response codes indicates that the web server encountered an internal error?
 - **Answer:** ?
-  _(Clue: Kode 5xx)_
 
 ---
 
@@ -352,15 +339,12 @@ Isi surat balesan dari server. Biasanya berupa:
 
 - **Question:** Which HTTP response header can reveal information about the web server's software and version, potentially exposing it to security risks if not removed?
 - **Answer:** ?
-  _(Clue: Header nama software server)_
 
 - **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to ensure they are only transmitted over HTTPS, protecting them from being exposed during unencrypted transmissions?
 - **Answer:** ?
-  _(Clue: Flag biar aman/secure)_
 
 - **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to prevent client-side scripts (like JavaScript) from accessing them, thereby mitigating XSS attacks?
 - **Answer:** ?
-  _(Clue: Cuma HTTP aja)_
 
 ---
 
@@ -397,15 +381,12 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
 
 - **Question:** In a Content Security Policy (CSP) configuration, which property can be set to define where scripts can be loaded from?
 - **Answer:** ?
-  _(Clue: src untuk script)_
 
 - **Question:** When configuring the Strict-Transport-Security (HSTS) header to ensure that all subdomains of a site also use HTTPS, which directive should be included to apply the security policy to both the main domain and its subdomains?
 - **Answer:** ?
-  _(Clue: include+Sub+Domains)_
 
 - **Question:** Which HTTP header directive is used to prevent browsers from interpreting files as a different MIME type than what is specified by the server, thereby mitigating content type sniffing attacks?
 - **Answer:** ?
-  _(Clue: no...)_
 
 ---
 

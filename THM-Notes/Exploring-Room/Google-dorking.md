@@ -34,15 +34,12 @@ Dia ngambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keyword
 
 - **Question:** Name the key term of what a "Crawler" is used to do?
 - **Answer:** ?
-  _(Clue: Tujuannya buat ngisi database...)_
 
 - **Question:** What is the name of the technique that "Search Engines" use to retrieve this information about websites?
 - **Answer:** ?
-  _(Clue: Nama lain jalan-jalannya spider)_
 
 - **Question:** What is an example of the type of contents that could be gathered from a website?
 - **Answer:** ?
-  _(Clue: Kata kunci)_
 
 ---
 
@@ -61,19 +58,15 @@ Task ini sebenernya nyuruh kita pake tool kayak "SEO Site Checkup" buat ngecek p
 
 - **Question:** Using the SEO Site Checkup tool on "tryhackme.com", does TryHackMe pass the "Meta Title Test"? (Yea / Nay)
 - **Answer:** ?
-  _(Clue: Yea)_
 
 - **Question:** Does "tryhackme.com" pass the "Keywords Usage Test?" (Yea / Nay)
 - **Answer:** ?
-  _(Clue: Nay)_
 
 - **Question:** From a "rating score" perspective alone, what website would list first? tryhackme.com or googledorking.cmnatic.co.uk
 - **Answer:** ?
-  _(Clue: Yang skornya lebih gede)_
 
 - **Question:** With the same tool and domain in Question #3 (previous) How many pages use "flash"?
 - **Answer:** ?
-  _(Clue: 0)_
 
 ---
 
@@ -107,31 +100,24 @@ File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, 
 
 - **Question:** Where would "robots.txt" be located on the domain "ablog.com"?
 - **Answer:** ?
-  _(Clue: Di root domain)_
 
 - **Question:** If a website was to have a sitemap, where would that be located?
 - **Answer:** ?
-  _(Clue: Nama filenya sitemap, ekstensi xml)_
 
 - **Question:** How would we only allow "Bingbot" to index the website?
 - **Answer:** ?
-  _(Clue: User-agent: ...)_
 
 - **Question:** How would we prevent a "Crawler" from indexing the directory "/dont-index-me/"?
 - **Answer:** ?
-  _(Clue: Pake perintah Disallow)_
 
 - **Question:** What is the typical file structure of a "Sitemap"?
 - **Answer:** ?
-  _(Clue: Format file sitemap)_
 
 - **Question:** What real life example can "Sitemaps" be compared to?
 - **Answer:** ?
-  _(Clue: Peta konvensional)_
 
 - **Question:** Name the keyword for the path taken for content on a website.
 - **Answer:** ?
-  _(Clue: Awalannya R)_
 
 ---
 
@@ -179,12 +165,9 @@ Ada database isinya ribuan dork yang udah ditemuin orang lain: **Exploit-DB (GHD
 
 - **Question:** What would be the format used to query the site bbc.co.uk about flood defences?
 - **Answer:** ?
-  _(Clue: site:bbc.co.uk ...)_
 
 - **Question:** What term would you use to search by file type?
 - **Answer:** ?
-  _(Clue: filetype:)_
 
 - **Question:** What term can we use to look for login pages?
 - **Answer:** ?
-  _(Clue: intitle: ...)_

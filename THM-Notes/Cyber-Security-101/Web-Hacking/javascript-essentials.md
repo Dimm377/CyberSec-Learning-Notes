@@ -111,7 +111,6 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
 
 - **Question:** What term allows you to run a code block multiple times as long as it is a condition?
 - **Answer:** ?
-  _(Clue: Perulangan dalam bahasa Inggris)_
 
 ---
 
@@ -132,7 +131,6 @@ Ilustrasinya ada kode JS buat nambahin angka.
 
 - **Question:** Is JavaScript a compiled or interpreted language?
 - **Answer:** ?
-  _(Clue: Dieksekusi langsung oleh browser)_
 
 ---
 
@@ -169,19 +167,15 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake a
 
 - **Question:** Which type of JavaScript integration places the code directly within the HTML document?
 - **Answer:** ?
-  _(Clue: Internal)_
 
 - **Question:** Which method is better for reusing JS across multiple web pages?
 - **Answer:** ?
-  _(Clue: External)_
 
 - **Question:** What is the name of the external JS file that is being called by "external_test.html"?
 - **Answer:** ?
-  _(Clue: thm_external.js)_
 
 - **Question:** What attribute links an external JS file in the script tag?
 - **Answer:** ?
-  _(Clue: src)_
 
 ---
 
@@ -208,15 +202,12 @@ Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
 
 - **Question:** In the file "invoice.html", how many times does the code show the alert "Hacked"?
 - **Answer:** ?
-  _(Clue: 5)_
 
 - **Question:** Which of the JS interactive elements should be used to display a dialogue box that asks the user for input?
 - **Answer:** ?
-  _(Clue: prompt)_
 
 - **Question:** If the user enters "Tesla", what value is stored in the carName variable in `carName = prompt("What is your car name?")`?
 - **Answer:** ?
-  _(Clue: Tesla)_
 
 ---
 
@@ -237,11 +228,9 @@ Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang ber
 
 - **Question:** What is the message displayed if you enter the age less than 18?
 - **Answer:** ?
-  _(Clue: You are a minor.)_
 
 - **Question:** What is the password for the user admin?
 - **Answer:** ?
-  _(Clue: ComplexPassword)_
 
 ---
 
@@ -262,11 +251,9 @@ Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus bac
 
 - **Question:** What is the alert message shown after running the file "hello.html"?
 - **Answer:** ?
-  _(Clue: Welcome to THM)_
 
 - **Question:** What is the value of the age variable in the following obfuscated code snippet?
 - **Answer:** ?
-  _(Clue: 21)_
 
 ---
 
@@ -290,7 +277,6 @@ Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan mai
 
 - **Question:** Is it a good practice to blindly include JS in your code from any source (yea/nay)?
 - **Answer:** ?
-  _(Clue: nay)_
 
 ---
 

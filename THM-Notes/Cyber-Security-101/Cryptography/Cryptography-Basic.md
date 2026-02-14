@@ -38,7 +38,6 @@ Selain itu, kriptografi juga dipake buat memenuhi standar regulasi internasional
 
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** ???
-  > **Clue:** Untuk menemukan jawaban dan memahami standar ini lebih lanjut, coba BACA dokumen panduan resmi ini: [Standard required for Large Organizations](https://www.pcisecuritystandards.org/documents/PCI_DSS_for_Large_Organizations_v1.pdf)
 
 ## Task 3: Plaintext to Ciphertext
 

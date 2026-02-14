@@ -181,7 +181,6 @@ Task ini membahas **Single Crack Mode**, fitur JtR untuk men-crack password yang
 - **Step 1: Siapkan File**
   Single Crack Mode butuh format `username:hash`.
   File `hash7.txt` isinya cuma hash, jadi kita harus tambah username di depannya.
-  _(Clue: Username-nya adalah `Joker`)_
 
   ```bash
   echo "Joker:7bf6d9bb82bed1302f331fc6b816aada" > hash7-siap.txt
