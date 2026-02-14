@@ -172,4 +172,48 @@ Di daftar yang muncul, kita bakal nemuin database yang baru aja dibikin plus beb
 
 - **USE DATABASES**
 
-Setelah database dibuat, kita harus kasih tahu MySQL database mana yang mau kita pakai supaya perintah-perintah selanjutnya dieksekusi di tempat yang benar. Untuk mengaktifkan database yang baru kita buat, kita gunakan perintah USE seperti ini: USE nama_database;
+Setelah database dibuat, kita harus kasih tahu MySQL database mana yang mau kita pakai supaya perintah-perintah selanjutnya dieksekusi di tempat yang benar. Untuk mengaktifkan database yang baru kita buat, kita gunakan perintah `USE` seperti ini:
+
+```SQL
+
+mysql> USE bookstore_db;
+
+```
+
+- **DROP DATABASES**
+
+Kalau database udah nggak kepake lagi misal cuma buat coba-coba atau testing kita bisa hapus pake perintah `DROP`. Cara pakenya simple:
+
+```SQL
+
+mysql> DROP database bookstore_db;
+
+```
+
+### Table Statements
+
+Sekarang setelah kita paham cara mengelola database (mulai dari membuat, melihat daftar, menggunakan, hingga menghapusnya), saatnya kita masuk ke bagian yang lebih seru: mengisi database tersebut dengan tabel dan mempelajari cara berinteraksi langsung dengan data di dalamnya
+
+- **CREATE TABLE**
+
+Sama seperti logika pembuatan database, untuk membuat tabel kita juga menggunakan perintah `CREATE`. Setelah database diaktifkan (dengan menjalankan perintah `USE`), kita bisa langsung membuat tabel di dalamnya menggunakan sintaks berikut:
+
+```SQL
+CREATE TABLE nama_tabel (
+    nama_kolom1 tipe_data,
+    nama_kolom2 tipe_data,
+    nama_kolom3 tipe_data
+);
+```
+
+sekarang kita terapkan di database `bookstore_db;`
+
+```SQL
+
+CREATE TABLE book_inventory (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_name VARCHAR(255) NOT NULL,
+    publication_date DATE
+);
+
+```
