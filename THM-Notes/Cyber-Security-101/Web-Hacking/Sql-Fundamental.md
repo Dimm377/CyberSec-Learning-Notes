@@ -271,3 +271,5 @@ Mirip dengan menghapus database, kita juga bisa menghapus tabel menggunakan stat
 ```SQL
 mysql> DROP TABLE table_name;
 ```
+
+## Task 5: CRUD Operations
