@@ -273,3 +273,13 @@ mysql> DROP TABLE table_name;
 ```
 
 ## Task 5: CRUD Operations
+
+### CRUD
+
+CRUD adalah singkatan dari **C**reate, **R**ead, **U**pdate, dan **D**elete, yang dianggap sebagai operasi dasar dalam sistem apa pun yang mengelola data
+
+kita akan mempelajari bagaimana cara kerja berbagai operasi MySQL secara langsung, kita akan banyak berinteraksi dengan tabel `book_inventory` di database `bookstore_db`. Langkah pertamanya simpel: jalankan pernyataan use `bookstore_db;` untuk mengakses semua data di dalamnya
+
+- **Create Operation (INSERT)**
+
+Operasi CREATE merupakan langkah fundamental untuk menambahkan informasi baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan INSERT INTO yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
