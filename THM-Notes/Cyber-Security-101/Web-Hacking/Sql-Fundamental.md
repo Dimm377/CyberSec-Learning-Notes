@@ -302,14 +302,20 @@ Read operation berfungsi sebagai metode utama untuk mengambil atau menampilkan i
 - `SELECT` all: Menggunakan tanda bintang (\*) untuk menarik data di semua kolom yang tersedia sekaligus
 
 ```SQL
-mysql>; SELECT * FROM books;
-+----+---------------------------+----------------+-------------------------------------------------------+
-| id | name                      | published_date | description                                           |
-+----+---------------------------+----------------+-------------------------------------------------------+
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android&#39;s Security Architecture |
-|  2 | Offensive Security        | 2026-02-15     | Guide Book to Learn Offensive Security                |
-|  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction            |
-+----+---------------------------+----------------+-------------------------------------------------------+
+-- Menambahkan data baru ke tabel books
+mysql&gt; INSERT INTO books (name, published_date, description)
+    -&gt; VALUES (&quot;Offensive Security&quot;, &quot;2026-02-15&quot;, &quot;The latest complete guide to learning Offensive Security&quot;);
+Query OK, 1 row affected (0.01 sec)
+
+-- Membaca seluruh kolom menggunakan wildcard (*)
+mysql&gt; SELECT * FROM books;
++----+---------------------------+----------------+----------------------------------------------------------+
+| id | name                      | published_date | description                                              |
++----+---------------------------+----------------+----------------------------------------------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android&#39;s Security Architecture     |
+|  2 | Offensive Security        | 2026-02-15     | The latest complete guide to learning Offensive Security |
+|  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction                |
++----+---------------------------+----------------+----------------------------------------------------------+
 3 rows in set (0.00 sec)
 ```
 
@@ -319,6 +325,7 @@ Jika kita ingin memilih kolom tertentu seperti nama dan deskripsi, kita harus me
 alih alih pakai simbol `*`, seperti yang ditunjukkan di bawah ini
 
 ```SQL
+-- Mengambil hanya kolom nama dan deskripsi
 mysql&gt; SELECT name, description FROM books;
 +----------------------------+----------------------------------------------------------+
 | name                       | description                                              |
