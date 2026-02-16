@@ -381,3 +381,11 @@ Singkatnya, hasil operasi CRUD sangat penting untuk operasi data dan ketika beri
 - **Read (`SELECT` statement)** - Mengambil data dari tabel.
 - **Update (`UPDATE` statement)** - Mengubah data yang sudah ada di dalam tabel.
 - **Delete (`DELETE` statement)** - Menghapus data dari tabel.
+
+## Task 6: Clauses
+
+klausa adalah komponen tambahan dari sebuah pernyataan yang berfungsi untuk menetapkan kriteria spesifik pada data yang akan kita manipulasi. Jika pernyataan dasar seperti `SELECT` atau `UPDATE` adalah perintah utamanya, maka klausa seperti `WHERE` atau `FROM` adalah pemberi instruksi detail mengenai data mana yang harus diambil atau bagaimana urutannya ditampilkan
+
+fokus utama kita adalah menguasai empat klausa penting: `DISTINCT`, `GROUP BY`, `ORDER BY`, dan `HAVING`
+
+disini kita akan menggunakan tabel `books` dari database `book_inventory;`
