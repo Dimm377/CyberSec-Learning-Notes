@@ -285,8 +285,8 @@ kita akan mempelajari bagaimana cara kerja berbagai operasi MySQL secara langsun
 Operasi `CREATE` merupakan langkah fundamental untuk menambahkan data baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan `INSERT INTO` yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
 
 ```SQL
-mysql> INSERT INTO books (id, name, published_date, description)
-    VALUES (1, "Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security");
+mysql> INSERT INTO books (name, published_date, description)
+    VALUES ("Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security");
 
 Query OK, 1 row affected (0.01 sec)
 ```
@@ -328,5 +328,26 @@ mysql>; SELECT name, description FROM books;
 | Defensive Security        | Security Best Practices and Risk Reduction            |
 +---------------------------+-------------------------------------------------------+
 3 rows in set (0.00 sec)
-``
+```
+
+- **Update Operation (UPDATE)**
+
+Update operation adalah bagian krusial dari siklus CRUD yang memungkinkan modifikasi data secara real-time, Pernyataan `UPDATE` bekerja dengan cara menimpa data lama dengan informasi terbaru yang akan kita berikan
+
+```SQL
+-- Memperbarui deskripsi buku dengan ID 2
+mysql>; UPDATE books
+    ->; SET description = &quot;The latest complete guide to learning Offensive Security&quot;
+    ->; WHERE id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+-- Cek Data terbaru
+mysql&gt; SELECT name, description FROM books WHERE id = 2;
++--------------------+----------------------------------------------------------+
+| name               | description                                              |
++--------------------+----------------------------------------------------------+
+| Offensive Security | The latest complete guide to learning Offensive Security |
++--------------------+----------------------------------------------------------+
+1 row in set (0.00 sec)
 ```
