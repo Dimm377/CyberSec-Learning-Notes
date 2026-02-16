@@ -319,14 +319,14 @@ Jika kita ingin memilih kolom tertentu seperti nama dan deskripsi, kita harus me
 alih alih pakai simbol `*`, seperti yang ditunjukkan di bawah ini
 
 ```SQL
-mysql>; SELECT name, description FROM books;
-+---------------------------+-------------------------------------------------------+
-| name                      | description                                           |
-+---------------------------+-------------------------------------------------------+
-| Android Security Internals | An In-Depth Guide to Android& Security Architecture |
-| Offensive Security        | Guide Book to Learn Offensive Security                |
-| Defensive Security        | Security Best Practices and Risk Reduction            |
-+---------------------------+-------------------------------------------------------+
+mysql&gt; SELECT name, description FROM books;
++----------------------------+----------------------------------------------------------+
+| name                       | description                                              |
++----------------------------+----------------------------------------------------------+
+| Android Security Internals  | An In-Depth Guide to Android&#39;s Security Architecture     |
+| Offensive Security         | The latest complete guide to learning Offensive Security |
+| Defensive Security         | Security Best Practices and Risk Reduction                |
++----------------------------+----------------------------------------------------------+
 3 rows in set (0.00 sec)
 ```
 
