@@ -300,3 +300,15 @@ Read operation berfungsi sebagai metode utama untuk mengambil atau menampilkan i
 - `SELECT` spesifik: Digunakan jika kita hanya membutuhkan kolom tertentu, misalnya hanya judul buku
 
 - `SELECT` all: Menggunakan tanda bintang (\*) untuk menarik data di semua kolom yang tersedia sekaligus
+
+```SQL
+mysql>; SELECT * FROM books;
++----+---------------------------+----------------+-------------------------------------------------------+
+| id | name                      | published_date | description                                           |
++----+---------------------------+----------------+-------------------------------------------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android&#39;s Security Architecture |
+|  2 | Offensive Security        | 2026-02-15     | Guide Book to Learn Offensive Security                |
+|  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction            |
++----+---------------------------+----------------+-------------------------------------------------------+
+3 rows in set (0.00 sec)
+```
