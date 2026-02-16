@@ -323,7 +323,7 @@ mysql>; SELECT name, description FROM books;
 +---------------------------+-------------------------------------------------------+
 | name                      | description                                           |
 +---------------------------+-------------------------------------------------------+
-| Android Security Internals | An In-Depth Guide to Android&#39;s Security Architecture |
+| Android Security Internals | An In-Depth Guide to Android& Security Architecture |
 | Offensive Security        | Guide Book to Learn Offensive Security                |
 | Defensive Security        | Security Best Practices and Risk Reduction            |
 +---------------------------+-------------------------------------------------------+
