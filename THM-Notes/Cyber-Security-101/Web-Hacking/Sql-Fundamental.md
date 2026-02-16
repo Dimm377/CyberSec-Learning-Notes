@@ -282,4 +282,11 @@ kita akan mempelajari bagaimana cara kerja berbagai operasi MySQL secara langsun
 
 - **Create Operation (INSERT)**
 
-Operasi CREATE merupakan langkah fundamental untuk menambahkan informasi baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan INSERT INTO yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
+Operasi `CREATE` merupakan langkah fundamental untuk menambahkan data baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan `INSERT INTO` yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
+
+```SQL
+mysql> INSERT INTO books (id, name, published_date, description)
+    VALUES (1, "Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security");
+
+Query OK, 1 row affected (0.01 sec)
+```
