@@ -290,3 +290,13 @@ mysql> INSERT INTO books (id, name, published_date, description)
 
 Query OK, 1 row affected (0.01 sec)
 ```
+
+`INSERT INTO` operation berfungsi untuk menentukan tabel target, dalam hal ini tabel `books` sebagai tempat menambahkan data atau record baru. Kolom-kolom seperti `id`, `name`, `published_date`, dan `description` merupakan elemen yang membentuk catatan di dalam tabel tersebut.
+
+- **Read Operation (SELECT)**
+
+Read operation berfungsi sebagai metode utama untuk mengambil atau menampilkan informasi yang tersimpan di dalam tabel. Melalui pernyataan `SELECT`, kita memiliki fleksibilitas untuk memanggil kolom tertentu secara spesifik atau menampilkan seluruh isi tabel
+
+- `SELECT` spesifik: Digunakan jika kita hanya membutuhkan kolom tertentu, misalnya hanya judul buku
+
+- `SELECT` all: Menggunakan tanda bintang (\*) untuk menarik data di semua kolom yang tersedia sekaligus
