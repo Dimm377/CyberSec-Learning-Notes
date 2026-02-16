@@ -312,3 +312,21 @@ mysql>; SELECT * FROM books;
 +----+---------------------------+----------------+-------------------------------------------------------+
 3 rows in set (0.00 sec)
 ```
+
+operation `SELECT` yang kita gunakan diikuti oleh simbol bintang (`*`), yang dalam dunia database berfungsi sebagai wildcard untuk mengambil seluruh kolom yang tersedia dalam tabel. Setelah itu, kita menyertakan klausa `FROM` untuk menentukan target tabelnya, yang dalam skenario ini adalah tabel `books`
+
+Jika kita ingin memilih kolom tertentu seperti nama dan deskripsi, kita harus menentukannya
+alih alih pakai simbol `*`, seperti yang ditunjukkan di bawah ini
+
+```SQL
+mysql>; SELECT name, description FROM books;
++---------------------------+-------------------------------------------------------+
+| name                      | description                                           |
++---------------------------+-------------------------------------------------------+
+| Android Security Internals | An In-Depth Guide to Android&#39;s Security Architecture |
+| Offensive Security        | Guide Book to Learn Offensive Security                |
+| Defensive Security        | Security Best Practices and Risk Reduction            |
++---------------------------+-------------------------------------------------------+
+3 rows in set (0.00 sec)
+``
+```
