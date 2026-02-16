@@ -308,7 +308,7 @@ mysql&gt; INSERT INTO books (name, published_date, description)
 Query OK, 1 row affected (0.01 sec)
 
 -- Membaca seluruh kolom menggunakan wildcard (*)
-mysql&gt; SELECT * FROM books;
+mysql>; SELECT * FROM books;
 +----+---------------------------+----------------+----------------------------------------------------------+
 | id | name                      | published_date | description                                              |
 +----+---------------------------+----------------+----------------------------------------------------------+
@@ -326,7 +326,7 @@ alih alih pakai simbol `*`, seperti yang ditunjukkan di bawah ini
 
 ```SQL
 -- Mengambil hanya kolom nama dan deskripsi
-mysql&gt; SELECT name, description FROM books;
+mysql>; SELECT name, description FROM books;
 +----------------------------+----------------------------------------------------------+
 | name                       | description                                              |
 +----------------------------+----------------------------------------------------------+
@@ -350,7 +350,7 @@ Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 -- Cek Data terbaru
-mysql&gt; SELECT name, description FROM books WHERE id = 2;
+mysql>; SELECT name, description FROM books WHERE id = 2;
 +--------------------+----------------------------------------------------------+
 | name               | description                                              |
 +--------------------+----------------------------------------------------------+
@@ -358,3 +358,26 @@ mysql&gt; SELECT name, description FROM books WHERE id = 2;
 +--------------------+----------------------------------------------------------+
 1 row in set (0.00 sec)
 ```
+
+Pernyataan UPDATE berfungsi untuk menentukan tabel target—dalam skenario ini adalah tabel `books` sebagai objek yang akan dimodifikasi, Kita menggunakan kata kunci `SET` untuk menetapkan nilai baru pada kolom spesifik yang ingin diperbarui,Untuk menjaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan hanya terjadi pada baris yang memenuhi kriteria, seperti baris dengan `id` 2
+
+- **Delete Operation (DELETE)**
+
+Operasi Delete berfungsi sebagai tahap akhir dalam siklus hidup data untuk menghapus catatan secara permanen dari tabel menggunakan pernyataan DELETE
+
+```SQL
+mysql> DELETE FROM books WHERE id = 2;
+
+Query OK, 1 row affected (0.00 sec)
+```
+
+Pernyataan `DELETE` yang diikuti klausa `FROM` memungkinkan kita untuk menentukan target tabelnya, yakni tabel `books`. Namun, bagian paling krusial adalah klausa `WHERE`, yang berfungsi sebagai pengunci target agar sistem hanya menghapus baris dengan `id` 2. Langkah ini memastikan bahwa operasi penghapusan bersifat presisi dan tidak mengganggu data lainnya
+
+### Summary
+
+Singkatnya, hasil operasi CRUD sangat penting untuk operasi data dan ketika berinteraksi dengan database. Pernyataan yang terkait dengan mereka tercantum di bawah ini
+
+- **Create (`INSERT` statement)** - Menambahkan data baru ke dalam tabel.
+- **Read (`SELECT` statement)** - Mengambil data dari tabel.
+- **Update (`UPDATE` statement)** - Mengubah data yang sudah ada di dalam tabel.
+- **Delete (`DELETE` statement)** - Menghapus data dari tabel.
