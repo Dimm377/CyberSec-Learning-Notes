@@ -397,6 +397,7 @@ disini kita akan menggunakan tabel `book_inventory` dari database `bookstore_db;
 DISTINCT clause digunakan untuk menghilangkan data ganda dalam hasil query, sehingga yang muncul hanya nilai-nilai yang unik (berbeda) saja.
 
 Kita gunakan query `SELECT * FROM book_inventory` untuk melihat isi tabel (asumsikan kita telah mengisi kembali tabel dengan data sampel berikut):
+
 ```SQL
 mysql> SELECT * FROM book_inventory;
 +----+---------------------------+----------------+----------------------------------------------------------+
@@ -412,3 +413,89 @@ mysql> SELECT * FROM book_inventory;
 
 6 rows in set (0.00 sec)
 ```
+
+Bisa dilihat di hasil query di atas, data buku 'Ethical Hacking' muncul dua kali (duplikat). Nah, biar yang tampil cuma data yang unik , kita bisa pakai klausa **DISTINCT**.
+
+```SQL
+mysql> SELECT DISTINCT name FROM book_inventory;
++----------------------------+
+| name                       |
++----------------------------+
+| Android Security Internals |
+| Bug Bounty Bootcamp        |
+| Car Hacker's Handbook      |
+| Designing Secure Software  |
+| Ethical Hacking            |
++----------------------------+
+5 rows in set (0.00 sec)
+```
+
+Outputnya menunjukkan bahwa hanya lima baris yang diambil, dan hanya satu contoh buku Ethical Hacking yang ditampilkan dengan id unik
+
+- **GROUP BY Clause**
+
+GROUP BY clause ini fungsinya buat mengelompokkan data berdasarkan kolom tertentu, biasanya dipakai bersama fungsi kayak `COUNT()`, `MAX()`, `MIN()`, `SUM()`, atau `AVG()`.
+
+Contohnya , kita ingin tau ada berapa jumlah buku untuk setiap judulnya? Kita bisa pakai query ini:
+
+```SQL
+mysql> SELECT name, COUNT(*)
+    -> FROM book_inventory
+    -> GROUP BY name;
++----------------------------+----------+
+| name                       | COUNT(*) |
++----------------------------+----------+
+| Android Security Internals |        1 |
+| Bug Bounty Bootcamp        |        1 |
+| Car Hacker's Handbook      |        1 |
+| Designing Secure Software  |        1 |
+| Ethical Hacking            |        2 |
++----------------------------+----------+
+5 rows in set (0.00 sec)
+```
+
+Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
+
+- **ORDER BY Clause**
+
+The `ORDER BY` clause can be used to sort the records returned by a query in ascending or descending order. Using functions like `ASC` and `DESC` can help us to accomplish that, as shown below in the next two examples.
+
+**ASCENDING ORDER**
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> ORDER BY published_date ASC;
++----+---------------------------+----------------+----------------------------------------------------------+
+| id | name                      | published_date | description                                              |
++----+---------------------------+----------------+----------------------------------------------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
++----+---------------------------+----------------+----------------------------------------------------------+
+6 rows in set (0.00 sec)
+```
+
+**DESCENDING ORDER**
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> ORDER BY published_date DESC;
++----+---------------------------+----------------+----------------------------------------------------------+
+| id | name                      | published_date | description                                              |
++----+---------------------------+----------------+----------------------------------------------------------+
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
++----+---------------------------+----------------+----------------------------------------------------------+
+6 rows in set (0.00 sec)
+```
+
+We can observe the difference when sorting by ascending order using `ASC` and in descending order using `DESC`, both using the `published_date` as reference.
