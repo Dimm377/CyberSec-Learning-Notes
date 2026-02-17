@@ -458,7 +458,7 @@ Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
 
 - **ORDER BY Clause**
 
-The `ORDER BY` clause can be used to sort the records returned by a query in ascending or descending order. Using functions like `ASC` and `DESC` can help us to accomplish that, as shown below in the next two examples.
+`ORDER BY` Clause dapat digunakan untuk mengurutkan hasil query, baik dari atas (ascending) maupun dari bawah (descending). Kita bisa menggunakan fungsi seperti `ASC` dan `DESC` untuk melakukan hal tersebut, seperti yang ditunjukkan pada dua contoh di bawah ini.
 
 **ASCENDING ORDER**
 
@@ -498,4 +498,26 @@ mysql> SELECT *
 6 rows in set (0.00 sec)
 ```
 
-We can observe the difference when sorting by ascending order using `ASC` and in descending order using `DESC`, both using the `published_date` as reference.
+Kita bisa melihat perbedaannya saat mengurutkan dari atas menggunakan `ASC` dan dari bawah menggunakan `DESC`, di mana keduanya menggunakan `published_date` sebagai contoh.
+
+- **HAVING Clause**
+
+`HAVING` Clause digunakan bersama clause lain untuk memfilter grup atau hasil record berdasarkan suatu kondisi. Dalam kasus `GROUP BY`, ia mengevaluasi kondisi menjadi TRUE atau FALSE. Berbeda dengan clause `WHERE`, `HAVING` memfilter hasil setelah agregasi dilakukan.
+
+```SQL
+mysql> SELECT name, COUNT(*)
+    -> FROM book_inventory
+    -> GROUP BY name
+    -> HAVING name LIKE '%Hack%';
++-----------------------+----------+
+| name                  | COUNT(*) |
++-----------------------+----------+
+| Car Hacker's Handbook |        1 |
+| Ethical Hacking       |        2 |
++-----------------------+----------+
+2 rows in set (0.00 sec)
+```
+
+Pada contoh di atas, kita bisa melihat bahwa query mengembalikan buku-buku dengan nama yang mengandung kata **hack** beserta jumlahnya, seperti yang telah kita pelajari sebelumnya.
+
+## Task 7: Operators
