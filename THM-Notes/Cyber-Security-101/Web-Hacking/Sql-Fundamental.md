@@ -754,3 +754,112 @@ mysql> SELECT *
 ```
 
 Query di atas mengembalikan buku yang diterbitkan **pada atau setelah** 2 November 2021.
+
+## Task 8: Functions
+
+Saat bekerja dengan data, fungsi dapat membantu kita menyederhanakan query, melakukan operasi, serta memanipulasi data dengan lebih efisien. Mari kita jelajahi beberapa fungsi yang sering digunakan agar pemahaman kita semakin luwes dan tidak kaku!
+
+### String Functions
+
+Fungsi string sangat berguna ketika kita ingin memanipulasi teks dalam kolom.
+
+- **CONCAT()**
+  Fungsi ini digunakan untuk menggabungkan dua atau lebih string menjadi satu.
+
+  Contoh: Menggabungkan `name` dan `category` menjadi satu kalimat.
+
+  ```SQL
+  mysql> SELECT CONCAT(name, ' is in category: ', category) AS Book_Info
+      -> FROM book_inventory;
+  +-----------------------------------------------------------------+
+  | Book_Info                                                     |
+  +-----------------------------------------------------------------+
+  | Android Security Internals is in category: Defensive Security |
+  | Bug Bounty Bootcamp is in category: Offensive Security        |
+  | ...                                                           |
+  +-----------------------------------------------------------------+
+  ```
+
+- **GROUP_CONCAT()**
+  Nah, ini fungsi sakti mandraguna! `GROUP_CONCAT()` bisa menggabungkan hasil dari banyak baris menjadi satu baris string. Sangat berguna kalau kita mau melihat semua item dalam satu kategori tanpa baris yang terpisah-pisah.
+
+  ```SQL
+  mysql> SELECT category, GROUP_CONCAT(name) AS Books
+      -> FROM book_inventory
+      -> GROUP BY category;
+  +--------------------+------------------------------------------------------------------+
+  | category           | Books                                                            |
+  +--------------------+------------------------------------------------------------------+
+  | Cyber Security     | Offensive Security,Defensive Security                            |
+  | Defensive Security | Android Security Internals,Designing Secure Software             |
+  | Offensive Security | Bug Bounty Bootcamp,Car Hacker's Handbook,Ethical Hacking        |
+  +--------------------+------------------------------------------------------------------+
+  ```
+
+- **SUBSTRING()**
+  Mengambil sebagian teks dari posisi tertentu.
+
+  Contoh: Mengambil 10 karakter pertama dari `description`.
+
+  ```SQL
+  mysql> SELECT name, SUBSTRING(description, 1, 10) AS Short_Desc
+      -> FROM book_inventory;
+  ```
+
+- **LENGTH()**
+  Menghitung jumlah karakter dalam sebuah string. Berguna untuk analisis panjang data.
+
+### Aggregate Functions
+
+Fungsi ini digunakan untuk melakukan perhitungan pada sekumpulan nilai dan mengembalikan satu nilai tunggal.
+
+- **COUNT()**: Menghitung jumlah baris yang cocok dengan kriteria.
+
+  ```SQL
+  mysql> SELECT COUNT(*) FROM book_inventory; -- Menghitung total buku
+  ```
+
+- **MIN()** & **MAX()**: Mencari nilai terkecil dan terbesar.
+
+  ```SQL
+  mysql> SELECT MIN(published_date), MAX(published_date) FROM book_inventory;
+  ```
+
+- **SUM()**: Menjumlahkan nilai numerik (Contoh: Total harga buku jika ada kolom harga).
+
+### System Functions
+
+Nah, fungsi-fungsi ini sangat populer di dunia **Hacking** (terutama saat melakukan SQL Injection) karena bisa memberikan informasi vital tentang sistem database target.
+
+- **USER()**: Menampilkan username yang sedang digunakan untuk koneksi database.
+- **DATABASE()**: Menampilkan nama database yang sedang aktif digunakan.
+- **VERSION()**: Menampilkan versi dari software database (MySQL/MariaDB) yang berjalan.
+
+Contoh penggunaan:
+
+```SQL
+mysql> SELECT USER(), DATABASE(), VERSION();
++----------------+--------------+-------------------------+
+| USER()         | DATABASE()   | VERSION()               |
++----------------+--------------+-------------------------+
+| root@localhost | bookstore_db | 10.4.22-MariaDB-1:10... |
++----------------+--------------+-------------------------+
+1 row in set (0.00 sec)
+```
+
+## Conclusion
+
+Modul ini diharapkan bisa kasih gambaran betapa pentingnya database dalam dunia komputasi. Mengingat hampir setiap aplikasi yang kita pakai sehari-hari bergantung pada data, paham fundamental database itu **wajib hukumnya** kalau kamu mau serius terjun ke dunia Cyber Security.
+
+Poin-poin penting yang kita pelajari di sini:
+
+1.  **Database** adalah kumpulan data yang terorganisir, mudah diakses, di-manage, dan dianalisis.
+2.  Ada dua jenis utama database: **Relational Database** (data terstruktur dalam tabel) dan **Non-Relational Database** (format non-tabel).
+3.  Relational Database terdiri dari **Tabel, Kolom, dan Baris**. **Primary Key** memastikan setiap data unik, sedangkan **Foreign Key** menghubungkan antar tabel.
+4.  **SQL** adalah bahasa yang powerful tapi mudah dipelajari untuk berinteraksi dengan relational database.
+5.  Statement **Database & Table** digunakan untuk membuat atau memodifikasi struktur penyimpanan data.
+6.  **CRUD Operations** (INSERT, SELECT, UPDATE, DELETE) adalah "jurus dasar" untuk mengelola isi data dalam database.
+7.  **Clauses** (seperti WHERE, ORDER BY, GROUP BY) membantu kita mengatur data mana yang mau diambil, difilter, atau diurutkan.
+8.  Penggunaan **Operators** (AND, OR, LIKE, dll) dan **Functions** (CONCAT, COUNT, dll) yang tepat bikin manipulasi data jadi jauh lebih efisien dan spesifik.
+
+Happy hacking !
