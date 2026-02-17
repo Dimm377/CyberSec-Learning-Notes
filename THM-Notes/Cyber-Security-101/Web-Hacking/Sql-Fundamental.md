@@ -211,17 +211,18 @@ sekarang kita terapkan di database `bookstore_db;`
 ```SQL
 
 CREATE TABLE book_inventory (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    book_name VARCHAR(255) NOT NULL,
-    publication_date DATE
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    published_date DATE,
+    description TEXT
 );
 
 ```
 
-statmentini akan membuat tabel `book_inventory` dengan tiga kolom: `book_id`, `book_name`, dan `publication_date`. `book_id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `book_id 1`, buku kedua yang disisipkan akan diberi `book_id 2`, dan seterusnya. Terakhir, `book_id` ditetapkan sebagai `PRIMARY KEY` karena ini akan menjadi cara kita secara
+statment ini akan membuat tabel `book_inventory` dengan empat kolom: `id`, `name`, `published_date`, dan `description`. `id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `id 1`, buku kedua yang disisipkan akan diberi `id 2`, dan seterusnya. Terakhir, `id` ditetapkan sebagai `PRIMARY KEY` karena ini akan menjadi cara kita secara
 unik mengidentifikasi catatan buku di tabel kita (dan catatan utama harus ada di tabel)
 
-`Book_name` mempunyai tipe data `VARCHAR(255)`, artinya dapat menggunakan karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi jika seseorang mencoba memasukkan record ke dalam tabel ini tetapi book_name kosong maka akan ditolak. `publication_date` diatur sebagai tipe data `DATE`)
+`name` mempunyai tipe data `VARCHAR(255)`, artinya dapat menggunakan karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi jika seseorang mencoba memasukkan record ke dalam tabel ini tetapi `name` kosong maka akan ditolak). `published_date` diatur sebagai tipe data `DATE`. `description` menggunakan tipe data `TEXT` untuk menyimpan teks yang lebih panjang.
 
 - **SHOW TABLES**
 
@@ -243,14 +244,15 @@ Ini akan menampilkan detail tabel seperti ini:
 
 ```SQL
 mysql> DESCRIBE book_inventory;
-+------------------+--------------+------+-----+---------+----------------+
-| Field            | Type         | Null | Key | Default | Extra          |
-+------------------+--------------+------+-----+---------+----------------+
-| book_id          | int          | NO   | PRI | NULL    | auto_increment |
-| book_name        | varchar(255) | NO   |     | NULL    |                |
-| publication_date | date         | YES  |     | NULL    |                |
-+------------------+--------------+------+-----+---------+----------------+
-3 rows in set (0.02 sec)
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| id             | int          | NO   | PRI | NULL    | auto_increment |
+| name           | varchar(255) | NO   |     | NULL    |                |
+| published_date | date         | YES  |     | NULL    |                |
+| description    | text         | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
 ```
 
 - **ALTER**
@@ -285,13 +287,13 @@ kita akan mempelajari bagaimana cara kerja berbagai operasi MySQL secara langsun
 Operasi `CREATE` merupakan langkah fundamental untuk menambahkan data baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan `INSERT INTO` yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
 
 ```SQL
-mysql> INSERT INTO books (name, published_date, description)
+mysql> INSERT INTO book_inventory (name, published_date, description)
     VALUES ("Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security");
 
 Query OK, 1 row affected (0.01 sec)
 ```
 
-`INSERT INTO` operation berfungsi untuk menentukan tabel target, dalam hal ini tabel `books` sebagai tempat menambahkan data atau record baru. Kolom-kolom seperti `id`, `name`, `published_date`, dan `description` merupakan elemen yang membentuk catatan di dalam tabel tersebut.
+`INSERT INTO` operation berfungsi untuk menentukan tabel target, dalam hal ini tabel `book_inventory` sebagai tempat menambahkan data atau record baru. Kolom-kolom seperti `id`, `name`, `published_date`, dan `description` merupakan elemen yang membentuk catatan di dalam tabel tersebut.
 
 - **Read Operation (SELECT)**
 
@@ -302,35 +304,35 @@ Read operation berfungsi sebagai metode utama untuk mengambil atau menampilkan i
 - `SELECT` all: Menggunakan tanda bintang (\*) untuk menarik data di semua kolom yang tersedia sekaligus
 
 ```SQL
--- Menambahkan data baru ke tabel books
-mysql&gt; INSERT INTO books (name, published_date, description)
-    -&gt; VALUES (&quot;Offensive Security&quot;, &quot;2026-02-15&quot;, &quot;The latest complete guide to learning Offensive Security&quot;);
+-- Menambahkan data baru ke tabel book_inventory
+mysql> INSERT INTO book_inventory (name, published_date, description)
+    -> VALUES ("Offensive Security", "2026-02-15", "The latest complete guide to learning Offensive Security");
 Query OK, 1 row affected (0.01 sec)
 
 -- Membaca seluruh kolom menggunakan wildcard (*)
-mysql>; SELECT * FROM books;
+mysql> SELECT * FROM book_inventory;
 +----+---------------------------+----------------+----------------------------------------------------------+
 | id | name                      | published_date | description                                              |
 +----+---------------------------+----------------+----------------------------------------------------------+
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android&#39;s Security Architecture     |
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
 |  2 | Offensive Security        | 2026-02-15     | The latest complete guide to learning Offensive Security |
 |  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction                |
 +----+---------------------------+----------------+----------------------------------------------------------+
 3 rows in set (0.00 sec)
 ```
 
-operation `SELECT` yang kita gunakan diikuti oleh simbol bintang (`*`), yang dalam dunia database berfungsi sebagai wildcard untuk mengambil seluruh kolom yang tersedia dalam tabel. Setelah itu, kita menyertakan klausa `FROM` untuk menentukan target tabelnya, yang dalam skenario ini adalah tabel `books`
+operation `SELECT` yang kita gunakan diikuti oleh simbol bintang (`*`), yang dalam dunia database berfungsi sebagai wildcard untuk mengambil seluruh kolom yang tersedia dalam tabel. Setelah itu, kita menyertakan klausa `FROM` untuk menentukan target tabelnya, yang dalam skenario ini adalah tabel `book_inventory`
 
 Jika kita ingin memilih kolom tertentu seperti nama dan deskripsi, kita harus menentukannya
 alih alih pakai simbol `*`, seperti yang ditunjukkan di bawah ini
 
 ```SQL
 -- Mengambil hanya kolom nama dan deskripsi
-mysql>; SELECT name, description FROM books;
+mysql> SELECT name, description FROM book_inventory;
 +----------------------------+----------------------------------------------------------+
 | name                       | description                                              |
 +----------------------------+----------------------------------------------------------+
-| Android Security Internals  | An In-Depth Guide to Android&#39;s Security Architecture     |
+| Android Security Internals  | An In-Depth Guide to Android's Security Architecture     |
 | Offensive Security         | The latest complete guide to learning Offensive Security |
 | Defensive Security         | Security Best Practices and Risk Reduction                |
 +----------------------------+----------------------------------------------------------+
@@ -343,14 +345,14 @@ Update operation adalah bagian krusial dari siklus CRUD yang memungkinkan modifi
 
 ```SQL
 -- Memperbarui deskripsi buku dengan ID 2
-mysql>; UPDATE books
-    ->; SET description = &quot;The latest complete guide to learning Offensive Security&quot;
-    ->; WHERE id = 2;
+mysql> UPDATE book_inventory
+    -> SET description = "The latest complete guide to learning Offensive Security"
+    -> WHERE id = 2;
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 -- Cek Data terbaru
-mysql>; SELECT name, description FROM books WHERE id = 2;
+mysql> SELECT name, description FROM book_inventory WHERE id = 2;
 +--------------------+----------------------------------------------------------+
 | name               | description                                              |
 +--------------------+----------------------------------------------------------+
@@ -359,19 +361,19 @@ mysql>; SELECT name, description FROM books WHERE id = 2;
 1 row in set (0.00 sec)
 ```
 
-Pernyataan UPDATE berfungsi untuk menentukan tabel target—dalam skenario ini adalah tabel `books` sebagai objek yang akan dimodifikasi, Kita menggunakan kata kunci `SET` untuk menetapkan nilai baru pada kolom spesifik yang ingin diperbarui,Untuk menjaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan hanya terjadi pada baris yang memenuhi kriteria, seperti baris dengan `id` 2
+Pernyataan UPDATE berfungsi untuk menentukan tabel target—dalam skenario ini adalah tabel `book_inventory` sebagai objek yang akan dimodifikasi, Kita menggunakan kata kunci `SET` untuk menetapkan nilai baru pada kolom spesifik yang ingin diperbarui,Untuk menjaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan hanya terjadi pada baris yang memenuhi kriteria, seperti baris dengan `id` 2
 
 - **Delete Operation (DELETE)**
 
 Operasi Delete berfungsi sebagai tahap akhir dalam siklus hidup data untuk menghapus catatan secara permanen dari tabel menggunakan pernyataan DELETE
 
 ```SQL
-mysql> DELETE FROM books WHERE id = 2;
+mysql> DELETE FROM book_inventory WHERE id = 2;
 
 Query OK, 1 row affected (0.00 sec)
 ```
 
-Pernyataan `DELETE` yang diikuti klausa `FROM` memungkinkan kita untuk menentukan target tabelnya, yakni tabel `books`. Namun, bagian paling krusial adalah klausa `WHERE`, yang berfungsi sebagai pengunci target agar sistem hanya menghapus baris dengan `id` 2. Langkah ini memastikan bahwa operasi penghapusan bersifat presisi dan tidak mengganggu data lainnya
+Pernyataan `DELETE` yang diikuti klausa `FROM` memungkinkan kita untuk menentukan target tabelnya, yakni tabel `book_inventory`. Namun, bagian paling krusial adalah klausa `WHERE`, yang berfungsi sebagai pengunci target agar sistem hanya menghapus baris dengan `id` 2. Langkah ini memastikan bahwa operasi penghapusan bersifat presisi dan tidak mengganggu data lainnya
 
 ### Summary
 
@@ -388,4 +390,8 @@ klausa adalah komponen tambahan dari sebuah pernyataan yang berfungsi untuk mene
 
 fokus utama kita adalah menguasai empat klausa penting: `DISTINCT`, `GROUP BY`, `ORDER BY`, dan `HAVING`
 
-disini kita akan menggunakan tabel `books` dari database `book_inventory;`
+disini kita akan menggunakan tabel `book_inventory` dari database `bookstore_db;`
+
+- **DISTINCT Clause**
+
+DISTINCT clause digunakan untuk menghilangkan data ganda dalam hasil query, sehingga yang muncul hanya nilai-nilai yang unik (berbeda) saja.
