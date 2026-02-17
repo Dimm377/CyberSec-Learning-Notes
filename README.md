@@ -113,6 +113,18 @@
 
 </details>
 
+<details>
+<summary>Offensive Security Tooling</summary>
+
+| No. | Writeup | Description |
+|:---:|---------|-------------|
+| 1. | [Shells Overview](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md) | Understanding Reverse & Bind Shells |
+| 2. | [Hydra](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Hydra.md) | Fast Password Attacks |
+| 3. | [Gobuster The Basics](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Gobuster:%20The%20Basics.md) | Directory Enumeration Tool |
+| 4. | [SQLMap The Basics](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/SQLMap:%20The%20Basics.md) | Automatic SQL Injection Tool |
+
+</details>
+
 </details>
 
 <details>
