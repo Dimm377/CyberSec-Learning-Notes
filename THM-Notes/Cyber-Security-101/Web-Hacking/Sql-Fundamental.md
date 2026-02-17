@@ -395,3 +395,20 @@ disini kita akan menggunakan tabel `book_inventory` dari database `bookstore_db;
 - **DISTINCT Clause**
 
 DISTINCT clause digunakan untuk menghilangkan data ganda dalam hasil query, sehingga yang muncul hanya nilai-nilai yang unik (berbeda) saja.
+
+Kita gunakan query `SELECT * FROM book_inventory` untuk melihat isi tabel (asumsikan kita telah mengisi kembali tabel dengan data sampel berikut):
+```SQL
+mysql> SELECT * FROM book_inventory;
++----+---------------------------+----------------+----------------------------------------------------------+
+| id | name                      | published_date | description                                              |
++----+---------------------------+----------------+----------------------------------------------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
++----+---------------------------+----------------+----------------------------------------------------------+
+
+6 rows in set (0.00 sec)
+```
