@@ -214,7 +214,8 @@ CREATE TABLE book_inventory (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     published_date DATE,
-    description TEXT
+    description TEXT,
+    category VARCHAR(100)
 );
 
 ```
@@ -222,7 +223,7 @@ CREATE TABLE book_inventory (
 statment ini akan membuat tabel `book_inventory` dengan empat kolom: `id`, `name`, `published_date`, dan `description`. `id` adalah **INT** (Integer) karena seharusnya hanya berupa angka, `AUTO_INCREMENT` ada, artinya buku pertama yang disisipkan akan diberi `id 1`, buku kedua yang disisipkan akan diberi `id 2`, dan seterusnya. Terakhir, `id` ditetapkan sebagai `PRIMARY KEY` karena ini akan menjadi cara kita secara
 unik mengidentifikasi catatan buku di tabel kita (dan catatan utama harus ada di tabel)
 
-`name` mempunyai tipe data `VARCHAR(255)`, artinya dapat menggunakan karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi jika seseorang mencoba memasukkan record ke dalam tabel ini tetapi `name` kosong maka akan ditolak). `published_date` diatur sebagai tipe data `DATE`. `description` menggunakan tipe data `TEXT` untuk menyimpan teks yang lebih panjang.
+`name` mempunyai tipe data `VARCHAR(255)`, artinya dapat menggunakan karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi jika seseorang mencoba memasukkan record ke dalam tabel ini tetapi `name` kosong maka akan ditolak). `category` menggunakan tipe data `VARCHAR(100)` untuk menyimpan kategori buku. `published_date` diatur sebagai tipe data `DATE`. `description` menggunakan tipe data `TEXT` untuk menyimpan teks yang lebih panjang.
 
 - **SHOW TABLES**
 
@@ -251,8 +252,9 @@ mysql> DESCRIBE book_inventory;
 | name           | varchar(255) | NO   |     | NULL    |                |
 | published_date | date         | YES  |     | NULL    |                |
 | description    | text         | YES  |     | NULL    |                |
+| category       | varchar(100) | YES  |     | NULL    |                |
 +----------------+--------------+------+-----+---------+----------------+
-4 rows in set (0.02 sec)
+5 rows in set (0.02 sec)
 ```
 
 - **ALTER**
@@ -287,8 +289,8 @@ kita akan mempelajari bagaimana cara kerja berbagai operasi MySQL secara langsun
 Operasi `CREATE` merupakan langkah fundamental untuk menambahkan data baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalankan menggunakan pernyataan `INSERT INTO` yang memungkinkan kita untuk memasukkan catatan atau record baru secara permanen ke dalam tabel
 
 ```SQL
-mysql> INSERT INTO book_inventory (name, published_date, description)
-    VALUES ("Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security");
+mysql> INSERT INTO book_inventory (name, published_date, description, category)
+    VALUES ("Offensive Security", "2026-07-17", "An In-Depth Guide to Offensive Security", "Cyber Security");
 
 Query OK, 1 row affected (0.01 sec)
 ```
@@ -305,19 +307,19 @@ Read operation berfungsi sebagai metode utama untuk mengambil atau menampilkan i
 
 ```SQL
 -- Menambahkan data baru ke tabel book_inventory
-mysql> INSERT INTO book_inventory (name, published_date, description)
-    -> VALUES ("Offensive Security", "2026-02-15", "The latest complete guide to learning Offensive Security");
+mysql> INSERT INTO book_inventory (name, published_date, description, category)
+    -> VALUES ("Offensive Security", "2026-02-15", "The latest complete guide to learning Offensive Security", "Cyber Security");
 Query OK, 1 row affected (0.01 sec)
 
 -- Membaca seluruh kolom menggunakan wildcard (*)
 mysql> SELECT * FROM book_inventory;
-+----+---------------------------+----------------+----------------------------------------------------------+
-| id | name                      | published_date | description                                              |
-+----+---------------------------+----------------+----------------------------------------------------------+
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
-|  2 | Offensive Security        | 2026-02-15     | The latest complete guide to learning Offensive Security |
-|  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction                |
-+----+---------------------------+----------------+----------------------------------------------------------+
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                      | published_date | description                                              | category          |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Defensive Security   |
+|  2 | Offensive Security        | 2026-02-15     | The latest complete guide to learning Offensive Security | Cyber Security    |
+|  3 | Defensive Security        | 2026-02-16     | Security Best Practices and Risk Reduction                | Cyber Security    |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 3 rows in set (0.00 sec)
 ```
 
@@ -400,16 +402,16 @@ Kita gunakan query `SELECT * FROM book_inventory` untuk melihat isi tabel (asums
 
 ```SQL
 mysql> SELECT * FROM book_inventory;
-+----+---------------------------+----------------+----------------------------------------------------------+
-| id | name                      | published_date | description                                              |
-+----+---------------------------+----------------+----------------------------------------------------------+
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
-|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
-|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
-|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
-|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
-|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
-+----+---------------------------+----------------+----------------------------------------------------------+
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                      | published_date | description                                              | category          |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Defensive Security   |
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   | Offensive Security|
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       | Offensive Security|
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   | Defensive Security|
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   | Offensive Security|
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          | Offensive Security|
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 
 6 rows in set (0.00 sec)
 ```
@@ -466,16 +468,16 @@ Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
 mysql> SELECT *
     -> FROM book_inventory
     -> ORDER BY published_date ASC;
-+----+---------------------------+----------------+----------------------------------------------------------+
-| id | name                      | published_date | description                                              |
-+----+---------------------------+----------------+----------------------------------------------------------+
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
-|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
-|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
-|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
-|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
-|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
-+----+---------------------------+----------------+----------------------------------------------------------+
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                      | published_date | description                                              | category          |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Defensive Security   |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       | Offensive Security|
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   | Offensive Security|
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          | Offensive Security|
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   | Offensive Security|
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   | Defensive Security|
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 6 rows in set (0.00 sec)
 ```
 
@@ -485,16 +487,16 @@ mysql> SELECT *
 mysql> SELECT *
     -> FROM book_inventory
     -> ORDER BY published_date DESC;
-+----+---------------------------+----------------+----------------------------------------------------------+
-| id | name                      | published_date | description                                              |
-+----+---------------------------+----------------+----------------------------------------------------------+
-|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   |
-|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   |
-|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   |
-|  6 | Ethical Hacking            | 2021-11-02     |                                                          |
-|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       |
-|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     |
-+----+---------------------------+----------------+----------------------------------------------------------+
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                      | published_date | description                                              | category          |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   | Defensive Security|
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   | Offensive Security|
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In                   | Offensive Security|
+|  6 | Ethical Hacking            | 2021-11-02     |                                                          | Offensive Security|
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       | Offensive Security|
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Defensive Security   |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 6 rows in set (0.00 sec)
 ```
 
@@ -521,3 +523,76 @@ mysql> SELECT name, COUNT(*)
 Pada contoh di atas, kita bisa melihat bahwa query mengembalikan buku-buku dengan nama yang mengandung kata **hack** beserta jumlahnya, seperti yang telah kita pelajari sebelumnya.
 
 ## Task 7: Operators
+
+Operator berfungsi untuk memfilter dan memanipulasi data secara efektif. Dengan menguasai operator, kita bisa membangun query yang jauh lebih akurat dan canggih daripada sekedar pengambilan data standar.
+
+- **Logical Operators**
+
+Operator ini memeriksa kebenaran suatu kondisi dan mengembalikan nilai boolean `TRUE` atau `FALSE`.
+
+- **LIKE Operator**
+
+Operator `LIKE` biasanya digunakan bersama dengan clause seperti `WHERE` untuk memfilter pola tertentu dalam sebuah kolom.
+
+Contoh penggunaan:
+
+- `%A` = Berakhiran huruf **A**.
+- `A%` = Berawalan huruf **A**.
+- `%A%` = Mengandung huruf **A** di posisi mana saja.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE description LIKE "%guide%";
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                      | published_date | description                                              | category          |
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Defensive Security   |
+|  2 | Bug Bounty Bootcamp        | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities   | Offensive Security|
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                       | Offensive Security|
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                                   | Defensive Security|
++----+---------------------------+----------------+----------------------------------------------------------+-------------------+
+4 rows in set (0.00 sec)
+```
+
+Query di atas menampilkan daftar buku yang sudah difilter, yaitu hanya buku yang deskripsinya mengandung kata **guide** (menggunakan operator `LIKE`).
+
+- **AND Operator**
+
+Operator `AND` memungkinkan kita untuk menggabungkan dua kondisi atau lebih dalam satu query. Hasilnya hanya akan `TRUE` jika **semua** kondisi terpenuhi.
+
+Contoh berikut mencari buku dengan kategori **"Offensive Security"** DAN judul **"Bug Bounty Bootcamp"**:
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE category = "Offensive Security" AND name = "Bug Bounty Bootcamp";
++----+---------------------+--------------------+----------------+--------------------------------------------------------+--------------------+
+| id | name                | published_date     | description                                            | category           |
++----+---------------------+--------------------+----------------+--------------------------------------------------------+--------------------+
+|  2 | Bug Bounty Bootcamp | 2021-11-16         | The Guide to Finding and Reporting Web Vulnerabilities | Offensive Security |
++----+---------------------+--------------------+----------------+--------------------------------------------------------+--------------------+
+1 row in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang memiliki kategori "Offensive Security" **AND** bernama "Bug Bounty Bootcamp".
+
+- **OR Operator**
+
+Operator `OR` menggabungkan beberapa kondisi dalam query dan mengembalikan nilai `TRUE` jika **setidaknya satu** dari kondisi tersebut bernilai benar.
+
+Contoh berikut mencari buku yang judulnya mengandung kata **"Android"** ATAU **"iOS"**:
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE name LIKE "%Android%" OR name LIKE "%iOS%";
++----+----------------------------+----------------+----------------------------------------------------------+-------------------+
+| id | name                       | published_date | description                                              | category          |
++----+----------------------------+----------------+----------------------------------------------------------+-------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture     | Mobile Security   |
++----+----------------------------+----------------+----------------------------------------------------------+-------------------+
+1 row in set (0.00 sec)
+```
+
+Query di atas akan mengembalikan buku jika namanya mengandung "Android" **ATAU** "iOS".
