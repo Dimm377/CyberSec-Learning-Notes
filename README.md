@@ -10,7 +10,7 @@
 <details>
 <summary>How The Web Works</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [How The Web Work](THM-Notes/Pre-Security/How-The-Web-Works/How-The-Web-Work.md) | Client-Server Model basics |
 | 2. | [DNS In Details](THM-Notes/Pre-Security/How-The-Web-Works/DNS-In-Details.md) | Domain Name System explained |
@@ -22,7 +22,7 @@
 <details>
 <summary>Linux Fundamental</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Linux Fundamental Part 1](THM-Notes/Pre-Security/Linux-Fundamental/Linux-Fundamental-Part1.md) | Basic commands & navigation |
 | 2. | [Linux Fundamental Part 2](THM-Notes/Pre-Security/Linux-Fundamental/Linux-Fundamental-Part2.md) | File permissions & operators |
@@ -33,7 +33,7 @@
 <details>
 <summary>Networking Fundamental</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [What Is Networking?](THM-Notes/Pre-Security/Networking-fundamental/What-Is-Networking%3F.md) | Network basics |
 | 2. | [Intro To LAN](THM-Notes/Pre-Security/Networking-fundamental/Intro-To-LAN.md) | Local Area Network |
@@ -46,7 +46,7 @@
 <details>
 <summary>Windows Fundamental</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Windows Fundamental Part 1](THM-Notes/Pre-Security/Windows-Fundamental/Windows-Fundamental-Part1.md) | Windows interface & filesystem |
 | 2. | [Windows Fundamental Part 2](THM-Notes/Pre-Security/Windows-Fundamental/Windows-Fundamental-Part2.md) | System configuration & tools |
@@ -64,7 +64,7 @@
 <details>
 <summary>Networking</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Networking Concept](THM-Notes/Cyber-Security-101/Networking/Networking-Concept.md) | Core networking concepts |
 | 2. | [Networking Essentials](THM-Notes/Cyber-Security-101/Networking/Networking-Essentials.md) | Essential protocols & tools |
@@ -91,7 +91,7 @@
 <details>
 <summary>Exploitation Basics</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Moniker Link (CVE-2024-21413)](THM-Notes/Cyber-Security-101/Exploitation-Basics/Moniker-Links.md) | Outlook Moniker Link vulnerability |
 | 2. | [Metasploit Introduction](THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Introduction.md) | Metasploit Framework basics |
@@ -105,7 +105,7 @@
 <details>
 <summary>Web Hacking</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Web Application Basics](THM-Notes/Cyber-Security-101/Web-Hacking/Web-Application-Basic.md) | Introduction to Web Apps (Complete Room) |
 | 2. | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md) | JS Basics for Hacking (Complete Room) |
@@ -116,7 +116,7 @@
 <details>
 <summary>Offensive Security Tooling</summary>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Shells Overview](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md) | Understanding Reverse & Bind Shells |
 | 2. | [Hydra](THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Hydra.md) | Fast Password Attacks |
@@ -132,7 +132,7 @@
 
 <br>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [Google Dorking](THM-Notes/Exploring-Room/Google-dorking.md) | Google Search Hacking (Complete Room)|
 
@@ -143,7 +143,7 @@
 
 <br>
 
-| No. | Writeup | Description |
+| No. | Notes | Description |
 |:---:|---------|-------------|
 | 1. | [BurpSuite The Basic](THM-Notes/Burp-Suite/BurpSuiteTheBasic.md) | Burp Suite fundamentals |
 | 2. | [BurpSuite Repeater](THM-Notes/Burp-Suite/BurpSuiteRepeater.md) | Burp Suite Repeater tool |
