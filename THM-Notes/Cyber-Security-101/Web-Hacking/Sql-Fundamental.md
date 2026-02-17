@@ -30,7 +30,7 @@ Seperti yang sudah dijelaskan di task 1, Database itu ada di hampir setiap siste
 Ada cukup banyak jenis database yang bisa dibuat, tapi untuk ini, kita hanya fokus pada dua tipe utama: **Relational Databases (atau SQL)** vs **Non-Relational Databases (atau NoSQL)**
 
 <p align="center">
-<img src="../../../Assets/Images/database-type.png" width="400">
+<img src="../../Assets/Images/database-type.png" width="400">
 </p>
 
 **Relational Databases:** Menyimpan data yang terstruktur, yang artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu, Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`. Relational databases paling cocok untuk Menyimpan Data Terstruktur, menghubungkan Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses

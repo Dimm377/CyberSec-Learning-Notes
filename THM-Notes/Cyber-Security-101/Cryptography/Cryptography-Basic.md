@@ -52,7 +52,7 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 - **Key (Kunci):** Informasi yang digunakan oleh algoritma kriptografi untuk membuat proses enkripsi/dekripsi menjadi unik
 
 <p align="center">
-<img src="../../../Assets/Images/chiper.png" width="400">
+<img src="../../Assets/Images/chiper.png" width="400">
 </p>
 
 **Answer the questions below:**
@@ -79,8 +79,8 @@ Ini adalah salah satu teknik paling tua dan paling simpel
 - **ROT13:** Varian populer dari Caesar Cipher yang menggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, menjalankan ROT13 dua kali pada pesan yang sama akan mengembalikannya ke teks asli
 
 <p align="center">
-  <img src="../../../Assets/Images/Encryption.png" width="45%">
-  <img src="../../../Assets/Images/Decryption.png" width="45%">
+  <img src="../../Assets/Images/Encryption.png" width="45%">
+  <img src="../../Assets/Images/Decryption.png" width="45%">
 </p>
 
 ### 2. Vigenère Cipher
