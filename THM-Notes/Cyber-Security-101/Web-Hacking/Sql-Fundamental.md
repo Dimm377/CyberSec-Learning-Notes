@@ -596,3 +596,161 @@ mysql> SELECT *
 ```
 
 Query di atas akan mengembalikan buku jika namanya mengandung "Android" **ATAU** "iOS".
+
+- **NOT Operator**
+
+Operator `NOT` membalikkan nilai dari operator boolean, memungkinkan kita untuk mengecualikan kondisi tertentu.
+
+Contoh berikut mencari buku yang deskripsinya **TIDAK** mengandung kata **"guide"**:
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE NOT description LIKE "%guide%";
++----+-----------------+----------------+----------------------------------------+--------------------+
+| id | name            | published_date | description                            | category           |
++----+-----------------+----------------+----------------------------------------+--------------------+
+|  5 | Ethical Hacking | 2021-11-02     | A Hands-on Introduction to Breaking In | Offensive Security |
++----+-----------------+----------------+----------------------------------------+--------------------+
+1 row in set (0.00 sec)
+```
+
+Query di atas mengembalikan hasil di mana deskripsi tidak mengandung kata **guide**.
+
+- **BETWEEN Operator**
+
+Operator `BETWEEN` memungkinkan kita untuk menguji apakah suatu nilai ada dalam rentang tertentu.
+
+Contoh berikut mencari buku dengan **id** antara **2** dan **4**:
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE id BETWEEN 2 AND 4;
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+| id | name                      | published_date | description                                            | category           |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+|  2 | Bug Bounty Bootcamp       | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities | Offensive Security |
+|  3 | Car Hacker's Handbook     | 2016-02-25     | A Guide for the Penetration Tester                     | Offensive Security |
+|  4 | Designing Secure Software | 2021-12-21     | A Guide for Developers                                 | Defensive Security |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+3 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang **id**-nya antara 2 dan 4.
+
+- **Comparison Operators**
+
+Operator perbandingan digunakan untuk membandingkan nilai dan memeriksa apakah nilai tersebut memenuhi kriteria yang ditentukan.
+
+**Equal To Operator**
+
+Operator `=` (Sama Dengan) membandingkan dua ekspresi dan menentukan apakah keduanya sama, atau bisa juga digunakan untuk memeriksa apakah suatu nilai cocok dengan nilai lain dalam kolom tertentu.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE name = "Designing Secure Software";
++----+---------------------------+----------------+------------------------+--------------------+
+| id | name                      | published_date | description            | category           |
++----+---------------------------+----------------+------------------------+--------------------+
+|  4 | Designing Secure Software | 2021-12-21     | A Guide for Developers | Defensive Security |
++----+---------------------------+----------------+------------------------+--------------------+
+1 row in set (0.10 sec)
+```
+
+Query di atas mengembalikan buku dengan nama yang **sama persis** yaitu "Designing Secure Software".
+
+**Not Equal To Operator**
+
+Operator `!=` (Tidak Sama Dengan) membandingkan ekspresi dan menguji apakah keduanya tidak sama; operator ini juga memeriksa apakah suatu nilai berbeda dari nilai yang ada dalam kolom.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE category != "Offensive Security";
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+| id | name                       | published_date | description                                          | category           |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture | Defensive Security |
+|  4 | Designing Secure Software  | 2021-12-21     | A Guide for Developers                               | Defensive Security |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+2 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku **kecuali** yang kategorinya adalah "Offensive Security".
+
+**Less Than Operator**
+
+Operator `<` (Kurang Dari) membandingkan apakah nilai dalam ekspresi lebih kecil dari nilai yang ditentukan.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE published_date < "2020-01-01";
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+| id | name                       | published_date | description                                          | category           |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture | Defensive Security |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                   | Offensive Security |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+2 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang diterbitkan **sebelum** 1 Januari 2020.
+
+**Greater Than Operator**
+
+Operator `>` (Lebih Besar Dari) membandingkan apakah nilai dalam ekspresi lebih besar dari nilai yang ditentukan.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE published_date > "2020-01-01";
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+| id | name                      | published_date | description                                            | category           |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+|  2 | Bug Bounty Bootcamp       | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities | Offensive Security |
+|  4 | Designing Secure Software | 2021-12-21     | A Guide for Developers                                 | Defensive Security |
+|  5 | Ethical Hacking           | 2021-11-02     | A Hands-on Introduction to Breaking In                 | Offensive Security |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+3 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang diterbitkan **setelah** 1 Januari 2020.
+
+**Less Than or Equal To and Greater Than or Equal To Operators**
+
+Operator `<=` (Kurang Dari atau Sama Dengan) membandingkan apakah nilai dalam ekspresi lebih kecil atau sama dengan nilai yang diberikan. Di sisi lain, operator `>=` (Lebih Besar atau Sama Dengan) membandingkan apakah nilai dalam ekspresi lebih besar atau sama dengan nilai yang diberikan. Mari kita lihat beberapa contoh dari keduanya di bawah ini.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE published_date <= "2021-11-15";
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+| id | name                       | published_date | description                                          | category           |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+|  1 | Android Security Internals | 2014-10-14     | An In-Depth Guide to Android's Security Architecture | Defensive Security |
+|  3 | Car Hacker's Handbook      | 2016-02-25     | A Guide for the Penetration Tester                   | Offensive Security |
+|  5 | Ethical Hacking            | 2021-11-02     | A Hands-on Introduction to Breaking In               | Offensive Security |
++----+----------------------------+----------------+------------------------------------------------------+--------------------+
+3 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang diterbitkan **pada atau sebelum** 15 November 2021.
+
+```SQL
+mysql> SELECT *
+    -> FROM book_inventory
+    -> WHERE published_date >= "2021-11-02";
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+| id | name                      | published_date | description                                            | category           |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+|  2 | Bug Bounty Bootcamp       | 2021-11-16     | The Guide to Finding and Reporting Web Vulnerabilities | Offensive Security |
+|  4 | Designing Secure Software | 2021-12-21     | A Guide for Developers                                 | Defensive Security |
+|  5 | Ethical Hacking           | 2021-11-02     | A Hands-on Introduction to Breaking In                 | Offensive Security |
++----+---------------------------+----------------+--------------------------------------------------------+--------------------+
+3 rows in set (0.00 sec)
+```
+
+Query di atas mengembalikan buku yang diterbitkan **pada atau setelah** 2 November 2021.
