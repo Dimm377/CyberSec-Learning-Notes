@@ -1,15 +1,14 @@
-<div align="center">
-  <h1>TryHackMe Notes</h1>
-  <p>Just my personal notes for Cyber security & some writeup</p>
-</div>
+
+
+# TryHackMe Notes
 
 <details open>
-<summary><h3>Pre-Security</h3></summary>
+<summary><b>Pre-Security</b></summary>
 
 <br>
 
 <details>
-<summary><h3>How The Web Works</h3></summary>
+<summary>How The Web Works</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -21,7 +20,7 @@
 </details>
 
 <details>
-<summary><h3>Linux Fundamental</h3></summary>
+<summary>Linux Fundamental</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -32,7 +31,7 @@
 </details>
 
 <details>
-<summary><h3>Networking Fundamental</h3></summary>
+<summary>Networking Fundamental</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -45,7 +44,7 @@
 </details>
 
 <details>
-<summary><h3>Windows Fundamental</h3></summary>
+<summary>Windows Fundamental</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -58,12 +57,12 @@
 </details>
 
 <details>
-<summary><h3>Cyber Security 101</h3></summary>
+<summary><b>Cyber Security 101</b></summary>
 
 <br>
 
 <details>
-<summary><h3>Networking</h3></summary>
+<summary>Networking</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -78,7 +77,7 @@
 </details>
 
 <details>
-<summary><h3>Cryptography</h3></summary>
+<summary>Cryptography</summary>
 
 | No. | Note | Description |
 |:---:|------|-------------|
@@ -90,7 +89,7 @@
 </details>
 
 <details>
-<summary><h3>Exploitation Basics</h3></summary>
+<summary>Exploitation Basics</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -104,7 +103,7 @@
 
 
 <details>
-<summary><h3>Web Hacking</h3></summary>
+<summary>Web Hacking</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -115,7 +114,7 @@
 </details>
 
 <details>
-<summary><h3>Offensive Security Tooling</h3></summary>
+<summary>Offensive Security Tooling</summary>
 
 | No. | Notes | Description |
 |:---:|---------|-------------|
@@ -129,7 +128,7 @@
 </details>
 
 <details>
-<summary><h3>Exploring Room</h3></summary>
+<summary><b>Exploring Room</b></summary>
 
 <br>
 
@@ -140,7 +139,7 @@
 </details>
 
 <details>
-<summary><h3>Burp Suite</h3></summary>
+<summary><b>Burp Suite</b></summary>
 
 <br>
 
@@ -152,7 +151,7 @@
 </details>
 
 <details>
-<summary><h3>SQL Injection</h3></summary>
+<summary><b>SQL Injection</b></summary>
 
 <br>
 
