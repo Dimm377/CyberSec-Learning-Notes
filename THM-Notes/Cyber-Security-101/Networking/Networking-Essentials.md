@@ -35,7 +35,7 @@ Protokol krusia yang menjembatani komunikasi antara Layer 2 dan Layer 3.
 
 - **Fungsi:** Menerjemahkan IP Address menjadi MAC Address agar data bisa sampai ke perangkat fisik yang tepat.
 - **ARP Request:** Proses pencarian MAC Address yang dilakukan secara Broadcast ke seluruh jaringan lokal.
-- **ARP Reply:** Jawaban Unicast dari pemilik IP yang berisi informasi MAC Address-nya.
+- **ARP Reply:** menjawab Unicast dari pemilik IP yang berisi informasi MAC Address-nya.
 
 > Security Insight: ARP tidak memiliki fitur verifikasi, sehingga rentan terhadap serangan ARP Spoofing/Poisoning yang memungkinkan teknik Man-in-the-Middle (MITM).
 
