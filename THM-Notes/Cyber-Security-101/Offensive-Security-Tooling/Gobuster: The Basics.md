@@ -79,6 +79,8 @@ Sebelum mendalami Gobuster, kita bahas secara singkat konsep **Enumeration** dan
 
 ### Gobuster: Overview
 
+Gunakan perintah `gobuster --help.` untuk menampilkan help page kayak dibawah ini
+
 ```zsh
 root@user:~ gobuster --help
 Usage:
@@ -113,3 +115,26 @@ Flags:
 
 Use "gobuster [command] --help" for more information about a command.
 ```
+
+Isi dari help page nya yaitu:
+
+- **usage:** Menampilkan sintaks tentang cara menggunakan perintah yang ada di gobuster
+
+- **Available Commands:**
+
+  Ada banyak mode yang bisa dipake (kayak enumerasi S3 bucket, Google Cloud, dll). Tapi di room ini, kita bakal fokus ke tiga command utama:
+  - `dir`: Mode enumeration direktori/file (paling sering dipakai).
+  - `dns`: Mode enumeration subdomain.
+  - `vhost`: Mode enumeration virtual host.
+
+- **Flags:**
+
+  Ini adalah opsi tambahan yang bisa kita atur buat nyesuain cara kerja command-nya (misal: nambahin jumlah threads, nge-skip error, dll).
+
+| Flag |  Long Flag   | Keterangan                                                                                                                                                                          |
+| :--: | :----------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-t` | `--threads`  | Jumlah _concurrent threads_ yang dipake buat scanning. Default-nya 10. Bisa dinaikin agar lebih kencang, tapi hati-hati ini akan memakan resource PC atau bikin server target down. |
+| `-w` | `--wordlist` | Path ke file wordlist yang mau dipakai. Ini wajib diisi biar Gobuster tau "kamus" apa yang harus dicoba.                                                                            |
+|      |  `--delay`   | Jeda waktu antar request. Berguna biar gak terlalu agresif dan gak kedetect firewall/WAF. Biar dikira traffic normal gitu lah.                                                      |
+|      |  `--debug`   | Mode _troubleshooting_. Berguna banget kalau lu nemu error aneh dan pengen tau detail apa yang salah.                                                                               |
+| `-o` |  `--output`  | Opsi buat nyimpen hasil scan ke file. Wajib banget dipake pas CTF atau pentest beneran biar gak ilang datanya.                                                                      |
