@@ -296,12 +296,77 @@ Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka kelia
 > [!NOTE]
 > **Apa itu Virtual Hosting?**
 >
-> Bayangin satu server itu kayak satu rumah dengan satu alamat (IP Address).
-> Virtual Hosting memungkinkan rumah itu ditinggali oleh banyak keluarga (Website) sekaligus.
+> **Virtual host** (Vhost) adalah metode untuk nge-host banyak website di server atau alamat IP yang sama.
 >
-> Pas ada tamu dateng ke alamat itu, server bakal nanya: "Mau ketemu keluarga yang mana?". Nah, jawaban tamu itu adalah **Hostname** yang dicari Gobuster di mode ini.
+> Setiap situs bisa punya nama domain dan konfigurasinya sendiri, jadi konten yang disajikan bisa beda-beda tergantung domain mana yang diminta. Teknik ini sering banget dipake di web hosting buat memaksimalkan resource server dan mempermudah manajemen.
 
 Bedanya mode `vhost` sama `dns` ada di cara kerjanya pas scanning:
 
-- Mode `vhost` bakal nuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
+- Mode `vhost` bakal menuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
 - Mode `dns` bakal ngelakuin DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) sama isi wordlist.
+
+### Help
+
+Berikut adalah beberapa flag yang sering dipake di mode `vhost`:
+
+| Short Flag |     Long Flag      | Description                                                                                                                     |
+| :--------: | :----------------: | ------------------------------------------------------------------------------------------------------------------------------- |
+|    `-u`    |      `--url`       | Target URL utama yang mau di-scan. Ingat, ini beda sama mode `dns` yang pake `-d`.                                              |
+|            | `--append-domain`  | Nambahin domain utama ke setiap kata di wordlist (misal: `word.yourbrokenweb.thm`).                                             |
+|    `-m`    |     `--method`     | Menentukan HTTP method request-nya (misal: `GET`, `POST`). Default-nya `GET`.                                                   |
+|            |     `--domain`     | Menambahkan domain ke entry wordlist buat bikin hostname yang valid (berguna kalau gak disediain secara eksplisit).             |
+|            | `--exclude-length` | Filter hasil berdasarkan panjang response body. Berguna banget buat nge-filter halaman error default yang ukurannya sama semua. |
+
+### How To Use vhost Mode
+
+Buat jalanin Gobuster di mode `vhost`, perintah dasarnya kayak gini:
+
+`gobuster vhost -u "http://yourbrokenweb.thm" -w /path/to/wordlist`
+
+Tapi, kekuatan utama `vhost` adalah kemampuannya buat nge-scan IP address tapi seolah-olah kita ngakses domain tertentu (Host Header injection).
+
+Contoh skenario: Kita nemu IP `10.10.10.10` dan kita curiga IP ini nge-host `yourbrokenweb.thm` beserta subdomainnya.
+
+Command-nya jadi:
+
+```bash
+gobuster vhost -u "http://10.10.10.10" --domain yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain --exclude-length 250-320
+```
+
+Penjelasannya:
+
+- `-u "http://10.10.10.10"`: Kita nembak langsung ke IP servernya.
+- `--domain yourbrokenweb.thm`: Kita kasih tau Gobuster buat nempelin domain ini di Host Header.
+- `--append-domain`: Gabungin kata di wordlist sama domain. Jadi kalau wordlist isinya `admin`, bakal jadi `admin.yourbrokenweb.thm`.
+- `--exclude-length`: Ini penting! Biasanya kalau vhost gak valid, server bakal balikin halaman default yang ukurannya sama. Kita filter ukuran itu biar gak menuhin layar.
+
+Outputnya bakal kayak gini:
+
+```bash
+root@tryhackme:~# gobuster vhost -u "http://10.10.10.10" --domain yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:            http://10.10.10.10
+[+] Method:         GET
+[+] Threads:        10
+[+] Wordlist:       /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+[+] User Agent:     gobuster/3.6
+[+] Timeout:        10s
+[+] Append Domain:  true
+[+] Exclude Length: 250,254,263...
+===============================================================
+Starting gobuster in VHOST enumeration mode
+===============================================================
+Found: blog.yourbrokenweb.thm Status: 200 [Size: 1493]
+Found: shop.yourbrokenweb.thm Status: 200 [Size: 2983]
+Found: www.yourbrokenweb.thm Status: 200 [Size: 84352]
+Found: academy.yourbrokenweb.thm Status: 200 [Size: 434]
+Progress: 4989 / 4990 (99.98%)
+===============================================================
+Finished
+===============================================================
+```
+
+kita nemu beberapa subdomain kayak `blog`, `shop`, dan `academy` yang sebenernya 'numpang' di IP yang sama!
