@@ -247,8 +247,8 @@ Penjelasannya:
 
 Outputnya bakal kayak gini:
 
-```bash
-root@user:~# gobuster dns -d yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+```zsh
+root@user:~ gobuster dns -d yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
