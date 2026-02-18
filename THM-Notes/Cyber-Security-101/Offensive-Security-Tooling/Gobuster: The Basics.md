@@ -143,10 +143,10 @@ Isi dari help page nya yaitu:
 
 contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration web directory:
 
-`gobuster dir -u "http://www.yourbrokenweb.com/" -w /usr/share/wordlists/dirb/small.txt -t 64`
+`gobuster dir -u "http://www.yourbrokenweb.thm/" -w /usr/share/wordlists/dirb/small.txt -t 64`
 
 - `gobuster dir`: Ini ngasih tau Gobuster kalau kita mau pake mode enumerasi direktori dan file.
-- `-u "http://www.yourbrokenweb.com/"`: Ini target URL yang mau kita scan.
+- `-u "http://www.yourbrokenweb.thm/"`: Ini target URL yang mau kita scan.
 - `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal ngambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan ngirim request ke sana.
 - `-t 64`: Ini ngeset jumlah threads jadi 64. Bikin proses scan jadi jauh lebih ngebut dibanding default-nya.
 
@@ -191,18 +191,18 @@ Terkadang kita butuh opsi lebih lanjut untuk hasil scan kita. Berikut beberapa f
 
 Buat jalanin Gobuster di mode `dir`, format basic-nya gini:
 
-`gobuster dir -u "http://www.yourbrokenweb.com" -w /path/to/wordlist`
+`gobuster dir -u "http://www.yourbrokenweb.thm" -w /path/to/wordlist`
 
 Wajib pake flag `-u` dan `-w` selain keyword `dir`.
 
 Contoh:
 
-`gobuster dir -u "http://www.yourbrokenweb.com" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r`
+`gobuster dir -u "http://www.yourbrokenweb.thm" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r`
 
 Penjelasannya:
 
 - `gobuster dir`: Mode enumeration folder/file.
-- `-u http://www.yourbrokenweb.com`:
+- `-u http://www.yourbrokenweb.thm`:
   - Ini adalah _base path_ dimana Gobuster bakal mulai nyari. Kalau misal set URL-nya ke `/resources`, dia bakal nyari di dalem folder `resources` itu.
   - **Penting**: Wajib tulis protokolnya (`http` atau `https`). Kalau salah, scan-nya bakal gagal.
   - Bisa pake IP atau Hostname. Tapi ingat, satu IP bisa nge-host banyak web (Virtual Hosting), jadi lebih aman pake Hostname biar gak salah alamat.
@@ -212,6 +212,63 @@ Penjelasannya:
 
 Contoh kedua, kalau mau nyari file spesifik (misal PHP atau JS), kita bisa pake flag `-x`:
 
-`gobuster dir -u "http://www.yourbrokenweb.com" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.js`
+`gobuster dir -u "http://www.yourbrokenweb.thm" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.js`
 
-## Task 5: Use Case: Subdomain Enumertion
+### Help
+
+Berikut adalah beberapa flag yang sering dipake di mode `dns`:
+
+| Flag |   Long Flag    | Keterangan                                                                                         |
+| :--: | :------------: | -------------------------------------------------------------------------------------------------- |
+| `-c` | `--show-cname` | Nampilin CNAME records (alias domain), flag ini gak bisa dipake bareng flag `-i`.                  |
+| `-i` |  `--show-ips`  | Nampilin alamat IP dari domain/subdomain yang ketemu. Berguna banget buat tau hostingannya dimana. |
+| `-r` |  `--resolver`  | Pake custom DNS server buat resolving. Berguna kalau DNS default lemot atau banyak filtering.      |
+| `-d` |   `--domain`   | Domain target yang mau di-scan. Wajib diisi                                                        |
+
+### How to Use dns Mode
+
+Sama seperti mode `dir`,untuk menjalankan mode `dns` formatnya juga simpel:
+
+`gobuster dns -d yourbrokenweb.thm -w /path/to/wordlist`
+
+Perhatikan bedanya, kalau mode `dir` pake `-u` (URL), di sini kita pake `-d` (Domain).
+
+Contoh real-nya:
+
+```bash
+gobuster dns -d yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+```
+
+Penjelasannya:
+
+- `gobuster dns`: Mode enumeration subdomain.
+- `-d yourbrokenweb.thm`: Target domain yang mau kita scan (tanpa http/https).
+- `-w ...`: Path ke wordlist. Di contoh ini pake SecLists top 1 million subdomains (populer banget nih). Gobuster bakal nyobain satu-satu kata di list itu buat jadi subdomain (misal: `www.yourbrokenweb.thm`, `mail.yourbrokenweb.thm`, dll).
+
+Outputnya bakal kayak gini:
+
+```bash
+root@user:~# gobuster dns -d yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Domain:     yourbrokenweb.thm
+[+] Threads:    10
+[+] Timeout:    1s
+[+] Wordlist:   /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+===============================================================
+Starting gobuster in DNS enumeration mode
+===============================================================
+Found: www.yourbrokenweb.thm
+Found: shop.yourbrokenweb.thm
+Found: academy.yourbrokenweb.thm
+Found: primary.yourbrokenweb.thm
+
+Progress: 4989 / 4990 (99.98%)
+===============================================================
+Finished
+===============================================================
+```
+
+Nah, dari hasil di atas kita nemu subdomain kayak `shop`, `academy`, sama `primary` yang mungkin gak keliatan dari halaman utama.
