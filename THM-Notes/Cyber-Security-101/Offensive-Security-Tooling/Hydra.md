@@ -88,7 +88,7 @@ Artinya:
 
 ### Post Web Form
 
-Kita juga bisa pake Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipake (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus liat request nya.
+Kita juga bisa pake Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipake (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus liat request nya / pakai tools yang namanya **Burp Suite**
 
 Kalau ternyata pake **POST**, command-nya kira-kira bakal seperti ini:
 
