@@ -156,7 +156,7 @@ Gobuster punya mode `dir` yang berguna untuk enumerate directory dan file di seb
 
 Biasanya, struktur direktori website itu ikut standar tertentu (kayak CMS), jadi gampang ditebak pake teknik _Brute Force_ pake wordlist.
 
-Contohnya, struktur direktori WordPress biasanya kayak gini:
+Contohnya, struktur direktori WordPress biasanya seperti ini:
 
 ```bash
 root@user:~# tree -L 3 -d
@@ -169,3 +169,49 @@ root@user:~# tree -L 3 -d
 ```
 
 Gobuster itu _powerful_ karena dia gak cuma ngecek ada/enggak-nya folder, tapi juga ngembaliin **Status Codes**. Dari kode ini, kita bisa langsung tau apakah directory itu bisa diakses sama kita (sebagai user luar) atau tidak.
+
+### Help
+
+Terkadang kita butuh opsi lebih lanjut untuk hasil scan kita. Berikut beberapa flag penting yang sering dipakai di mode `dir`:
+
+| Flag |         Long Flag          | Keterangan                                                                                                                |
+| :--: | :------------------------: | ------------------------------------------------------------------------------------------------------------------------- |
+| `-c` |        `--cookies`         | Buat nambahin cookie di setiap request (misal session ID).                                                                |
+| `-x` |       `--extensions`       | Spesifikin ekstensi file yang mau dicari (misal: `.php`, `.txt`, `.html`).                                                |
+| `-H` |        `--headers`         | Nambahin header HTTP custom di setiap request.                                                                            |
+| `-k` |   `--no-tls-validation`    | Skip verifikasi sertifikat SSL/TLS. Wajib dipake kalau targetnya pake _self-signed certificate_ (sering kejadian di CTF). |
+| `-n` |       `--no-status`        | Gak nampilin status code di output biar terminal lebih bersih.                                                            |
+| `-P` |        `--password`        | Masukin password buat _Basic Authentication_ (dipake bareng `-U`).                                                        |
+| `-s` |      `--status-codes`      | Nentuin status code mana aja yang mau ditampilin (whitelist). Misal cuma mau liat `200`.                                  |
+| `-b` | `--status-codes-blacklist` | Kebalikannya `-s`, ini buat nyembunyiin status code tertentu (blacklist). Misal gak mau liat `404` (Not Found).           |
+| `-U` |        `--username`        | Masukin username buat _Basic Authentication_.                                                                             |
+| `-r` |     `--followredirect`     | Biar Gobuster ngikutin kalau ada redirect (status `301` atau `302`).                                                      |
+
+### How To Use dir Mode
+
+Buat jalanin Gobuster di mode `dir`, format basic-nya gini:
+
+`gobuster dir -u "http://www.yourbrokenweb.com" -w /path/to/wordlist`
+
+Wajib pake flag `-u` dan `-w` selain keyword `dir`.
+
+Contoh:
+
+`gobuster dir -u "http://www.yourbrokenweb.com" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r`
+
+Penjelasannya:
+
+- `gobuster dir`: Mode enumeration folder/file.
+- `-u http://www.yourbrokenweb.com`:
+  - Ini adalah _base path_ dimana Gobuster bakal mulai nyari. Kalau misal set URL-nya ke `/resources`, dia bakal nyari di dalem folder `resources` itu.
+  - **Penting**: Wajib tulis protokolnya (`http` atau `https`). Kalau salah, scan-nya bakal gagal.
+  - Bisa pake IP atau Hostname. Tapi ingat, satu IP bisa nge-host banyak web (Virtual Hosting), jadi lebih aman pake Hostname biar gak salah alamat.
+  - Gobuster **gak** melakukan scan secara rekursif secara default. Jadi kalau nemu folder `admin/`, dia gak bakal otomatis nyari isi dalem `admin/` kecuali kita suruh.
+- `-w ...`: Path ke file wordlist yang isinya daftar kata buat ditebak.
+- `-r`: Ngikutin redirect. Kalau dapet status 301 (Pindah), dia bakal ngecek ke alamat barunya.
+
+Contoh kedua, kalau mau nyari file spesifik (misal PHP atau JS), kita bisa pake flag `-x`:
+
+`gobuster dir -u "http://www.yourbrokenweb.com" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.js`
+
+## Task 5: Use Case: Subdomain Enumertion
