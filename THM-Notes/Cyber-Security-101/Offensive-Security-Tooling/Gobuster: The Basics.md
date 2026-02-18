@@ -289,9 +289,17 @@ Nah, dari hasil di atas kita nemu subdomain kayak `shop`, `academy`, sama `prima
 
 ## Task 6: Use Case: Vhost Enumeration
 
-Mode terakhir yang bakal kita bahas adalah mode `vhost`. Mode ini ngijinin Gobuster buat nge-bruteforce virtual host.
+Mode terakhir yang bakal kita bahas adalah mode `vhost`. Mode ini mengizinkan Gobuster buat nge-bruteforce virtual host.
 
-Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka keliatan kayak subdomain, tapi jangan ketipu! Virtual host itu IP-based dan jalan di server yang sama. Subdomain itu di-setup di DNS.
+Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka keliatan seperti subdomain, tapi jangan ketipu Virtual host itu IP-based dan jalan di server yang sama. Subdomain itu di setup di DNS.
+
+> [!NOTE]
+> **Apa itu Virtual Hosting?**
+>
+> Bayangin satu server itu kayak satu rumah dengan satu alamat (IP Address).
+> Virtual Hosting memungkinkan rumah itu ditinggali oleh banyak keluarga (Website) sekaligus.
+>
+> Pas ada tamu dateng ke alamat itu, server bakal nanya: "Mau ketemu keluarga yang mana?". Nah, jawaban tamu itu adalah **Hostname** yang dicari Gobuster di mode ini.
 
 Bedanya mode `vhost` sama `dns` ada di cara kerjanya pas scanning:
 
