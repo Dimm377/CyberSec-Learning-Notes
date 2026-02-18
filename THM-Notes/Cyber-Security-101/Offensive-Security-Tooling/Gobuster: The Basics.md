@@ -122,7 +122,7 @@ Isi dari help page nya yaitu:
 
 - **Available Commands:**
 
-  Ada banyak mode yang bisa dipake (kayak enumerasi S3 bucket, Google Cloud, dll). Tapi di room ini, kita bakal fokus ke tiga command utama:
+  Ada banyak mode yang bisa dipake (kayak enumerasi S3 bucket, Google Cloud, dll), dan kita bakal fokus ke tiga command utama:
   - `dir`: Mode enumeration direktori/file (paling sering dipakai).
   - `dns`: Mode enumeration subdomain.
   - `vhost`: Mode enumeration virtual host.
@@ -138,3 +138,34 @@ Isi dari help page nya yaitu:
 |      |  `--delay`   | Jeda waktu antar request. Berguna biar gak terlalu agresif dan gak kedetect firewall/WAF. Biar dikira traffic normal gitu lah.                                                      |
 |      |  `--debug`   | Mode _troubleshooting_. Berguna banget kalau lu nemu error aneh dan pengen tau detail apa yang salah.                                                                               |
 | `-o` |  `--output`  | Opsi buat nyimpen hasil scan ke file. Wajib banget dipake pas CTF atau pentest beneran biar gak ilang datanya.                                                                      |
+
+### Example
+
+contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration web directory:
+
+`gobuster dir -u "http://www.yourbrokenweb.com/" -w /usr/share/wordlists/dirb/small.txt -t 64`
+
+- `gobuster dir`: Ini ngasih tau Gobuster kalau kita mau pake mode enumerasi direktori dan file.
+- `-u "http://www.yourbrokenweb.com/"`: Ini target URL yang mau kita scan.
+- `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal ngambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan ngirim request ke sana.
+- `-t 64`: Ini ngeset jumlah threads jadi 64. Bikin proses scan jadi jauh lebih ngebut dibanding default-nya.
+
+## Task 4: Use Case: Directory And File Enumeration
+
+Gobuster punya mode `dir` yang berguna untuk enumerate directory dan file di sebuah website. Ini terpakai pas lagi pentest buat nyari tau struktur direktori target.
+
+Biasanya, struktur direktori website itu ikut standar tertentu (kayak CMS), jadi gampang ditebak pake teknik _Brute Force_ pake wordlist.
+
+Contohnya, struktur direktori WordPress biasanya kayak gini:
+
+```bash
+root@user:~# tree -L 3 -d
+.
+└── html
+    └── wordpress
+        ├── wp-admin
+        ├── wp-content
+        └── wp-includes
+```
+
+Gobuster itu _powerful_ karena dia gak cuma ngecek ada/enggak-nya folder, tapi juga ngembaliin **Status Codes**. Dari kode ini, kita bisa langsung tau apakah directory itu bisa diakses sama kita (sebagai user luar) atau tidak.
