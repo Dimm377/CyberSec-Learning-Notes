@@ -80,7 +80,7 @@ Sebelum mendalami Gobuster, kita bahas secara singkat konsep **Enumeration** dan
 ### Gobuster: Overview
 
 ```zsh
-root@user:~# gobuster --help
+root@user:~ gobuster --help
 Usage:
   gobuster [command]
 
