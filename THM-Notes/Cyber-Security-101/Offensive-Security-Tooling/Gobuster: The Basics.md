@@ -6,7 +6,7 @@
 
 ## Task 1: Introduction
 
-Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissance. Di sini kita bakal belajar bagaimana cara tool ini bisa menemukan directory web, subdomain, sampai virtual host.
+Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissance. Di sini kita bakal belajar bagaimana cara tool ini bisa menemukan directory web, subdomain, sampai virtual host. (Vhost)
 
 **Learning Objective**
 
@@ -14,7 +14,7 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 - Cara menggunakan Gobuster untuk mencari direktori dan file tersembunyi yang ada di web
 - Cara pakai Gobuster untuk menemukan **subdomain** yang gak terekspos
 - Cara pakai Gobuster buat ngintip **virtual hosts**
-- caranya memilih dan memakai **wordlist** yang pas untuk scanning
+- caranya memilih dan memakai **wordlist** yang cocok untuk scanning
 
 ## Task 2: Environment & Setup
 
@@ -214,6 +214,20 @@ Contoh kedua, kalau mau nyari file spesifik (misal PHP atau JS), kita bisa pake 
 
 `gobuster dir -u "http://www.yourbrokenweb.thm" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.js`
 
+## Task 5: Use Case: DNS Subdomain Enumeration
+
+Mode selanjutnya yang bakal kita bahas adalah mode `dns`. Mode ini memungkinkan Gobuster buat nge-bruteforce subdomain.
+
+saat sedang pentest, mengecheck subdomain dari domain utama target itu hukumnya **wajib**. Kenapa? Karena bisa jadi domain utamanya aman (udah dipatch), tapi subdomainnya broken
+
+Celah keamanan di subdomain bisa jadi pintu masuk buat nge-hack sistem yang ada di web secara keseluruhan.
+
+Contoh simpelnya:
+Misal `yourbrokenweb` punya domain `yourbrokenweb.thm` dan `mobile.yourbrokenweb.thm`.
+Bisa jadi di `mobile.yourbrokenweb.thm` ada vulnerability yang gak ada di `yourbrokenweb.thm`.
+
+Makanya, penting banget buat nyari subdomain pakai Gobuster
+
 ### Help
 
 Berikut adalah beberapa flag yang sering dipake di mode `dns`:
@@ -272,3 +286,14 @@ Finished
 ```
 
 Nah, dari hasil di atas kita nemu subdomain kayak `shop`, `academy`, sama `primary` yang mungkin gak keliatan dari halaman utama.
+
+## Task 6: Use Case: Vhost Enumeration
+
+Mode terakhir yang bakal kita bahas adalah mode `vhost`. Mode ini ngijinin Gobuster buat nge-bruteforce virtual host.
+
+Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka keliatan kayak subdomain, tapi jangan ketipu! Virtual host itu IP-based dan jalan di server yang sama. Subdomain itu di-setup di DNS.
+
+Bedanya mode `vhost` sama `dns` ada di cara kerjanya pas scanning:
+
+- Mode `vhost` bakal nuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
+- Mode `dns` bakal ngelakuin DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) sama isi wordlist.
