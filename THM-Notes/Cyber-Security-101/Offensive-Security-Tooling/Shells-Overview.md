@@ -187,3 +187,68 @@ target@rootuser:~$
 ```
 
 Pas koneksi berhasil (`open`), kita langsung dapet shell Coba ketik perintah kayak `whoami` atau `ls`, pasti jalan di mesin target.
+
+## Task 5: Shells Listener
+
+Seperti yang udah kita pelajari, reverse shell bakal connect dari target ke mesin attacker. Biasanya kita pake Netcat buat nangkep koneksinya, tapi Netcat bukan satu-satunya tools yang bisa dipake.
+
+kita eksplor tools lain yang bisa jadi listener buat capture shell.
+
+### Rlwrap
+
+Netcat biasa itu "polos" banget. Gak ada history command (kalau pencet panah atas `^` malah keluar simbol aneh), dan gak bisa edit text dengan nyaman.
+Nah, **Rlwrap** (Readline wrapper) ini penyelamat kita. Dia ngasih fitur history dan editing keyboard ala shell modern ke tools yang gak punya fitur itu, kayak Netcat.
+
+**Cara Pake (Netcat + Rlwrap):**
+
+```bash
+attacker@arch:~$ rlwrap nc -lvnp 443
+listening on [any] 443 ...
+```
+
+Cuma nambahin `rlwrap` di depan command Netcat, hidup jadi jauh lebih indah. Bisa pake panah atas/bawah buat liat history command
+
+### Ncat
+
+Ncat ini versi "upgrade"-nya Netcat yang dikembangin sama project NMAP. Fiturnya lebih kaya, salah satunya support enkripsi (SSL).
+
+**Listening for Reverse Shells (Standard):**
+
+```bash
+attacker@arch:~$ ncat -lvnp 4444
+Ncat: Version 7.94SVN ( https://nmap.org/ncat )
+Ncat: Listening on [::]:443
+Ncat: Listening on 0.0.0.0:443
+```
+
+**Listening with SSL (Encrypted):**
+
+```bash
+attacker@arch:~$ ncat --ssl -lvnp 4444
+Ncat: Version 7.94SVN ( https://nmap.org/ncat )
+Ncat: Generating a temporary 2048-bit RSA key. Use --ssl-key and --ssl-cert to use a permanent one.
+Ncat: SHA-1 fingerprint: B7AC F999 7FB0 9FF9 14F5 5F12 6A17 B0DC B094 AB7F
+Ncat: Listening on [::]:443
+Ncat: Listening on 0.0.0.0:443
+```
+
+Flag `--ssl` bikin koneksi jadi terenkripsi. Ini berguna banget biar traffic shell kita gak gampang diintip sama IDS/IPS atau admin jaringan.
+
+### Socat
+
+Socat ini tools yang super powerful, ibarat "Swiss Army Knife"-nya networking. Dia bisa bikin koneksi (socket) antara dua sumber data apa aja.
+
+**Default Usage (Listening for Reverse Shell):**
+
+```bash
+attacker@kali:~$ socat -d -d TCP-LISTEN:443 STDOUT
+2024/09/23 15:44:38 socat[41135] N listening on AF=2 0.0.0.0:443
+```
+
+**Penjelasan Command:**
+
+- `-d -d`: **Debug** mode (verbose), biar muncul pesen log-nya.
+- `TCP-LISTEN:443`: Bikin listener TCP di port 443.
+- `STDOUT`: Arahin data yang masuk ke layar terminal (Standard Output).
+
+Socat emang syntax-nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih daripada Netcat biasa.
