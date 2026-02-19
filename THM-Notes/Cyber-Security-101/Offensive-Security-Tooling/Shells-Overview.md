@@ -236,12 +236,12 @@ Flag `--ssl` bikin koneksi jadi terenkripsi. Ini berguna banget biar traffic she
 
 ### Socat
 
-Socat ini tools yang super powerful, ibarat "Swiss Army Knife"-nya networking. Dia bisa bikin koneksi (socket) antara dua sumber data apa aja.
+Socat ini tools yang super powerful, ibarat Swiss Army Knife nya networking. Dia bisa bikin koneksi (socket) antara dua sumber data apa aja.
 
 **Default Usage (Listening for Reverse Shell):**
 
 ```bash
-attacker@kali:~$ socat -d -d TCP-LISTEN:443 STDOUT
+attacker@arch:~$ socat -d -d TCP-LISTEN:443 STDOUT
 2024/09/23 15:44:38 socat[41135] N listening on AF=2 0.0.0.0:443
 ```
 
