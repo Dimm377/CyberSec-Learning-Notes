@@ -368,7 +368,7 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 Berikut adalah rekaman jejak (_screenshot_) dari simulasi langsung (Personal Practical) penyerangan dan penambangan data (_Data Extraction_) ke target. Jejak visual ini membuktikan tahapan serangan SQLMap mulai dari deteksi celah sampai bocornya data kredensial:
 
 **1. Konfirmasi Celah (Vulnerable)**
-Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `cat` rentan disuntikkan:
+Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `test` rentan di inject:
 ![Konfirmasi Celah SQLi](../../Assets/Images/SQLI.png)
 
 **2. Fingerprinting OS Target**
@@ -376,15 +376,13 @@ Identitas mesin target berhasil dikuak (Linux Ubuntu, Web Nginx, dan DBMS MySQL)
 ![Fingerprinting OS Target](../../Assets/Images/OutputInject.png)
 
 **3. Enumeration Database (Dumping Database Names)**
-Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`members` dan `users`):
+Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`ai, information_schema, mysql, performance_schema, phpmyadmin, test`):
 ![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
 
-**4. Enumeration Tabel (Dumping Table Names)**
-Membongkar brankas _database_ bernama `users` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` sukses memunculkan tabel bernama `thomas`, `alexas`, dan `johnath`:
+**4. Enumeration Table (Dumping Table Names)**
+Membongkar brankas _database_ bernama `ai` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` sukses memunculkan tabel bernama `user`:
 ![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
 
 **5. The Final Dump**
-Menyasar spesifik tabel `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Username_ dan _Password_ secara mentah keluar dari _database_:
+Menyasar spesifik tabel `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Email_ dan _Password_ secara mentah keluar dari _database_:
 ![Hasil Dump Username dan Password](../../Assets/Images/dumptable.png)
-
-## Personal Practical
