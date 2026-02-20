@@ -49,7 +49,7 @@ Inilah kenapa SQLi terjadi. Web (pelayan) gagal mensanitasi ekspektasi _input_ d
 
 Mari kita bedah skenario dunia nyata. Bayangkan sebuah _form login_ sederhana yang meminta `Username` dan `Password` kepada target.
 
-Sebagian besar mekanisme _login_ kuno bekerja dengan mengambil _input_ pengguna dan menyisipkannya langsung ke dalam sebuah kueri SQL.
+Sebagian besar mekanisme _login_ kuno bekerja dengan mengambil _input_ pengguna dan menyisipkannya langsung ke dalam sebuah query SQL.
 
 **Skenario Normal (Penggunaan Valid):**
 Jika pengguna reguler memasukkan data otentikasi:
@@ -64,8 +64,32 @@ SELECT * FROM users WHERE username = 'John' AND password = 'Un@detectable444';
 ```
 
 - **Keterangan (_Autopsy_):**
-  Kueri di atas menginstruksikan Database: _"Tampilkan semua data dari tabel `users`, di mana kolom `username` sama dengan 'John' **DAN** kolom `password` sama dengan 'Un@detectable444'."_
-  Jika tidak ada kombinasi `username` dan `password` yang pas 100%, akses akan ditolak. Ini adalah mekanisme otentikasi logis yang wajar. Tapi, apa jadinya jika kita memanipulasi _logic_ tersebut? (_Kita bahas ini di langkah eksploitasi selanjutnya_).
+  Query di atas menginstruksikan Database: _"Tampilkan semua data dari tabel `users`, di mana kolom `username` sama dengan 'John' **DAN** kolom `password` sama dengan 'Un@detectable444'."_
+  Jika tidak ada kombinasi `username` dan `password` yang pas 100%, akses akan ditolak. Ini adalah mekanisme autentikasi logis yang wajar. Tapi, apa jadinya jika kita memanipulasi _logic_ tersebut?
+
+**Skenario Serangan (Eksploitasi Login):**
+Karena target (_Web_) dibangun tanpa validasi _input_ (sanitasi), kita bisa menyusupkan query SQL jahat ke dalamnya. Kali ini, _attacker_ sama sekali tidak tahu _password_ milik user `John`. Jadi, sang _attacker_ memasukkan data mematikan ini:
+
+- **Username:** `John`
+- **Password:** `abc' OR 1=1;-- -`
+
+Sistem (Aplikasi Web) kembali membuat blind query:
+
+```sql
+SELECT * FROM users WHERE username = 'John' AND password = 'abc' OR 1=1;-- -';
+```
+
+### Payload Autopsy & Weaponization (Membedah Serangan)
+
+Perhatikan kehancuran logika pada query di atas. query tersebut kini berubah wujud. Mari kita bedah _payload_ `' OR 1=1;-- -` baris per baris:
+
+1. **`'` (Single Quote Pertama):** Ini adalah senjata utama kita. Kita menutup _string password_ lebih awal secara paksa. Seharusnya `password = '...'`, tapi kita menjadikannya `password = 'abc'`. Kolom _password_ selesai dievaluasi sampai sini.
+2. **`OR` (Operator Logika):** Query aslinya mengharuskan (`username` = BENAR) **DAN** (`password` = BENAR). Dengan menyisipkan kata `OR` (ATAU), kita menimpa kewajiban itu.
+3. **`1=1` (Pernyataan Mutlak):** Apakah 1 sama dengan 1? Selalu **BENAR (True)**. Jadi, mesin SQL membaca: _"Cocokkan password dengan 'abc' ATAU pastikan 1=1"_. Karena 1=1 selalu rill/nyata, _database_ menganggap kondisi ini **SELALU BERHASIL**. autentikasi jebol.
+4. **`;` (Semicolon):** Digunakan untuk menandai bahwa satu pernyataan SQL telah selesai/berakhir.
+5. **`-- -` (Comment SQL):** Ini adalah teknik penyamaran yang jenius. Karakter ini memberitahu _database_ untuk **MENGABAIKAN/MENGOMENTARI** semua sisa teks kueri asli bawaan web yang tertinggal di belakangnya (seperti penutup tanda kutip `';` bawaan _web_). Tanpa tanda komentar ini, kueri akan _error_ (/Syntax Error/).
+
+Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) sebagai `John` tanpa perlu bersusah payah menebak _password_-nya.
 
 > [!WARNING]
 > **OPSEC & ROE (Rules of Engagement):**
@@ -75,3 +99,6 @@ SELECT * FROM users WHERE username = 'John' AND password = 'Un@detectable444';
 
 1. Apa peran utama "Web" dan "Database" dalam simulasi SQL Injection? Mengapa eksploitasi bisa terjadi?
 2. Sebagai seorang Red Teamer, hal paling penting apa yang harus kamu miliki sebelum melakukan sebuah inject _payload_ SQLi ke sebuah target?
+3. Saat membedah payload `' OR 1=1;-- -`, apa fungsi spesifik dari penanda komentar `-- -` di akhir kalimat? Apa yang akan terjadi jika kita lupa menambahkannya?
+
+## Task 3 Automated SQL Injection
