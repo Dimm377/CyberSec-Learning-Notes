@@ -36,7 +36,7 @@ Di task sebelumnya, kita sudah memahami bagaimana aplikasi _web_ berinteraksi de
 
 Di dalam skenario eksploitation, seorang _attacker_ tidak sekadar memasukkan data normal. Kita **MEMANIPULASI** pertanyaan (SQL Query) itu sendiri langsung dari formulir atau parameter yang ada di aplikasi _web_. Jika pertahanannya lemah, Input jahat kita akan dieksekusi oleh _database_ sebagai perintah yang valid. Inilah inti dari **SQL Injection (SQLi)**: menyusupkan (_injecting_) bahasa pemrograman SQL ke dalam input untuk mengambil alih kendali _database_ di background.
 
-### inti Konsep (Feynman Technique)
+### inti Konsep
 
 Bayangkan aplikasi web adalah seorang **Pelayan Restoran**, dan Database adalah sang **Koki** di dapur.
 
@@ -45,9 +45,31 @@ Bayangkan aplikasi web adalah seorang **Pelayan Restoran**, dan Database adalah 
 
 Inilah kenapa SQLi terjadi. Web (pelayan) gagal mensanitasi ekspektasi _input_ dari aktor jahat.
 
+### Skema Serangan (Bypass Login)
+
+Mari kita bedah skenario dunia nyata. Bayangkan sebuah _form login_ sederhana yang meminta `Username` dan `Password` kepada target.
+
+Sebagian besar mekanisme _login_ kuno bekerja dengan mengambil _input_ pengguna dan menyisipkannya langsung ke dalam sebuah kueri SQL.
+
+**Skenario Normal (Penggunaan Valid):**
+Jika pengguna reguler memasukkan data otentikasi:
+
+- **Username:** `John`
+- **Password:** `Un@detectable444`
+
+Sistem (Aplikasi Web) akan menelan _input_ tersebut dan merakitnya menjadi sebuah kueri SQL yang akan dilempar ke sang Koki (_Database_):
+
+```sql
+SELECT * FROM users WHERE username = 'John' AND password = 'Un@detectable444';
+```
+
+- **Keterangan (_Autopsy_):**
+  Kueri di atas menginstruksikan Database: _"Tampilkan semua data dari tabel `users`, di mana kolom `username` sama dengan 'John' **DAN** kolom `password` sama dengan 'Un@detectable444'."_
+  Jika tidak ada kombinasi `username` dan `password` yang pas 100%, akses akan ditolak. Ini adalah mekanisme otentikasi logis yang wajar. Tapi, apa jadinya jika kita memanipulasi _logic_ tersebut? (_Kita bahas ini di langkah eksploitasi selanjutnya_).
+
 > [!WARNING]
 > **OPSEC & ROE (Rules of Engagement):**
-> Seorang _Red Teamer_ sejati, sehebat apa pun _skill_ dan _tools_ ofensifnya, BERBEDA 180 derajat dengan _Black Hat / Script Kiddie_. Perbedaan mutlak itu terletak pada **Izin (Authorization)**. JANGAN PERNAH menembakkan _payload_ SQLi (baik secara manual maupun _automated_ seperti menggunakan SQLMap) kepada target yang beroperasi (_Live System_) tanpa ada dokumen kesepakatan tertulis (_Rules of Engagement_) dari pemilik aplikasi. _Always attack responsibly!_
+> Seorang _Red Teamer_ , sehebat apa pun _skill_ dan _tools_ ofensifnya, BERBEDA 180 derajat dengan _Black Hat / Script Kiddie_. Perbedaan mutlak itu terletak pada **Izin (Authorization)**. JANGAN PERNAH menembakkan _payload_ SQLi (baik secara manual maupun _automated_ seperti menggunakan SQLMap) kepada target yang beroperasi (_Live System_) tanpa ada dokumen kesepakatan tertulis (_Rules of Engagement_) dari pemilik aplikasi. _Always attack responsibly kids!_
 
 ### Question
 
