@@ -6,6 +6,13 @@
 
 ## Task 1: Introduction
 
+_Room_ ini dirancang sebagai medan latihan dasar untuk memahami anatomi kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa memanfaatkannya (dan mengotomatiskannya) menggunakan _tool_ andalan para _attacker_, yakni **SQLMap**. Di akhir materi, kita juga akan melakukan simulasi _hands-on_ serangan langsung ke target.
+
+**(Learning Objectives):**
+
+- Membedah pondasi kerentanan SQL Injection.
+- Melakukan perburuan (_hunting_) Injeksi SQL secara otomatis menggunakan tool **SQLMap**.
+
 Injeksi SQL (_SQL injection_) adalah kerentanan yang sangat umum dan menjadi topik hangat namun klasik di ranah Cyber Security. Untuk memahami kerentanan ini, kita harus memahami terlebih dahulu apa itu _database_ (basis data) dan bagaimana _website_ berinteraksi dengannya.
 
 ### Apa itu Database?
