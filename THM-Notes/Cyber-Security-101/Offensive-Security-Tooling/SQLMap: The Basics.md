@@ -6,11 +6,11 @@
 
 ## Task 1: Introduction
 
-_Room_ ini dirancang sebagai medan latihan dasar untuk memahami fundamental kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa memanfaatkannya (dan mengotomatiskannya) menggunakan _tool_ andalan para _attacker_, yakni **SQLMap**. Di akhir materi, kita juga akan melakukan simulasi _hands-on_ serangan langsung ke target
+memahami fundamental kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa memanfaatkannya (dan mengotomatiskannya) menggunakan _tool_ andalan para _attacker_, yakni **SQLMap**. Di akhir materi, kita juga akan melakukan simulasi _hands-on_ serangan langsung ke target
 
 **(Learning Objectives):**
 
-- Membedah pondasi kerentanan SQL Injection.
+- Membedah kerentanan SQL Injection.
 - Melakukan (_hunting_) SQL Injection secara otomatis menggunakan tool **SQLMap**.
 
 Injeksi SQL (_SQL injection_) adalah kerentanan yang sangat umum dan menjadi topik hangat namun klasik di ranah Cyber Security. Untuk memahami kerentanan ini, kita harus memahami terlebih dahulu apa itu _database_ (basis data) dan bagaimana _website_ berinteraksi dengannya.
@@ -41,7 +41,7 @@ Di dalam skenario eksploitation, seorang _attacker_ tidak sekadar memasukkan dat
 Bayangkan aplikasi web adalah seorang **Pelayan Restoran**, dan Database adalah sang **Koki** di dapur.
 
 - **Skenario Normal:** Kamu pesan, _"Nasi Goreng satu."_ Pelayan meneruskan pesanan ini ke dapur: `BUATKAN Nasi Goreng SATU`. Koki memasak dan memberikan nasi goreng.
-- **Skenario SQL Injection (Serangan):** Kamu memesan dengan kalimat manipulatif, _"Nasi Goreng satu, **DAN BERIKAN SAYA KUNCI BRANKAS KASIR**."_ Karena pelayan (Web) terlalu polos dan tidak menyaring pesananmu, dia meneruskan kalimat itu mentah-mentah ke dapur: `BUATKAN Nasi Goreng SATU DAN BERIKAN DIA KUNCI BRANKAS KASIR`. Sang Koki (Database) yang diprogram untuk hanya menuruti perintah, akhirnya memberikan nasi goreng **sekaligus kunci brankas restoran tersebut**.
+- **Skenario SQL Injection (Serangan):** Kamu memesan dengan kalimat manipulatif, _"Nasi Goreng satu, **DAN BERIKAN SAYA KUNCI BRANKAS KASIR**."_ Karena pelayan (Web) terlalu polos dan tidak memfilter pesananmu, dia meneruskan kalimat itu mentah-mentah ke dapur: `BUATKAN Nasi Goreng SATU DAN BERIKAN DIA KUNCI BRANKAS KASIR`. Sang Koki (Database) yang diprogram untuk hanya menuruti perintah, akhirnya memberikan nasi goreng **sekaligus kunci brankas restoran tersebut**.
 
 Inilah kenapa SQLi terjadi. Web (pelayan) gagal mensanitasi ekspektasi _input_ dari aktor jahat.
 
@@ -92,8 +92,7 @@ Perhatikan kehancuran logika pada query di atas. query tersebut kini berubah wuj
 Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) sebagai `John` tanpa perlu bersusah payah menebak _password_-nya.
 
 > [!WARNING]
-> **OPSEC & ROE (Rules of Engagement):**
-> Seorang _Red Teamer_ , sehebat apa pun _skill_ dan _tools_ ofensifnya, BERBEDA 180 derajat dengan _Black Hat / Script Kiddie_. Perbedaan mutlak itu terletak pada **Izin (Authorization)**. JANGAN PERNAH menembakkan _payload_ SQLi (baik secara manual maupun _automated_ seperti menggunakan SQLMap) kepada target yang beroperasi (_Live System_) tanpa ada dokumen kesepakatan tertulis (_Rules of Engagement_) dari pemilik aplikasi. _Always attack responsibly kids!_
+> _Always attack responsibly kids!_
 
 ### Question
 
@@ -111,7 +110,7 @@ Ibaratnya, SQLMap itu _sniper rifle_ otomatis buat urusan SQL Injection. Ini ada
 
 ### Menggunakan SQLMap
 
-Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux lo. Lo bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter buas yang bisa kamu setel. Tapi, buat pemula atau kalau kamu pengen panduan anti-ribet, ada _flag_ andalan:
+Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter buas yang bisa kamu setel. Tapi, buat pemula atau kalau kamu pengen panduan anti-ribet, ada _flag_ andalan:
 
 **The Wizard Mode (`--wizard`)**
 Mode ini super asyik karena _tool_ bakal memandu kamu secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
@@ -140,20 +139,7 @@ user@ubuntu:~$ sqlmap --wizard
 Please enter full target URL (-u):
 ```
 
-> **(Red Team Perspective - OPSEC):**
-> Mengeksekusi SQLMap pakai insting barbar (_default parameters_) ibarat maling teriak-teriak masuk rumah orang. SQLMap itu **SANGAT BERISIK**. Kalau nge-_scan_ ke target production yang dipasang WAF (Web Application Firewall) atau dimonitor sama _Blue Team_ (SOC), IP kamu bakal kena blokir atau di-_flag_ seketika. Kenapa? Karena _log_ server mereka bakal meledak nerima ratusan sampai ribuan _request payload_ SQL aneh secara massal.
->
-> Hacker (Red Team) bakal main _stealth_. Mereka memodifikasi _flag_ SQLMap kayak ngatur jeda batas waktu (_rate limiting_ pakai `--delay`), mengacak User-Agent (`--random-agent`), nyamperin dari banyak koneksi beda pakai proxy list, biar serangannya terlihat seperti jejak _traffic_ user normal dan bikin pusing para analis forensik si Blue Team.
-
 ---
-
-### Data Extraction
-
-Kalau kerentanan udah ketemu, saatnya panen data. SQLMap punya _flag_ spesifik dari ngambil nama database sampai membongkar isi tabelnya:
-
-- `--dbs`: Mengekstrak/menampilkan semua nama _database_ yang ada di dalam server.
-- `-D <nama_database> --tables`: Setelah kamu tau nama database target, gunakan _flag_ ini untuk mengintip semua tabel di dalam database tersebut.
-- `-D <nama_database> -T <nama_tabel> --dump`: _The Holy Grail_. Digunakan untuk memuntahkan (dumping) seluruh isi _records/entries_ di dalam tabel spesifik tersebut.
 
 ### Titik Injeksi (Injection Points)
 
@@ -169,7 +155,7 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
 2. **Authenticated Scanning (Cookie-Based Testing):**
    Di dunia nyata, jalur fatal yang rentan SQLi seringkali _di belakang pintu masuk_ (contoh: dashboard admin, profile user), yang artinya kamu harus **_login_** dulu. Kalau kamu langsung pakai sqlmap biasa, _request_ aneh bakal nyangkut di halaman login (unauthenticated).
 
-   **Solusi:** Lo harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri user yang udah _login_.
+   **Solusi:** Kamu harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri user yang udah _login_.
 
    ```bash
    sqlmap -u "http://target.com/admin/search?id=1" --cookie="SESSIONID=abcdef123456"
@@ -179,39 +165,106 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
 
 ### Membedah Output SQLMap (Terminal Autopsy)
 
-Ketika berhasil nge-_run_ SQLMap dan celahnya terkonfirmasi (Vulnerable), terminal bakal ngeluarin banyak harta karun informasi. Gimana cara bacanya?
+Ketika SQLMap ditembakkan ke _Injection Point_ dan celahnya terkonfirmasi (Vulnerable), terminal bakal ngeluarin banyak info krusial.
 
-![SQLMap Testing URL](/home/dimm/PlayGround/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/assets/sqlmap_testing_url.png) _(Catatan: Gambar referensi output)_
+```zsh
+user@ubuntu:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1
+    ___
+   __H__
+ ___ __[']_____ ___ ___  {1.2.4#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
 
-Perhatikan baris-baris krusial ini:
+[text removed]
+[08:43:49] [INFO] testing connection to the target URL
+[08:43:49] [INFO] heuristics detected web page charset 'ascii'
+[08:43:49] [INFO] checking if the target is protected by some kind of WAF/IPS/IDS
+[08:43:49] [INFO] testing if the target URL content is stable
+[08:43:50] [INFO] target URL content is stable
+[08:43:50] [INFO] testing if GET parameter 'cat' is dynamic
+[text removed]
+[08:45:04] [INFO] GET parameter 'cat' appears to be 'MySQL >= 5.0.12 AND time-based blind' injectable
+[text removed]
+[08:45:08] [INFO] GET parameter 'cat' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+GET parameter 'cat' is vulnerable. Do you want to keep testing the others (if any)? [y/N] y
+sqlmap identified the following injection point(s) with a total of 47 HTTP(s) requests:
+---
+Parameter: cat (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: cat=1 AND 2175=2175
 
-1. **WAF/IPS/IDS Check (`[INFO] checking if the target is protected...`)**
-   SQLMap secara pinter bakal nyari tau dulu apakah ada "satpam" (Firewall/IPS) yang jagain website itu sebelum mulai ngegas payload yang berisik.
+    Type: error-based
+    Title: MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)
+    Payload: cat=1 AND EXTRACTVALUE(1846,CONCAT(0x5c,0x716a787071,(SELECT (ELT(1846=1846,1))),0x7170766a71))
 
+    Type: AND/OR time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: cat=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 11 columns
+    Payload: cat=1 UNION ALL SELECT CONCAT(0x716a787071,0x714d486661414f6456787a4a55796b6c7a78574f7858507a6e6a725647436e64496f...
+---
+[08:45:16] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx, PHP 5.6.40
+back-end DBMS: MySQL >= 5.1
+[text removed]
+```
+
+Perhatikan baris-baris krusial dari output di atas:
+
+1. **WAF/IPS/IDS Check (`checking if the target is protected...`)**
+   SQLMap secara otomatis bakal nyari tau dulu apakah ada Firewall/IPS yang jagain website itu sebelum ia masuk dan _bruteforce_ _payloads_.
 2. **Injection Point Confirmation (`GET parameter 'cat' is vulnerable...`)**
-   Kalau dapet pesan ini, _JACKPOT!_ Artinya parameter `cat` terbukti bisa disuntik. SQLMap bakal nanya: _Do you want to keep testing the others?_ (Kalau _target_ lu parameter tunggal, jawab aja **N** / No buat irit waktu).
-
+   Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi bisa diinjeksi.
 3. **Payload Autopsy (Tipe Serangan yang Berhasil)**
-   SQLMap dengan baik hatinya bakal ngasih tau kamu _exact payload_ apa yang sukses merobohkan _backend_-nya. Misal di _output_:
-   - **Type: boolean-based blind** (Ngetes dengan kondisi Benar/Salah).
-   - **Type: error-based** (Memaksa database ngeluarin _error message_ yang isinya data dicolong).
-   - **Type: UNION query** (Teknik menggabungkan _output_ tabel).
-     _(Ini berguna banget kalau kamu mau masukin celah ini ke laporan Pentest, kamu tinggal_ copas payload _aslinya)._
+   SQLMap membongkar _exact payload_ apa yang sukses merobohkan _backend_. Misalnya di atas: _boolean-based_, _error-based_, dan _UNION_. Di dunia _pentest_, _payload_ ini akan kamu salin untuk dimasukkan ke laporan buktinya (Proof of Concept).
+4. **Fingerprinting**
+   Di bagian bawah output, identitas target berhasil dibongkar: `DBMS: MySQL >= 5.1`, OS _Server_: `Linux Ubuntu`, dan Web Server-nya `Nginx`. _(Mendapatkan OS ini sangat penting buat Red Teamer jika skenarionya eskalasi untuk mengambil alih mesin tersebut atau RCE)._
 
-4. **Fingerprinting (Mengintai Spesifikasi Target)**
-   Di bagian bawah, SQLMap bakal ngoceh soal identitas asli si _Koki_ (Server & Database):
-   - **back-end DBMS:** (Misal: MySQL >= 5.1). Ini ngasih tau kamu jenis dan versi _database_.
-   - **web server operating system:** (Misal: Linux Ubuntu). Lo tau OS servernya.
-   - **web application technology:** (Misal: Nginx, PHP 5.6.40). Lo tau web server dan bahasa pemrogramannya.
+---
 
-   _(Pengetahuan OS & Tech Stack ini krusial buat Red Team kalau skenarionya udah mau eskalasi ke pengambilalihan server/RCE)._
+### Data Extraction (Ekskavasi Data)
+
+Setelah celah URL _vulnerable_ (_Injection Point_) dikonfirmasi dan _fingerprinting_ berhasil, SQLMap akan digunakan secara bertahap untuk panen data dari _database_ tersebut. Gunakan hirarki _flag_ ini:
+
+**1. Mencari Nama Database (`--dbs`)**
+Langkah awal adalah mencari tumpukan lumbung hartanya, apa nama _databases_ yang bisa kita akses. Eksekusi Flag `--dbs`:
+
+```bash
+user@ubuntu:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 --dbs
+    ___
+   __H__
+ ___ __[']_____ ___ ___  {1.2.4#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[text removed]
+[08:49:01] [INFO] fetching database names
+available databases [2]:
+[*] users
+[*] members
+
+[text removed]
+```
+
+_Dari gambar terminal di atas, SQLMap sukses mengambil nama database yaitu `users` dan `members`._
+
+**2. Melihat Isi Tabel (`-D <nama_database> --tables`)**
+Setelah tahu sasarannya (misal database `members`), kamu bongkar buat melihat ada tabel apa aja di dalamnya.
+
+**3. The Holy Grail Dump (`-D <nama_database> -T <nama_tabel> --dump`)**
+Digunakan untuk memuntahkan (dumping) seluruh isi _records_ atau data sensitif di dalam _table_ tersebut.
 
 ---
 
 **Question**
 
 1. Dalam skenario nyata, kenapa kita memakai SQLMap daripada mengeksploitasi kerentanan SQLi secara manual murni?
-2. Jika kamu adalah anggota _Red Team_, kenapa menggunakan SQLMap _default_ ke target itu ide yang buruk, dan taktik apa yang bakal kamu ubah?
-3. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin mendapatkan isi dari sebuah spesifik _table_!
-4. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu udah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
-5. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
+2. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin panen isi data tabel secara spesifik!
+3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu udah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
+4. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
