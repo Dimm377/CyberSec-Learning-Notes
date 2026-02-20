@@ -372,16 +372,16 @@ Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `test`
 ![Konfirmasi Celah SQLi](../../Assets/Images/SQLI.png)
 
 > [!NOTE]
-> **Interaksi Lanjutan SQLMap (_Prompt Autopsy_)**
-> Saat SQLMap sedang melakukan pemindaian celah berjalan otomatis, _tool_ tangkas ini bakal sesekali melempar pertanyaan interaktif. Berdasarkan tangkapan di atas, inilah panduan logis kenapa kita menjawabnya seperti itu:
 >
-> 1. _`it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n]`_
+> Misal saat sedang melakukan payload SQLI ada pertanyaan speerti ini:
+>
+> 1. _it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n]_
 >    Jawab **`Y`** (Yes).
-> 2. _`for the remaining tests, do you want to include all tests for 'MySQL' extending provided risk (1) value? [Y/n]`_
+> 2. _for the remaining tests, do you want to include all tests for 'MySQL' extending provided risk (1) value? [Y/n]_
 >    Jawab **`Y`** (Yes).
-> 3. _`injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n]`_
+> 3. _injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n]_
 >    Jawab **`Y`** (Yes).
-> 4. _`GET parameter 'email' is vulnerable. Do you want to keep testing the others (if any)? [y/N]`_
+> 4. _GET parameter 'email' is vulnerable. Do you want to keep testing the others (if any)? [y/N]_
 >    Jawab **`N`** (No).
 
 **2. Fingerprinting OS Target**
