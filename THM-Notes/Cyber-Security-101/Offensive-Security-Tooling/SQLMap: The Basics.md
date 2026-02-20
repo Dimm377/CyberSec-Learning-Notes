@@ -122,7 +122,7 @@ sqlmap --wizard
 _Output_ di terminal kamu (seperti gambar) kurang lebih bakal nampilin _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target:
 
 ```text
-user@ubuntu:~$ sqlmap --wizard
+user@arch:~$ sqlmap --wizard
 
     ___
    __H__
@@ -362,3 +362,28 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 2. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin panen isi data tabel secara spesifik!
 3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu udah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
 4. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
+
+## Task 4: Personal Practical
+
+Berikut adalah rekaman jejak (_screenshot_) dari simulasi langsung (Personal Practical) penyerangan dan penambangan data (_Data Extraction_) ke target. Jejak visual ini membuktikan tahapan serangan SQLMap mulai dari deteksi celah sampai bocornya data kredensial:
+
+**1. Konfirmasi Celah (Vulnerable)**
+Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `cat` rentan disuntikkan:
+![Konfirmasi Celah SQLi](../../Assets/Images/OutputInject.png)
+
+**2. Fingerprinting OS Target**
+Identitas mesin target berhasil dikuak (Linux Ubuntu, Web Nginx, dan DBMS MySQL):
+![Fingerprinting OS Target](../../Assets/Images/database-type.png)
+
+**3. Enumerasi Database (Dumping Database Names)**
+Menggunakan _flag_ `--dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`members` dan `users`):
+![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
+
+**4. Enumerasi Tabel (Dumping Table Names)**
+Membongkar brankas _database_ bernama `users` menggunakan flag `--tables` sukses memunculkan tabel bernama `thomas`, `alexas`, dan `johnath`:
+![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
+
+**5. Eksekusi Pamungkas: The Final Dump**
+Menyasar spesifik tabel `thomas` menggunakan panahkan pamungkas _flag_ `--dump`, akhirnya data _Username_ dan _Password_ muntah keluar dari _database_:
+![Hasil Dump Username dan Password](../../Assets/Images/injectdatabase.png)
+## Personal Practical
