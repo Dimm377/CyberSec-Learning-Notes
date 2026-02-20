@@ -102,3 +102,84 @@ Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) seba
 3. Saat membedah payload `' OR 1=1;-- -`, apa fungsi spesifik dari penanda komentar `-- -` di akhir kalimat? Apa yang akan terjadi jika kita lupa menambahkannya?
 
 ## Task 3 Automated SQL Injection
+
+Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, ngekstrak _database_ segede gaban secara manual bakal ngabisin banyak tenaga dan waktu banget, Bro. Di situlah kita main pakai **SQLMap**.
+
+### Apa itu SQLMap?
+
+Ibaratnya, SQLMap itu _sniper rifle_ otomatis buat urusan SQL Injection. Ini adalah _tool command-line open-source_ sakti yang dirancang khusus untuk mengotomatisasi proses pendeteksian dan eksploitasi kerentanan SQLi. Tool ini bahkan udah bawaan (_built-in_) di beberapa OS Linux _pentesting_.
+
+### Menggunakan SQLMap
+
+Karena ini murni _command-line tool_, lo harus buka terminal OS Linux lo. Lo bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter buas yang bisa lo setel. Tapi, buat pemula atau kalau lo pengen panduan anti-ribet, ada _flag_ andalan:
+
+**The Wizard Mode (`--wizard`)**
+Mode ini super asyik karena _tool_ bakal memandu lo secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
+
+```bash
+sqlmap --wizard
+```
+
+_Output_ di terminal lo (seperti gambar) kurang lebih bakal nampilin _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target lo:
+
+```text
+user@ubuntu:~$ sqlmap --wizard
+
+    ___
+   __H__
+ ___ __[']_____ ___ ___  {1.2.4#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[text removed]
+
+[*] starting at 08:42:50
+
+[08:42:50] [INFO] starting wizard interface
+Please enter full target URL (-u):
+```
+
+> **(Red Team Perspective - OPSEC):**
+> Mengeksekusi SQLMap pakai insting barbar (_default parameters_) ibarat maling teriak-teriak masuk rumah orang. SQLMap itu **SANGAT BERISIK**. Kalau nge-_scan_ ke target production yang dipasang WAF (Web Application Firewall) atau dimonitor sama _Blue Team_ (SOC), IP lo bakal kena blokir atau di-_flag_ seketika. Kenapa? Karena _log_ server mereka bakal meledak nerima ratusan sampai ribuan _request payload_ SQL aneh secara massal.
+>
+> Hacker (Red Team) bakal main _stealth_. Mereka memodifikasi _flag_ SQLMap kayak ngatur jeda batas waktu (_rate limiting_ pakai `--delay`), mengacak User-Agent (`--random-agent`), nyamperin dari banyak koneksi beda pakai proxy list, biar serangannya terlihat seperti jejak _traffic_ user normal dan bikin pusing para analis forensik si Blue Team.
+
+---
+
+### Data Extraction
+
+Kalau kerentanan udah ketemu, saatnya panen data. SQLMap punya _flag_ spesifik dari ngambil nama database sampai membongkar isi tabelnya:
+
+- `--dbs`: Mengekstrak/menampilkan semua nama _database_ yang ada di dalam server.
+- `-D <nama_database> --tables`: Setelah lo tau nama database target, gunakan _flag_ ini untuk mengintip semua tabel di dalam database tersebut.
+- `-D <nama_database> -T <nama_tabel> --dump`: _The Holy Grail_. Digunakan untuk memuntahkan (dumping) seluruh isi _records/entries_ di dalam tabel spesifik tersebut.
+
+### Titik Injeksi (Injection Points)
+
+Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang nampung _input_ data (parameter):
+
+1. **HTTP GET-Based Testing:**
+   URL yang pakai parameter GET biasanya gampang terlihat di _address bar_. Contoh: `http://sqlmaptesting.thm/search?cat=1`. Di sini SQLMap bakal ngehajar parameter `cat` dengan berbagai payload SQLi buat nguji seberapa kuat sanitasi _backend_-nya. Cukup lempar URL ini pakai _flag_ `-u`.
+
+   ```bash
+   sqlmap -u "http://sqlmaptesting.thm/search?cat=1"
+   ```
+
+2. **Authenticated Scanning (Cookie-Based Testing):**
+   Di dunia nyata, rute fatal yang rentan SQLi seringkali _di belakang pintu masuk_ (contoh: dashboard admin, profile user), yang artinya lo harus **_login_** dulu. Kalau lo langsung pakai sqlmap biasa, _request_ aneh lo bakal nyangkut di halaman login (unauthenticated).
+
+   **Solusi:** Lo harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) lo yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri lo yang udah _login_.
+
+   ```bash
+   sqlmap -u "http://target.com/admin/search?id=1" --cookie="SESSIONID=abcdef123456"
+   ```
+
+---
+
+**Question**
+
+1. Dalam skenario nyata, kenapa kita memakai SQLMap daripada mengeksploitasi kerentanan SQLi secara manual murni?
+2. Jika lo adalah anggota _Red Team_, kenapa menggunakan SQLMap _default_ ke target itu ide yang buruk, dan taktik apa yang bakal lo ubah?
+3. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin mendapatkan isi dari sebuah spesifik _table_!
+4. Target lo ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau lo udah _login_. _Flag_ apa yang harus lo bawa di SQLMap agar serangan ini berhasil nembus layar otentikasi?
