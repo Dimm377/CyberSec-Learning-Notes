@@ -365,7 +365,7 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 
 ## Task 4: Personal Practical
 
-Berikut adalah rekaman jejak (_screenshot_) dari simulasi langsung (Personal Practical) penyerangan dan penambangan data (_Data Extraction_) ke target. Jejak visual ini membuktikan tahapan serangan SQLMap mulai dari deteksi celah sampai bocornya data kredensial:
+Ini (_screenshot_) dari simulasi langsung yang disediakan di THM lab penyerangan dan penambangan data (_Data Extraction_) ke target. dan juga tahapan serangan SQLMap mulai dari deteksi celah sampai bocornya data credential:
 
 **1. Konfirmasi Celah (Vulnerable)**
 Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `test` rentan di inject:
