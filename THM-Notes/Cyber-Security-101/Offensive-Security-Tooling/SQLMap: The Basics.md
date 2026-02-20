@@ -369,21 +369,22 @@ Berikut adalah rekaman jejak (_screenshot_) dari simulasi langsung (Personal Pra
 
 **1. Konfirmasi Celah (Vulnerable)**
 Setelah mengeksekusi _payload_, SQLMap sukses membuktikan bahwa parameter `cat` rentan disuntikkan:
-![Konfirmasi Celah SQLi](../../Assets/Images/OutputInject.png)
+![Konfirmasi Celah SQLi](../../Assets/Images/SQLI.png)
 
 **2. Fingerprinting OS Target**
 Identitas mesin target berhasil dikuak (Linux Ubuntu, Web Nginx, dan DBMS MySQL):
-![Fingerprinting OS Target](../../Assets/Images/database-type.png)
+![Fingerprinting OS Target](../../Assets/Images/OutputInject.png)
 
-**3. Enumerasi Database (Dumping Database Names)**
-Menggunakan _flag_ `--dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`members` dan `users`):
+**3. Enumeration Database (Dumping Database Names)**
+Menggunakan _flag_ `sqlmap -u 'http://10.48.136.243/ai/includes/user_login?email=test&password=test' --dbs` sukses mengeluarkan semua nama database yang tersedia di dalam _server_ target (`members` dan `users`):
 ![Daftar Nama Database](../../Assets/Images/dbsoutput.png)
 
-**4. Enumerasi Tabel (Dumping Table Names)**
+**4. Enumeration Tabel (Dumping Table Names)**
 Membongkar brankas _database_ bernama `users` menggunakan flag `--tables` sukses memunculkan tabel bernama `thomas`, `alexas`, dan `johnath`:
 ![Tabel di Dalam Database Users](../../Assets/Images/insidedbs.png)
 
 **5. Eksekusi Pamungkas: The Final Dump**
 Menyasar spesifik tabel `thomas` menggunakan panahkan pamungkas _flag_ `--dump`, akhirnya data _Username_ dan _Password_ muntah keluar dari _database_:
 ![Hasil Dump Username dan Password](../../Assets/Images/injectdatabase.png)
+
 ## Personal Practical
