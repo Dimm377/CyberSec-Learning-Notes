@@ -86,7 +86,7 @@ Kumpulan orang-orang hebat yang berdiri di balik pilar ini secara umum dikenal s
 
 ---
 
-**Answer the questions below:**
+**Answer the questions:**
 
 - Apa istilah untuk fenomena "kebisingan" luar biasa padat akibat tumpukan ribuan peringatan rentan _False Positives_ yang dihaasilkan oleh solusi keamanan otomatis?
 - Mengapa sebuah sistem deteksi SOC tetap mutlak membutuhkan pilar Manusia (_Human Intervention_) ketimbang beroperasi 100% secara otomatis?
@@ -96,3 +96,33 @@ Kumpulan orang-orang hebat yang berdiri di balik pilar ini secara umum dikenal s
 - Profesi apa yang memegang kendali atas urusan _deployment_ dan kelancaran arsitektur infrastruktur solusi keamanan di belakang layar SOC?
 - Jabatan apa yang difokuskan khusus secara independen untuk meracik dan mempertajam kerangka logika deteksi serangan alias _Security Rules_?
 - Apa gelar sang pengerak tim yang bukan cuma mengatur roda _Processes_, tapi juga jadi diplomat eksekutif ke ranah CISO?
+
+## Task 4: Processes
+
+Sebelumnya, kita telah membedah beragam jenis peran dan tanggung jawab setiap individu yang beroperasi di dalam ekosistem Tim SOC. Layaknya sebuah mesin, setiap peran tersebut membutuhkan Prosedur atau SOP (_Processes_) yang spesifik agar bisa berjalan. Sebagai contoh, peran seorang analis SOC Level 1 sebagai _first responder_ mengharuskan mereka menjalankan proses _Triage alert_ untuk memvalidasi tingkat bahaya suatu anomali. Mari kita dalami lebih jauh beberapa kerangka Proses esensial yang memutar roda pertahanan di dalam SOC.
+
+### Alert Triage
+
+_Alert triage_ adalah pondasi operasional utama dari sebuah tim SOC. Langkah pertama yang selalu dieksekusi terhadap peringatan keamanan apa pun adalah melakukan alert triage. Proses ini berpusat pada analisis spesifik terhadap peringatan yang muncul guna mengklasifikasikan tingkat keparahannya (_severity_) dan membantu analis mengurutkan skala prioritas penanganannya. Inti dari melakukan _alert triage_ yang sukses adalah kemampuan untuk menemukan jawaban atas kaidah **5 W** (_5 Ws_). Apa sajakah 5 W tersebut?
+
+![5 Ws of Alert Triage](../../Assets/Images/5WS.png)
+
+Berikut ini adalah rangkaian pertanyaan 5W yang idealnya harus terjawab selama analis melakukan triad alert atas sebuah peringatan:
+
+**Contoh Kasus Peringatan (_Alert_):** `Malware detected on Host: GEORGE PC`
+
+| 5 Ws       | Penjelasan Kasus (_Answers_)                                                                                                                                                           |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **What?**  | _Malicious file_ (berkas mencurigakan) berhasil terdeteksi bersarang di salah satu komputer _host_ di dalam jaringan organisasi.                                                       |
+| **When?**  | File tersebut pertama kali terdeteksi hidup pada pukul `13:20`, tanggal `5 Juni 2024`.                                                                                                 |
+| **Where?** | File ini ditemukan bersarang di dalam directory komputer milik _host_ bernama: `"GEORGE PC"`.                                                                                          |
+| **Who?**   | File ini terdeteksi dieksekusi oleh pengguna (_user_) lokal bernama `George`.                                                                                                          |
+| **Why?**   | Setelah diselidiki mendalam, file tersebut rupanya diunduh oleh `George` dari sebuah situs web penyedia _software_ bajakan bajakan demi mendapatkan _software_ berbayar secara gratis. |
+
+### Reporting
+
+Setiap peringatan berbahaya yang berhasil dideteksi dan divalidasi harus segera dilaporkan ke analis tingkat atas (seperti analis L2 atau L3) agar bisa mendapatkan penanganan dan resolusi yang tepat waktu (_timely response_). Peringatan-peringatan mentah ini akan diubah statusnya menjadi **tiket eskalasi** (_tickets_) dan ditugaskan secara spesifik kepada personel yang relevan. Praktik terbaik dalam meracik sebuah laporan ancaman adalah dengan mencantumkan penjabaran menyeluruh dari metodologi **5 Ws** yang digabungkan dengan ulasan analisis yang mendalam. Selain itu, wajib disertakan pula berbagai tangkapan layar (_screenshots_) sebagai bukti autentik dari pemicu atau aktivitas mencurigakan tersebut.
+
+### Incident Response and Forensics
+
+Dalam beberapa kasus, peringatan yang dilaporkan bisa jadi merujuk pada aktivitas eksploitasi berbahaya yang berskala sangat kritis. Saat skenario terburuk ini terjadi, tim tingkat atas (seperti analis L3 atau _Incident Responder_) akan memulai manuver Tanggap Darurat (_Incident Response_). Proses eksekusi _Incident Response_ ini memiliki alur kerja mendalam yang biasanya akan dibedah tuntas pada materi/ruangan khusus (misalnya: _Incident Response Room_). Pada titik ini pula, aktivitas forensik digital (_Forensics Analysis_) yang terperinci tidak jarang ikut dilibatkan. Objektif utama dari operasi forensik ini adalah membongkar seluk beluk akar penyebab insiden (_Root Cause_) dengan cara menganalisis sisa-sisa jejak (_Artifacts_) yang tertinggal di dalam mesin komputer maupun di network traffic.
