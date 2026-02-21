@@ -125,6 +125,17 @@
 
 </details>
 
+<details>
+<summary>Defensive Security</summary>
+
+<br>
+
+| No. | Notes | Description |
+|:---:|---------|-------------|
+| 1. | [SOC Fundamentals](THM-Notes/Cyber-Security-101/Defensive-Security/SOC-Fundamentals.md) | Security Operations Center basics |
+
+</details>
+
 </details>
 
 <details>
