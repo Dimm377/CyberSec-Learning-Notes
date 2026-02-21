@@ -24,7 +24,7 @@ OSI Model (Open System Interconnection Model) adalah kerangka konsep yang membag
 #### 7 layer OSI Model:
 
 <p align="center">
-<img src="../../Assets/Images/OSI.png" width="400">
+![OSI Model](../../Assets/Images/OSI.png)
 </p>
 
 ---

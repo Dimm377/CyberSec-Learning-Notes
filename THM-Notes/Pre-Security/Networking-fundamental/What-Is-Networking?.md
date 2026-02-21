@@ -53,7 +53,7 @@ $ ping website url / IP address
 ```
 
 <p align="center">
-<img src="../../Assets/Images/ping.png" width="400">
+![Ping](../../Assets/Images/ping.png)
 </p>
 
 di gambar itu aku melakukan ping ke website url `google.com`, ping memberitahu bahwa

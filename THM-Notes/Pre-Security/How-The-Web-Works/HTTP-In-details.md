@@ -31,7 +31,7 @@ URL adalah alamat yang digunakan untuk mengidentifikasi dan mengakses sumber day
 Berikut fitur-fitur yang ada di URL:
 
 <p align="center">
-<img src="../../Assets/Images/URL.png" width="400">
+![URL](../../Assets/Images/URL.png)
 </p>
 
 -

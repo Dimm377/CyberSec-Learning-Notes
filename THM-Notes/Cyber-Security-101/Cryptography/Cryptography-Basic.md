@@ -52,7 +52,7 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 - **Key (Kunci):** Informasi yang digunakan oleh algoritma kriptografi untuk membuat proses enkripsi/dekripsi menjadi unik
 
 <p align="center">
-<img src="../../Assets/Images/chiper.png" width="400">
+![Cipher](../../Assets/Images/chiper.png)
 </p>
 
 **Answer the questions below:**
@@ -65,7 +65,7 @@ Di room ini, kita belajar gimana data berubah bentuk dari yang bisa dibaca manus
 
 - **Question:** What do you call the process that returns the plaintext?
 - **Answer:** ???
-  
+
 ## Task 4: Historical Cipher
 
 Room ini membahas metode enkripsi kuno yang menjadi dasar bagi kriptografi modern. Meskipun sekarang dianggap lemah, memahami logika di baliknya sangat penting
@@ -79,8 +79,8 @@ Ini adalah salah satu teknik paling tua dan paling simpel
 - **ROT13:** Varian populer dari Caesar Cipher yang menggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, menjalankan ROT13 dua kali pada pesan yang sama akan mengembalikannya ke teks asli
 
 <p align="center">
-  <img src="../../Assets/Images/Encryption.png" width="45%">
-  <img src="../../Assets/Images/Decryption.png" width="45%">
+  ![Encryption](../../Assets/Images/Encryption.png)
+  ![Decryption](../../Assets/Images/Decryption.png)
 </p>
 
 ### 2. Vigenère Cipher
@@ -127,7 +127,7 @@ Menggunakan **kunci yang sama** untuk proses enkripsi dan dekripsi (disebut juga
   - **AES (Advanced Encryption Standard):** Standar global saat ini (diadopsi tahun **2001**). Menggunakan kunci 128, 192, atau 256 bit. Sangat aman dan efisien.
 
 <p align="center">
-<img src="../../../Assets/Images/Symmetric.png" width="400">
+![Symmetric](../../Assets/Images/Symmetric.png)
 </p>
 
 ### 2. Asymmetric Encryption
@@ -141,7 +141,7 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi/mengunci) dan _
   - **ECC (Elliptic Curve Cryptography):** Lebih efisien; kunci 256-bit ECC setara kekuatannya dengan RSA 3072-bit.
 
 <p align="center">
-<img src="../../../Assets/Images/Asymmetric.png" width="400">
+![Asymmetric](../../Assets/Images/Asymmetric.png)
 </p>
 
 ---

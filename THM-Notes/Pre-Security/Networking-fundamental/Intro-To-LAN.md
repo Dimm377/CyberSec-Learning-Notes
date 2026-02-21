@@ -26,19 +26,19 @@ Jenis jaringan lokal yang menghubungkan perangkat dengan jarak yang dekat sepert
 - Star Topology (perangkat terhubung secara individu melalui perangkat jaringan pusat seperti switch atau hub) paling umum digunakan tapi biaya mahal
 
 <p align="center">
-<img src="../../Assets/Images/star-topology.png" width="400">
+![Star Topology](../../Assets/Images/star-topology.png)
 </p>
 
 - Bus Topology (perangkat terhubung melalui kabel yang sama, karena bergantung ke satu koneksi (kabel backbone) ) biaya murah tapi akan down jika perangkat mengirimkan banyak data secara bersamaan
 
 <p align="center">
-<img src="../../Assets/Images/Bus-topology.png" width="400">
+![Bus Topology](../../Assets/Images/Bus-topology.png)
 </p>
 
 - Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar, mengirim data dari satu perangkat ke perangkat lainnya dalam satu arah di sepanjang jalur sampai mencapai tujuan) mudah untuk mendeteksi kesalahan dalam lalu lintas data, jika satu perangkat mengalami masalah maka seluruh jaringa juga akan terpengaruh
 
 <p align="center">
-<img src="../../Assets/Images/Ring-topology.png" width="400">
+![Ring Topology](../../Assets/Images/Ring-topology.png)
 </p>
 
 ### 2. Networking Device
@@ -62,7 +62,7 @@ Protokol jaringan yang digunakan untuk secara otomatis memberikan IP Address dan
 Proses DHCP server
 
 <p align="center">
-<img src="../../Assets/Images/DHCP1.png" width="400">
+![DHCP](../../Assets/Images/DHCP1.png)
 </p>
 
 **DHCP Discover:** Perangkat akan mengirimkan pesan DHCP Discover untuk mencari server DHCP yang ada

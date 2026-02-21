@@ -53,6 +53,46 @@ Fokus dari tim SOC adalah memastikan kapabilitas **Detection dan Response** teta
 - **Support with the incident response:**
   Segera setelah sebuah ancaman atau insiden keamanan terdeteksi dengan valid, serangkaian langkah taktis langsung dieksekusi untuk merespons serangan tersebut (_Incident Response_). Fokus utama dari manuver tanggap darurat ini adalah untuk meminimalkan dampak kerusakan dan menelusuri akar penyebab (_Root-Cause Analysis_) terjadinya insiden. Dalam skenario ini, tim SOC memainkan peran pendukung yang sangat krusial dengan memberikan intelijen ancaman dan data dari mesin deteksi mereka untuk memandu (_Incident Response Team_) melakukan tugasnya.
 
-  Terdapat tiga buah pilar utama yang mendukung berdirinya sebuah SOC. Dengan beroperasinya ketiga pilar ini secara sinergis, tim SOC dapat berevolusi menjadi sebuah garda terdepan yang sangat mapan (_mature_) dan super efisien dalam mendeteksi sekaligus merespons segala bentuk insiden keamanan. Ketiga pilar krusial tersebut adalah Manusia (_People_), Proses (_Processes_), dan Teknologi (_Technology_).
+### The Trinity Of SOC
 
-  ![3 Pillars of SOC](../../Assets/Images/3P.png)
+Terdapat tiga buah pilar utama yang mendukung berdirinya sebuah SOC. Dengan beroperasinya ketiga pilar ini secara sinergis, tim SOC dapat berevolusi menjadi sebuah garda terdepan yang sangat mapan (_mature_) dan super efisien dalam mendeteksi sekaligus merespons segala bentuk insiden keamanan. Ketiga pilar krusial tersebut adalah Manusia (_People_), Proses (_Processes_), dan Teknologi (_Technology_).
+
+![3 Pillars of SOC](../../Assets/Images/3P.png)
+
+_People_, _Processes_ , dan _Technology_ hidup saling berdampingan dan tidak dapat dipisahkan di dalam ekosistem SOC. Sebuah pertahanan yang tangguh lahir murni dari ketiga pillar ini: Individu profesional (_People_) yang mengendalikan perangkat dan alat keamanan canggih (_Technology_), bergerak bersama-sama mengamankan jaringan berdasarkan tata letak prosedur taktis yang terkalkulasi dengan presisi (_Processes_). Kematangan (_Maturity_) sebuah tim SOC diukur dari seberapa solid mesin, orang, dan pedoman kerja ini bergerak bersamaan.
+
+Task berikutnya akan membahas masing-masing pilar ini satu per satu dan mempelajari bagaimana pilar-pilar tersebut merupakan bagian penting dari SOC.
+
+## Task 3: People
+
+Terlepas dari masifnya evolusi otomatisasi yang telah mengambil alih sebagian besar tugas di Cyber security, peran Manusia (_People_) di dalam SOC akan selalu memegang kendali yang paling esensial. Teknologi dan solusi keamanan otomatis memang sanggup menjaring serta membunyikan ribuan deteksi tanda bahaya (_alerts_) setiap detiknya. Namun, sistem mentah ini tidak jarang memicu timbulnya _False Positives_ alias peringatan palsu, yang pada akhirnya malah menciptakan kebisingan yang luar biasa padat (_Alert Fatigue_) di dalam ekosistem SOC. Di sinilah insting manusia sangat dibutuhkan untuk memvalidasi mana ancaman yang sungguhan dan mana yang hanya sekadar _noise_ lalu bereaksi sesuai SOP.
+
+Bayangkan kamu adalah anggota tim pemadam kebakaran yang bertugas memantau sebuah dashboard pemantauan pusat dari seluruh alarm pendeteksi api di kota. Misalkan secara kebetulan muncul rentetan peringatan darurat secara membabi buta dari ratusan lokasi yang berbeda beda. Saat kamu mengerahkan seluruh unit untuk menuju ke lokasi-lokasi tersebut, sangat mengecewakan ketika mengetahui bahwa mayoritas alarm tersebut hanyalah asap biasa dari aktivitas memasak warga, bukan kebakaran sungguhan. Terlalu banyak peringatan palsu seperti ini pada akhirnya hanya akan membakar habis tenaga, waktu, serta sumber daya operasional tim secara sia-sia. Hal yang persis sama kerap terjadi pada sistem deteksi SOC sebelum adanya validasi analitis dari manusia.
+
+Dalam implementasi SOC di lapangan, jika sebuah solusi keamanan dibiarkan beroperasi sepenuhnya tanpa campur tangan dari manusia (_Human Intervention_), fokus tim pasti akan teralihkan untuk mengurus masalah-masalah sepele dan peringatan yang tidak relevan. Kehadiran pilar Manusia (_People_) mutlak dibutuhkan untuk memandu solusi keamanan otomatis tadi dalam menyaring aktivitas yang sungguh-sungguh berbahaya, sehingga eksekusi insiden respons (_Incident Response_) dapat diluncurkan secara cepat dan tepat sasaran.
+
+Kumpulan orang-orang hebat yang berdiri di balik pilar ini secara umum dikenal sebagai Tim SOC (_The SOC Team_). Tim operasi ini terstruktur dengan memikul peran (Roles) serta tanggung jawab spesifik (_Responsibilities_) berikut:
+
+![SOC Roles Diagram](../../Assets/Images/People-SOC.png)
+
+- **SOC Analyst (Level 1):** Seluruh peringatan yang ditangkap oleh security solution akan disaring oleh analis lini pertama ini. Mereka adalah responden pertama (_first responders_) untuk setiap deteksi. Analis SOC Level 1 bertugas melakukan triad peringatan dasar (_alert triage_) demi memilah apakah suatu anomali berbahaya atau sekadar _False Positive_, lalu melaporkan ancaman yang presisi melalui jalur eskalasi yang seharusnya.
+- **SOC Analyst (Level 2):** Ketika analis Level 1 selesai melakukan filtering lapisan pertama, beberapa deteksi mungkin menuntut investigasi yang lebih mendalam. Analis Level 2 turun tangan untuk menyelami investigasi lanjutan dengan mengkorelasikan (_correlate_) log data dari berbagai sumber intelijen untuk mendeduksi insiden keamanan yang sebenarnya.
+- **SOC Analyst (Level 3):** Analis Level 3 adalah para ahli profesional sangat berpengalaman yang secara proaktif melakukan (_Threat Hunting_) dan memberi panduan taktis dalam aktivitas respons insiden (_Incident Response_). Deteksi berskala kritis kerap kali menuntut respons struktural yang kompleks, mulai dari melokalisasi penyebaran (_containment_), membasmi agen ancaman (_eradication_), hingga pemulihan sistem (_recovery_). Di titik ini, jam terbang tinggi sang analis Level 3 sangat diandalkan.
+- **Security Engineer:** Para _Engineer_ bertugas melakukan (_deployment_) dan mengonfigurasikan seluruh arsitektur infrastruktur security solution yang dioperasikan oleh para analyst. Keahlian murni mereka ditujukan demi menjaga keandalan dan kelancaran operasi mesin pertahanan di balik layar.
+- **Detection Engineer:** _Security Rules_ (Aturan Deteksi Keamanan) ibarat tulang punggung logika yang mensuplai otak solusi keamanan agar bisa secara akurat melacak aktivitas peretas. Meski analis Level 2 dan 3 sering kali merumuskan aturan deteksi secara mandiri, beberapa tim SOC independen lebih memilih menugaskan satu insinyur khusus (_Detection Engineer_) agar dapat fokus meracik serta mempertajam _Rules_ pendeteksian ini secara sempurna.
+- **SOC Manager:** SOC Manager mengurus perputaran roda _Processes_ serta dukungan manajerial kepada anggota tim. Manager SOC wajib menjadi jembatan diplomatis utama ke ranah eksekutif, yaitu **CISO** (_Chief Information Security Officer_), untuk melaporkan perkembangan terkait tingkat kekuatan dan postur pertahanan (_Security Posture_) dari ekosistem organisasi mereka.
+
+> **Note:** jumlah dan variasi susunan peran di dalam tim SOC ini sejatinya bersifat fleksibel, dapat membesar atau menyusut secara dinamis tergantung seberapa masif dan rentan sistem infrastruktur dari corporate yang mereka lindungi.
+
+---
+
+**Answer the questions below:**
+
+- Apa istilah untuk fenomena "kebisingan" luar biasa padat akibat tumpukan ribuan peringatan rentan _False Positives_ yang dihaasilkan oleh solusi keamanan otomatis?
+- Mengapa sebuah sistem deteksi SOC tetap mutlak membutuhkan pilar Manusia (_Human Intervention_) ketimbang beroperasi 100% secara otomatis?
+- Siapakah _first responders_ yang bertugas melakukan _alert triage_ dasar terhadap setiap deteksi awal untuk menyaring mana yang _False Positive_?
+- Siapakah analis yang turun tangan menyelami investigasi lebih mendalam dengan mengkorelasikan (_correlate_) log data dari berbagai sumber?
+- Siapakah analis berpengalaman yang memburu ancaman rumit secara proaktif (_Threat Hunting_) dan menjadi komando utama saat eksekusi _Incident Response_ kritis berlangsung?
+- Profesi apa yang memegang kendali atas urusan _deployment_ dan kelancaran arsitektur infrastruktur solusi keamanan di belakang layar SOC?
+- Jabatan apa yang difokuskan khusus secara independen untuk meracik dan mempertajam kerangka logika deteksi serangan alias _Security Rules_?
+- Apa gelar sang pengerak tim yang bukan cuma mengatur roda _Processes_, tapi juga jadi diplomat eksekutif ke ranah CISO?

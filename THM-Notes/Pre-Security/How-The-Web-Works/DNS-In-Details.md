@@ -22,7 +22,7 @@ Domain Hierarchy merupakan sistem penamaan terstruktur yang menyerupai pohon ter
 struktur Domain Hierarchy:
 
 <p align="center">
-<img src="../../Assets/Images/DNS.png" width="400">
+![DNS](../../Assets/Images/DNS.png)
 </p>
 
 ### 1. Root Domain
