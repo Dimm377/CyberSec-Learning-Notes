@@ -34,3 +34,19 @@ Secara singkat, mereka adalah garda terdepan dari lini pertahanan _blue team_ da
 ## Task 2: Purpose And Component
 
 Fokus dari tim SOC adalah memastikan kapabilitas **Detection dan Response** tetap solid dan selalu siaga. Untuk mencapai tujuan ini, tim SOC dipersenjatai dengan berbagai solusi keamanan berlapis. Solusi-solusi ini bertugas untuk mengintegrasikan seluruh jaringan perusahaan serta sistem-sistem krusial agar dapat dipantau dari satu _dashboard_ central. Lewat pemantauan (monitoring) terpusat yang berjalan terus-menerus inilah, tim SOC mampu mendeteksi serta menetralisir setiap insiden keamanan sebelum berubah menjadi bencana.
+
+### Detection
+
+- **Detect vulnerabilities:**
+  Kerentanan (_vulnerability_) adalah sebuah cacat keamanan atau titik lemah yang bisa disalahgunakan oleh penyerang untuk menembus batasan otorisasi sistem. Cacat ini bisa bersembunyi di mana saja, mulai dari sistem operasi _server_ hingga program aplikasi spesifik yang di-_install_ di komputer. Sebagai contoh, tim SOC mungkin mendeteksi adanya sekelompok komputer bersistem operasi MS Windows di dalam jaringan yang belum diperbarui (_patching_) untuk menambal sebuah _Exploit_ publik terbaru. Walaupun secara teknis proses perbaikan perangkat lunak (menambal kerentanan) **bukanlah** tugas murni dari SOC, tetapi kerentanan yang dibiarkan terekspos akan secara langsung memperlemah keamanan seluruh perusahaan. Oleh karena itu, SOC wajib menyoroti risiko ini.
+
+- **Detect unauthorized activity:**
+  Pertimbangkan sebuah ancaman krusial di mana penyerang (_Threat Actor_) berhasil meretas _username_ beserta kata sandinya dari salah satu karyawan yang sah, lalu menggunakannya untuk menyusup ke dalam sistem jaringan perusahaan. Sangat vital bagi SOC untuk mendeteksi aktivitas tak berizin semacam ini _(Unauthorized Activity)_ bergerak secepat kilat sebelum data di dalam jaringan berhasil dieksfiltrasi. Berbagai indikator logis, seperti ketidakwajaran geolokasi IP asal di mana login tersebut dilakukan, bisa dimanfaatkan sebagai petunjuk utama oleh mesin deteksi otomatis SOC.
+
+- **Detect intrusions:**
+  Intrusi (_Intrusion_) merujuk pada akses ilegal dan tidak berizin yang menembus sistem atau jaringan perusahaan. Skenario klasik dari intrusi adalah ketika _attacker_ berhasil mengeksploitasi celah keamanan pada aplikasi _web_ yang menghadap ke internet. Skenario fatal lainnya adalah ketika pengguna internal di dalam jaringan tanpa sengaja mengunjungi situs web berbahaya yang mengakibatkan perangkat mereka terinfeksi oleh perangkat lunak jahat (_malware_).
+
+### Response
+
+- **Support with the incident response:**
+  Segera setelah sebuah ancaman atau insiden keamanan terdeteksi dengan valid, serangkaian langkah taktis langsung dieksekusi untuk merespons serangan tersebut (_Incident Response_). Fokus utama dari manuver tanggap darurat ini adalah untuk memitigasi (meminimalkan) dampak kerusakan dan menelusuri akar penyebab (_Root-Cause Analysis_) terjadinya insiden. Dalam skenario ini, tim SOC memainkan peran pendukung yang sangat krusial dengan memberikan intelijen ancaman dan data dari mesin deteksi mereka untuk memandu (_Incident Response Team_) melakukan tugasnya.
