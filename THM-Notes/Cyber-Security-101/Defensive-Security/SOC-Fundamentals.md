@@ -35,6 +35,8 @@ Secara singkat, mereka adalah garda terdepan dari lini pertahanan _blue team_ da
 
 Fokus dari tim SOC adalah memastikan kapabilitas **Detection dan Response** tetap solid dan selalu siaga. Untuk mencapai tujuan ini, tim SOC dipersenjatai dengan berbagai solusi keamanan berlapis. Solusi-solusi ini bertugas untuk mengintegrasikan seluruh jaringan perusahaan serta sistem-sistem krusial agar dapat dipantau dari satu _dashboard_ central. Lewat pemantauan (monitoring) terpusat yang berjalan terus-menerus inilah, tim SOC mampu mendeteksi serta menetralisir setiap insiden keamanan sebelum berubah menjadi bencana.
 
+![SOC Operations Diagram](../../Assets/Images/SOC.png)
+
 ### Detection
 
 - **Detect vulnerabilities:**
@@ -49,4 +51,8 @@ Fokus dari tim SOC adalah memastikan kapabilitas **Detection dan Response** teta
 ### Response
 
 - **Support with the incident response:**
-  Segera setelah sebuah ancaman atau insiden keamanan terdeteksi dengan valid, serangkaian langkah taktis langsung dieksekusi untuk merespons serangan tersebut (_Incident Response_). Fokus utama dari manuver tanggap darurat ini adalah untuk memitigasi (meminimalkan) dampak kerusakan dan menelusuri akar penyebab (_Root-Cause Analysis_) terjadinya insiden. Dalam skenario ini, tim SOC memainkan peran pendukung yang sangat krusial dengan memberikan intelijen ancaman dan data dari mesin deteksi mereka untuk memandu (_Incident Response Team_) melakukan tugasnya.
+  Segera setelah sebuah ancaman atau insiden keamanan terdeteksi dengan valid, serangkaian langkah taktis langsung dieksekusi untuk merespons serangan tersebut (_Incident Response_). Fokus utama dari manuver tanggap darurat ini adalah untuk meminimalkan dampak kerusakan dan menelusuri akar penyebab (_Root-Cause Analysis_) terjadinya insiden. Dalam skenario ini, tim SOC memainkan peran pendukung yang sangat krusial dengan memberikan intelijen ancaman dan data dari mesin deteksi mereka untuk memandu (_Incident Response Team_) melakukan tugasnya.
+
+  Terdapat tiga buah pilar utama yang mendukung berdirinya sebuah SOC. Dengan beroperasinya ketiga pilar ini secara sinergis, tim SOC dapat berevolusi menjadi sebuah garda terdepan yang sangat mapan (_mature_) dan super efisien dalam mendeteksi sekaligus merespons segala bentuk insiden keamanan. Ketiga pilar krusial tersebut adalah Manusia (_People_), Proses (_Processes_), dan Teknologi (_Technology_).
+
+  ![3 Pillars of SOC](../../Assets/Images/3P.png)
