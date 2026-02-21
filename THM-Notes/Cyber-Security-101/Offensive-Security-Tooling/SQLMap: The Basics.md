@@ -102,7 +102,7 @@ Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) seba
 
 ## Task 3 Automated SQL Injection
 
-Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual bakal ngabisin banyak tenaga dan waktu. Di situlah kita main pakai **SQLMap**.
+Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual bakal menghabiskan banyak tenaga dan waktu. Di situlah kita gunakan tool **SQLMap**.
 
 ### Apa itu SQLMap?
 
