@@ -161,7 +161,7 @@ Kamu bisa download file yang dilampirin ke mesin lokal kamu buat inspeksi. File-
 
 Saat kamu bikin file teks (TXT), beberapa metadata otomatis disimpen oleh sistem operasi, kayak tanggal pembuatan file dan tanggal modifikasi terakhir. Tapi, lebih banyak informasi tersimpen di metadata file saat kamu pake editor yang lebih advanced, kayak MS Word. Ada berbagai cara buat baca metadata file; kamu bisa buka di viewer/editor resminya atau pake tools forensik yang sesuai. Perlu dicatat bahwa export file ke format lain, kayak PDF, bakal mempertahankan sebagian besar metadata dari dokumen aslinya, tergantung PDF writer yang dipake.
 
-Ayo kita liat apa yang bisa kita pelajari dari file PDF ini. Kita bisa coba baca metadata-nya pake program `pdfinfo`. Pdfinfo nampilin berbagai metadata yang terkait dengan file PDF, kayak title, subject, author, creator, dan creation date. (Kalau kamu pake Linux dan belum punya `pdfinfo` terinstall, kamu bisa install pake `sudo apt install poppler-utils`.) Coba contoh berikut pake `pdfinfo ransom-letter.pdf`:
+Ayo kita liat apa yang bisa kita pelajari dari file PDF ini. Kita bisa coba baca metadata-nya pake program `pdfinfo`. Pdfinfo nampilin berbagai metadata yang terkait dengan file PDF, kayak title, subject, author, creator, dan creation date. (Kalau kamu pake Linux dan belum punya `pdfinfo` terinstall, kamu bisa install pake `sudo apt install poppler-utils` atau kalau pakai arch `sudo pacman -S poppler`.) dan coba jalankan perintah berikut `pdfinfo ransom-letter.pdf`:
 
 <p align="center">
 <img src="../../Assets/Images/ransom-Letter.png" alt="Ransom Letter">
@@ -176,3 +176,43 @@ Dari output `pdfinfo` di atas, kita bisa dapetin beberapa informasi penting:
 - **CreationDate & ModDate:** Wed Feb 23 16:10:36 2022 WIB — tanggal dan waktu dokumen dibuat dan terakhir dimodifikasi.
 - **Pages:** 1 — dokumen cuma 1 halaman.
 - **File size:** 71371 bytes — ukuran file PDF-nya.
+
+### Photo EXIF Data
+
+EXIF singkatan dari Exchangeable Image File Format; ini adalah standar buat nyimpen metadata di file gambar. Setiap kali kamu ambil foto pake smartphone atau kamera digital, banyak informasi yang ikut tertanam di gambar tersebut. Berikut contoh metadata yang bisa ditemuin di gambar digital asli:
+
+- Model kamera / Model smartphone
+- Tanggal dan waktu pengambilan gambar
+- Pengaturan foto kayak focal length, aperture, shutter speed, dan ISO settings
+
+Karena smartphone dilengkapi sensor GPS, kemungkinan besar koordinat GPS ikut tertanam di gambar. Koordinat GPS, yaitu latitude dan longitude, umumnya bakal nunjukin tempat di mana foto itu diambil.
+
+Ada banyak tools online dan offline buat baca data EXIF dari gambar. Salah satu tool berbasis CLI adalah `exiftool`. ExifTool dipake buat baca dan nulis metadata di berbagai jenis file, kayak gambar JPEG. Kalau kamu pake Linux dan belum punya `exiftool` terinstall, kamu bisa install pake `sudo apt install libimage-exiftool-perl` atau kalau pakai Arch `sudo pacman -S perl-image-exiftool`. Di terminal berikut, kita jalanin `exiftool letter-image.jpg` buat baca semua data EXIF yang tertanam di gambar ini.
+
+<p align="center">
+<img src="../../Assets/Images/Exif-tools.png" alt="Exiftool Output">
+</p>
+
+Dari output `exiftool` di atas, kita bisa liat bahwa gambar ini diambil pake kamera **Canon EOS R6**. Ini bisa jadi petunjuk penting buat investigasi.
+
+<p align="center">
+<img src="../../Assets/Images/camera-model.png" alt="Camera Model Name - Canon EOS R6">
+</p>
+
+Selain itu, kita juga bisa nemuin koordinat GPS yang tertanam di gambar. Dari output EXIF, kita dapet **GPS Latitude: 51 deg 30' 51.90" N** dan **GPS Longitude: 0 deg 5' 38.73" W**.
+
+<p align="center">
+<img src="../../Assets/Images/Geo.png" alt="GPS Coordinates from EXIF">
+</p>
+
+Dengan masukin koordinat GPS ini ke Google Maps, kita bisa nemuin lokasi di mana foto itu diambil — yaitu di daerah **Milk Street, London, Britania Raya**, deket St. Paul's Cathedral.
+
+<p align="center">
+<img src="../../Assets/Images/kidnapper.png" alt="Google Maps - Kidnapper Location">
+</p>
+
+**Answer the questions:**
+
+- Pake `pdfinfo`, cari tau siapa author dari file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
+- Pake `exiftool` atau tools serupa, cari tau di mana penculik mengambil foto yang mereka lampirin di dokumen. Apa nama jalannya? → **Milk Street**
+- Apa model name kamera yang dipake buat mengambil foto ini? → **Canon EOS R6**
