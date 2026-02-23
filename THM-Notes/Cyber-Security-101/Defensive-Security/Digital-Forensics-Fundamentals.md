@@ -11,9 +11,7 @@ Forensic itu penerapan metode dan prosedur buat menyelidiki dan memecahkan kejah
 **Cyber crime** itu aktivitas kriminal apa pun yang dilakuin di atau pake perangkat digital. Berbagai tools dan teknik dipake buat nyelidikin perangkat digital secara menyeluruh setelah kejahatan terjadi, tujuannya buat nemuin dan menganalisis bukti demi tindakan hukum yang diperlukan.
 
 <p align="center">
-
-![Forensics Footage](../../Assets/Images/Forensics-footage.png)
-
+<img src="../../Assets/Images/Forensics-footage.png" alt="Forensics Footage">
 </p>
 
 Perangkat digital udah memecahkan banyak masalah di hidup kita. Komunikasi di seluruh dunia sekarang cuma tinggal kirim pesan atau telepon. Tapi karena penggunaan perangkat digital yang masif, peningkatan kejahatan digital **(cyber crimes)** juga ikut teramati. Berbagai macam kejahatan dilakuin pake perangkat digital.
@@ -27,9 +25,7 @@ Perangkat digital udah memecahkan banyak masalah di hidup kita. Komunikasi di se
 - Setelah investigasi menyeluruh di HP tersangka, grup chat ilegal dan catatan panggilan terkait perampokan bank juga ditemuin.
 
 <p align="center">
-
-![Bank Map](../../Assets/Images/bank-map.png)
-
+<img src="../../Assets/Images/bank-map.png" alt="Bank Map">
 </p>
 
 Semua bukti ini bantu aparat penegak hukum dalam proses hukum kasus tersebut. Skenario ini ngebahas sebuah kasus dari awal sampe akhir. Ada beberapa prosedur yang diikutin tim digital forensics waktu ngumpulin bukti, nyimpennya, menganalisisnya, dan ngelaporinnya. Room ini bakal fokus ke pemahaman prosedur-prosedur tersebut.

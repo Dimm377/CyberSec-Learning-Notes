@@ -30,9 +30,7 @@ Kayak yang udah dijelasin di task 1, Database itu ada di hampir setiap sistem, j
 Ada cukup banyak jenis database yang bisa dibuat, tapi kita cuma fokus ke dua tipe utama: **Relational Databases (atau SQL)** vs **Non-Relational Databases (atau NoSQL)**.
 
 <p align="center">
-
-![Database Type](../../Assets/Images/database-type.png)
-
+<img src="../../Assets/Images/database-type.png" alt="Database Type">
 </p>
 
 **Relational Databases:** Nyimpen data yang terstruktur, artinya setiap data yang masuk harus ngikutin pola atau aturan tertentu. Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`. Relational databases paling cocok buat Nyimpen Data Terstruktur, ngehubungin Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses.
@@ -85,9 +83,7 @@ CREATE TABLE login_attempts (
 Semua data yang disimpen dalam relational database bakal disimpen di sebuah tabel, misalnya kumpulan buku yang ada di toko buku disimpen dalam tabel bernama "Buku".
 
 <p align="center">
-
-![TRC](../../Assets/Images/TRC.png)
-
+<img src="../../Assets/Images/TRC.png" alt="TRC">
 </p>
 
 Waktu bikin tabel, kita perlu nentuin informasi apa aja yang dibutuhin—kayak `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pake tipe yang gak sesuai, sistem otomatis bakal nolaknya buat jaga konsistensi data. Secara umum ada empat tipe data inti yang selalu dipake: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
@@ -99,9 +95,7 @@ Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai masukin data pertama 
 Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohnya tabel `Buku` dan tabel `Penulis`. Biar informasi di kedua tabel ini tetep sinkron, misalnya kita mau tau buku tertentu ditulis sama siapa—kita harus hubungin keduanya lewat kunci **(Keys)**. Ada dua jenis kunci yang perlu dipahami:
 
 <p align="center">
-
-![PK Key](../../Assets/Images/PK-key.png)
-
+<img src="../../Assets/Images/PK-key.png" alt="PK Key">
 </p>
 
 - **Primary Key:** dipake buat jamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus punya satu nilai khusus yang jadi pengenal tetap dan gak boleh sama sama data lainnya. Dalam setiap tabel, kita wajib milih satu kolom sebagai Primary Key, biasanya kolom `id` itu pilihan terbaik karena nilai ini dibuat khusus buat setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa aja punya kemiripan.

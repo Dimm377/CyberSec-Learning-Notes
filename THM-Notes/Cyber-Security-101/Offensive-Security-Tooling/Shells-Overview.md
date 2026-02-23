@@ -488,12 +488,18 @@ Browser bakal nampilin hasil command `whoami` (misal: `www-data`). Cuma modal br
 Kekuatan bahasa pemrograman yang didukung oleh web server memungkinkan web shells punya banyak fungsionalitas dan bisa menghindari deteksi di waktu yang sama. Ayo kita eksplor beberapa web shell paling populer yang bisa ditemukan online:
 
 - **p0wny-shell** - Web shell PHP satu file yang minimalis tapi bisa buat remote command execution.
-![p0wny-shell](../../Assets/Images/pownyshell.png)
+<p align="center">
+<img src="../../Assets/Images/pownyshell.png" alt="p0wny-shell">
+</p>
 
 - **b374k shell** - Web shell PHP yang lebih kaya fitur dengan kemampuan file management dan command execution, serta fungsionalitas lainnya.
-![b374k shell](../../Assets/Images/b734kshell.png)
+<p align="center">
+<img src="../../Assets/Images/b734kshell.png" alt="b374k shell">
+</p>
 
 - **c99 shell** - Web shell PHP yang terkenal dan tangguh dengan fungsionalitas yang sangat luas.
-![c99 shell](../../Assets/Images/c99shell.png)
+<p align="center">
+<img src="../../Assets/Images/c99shell.png" alt="c99 shell">
+</p>
 
 Kamu bisa nemuin lebih banyak web shells di: [r57shell.net](https://www.r57shell.net/index.php).

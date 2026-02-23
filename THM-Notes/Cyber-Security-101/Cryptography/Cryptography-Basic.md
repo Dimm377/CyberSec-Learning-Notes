@@ -52,9 +52,7 @@ Di sini kita belajar gimana data berubah bentuk dari yang bisa dibaca manusia "p
 - **Key (Kunci):** Informasi yang dipake sama algoritma kriptografi buat bikin proses enkripsi/dekripsi jadi unik.
 
 <p align="center">
-
-![Cipher](../../Assets/Images/chiper.png)
-
+<img src="../../Assets/Images/chiper.png" alt="Cipher">
 </p>
 
 **Answer the questions below:**
@@ -81,10 +79,8 @@ Ini salah satu teknik paling tua dan paling simpel.
 - **ROT13:** Varian populer dari Caesar Cipher yang nggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, jalanin ROT13 dua kali di pesan yang sama bakal balikin ke teks asli.
 
 <p align="center">
-
-  ![Encryption](../../Assets/Images/Encryption.png)
-  ![Decryption](../../Assets/Images/Decryption.png)
-
+<img src="../../Assets/Images/Encryption.png" alt="Encryption">
+<img src="../../Assets/Images/Decryption.png" alt="Decryption">
 </p>
 
 ### 2. Vigenère Cipher
@@ -131,9 +127,7 @@ Pake **kunci yang sama** buat proses enkripsi dan dekripsi (disebut juga _privat
   - **AES (Advanced Encryption Standard):** Standar global saat ini (diadopsi tahun **2001**). Pake kunci 128, 192, atau 256 bit. Aman banget dan efisien.
 
 <p align="center">
-
-![Symmetric](../../Assets/Images/Symmetric.png)
-
+<img src="../../Assets/Images/Symmetric.png" alt="Symmetric">
 </p>
 
 ### 2. Asymmetric Encryption
@@ -147,9 +141,7 @@ Pake **sepasang kunci**: _Public Key_ (buat mengenkripsi/mengunci) dan _Private 
   - **ECC (Elliptic Curve Cryptography):** Lebih efisien; kunci 256-bit ECC setara kekuatannya sama RSA 3072-bit.
 
 <p align="center">
-
-![Asymmetric](../../Assets/Images/Asymmetric.png)
-
+<img src="../../Assets/Images/Asymmetric.png" alt="Asymmetric">
 </p>
 
 ---

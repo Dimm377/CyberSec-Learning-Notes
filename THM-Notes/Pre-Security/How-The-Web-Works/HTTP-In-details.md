@@ -30,9 +30,7 @@ URL itu alamat yang dipake buat ngidentifikasi dan ngakses sumber daya di intern
 Berikut fitur-fitur yang ada di URL:
 
 <p align="center">
-
-![URL](../../Assets/Images/URL.png)
-
+<img src="../../Assets/Images/URL.png" alt="URL">
 </p>
 
 -
