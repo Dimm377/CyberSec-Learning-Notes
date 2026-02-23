@@ -46,7 +46,11 @@ Fokus utama tim SOC itu sederhana: pastiin kemampuan **Detection dan Response** 
 - Solusi-solusi ini ngehubungin seluruh jaringan perusahaan dan sistem penting supaya bisa dipantau dari satu _dashboard_ pusat.
 - Lewat monitoring terpusat 24/7 inilah, tim SOC bisa mendeteksi dan menetralisir insiden keamanan sebelum jadi bencana.
 
+<p align="center">
+
 ![SOC Operations Diagram](../../Assets/Images/SOC.png)
+
+</p>
 
 ### Detection
 
@@ -83,7 +87,11 @@ Ada tiga pilar utama yang jadi pondasi sebuah SOC:
 
 Kalau ketiga pilar ini jalan bareng dengan kompak, tim SOC bisa berkembang jadi lini pertahanan yang matang (_mature_) dan super efisien.
 
+<p align="center">
+
 ![3 Pillars of SOC](../../Assets/Images/3P.png)
+
+</p>
 
 _People_, _Processes_, dan _Technology_ itu satu paket yang gak bisa dipisahin di dalam SOC:
 
@@ -112,7 +120,11 @@ Kalau solusi keamanan dibiarkan jalan sendiri tanpa campur tangan manusia (_Huma
 
 Orang-orang di balik pilar ini dikenal sebagai **Tim SOC** (_The SOC Team_). Tim ini punya struktur peran (_Roles_) dan tanggung jawab (_Responsibilities_) masing-masing:
 
+<p align="center">
+
 ![SOC Roles Diagram](../../Assets/Images/People-SOC.png)
+
+</p>
 
 - **SOC Analyst (Level 1):**
   _First responders_ buat setiap deteksi. Tugasnya lakuin _alert triage_ dasar — milah mana yang beneran bahaya dan mana yang cuma _False Positive_, terus laporin ke jalur eskalasi yang tepat.
@@ -164,7 +176,11 @@ _Alert triage_ itu pondasi operasional utama tim SOC — langkah pertama yang se
 - **Tujuan:** Analisis peringatan buat klasifikasi tingkat keparahan (_severity_) dan urutin prioritas penanganan.
 - **Kunci sukses:** Nemuin jawaban atas kaidah **5 W** (_5 Ws_).
 
+<p align="center">
+
 ![5 Ws of Alert Triage](../../Assets/Images/5WS.png)
+
+</p>
 
 Berikut ini adalah rangkaian pertanyaan 5W yang idealnya harus terjawab selama analis melakukan triad alert atas sebuah peringatan:
 

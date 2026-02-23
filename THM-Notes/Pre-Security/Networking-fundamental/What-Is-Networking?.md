@@ -53,7 +53,9 @@ $ ping website url / IP address
 ```
 
 <p align="center">
+
 ![Ping](../../Assets/Images/ping.png)
+
 </p>
 
 Di gambar itu aku nge ping ke URL `google.com`. Ping kasih tau bahwa Google bales pake alamat IPv6, aku ngirim 8 paket ICMP dengan waktu sekitar 39.4 ms.

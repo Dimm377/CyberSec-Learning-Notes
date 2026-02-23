@@ -26,19 +26,25 @@ LAN itu jenis jaringan lokal yang menghubungkan perangkat-perangkat dalam jarak 
 - Star Topology (perangkat terhubung secara individu lewat perangkat jaringan pusat kayak switch atau hub) -- paling umum dipake tapi biayanya mahal
 
 <p align="center">
+
 ![Star Topology](../../Assets/Images/star-topology.png)
+
 </p>
 
 - Bus Topology (perangkat terhubung lewat satu kabel yang sama, karena bergantung ke satu koneksi alias kabel backbone) -- biaya murah tapi bakal down kalau banyak perangkat ngirim data secara bersamaan
 
 <p align="center">
+
 ![Bus Topology](../../Assets/Images/Bus-topology.png)
+
 </p>
 
 - Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar. Data dikirim dari satu perangkat ke perangkat lain dalam satu arah sampai nyampe tujuan) -- gampang buat deteksi kesalahan di lalu lintas data, tapi kalau satu perangkat bermasalah maka seluruh jaringan ikut kena dampaknya
 
 <p align="center">
+
 ![Ring Topology](../../Assets/Images/Ring-topology.png)
+
 </p>
 
 ### 2. Networking Device
@@ -62,7 +68,9 @@ DHCP itu protokol jaringan yang secara otomatis ngasih IP Address dan informasi 
 Proses DHCP server:
 
 <p align="center">
+
 ![DHCP](../../Assets/Images/DHCP1.png)
+
 </p>
 
 **DHCP Discover:** Perangkat ngirim pesan DHCP Discover buat nyari server DHCP yang ada.
