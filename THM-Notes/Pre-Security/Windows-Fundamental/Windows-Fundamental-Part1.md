@@ -13,72 +13,72 @@
 
 ## Overview
 
-Catatan ini merangkum fondasi dasar sistem operasi Windows. Memahami komponen ini sangat krusial untuk melakukan audit keamanan maupun analisis forensik, terutama bagi kita yang terbiasa di lingkungan Linux. Fokus utama di sini adalah memahami struktur sistem, manajemen file, dan kontrol akses.
+Catatan ini merangkum pondasi dasar sistem operasi Windows. Ngerti komponen-komponen ini penting banget buat audit keamanan maupun analisis forensik, terutama buat kita yang terbiasa di lingkungan Linux. Fokus utamanya di sini itu ngerti struktur sistem, manajemen file, dan kontrol akses.
 
 ---
 
 ## Windows Editions
 
-Windows hadir dalam berbagai edisi yang disesuaikan dengan kebutuhan beban kerja dan fitur keamanan:
+Windows hadir dalam berbagai edisi yang disesuaiin sama kebutuhan beban kerja dan fitur keamanan:
 
-- **Home:** Edisi standar untuk pengguna personal dengan fitur dasar.
-- **Pro:** Menambah fitur enkripsi (BitLocker) dan kemampuan untuk bergabung ke dalam _Domain_ perusahaan.
-- **Enterprise:** Versi terlengkap untuk manajemen IT skala besar dengan fitur keamanan tingkat tinggi.
-- **Server:** Didesain khusus untuk menjalankan infrastruktur jaringan, layanan _backend_, dan _database_.
+- **Home:** Edisi standar buat pengguna personal dengan fitur dasar.
+- **Pro:** Nambahin fitur enkripsi (BitLocker) dan kemampuan buat gabung ke _Domain_ perusahaan.
+- **Enterprise:** Versi terlengkap buat manajemen IT skala besar dengan fitur keamanan tingkat tinggi.
+- **Server:** Didesain khusus buat jalanin infrastruktur jaringan, layanan _backend_, dan _database_.
 
 ---
 
 ## The Desktop GUI
 
-Antarmuka visual Windows yang memfasilitasi interaksi pengguna melalui elemen-elemen berikut:
+Antarmuka visual Windows yang jadi tempat kita berinteraksi lewat elemen-elemen berikut:
 
 - **Start Menu:** Pusat navigasi aplikasi, dokumen, dan pencarian sistem.
-- **Taskbar:** Menampilkan aplikasi yang sedang berjalan dan menyediakan jalan pintas (_shortcuts_).
-- **Notification Area (System Tray):** Terletak di pojok kanan bawah; menampilkan status sistem seperti jam, jaringan, dan ikon **Volume**.
+- **Taskbar:** Nampilin aplikasi yang lagi jalan dan nyediain jalan pintas (_shortcuts_).
+- **Notification Area (System Tray):** Letaknya di pojok kanan bawah; nampilin status sistem kayak jam, jaringan, dan ikon **Volume**.
 
 ---
 
 ## The File System (NTFS)
 
-Windows menggunakan **NTFS** (New Technology File System) sebagai standar modern untuk penyimpanan data.
+Windows pake **NTFS** (New Technology File System) sebagai standar modern buat penyimpanan data.
 
-- **Drive Letters:** Menggunakan sistem huruf (seperti `C:`) untuk identifikasi partisi, berbeda dengan Linux yang menggunakan _mount points_ (`/`).
-- **NTFS Permissions:** Mekanisme kontrol akses (Read, Write, Execute) terhadap file dan folder untuk pengguna atau grup tertentu.
+- **Drive Letters:** Pake sistem huruf (kayak `C:`) buat identifikasi partisi, beda sama Linux yang pake _mount points_ (`/`).
+- **NTFS Permissions:** Mekanisme kontrol akses (Read, Write, Execute) terhadap file dan folder buat pengguna atau grup tertentu.
 
 ---
 
 ## The Heart of Windows: System32
 
-Struktur direktori yang paling krusial bagi integritas sistem operasi Windows:
+Struktur direktori yang paling penting buat integritas sistem operasi Windows:
 
 - **\Windows:** Folder utama tempat sistem operasi terinstal.
-- **\System32:** Berisi file sistem inti (_binary_), _driver_ perangkat, dan alat penting seperti Command Prompt (`cmd.exe`) serta PowerShell.
-- **Keamanan:** Folder ini sering menjadi target malware untuk menyamar atau melakukan modifikasi file sistem agar sulit dideteksi oleh pengguna awam.
+- **\System32:** Berisi file sistem inti (_binary_), _driver_ perangkat, dan alat penting kayak Command Prompt (`cmd.exe`) serta PowerShell.
+- **Keamanan:** Folder ini sering jadi target malware buat nyamar atau ngelakuin modifikasi file sistem biar susah dideteksi sama pengguna awam.
 
 ---
 
 ## User Accounts & Security Control
 
-Pilar keamanan yang membatasi hak istimewa pengguna di dalam sistem:
+Pilar keamanan yang ngebatasin hak istimewa pengguna di dalam sistem:
 
-- **User Accounts:** Pembagian antara akun **Administrator** (memiliki hak penuh) dan **Standard User** (memiliki hak terbatas).
-- **User Account Control (UAC):** Fitur keamanan yang meminta konfirmasi sebelum aplikasi melakukan perubahan tingkat sistem, guna mencegah eksekusi program berbahaya secara diam-diam.
-- **Settings vs Control Panel:** Dua antarmuka utama untuk konfigurasi, di mana Control Panel lebih banyak digunakan untuk pengaturan teknis yang bersifat _legacy_.
+- **User Accounts:** Pembagian antara akun **Administrator** (punya hak penuh) dan **Standard User** (punya hak terbatas).
+- **User Account Control (UAC):** Fitur keamanan yang minta konfirmasi sebelum aplikasi lakuin perubahan tingkat sistem, buat nyegah eksekusi program berbahaya secara diam-diam.
+- **Settings vs Control Panel:** Dua antarmuka utama buat konfigurasi, di mana Control Panel lebih banyak dipake buat pengaturan teknis yang bersifat _legacy_.
 
 ---
 
 ## Task Manager
 
-Utilitas utama untuk memantau kesehatan performa dan mendeteksi anomali pada sistem:
+Utility utama buat mantau kesehatan performa dan mendeteksi keanehan di sistem:
 
-- **Processes:** Melacak penggunaan CPU, memori, dan disk oleh aplikasi serta layanan sistem yang aktif.
-- **Performance:** Grafik _real-time_ yang menunjukkan beban kerja _hardware_.
-- **Startup:** Mengelola aplikasi yang berjalan otomatis saat _booting_. Ini adalah titik kritis untuk mencari jejak persistensi malware.
+- **Processes:** Ngelacak penggunaan CPU, memori, dan disk oleh aplikasi serta layanan sistem yang aktif.
+- **Performance:** Grafik _real-time_ yang nunjukin beban kerja _hardware_.
+- **Startup:** Ngelola aplikasi yang jalan otomatis waktu _booting_. Ini titik kritis buat nyari jejak persistensi malware.
 
 ---
 
 ## Conclusion
 
-Menguasai Windows Fundamentals memberikan perspektif baru tentang bagaimana sistem operasi paling populer di dunia ini bekerja. Pemahaman tentang struktur file dan manajemen proses adalah langkah awal yang solid untuk menjadi seorang analis keamanan.
+Nguasain Windows Fundamentals ngasih perspektif baru tentang gimana sistem operasi paling populer di dunia ini bekerja. Ngerti struktur file dan manajemen proses itu langkah awal yang solid buat jadi seorang security analyst.
 
-> **Note:** Jangan hanya melihat Windows sebagai user; lihatlah sebagai sistem yang bisa diaudit. Setiap klik di GUI sebenarnya memicu eksekusi proses yang berada di System32.
+> **Note:** Jangan cuma liat Windows sebagai user; liat sebagai sistem yang bisa diaudit. Setiap klik di GUI sebenernya nge trigger eksekusi proses yang ada di System32.

@@ -8,7 +8,7 @@
 
 JavaScript adalah bahasa scripting populer yang memungkinkan kita sebagai developer untuk menambahkan fitur interaktif ke dalam website yang sudah memiliki struktur (HTML) dan tampilan (CSS).
 
-Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa mmebuat website itu hidup.
+Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa membuat website itu hidup.
 
 **Learning Objectives:**
 
@@ -37,10 +37,10 @@ di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
 **Contoh Tipe Data:**
 
 - Number: Mewakili bilangan integer dan float (misalnya 42, 3.14)
-- String: Mewakili rangkaian karakter, ditahdai dengan tanda kutip (misalnya, 'halo', "dunia")
+- String: Mewakili rangkaian karakter, ditandai dengan tanda kutip (misalnya, 'halo', "dunia")
 - Boolean: Tipe data yang hanya ada 2 value **True & False**, sering digunakan untuk memvalidasi sebuah kondisi
 - Object: objek adalah kumpulan properti, di mana setiap properti didefinisikan sebagai pasangan nilai kunci. Objek memungkinkan kita mengelompokkan data dan fungsi terkait menjadi satu, contoh `{ name: 'Alice', age: 25 }`
-- Array: arrayc adalah tipe objek khusus yang digunakan untuk menyimpan daftar nilai dalam satu variabel, contoh `let numbers = [1, 2, 3, 4, 5];`
+- Array: array adalah tipe objek khusus yang digunakan untuk menyimpan daftar nilai dalam satu variabel, contoh `let numbers = [1, 2, 3, 4, 5];`
 - Undefined: Variabel yang sudah dideklarasikan namun belum diberi nilai, contoh `let x;`
 
 ### Functions

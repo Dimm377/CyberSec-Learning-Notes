@@ -11,54 +11,54 @@
 
 ## # Overview
 
-Room ini adalah pondasi utama untuk memahami cara kerja **Burp Suite**, alat wajib bagi setiap _Pentester_ atau _Bug Hunter_. disini bakal belajar gimana cara "berdiri di tengah" antara browser dan server untuk memanipulasi traffic web sesuai keinginan
+Room ini pondasi utama buat ngerti cara kerja **Burp Suite**, alat wajib buat setiap _Pentester_ atau _Bug Hunter_. Di sini kita bakal belajar gimana cara "berdiri di tengah" antara browser dan server buat memanipulasi traffic web sesuai keinginan.
 
 ---
 
 ### Understanding the Dashboard
 
-Dashboard adalah pusat kendali Burp Suite. Di versi **Community 2026.1.1** yang sedang ku pake, fitur ini memberikan ringkasan aktivitas sistem:
+Dashboard itu pusat kendali Burp Suite. Di versi **Community 2026.1.1** yang lagi aku pake, fitur ini ngasih ringkasan aktivitas sistem:
 
-- **Task Log**: Menampilkan log dari aktivitas yang sedang berjalan.
-- **Issue Activity**: Tempat untuk melihat temuan keamanan (manual di versi Community).
+- **Task Log**: Nampilin log dari aktivitas yang lagi jalan.
+- **Issue Activity**: Tempat buat liat temuan keamanan (manual di versi Community).
 - **Shortcut**: `Ctrl + Shift + D` buat langsung loncat ke tab Dashboard.
 
 ---
 
 ### The Power of Burp Proxy
 
-Proxy adalah fitur paling iconic. Dia bertindak sebagai _Man-in-the-Middle_:
+Proxy itu fitur paling iconic. Dia bertindak sebagai _Man-in-the-Middle_:
 
-- **Interception**: Menghentikan _request_ sebelum sampai ke server agar bisa dimodifikasi.
-- **HTTP History**: Menyimpan log setiap _request_ yang lewat untuk dianalisis nanti.
-- **Intercept is on/off**: Tombol untuk menentukan apakah trafik mau ditahan atau dibiarkan lewat begitu saja.
+- **Interception**: Ngehentiin _request_ sebelum sampe ke server biar bisa dimodifikasi.
+- **HTTP History**: Nyimpen log setiap _request_ yang lewat buat dianalisis nanti.
+- **Intercept is on/off**: Tombol buat nentuin apakah trafik mau ditahan atau dibiarin lewat aja.
 
 ---
 
 ### Target Scoping & Site Map
 
-Target Scope adalah fitur di Burp Suite yang digunakan intuk mementukan URL atau domain mana aja yang akan dijadikan target utama / prioritas
+Target Scope itu fitur di Burp Suite yang dipake buat nentuin URL atau domain mana aja yang bakal dijadiin target utama / prioritas.
 
-- **Site Map**: Memberikan gambaran hierarki struktur folder dan file dari aplikasi web target.
-- **Scope**: Memungkinkan kita untuk memfilter traffic agar Burp cuma mencatat domain yang sedang kita serang.
+- **Site Map**: Ngasih gambaran hierarki struktur folder dan file dari aplikasi web target.
+- **Scope**: Bikin kita bisa filter traffic biar Burp cuma nyatet domain yang lagi kita serang.
 
 ---
 
 ### Manual Tweaking with Repeater
 
-Repeater adalah tempat favorit buat yang suka ngulik manual:
+Repeater itu tempat favorit buat yang suka ngulik manual:
 
-- **Function**: Mengirimkan satu _request_ berkali-kali dengan modifikasi parameter yang berbeda tanpa harus _refresh_ browser.
-- **Shortcut**: `Ctrl + R` untuk mengirim _request_ dari Proxy ke Repeater secara instan.
+- **Function**: Ngirim satu _request_ berkali-kali pake modifikasi parameter yang beda-beda tanpa harus _refresh_ browser.
+- **Shortcut**: `Ctrl + R` buat ngirim _request_ dari Proxy ke Repeater secara instan.
 
 ---
 
 ### Introduction to Intruder
 
-Intruder digunakan untuk serangan otomatisasi skala kecil:
+Intruder dipake buat serangan otomatisasi skala kecil:
 
 - **Payload Types**: Sniper (satu posisi), Battering Ram, Pitchfork, dan Cluster Bomb.
-- **Throttling**: Perlu diingat, di versi **Community**, kecepatan Intruder dibatasi (_throttled_) oleh PortSwigger.
+- **Throttling**: Perlu diingat, di versi **Community**, kecepatan Intruder dibatasi (_throttled_) sama PortSwigger.
 
 ---
 
@@ -66,8 +66,8 @@ Intruder digunakan untuk serangan otomatisasi skala kecil:
 
 Alat pendukung yang bikin Burp Suite makin lengkap:
 
-- **Decoder**: Digunakan untuk melakukan _encoding/decoding_ data (Base64, URL, Hex) secara cepat.
-- **Comparer**: Membandingkan dua _response_ HTTP yang berbeda untuk mencari perbedaan tipis (seperti saat _blind SQL injection_).
-- **Extender (BApp Store)**: Tempat memasang ekstensi tambahan seperti **Logger++** atau **Turbo Intruder** untuk meningkatkan kemampuan Burp suite.
+- **Decoder**: Dipake buat _encoding/decoding_ data (Base64, URL, Hex) secara cepet.
+- **Comparer**: Bandingin dua _response_ HTTP yang beda buat nyari perbedaan tipis (kayak waktu _blind SQL injection_).
+- **Extender (BApp Store)**: Tempat masang ekstensi tambahan kayak **Logger++** atau **Turbo Intruder** buat ningkatin kemampuan Burp Suite.
 
-> **Note:** Alat hebat nggak bakal berguna di tangan orang yang nggak paham konsep dasarnya. Pahami protokol HTTP, maka akan paham cara merusaknya.
+> **Note:** Alat hebat gak bakal berguna di tangan orang yang gak paham konsep dasarnya. Pahami protokol HTTP, maka bakal paham cara merusaknya.

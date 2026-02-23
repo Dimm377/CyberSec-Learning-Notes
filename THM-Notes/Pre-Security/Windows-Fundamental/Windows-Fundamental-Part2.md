@@ -13,67 +13,67 @@
 
 ## Overview
 
-Setelah memahami navigasi dasar, fokus beralih pada alat-alat administratif (System Utilities) yang digunakan untuk mengelola konfigurasi, memantau sumber daya, dan memahami struktur internal Windows. Pengetahuan ini sangat krusial bagi seorang administrator maupun analis keamanan untuk mendeteksi anomali pada sistem.
+Setelah paham navigasi dasar, fokusnya pindah ke alat-alat administratif (System Utilities) yang dipake buat ngelola konfigurasi, mantau sumber daya, dan ngerti struktur internal Windows. Pengetahuan ini penting banget buat seorang administrator maupun security analyst buat mendeteksi keanehan di sistem.
 
 ---
 
 ## System Configuration (msconfig)
 
-`msconfig` adalah utilitas utama untuk mengelola proses startup dan opsi boot sistem.
+`msconfig` itu utility utama buat ngelola proses startup dan opsi boot sistem.
 
-- **Startup Selection:** Memungkinkan pemilihan antara Normal, Diagnostic, atau Selective startup untuk proses troubleshooting.
-- **Boot Options:** Mengatur opsi booting seperti _Safe Mode_, yang sangat berguna saat sistem mengalami kegagalan fungsi atau terinfeksi malware.
-- **Services Management:** Memungkinkan pengguna untuk menonaktifkan layanan latar belakang yang tidak diperlukan guna meningkatkan performa atau mengisolasi proses mencurigakan.
+- **Startup Selection:** Bikin kita bisa milih antara Normal, Diagnostic, atau Selective startup buat proses troubleshooting.
+- **Boot Options:** Ngatur opsi booting kayak _Safe Mode_, yang berguna banget waktu sistem error atau terinfeksi malware.
+- **Services Management:** Bikin kita bisa nonaktifin background process yang gak diperluin buat ningkatin performa atau ngisolasi proses mencurigakan.
 
 ---
 
 ## User Account Control (UAC)
 
-UAC adalah lapisan keamanan yang mencegah perubahan tingkat sistem secara tidak sah.
+UAC itu lapisan keamanan yang nyegah perubahan tingkat sistem secara sembarangan.
 
-- **Fungsi Utama:** Memberikan peringatan atau meminta kredensial administratif saat ada aplikasi yang mencoba melakukan modifikasi pada file sistem atau pengaturan sensitif.
-- **Konfigurasi:** Tingkat sensitivitas UAC dapat diatur melalui `UserAccountControlSettings.exe` untuk menyeimbangkan antara keamanan dan kenyamanan pengguna.
+- **Fungsi Utama:** Ngasih peringatan atau minta credential admin waktu ada aplikasi yang nyoba ngemodif file sistem atau pengaturan sensitif.
+- **Konfigurasi:** Tingkat sensitivitas UAC bisa diatur lewat `UserAccountControlSettings.exe` buat nyeimbangin antara keamanan dan kenyamanan pengguna.
 
 ---
 
 ## Computer Management (compmgmt.msc)
 
-Konsol administratif terpusat yang menggabungkan berbagai alat penting dalam satu tampilan.
+Console administratif terpusat yang nggabungin berbagai alat penting dalam satu tampilan.
 
-- **Task Scheduler:** Digunakan untuk menjadwalkan tugas otomatis. Dalam perspektif keamanan, ini sering dimanfaatkan malware untuk teknik persistensi agar tetap berjalan meski sistem telah di-restart.
-- **Event Viewer:** Log sistem yang mencatat setiap kejadian penting (Error, Warning, Information). Analisis log pada bagian _Security_ sangat penting untuk mendeteksi upaya login tidak sah.
-- **Shared Folders:** Memantau folder mana saja yang dibagikan dalam jaringan, termasuk folder tersembunyi yang ditandai dengan simbol `$`.
+- **Task Scheduler:** Dipake buat menjadwalkan tugas otomatis. Dalam perspektif keamanan, ini sering dimanfaatin malware buat teknik persistensi biar tetap jalan meski sistem udah di-restart.
+- **Event Viewer:** Log sistem yang nyatet setiap kejadian penting (Error, Warning, Information). Analisis log di bagian _Security_ penting banget buat mendeteksi upaya login yang gak sah.
+- **Shared Folders:** Mantau folder mana aja yang dibagiin di jaringan, termasuk folder tersembunyi yang ditandai sama simbol `$`.
 
 ---
 
 ## System Information & Resource Monitor
 
-Alat untuk mendapatkan visibilitas mendalam tentang perangkat keras dan penggunaan sumber daya secara real-time.
+Alat buat dapetin visibilitas mendalam tentang perangkat keras dan penggunaan sumber daya secara real-time.
 
-- **System Information (msinfo32.exe):** Memberikan detail lengkap mengenai spesifikasi hardware, versi kernel, hingga variabel lingkungan (environment variables).
-- **Resource Monitor (resmon.exe):** Memberikan gambaran lebih detail dibanding Task Manager, mencakup penggunaan CPU, Memory, Disk, dan Network oleh setiap proses yang aktif.
+- **System Information (msinfo32.exe):** Ngasih detail lengkap soal spesifikasi hardware, versi kernel, sampai variabel lingkungan (environment variables).
+- **Resource Monitor (resmon.exe):** Ngasih gambaran lebih detail dibanding Task Manager, mencakup penggunaan CPU, Memory, Disk, dan Network oleh setiap proses yang aktif.
 
 ---
 
 ## Windows Registry (regedit)
 
-Database hierarkis yang menyimpan hampir seluruh pengaturan sistem operasi dan aplikasi pihak ketiga.
+Database hierarkis yang nyimpen hampir seluruh pengaturan sistem operasi dan aplikasi pihak ketiga.
 
-- **Structure:** Data disimpan dalam struktur yang disebut _Hives_, seperti `HKEY_LOCAL_MACHINE` (HKLM) untuk pengaturan global dan `HKEY_CURRENT_USER` (HKCU) untuk pengaturan user aktif.
-- **Security Insight:** Registry sering menjadi target modifikasi oleh penyerang untuk menonaktifkan fitur keamanan (seperti Windows Defender) atau menyembunyikan konfigurasi malware.
+- **Structure:** Data disimpen dalam struktur yang disebut _Hives_, kayak `HKEY_LOCAL_MACHINE` (HKLM) buat pengaturan global dan `HKEY_CURRENT_USER` (HKCU) buat pengaturan user aktif.
+- **Security Insight:** Registry sering jadi target modifikasi sama penyerang buat nonaktifin fitur keamanan (kayak Windows Defender) atau nyembunyiin konfigurasi malware.
 
 ---
 
 ## Command Line Utilities
 
-Meskipun Windows berbasis GUI, penggunaan Command Prompt tetap krusial untuk tugas cepat.
+Meskipun Windows berbasis GUI, penggunaan Command Prompt tetap penting buat tugas cepat.
 
-- **ipconfig:** Alat standar untuk melihat konfigurasi IP, subnet mask, dan gateway. Penggunaan parameter `/all` memberikan informasi tambahan seperti alamat fisik (MAC Address) dan server DNS.
+- **ipconfig:** Alat standar buat liat konfigurasi IP, subnet mask, dan gateway. Pake parameter `/all` buat info tambahan kayak alamat fisik (MAC Address) dan server DNS.
 
 ---
 
 ## Conclusion
 
-Menguasai utilitas administratif ini adalah pembeda antara pengguna biasa dan seorang profesional IT/Security. Kemampuan untuk menavigasi Registry, menganalisis Event Logs, dan memantau Resource Monitor adalah fondasi utama dalam pertahanan siber di lingkungan Windows.
+Nguasain utility administratif ini yang ngebedain pengguna biasa sama seorang profesional IT/Security. Kemampuan navigasi Registry, analisis Event Logs, dan monitoring Resource Monitor itu pondasi utama dalam pertahanan cyber di lingkungan Windows.
 
-> **Mindset Tip:** "Don't just trust the GUI." Selalu verifikasi aktivitas mencurigakan melalui log dan monitor sumber daya untuk melihat apa yang benar-benar terjadi di balik layar.
+> **Mindset Tip:** "Don't just trust the GUI." Selalu verifikasi aktivitas mencurigakan lewat log dan monitor sumber daya buat liat apa yang beneran terjadi di balik layar.

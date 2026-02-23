@@ -52,6 +52,7 @@ Ada 2 protokol di lapisan Transport:
 - **TCP (Transmission Control Protocol):** Protokol yang nyediain pengiriman data secara handal dan teratur, menjamin data nyampe ke tujuan dalam urutan yang benar.
 - **UDP (User Datagram Protocol):** Protokol yang lebih cepet dari TCP tapi nggak menjamin pengiriman yang handal dan urutan data yang teratur.
 
+
 | Perbedaan             | TCP (Transmission Control Protocol)      | UDP (User Datagram Protocol)             |
 | :-------------------- | :--------------------------------------- | :--------------------------------------- |
 | **Keandalan**         | Sangat Handal (Reliable)                 | Tidak Handal (Unreliable)                |
@@ -71,3 +72,5 @@ Protokol yang ada di lapisan ini:
 6. **Presentation:** Lapisan keenam ini jadi penerjemah data biar bisa dipahami sama aplikasi / lapisan ke-7 (Application). Mastiin data disajiin dalam format yang bener supaya bisa diproses dengan baik. Lapisan ini juga yang ngurusin enkripsi dan dekripsi buat keamanan.
 
 7. **Application:** Lapisan ketujuh, yang paling deket sama pengguna. Nyediain layanan jaringan buat aplikasi perangkat lunak kayak web browser (HTTP/HTTPS) atau email.
+
+> **mnemonic:** "**P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way", (Physical, Data Link, Network, Transport, Session, Presentation, Application).
