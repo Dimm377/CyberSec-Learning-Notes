@@ -34,7 +34,7 @@ Semua bukti ini bantu aparat penegak hukum dalam proses hukum kasus tersebut. Sk
 
 - Fase-fase digital forensics
 - Jenis-jenis digital forensics
-- Prosedur akuisisi barang bukti
+- Prosedur pengambilan barang bukti
 - Windows forensics
 - Memecahkan kasus forensik
 
@@ -50,7 +50,7 @@ Tim digital forensics punya berbagai macam kasus yang butuh tools dan teknik yan
 <img src="../../Assets/Images/CEAR.png" alt="CEAR - 4 Phases of Digital Forensics">
 </p>
 
-1. **Collection:** Fase pertama digital forensics adalah pengumpulan data. Identifikasi semua perangkat yang bisa jadi sumber data itu penting banget. Biasanya investigator bisa nemuin komputer pribadi, laptop, kamera digital, USB, dll di TKP. Pastiin juga data aslinya gak diutak-atik selama pengumpulan bukti, dan bikin dokumentasi yang rapi soal detail barang-barang yang dikumpulin. Prosedur akuisisi bukti bakal dibahas lebih lanjut di task-task berikutnya.
+1. **Collection:** Fase pertama digital forensics adalah pengumpulan data. Identifikasi semua perangkat yang bisa jadi sumber data itu penting banget. Biasanya investigator bisa nemuin komputer pribadi, laptop, kamera digital, USB, dll di TKP. Pastiin juga data aslinya gak diutak-atik selama pengumpulan bukti, dan bikin dokumentasi yang rapi soal detail barang-barang yang dikumpulin. Prosedur pengambilan bukti bakal dibahas lebih lanjut di task-task berikutnya.
 
 2. **Examination:** Data yang udah dikumpulin bisa bikin investigator kewalahan karena ukurannya. Data ini biasanya perlu di-filter dan informasi yang relevan perlu diekstrak. Contohnya, sebagai investigator kamu ngumpulin semua file media dari kamera digital di TKP. Kamu mungkin cuma butuh media tertentu yang direkam di tanggal dan waktu tertentu. Jadi di fase examination, kamu bakal filter file media sesuai waktu yang dibutuhin dan mindahin ke fase selanjutnya. Fase examination bantu kamu filter data tertentu buat dianalisis.
 
@@ -78,7 +78,7 @@ Sebagai bagian dari fase collection, kita udah liat bahwa berbagai bukti bisa di
 
 ## Task 3: Evidence Acquisition
 
-Akuisisi bukti itu kerjaan yang krusial. Tim forensics harus ngumpulin semua bukti secara aman tanpa mengubah data aslinya. Metode akuisisi bukti buat perangkat digital beda-beda tergantung jenis perangkatnya. Tapi, ada beberapa praktik umum yang harus diikutin saat bukti diakuisisi. Ayo kita bahas beberapa yang penting.
+Pengambilan bukti itu kerjaan yang krusial. Tim forensics harus ngumpulin semua bukti secara aman tanpa mengubah data aslinya. Metode pengambilan bukti buat perangkat digital beda-beda tergantung jenis perangkatnya. Tapi, ada beberapa praktik umum yang harus diikutin saat bukti diambil. Ayo kita bahas beberapa yang penting.
 
 ### Proper Authorization
 
@@ -112,3 +112,27 @@ Write blockers itu bagian penting dari toolbox tim digital forensics. Misalnya k
 
 - Dokumen apa yang berisi semua detail tentang bukti yang dikumpulin? → **?**
 - Tools apa yang dipake buat mencegah perubahan data pada bukti digital? → **?**
+
+## Task 4: Windows Forensics
+
+Jenis bukti yang paling umum dikumpulin dari TKP adalah komputer desktop dan laptop, karena kebanyakan aktivitas kriminal melibatkan sistem personal. Perangkat-perangkat ini punya sistem operasi yang berbeda-beda. Di task ini, kita bakal bahas pengambilan dan analisis bukti dari sistem operasi Windows, yang merupakan OS yang sangat umum dan udah diinvestigasi di banyak kasus.
+
+Sebagai bagian dari fase pengumpulan data, forensic images dari sistem operasi Windows diambil. Forensic images ini adalah salinan bit-by-bit dari keseluruhan sistem operasi. Dua kategori forensic images yang berbeda diambil dari sistem operasi Windows:
+
+- **Disk image:** Disk image berisi semua data yang ada di perangkat penyimpanan sistem (HDD, SSD, dll.). Data ini bersifat non-volatile, artinya data disk bakal tetep bertahan bahkan setelah restart sistem operasi. Contohnya, semua file kayak media, dokumen, riwayat browsing internet, dan lainnya.
+
+- **Memory image:** Memory image berisi data yang ada di dalam RAM sistem operasi. Memori ini bersifat volatile, artinya data bakal ilang setelah sistem dimatiin atau di-restart. Contohnya, buat capture file yang sedang dibuka, proses yang berjalan, koneksi jaringan aktif, dll., memory image harus diprioritasin dan diambil duluan dari sistem operasi tersangka; kalau gak, restart atau shutdown sistem bakal bikin semua data volatile kehapus. Saat melakukan digital forensics di sistem operasi Windows, disk dan memory images sangat penting buat dikumpulin.
+
+Ayo bahas beberapa tools populer yang dipake buat pengambilan dan analisis disk dan memory image dari sistem operasi Windows.
+
+**FTK Imager:** FTK Imager adalah tools yang banyak dipake buat mengambil disk images dari sistem operasi Windows. Tools ini punya graphical interface yang user-friendly buat membuat image dalam berbagai format. Tools ini juga bisa menganalisis isi dari disk image. Bisa dipake buat pengambilan maupun analisis.
+
+<p align="center">
+<img src="../../Assets/Images/FTK-Image.png" alt="FTK Imager">
+</p>
+
+**Autopsy:** Autopsy adalah platform digital forensics open-source yang populer. Investigator bisa mengimport disk image yang udah diambil ke tools ini, dan tools-nya bakal melakukan analisis ekstensif terhadap image tersebut. Autopsy nawarin berbagai fitur selama analisis image, termasuk keyword search, deleted file recovery, file metadata, extension mismatch detection, dan masih banyak lagi.
+
+<p align="center">
+<img src="../../Assets/Images/Autopsy.png" alt="Autopsy">
+</p>
