@@ -157,6 +157,6 @@ Semua yang kita lakuin di perangkat digital, dari smartphone sampe komputer, nin
 
 Kucing kita, Wowok, udah diculik. Penculiknya ngirim dokumen berisi permintaan mereka dalam format MS Word Document. Kita udah convert dokumen itu ke format PDF dan ngekstrak gambar dari file MS Word buat memudahkan.
 
-Kamu bisa download file yang dilampirin ke mesin lokal kamu buat inspeksi. File-nya bisa didownload dalam format zip: [📥 Download Task Files](https://tryhackme-images.s3.amazonaws.com/user-uploads/6645aa8c024f7893371eb7ac/room-content/ransom-lettter-2-1645608985174-1719473069554.zip). Extract file-nya, dan kamu bakal nemuin file-file kasus di dalamnya.
+Kamu bisa download file yang dilampirin ke mesin lokal kamu buat inspeksi. File-nya bisa didownload dalam format zip: [📥 Download Task Files](../../Assets/Images/ransom-lettter-2-1645608985174-1719473069554.zip). Extract file-nya, dan kamu bakal nemuin file-file kasus di dalamnya.
 
 Saat kamu bikin file teks (TXT), beberapa metadata otomatis disimpen oleh sistem operasi, kayak tanggal pembuatan file dan tanggal modifikasi terakhir. Tapi, lebih banyak informasi tersimpen di metadata file saat kamu pake editor yang lebih advanced, kayak MS Word. Ada berbagai cara buat baca metadata file; kamu bisa buka di viewer/editor resminya atau pake tools forensik yang sesuai. Perlu dicatat bahwa export file ke format lain, kayak PDF, bakal mempertahankan sebagian besar metadata dari dokumen aslinya, tergantung PDF writer yang dipake.
