@@ -13,67 +13,67 @@
 
 # Overview
 
-Room ini fokus pada alat-alat utility yang akan sering digunakan sehari-hari, cara mengelola proses sistem, hingga mengotomatisasi tugas agar sistem tetap berjalan optimal.
+Room ini fokus ke alat-alat utility yang bakal sering dipake sehari-hari, cara ngelola proses sistem, sampai mengotomatisasi tugas biar sistem tetap jalan optimal.
 
 ---
 
 ### Terminal Text Editors
 
-Mengedit file langsung lewat terminal adalah skill wajib. Room ini memperkenalkan dua editor utama:
+Edit file langsung lewat terminal itu skill wajib. Room ini ngenalin dua editor utama:
 
-- **Nano:** Editor yang sangat ramah pemula dengan panduan tombol di bagian bawah.
-- **Vim/Vi:** Editor yang jauh lebih sakti dengan mode perintah yang berbeda. _Note: Karena saya pengguna LazyVim di Arch, bagian ini terasa sangat familiar._
+- **Nano:** Editor yang ramah banget buat pemula, ada panduan tombol di bagian bawah.
+- **Vim/Vi:** Editor yang jauh lebih sakti dengan mode perintah yang beda-beda. _Note: Karena aku pengguna LazyVim di Arch, bagian ini terasa sangat familiar._
 
 ---
 
 ### General/Useful Utilities
 
-Linux menyediakan banyak alat kecil yang sangat berguna untuk transfer data dan komunikasi:
+Linux nyediain banyak alat kecil yang berguna banget buat transfer data dan komunikasi:
 
-- **`wget`**: Mengunduh file langsung dari web server melalui terminal.
-- **`scp` (Secure Copy)**: Menyalin file antar mesin secara aman melalui protokol SSH.
-- **Serving Files**: Kita bisa menggunakan modul Python (`python3 -m http.server`) untuk membuat web server instan guna berbagi file dalam jaringan lokal.
+- **`wget`**: Download file langsung dari web server lewat terminal.
+- **`scp` (Secure Copy)**: Salin file antar mesin secara aman lewat protokol SSH.
+- **Serving Files**: Kita bisa pake modul Python (`python3 -m http.server`) buat bikin web server instan dan berbagi file di jaringan lokal.
 
 ---
 
 ### Processes 101
 
-Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan di latar belakang:
+Belajar cara liat dan ngendaliin aplikasi yang lagi jalan di latar belakang:
 
-- **`ps aux`**: Melihat daftar semua proses yang berjalan secara detail.
-- **`top`**: Memonitor penggunaan sumber daya sistem (CPU & RAM) secara real-time.
-- **`kill`**: Mengirimkan sinyal ke proses berdasarkan PID (Process ID).
-  - **SIGTERM (15)**: Meminta proses berhenti secara sopan (cleanup).
-  - **SIGKILL (9)**: Menghentikan proses secara paksa.
-  - **SIGSTOP (19)**: Memberhentikan/menangguhkan proses sementara.
+- **`ps aux`**: Liat daftar semua proses yang lagi jalan secara detail.
+- **`top`**: Monitor penggunaan sumber daya sistem (CPU & RAM) secara real-time.
+- **`kill`**: Kirim sinyal ke proses berdasarkan PID (Process ID).
+  - **SIGTERM (15)**: Minta proses berhenti secara sopan (cleanup).
+  - **SIGKILL (9)**: Hentiin proses secara paksa.
+  - **SIGSTOP (19)**: Tangguhkan proses sementara.
 
 ---
 
 ### Maintaining Your System: Automation
 
-Agar tidak perlu mengerjakan tugas yang sama berulang kali, Linux menggunakan **cron**.
+Biar nggak perlu ngerjain tugas yang sama berulang-ulang, Linux pake **cron**.
 
-- **`crontab -e`**: Mengedit file konfigurasi cron untuk mengatur jadwal eksekusi skrip atau perintah secara otomatis pada waktu tertentu.
+- **`crontab -e`**: Edit file konfigurasi cron buat ngatur jadwal eksekusi skrip atau perintah secara otomatis di waktu tertentu.
 
 ---
 
 ### Maintaining Your System: Package Management
 
-Mengatur perangkat lunak pada distribusi berbasis Debian/Ubuntu:
+Ngatur perangkat lunak di distribusi berbasis Debian/Ubuntu:
 
-- **`apt`**: Alat utama untuk menginstal, memperbarui, dan menghapus aplikasi.
-- **Repositories**: Memahami bahwa Linux menarik aplikasi dari gudang data (repo) terpusat, berbeda dengan Windows yang biasanya menggunakan file installer `.exe`.
+- **`apt`**: Alat utama buat install, update, dan hapus aplikasi.
+- **Repositories**: Pahami bahwa Linux narik aplikasi dari gudang data (repo) terpusat, beda sama Windows yang biasanya pake file installer `.exe`.
 
 ---
 
 ### Maintaining Your System: Logs
 
-Sistem Linux mencatat segala aktivitas di dalam file log yang biasanya berada di direktori `/var/log`. Memeriksa log adalah langkah krusial saat melakukan troubleshooting atau investigasi keamanan.
+Sistem Linux nyatet semua aktivitas di dalam file log yang biasanya ada di direktori `/var/log`. Ngecek log itu langkah penting waktu troubleshooting atau investigasi keamanan.
 
 ---
 
 ### Conclusions & Summaries
 
-Dengan selesainya room ini, kita sudah memiliki pondasi yang kuat untuk mengoperasikan Linux secara profesional. Perjalanan selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
+Dengan selesainya room ini, kita udah punya pondasi yang kuat buat ngoperasiin Linux secara profesional. Langkah selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
 
-> **Note:** Automate everything. Jangan habiskan waktu untuk tugas manual jika kamu bisa menuliskan satu baris perintah di crontab.
+> **Note:** Automate everything. Jangan habisin waktu buat tugas manual kalau kamu bisa tulis satu baris perintah di crontab.

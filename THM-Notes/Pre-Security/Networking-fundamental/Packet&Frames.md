@@ -11,94 +11,93 @@
 
 # Overview
 
-membahas tentang bagaimana data dipecah menjadi bagian kecil (Packets dan Frames) untuk mencegah bottleneck di jaringan. Kita juga mempelajari protokol bernama TCP dan cara ia membangun koneksi melalui Three-way Handshake.
+Membahas gimana data dipecah jadi bagian kecil (Packets dan Frames) buat mencegah _bottleneck_ di jaringan. Kita juga belajar protokol TCP dan cara dia ngebangun koneksi lewat Three-way Handshake.
 
 ### What is Packet & Frames ?
 
-Paket & Frames adalah bagian kecil dari sebuah data yang mana ketika digabungkan akan membentuk suatu informasi / pesan yang lebih besar, tapi keduanya merupakan dua hal yang berbeda di dalam OSI Model
+Packet & Frames itu potongan-potongan kecil dari data. Kalau digabungin, mereka bakal jadi informasi / pesan yang lebih besar. Tapi keduanya itu dua hal yang beda di OSI Model:
 
-1. **Packet:** Packet adalah bagian data dari Lapisan ke 3 OSI Model (Network Layer), Packet berisi tentang informasi header IP,
+1. **Packet:** Packet itu unit data dari Lapisan ke-3 OSI Model (Network Layer). Packet berisi informasi header IP.
 
-2. **Frames:** Frames adalah unit data yang ada di lapisan ke 3 (Data link layer)
+2. **Frames:** Frames itu unit data yang ada di Lapisan ke-2 (Data Link Layer).
 
-### Analogi Sistem pos (packet & frames)
+### Analogi Sistem Pos (Packet & Frames)
 
-**Surat (Packet):** Isi pesan yang sudah diberi alamat tujuan (IP Address)
+**Surat (Packet):** Isi pesan yang udah dikasih alamat tujuan (IP Address).
 
-**Amplop (Frame):** isi surat (Packet) harus dibungkus menggunakan amplop agar bisa dipindahkan secara fisik, di amplop ini punya informasi untuk rute pengiriman (MAC Address)
+**Amplop (Frame):** Surat (Packet) harus dibungkus pake amplop biar bisa dipindahin secara fisik. Di amplop ini ada info buat rute pengiriman (MAC Address).
 
-**Proses membungkus (Encapsulation):** Tindakan memasukkan surat ke dalam amplop yang disebut Encapsulation
+**Proses membungkus (Encapsulation):** Tindakan masukin surat ke dalam amplop, itulah yang disebut Encapsulation.
 
 ### Encapsulation
 
-Proses membungkus data dengan informasi kontrol berupa (header dan trailer) pada saat data tersebut bergerak turun dari lapisan atas ke lapisan bawah
+Proses membungkus data dengan informasi kontrol berupa (header dan trailer) waktu data bergerak turun dari lapisan atas ke lapisan bawah.
 
-**alur encapsulation:**
+**Alur encapsulation:**
 
-- **Application to Session Layer:** Data asli dibuat oleh aplikasi (misalnya pesan chat atau file gambar)
+- **Application to Session Layer:** Data asli dibuat sama aplikasi (misalnya pesan chat atau file gambar)
 
-- **Transport Layer (Segment):** Data dipecah menjadi bagian-bagian kecil dan diberikan Header Transport (seperti nomor port TCP/UDP)
+- **Transport Layer (Segment):** Data dipecah jadi bagian-bagian kecil dan dikasih Header Transport (kayak nomor port TCP/UDP)
 
-- **Network Layer (Packet):** Segmen tadi dibungkus lagi dengan IP Header yang berisi alamat IP sumber dan tujuan. Di tahap ini, unit datanya disebut Packet
+- **Network Layer (Packet):** Segmen tadi dibungkus lagi pake IP Header yang isinya alamat IP sumber dan tujuan. Di tahap ini, unit datanya disebut Packet
 
-- **Data Link Layer (Frame):** Packet dimasukkan ke dalam bungkusan terakhir yang berisi MAC Address,Unit data ini disebut Frame
+- **Data Link Layer (Frame):** Packet dimasukin ke bungkusan terakhir yang berisi MAC Address. Unit data ini disebut Frame
 
-- **Physical Layer (Bits):** Frame diubah menjadi sinyal listrik atau cahaya (bit 0 dan 1) untuk dikirim lewat kabel.
+- **Physical Layer (Bits):** Frame diubah jadi sinyal listrik atau cahaya (bit 0 dan 1) buat dikirim lewat kabel
 
 ### Why is Encapsulation Necessary?
 
-- **Standarisasi:** Memastikan miliaran perangkat di internet punya aturan yang sama agar tidak terjadi gangguan komunikasi
+- **Standarisasi:** Mastiin miliaran perangkat di internet punya aturan yang sama biar nggak terjadi gangguan komunikasi
 
-- **Pencegahan Bottleneck:** Dengan memecah data jadi potongan kecil (Packet/Frame), risiko kemacetan di jaringan jadi jauh lebih rendah dibanding mengriim satu file besar sekaligus
+- **Pencegahan Bottleneck:** Dengan mecah data jadi potongan kecil (Packet/Frame), risiko kemacetan di jaringan jadi lebih rendah dibanding ngirim satu file gede sekaligus
 
 - **Integrity:** Setiap lapisan bisa ngecek apakah bungkusan miliknya rusak atau nggak tanpa harus ngebongkar seluruh isi datanya
 
 ### TCP/IP
 
-**TCP/IP:** Protokol ini sangat mirip dengan OSI model, Protokol TCP/IP terdiri dari empat lapisan, simple nya ini kayak versi ringkasan dari OSI Model, TCP bersifat Connection-Oriented
+**TCP/IP:** Protokol ini mirip banget sama OSI Model. Protokol TCP/IP terdiri dari empat lapisan, simpelnya ini kayak versi ringkas dari OSI Model. TCP bersifat Connection-Oriented.
 
-Lapisan-lapisan nya terdiri dari:
+Lapisan-lapisannya:
 
 - **Application:** Lapisan paling atas tempat aplikasi beroperasi
 
-- **Transport:** Tempat di mana TCP mengelola pengiriman data dan memastikan reliabilitasnya
+- **Transport:** Tempat TCP ngelola pengiriman data dan mastiin reliabilitasnya
 
-- **Internet:** Tempat perutean (routing) data menggunakan alamat IP
+- **Internet:** Tempat perutean (routing) data pake alamat IP
 
-- **Network Interface:** Lapisan paling bawah yang menangani hubungan fisik dengan perangkat keras jaringan
+- **Network Interface:** Lapisan paling bawah yang ngurusin hubungan fisik dengan perangkat keras jaringan
 
 ### **TCP Packet Headers**
 
 | Header                     | Description                                                                               |
 | :------------------------- | :---------------------------------------------------------------------------------------- |
-| **Source Port**            | Port yang dibuka oleh pengirim (dipilih acak dari 0-65535 yang tidak terpakai).           |
-| **Destination Port**       | Nomor port aplikasi/layanan di host tujuan (misal: port 80 untuk web server).             |
-| **Source IP**              | Alamat IP dari perangkat yang mengirimkan paket.                                          |
-| **Destination IP**         | Alamat IP dari perangkat yang dituju oleh paket tersebut.                                 |
-| **Sequence Number**        | Angka acak yang diberikan pada potongan data pertama yang dikirimkan.                     |
-| **Acknowledgement Number** | Angka untuk potongan data berikutnya (Sequence Number + 1) sebagai tanda terima.          |
-| **Checksum**               | Nilai kalkulasi matematis untuk menjaga integritas data (memastikan data tidak korup).    |
-| **Data**                   | Tempat penyimpanan isi data aktual (bytes) dari file yang sedang dikirim.                 |
-| **Flag**                   | Instruksi khusus yang menentukan bagaimana paket harus ditangani selama proses handshake. |
+| **Source Port**            | Port yang dibuka sama pengirim (dipilih acak dari 0-65535 yang nggak terpakai).           |
+| **Destination Port**       | Nomor port aplikasi/layanan di host tujuan (misal: port 80 buat web server).             |
+| **Source IP**              | Alamat IP dari perangkat yang ngirim paket.                                              |
+| **Destination IP**         | Alamat IP dari perangkat tujuan paket tersebut.                                          |
+| **Sequence Number**        | Angka acak yang dikasih ke potongan data pertama yang dikirim.                           |
+| **Acknowledgement Number** | Angka buat potongan data berikutnya (Sequence Number + 1) sebagai tanda terima.          |
+| **Checksum**               | Nilai kalkulasi matematis buat jaga integritas data (mastiin data nggak korup).          |
+| **Data**                   | Tempat nyimpen isi data aktual (bytes) dari file yang lagi dikirim.                      |
+| **Flag**                   | Instruksi khusus yang nentuin gimana paket harus ditangani selama proses handshake.      |
 
-### Three Way handshake
+### Three Way Handshake
 
-three way handshake adalah proses tiga tahap (SYN, SYN/ACK, ACK) yang digunakan oleh TCP untuk membangun koneksi yang stabil dan sinkron antara kedua perangkat sebelum data asli di transfer
+Three-way handshake itu proses tiga tahap (SYN, SYN/ACK, ACK) yang dipake TCP buat ngebangun koneksi yang stabil dan sinkron antar dua perangkat sebelum data asli ditransfer.
 
-**SYN (Synchronize):** Client mengirim dengan flag SYN yang berisi sequence number acak
-tujuannya memeberitahu server dan mengajak sinkronisasi sebelum data dikirim
+**SYN (Synchronize):** Client ngirim paket dengan flag SYN yang berisi sequence number acak. Tujuannya ngasih tau server dan ngajak sinkronisasi sebelum data dikirim.
 
-**SYN/ACK:** Servere membalas dengan mengirim paket yang mengaktifkan dua flags sekaligus (SYN/ACK), Tujuan nya yaitu mmeberitahu client bahwa permintaan sinkronisasi nya diterima
+**SYN/ACK:** Server bales dengan ngirim paket yang ngaktifin dua flags sekaligus (SYN/ACK). Tujuannya ngasih tau client bahwa permintaan sinkronisasinya diterima.
 
-**ACK:** Client mengirim packet terakhir dengan flags ACK, tujuannya mengonfirmasi bahwa client sudah menerima nomor urut dari server. Begitu tahap ini selesai, status koneksi resmi menjadi ESTABLISHED (terjalin) dan transfer data asli bisa dimulai
+**ACK:** Client ngirim paket terakhir dengan flag ACK. Tujuannya mengonfirmasi bahwa client udah nerima nomor urut dari server. Begitu tahap ini selesai, status koneksi jadi ESTABLISHED (terjalin) dan transfer data bisa dimulai.
 
 ### **Three-Way Handshake & Communication Steps**
 
 | Step  | Message     | Description                                                                               |
 | :---- | :---------- | :---------------------------------------------------------------------------------------- |
-| **1** | **SYN**     | Pesan awal untuk memulai koneksi dan menyinkronkan perangkat.                             |
-| **2** | **SYN/ACK** | Paket dari server untuk mengakui upaya sinkronisasi dari client.                          |
-| **3** | **ACK**     | Paket konfirmasi bahwa pesan/paket telah berhasil diterima.                               |
+| **1** | **SYN**     | Pesan awal buat mulai koneksi dan sinkronisasi perangkat.                                |
+| **2** | **SYN/ACK** | Paket dari server buat ngakui upaya sinkronisasi dari client.                            |
+| **3** | **ACK**     | Paket konfirmasi bahwa pesan/paket udah berhasil diterima.                               |
 | **4** | **DATA**    | Proses pengiriman data aktual setelah koneksi terjalin (Established).                     |
-| **5** | **FIN**     | Paket untuk menutup koneksi secara bersih setelah transfer data selesai.                  |
-| **#** | **RST**     | Paket untuk mengakhiri komunikasi secara mendadak jika terjadi error atau masalah sistem. |
+| **5** | **FIN**     | Paket buat nutup koneksi secara bersih setelah transfer data selesai.                    |
+| **#** | **RST**     | Paket buat ngakhirin komunikasi secara mendadak kalau terjadi error atau masalah sistem. |

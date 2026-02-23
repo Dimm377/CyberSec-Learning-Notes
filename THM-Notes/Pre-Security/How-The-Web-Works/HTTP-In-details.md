@@ -3,7 +3,7 @@
 
 ---
 
-- **Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
+- **Room Link:** [HTTP In Details](https://tryhackme.com/room/httpindetail)
 - **Category:** How The Web Works
 - **Difficulty:** easy
 
@@ -11,22 +11,21 @@
 
 # Overview
 
-Room HTTP in Detail di berfokus pada pemahaman mendalam tentang protokol komunikasi paling mendasar di internet: **Hypertext Transfer Protocol (HTTP).** disini mempelajari bagaimana data ditransmisikan antara browser dan web server, serta memahami anatomi di balik setiap permintaan yang kita buat di web.
+Room HTTP in Detail ini fokus ke pemahaman mendalam tentang protokol komunikasi paling mendasar di internet: **Hypertext Transfer Protocol (HTTP).** Di sini kita belajar gimana data ditransmisikan antara browser dan web server, serta ngerti anatomi di balik setiap permintaan yang kita bikin di web.
 
 ### What is HTTP ? (Hypertext Transfer Protocol)
 
-HTTP adalah protokol yang digunakan setiap kali kita mengunjungi sebuah situs web, Protokol ini dikembangkan oleh Tim Berners-Lee dan timnya antara tahun 1989-1991. HTTP adalah serangkaian aturan yang digunakan untuk berkomunikasi dengan server web untuk mentransmisikan data halaman web, baik itu HTML, gambar, video, dan sebagainya.
+HTTP itu protokol yang kepake setiap kali kita buka sebuah situs web. Protokol ini dikembangin sama Tim Berners-Lee dan timnya antara tahun 1989-1991. HTTP itu aturan-aturan yang dipake buat berkomunikasi sama web server buat ngirim data halaman web, entah itu HTML, gambar, video, dan lainnya.
 
 ### What is HTTPS? (HyperText Transfer Protocol Secure)
 
-HTTPS adalah versi aman dari HTTP, data di HTTPS dienkripsi sehingga tidak hanya mencegah orang melihat data yang kita terima dan kirim, tetapi juga memberikan jaminan bahwa kita sedang mengunjungi server web yang benar dan bukan sesuatu yang menyamar. Dengan demikian, HTTPS membantu melindungi integritas dan kerahasiaan data Anda saat
-berkomunikasi di internet
+HTTPS itu versi aman dari HTTP. Data di HTTPS dienkripsi jadi nggak cuma mencegah orang ngintip data yang kita terima dan kirim, tapi juga ngasih jaminan bahwa kita lagi ngunjungin server web yang bener, bukan yang nyamar. Jadi, HTTPS bantu melindungi integritas dan kerahasiaan data kita waktu berkomunikasi di internet.
 
-saat kita sedang mengakses sebuah situs web, browser perlu membuat request ke server web untuk mendapatkan aset seperti HTML, gambar, dll, Sebelum itu kita perlu memberi tahu browser secara spesifik bagaimana dan di mana mengakses sumber daya ini. Di sinilah URL (Uniform Resource Locator) berperan penting
+Waktu kita akses sebuah situs web, browser perlu bikin _request_ ke web server buat dapetin aset kayak HTML, gambar, dll. Sebelum itu, kita perlu kasih tau browser secara spesifik gimana dan di mana ngakses sumber daya ini. Di sinilah URL (Uniform Resource Locator) berperan penting.
 
 ### What is A URL ? (Uniform Resource Locator)
 
-URL adalah alamat yang digunakan untuk mengidentifikasi dan mengakses sumber daya di internet, URL memberi tahu browser bagaimana dan di mana menemukan halaman web atau file tertentu, Sebuah URL biasanya terdiri dari beberapa bagian, termasuk protokol (seperti HTTP atau HTTPS), nama domain, dan jalur ke sumber daya spesifik. Contohnya, dalam URL `https://www.domain.com/index.html`, `https` adalah protokol, `www.domain.com` adalah nama domain, dan `/index.html` adalah jalur ke file yang diminta.
+URL itu alamat yang dipake buat ngidentifikasi dan ngakses sumber daya di internet. URL kasih tau browser gimana dan di mana nemuin halaman web atau file tertentu. Sebuah URL biasanya terdiri dari beberapa bagian, termasuk protokol (kayak HTTP atau HTTPS), nama domain, dan jalur ke sumber daya spesifik. Contohnya, di URL `https://www.domain.com/index.html`, `https` itu protokolnya, `www.domain.com` itu nama domainnya, dan `/index.html` itu jalur ke file yang diminta.
 
 Berikut fitur-fitur yang ada di URL:
 
@@ -36,17 +35,17 @@ Berikut fitur-fitur yang ada di URL:
 
 -
 
-- **Scheme:** Ini menginstruksikan protokol apa yang digunakan untuk mengakses sumber daya seperti HTTP, HTTPS, FTP (File Transfer Protocol).
+- **Scheme:** Ini nentuin protokol apa yang dipake buat ngakses sumber daya, kayak HTTP, HTTPS, FTP (File Transfer Protocol).
 
-- **User:** Beberapa layanan memerlukan authentikasi untuk login, kita dapat memasukkan nama pengguna dan kata sandi ke dalam URL untuk login.
+- **User:** Beberapa layanan butuh autentikasi buat login, kita bisa masukin username dan password ke dalam URL buat login.
 
-- **Host:** Nama domain atau alamat IP server yang ingin diakses.
+- **Host:** Nama domain atau alamat IP server yang mau diakses.
 
-- **Port:** Port yang akan disambungkan, biasanya 80 untuk HTTP dan 443 untuk HTTPS, tetapi ini dapat dihosting di port mana pun antara 1 - 65535.
+- **Port:** Port yang bakal disambungin, biasanya 80 buat HTTP dan 443 buat HTTPS, tapi bisa di-host di port mana aja antara 1 - 65535.
 
-- **Path:** Nama file atau lokasi sumber daya yang kita coba akses
+- **Path:** Nama file atau lokasi sumber daya yang kita coba akses.
 
-- **Query String:** Sedikit informasi tambahan yang dapat dikirim ke jalur yang diminta. Misalnya, /blog?id=1 akan memberi tahu jalur blog bahwa kita ingin menerima artikel blog dengan id 1.
+- **Query String:** Info tambahan yang bisa dikirim ke jalur yang diminta. Misalnya, /blog?id=1 bakal ngasih tau jalur blog bahwa kita mau nerima artikel blog dengan id 1.
 
 ### HTTP Request & Response
 
@@ -62,11 +61,11 @@ Accept: text/html
 
 - **Line 1:** Berisi Method `(GET)`, Path target `(/index.html)`, dan versi protokol `(HTTP/1.1)`
 
-- **Line 2:** Header `Host` untuk menentukan alamat server tujuan
+- **Line 2:** Header `Host` buat nentuin alamat server tujuan
 
-- **Line 3:** `User-Agent` untuk memberitahu server kalau user sedang menggunakan browser `Mozilla/5.0` di Arch Linux
+- **Line 3:** `User-Agent` buat ngasih tau server kalau user lagi pake browser `Mozilla/5.0` di Arch Linux
 
-- **Line 4:** `Accept` untuk memberitahu server tipe konten apa yang bisa diterima `(misal: text/html)`
+- **Line 4:** `Accept` buat ngasih tau server tipe konten apa yang bisa diterima `(misal: text/html)`
 
 Contoh Response:
 
@@ -90,103 +89,101 @@ Cache-Control: public, max-age=3600
 </html>
 ```
 
-- **Line 1** `(HTTP/1.1 200 OK)`: Baris status utama. `HTTP/1.1` adalah versi protokol, dan `200 OK` adalah status code yang memberitahu client bahwa permintaan berhasil diproses tanpa masalah
+- **Line 1** `(HTTP/1.1 200 OK)`: Baris status utama. `HTTP/1.1` itu versi protokol, dan `200 OK` itu status code yang ngasih tau client bahwa permintaan berhasil diproses tanpa masalah.
 
-- **Line 2** `(Date: Wed, 28 Jan 2026...):` Menunjukkan waktu (timestamp) kapan respon
-  tersebut dibuat oleh server.
+- **Line 2** `(Date: Wed, 28 Jan 2026...)`: Nunjukin waktu (timestamp) kapan respon itu dibuat sama server.
 
-- **Line 3** `(Server: Dimm-Arch-Server/2026.01):` Memberitahu client jenis dan versi perangkat lunak web server yang digunakan (dalam hal ini, server custom milik ku di ekosistem Arch).
+- **Line 3** `(Server: Dimm-Arch-Server/2026.01)`: Ngasih tau client jenis dan versi web server yang dipake (dalam hal ini, server custom milikku di ekosistem Arch).
 
-- **Line 4** `(Content-Type: text/html):` Menjelaskan format data yang dikirim. Label `text/html` menginstruksikan browser untuk merender isi body sebagai halaman web.
+- **Line 4** `(Content-Type: text/html)`: Njelasin format data yang dikirim. Label `text/html` nginstruksiin browser buat nge-render isi body sebagai halaman web.
 
-- **Line 5** `(Content-Length: 173):` Memberitahu ukuran muatan (payload) data dalam satuan byte. Angka ini harus akurat agar browser tahu kapan proses download data selesai.
+- **Line 5** `(Content-Length: 173)`: Ngasih tau ukuran payload data dalam satuan byte. Angka ini harus akurat biar browser tau kapan proses download data selesai.
 
-- **Line 6** `(Connection: keep-alive):` Instruksi agar koneksi antara browser dan server tetap terbuka untuk permintaan selanjutnya, sehingga akses terasa lebih cepat dan efisien.
+- **Line 6** `(Connection: keep-alive)`: Instruksi biar koneksi antara browser dan server tetap terbuka buat permintaan selanjutnya, jadi akses terasa lebih cepet dan efisien.
 
-- **Line 7** `(Cache-Control: public, max-age=3600):` Mengatur kebijakan penyimpanan sementara (caching). Ini memberitahu browser bahwa konten ini boleh disimpan di memori selama 3600 detik (1 jam).
+- **Line 7** `(Cache-Control: public, max-age=3600)`: Ngatur kebijakan caching. Ini ngasih tau browser bahwa konten ini boleh disimpen di memori selama 3600 detik (1 jam).
 
-- **Line 8** `(Blank Line):` Baris kosong wajib yang berfungsi sebagai pemisah mutlak antara bagian headers (informasi administratif) dengan bagian body (isi konten).
+- **Line 8** `(Blank Line)`: Baris kosong wajib yang jadi pemisah antara bagian headers (info administratif) sama bagian body (isi konten).
 
 ### HTTP Methods
 
-HTTP method adalah cara yang digunakan oleh klien (seperti browser) untuk berkomunikasi dengan server web. Metode ini menentukan jenis tindakan yang ingin dilakukan pada sumber daya tertentu.
+HTTP method itu cara yang dipake client (kayak browser) buat berkomunikasi sama web server. Method ini nentuin jenis tindakan yang mau dilakuin ke sumber daya tertentu.
 
-Beberapa metode HTTP yang umum digunakan antara lain:
+Beberapa HTTP method yang umum dipake:
 
-1. **GET (Read):** Digunakan untuk meminta atau mengambil data/informasi dari server.
+1. **GET (Read):** Dipake buat minta atau ngambil data/informasi dari server.
 
-2. **PUT (Cread):** Digunakan untuk mengirimkan data baru ke server web dan membuat record baru
+2. **PUT (Create):** Dipake buat ngirim data baru ke web server dan bikin record baru.
 
-3. **POST (Update):** Digunakan untuk memperbarui atau mengganti informasi yang sudah ada di server.
+3. **POST (Update):** Dipake buat mperbarui atau ngganti informasi yang udah ada di server.
 
-4. **DELETE (Delete):** Digunakan untuk menghapus sumber daya atau informasi tertentu dari server secara permanen.
+4. **DELETE (Delete):** Dipake buat ngapus sumber daya atau informasi tertentu dari server secara permanen.
 
 ### HTTP Status Code
 
-HTTP Status Codes adalah kode berupa angka yang dikirim oleh server sebagai bagian dari respons terhadap permintaan HTTP. Kode ini memberikan informasi tentang hasil dari permintaan yang dilakukan oleh client.
+HTTP Status Codes itu kode berupa angka yang dikirim server sebagai bagian dari respons terhadap permintaan HTTP. Kode ini ngasih info tentang hasil dari permintaan yang dilakuin client.
 
-Kode-kode ini dikelompokkan ke dalam lima kategori berbeda berdasarkan angka pertamanya untuk memudahkan identifikasi status komunikasi.
+Kode-kode ini dikelompokin ke dalam lima kategori berdasarkan angka pertamanya biar gampang diidentifikasi:
 
-| Rentang     | Kategori                 | Deskripsi (TryHackMe Reference)                                                                                                                 |
-| :---------- | :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **100-199** | **Information Response** | Memberitahu klien bahwa permintaan telah diterima dan mereka harus terus mengirimkan sisa permintaan. Kode ini sudah jarang ditemukan saat ini. |
-| **200-299** | **Success**              | Menunjukkan bahwa permintaan klien telah berhasil diproses oleh server dengan sukses.                                                           |
-| **300-399** | **Redirection**          | Digunakan untuk mengalihkan permintaan klien ke sumber daya lain, baik halaman web atau website yang berbeda.                                   |
-| **400-499** | **Client Errors**        | Digunakan untuk menginformasikan klien bahwa terdapat kesalahan pada permintaan yang mereka kirimkan.                                           |
-| **500-599** | **Server Errors**        | Menandakan masalah besar yang terjadi di sisi server saat mencoba menangani permintaan tersebut.                                                |
+| Rentang     | Kategori                 | Deskripsi (TryHackMe Reference)                                                                                                     |
+| :---------- | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| **100-199** | **Information Response** | Ngasih tau client bahwa permintaan udah diterima dan mereka harus terus ngirim sisa permintaan. Kode ini udah jarang ditemuin.       |
+| **200-299** | **Success**              | Nunjukin bahwa permintaan client udah berhasil diproses server.                                                                      |
+| **300-399** | **Redirection**          | Dipake buat ngalihin permintaan client ke sumber daya lain, baik halaman web atau website yang beda.                                |
+| **400-499** | **Client Errors**        | Ngasih tau client bahwa ada kesalahan di permintaan yang mereka kirim.                                                               |
+| **500-599** | **Server Errors**        | Nandain masalah besar yang terjadi di sisi server waktu nangani permintaan.                                                          |
 
 #### **Daftar Status Code Populer**
 
-Berikut adalah beberapa kode status yang wajib dipahami dalam analisis trafik web:
+Beberapa status code yang wajib dipahami:
 
-- **200 OK**: Permintaan berhasil diproses secara sempurna.
-- **201 Created**: Berhasil membuat data baru di server (misalnya setelah registrasi akun).
-- **301 Moved Permanently**: Halaman yang diminta telah pindah ke URL baru secara permanen.
-- **401 Unauthorized**: Akses ditolak karena klien belum melakukan login/autentikasi.
-- **403 Forbidden**: Klien tidak memiliki izin akses ke halaman tersebut meskipun sudah login.
-- **404 Not Found**: Server tidak dapat menemukan halaman atau file yang diminta oleh klien.
-- **500 Internal Server Error**: Terjadi kesalahan teknis umum pada sistem di sisi server.
-- **503 Service Unavailable**: Server sedang tidak tersedia karena kelebihan beban atau sedang dalam pemeliharaan.
+- **200 OK**: Permintaan berhasil diproses.
+- **201 Created**: Berhasil bikin data baru di server (misalnya setelah registrasi akun).
+- **301 Moved Permanently**: Halaman yang diminta udah pindah ke URL baru secara permanen.
+- **401 Unauthorized**: Akses ditolak karena client belum login/autentikasi.
+- **403 Forbidden**: Client nggak punya izin akses ke halaman itu meskipun udah login.
+- **404 Not Found**: Server nggak bisa nemuin halaman atau file yang diminta.
+- **500 Internal Server Error**: Terjadi kesalahan teknis umum di sisi server.
+- **503 Service Unavailable**: Server lagi nggak tersedia karena kelebihan beban atau lagi maintenance.
 
 ### HTTP Headers
 
-HTTP headers adalah informasi tambahan yang dikirim bersama dengan request atau respons HTTP. Headers ini memberikan konteks dan metadata tentang data yang sedang ditransfer.
+HTTP headers itu informasi tambahan yang dikirim bareng request atau respons HTTP. Headers ini ngasih konteks dan metadata tentang data yang lagi ditransfer.
 
 ### **Request Headers**
 
-- **Host:** adalah header yang memberi tahu server nama domain yang diinginkan oleh client saat membuat request, contoh nya (`domain.com`)
+- **Host:** Header yang ngasih tau server nama domain yang diinginin client waktu bikin request, contohnya (`domain.com`)
 
-- **User-Agent:** adalah header yang mengidentifikasi jenis perangkat, sistem operasi,
-  dan aplikasi client yang digunakan untuk mengakses server.
+- **User-Agent:** Header yang ngidentifikasi jenis perangkat, sistem operasi, dan aplikasi client yang dipake buat ngakses server.
 
-- **Content-Length:** Memberitahu server seberapa besar data yang dikirim (misal saat mengisi formulir) agar server tahu berapa banyak data yang harus diterima.
+- **Content-Length:** Ngasih tau server seberapa gede data yang dikirim (misal waktu ngisi formulir) biar server tau berapa banyak data yang harus diterima.
 
-- **Accept-Encoding:** Memberitahu server jenis kompresi apa yang didukung oleh browser (seperti gzip) agar data bisa dikirim lebih cepat.
+- **Accept-Encoding:** Ngasih tau server jenis kompresi apa yang didukung browser (kayak gzip) biar data bisa dikirim lebih cepet.
 
-- **Cookie:** Data yang dikirim kembali ke server untuk membantu server mengingat informasi client sebelumnya
+- **Cookie:** Data yang dikirim balik ke server buat bantu server nginget informasi client sebelumnya.
 
 #### **Response Headers**
 
-- **Set-Cookie:** Perintah bagi browser untuk menyimpan cookie.
+- **Set-Cookie:** Perintah buat browser supaya nyimpen cookie.
 
 - **Cache-Control:** Durasi penyimpanan data di cache browser.
 
-- **Content-Type:** Jenis format data yang dikembalikan (HTML, CSS, dll).
+- **Content-Type:** Jenis format data yang dikembaliin (HTML, CSS, dll).
 
-- **Content-Encoding:** Metode kompresi yang digunakan oleh server.
+- **Content-Encoding:** Metode kompresi yang dipake server.
 
 ### Cookies
 
-HTTP adalah protokol **stateless**, yang berarti server tidak mengingat permintaan sebelumnya dari client yang sama. Cookies diciptakan untuk mengatasi masalah ini dengan menyimpan informasi kecil di sisi browser client.
+HTTP itu protokol **stateless**, artinya server nggak nginget permintaan sebelumnya dari client yang sama. Cookies diciptain buat ngatasi masalah ini dengan nyimpen informasi kecil di sisi browser client.
 
 #### **Cara Kerja Cookies**
 
-1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` yang berisi ID unik (session token).
-2. **Storage:** Browser akan menyimpan token itu di memori lokal.
-3. **Cookie (Request):** Setiap kali client buka halaman baru di situs yang sama, browser otomatis menyelipkan header `Cookie` berisi token tadi buat mengkonfirmasi kalau yang buka halaman masih orang yang sama.
+1. **Set-Cookie (Response):** Waktu login, server ngirim header `Set-Cookie` yang berisi ID unik (session token).
+2. **Storage:** Browser bakal nyimpen token itu di memori lokal.
+3. **Cookie (Request):** Setiap kali client buka halaman baru di situs yang sama, browser otomatis nyelipin header `Cookie` berisi token tadi buat konfirmasi kalau yang buka halaman masih orang yang sama.
 
 #### **Kegunaan Utama Cookies**
 
-- **Session Management:** Menjaga status login atau isi keranjang belanja.
-- **Personalization:** Mengingat preferensi user (seperti Dark Mode atau bahasa).
-- **Tracking:** Merekam aktivitas user untuk kepentingan analitik atau iklan.
+- **Session Management:** Njaga status login atau isi keranjang belanja.
+- **Personalization:** Nginget preferensi user (kayak Dark Mode atau bahasa).
+- **Tracking:** Ngelacak aktivitas user buat kepentingan analitik atau iklan.

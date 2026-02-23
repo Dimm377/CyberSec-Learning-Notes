@@ -11,58 +11,58 @@
 
 ## # Overview
 
-Room ini memberikan pengenalan dasar tentang sistem operasi Linux, mulai dari sejarah singkat, navigasi terminal, hingga penggunaan operator shell. Sangat penting bagi siapa pun yang ingin berkecimpung di dunia keamanan siber karena hampir semua alat penetrasi berjalan di atas kernel Linux.
+Room ini ngasih pengenalan dasar tentang sistem operasi Linux, mulai dari sejarah singkat, navigasi terminal, sampai penggunaan operator shell. Penting banget buat siapa pun yang mau berkecimpung di dunia keamanan siber, soalnya hampir semua alat pentesting jalan di atas kernel Linux.
 
 ---
 
 ### A Bit of Background on Linux
 
-Linux dikembangkan oleh Linus Torvalds pada tahun 1991. Sistem ini bersifat open-source dan memiliki banyak distribusi (distros) seperti Ubuntu, Debian, Fedora, dan favorit para "sepuh", Arch Linux.
+Linux dikembangin sama Linus Torvalds di tahun 1991. Sistem ini bersifat open-source dan punya banyak distribusi (distros) kayak Ubuntu, Debian, Fedora, dan favorit para "sepuh", Arch Linux.
 
 ---
 
 ### Running Your First Commands
 
-Langkah pertama dalam menggunakan Linux adalah memahami perintah dasar terminal:
+Langkah pertama pake Linux itu ngerti perintah dasar terminal:
 
-- **`echo`**: Digunakan untuk mencetak teks ke terminal.
-- **`whoami`**: Digunakan untuk mengetahui username dari akun yang sedang login saat ini.
+- **`echo`**: Dipake buat nge-print teks ke terminal.
+- **`whoami`**: Dipake buat ngeliat username dari akun yang lagi login.
 
 ---
 
 ### Interacting With the Filesystem
 
-Navigasi di Linux dilakukan melalui terminal dengan memanipulasi direktori dan file:
+Navigasi di Linux dilakuin lewat terminal dengan memanipulasi direktori dan file:
 
-- **`ls`**: Melihat daftar file dan folder di direktori saat ini.
-- **`cd`**: Berpindah antar direktori.
-- **`cat`**: Membaca dan menampilkan isi dari sebuah file teks tanpa membukanya di editor.
-- **`pwd`**: Mencetak jalur lengkap direktori tempat kita berada sekarang.
+- **`ls`**: Liat daftar file dan folder di direktori sekarang.
+- **`cd`**: Pindah antar direktori.
+- **`cat`**: Baca dan tampilin isi file teks tanpa harus buka di editor.
+- **`pwd`**: Cetak jalur lengkap direktori tempat kita lagi berada.
 
 ---
 
 ### Searching for Files
 
-Mencari data secara efisien adalah skill kunci bagi seorang pentester:
+Nyari data secara efisien itu skill kunci buat pentester:
 
-- **`find`**: Mencari file atau direktori berdasarkan nama, tipe, atau parameter lainnya.
-- **`grep`**: Mencari pola teks tertentu di dalam sebuah file. Sangat berguna untuk menyaring log atau data yang besar.
+- **`find`**: Nyari file atau direktori berdasarkan nama, tipe, atau parameter lainnya.
+- **`grep`**: Nyari pola teks tertentu di dalam file. Berguna banget buat nyaring log atau data yang gede.
 
 ---
 
 ### An Introduction to Shell Operators
 
-Operator memungkinkan kita untuk mengarahkan output atau menggabungkan beberapa perintah sekaligus:
+Operator bikin kita bisa ngarahin output atau nggabungin beberapa perintah sekaligus:
 
-- **`&`**: Menjalankan perintah di latar belakang (_background_).
-- **`&&`**: Menggabungkan dua perintah; perintah kedua hanya berjalan jika perintah pertama berhasil.
-- **`>`**: Mengarahkan output ke file dan **mengganti** isi file tersebut (overwrite).
-- **`>>`**: Mengarahkan output ke file dan **menambahkan** teks di bagian akhir tanpa menghapus isi lama (append).
+- **`&`**: Jalanin perintah di latar belakang (_background_).
+- **`&&`**: Gabungin dua perintah; perintah kedua cuma jalan kalau perintah pertama berhasil.
+- **`>`**: Arahin output ke file dan **ganti** isi file itu (overwrite).
+- **`>>`**: Arahin output ke file dan **tambahin** teks di bagian akhir tanpa hapus isi lama (append).
 
 ---
 
 ### Task 8: Conclusions & Summaries
 
-Menguasai dasar-dasar ini adalah syarat mutlak sebelum mempelajari administrasi sistem atau keamanan tingkat lanjut. Perintah-perintah sederhana inilah yang nantinya akan digunakan untuk mengeksploitasi sistem atau melakukan _privilege escalation_.
+Nguasain dasar-dasar ini itu syarat mutlak sebelum belajar administrasi sistem atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya bakal dipake buat nge-exploit sistem atau lakuin _privilege escalation_.
 
-> **Note:** Terminal bukan sekadar cara berinteraksi dengan komputer, terminal adalah cara tercepat dan paling efisien untuk mengendalikan sistem secara total.
+> **Note:** Terminal bukan cuma cara berinteraksi sama komputer -- terminal itu cara tercepat dan paling efisien buat ngendaliin sistem secara total.

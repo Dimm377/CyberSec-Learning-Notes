@@ -11,49 +11,48 @@
 
 # Overview
 
-Memahami bagaimana jaringan lokal dapat terhubung ke jaringan luar melalui port forwarding, Firewall, dan VPN
+Ngerti gimana jaringan lokal bisa terhubung ke jaringan luar lewat port forwarding, Firewall, dan VPN.
 
 ### What is Port Forwarding ?
 
-Port forwarding adalah teknik jaringan untuk mengarahkan permintaan komunikasi dari alamat IP publik dan nomor port tertentu ke alamat IP privat dan port di dalam jaringan lokal (LAN) perangkat kita
+Port forwarding itu teknik jaringan buat ngarahin permintaan komunikasi dari alamat IP publik dan nomor port tertentu ke alamat IP privat dan port di dalam jaringan lokal (LAN) perangkat kita.
 
 ### The Firewall 101
 
-Firewall adalah perangkat jaringan yang bertanggung jawab untuk menentukan lalu lintas apa diperbolehkan masuk atau keluar, anggap saja firewall itu seperti satpam keamanan pada suatu jaringan
+Firewall itu perangkat jaringan yang tugasnya nentuin traffic mana yang boleh masuk atau keluar. Anggap aja firewall itu kayak satpam keamanan di suatu jaringan.
 
-firewall dapat memblokir atau mengizinkan lalu lintas jaringan tergantung beberapa faktor yaitu:
+Firewall bisa ngeblokir atau ngizinin traffic jaringan tergantung beberapa faktor:
 
-- **Dari mana lalu lintas itu berasal? (apakah firewall telah diberitahu untuk menerima/menolak lalu lintas dari jaringan tertentu?)**
+- **Dari mana traffic itu berasal?** (apakah firewall udah dikasih tau buat nerima/nolak traffic dari jaringan tertentu?)
 
-- **Kemana arah lalu lintasnya? (apakah firewall telah diberitahu untuk menerima/menolak lalu lintas yang ditujukan untuk jaringan tertentu?)**
+- **Ke mana arah traffic-nya?** (apakah firewall udah dikasih tau buat nerima/nolak traffic yang ditujuin ke jaringan tertentu?)
 
-- **Untuk port apa lalu lintasnya? (apakah firewall telah diberitahu untuk menerima/menolak lalu lintas yang ditujukan untuk port 80 saja?)**
+- **Buat port apa traffic-nya?** (apakah firewall udah dikasih tau buat nerima/nolak traffic yang ditujuin ke port 80 aja?)
 
-- **Protokol apa yang digunakan lalu lintas? (apakah firewall telah diberitahu untuk menerima/menolak lalu lintas UDP, TCP atau keduanya?)**
+- **Protokol apa yang dipake?** (apakah firewall udah dikasih tau buat nerima/nolak traffic UDP, TCP, atau keduanya?)
 
-Firewall melakukan pemeriksaan paket untuk menentukan jawaban atas pertanyaan-pertanyaan ini, Firewall dapat dikategorikan 2 sampai 5 kategori
+Firewall ngecek paket buat nentuin jawaban dari pertanyaan-pertanyaan di atas. Firewall bisa dikategoriin jadi 2 sampai 5 kategori:
 
-- **Stateful Firewall:** Firewall jenis ini memeriksa seluruh informasi dari koneksi, stateful firewall dapat memberikan perlindungan yang lebih baik terhadap serangan dan memastikan bahwa hanya sesi yang sah yang diizinkan untuk berkomunikasi
+- **Stateful Firewall:** Jenis firewall ini ngecek seluruh informasi dari koneksi. Stateful firewall bisa kasih perlindungan yang lebih bagus dari serangan dan mastiin cuma sesi yang sah yang diizinin buat berkomunikasi.
 
-- **Stateless Firewall:** jenis Firewall yang cuma memeriksa setiap paket data sevara individu tanpa peduli status koneksi, lebih sederhana dan cepat tetapi kurang efektif mencegah serangan yang lebih kompleks
+- **Stateless Firewall:** Jenis firewall yang cuma ngecek setiap paket data secara individu tanpa peduliin status koneksi. Lebih simpel dan cepet tapi kurang efektif buat nangkal serangan yang lebih kompleks.
 
 ### VPN (Virtual Private Network)
 
-VPN adalah teknologi yeng memungkinkan koneksi yang aman dan terenkripsi antara perangkat dan jaringan, VPN menciptakan jalur yang melindungi data pengguna saat mengirim informasi melalui internet sehingga menjaga privasi dan juga keamanan data
+VPN itu teknologi yang bikin koneksi jadi aman dan terenkripsi antara perangkat dan jaringan. VPN bikin jalur yang melindungi data pengguna waktu ngirim informasi lewat internet, jadi privasi dan keamanan data tetap terjaga.
 
-Manfaat VPN yaitu:
+Manfaat VPN:
 
-- **Memungkinkan jaringan di lokasi geografis yang berbeda untuk terhubung (Region Lock)**
+- **Menghubungkan jaringan di lokasi geografis yang berbeda (Region Lock)**
 
-- **Menawarkan privasi:** Teknologi VPN menawarkan enkripsi untuk melindungi data, berguna jika ingin mengakses jaringan publik agar tidak disadap
+- **Menawarkan privasi:** VPN nawarin enkripsi buat melindungi data, berguna banget kalau mau akses jaringan publik biar nggak disadap.
 
-- **Menawarkan Anonimitas:** VPN akan menyembunyikan IP Address asli pengguna dan mengganti nya dengan IP Address VPN Server
+- **Menawarkan anonimitas:** VPN bakal nyembunyiin IP Address asli pengguna dan nggantinya pake IP Address VPN Server.
 
-Teknologi VPN sudah berkembang dari Tahun ke tahun, ini beberapa Teknologi yang digunakan oleh VPN:
+Teknologi VPN udah berkembang dari tahun ke tahun, ini beberapa teknologi yang dipake VPN:
 
-- **PPP (Point To Point Protocol):** Teknologi ini digunakan oleh PPTP untuk memungkinkan otentikasi dan menyediakan enkripsi data, VPN bekerja dengan menggunakan kunci pribadi dan sertifikat publik (mirip dengan SSH), Kunci pribadi & sertifikat harus cocok agar Anda dapat terhubung, Teknologi ini tidak bisa meninggalkan suatu jaringan dengan sendirinya (non-routable)
+- **PPP (Point To Point Protocol):** Teknologi ini dipake sama PPTP buat ngebolehin otentikasi dan nyediain enkripsi data. VPN bekerja pake kunci pribadi dan sertifikat publik (mirip SSH). Kunci pribadi & sertifikat harus cocok biar bisa terhubung. Teknologi ini nggak bisa ninggalin suatu jaringan sendiri (non-routable).
 
-- **PPTP (Point To Point Tunneling Protocol):** teknologi yang memungkinkan data dari PPP berpindah dan meninggalkan jaringan, PPTP sangat mudah diatur dan didukung oleh sebagian besar perangkat. tapi enkripsinya lemah dibandingkan dengan alternatif lain
+- **PPTP (Point To Point Tunneling Protocol):** Teknologi yang bikin data dari PPP bisa pindah dan ninggalin jaringan. PPTP gampang banget di-setup dan didukung sama sebagian besar perangkat, tapi enkripsinya lemah dibandingin alternatif lain.
 
-- **IPSec (Internet Protocol Security):** mengenkripsi data menggunakan kerangka Protokol Internet (IP) yang ada,
-  IPSec sulit diatur dibandingkan dengan alternatif lain, jika berhasil akan memiliki enkripsi yang kuat dan juga didukung di banyak perangkat.
+- **IPSec (Internet Protocol Security):** Mengenkripsi data pake kerangka Protokol Internet (IP) yang udah ada. IPSec lebih susah di-setup dibandingin alternatif lain, tapi kalau berhasil bakal dapet enkripsi yang kuat dan didukung di banyak perangkat.

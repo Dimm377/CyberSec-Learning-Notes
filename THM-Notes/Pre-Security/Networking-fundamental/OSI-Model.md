@@ -15,11 +15,11 @@
 
 ## Overview
 
-- OSI Model adalah kerangka konsep yang membuat sistem komunikasi di jaringan memiliki bahasa yang sama, Tujuan nya adalah memastikan sistem agar bisa saling berkomunikasi memakai protokol yang sudah disepakati secara global
+- OSI Model itu kerangka konsep yang bikin sistem komunikasi di jaringan punya bahasa yang sama. Tujuannya buat mastiin sistem bisa saling berkomunikasi pake protokol yang udah disepakati secara global.
 
 ### What is OSI Model ?
 
-OSI Model (Open System Interconnection Model) adalah kerangka konsep yang membagi jaringan menjadi 7 lapisan: Physical, Data Link, Network, Transport, Session, Presentation, Application
+OSI Model (Open System Interconnection Model) itu kerangka konsep yang membagi jaringan jadi 7 lapisan: Physical, Data Link, Network, Transport, Session, Presentation, Application.
 
 #### 7 layer OSI Model:
 
@@ -29,28 +29,28 @@ OSI Model (Open System Interconnection Model) adalah kerangka konsep yang membag
 
 ---
 
-### Penjelasan setiap Layer OSI model:
+### Penjelasan setiap Layer OSI Model:
 
-1. **Physical:** Lapisan Pertama yang bertanggung jawab untuk mentransmisikan data secara fisik melalui media transmisi seperti kabel ethernet, Sinyal listrik, Kabel optic, Modem, dan Antena.
+1. **Physical:** Lapisan pertama yang tugasnya ngirim data secara fisik lewat media transmisi kayak kabel ethernet, sinyal listrik, kabel optik, modem, dan antena.
 
-2. **Data Link:** Lapisan kedua yang berfokus pada pengalamatan fisik transmisi data, lapisan ini menerima data dari lapisan jaringan dan menambahkan MAC Address agar data perangkat saling mengenali, simple nya lapisan ini memebantu perangkat yang terhubung ke jaringan agar bisa saling berkomunikasi.
+2. **Data Link:** Lapisan kedua yang fokus di pengalamatan fisik transmisi data. Lapisan ini nerima data dari lapisan Network dan nambahin MAC Address supaya perangkat bisa saling kenal. Simpelnya, lapisan ini bantu perangkat yang terhubung ke jaringan biar bisa saling berkomunikasi.
 
-3. **Network:** Lapisan ketiga yang bertugas untuk mengarahkan data dari satu perangkat ke perangkat lainnya di jaringan yang berbeda, menggunakan IP Address untuk menentukan rute terbaik untuk mengirimkan data di jaringan yang kompleks.
+3. **Network:** Lapisan ketiga yang tugasnya ngarahin data dari satu perangkat ke perangkat lain di jaringan yang berbeda. Pake IP Address buat nentuin rute terbaik buat ngirim data di jaringan yang kompleks.
 
-Ada 5 protokol dari yang ku pelajari yaitu:
+Ada 5 protokol yang aku pelajari:
 
-- **IP (Internet Protocol):** Protokol untuk pengalamatan dan pengiriman data di dalam jaringan.
-- **ICMP (Internet Control Message Protocol):** Protokol untuk mengirim pesan kontrol dan error antara perangkat jaringan.
+- **IP (Internet Protocol):** Protokol buat pengalamatan dan pengiriman data di jaringan.
+- **ICMP (Internet Control Message Protocol):** Protokol buat ngirim pesan kontrol dan error antar perangkat jaringan.
 - **ARP (Address Resolution Protocol):** Protokol yang menghubungkan / menerjemahkan IP Address ke MAC Address.
-- **OSPF (Open Shortest Path First):** Protokol _link-state_ yang menentukan jalur tercepat berdasarkan _bandwidth_ (cost). OSPF sangat efisien karena memiliki peta lengkap topologi jaringan.
-- **RIP (Routing Information Protocol):** Protokol _distance-vector_ yang menggunakan jumlah lompatan router (**hop count**) untuk menentukan jalur terbaik. Protokol ini memiliki batas maksimal 15 lompatan (hop).
+- **OSPF (Open Shortest Path First):** Protokol _link-state_ yang nentuin jalur tercepat berdasarkan _bandwidth_ (cost). OSPF efisien banget karena punya peta lengkap topologi jaringan.
+- **RIP (Routing Information Protocol):** Protokol _distance-vector_ yang pake jumlah lompatan router (**hop count**) buat nentuin jalur terbaik. Protokol ini punya batas maksimal 15 lompatan (hop).
 
-4. **Transport:** Lapisan keempat yang bertugas untuk mengelola pengiriman data antar perangkat dan memastikan data diterima dengan benar, unit data di lapisan ini disebut segmen bukan lagi packet.
+4. **Transport:** Lapisan keempat yang tugasnya ngelola pengiriman data antar perangkat dan mastiin data diterima dengan benar. Unit data di lapisan ini disebut segmen, bukan lagi packet.
 
-Terdapat 2 protokol di lapisan Transport yaitu:
+Ada 2 protokol di lapisan Transport:
 
-- **TCP (Transmission Control Protocol):** Protokol yang menyediakan pengiriman data secara handal dan teratur dengan menjamin bahwa data sampai ke tujuan dalam urutan yang benar.
-- **UDP (User Datagram Protocol):** Protokol yang lebih cepat dari TCP tapi tidak menjamin pengiriman data yang handal dan urutan data yang teratur.
+- **TCP (Transmission Control Protocol):** Protokol yang nyediain pengiriman data secara handal dan teratur, menjamin data nyampe ke tujuan dalam urutan yang benar.
+- **UDP (User Datagram Protocol):** Protokol yang lebih cepet dari TCP tapi nggak menjamin pengiriman yang handal dan urutan data yang teratur.
 
 | Perbedaan             | TCP (Transmission Control Protocol)      | UDP (User Datagram Protocol)             |
 | :-------------------- | :--------------------------------------- | :--------------------------------------- |
@@ -61,13 +61,13 @@ Terdapat 2 protokol di lapisan Transport yaitu:
 | **Urutan Data**       | Data diterima sesuai urutan yang dikirim | Data bisa diterima berantakan/tidak urut |
 | **Contoh Penggunaan** | Web (HTTP), Email, Transfer File         | Streaming Video, Game Online, VoIP       |
 
-5. **Session:** Lapisan kelima ini fungsinya untuk mengelola sesi antar 2 perangkat, menetapkan, memepertahankan, dan mengakhiri koneksi agar aplikasi berkomunikasi dengan lancar, simple nya di lapisan Session ini membantu menjaga komunikasi yang teratur antara aplikasi yang berbeda.
+5. **Session:** Lapisan kelima yang fungsinya ngelola sesi antar 2 perangkat -- menetapkan, mempertahankan, dan mengakhiri koneksi biar aplikasi berkomunikasi dengan lancar. Simpelnya, lapisan ini bantu jaga komunikasi tetap teratur antar aplikasi yang berbeda.
 
-Protokol yang ada di lapisan ini yaitu:
+Protokol yang ada di lapisan ini:
 
-- **RCP (Remote Procedure Call):** Protokol ini memungkinkan suatu program untuk meminta layanan dari program lain di komputer yang berbeda jaringan, intinya menyederhanakan komunikasi antar aplikasi tanpa harus mengelola detail jaringan.
-- **SMB (Server Message Block):** Protokol ini digunakan untuk berbagi file, printer, dan sumber daya lainnya di dalam jaringan, dengan adanya SMB kita dapat mengelola dan mengakses data dengan mudah di jaringan tanpa harus berpindah tempat.
+- **RPC (Remote Procedure Call):** Protokol ini bikin suatu program bisa minta layanan dari program lain di komputer yang beda jaringan. Intinya nyederhanain komunikasi antar aplikasi tanpa harus ngurusin detail jaringan.
+- **SMB (Server Message Block):** Protokol ini dipake buat berbagi file, printer, dan sumber daya lainnya di jaringan. Dengan SMB, kita bisa ngelola dan ngakses data dengan gampang di jaringan tanpa harus pindah tempat.
 
-6. **Presentation:** Lapisan keenam ini bertindak sebagai penerjemah data agar dapat dipahami oleh aplikasi / lapisan ke 7 (Application), memastikan bahwa data disajikan dalam format yang benar agar dapat di proses dengan baik, lapisan ini juga menangani enkripsi dan dekripsi untuk keamanan.
+6. **Presentation:** Lapisan keenam ini jadi penerjemah data biar bisa dipahami sama aplikasi / lapisan ke-7 (Application). Mastiin data disajiin dalam format yang bener supaya bisa diproses dengan baik. Lapisan ini juga yang ngurusin enkripsi dan dekripsi buat keamanan.
 
-7. **Application:** Lapisan ketujuh merupakan lapisan yang paling dekat dengan pengguna, menyediakan layanan jaringan untuk aplikasi perangkat lunak seperti web browser (HTTP/HTTPS) atau email.
+7. **Application:** Lapisan ketujuh, yang paling deket sama pengguna. Nyediain layanan jaringan buat aplikasi perangkat lunak kayak web browser (HTTP/HTTPS) atau email.

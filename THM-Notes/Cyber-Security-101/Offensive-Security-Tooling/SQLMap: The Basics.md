@@ -22,7 +22,7 @@ Database adalah sebuah kumpulan data berskala besar yang mempermudah proses peny
 Sebuah halaman web seringkali membutuhkan data atau input dari pengguna, contohnya:
 
 - **Halaman Login:** Website meminta _credentials_ (username & password). Input ini lalu dicocokkan dengan data pengguna yang sudah tersimpan di database. Jika cocok, pengguna berhasil masuk.
-- **Fitur Pencarian:** Saat mencari buku di situs toko buku, _website_ akan mengambil (meng-_query_) data ke database buku yang dijual lalu menampilkannya kembail di web.
+- **Fitur Pencarian:** Saat mencari buku di situs toko buku, _website_ akan mengambil (meng-_query_) data ke database buku yang dijual lalu menampilkannya kembali di web.
 
 ### Bagaimana Website Berinteraksi dengan Database?
 

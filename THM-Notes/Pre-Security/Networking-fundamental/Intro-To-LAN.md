@@ -11,31 +11,31 @@
 
 ## Overview
 
-- Membahas tentang dasar-dasar jaringan seperti Local area Network (LAN), apa itu Topologi dan jenis" nya (Star, Bus, Ring) perangkat jaringan (Switch, Hub, Router)
+- Membahas dasar-dasar jaringan kayak Local Area Network (LAN), apa itu Topologi dan jenis-jenisnya (Star, Bus, Ring), serta perangkat jaringan (Switch, Hub, Router)
 
-- Panduan dasar tentang subnetting (mmebagi jaringan menjadi lebih kecil) dan juga mengetahui tentang protokol jaringan ARP & DHCP
+- Panduan dasar tentang subnetting (membagi jaringan jadi lebih kecil) dan juga ngerti tentang protokol jaringan ARP & DHCP
 
 ## Task Summary & Key Concept
 
 ### 1. What is a LAN ? (**L**ocal **A**rea **N**etwork)
 
-Jenis jaringan lokal yang menghubungkan perangkat dengan jarak yang dekat seperti di rumah, kantor atau sekolah. LAN memungkinkan perangkat komputer untuk saling berkomunikasi dan berbagi sumber daya seperti upload file dan mengirim file dengan kecepatan tinggi, memiliki biaya yang rendah dibandingkan dengan jenis jaringan lainnya
+LAN itu jenis jaringan lokal yang menghubungkan perangkat-perangkat dalam jarak dekat, kayak di rumah, kantor, atau sekolah. LAN bikin perangkat komputer bisa saling berkomunikasi dan berbagi sumber daya kayak upload file dan kirim file dengan kecepatan tinggi. Biayanya juga lebih murah dibanding jenis jaringan lainnya.
 
-### Jenis-Jenis topologi LAN
+### Jenis-Jenis Topologi LAN
 
-- Star Topology (perangkat terhubung secara individu melalui perangkat jaringan pusat seperti switch atau hub) paling umum digunakan tapi biaya mahal
+- Star Topology (perangkat terhubung secara individu lewat perangkat jaringan pusat kayak switch atau hub) -- paling umum dipake tapi biayanya mahal
 
 <p align="center">
 ![Star Topology](../../Assets/Images/star-topology.png)
 </p>
 
-- Bus Topology (perangkat terhubung melalui kabel yang sama, karena bergantung ke satu koneksi (kabel backbone) ) biaya murah tapi akan down jika perangkat mengirimkan banyak data secara bersamaan
+- Bus Topology (perangkat terhubung lewat satu kabel yang sama, karena bergantung ke satu koneksi alias kabel backbone) -- biaya murah tapi bakal down kalau banyak perangkat ngirim data secara bersamaan
 
 <p align="center">
 ![Bus Topology](../../Assets/Images/Bus-topology.png)
 </p>
 
-- Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar, mengirim data dari satu perangkat ke perangkat lainnya dalam satu arah di sepanjang jalur sampai mencapai tujuan) mudah untuk mendeteksi kesalahan dalam lalu lintas data, jika satu perangkat mengalami masalah maka seluruh jaringa juga akan terpengaruh
+- Ring Topology (setiap perangkat terhubung ke dua perangkat lainnya, membentuk jalur melingkar. Data dikirim dari satu perangkat ke perangkat lain dalam satu arah sampai nyampe tujuan) -- gampang buat deteksi kesalahan di lalu lintas data, tapi kalau satu perangkat bermasalah maka seluruh jaringan ikut kena dampaknya
 
 <p align="center">
 ![Ring Topology](../../Assets/Images/Ring-topology.png)
@@ -43,32 +43,32 @@ Jenis jaringan lokal yang menghubungkan perangkat dengan jarak yang dekat sepert
 
 ### 2. Networking Device
 
-Digunakan untuk menghubungkan dan mengelola jaringan komputer
+Perangkat yang dipake buat menghubungkan dan ngelola jaringan komputer.
 
-### Contoh-contoh networking devices
+### Contoh-contoh Networking Devices
 
-- **Switch:** (Alat yang menghubungkan beberapa perangkat lain seperti komputer, printer,atau perangkat lain yang bisa terhubung ke dalam LAN, switch menggunakan MAC Address untuk hanya mengirimkan paket data ke perangkat tujuan secara spesifik)
+- **Switch:** Alat yang menghubungkan beberapa perangkat (kayak komputer, printer, atau perangkat lain) ke dalam LAN. Switch pake MAC Address buat ngirim paket data cuma ke perangkat tujuan yang spesifik.
 
-- **Router:** (Tugas router adalah menghubungkan jaringan dan meneruskan data diantara jaringan menggunakan proses yang disebut routing, fungsi routing adalah menentukan jalur terbaik bagi paket data untuk melewati jaringan agar sampai tujuan dengan sukses)
+- **Router:** Tugasnya menghubungkan jaringan yang berbeda dan nerusin data antar jaringan lewat proses yang namanya _routing_. Routing itu cara nentuin jalur terbaik buat paket data supaya bisa sampai tujuan dengan sukses.
 
 ### ARP (**A**ddress **R**esolution **P**rotocol)
 
-Adalah protokol untuk menghubungkan IP Address dengan MAC Address di dalam jarinngan lokal, ketika sebuah perangkat ingin mengirim data ke IP Address tertentu maka ARP akan mencari MAC Address yang cocok, jika MAC Address terkait tidak ada di tabel ARP, perangkat akan mengirimkan permintaan (ARP Request) ke semua perangkat di jaringan. Perangkat yang memiliki alamat IP yang diminta ARP akan membalas dengan MAC Address nya, sehingga perangkat dapat mengirim data ke tujuan yang tepat
+ARP itu protokol buat menghubungkan IP Address dengan MAC Address di jaringan lokal. Waktu sebuah perangkat mau ngirim data ke IP Address tertentu, ARP bakal nyari MAC Address yang cocok. Kalau MAC Address-nya belum ada di tabel ARP, perangkat bakal ngirim permintaan (ARP Request) ke semua perangkat di jaringan. Perangkat yang punya alamat IP yang diminta bakal bales dengan MAC Address-nya, jadi data bisa dikirim ke tujuan yang tepat.
 
 ### DHCP (**D**ynamic **H**ost **C**onfiguration **P**rotocol)
 
-Protokol jaringan yang digunakan untuk secara otomatis memberikan IP Address dan informasi konfigurasi jaringan ke perangkat yang terhubung ke jaringan, DHCP server akan memberikan IP Address yang tersedia dan juga informasi lain seperti subnet mask, gateway dan DNS
+DHCP itu protokol jaringan yang secara otomatis ngasih IP Address dan informasi konfigurasi jaringan ke perangkat yang terhubung. DHCP server bakal ngasih IP Address yang tersedia plus info lain kayak subnet mask, gateway, dan DNS.
 
-Proses DHCP server
+Proses DHCP server:
 
 <p align="center">
 ![DHCP](../../Assets/Images/DHCP1.png)
 </p>
 
-**DHCP Discover:** Perangkat akan mengirimkan pesan DHCP Discover untuk mencari server DHCP yang ada
+**DHCP Discover:** Perangkat ngirim pesan DHCP Discover buat nyari server DHCP yang ada.
 
-**DHCP Offer:** Server DHCP yang menerima pesan dari DHCP Discover akan mengirimkan pesan yang berisi IP Address yang tersedia dan juga informasi lainnya (DHCP Offer)
+**DHCP Offer:** Server DHCP yang nerima pesan dari DHCP Discover bakal ngirim balesan berisi IP Address yang tersedia plus informasi lainnya (DHCP Offer).
 
-**DHCP Request:** Perangkat menerima tawaran IP Address dan mengirimkan pesan DHCP Request ke server DHCP untuk meminta IP Address yang diatawarkan
+**DHCP Request:** Perangkat nerima tawaran IP Address dan ngirim pesan DHCP Request ke server DHCP buat minta IP Address yang ditawarin.
 
-**DHCP ACK:** Server DHCP mengonfirmasi dengan mengirimkan pesan yand disebut ACK (Acknowledgment) yang menyatakan bahwa perangkat sudah diberi IP Address
+**DHCP ACK:** Server DHCP mengonfirmasi dengan ngirim pesan ACK (Acknowledgment) yang nyatain bahwa perangkat udah dikasih IP Address.

@@ -11,89 +11,89 @@
 
 # Overview
 
-mempelajari proses fundamental dalam pembuatan situs web, termasuk bagaimana browser berinteraksi dengan server web.
+Belajar proses fundamental dalam pembuatan situs web, termasuk gimana browser berinteraksi sama web server.
 
 ### How The Web Works ?
 
-Pada dasarnya, web bekerja menggunakan model **Client-Server**. Ini adalah interaksi terus-menerus antara browser yang sedang digunakan dengan sebuah komputer di lokasi lain yang menyediakan data.
+Pada dasarnya, web bekerja pake model **Client-Server**. Ini interaksi terus-menerus antara browser yang lagi kamu pake sama komputer di lokasi lain yang nyediain data.
 
 #### **1. Siklus Request & Response**
 
-Setiap kali kamu mengakses sebuah URL, terjadi proses timbal balik sebagai berikut:
+Setiap kali kamu akses sebuah URL, ada proses timbal balik kayak gini:
 
-- **Request (Permintaan):** Browser kamu (Client) mengirimkan permintaan ke web server untuk mendapatkan informasi halaman tertentu.
-- **Processing:** Server menerima permintaan tersebut, memprosesnya (misal: mencari file di disk), dan menyiapkan datanya.
-- **Response (Tanggapan):** Server mengirimkan kembali data yang diminta (seperti HTML, gambar, atau CSS) ke browser kamu.
-- **Rendering:** Browser menerima data tersebut dan menampilkannya menjadi halaman web yang bisa kamu lihat dan gunakan.
+- **Request (Permintaan):** Browser kamu (Client) ngirim permintaan ke web server buat dapetin informasi halaman tertentu.
+- **Processing:** Server nerima permintaan itu, memprosesnya (misal: nyari file di disk), dan nyiapin datanya.
+- **Response (Tanggapan):** Server ngirim balik data yang diminta (kayak HTML, gambar, atau CSS) ke browser kamu.
+- **Rendering:** Browser nerima data itu dan nampilinnya jadi halaman web yang bisa kamu liat dan pake.
 
 #### **2. Dua Komponen Utama Website**
 
-Website terbagi menjadi dua bagian yang memiliki peran berbeda namun saling melengkapi:
+Website terbagi jadi dua bagian yang punya peran beda tapi saling melengkapi:
 
-- **Front-End (Client-Side):** Segala sesuatu yang dirender dan ditampilkan oleh browser. Ini adalah komponen visual yang langsung berinteraksi dengan pengguna.
-- **Back-End (Server-Side):** Server yang memproses permintaan dan mengelola data di balik layar sebelum dikirimkan kembali sebagai respon.
+- **Front-End (Client-Side):** Semua yang di-render dan ditampilin sama browser. Ini komponen visual yang langsung berinteraksi sama pengguna.
+- **Back-End (Server-Side):** Server yang memproses permintaan dan ngelola data di balik layar sebelum dikirim balik sebagai respon.
 
 ### HTML (HyperText Markup Language)
 
-Website pada dasarnya dibangun menggunakan tiga teknologi utama:
+Website pada dasarnya dibangun pake tiga teknologi utama:
 
-- **HTML:** Digunakan untuk membangun struktur dan mendefinisikan kerangka website.
-- **CSS:** Digunakan untuk mempercantik tampilan dengan menambahkan gaya atau _styling_.
-- **JavaScript:** Digunakan untuk mengimplementasikan fitur kompleks dan interaktivitas pada halaman.
+- **HTML:** Dipake buat ngebangun struktur dan mendefinisiin kerangka website.
+- **CSS:** Dipake buat mempercantik tampilan dengan nambahin gaya atau _styling_.
+- **JavaScript:** Dipake buat mengimplementasiin fitur kompleks dan interaktivitas di halaman.
 
 #### **Struktur Dasar HTML**
 
-HTML menggunakan elemen atau **tags** untuk memberi tahu browser cara menampilkan konten, Berikut adalah komponen utama dalam dokumen HTML:
+HTML pake elemen atau **tags** buat ngasih tau browser cara nampilin konten. Ini komponen utamanya:
 
 | Tag               | Deskripsi                                                  |
 | :---------------- | :--------------------------------------------------------- |
-| `<!DOCTYPE html>` | Mendefinisikan bahwa halaman adalah dokumen HTML5.         |
+| `<!DOCTYPE html>` | Mendefinisiin bahwa halaman ini adalah dokumen HTML5.      |
 | `<html>`          | Elemen akar (_root_) dari seluruh halaman HTML.            |
-| `<head>`          | Berisi informasi metadata tentang halaman (seperti judul). |
-| `<body>`          | Berisi semua konten yang akan ditampilkan di browser.      |
-| `<h1>`            | Digunakan untuk mendefinisikan judul besar (_heading_).    |
-| `<p>`             | Digunakan untuk membuat sebuah paragraf.                   |
+| `<head>`          | Berisi informasi metadata tentang halaman (kayak judul).   |
+| `<body>`          | Berisi semua konten yang bakal ditampilin di browser.      |
+| `<h1>`            | Dipake buat bikin judul besar (_heading_).                 |
+| `<p>`             | Dipake buat bikin paragraf.                                |
 
 #### **Mengenal Attributes**
 
-Setiap tag dapat memiliki atribut untuk memberikan informasi tambahan atau gaya:
+Setiap tag bisa punya atribut buat ngasih informasi tambahan atau gaya:
 
-- **Class (`class`):** Digunakan untuk memberikan gaya yang sama pada banyak elemen sekaligus.
-- **Src (`src`):** Digunakan pada tag gambar (`<img>`) untuk menentukan lokasi file gambar.
-- **ID (`id`):** Bersifat **unik**. Satu elemen hanya boleh memiliki satu ID tertentu untuk membedakannya dari elemen lain. Digunakan untuk _styling_ khusus dan identifikasi oleh JavaScript.
+- **Class (`class`):** Dipake buat ngasih gaya yang sama ke banyak elemen sekaligus.
+- **Src (`src`):** Dipake di tag gambar (`<img>`) buat nentuin lokasi file gambar.
+- **ID (`id`):** Bersifat **unik**. Satu elemen cuma boleh punya satu ID tertentu buat ngebedain dia dari elemen lain. Dipake buat _styling_ khusus dan identifikasi oleh JavaScript.
 
-> **Note:** Hacker sering menggunakan fitur "View Page Source" (Ctrl+U) untuk mencari informasi sensitif yang tidak sengaja ditinggalkan developer di dalam komentar HTML.
+> **Note:** Hacker sering pake fitur "View Page Source" (Ctrl+U) buat nyari informasi sensitif yang nggak sengaja ditinggalin developer di komentar HTML.
 
 ### JavaScript
 
 ### JavaScript (Functionality & Interactivity)
 
-JavaScript digunakan untuk mengontrol fungsionalitas halaman web. Tanpa JavaScript, halaman web akan menjadi statis dan tidak interaktif.
+JavaScript dipake buat ngontrol fungsionalitas halaman web. Tanpa JavaScript, halaman web bakal statis dan nggak interaktif.
 
 #### **1. Cara Menambahkan JavaScript**
 
-Kode JavaScript dapat dimasukkan ke dalam halaman web dengan dua cara:
+Kode JavaScript bisa dimasukin ke halaman web dengan dua cara:
 
 - **Internal:** Langsung di dalam tag `<script>`.
-- **Remote:** Menggunakan atribut `src` untuk memuat file eksternal:
+- **Remote:** Pake atribut `src` buat nge-load file eksternal:
   `<script src="/location/of/javascript_file.js"></script>`
 
 #### **2. Memanipulasi Elemen HTML**
 
-JavaScript dapat mencari elemen berdasarkan **ID** dan mengubah isinya secara dinamis. Contohnya:
+JavaScript bisa nyari elemen berdasarkan **ID** dan ngubah isinya secara dinamis. Contohnya:
 
 ```javascript
 document.getElementById("demo").innerHTML = "Element has been changed";
 ```
 
-_Kode di atas mencari elemen dengan ID "demo" dan mengubah teks di dalamnya menjadi "Element has been changed"_.
+_Kode di atas nyari elemen dengan ID "demo" dan ngubah teksnya jadi "Element has been changed"._
 
 #### **3. Events (Kejadian)**
 
-Elemen HTML dapat memicu JavaScript melalui sebuah "Event", seperti:
+Elemen HTML bisa trigger JavaScript lewat "Event", kayak:
 
-- **onclick:** Terjadi saat elemen di-klik.
-- **onhover:** Terjadi saat kursor berada di atas elemen.
+- **onclick:** Terjadi waktu elemen di-klik.
+- **onhover:** Terjadi waktu kursor ada di atas elemen.
 
 **Contoh implementasi pada tombol:**
 
@@ -103,40 +103,40 @@ Elemen HTML dapat memicu JavaScript melalui sebuah "Event", seperti:
 </button>
 ```
 
-_Saat tombol di-klik, teks pada elemen dengan ID "demo" akan berubah menjadi "Button Clicked"_.
+_Waktu tombol di-klik, teks di elemen dengan ID "demo" bakal berubah jadi "Button Clicked"._
 
 ### Sensitive Data Exposure
 
-Sensitive Data Exposure terjadi ketika informasi sensitif dalam bentuk teks biasa (_clear-text_) terpapar di kode sumber _frontend_ yang dapat diakses oleh publik.
+Sensitive Data Exposure terjadi waktu informasi sensitif dalam bentuk teks biasa (_clear-text_) keekspos di kode sumber _frontend_ yang bisa diakses publik.
 
 #### **Mengapa Hal Ini Terjadi?**
 
-Developer sering kali lupa menghapus data penting selama proses Developing, seperti:
+Developer sering lupa ngehapus data penting selama proses development, kayak:
 
-- **Credential Login:** Username atau password yang tertulis langsung di kode HTML/JavaScript.
-- **Tautan Tersembunyi:** Link menuju halaman privat yang tidak seharusnya diketahui pengguna umum.
-- **Komentar HTML:** Catatan internal pengembang yang berisi informasi sensitif.
+- **Credential Login:** Username atau password yang ditulis langsung di kode HTML/JavaScript.
+- **Tautan Tersembunyi:** Link ke halaman privat yang nggak seharusnya diketahui pengguna umum.
+- **Komentar HTML:** Catatan internal developer yang berisi informasi sensitif.
 
 #### **Langkah Penilaian Keamanan (Reconnaissance):**
 
-Salah satu hal pertama yang harus dilakukan saat menilai keamanan aplikasi web adalah meninjau kode sumber halaman (_Page Source Code_) untuk mencari kebocoran data.
+Salah satu hal pertama yang harus dilakuin waktu menilai keamanan aplikasi web adalah ninjau kode sumber halaman (_Page Source Code_) buat nyari kebocoran data.
 
-> **Note:** Penyerang dapat memanfaatkan informasi yang bocor ini untuk melakukan eskalasi akses ke komponen _backend_ atau bagian aplikasi lainnya.
+> **Note:** Penyerang bisa manfaatin informasi yang bocor ini buat eskalasi akses ke komponen _backend_ atau bagian aplikasi lainnya.
 
 ### HTML Injection
 
-HTML Injection adalah kerentanan yang terjadi ketika input pengguna ditampilkan pada halaman web tanpa melalui proses filtrasi atau sanitasi yang tepat. Hal ini memungkinkan penyerang untuk "menyuntikkan" kode HTML mereka sendiri ke dalam situs web korban.
+HTML Injection itu kerentanan yang terjadi waktu input pengguna ditampilin di halaman web tanpa lewat proses filtrasi atau sanitasi yang tepat. Ini bikin penyerang bisa "nyuntikin" kode HTML mereka sendiri ke situs web korban.
 
 #### **Cara Kerja HTML Injection**
 
-1. **Input:** Pengguna memasukkan tag HTML (misal: `<h1>Hacked</h1>`) ke dalam kolom input (seperti kolom komentar atau nama).
-2. **Failure to Sanitize:** Server menerima input tersebut dan menyimpannya atau langsung menampilkannya kembali tanpa mengubah karakter khusus menjadi teks aman.
-3. **Execution:** Browser menginterpretasikan input tersebut sebagai kode HTML asli dan merendernya, sehingga tampilan halaman berubah sesuai keinginan penyerang.
+1. **Input:** Pengguna masukin tag HTML (misal: `<h1>Hacked</h1>`) ke kolom input (kayak kolom komentar atau nama).
+2. **Failure to Sanitize:** Server nerima input itu dan nyimpennya atau langsung nampilinnya balik tanpa ngubah karakter khusus jadi teks aman.
+3. **Execution:** Browser nerjemahin input itu sebagai kode HTML asli dan nge-render-nya, jadi tampilan halaman berubah sesuai keinginan penyerang.
 
 #### **Dampak dari HTML Injection:**
 
-- **Defacement:** Mengubah konten visual website (misal: mengganti gambar atau teks).
-- **Phishing:** Menyuntikkan formulir login palsu untuk mencuri data pengguna lain.
-- **Redirection:** Mengarahkan pengguna ke situs berbahaya menggunakan tag `<a>`.
+- **Defacement:** Ngubah konten visual website (misal: ganti gambar atau teks).
+- **Phishing:** Nyuntikin formulir login palsu buat nyuri data pengguna lain.
+- **Redirection:** Ngarahin pengguna ke situs berbahaya pake tag `<a>`.
 
-> **Note:** **"All User Input is Evil."** Jangan pernah menampilkan input user secara langsung tanpa proses _encoding_ atau _filtering_ di sisi server.
+> **Note:** **"All User Input is Evil."** Jangan pernah nampilin input user secara langsung tanpa proses _encoding_ atau _filtering_ di sisi server.
