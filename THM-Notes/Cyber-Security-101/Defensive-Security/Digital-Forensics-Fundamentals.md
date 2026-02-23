@@ -128,11 +128,11 @@ Ayo bahas beberapa tools populer yang dipake buat pengambilan dan analisis disk 
 **FTK Imager:** FTK Imager adalah tools yang banyak dipake buat mengambil disk images dari sistem operasi Windows. Tools ini punya graphical interface yang user-friendly buat membuat image dalam berbagai format. Tools ini juga bisa menganalisis isi dari disk image. Bisa dipake buat pengambilan maupun analisis.
 
 <p align="center">
-<img src="../../Assets/Images/FTK-Image.png" alt="FTK Imager">
+<img src="../../Assets/Images/FTK-Image.png" alt="FTK Imager" width="400">
 </p>
 
 **Autopsy:** Autopsy adalah platform digital forensics open-source yang populer. Investigator bisa mengimport disk image yang udah diambil ke tools ini, dan tools-nya bakal melakukan analisis ekstensif terhadap image tersebut. Autopsy nawarin berbagai fitur selama analisis image, termasuk keyword search, deleted file recovery, file metadata, extension mismatch detection, dan masih banyak lagi.
 
 <p align="center">
-<img src="../../Assets/Images/Autopsy.png" alt="Autopsy">
+<img src="../../Assets/Images/Autopsy.png" alt="Autopsy" width="400">
 </p>
