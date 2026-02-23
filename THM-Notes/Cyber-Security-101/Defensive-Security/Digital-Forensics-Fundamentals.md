@@ -155,8 +155,24 @@ Ayo bahas beberapa tools populer yang dipake buat pengambilan dan analisis disk 
 
 Semua yang kita lakuin di perangkat digital, dari smartphone sampe komputer, ninggalin jejak. Ayo kita liat gimana kita bisa pake ini di investigasi berikutnya.
 
-Kucing kita, Wowok, udah diculik. Penculiknya ngirim dokumen berisi permintaan mereka dalam format MS Word Document. Kita udah convert dokumen itu ke format PDF dan ngekstrak gambar dari file MS Word buat memudahkan.
+Kucing kita, Gato, udah diculik. Penculiknya ngirim dokumen berisi permintaan mereka dalam format MS Word Document. Kita udah convert dokumen itu ke format PDF dan ngekstrak gambar dari file MS Word buat memudahkan.
 
 Kamu bisa download file yang dilampirin ke mesin lokal kamu buat inspeksi. File-nya bisa didownload dalam format zip: [📥 Download Task Files](../../Assets/Images/ransom-lettter-2-1645608985174-1719473069554.zip). Extract file-nya, dan kamu bakal nemuin file-file kasus di dalamnya.
 
 Saat kamu bikin file teks (TXT), beberapa metadata otomatis disimpen oleh sistem operasi, kayak tanggal pembuatan file dan tanggal modifikasi terakhir. Tapi, lebih banyak informasi tersimpen di metadata file saat kamu pake editor yang lebih advanced, kayak MS Word. Ada berbagai cara buat baca metadata file; kamu bisa buka di viewer/editor resminya atau pake tools forensik yang sesuai. Perlu dicatat bahwa export file ke format lain, kayak PDF, bakal mempertahankan sebagian besar metadata dari dokumen aslinya, tergantung PDF writer yang dipake.
+
+Ayo kita liat apa yang bisa kita pelajari dari file PDF ini. Kita bisa coba baca metadata-nya pake program `pdfinfo`. Pdfinfo nampilin berbagai metadata yang terkait dengan file PDF, kayak title, subject, author, creator, dan creation date. (Kalau kamu pake Linux dan belum punya `pdfinfo` terinstall, kamu bisa install pake `sudo apt install poppler-utils`.) Coba contoh berikut pake `pdfinfo ransom-letter.pdf`:
+
+<p align="center">
+<img src="../../Assets/Images/ransom-Letter.png" alt="Ransom Letter">
+</p>
+
+Dari output `pdfinfo` di atas, kita bisa dapetin beberapa informasi penting:
+
+- **Title:** "Pay NOW" — judul dokumen yang dibuat oleh penculik.
+- **Subject:** "We Have Gato" — subject yang mengkonfirmasi ini adalah surat tebusan.
+- **Author:** "Ann Gree Shepherd" — nama author yang bikin dokumen ini, bisa jadi petunjuk penting buat investigasi.
+- **Creator & Producer:** Microsoft® Word 2016 — software yang dipake buat bikin dokumen.
+- **CreationDate & ModDate:** Wed Feb 23 16:10:36 2022 WIB — tanggal dan waktu dokumen dibuat dan terakhir dimodifikasi.
+- **Pages:** 1 — dokumen cuma 1 halaman.
+- **File size:** 71371 bytes — ukuran file PDF-nya.
