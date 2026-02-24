@@ -51,4 +51,9 @@ Kalau ada banyak insiden terjadi bersamaan, tim keamanan butuh prioritas berdasa
 
 Insiden keamanan siber itu ada banyak jenisnya, bukan cuma sebatas hacking biasa. Berbagai jenis insiden ini bisa terjadi secara mandiri atau serentak pada satu korban.
 
-- **Malware Infections:** Malware itu program jahat yang dirancang buat merusak sistem, jaringan, atau aplikasi. Mayoritas insiden keamanan berhubungan dengan infeksi malware. Malware biasanya menyebar lewat file (teks, dokumen berlampiran jahat, file `.exe`, dll).
+- **Malware Infections:** Malware itu program jahat yang dirancang buat merusak sistem, jaringan, atau aplikasi. Mayoritas insiden keamanan berhubungan dengan malware infection. Malware biasanya menyebar lewat file (teks, dokumen berlampiran jahat, file `.exe`, dll).
+- **Security Breaches:** Terjadi saat orang yang gak punya izin (unauthorized) berhasil mengakses data rahasia. Ini bahaya banget karena banyak bisnis yang bergantung sama data penting ini.
+- **Data Leaks:** Kebocoran informasi rahasia ke pihak yang gak berwenang. Attacker biasanya pake data bocor ini buat **memeras korban** atau **ngerusak reputasi** target mereka. Beda dengan Security Breaches (yang disengaja), Data Leaks kadang bisa terjadi cuma karena **human error** atau **salah konfigurasi**.
+- **Insider Attacks:** Insiden yang berasal dari *dalam* organisasi itu sendiri. Contohnya: Karyawan yang lagi marah/kecewa nancepin Flashdisk isi malware ke komputer di hari terakhir dia kerja. Serangan ini **sangat berbahaya** karena orang dalem pastinya punya akses (privilege) yang jauh lebih besar ke resource perusahaan dibanding outsider.
+- **Denial of Service (DoS) Attacks:** _Availability_ (Ketersediaan) adalah salah satu dari 3 pilar utama cyber security (CIA Triad). Percuma ngelindungin data kalau datanya gak bisa diakses. DoS attack adalah insiden di mana attacker nge-banjiri sistem/jaringan dengan *request palsu* bertubi-tubi. Akibatnya, resource server habis dan user asli yang sah (legitimate users) jadi gak bisa ngakses layanannya.
+
