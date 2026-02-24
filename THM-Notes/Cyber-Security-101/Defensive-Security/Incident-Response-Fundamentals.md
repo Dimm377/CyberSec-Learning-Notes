@@ -92,10 +92,6 @@ Nah, ini rincian dari tiap fase **PICERL** (SANS Framework):
 
 Framework dari NIST ini mirip banget sama SANS di atas, bedanya dia diringkas jadi **4 Fase** aja (gak 6 kayak PICERL):
 
-<p align="center">
-<img src="../../Assets/Images/nist-framework.png" alt="NIST Incident Response Framework">
-</p>
-
 1. **Preparation:** Sama kayak SANS, fase persiapan.
 2. **Detection and Analysis:** Gabungan fase *Identification*. Nemu dan nganalisa insiden.
 3. **Containment, Eradication, and Recovery:** Nah ini **3 fase SANS (C-E-R)** digabung total jadi satu fase gede di NIST. Murni proses bersihin dan benerin kerusakan.
@@ -141,3 +137,27 @@ Berikut ini trio alat utama yang sering muncul di dunia Cyber Security (SIEM, AV
 - **SIEM (Security Information and Event Management):** Pusat komandonya. SIEM memusatkan (centralized) semua jutaan log kejadian penting ke satu wadah. Terus dia bakal berkoordinasi & *mengkorelasikan* berbagai log itu secara otomatis buat nemuin tanda-tanda insiden yang lagi berlangsung.
 - **AV (Antivirus):** Alat tempur jadul tapi wajib. Tugas rutinnya mendeteksi *malicious programs* (program-program bahaya) yang udah **dikenal / punya tanda tangan viral (signature)** sebelum program itu membahayakan sistem.
 - **EDR (Endpoint Detection and Response):** Singkatnya ini upgrade canggih dari AV. Dia dipasang langsung di masing-masing mesin host (*endpoint* kayak laptop orang cabang / desktop karyawan). Jagoannya EDR nggak sekadar buat deteksian biasa, bahkan dia dirancang buat ngelawan tipe ancaman level **Advanced**, yang bahkan mampu otomatis mengurung ancaman tsb (*contain and eradicate*) sebelum tim pusat ngerespon.
+
+### Playbooks vs Runbooks
+
+Masing-masing insiden pasti butuh penanganan yang beda-beda. Biar tim SOC nggak kebingungan atau buang-buang waktu pas lagi krisis, mereka butuh panduan *step-by-step*. Panduan ini disebut **Playbooks**.
+
+**Playbook** adalah panduan menyeluruh (_guideline_) yang ngerinci apa aja yang harus dilakuin pas ada insiden tertentu.
+Contoh isi Playbook kalau ada insiden **Phishing Email**:
+1. Beritahu semua _stakeholders_ tentang insiden email _phishing_.
+2. Cek apakah email itu beneran berbahaya (analisa _header_ dan isi pesannya).
+3. Cari tau ada _attachment_ (lampiran) atau nggak, lalu analisa file tsb.
+4. Cek apakah ada pegawai yang udah terlanjur ngebuka lampiran bahayanya.
+5. Putusin jaringan komputer pegawai yang terinfeksi biar malware nya nggak nular ke network lain (Isolasi / _Contain_).
+6. Blokir email dari si pengirim jahat (Attacker).
+
+Di sisi lain, ada yang namanya **Runbooks**. Bedanya, Runbooks itu instruksi yang lebih sempit, super detail, dan teknis buat _mengeksekusi_ step-step spesifik di dalem Playbook. (Misalnya: Step-by-step syntax terminal / *command* cara ngeblokir spammer di *server* perusahaan).
+
+---
+
+### Questions
+
+- Singkatnya, buat apa sih SOC butuh **SIEM** padahal udah punya security analyst manusia?
+- Apa kelebihan **EDR** dibandingin **Antivirus (AV)** jaman dulu?
+- Dalam _incident response_, apa bedanya **Playbook** sama **Runbook**?
+
