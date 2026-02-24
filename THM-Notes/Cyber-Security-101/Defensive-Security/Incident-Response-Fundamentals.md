@@ -67,6 +67,70 @@ Tiap insiden ini punya potensi ngerusak yang unik, dan dampaknya gak bisa dipuku
 - Kenapa Insider Attack dianggap lebih berbahaya dari pada serangan dari luar (pihak eksternal)?
 - Apa contoh paling umum dari insiden Denial of Service (DoS)?
 
+## Task 4: Incident Response Process
 
+Karena *nature* dari tiap insiden itu beda-beda, menangani banyak insiden sekaligus di suatu environment bisa jadi kerusuhan besar. Makanya, butuh sebuah proses terstruktur atau kerangka kerja (**Framework**) buat menangani insiden biar lebih terarah.
 
+Dua organisasi/framework yang paling populer dipakai di dunia Cyber Security:
+1. **SANS:** Sering nyediain kursus & sertifikasi mentereng di cyber security.
+2. **NIST:** Fokusnya bikin standar & _guidelines_ keamanan siber.
 
+Kedua organisasi ini punya kerangka kerja _incident response_ yang mirip-mirip. SANS merumuskan proses incident response dalam **6 Fase**, yang gampang diinget pake singkatan **PICERL**.
+
+Nah, ini rincian dari tiap fase **PICERL** (SANS Framework):
+
+| Phase | Explanation | Example |
+| :--- | :--- | :--- |
+| **Preparation** | Fase pertama dan mendasar. Menyiapkan segala kebutuhan perlindungan sebelum insiden beneran terjadi (mulai tim SOC, alat keamanan, sampe _Incident Response Plan_). | Ngadain _training_ anti-phishing buat karyawan organisasi biar mereka pandai ngendus penipuan dari lampiran email mencurigakan. |
+| **Identification** | Pemantauan aktivitas sistem buat nemuin tingkah laku aneh. Butuh banget dibantu _security tools/solutions_ buat mendeteksi _abnormal events_. | Tim IT sadar ada _traffic_ transfer data gede keluar masuk dari salah satu host, yang mana ternyata bocor gegara user sembarangan mncet phishing. |
+| **Containment** | Kalo insiden udah dikenali, fase ini jalan. Tujuannya mengisolasi si ancaman biar nggak menyebar luas ke _environment_ kita yang lain. | Segera melakukan _Network Isolation_ (memutus koneksi internet) di komputer staf yang kena malware tadi ke sisi network lain. |
+| **Eradication** | Nah kalo isolasinya beres, sekarang singkirin ancaman sepenuhnya sampe bersih dan dipastikan 0 nyawa yang tersisa | Menjalankan *deep antivirus scan* buat memastikan *malicious software* sudah hangus tak tersisa. |
+| **Recovery** | Lanjut proses recovery. Komputer yang rusak diperbaiki / build ulang dan disiapkin sesuai kondisi normal sediakala (kayak memulihkan *backup data* yang sehat). | Komputer dibersihkan ulang, dibalikin konfigurasi amannya dan dipulihkan. |
+| **Lessons Learned** | Dokumentasi & Evaluasi. mempelajari celah proses dari insiden barusan, sehingga tim Security kedepannya bisa belajar ngerapihin prosedur pelacakan / perlindungannya. | Pertemuan evaluasi akhir (Pasca insiden) buat mendalami sumber masalah dan memperbaiki keamanan sehingga terhindar ke depannya. |
+
+### NIST Incident Response Framework
+
+Framework dari NIST ini mirip banget sama SANS di atas, bedanya dia diringkas jadi **4 Fase** aja (gak 6 kayak PICERL):
+
+<p align="center">
+<img src="../../Assets/Images/nist-framework.png" alt="NIST Incident Response Framework">
+</p>
+
+1. **Preparation:** Sama kayak SANS, fase persiapan.
+2. **Detection and Analysis:** Gabungan fase *Identification*. Nemu dan nganalisa insiden.
+3. **Containment, Eradication, and Recovery:** Nah ini **3 fase SANS (C-E-R)** digabung total jadi satu fase gede di NIST. Murni proses bersihin dan benerin kerusakan.
+4. **Post-Incident Activity:** Sama persis sama fase *Lessons Learned*. Evaluasi akhir.
+
+### SANS vs NIST Comparison
+
+Biar gampang bayangin perbandingannya, ini tabel yang nunjukin di mana letak perbandingannya:
+
+| SANS | NIST |
+| :--- | :--- |
+| Preparation | Preparation |
+| Identification | Detection and Analysis |
+| Containment | Containment, Eradication, |
+| Eradication | and Recovery |
+| Recovery | |
+| Lessons Learned | Post Incident Activity |
+
+### Incident Response Plan
+
+Organisasi biasanya ngegabungin dua framework ini buat nyusun panduan resmi mereka, yang dinamain **Incident Response Plan**. Dokumen ini isinya prosedur lengkap (sebelum, saat, dan sesudah insiden) yang udah divalidasi dan disetujui sama petinggi perusahaan (Senior Management).
+
+Komponen utama dari *Incident Response Plan* itu mencakup:
+1. **Roles and Responsibilities:** Siapa ngerjain apa (jelas bagian tugas tim SOC).
+2. **Incident Response methodology:** Cara kerja (bisa mengacu ke SANS / NIST).
+3. **Communication plan:** Cara komunikasi ke petinggi (stakeholders) bahkan ke pihak berwajib (Law Enforcement/Polisi) biar informasinya nggak simpang siur dan aman.
+4. **Escalation path:** Jalur laporan kalau insiden makin membesar.
+
+---
+
+### Questions
+
+- Apa kepanjangan dari PICERL pada framework SANS?
+- Pada framework NIST, fase apa saja dari SANS yang digabung menjadi satu fase tunggal?
+- Memangnya buat apa sebuah organisasi bikin standar _Incident Response Plan_, dan siapa petinggi yang harus meleges/memvalidasi dokumen ini?
+- Kenapa _Communication plan_ dimasukin sebagai salah satu komponen penting pas nyusun _Incident Response Plan_?
+
+## task 5: Incident Response Techniques
