@@ -133,4 +133,11 @@ Komponen utama dari *Incident Response Plan* itu mencakup:
 - Memangnya buat apa sebuah organisasi bikin standar _Incident Response Plan_, dan siapa petinggi yang harus meleges/memvalidasi dokumen ini?
 - Kenapa _Communication plan_ dimasukin sebagai salah satu komponen penting pas nyusun _Incident Response Plan_?
 
-## task 5: Incident Response Techniques
+## Task 5: Incident Response Techniques
+
+Ingat kan kalau fase **Identification** (SANS) atau **Detection and Analysis** (NIST) itu susah *kalo cuma dikerjain secara manual* pake mata manusia. Maka dari itu, muncul beragam alat canggih (*security solutions*) buat bantu deteksi insiden secara otomatis, bahkan sampai bantuin merespon insiden secara langsung (misal mengisolasi / *containment*).
+
+Berikut ini trio alat utama yang sering muncul di dunia Cyber Security (SIEM, AV, EDR):
+- **SIEM (Security Information and Event Management):** Pusat komandonya. SIEM memusatkan (centralized) semua jutaan log kejadian penting ke satu wadah. Terus dia bakal berkoordinasi & *mengkorelasikan* berbagai log itu secara otomatis buat nemuin tanda-tanda insiden yang lagi berlangsung.
+- **AV (Antivirus):** Alat tempur jadul tapi wajib. Tugas rutinnya mendeteksi *malicious programs* (program-program bahaya) yang udah **dikenal / punya tanda tangan viral (signature)** sebelum program itu membahayakan sistem.
+- **EDR (Endpoint Detection and Response):** Singkatnya ini upgrade canggih dari AV. Dia dipasang langsung di masing-masing mesin host (*endpoint* kayak laptop orang cabang / desktop karyawan). Jagoannya EDR nggak sekadar buat deteksian biasa, bahkan dia dirancang buat ngelawan tipe ancaman level **Advanced**, yang bahkan mampu otomatis mengurung ancaman tsb (*contain and eradicate*) sebelum tim pusat ngerespon.
