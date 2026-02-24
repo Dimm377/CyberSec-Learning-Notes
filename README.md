@@ -130,6 +130,7 @@
 | :-: | ------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | 1.  | [SOC Fundamentals](THM-Notes/Cyber-Security-101/Defensive-Security/SOC-Fundamentals.md)                             | Security Operations Center basics |
 | 2.  | [Digital Forensics Fundamentals](THM-Notes/Cyber-Security-101/Defensive-Security/Digital-Forensics-Fundamentals.md) | Introduction to Digital Forensics |
+| 3.  | [Incident Response Fundamentals](THM-Notes/Cyber-Security-101/Defensive-Security/Incident-Response-Fundamentals.md) | Incident Response basics          |
 
 </details>
 
