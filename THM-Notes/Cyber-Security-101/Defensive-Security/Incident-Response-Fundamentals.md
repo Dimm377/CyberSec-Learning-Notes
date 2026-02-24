@@ -57,3 +57,16 @@ Insiden keamanan siber itu ada banyak jenisnya, bukan cuma sebatas hacking biasa
 - **Insider Attacks:** Insiden yang berasal dari *dalam* organisasi itu sendiri. Contohnya: Karyawan yang lagi marah/kecewa nancepin Flashdisk isi malware ke komputer di hari terakhir dia kerja. Serangan ini **sangat berbahaya** karena orang dalem pastinya punya akses (privilege) yang jauh lebih besar ke resource perusahaan dibanding outsider.
 - **Denial of Service (DoS) Attacks:** _Availability_ (Ketersediaan) adalah salah satu dari 3 pilar utama cyber security (CIA Triad). Percuma ngelindungin data kalau datanya gak bisa diakses. DoS attack adalah insiden di mana attacker nge-banjiri sistem/jaringan dengan *request palsu* bertubi-tubi. Akibatnya, resource server habis dan user asli yang sah (legitimate users) jadi gak bisa ngakses layanannya.
 
+Tiap insiden ini punya potensi ngerusak yang unik, dan dampaknya gak bisa dipukul rata. Insiden yang kecil di satu perusahaan bisa jadi malapetaka di perusahaan lain. **Contoh:** Perusahaan A mungkin gak terlalu kerasa rugi kalau kena Data Leak (karena datanya gak penting), tapi mereka bisa rugi besar kalau kena **DoS Attack** karena bisnis utama mereka bergantung dari ngelayanin _customer_ lewat _website_.
+
+---
+
+### Questions
+
+- Apa bedanya insiden Security Breaches dengan Data Leaks?
+- Kenapa Insider Attack dianggap lebih berbahaya dari pada serangan dari luar (pihak eksternal)?
+- Apa contoh paling umum dari insiden Denial of Service (DoS)?
+
+
+
+
