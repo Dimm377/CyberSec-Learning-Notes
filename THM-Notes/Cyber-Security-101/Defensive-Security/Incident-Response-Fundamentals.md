@@ -45,3 +45,10 @@ Kalau ada banyak insiden terjadi bersamaan, tim keamanan butuh prioritas berdasa
 <img src="../../Assets/Images/Severity.png" alt="Incident Severity Levels">
 </p>
 
+* *Contoh*: Dari gambar di atas, **Title** merujuk ke ID tiket dari sebuah alert/insiden. Tim SOC akan memprioritaskan penyelesaian tiket **TKS-21** dan **MCA-36** terlebih dahulu karena statusnya **Critical**, sedangkan tiket dengan status Low seperti IAM-01 bisa ditunda pengerjaannya.
+
+## Task 3: Types of Incidents
+
+Insiden keamanan siber itu ada banyak jenisnya, bukan cuma sebatas hacking biasa. Berbagai jenis insiden ini bisa terjadi secara mandiri atau serentak pada satu korban.
+
+- **Malware Infections:** Malware itu program jahat yang dirancang buat merusak sistem, jaringan, atau aplikasi. Mayoritas insiden keamanan berhubungan dengan infeksi malware. Malware biasanya menyebar lewat file (teks, dokumen berlampiran jahat, file `.exe`, dll).

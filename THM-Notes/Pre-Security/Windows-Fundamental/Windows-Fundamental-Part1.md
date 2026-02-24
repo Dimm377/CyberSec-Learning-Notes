@@ -79,6 +79,5 @@ Utility utama buat mantau kesehatan performa dan mendeteksi keanehan di sistem:
 
 ## Conclusion
 
-Nguasain Windows Fundamentals ngasih perspektif baru tentang gimana sistem operasi paling populer di dunia ini bekerja. Ngerti struktur file dan manajemen proses itu langkah awal yang solid buat jadi seorang security analyst.
+Menguasai Windows Fundamentals memberikan perspektif baru tentang bagaimana sistem operasi paling populer di dunia ini bekerja. Mengerti struktur file dan manajemen proses adalah langkah awal yang solid untuk menjadi seorang security analyst.
 
-> **Note:** Jangan cuma liat Windows sebagai user; liat sebagai sistem yang bisa diaudit. Setiap klik di GUI sebenernya nge trigger eksekusi proses yang ada di System32.
