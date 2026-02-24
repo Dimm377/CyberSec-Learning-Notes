@@ -6,213 +6,163 @@
 
 ## Task 1: Introduction to Digital Forensics
 
-Forensic itu penerapan metode dan prosedur buat menyelidiki dan memecahkan kejahatan. Cabang forensic yang khusus nyelidikin **Cyber Crime** dikenal sebagai **digital forensics**.
-
-**Cyber crime** itu aktivitas kriminal apa pun yang dilakuin di atau pake perangkat digital. Berbagai tools dan teknik dipake buat nyelidikin perangkat digital secara menyeluruh setelah kejahatan terjadi, tujuannya buat nemuin dan menganalisis bukti demi tindakan hukum yang diperlukan.
+**Digital Forensics** adalah cabang forensic yang khusus menyelidiki **cyber crime** menggunakan tools dan teknik buat nemuin, menganalisis, dan melaporkan bukti digital.
 
 <p align="center">
 <img src="../../Assets/Images/Forensics-footage.png" alt="Forensics Footage">
 </p>
 
-Perangkat digital udah memecahkan banyak masalah di hidup kita. Komunikasi di seluruh dunia sekarang cuma tinggal kirim pesan atau telepon. Tapi karena penggunaan perangkat digital yang masif, peningkatan kejahatan digital **(cyber crimes)** juga ikut teramati. Berbagai macam kejahatan dilakuin pake perangkat digital.
-
-**Contoh Kasus:** Bayangin aparat penegak hukum nge raid tempatnya perampok bank pake surat perintah penggeledahan. Beberapa perangkat digital ditemuin, termasuk laptop, HP, hard drive, dan USB. Aparat menyerahkan kasus ini ke tim digital forensics. Tim ngumpulin barang bukti dengan aman dan ngelakuin investigasi menyeluruh di dalam lab forensic pake tools forensic. Bukti berikut ditemuin di perangkat digital:
-
-- Peta digital bank ditemuin di laptop tersangka — dipake buat ngerencanain perampokan.
-- Dokumen berisi pintu masuk dan rute kabur bank ditemuin di hard drive tersangka.
-- Dokumen di hard drive yang nge-list semua kontrol keamanan fisik bank. Tersangka bikin rencana buat bypass langkah-langkah keamanan tersebut.
-- Beberapa file media (foto dan video perampokan sebelumnya) ditemuin di laptop tersangka.
-- Setelah investigasi menyeluruh di HP tersangka, grup chat ilegal dan catatan panggilan terkait perampokan bank juga ditemuin.
+**Contoh Kasus:** Aparat nge-raid tempat perampok bank → ditemuin laptop, HP, hard drive, USB → diserahin ke tim digital forensics → bukti yang ditemuin:
+- Peta digital bank di laptop
+- Dokumen rute kabur & kontrol keamanan di hard drive
+- File media perampokan sebelumnya
+- Grup chat ilegal & catatan panggilan di HP
 
 <p align="center">
 <img src="../../Assets/Images/bank-map.png" alt="Bank Map">
 </p>
 
-Semua bukti ini bantu aparat penegak hukum dalam proses hukum kasus tersebut. Skenario ini ngebahas sebuah kasus dari awal sampe akhir. Ada beberapa prosedur yang diikutin tim digital forensics waktu ngumpulin bukti, nyimpennya, menganalisisnya, dan ngelaporinnya. Room ini bakal fokus ke pemahaman prosedur-prosedur tersebut.
+**Learning Objectives:** Fase digital forensics, jenis-jenis forensics, prosedur pengambilan bukti, Windows forensics, memecahkan kasus forensik.
 
-**Learning Objectives:**
-
-- Fase-fase digital forensics
-- Jenis-jenis digital forensics
-- Prosedur pengambilan barang bukti
-- Windows forensics
-- Memecahkan kasus forensik
-
-**Answer the questions:**
-
-- Cabang forensic apa yang khusus nyelidikin cyber crime? → **?**
+**Q&A:** Cabang forensic yang khusus nyelidikin cyber crime? → **?**
 
 ## Task 2: Digital Forensics Methodology
 
-Tim digital forensics punya berbagai macam kasus yang butuh tools dan teknik yang beda-beda. Tapi, **National Institute of Standards and Technology (NIST)** udah ngedefinisiin proses umum yang bisa dipake buat setiap kasus. NIST itu kerjaannya bikin framework buat berbagai bidang teknologi, termasuk cyber security — di mana mereka ngeperkenallin proses digital forensics dalam **empat fase**.
+**NIST** mendefinisikan proses digital forensics dalam **4 fase:**
 
 <p align="center">
 <img src="../../Assets/Images/CEAR.png" alt="CEAR - 4 Phases of Digital Forensics">
 </p>
 
-1. **Collection:** Fase pertama digital forensics adalah pengumpulan data. Identifikasi semua perangkat yang bisa jadi sumber data itu penting banget. Biasanya investigator bisa nemuin komputer pribadi, laptop, kamera digital, USB, dll di TKP. Pastiin juga data aslinya gak diutak-atik selama pengumpulan bukti, dan bikin dokumentasi yang rapi soal detail barang-barang yang dikumpulin. Prosedur pengambilan bukti bakal dibahas lebih lanjut di task-task berikutnya.
-
-2. **Examination:** Data yang udah dikumpulin bisa bikin investigator kewalahan karena ukurannya. Data ini biasanya perlu di-filter dan informasi yang relevan perlu diekstrak. Contohnya, sebagai investigator kamu ngumpulin semua file media dari kamera digital di TKP. Kamu mungkin cuma butuh media tertentu yang direkam di tanggal dan waktu tertentu. Jadi di fase examination, kamu bakal filter file media sesuai waktu yang dibutuhin dan mindahin ke fase selanjutnya. Fase examination bantu kamu filter data tertentu buat dianalisis.
-
-3. **Analysis:** Ini fase kritis. Investigator harus menganalisis data dengan menghubungkan berbagai bukti buat narik kesimpulan. Analisisnya tergantung skenario kasus dan data yang tersedia. Tujuannya buat mengekstrak aktivitas yang relevan dengan kasus secara kronologis.
-
-4. **Reporting:** Di fase terakhir digital forensics, laporan detail disiapkan. Laporan ini berisi metodologi investigasi dan temuan detail dari bukti yang dikumpulin. Bisa juga berisi rekomendasi. Laporan ini dipresentasiin ke aparat penegak hukum dan manajemen eksekutif. Penting banget buat nyertain executive summary sebagai bagian dari laporan, dengan mempertimbangkan tingkat pemahaman semua pihak yang nerima.
-
-Sebagai bagian dari fase collection, kita udah liat bahwa berbagai bukti bisa ditemuin di TKP. Menganalisis berbagai kategori bukti ini butuh tools dan teknik yang bervariasi. Ada beberapa jenis digital forensics, masing-masing punya metodologi pengumpulan dan analisis tersendiri. Berikut beberapa jenis yang paling umum:
+1. **Collection** — Identifikasi & kumpulin semua perangkat (laptop, USB, kamera, dll.) tanpa mengubah data asli.
+2. **Examination** — Filter data yang relevan dari data yang udah dikumpulin (misal: filter file berdasarkan tanggal tertentu).
+3. **Analysis** — Hubungkan berbagai bukti dan buat timeline kronologis aktivitas.
+4. **Reporting** — Buat laporan detail berisi metodologi, temuan, dan rekomendasi.
 
 <p align="center">
 <img src="../../Assets/Images/Computer-Forensics.png" alt="Computer Forensics">
 </p>
 
-- **Computer forensics:** Jenis digital forensics yang paling umum, fokusnya ke investigasi komputer — perangkat yang paling sering dipake dalam kejahatan.
-- **Mobile forensics:** Investigasi perangkat mobile dan ngekstrak bukti kayak catatan panggilan, pesan teks, lokasi GPS, dan lainnya.
-- **Network forensics:** Bidang forensik yang cakupannya melampaui perangkat individual — mencakup seluruh jaringan. Mayoritas bukti yang ditemuin di jaringan ada di network traffic logs.
-- **Database forensics:** Banyak data penting disimpen di database khusus. Database forensics nyelidikin intrusi ke database yang mengakibatkan modifikasi data atau exfiltration.
-- **Cloud forensics:** Jenis forensik yang investigasi data yang disimpen di infrastruktur cloud. Tipe ini kadang tricky buat investigator karena minimnya bukti yang tersedia di infrastruktur cloud.
-- **Email forensics:** Email, metode komunikasi paling umum antar profesional, udah jadi bagian penting dari digital forensics. Email diinvestigasi buat nentuin apakah mereka bagian dari kampanye phishing atau penipuan.
+### Jenis-jenis Digital Forensics:
+- **Computer forensics** — Investigasi komputer (paling umum)
+- **Mobile forensics** — Catatan panggilan, SMS, lokasi GPS
+- **Network forensics** — Analisis network traffic logs
+- **Database forensics** — Investigasi intrusi & modifikasi database
+- **Cloud forensics** — Investigasi data di cloud (tricky karena minimnya bukti)
+- **Email forensics** — Deteksi phishing & penipuan via email
 
-**Answer the questions:**
-
-- Berapa jumlah fase dalam proses digital forensics menurut NIST? → **?**
-- Jenis forensik apa yang fokusnya ke investigasi network traffic logs? → **?**
+**Q&A:**
+- Jumlah fase digital forensics menurut NIST? → **?**
+- Forensik yang fokus ke network traffic logs? → **?**
 
 ## Task 3: Evidence Acquisition
 
-Pengambilan bukti itu kerjaan yang krusial. Tim forensics harus ngumpulin semua bukti secara aman tanpa mengubah data aslinya. Metode pengambilan bukti buat perangkat digital beda-beda tergantung jenis perangkatnya. Tapi, ada beberapa praktik umum yang harus diikutin saat bukti diambil. Ayo kita bahas beberapa yang penting.
+Pengambilan bukti harus dilakukan dengan aman tanpa mengubah data asli. Beberapa praktik penting:
 
 ### Proper Authorization
-
-Tim forensics harus dapetin otorisasi dari pihak berwenang yang relevan sebelum ngumpulin data apa pun. Bukti yang dikumpulin tanpa persetujuan sebelumnya bisa dianggep gak sah di pengadilan. Bukti forensic berisi data pribadi dan sensitif milik organisasi atau individu. Otorisasi yang tepat sebelum ngumpulin data ini penting banget buat investigasi sesuai batas hukum yang berlaku.
+Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa izin → gak sah di pengadilan.
 
 <p align="center">
 <img src="../../Assets/Images/Search-Warranty.png" alt="Search Warranty">
 </p>
 
 ### Chain of Custody
+Dokumen formal yang mencatat semua detail tentang bukti:
+- Deskripsi bukti (nama, jenis)
+- Siapa yang ngumpulin & kapan
+- Lokasi penyimpanan
+- Siapa aja yang akses & kapan
 
-Bayangin tim investigator ngumpulin semua bukti dari TKP, terus beberapa hari kemudian ada bukti yang ilang, atau ada perubahan di buktinya. Gak ada individu yang bisa dimintai pertanggungjawaban dalam skenario ini karena gak ada proses yang bener buat mendokumentasiin pemilik bukti. Masalah ini bisa diatasi dengan nge maintain **chain of custody** document. Chain of custody itu dokumen formal yang berisi semua detail tentang bukti. Beberapa detail kunci yang dicatat:
+Contoh form: [NIST Sample Chain of Custody Form](https://www.nist.gov/document/sample-chain-custody-form)
 
-- Deskripsi bukti (nama, jenis).
-- Nama individu yang ngumpulin bukti.
-- Tanggal dan waktu pengumpulan bukti.
-- Lokasi penyimpanan setiap bukti.
-- Waktu akses dan catatan individu yang mengakses bukti.
-
-Ini menciptakan jejak bukti yang proper dan bantu menjaga kelestariannya. Dokumen chain of custody bisa dipake buat membuktikan integritas dan keandalan bukti yang diajukan di pengadilan. Contoh chain of custody bisa diunduh dari [sini](https://www.nist.gov/document/sample-chain-custody-form).
-
-### Use of Write Blockers
-
-Write blockers itu bagian penting dari toolbox tim digital forensics. Misalnya kamu lagi ngumpulin bukti dari hard drive tersangka dan masangin hard drive itu ke workstation forensic. Selama proses pengumpulan, beberapa background tasks di workstation forensik bisa ngubah timestamp file di hard drive tersebut. Ini bisa bikin hambatan selama analisis dan akhirnya menghasilkan hasil yang salah. Sekarang bayangin data dikumpulin dari hard drive pake write blocker. Kali ini, hard drive tersangka bakal tetep dalam kondisi aslinya karena write blocker bisa memblokir semua aksi perubahan bukti.
+### Write Blockers
+Alat yang memblokir semua aksi tulis ke bukti digital → menjaga data tetap original selama proses pengumpulan.
 
 <p align="center">
 <img src="../../Assets/Images/Write-Blockers.png" alt="Write Blockers">
 </p>
 
-**Answer the questions:**
-
-- Dokumen apa yang berisi semua detail tentang bukti yang dikumpulin? → **?**
-- Tools apa yang dipake buat mencegah perubahan data pada bukti digital? → **?**
+**Q&A:**
+- Dokumen yang berisi semua detail tentang bukti? → **?**
+- Tools buat mencegah perubahan data pada bukti digital? → **?**
 
 ## Task 4: Windows Forensics
 
-Jenis bukti yang paling umum dikumpulin dari TKP adalah komputer desktop dan laptop, karena kebanyakan aktivitas kriminal melibatkan sistem personal. Perangkat-perangkat ini punya sistem operasi yang berbeda-beda. Di task ini, kita bakal bahas pengambilan dan analisis bukti dari sistem operasi Windows, yang merupakan OS yang sangat umum dan udah diinvestigasi di banyak kasus.
+Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit) dari sistem. Ada 2 kategori:
 
-Sebagai bagian dari fase pengumpulan data, forensic images dari sistem operasi Windows diambil. Forensic images ini adalah salinan bit-by-bit dari keseluruhan sistem operasi. Dua kategori forensic images yang berbeda diambil dari sistem operasi Windows:
+- **Disk image** — Data non-volatile (HDD/SSD): file, dokumen, browser history → tetep ada setelah restart
+- **Memory image** — Data volatile (RAM): proses aktif, koneksi jaringan → ilang setelah shutdown, jadi harus diambil duluan!
 
-- **Disk image:** Disk image berisi semua data yang ada di perangkat penyimpanan sistem (HDD, SSD, dll.). Data ini bersifat non-volatile, artinya data disk bakal tetep bertahan bahkan setelah restart sistem operasi. Contohnya, semua file kayak media, dokumen, riwayat browsing internet, dan lainnya.
+### Tools Populer:
 
-- **Memory image:** Memory image berisi data yang ada di dalam RAM sistem operasi. Memori ini bersifat volatile, artinya data bakal ilang setelah sistem dimatiin atau di-restart. Contohnya, buat capture file yang sedang dibuka, proses yang berjalan, koneksi jaringan aktif, dll., memory image harus diprioritasin dan diambil duluan dari sistem operasi tersangka; kalau gak, restart atau shutdown sistem bakal bikin semua data volatile kehapus. Saat melakukan digital forensics di sistem operasi Windows, disk dan memory images sangat penting buat dikumpulin.
-
-Ayo bahas beberapa tools populer yang dipake buat pengambilan dan analisis disk dan memory image dari sistem operasi Windows.
-
-**FTK Imager:** FTK Imager adalah tools yang banyak dipake buat mengambil disk images dari sistem operasi Windows. Tools ini punya graphical interface yang user-friendly buat membuat image dalam berbagai format. Tools ini juga bisa menganalisis isi dari disk image. Bisa dipake buat pengambilan maupun analisis.
+**FTK Imager** — Akuisisi & analisis disk image, GUI-based.
 
 <p align="center">
 <img src="../../Assets/Images/FTK-Image.png" alt="FTK Imager" width="400">
 </p>
 
-**Autopsy:** Autopsy adalah platform digital forensics open-source yang populer. Investigator bisa mengimport disk image yang udah diambil ke tools ini, dan tools-nya bakal melakukan analisis ekstensif terhadap image tersebut. Autopsy nawarin berbagai fitur selama analisis image, termasuk keyword search, deleted file recovery, file metadata, extension mismatch detection, dan masih banyak lagi.
+**Autopsy** — Platform forensics open-source: keyword search, deleted file recovery, metadata, extension mismatch detection.
 
 <p align="center">
 <img src="../../Assets/Images/Autopsy.png" alt="Autopsy" width="400">
 </p>
 
-**DumpIt:** DumpIt nawarin utility buat mengambil memory image dari sistem operasi Windows. Tools ini buat memory images pake command-line interface dan beberapa perintah aja. Memory image-nya juga bisa diambil dalam berbagai format.
+**DumpIt** — CLI tool buat akuisisi memory image Windows.
 
-**Volatility:** Volatility adalah tools open-source yang powerful buat menganalisis memory images. Tools ini nawarin beberapa plugin yang sangat berguna. Setiap artifact bisa dianalisis pake plugin tertentu. Tools ini support berbagai sistem operasi, termasuk Windows, Linux, macOS, dan Android.
+**Volatility** — Analisis memory image, support Windows/Linux/macOS/Android.
 
 <p align="center">
 <img src="../../Assets/Images/Volatility.png" alt="Volatility" width="400">
 </p>
 
-> **Note:** Berbagai tools lainnya juga dipake buat mengambil dan menganalisis disk dan memory images dari sistem operasi Windows.
-
-**Answer the questions:**
-
-- Jenis forensic image apa yang diambil buat ngumpulin data volatile dari sistem operasi? → **?**
+**Q&A:** Jenis forensic image buat ngumpulin data volatile? → **?**
 
 ## Task 5: Practical Example of Digital Forensics
 
-Semua yang kita lakuin di perangkat digital, dari smartphone sampe komputer, ninggalin jejak. Ayo kita liat gimana kita bisa pake ini di investigasi berikutnya.
+Skenario: Kucing bernama **Gato** diculik → penculik kirim surat tebusan dalam format MS Word → di-convert ke PDF.
 
-Kucing kita, Gato, udah diculik. Penculiknya ngirim dokumen berisi permintaan mereka dalam format MS Word Document. Kita udah convert dokumen itu ke format PDF dan ngekstrak gambar dari file MS Word buat memudahkan.
+Download file kasus: [Download Task Files](../../Assets/Images/ransom-lettter-2-1645608985174-1719473069554.zip)
 
-Kamu bisa download file yang dilampirin ke mesin lokal kamu buat inspeksi. File-nya bisa didownload dalam format zip: [📥 Download Task Files](../../Assets/Images/ransom-lettter-2-1645608985174-1719473069554.zip). Extract file-nya, dan kamu bakal nemuin file-file kasus di dalamnya.
+### Analisis Metadata PDF
 
-Saat kamu bikin file teks (TXT), beberapa metadata otomatis disimpen oleh sistem operasi, kayak tanggal pembuatan file dan tanggal modifikasi terakhir. Tapi, lebih banyak informasi tersimpen di metadata file saat kamu pake editor yang lebih advanced, kayak MS Word. Ada berbagai cara buat baca metadata file; kamu bisa buka di viewer/editor resminya atau pake tools forensik yang sesuai. Perlu dicatat bahwa export file ke format lain, kayak PDF, bakal mempertahankan sebagian besar metadata dari dokumen aslinya, tergantung PDF writer yang dipake.
-
-Ayo kita liat apa yang bisa kita pelajari dari file PDF ini. Kita bisa coba baca metadata-nya pake program `pdfinfo`. Pdfinfo nampilin berbagai metadata yang terkait dengan file PDF, kayak title, subject, author, creator, dan creation date. (Kalau kamu pake Linux dan belum punya `pdfinfo` terinstall, kamu bisa install pake `sudo apt install poppler-utils` atau kalau pakai arch `sudo pacman -S poppler`.) dan coba jalankan perintah berikut `pdfinfo ransom-letter.pdf`:
+Pake `pdfinfo` buat baca metadata PDF. Install: `sudo apt install poppler-utils` atau `sudo pacman -S poppler`.
 
 <p align="center">
 <img src="../../Assets/Images/ransom-Letter.png" alt="Ransom Letter">
 </p>
 
-Dari output `pdfinfo` di atas, kita bisa dapetin beberapa informasi penting:
-
-- **Title:** "Pay NOW" — judul dokumen yang dibuat oleh penculik.
-- **Subject:** "We Have Gato" — subject yang mengkonfirmasi ini adalah surat tebusan.
-- **Author:** "Ann Gree Shepherd" — nama author yang bikin dokumen ini, bisa jadi petunjuk penting buat investigasi.
-- **Creator & Producer:** Microsoft® Word 2016 — software yang dipake buat bikin dokumen.
-- **CreationDate & ModDate:** Wed Feb 23 16:10:36 2022 WIB — tanggal dan waktu dokumen dibuat dan terakhir dimodifikasi.
-- **Pages:** 1 — dokumen cuma 1 halaman.
-- **File size:** 71371 bytes — ukuran file PDF-nya.
+Temuan penting dari `pdfinfo ransom-letter.pdf`:
+- **Author:** Ann Gree Shepherd
+- **Creator:** Microsoft® Word 2016
+- **CreationDate:** Wed Feb 23 16:10:36 2022 WIB
 
 ### Photo EXIF Data
 
-EXIF singkatan dari Exchangeable Image File Format; ini adalah standar buat nyimpen metadata di file gambar. Setiap kali kamu ambil foto pake smartphone atau kamera digital, banyak informasi yang ikut tertanam di gambar tersebut. Berikut contoh metadata yang bisa ditemuin di gambar digital asli:
-
-- Model kamera / Model smartphone
-- Tanggal dan waktu pengambilan gambar
-- Pengaturan foto kayak focal length, aperture, shutter speed, dan ISO settings
-
-Karena smartphone dilengkapi sensor GPS, kemungkinan besar koordinat GPS ikut tertanam di gambar. Koordinat GPS, yaitu latitude dan longitude, umumnya bakal nunjukin tempat di mana foto itu diambil.
-
-Ada banyak tools online dan offline buat baca data EXIF dari gambar. Salah satu tool berbasis CLI adalah `exiftool`. ExifTool dipake buat baca dan nulis metadata di berbagai jenis file, kayak gambar JPEG. Kalau kamu pake Linux dan belum punya `exiftool` terinstall, kamu bisa install pake `sudo apt install libimage-exiftool-perl` atau kalau pakai Arch `sudo pacman -S perl-image-exiftool`. Di terminal berikut, kita jalanin `exiftool letter-image.jpg` buat baca semua data EXIF yang tertanam di gambar ini.
+**EXIF** = metadata di file gambar (model kamera, waktu, GPS, aperture, ISO, dll.). Install `exiftool`: `sudo apt install libimage-exiftool-perl` atau `sudo pacman -S perl-image-exiftool`.
 
 <p align="center">
 <img src="../../Assets/Images/Exif-tools.png" alt="Exiftool Output">
 </p>
 
-Dari output `exiftool` di atas, kita bisa liat bahwa gambar ini diambil pake kamera **Canon EOS R6**. Ini bisa jadi petunjuk penting buat investigasi.
+Dari `exiftool letter-image.jpg` → kamera: **Canon EOS R6**
 
 <p align="center">
 <img src="../../Assets/Images/camera-model.png" alt="Camera Model Name - Canon EOS R6">
 </p>
 
-Selain itu, kita juga bisa nemuin koordinat GPS yang tertanam di gambar. Dari output EXIF, kita dapet **GPS Latitude: 51 deg 30' 51.90" N** dan **GPS Longitude: 0 deg 5' 38.73" W**.
+GPS coordinates ditemukan: **51°30'51.90" N, 0°5'38.73" W**
 
 <p align="center">
 <img src="../../Assets/Images/Geo.png" alt="GPS Coordinates from EXIF">
 </p>
 
-Dengan masukin koordinat GPS ini ke Google Maps, kita bisa nemuin lokasi di mana foto itu diambil — yaitu di daerah **Milk Street, London, Britania Raya**, deket St. Paul's Cathedral.
+Lokasi di Google Maps → **Milk Street, London** (deket St. Paul's Cathedral)
 
 <p align="center">
 <img src="../../Assets/Images/kidnapper.png" alt="Google Maps - Kidnapper Location">
 </p>
 
-**Answer the questions:**
-
-- Pake `pdfinfo`, cari tau siapa author dari file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
-- Pake `exiftool` atau tools serupa, cari tau di mana penculik mengambil foto yang mereka lampirin di dokumen. Apa nama jalannya? → **Milk Street**
-- Apa model name kamera yang dipake buat mengambil foto ini? → **Canon EOS R6**
+**Q&A:**
+- Author file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
+- Nama jalan lokasi foto penculik? → **Milk Street**
+- Model kamera yang dipake? → **Canon EOS R6**
