@@ -62,15 +62,15 @@ Kamu mau nyari _log_ rekaman kejadian orang nyoba _successful logins_ kemarin ma
 
 ![Jenis-jenis Logs](../../Assets/Images/logs.png)
 
-Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita gunakan sebagai "keranjang sakti" untuk mencari _traces_ saat kita berburu insiden:
+Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita gunakan untuk mencari _traces_ saat kita berburu insiden:
 
 | Tipe Log (_Log Type_) | Kegunaan Utama (_Usage_) | Contoh _Events_ (_Traces_) |
 | :--- | :--- | :--- |
 | **System Logs** | Sangat krusial buat diagnosa masalah di _Operating System_ (OS). OS bakal merekam semua aktivitas intinya di sini. (Bagi _attacker_, log ini sering dihapus/dimatikan biar aktivitas tak wajarnya ga tertangkap). | - _System Startup/Shutdown events_<br>- _Driver Loading events_<br>- _System Error events_<br>- _Hardware events_ |
-| **Audit Logs** | Ibarat "CCTV", fokus utamanya merakam pemenuhan aturan _compliance_ (kepatuhan laporan) seperti perubahan pada sistem oleh pengguna. Ini log super *vital* bagi tim _Defensive_ untuk memantau aktivitas tak wajar dan menegakkan aturan (_Policy_). | - _Data Access events_<br>- _System Change events_<br>- _User Activity events_<br>- _Policy Enforcement events_ |
-| **Security Logs** | _The holy grail_ buat investigasi insiden keamanan! Merekam semua aktivitas yang berkaitan langsung dengan autentikasi, otorisasi, dan hal-hal yang bersinggungan langsung dengan proteksi sistem keamanan. | - _Authentication events_ (Gagal/Suksesnya suatu _login_)<br>- _Authorization events_<br>- _Security Policy changes_<br>- _User Account changes_<br>- _Abnormal Activity events_ |
-| **Network Logs** | Log dewa buat nganalisa _traffic_ masuk/keluar di jaringan. Kalau ada anomali lalu-lintas data (seperti _beaconing malware_ atau *exfiltration* data yang ditranfser ke _Command and Control / C2 Server_ milik _attacker_), semuanya terekam di sini. | - _Incoming/Outgoing Network Traffic_<br>- _Network Connection Logs_<br>- _Network Firewall Logs_ |
-| **Access Logs** | Mencatat sumber rinci secara spesifik setiap kali ada sebuah entitas yang me-_request_ akses ke berbagai _resource_ dari layanan (_services_) tertentu, seperti *web server* atau *database*. | - _Webserver Access Logs_<br>- _Database Access Logs_<br>- _Application Access Logs_<br>- _API Access Logs_ |
+| **Audit Logs** | Ibarat CCTV, fokus utamanya merakam pemenuhan aturan _compliance_ (kepatuhan laporan) seperti perubahan pada sistem oleh pengguna. Ini log *vital* bagi tim _Defensive_ untuk memantau aktivitas tak wajar dan menegakkan aturan (_Policy_). | - _Data Access events_<br>- _System Change events_<br>- _User Activity events_<br>- _Policy Enforcement events_ |
+| **Security Logs** | Merekam semua aktivitas yang berkaitan langsung dengan autentikasi, otorisasi, dan hal-hal yang bersinggungan langsung dengan proteksi sistem keamanan. | - _Authentication events_<br>- _Authorization events_<br>- _Security Policy changes_<br>- _User Account changes_<br>- _Abnormal Activity events_ |
+| **Network Logs** | Log buat nganalisa _traffic_ masuk/keluar di jaringan. Kalau ada anomali lalu-lintas data (seperti _beaconing malware_ atau *exfiltration* data yang ditranfser ke _Command and Control / C2 Server_ milik _attacker_), semuanya terekam di sini. | - _Incoming/Outgoing Network Traffic_<br>- _Network Connection Logs_<br>- _Network Firewall Logs_ |
+| **Access Logs** | Mencatat sumber rinci secara spesifik setiap kali ada sebuah entitas yang me-request akses ke berbagai _resource_ dari layanan (_services_) tertentu, seperti *web server* atau *database*. | - _Webserver Access Logs_<br>- _Database Access Logs_<br>- _Application Access Logs_<br>- _API Access Logs_ |
 | **Application Logs** | Merekam dinamika status yang terjadi spesifik di dalam sebuah aplikasi, entah itu interaksi yang dilakukan _user_ secara langsung maupun proses aplikasi yang berjalan di latar belakang tanpa disadari (_non-interactive_). | - _User Interaction events_<br>- _Application Changes events_<br>- _Application Update events_<br>- _Application Error events_ |
 
 ---
@@ -79,3 +79,42 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 
 - Coba sebutin alasan logis paling utama kenapa _logs_ itu wajib dipisah-pisah golongannya?
 - Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau ngecek riwayat siapa aja yang berhasil (atau gagal) nyoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu bakal kamu bedah duluan?
+
+## Task 3: Windows Event Logs
+
+Sistem operasi paling populer sedunia, **Windows**, tentunya punya mekanisme _logging_ bawaan yang sangat masif. Mirip dengan konsep di Task 2, Windows OS juga memisahkan seluruh catatan kejadiannya ke dalam beberapa kategori khusus.
+
+Secara garis besar, ada 3 pilar utama Log di Windows yang jadi makanan sehari-hari para analis *Cyber Security*:
+
+1. **Application**
+   Merekam semua dinamika aplikasi (termasuk pihak ketiga/_third-party_) atau program bawaan yang numpang jalan di atas OS Windows. Kalau ada error, _warning_, atau masalah kompatibilitas aplikasi, rekam jejak laporannya lari ke sini.
+
+
+2. **System**
+   Merekam segala sentral nadi operasi internal dari tulang punggung sistem operasi Windows itu sendiri. Ini mencakup urusan _driver_ yang berjalan di *kernel*, isu perangkat keras (_hardware_), proses nyala/matinya komputer (_startup/shutdown_), dan log aktivitas layanan latar belakang (_services_).
+
+
+3. **Security**
+   Ini adalah log yang paling penting dan dijaga ketat oleh seorang analis keamanan. Segala urusan yang berkaitan dengan keamanan seperti _authentication_ (login sukses/gagal), _authorization_, pembuatan/penghapusan akun *user*, hingga perubahan kebijakan sistem perlindungan (*security policy changes*) terekam di sini.
+
+
+### Event Viewer
+
+Kalau di operating system lain (atau server Linux lawas) kamu mungkin harus ngebaca file _log_ berupa *raw text* (_text file_) biasa yang sangat panjang, Windows memberikan kemudahan.
+
+Tanpa kamu harus mengimplementasikan program analisis (_SIEM_) pihak ketiga, Windows menyediakan _tools_ bawaan (_built-in utility_) berwujud GUI (_Graphical User Interface_) visual yang elegan untuk _filter_, _search_, dan ngerangkum puluhan ribu kejadian tersebut bernama **Event Viewer**.
+
+Kalau kamu bertindak sebagai analis atau _Blue Team_ yang lagi ngelakuin investigasi (_live response_) di sistem Windows, kamu cukup buka **Start Menu**, ketik **Event Viewer**, dan semua rekaman aktivitas sistem tadi bakal ditampilin dengan rapi.
+
+![Windows Event Viewer](../../Assets/Images/event-viewer.png.png)
+
+(Catatan: Untuk visualisasi _Event Viewer_, masukkan format _image_ di sini jika ada)
+
+---
+
+### Question
+
+- Kalau _attacker_ baru saja melumpuhkan (*stop/disable*) service *Windows Firewall* lewat interaksi terminal tersembunyi, di kategori log Windows mana kamu bakal nyari rekaman dari insiden ini?
+- Semalam ada 3.000+ kali upaya percobaan *login* yang gagal ke dalam sistem Windows kamu melalui RDP. Pada kategori log manakah aktivitas *brute-force* ini dikumpulkan oleh OS Windows?
+
+
