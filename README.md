@@ -135,6 +135,17 @@
 
 </details>
 
+<details>
+<summary>Security Solutions</summary>
+
+<br>
+
+| No. | Notes                                                                                                         | Description                       |
+| :-: | ------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| 1.  | [Introduction to SIEM](THM-Notes/Cyber-Security-101/Security-Solutions/Introduction-to-SIEM.md)               | Introduction to Security Information & Event Management  |
+
+</details>
+
 </details>
 
 <details>

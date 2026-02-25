@@ -143,10 +143,6 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 2. Identifikasi panjang Windows NTLM hash.
 3. Hashcat mode apa yang dipake buat Citrix Netscaler hashes?
 
-### Practical Exercise
-
-- Pake online hash identifier (misal **hashes.com**) buat klasifikasi sample hash `$6$`.
-- Capture Windows NTLM hash dari SAM dump dan coba dictionary attack pake `hashcat -m 1000`.
 
 ---
 
@@ -168,10 +164,6 @@ Hashing itu fungsi satu arah (one-way). Kita gak bisa "mendekripsi" hash.
 
 - **rockyou.txt:** Wordlist paling legendaris, berisi 14 juta password yang bocor dari situs RockYou (2009). Hampir semua CTF pemula pake ini.
 
-**Practical Exercise (Room):**
-
-- **Hash:** `$2a$06$79...` (Identifikasi: `bcrypt`)
-- **Hash:** `5e884...` (Identifikasi: `SHA-256`) -> `halloween`
 
 ---
 
@@ -216,7 +208,4 @@ Hashing standar cuma jamin **Integritas** (file gak berubah), tapi gak jamin **A
 - **Encoding:** Ngirim binary file lewat email (Base64), URL encoding.
 - **Encryption:** Ngirim pesan rahasia (WA/Signal), HTTPS.
 
-**Practical Exercise:**
 
-- **Soal:** Decode string `RU5jb2RlREVjb2RlCg==`
-- **Answer:** `?`

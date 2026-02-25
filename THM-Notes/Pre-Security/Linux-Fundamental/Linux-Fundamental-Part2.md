@@ -23,7 +23,6 @@ SSH (Secure Shell) itu protokol standar buat ngakses dan ngelola mesin Linux dar
 
 - **Koneksi:** Pake perintah `ssh [username]@[IP_Address]`.
 - **Keamanan:** Beda sama Telnet, SSH mengenkripsi seluruh trafik termasuk kredensial login, jadi aman dari penyadapan di jaringan.
-- **Hands-on:** Praktiknya dilakuin dengan menghubungkan terminal lokal ke mesin target pake kredensial `tryhackme`.
 
 ---
 
