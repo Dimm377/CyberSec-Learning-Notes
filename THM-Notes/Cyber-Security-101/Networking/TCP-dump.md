@@ -11,13 +11,13 @@
 
 ---
 
-## Task 1: Introduction
+## Introduction
 
 `tcpdump` itu penganalisis paket berbasis CLI yang kuat banget. Tool ini jadi standar industri buat troubleshooting jaringan dan pengujian keamanan, terutama di sistem yang gak punya tampilan grafis (headless).
 
 ---
 
-## Task 2: Command Line Options
+## Command Line Options
 
 Ngerti switch dasar buat ngontrol gimana `tcpdump` bekerja.
 
@@ -31,7 +31,7 @@ Ngerti switch dasar buat ngontrol gimana `tcpdump` bekerja.
 
 ---
 
-## Task 3: Filtering Traffic
+## Filtering Traffic
 
 Pake filter dasar buat nyaring trafik yang relevan.
 
@@ -43,7 +43,7 @@ Pake filter dasar buat nyaring trafik yang relevan.
 
 ---
 
-## Task 4: Advanced Filtering
+## Advanced Filtering
 
 Gabungin beberapa filter pake operator logika (Boolean).
 
@@ -55,7 +55,7 @@ Gabungin beberapa filter pake operator logika (Boolean).
 
 ---
 
-## Task 5: Practice (The Hunt)
+## Practice (The Hunt)
 
 Di bagian praktik ini, kita bakal diminta nyari informasi spesifik di dalam file pcap atau trafik live.
 

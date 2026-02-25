@@ -4,7 +4,7 @@
 - **Category:** Web Hacking
 - **Difficulty:** Easy
 
-## Task 1: Introduction
+## Introduction
 
 JavaScript adalah bahasa scripting populer yang memungkinkan kita sebagai developer untuk menambahkan fitur interaktif ke dalam website yang sudah memiliki struktur (HTML) dan tampilan (CSS).
 
@@ -18,7 +18,7 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa membuat website itu
 - Bypassing Control Flow Statements
 - Exploring Minified files
 
-## Task 2: Essentials Concept
+## Essentials Concept
 
 ### Variables
 
@@ -114,7 +114,7 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
 
 ---
 
-## Task 3: JavaScript Overview
+## JavaScript Overview
 
 Task ini sebenernya cuma review singkat dan demo script sederhana.
 Ilustrasinya ada kode JS buat nambahin angka.
@@ -134,7 +134,7 @@ Ilustrasinya ada kode JS buat nambahin angka.
 
 ---
 
-## Task 4: Integrating JavaScript in HTML
+## Integrating JavaScript in HTML
 
 Di task ini, kita diminta buat eksperimen pake file yang udah disediain: `external_test.html`.
 Tujuannya biar paham bedanya **Internal** vs **External** JS.
@@ -179,7 +179,7 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake a
 
 ---
 
-## Task 5: Abusing Dialogue Functions
+## Abusing Dialogue Functions
 
 JavaScript punya 3 fungsi bawaan buat nampilin pop-up (dialogue box) ke user. Ini sering dipake buat interaksi, tapi bisa juga disalahgunain buat nge-prank (atau serangan XSS).
 
@@ -211,7 +211,7 @@ Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
 
 ---
 
-## Task 6: Bypassing Control Flow Statements
+## Bypassing Control Flow Statements
 
 Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma ngandelin JS doang itu **GAK AMAN**.
 
@@ -234,7 +234,7 @@ Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang ber
 
 ---
 
-## Task 7: Exploring Minified Files
+## Exploring Minified Files
 
 Kode JS di production biasanya di-**Minify** dan di-**Obfuscate**.
 *   **Minification:** Hapus spasi, enter, komentar. Tujuannya biar file kecil & load cepet.
@@ -257,7 +257,7 @@ Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus bac
 
 ---
 
-## Task 8: Best Practices
+## Best Practices
 
 Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan main (Best Practices):
 
@@ -280,7 +280,7 @@ Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan mai
 
 ---
 
-## Task 9: Conclusion
+## Conclusion
 
 Selesai sudah room **Javascript Essentials** ini!
 

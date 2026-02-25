@@ -17,7 +17,7 @@ Room ini ngebahas protokol-protokol inti yang sering ditemuin di dunia nyata, mu
 
 ---
 
-## Task 2: Remembering Addresses (DNS)
+## Remembering Addresses (DNS)
 
 DNS nerjemahin nama domain jadi IP address biar perangkat kita bisa berkomunikasi.
 
@@ -27,7 +27,7 @@ DNS nerjemahin nama domain jadi IP address biar perangkat kita bisa berkomunikas
 
 ---
 
-## Task 3: WHOIS
+## WHOIS
 
 WHOIS dipake buat nyari informasi pendaftaran domain, kayak siapa pemiliknya dan kapan domain itu dibuat.
 
@@ -36,7 +36,7 @@ WHOIS dipake buat nyari informasi pendaftaran domain, kayak siapa pemiliknya dan
 
 ---
 
-## Task 4: Accessing the Web
+## Accessing the Web
 
 Protokol utama buat transmisi data di web. Di room ini, kita pake cara manual (Telnet) buat liat interaksi mentah sama server.
 
@@ -48,7 +48,7 @@ Protokol utama buat transmisi data di web. Di room ini, kita pake cara manual (T
 
 ---
 
-## Task 5: FTP (Transferring Files)
+## FTP (Transferring Files)
 
 Protokol buat transfer file. Seringkali punya celah kalau dikonfigurasi sebagai _Anonymous Login_.
 
@@ -60,7 +60,7 @@ Protokol buat transfer file. Seringkali punya celah kalau dikonfigurasi sebagai 
 
 ---
 
-## Task 6 - 8: Email Protocols (SMTP, POP3, IMAP)
+## 8: Email Protocols (SMTP, POP3, IMAP)
 
 Protokol yang nanganin pengiriman dan pengambilan pesan email.
 

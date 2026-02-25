@@ -4,7 +4,7 @@
 - **Kategori:** Offensive Security Tooling
 - **Difficulty:** easy
 
-## Task 1: Introduction
+## Introduction
 
 memahami fundamental kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa memanfaatkannya (dan mengotomatiskannya) menggunakan _tool_ andalan para _attacker_, yakni **SQLMap**. Di akhir materi, kita juga akan melakukan simulasi _hands-on_ serangan langsung ke target
 
@@ -30,7 +30,7 @@ Website berinteraksi dan meminta informasi menggunakan sistem manajemen berbasis
 
 Contoh DBMS yang populer adalah MySQL, PostgreSQL, SQLite, dan Microsoft SQL Server. Semua sistem ini memahami bahasa standar untuk kueri data yang disebut **SQL** (_Structured Query Language_). Oleh karena itu, aplikasi dan website menggunakan perintah kueri SQL ketika berkomunikasi dengan database.
 
-## Task 2: SQL Injection Vulnerability
+## SQL Injection Vulnerability
 
 Di task sebelumnya, kita sudah memahami bagaimana aplikasi _web_ berinteraksi dengan _database_. Sebuah _web_ hanyalah kurir yang membawa pesan (Input Pengguna) untuk diberikan kepada sang penjaga gudang data (_Database_) dalam bentuk **SQL Queries**.
 
@@ -100,7 +100,7 @@ Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) seba
 2. Sebagai seorang Red Teamer, hal paling penting apa yang harus kamu miliki sebelum melakukan sebuah inject _payload_ SQLi ke sebuah target?
 3. Saat membedah payload `' OR 1=1;-- -`, apa fungsi spesifik dari penanda komentar `-- -` di akhir kalimat? Apa yang akan terjadi jika kita lupa menambahkannya?
 
-## Task 3 Automated SQL Injection
+## Automated SQL Injection
 
 Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual bakal menghabiskan banyak tenaga dan waktu. Di situlah kita gunakan tool **SQLMap**.
 
@@ -363,7 +363,7 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu udah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
 4. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
 
-## Task 4: Personal Practical
+## Personal Practical
 
 Ini (_screenshot_) dari simulasi langsung yang disediakan di THM lab penyerangan dan penambangan data (_Data Extraction_) ke target. dan juga tahapan serangan SQLMap mulai dari deteksi celah sampai bocornya data credential:
 

@@ -8,7 +8,7 @@
 
 Room ini bakal ngebahas tuntas soal apa itu _Logs_, kenapa penting banget, dan gimana cara kita ngebaca jejak-jejak digital.
 
-## Task 1: Introduction to Logs
+## Introduction to Logs
 
 Attacker pasti berusaha sebisa mungkin ngehapus jejak (meninggalkan _trace_ sesedikit mungkin) di sistem korban biar nggak ketahuan. Tapi kok tim Security tetep bisa mengetahui gimana serangannya terjadi, bahkan nemuin siapa dalangnya?
 
@@ -49,7 +49,7 @@ Setelah nyelesaiin _room_ ini, kita bakal belajar soal:
 
 - Bisa kasih salah satu contoh kenapa _Auditing and Compliance_ sangat butuh campur tangan _Logs_?
 
-## Task 2: Types of Logs
+## Types of Logs
 
 Dari awal kita udah tau betapa pentingnya _logs_. Tapi tunggu dulu, ada tantangan besar di sini. Bayangin kamu lagi menelusuri atau nginvestigasi _error_ (atau bahkan serangan dari _attacker_) di sebuah server. Kamu buka satu file _log_ utama server tersebut, lalu Kamu disuguhi puluhan ribu baris teks aneh yang isinya campur aduk dari berbagai macam _service_ sistem operasi tersebut. Pastinya kamu bakal _lost_ (kebingungan) nyari mana yang penting. Ini persis kayak disuruh nyari selembar struk ATM yang jatuh di tengah tumpukan gunungan sampah.
 
@@ -80,7 +80,7 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 - Coba sebutin alasan logis paling utama kenapa _logs_ itu wajib dipisah-pisah golongannya?
 - Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau ngecek riwayat siapa aja yang berhasil (atau gagal) nyoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu bakal kamu bedah duluan?
 
-## Task 3: Windows Event Logs
+## Windows Event Logs
 
 Sebagai sistem operasi paling populer, **Windows** juga dilengkapi dengan mekanisme _logging_ bawaan yang lengkap. Sama seperti konsep di Task 2, Windows memisahkan rekaman aktivitasnya ke dalam berbagai kategori.
 
@@ -136,7 +136,7 @@ Berikut ini adalah tabel daftar **Event ID** penting yang wajib diingat di Windo
 
 Sebenarnya masih banyak banget _Event ID_ lainnya di Windows selain yang ada di atas. Nggak perlu ngafalin semuanya, tapi setidaknya yang ada di tabel ini adalah Event ID yang paling sering muncul dan paling penting buat diingat saat investigasi.
 
-## Task 4: Web Server Access Logs Analysis
+## Web Server Access Logs Analysis
 
 Setiap hari kita pasti berinteraksi sama *website*. Entah itu cuma sekadar baca artikel, _login_ ke akun, atau _upload_ file. Semua aksi yang kita lakuin ini disebut sebagai **request**.
 
@@ -159,7 +159,7 @@ Berikut *tools* bawaan Linux yang bakal jadi teman harianmu buat ngebongkar _log
 | Perintah (_Command_) | Kegunaan Utama saat Investigasi | Contoh Penggunaan |
 | :--- | :--- | :--- |
 | `cat` | Buat nampilin seluruh isi file teks langsung ke layar terminal. | `cat access.log`<br><br>(Atau buat gabungin dua log jadi satu: `cat log1 log2 > combined_log`) |
-| `grep` | **(_Most Used!_)** Buat nyari kata kunci spesifik di dalam file. Kalau kamu cuma naruh IP _attacker_, baris log yang _nggak_ ada IP itu bakal diabaikan. | `grep "10.10.10.1" access.log` |
+| `grep` | Buat nyari kata kunci spesifik di dalam file. Kalau kamu cuma naruh IP _attacker_, baris log yang _nggak_ ada IP itu bakal diabaikan. | `grep "10.10.10.1" access.log` |
 | `less` | Kalau file _log_-nya bergiga-giga, pakai ini biar layarnya nggak penuh. File bakal dibaca halaman per halaman (_page by page_). Tekan _Spacebar_ buat lanjut ke bawah. | `less access.log` <br><br>(Pro Tip: pas di dalam `less`, pencet `/` terus masukin teks buat ngelakuin pencarian cepat). |
 
 ---

@@ -4,7 +4,7 @@
 - **Category:** Web Hacking
 - **Difficulty:** Easy
 
-## Task 1: Introduction
+## Introduction
 
 Di sisi offensive, database bisa bantuin kita ngerti kerentanan SQL pake lebih baik, kayak SQL injection, dan bikin Query yang bantuin kita manipulasi atau ngambil data di dalam layanan yang udah disusupi. Di sisi lain, sisi defensif, database bisa bantuin kita nelusurin basis data dan nemuin aktivitas mencurigakan atau informasi relevan; database juga bisa bantuin kita ngelindungin layanan pake lebih baik dengan nerapin batasan waktu dibutuhin.
 
@@ -19,7 +19,7 @@ Karena database ada di mana-mana, penting banget buat ngerti ini. Kita bakal bel
 - Paham cara pake SQL Clauses **(perintah tambahan buat nyaring data)**
 - Paham cara jalanin berbagai **Operations**, **Operators**, dan **Functions** di dalam SQL
 
-## Task 2: Databases 101
+## Databases 101
 
 ### Introducing Databases
 
@@ -102,7 +102,7 @@ Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohny
 
 - **Foreign Key:** itu kolom (atau kumpulan kolom) yang fungsinya jadi penghubung antara dua tabel dalam sebuah database. Contohnya, kita bisa tambahin kolom `id_penulis` di tabel Buku, kolom ini bertindak sebagai **Foreign Key** karena nilainya merujuk langsung ke kolom id di tabel Penulis. Foreign Key inilah yang bikin terciptanya hubungan antar tabel dalam relational database, dalam satu tabel kita boleh punya lebih dari satu Foreign Key.
 
-## Task 3: SQL
+## SQL
 
 ### What is SQL?
 
@@ -132,7 +132,7 @@ Berikut beberapa manfaat yang didapet dengan belajar dan pake SQL:
 
 - **Flexible:** SQL nyediain berbagai macam kapabilitas dalam hal querying database, ini bikin pengguna bisa jalanin tugas analisis data yang luas secara efisien banget.
 
-## Task 4: Databases And Table Statement
+## Databases And Table Statement
 
 ### Time to Learn
 
@@ -275,7 +275,7 @@ Mirip sama hapus database, kita juga bisa hapus tabel pake statement `DROP`. Sin
 mysql> DROP TABLE table_name;
 ```
 
-## Task 5: CRUD Operations
+## CRUD Operations
 
 ### CRUD
 
@@ -383,7 +383,7 @@ Singkatnya, hasil operasi CRUD penting banget buat operasi data dan waktu berint
 - **Update (`UPDATE` statement)** - Ngubah data yang udah ada di dalam tabel.
 - **Delete (`DELETE` statement)** - Hapus data dari tabel.
 
-## Task 6: Clauses
+## Clauses
 
 Klausa itu komponen tambahan dari sebuah pernyataan yang fungsinya buat netapin kriteria spesifik di data yang bakal kita manipulasi. Kalau pernyataan dasar kayak `SELECT` atau `UPDATE` itu perintah utamanya, maka klausa kayak `WHERE` atau `FROM` itu pemberi instruksi detail soal data mana yang harus diambil atau gimana urutannya ditampilin.
 
@@ -519,7 +519,7 @@ mysql> SELECT name, COUNT(*)
 
 Di contoh di atas, kita bisa liat bahwa query ngembaliin buku-buku pake nama yang ngandung kata **hack** beserta jumlahnya.
 
-## Task 7: Operators
+## Operators
 
 Operator fungsinya buat filter dan manipulasi data secara efektif. Dengan nguasain operator, kita bisa bangun query yang jauh lebih akurat dan canggih daripada sekadar pengambilan data standar.
 
@@ -726,7 +726,7 @@ mysql> SELECT *
 3 rows in set (0.00 sec)
 ```
 
-## Task 8: Functions
+## Functions
 
 Waktu kerja sama data, fungsi bisa bantuin kita nyederhanaiin query, lakuin operasi, serta manipulasi data pake lebih efisien. Ayo kita jelajahin beberapa fungsi yang sering dipake biar pemahaman kita makin luwes!
 

@@ -4,7 +4,7 @@
 - **Kategori:** Defensive Security
 - **Difficulty:** easy
 
-## Task 1: Introduction to Digital Forensics
+## Introduction to Digital Forensics
 
 **Digital Forensics** adalah cabang forensic yang khusus menyelidiki **cyber crime** menggunakan tools dan teknik buat nemuin, menganalisis, dan melaporkan bukti digital.
 
@@ -26,7 +26,7 @@
 
 **Q&A:** Cabang forensic yang khusus nyelidikin cyber crime? → **?**
 
-## Task 2: Digital Forensics Methodology
+## Digital Forensics Methodology
 
 **NIST** mendefinisikan proses digital forensics dalam **4 fase:**
 
@@ -55,7 +55,7 @@
 - Jumlah fase digital forensics menurut NIST? → **?**
 - Forensik yang fokus ke network traffic logs? → **?**
 
-## Task 3: Evidence Acquisition
+## Evidence Acquisition
 
 Pengambilan bukti harus dilakukan dengan aman tanpa mengubah data asli. Beberapa praktik penting:
 
@@ -86,7 +86,7 @@ Alat yang memblokir semua aksi tulis ke bukti digital → menjaga data tetap ori
 - Dokumen yang berisi semua detail tentang bukti? → **?**
 - Tools buat mencegah perubahan data pada bukti digital? → **?**
 
-## Task 4: Windows Forensics
+## Windows Forensics
 
 Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit) dari sistem. Ada 2 kategori:
 
@@ -117,7 +117,7 @@ Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit
 
 **Q&A:** Jenis forensic image buat ngumpulin data volatile? → **?**
 
-## Task 5: Practical Example of Digital Forensics
+## Practical Example of Digital Forensics
 
 Skenario: Kucing bernama **Gato** diculik → penculik kirim surat tebusan dalam format MS Word → di-convert ke PDF.
 

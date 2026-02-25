@@ -4,7 +4,7 @@
 - **Kategori:** Defensive Security
 - **Difficulty:** easy
 
-## Task 1: Introduction to SOC
+## Introduction to SOC
 
 **SOC** (_Security Operations Center_) = tim spesialis keamanan yang memantau, mendeteksi, dan merespons ancaman cyber 24/7.
 
@@ -12,7 +12,7 @@ Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk
 
 **Learning Objectives:** Pondasi SOC, taktik Detection & Response, peran People/Processes/Technology, hands-on.
 
-## Task 2: Purpose And Component
+## Purpose And Component
 
 <p align="center">
 <img src="../../Assets/Images/SOC.png" alt="SOC Operations Diagram">
@@ -34,7 +34,7 @@ Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk
 
 Tiga pilar SOC: **People** (manusia), **Processes** (prosedur), **Technology** (tools). Ketiganya harus jalan bareng buat pertahanan yang matang.
 
-## Task 3: People
+## People
 
 Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _False Positives_ dari security solutions → manusia yang validasi mana ancaman beneran.
 
@@ -62,7 +62,7 @@ Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _Fal
 - Yang bikin Security Rules? → **?**
 - Yang atur Processes & lapor ke CISO? → **?**
 
-## Task 4: Processes
+## Processes
 
 ### Alert Triage
 Langkah pertama SOC — klasifikasi severity tiap alert pake **5 Ws:**
@@ -87,7 +87,7 @@ Alert yang valid → diubah jadi **tiket eskalasi** ke L2/L3 + sertakan 5Ws & sc
 ### Incident Response and Forensics
 Kasus kritis → L3/Incident Responder jalanin tanggap darurat + forensics buat cari root cause.
 
-## Task 5: Technology
+## Technology
 
 Security solutions utama di SOC:
 

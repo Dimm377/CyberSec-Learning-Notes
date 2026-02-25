@@ -8,7 +8,7 @@
 
 ---
 
-## Task 1: Ye Ol' Search Engine
+## Ye Ol' Search Engine
 
 Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-jalan terus di internet buat nyatet semua website yang dia temui.
 
@@ -19,7 +19,7 @@ Cara kerjanya:
 
 ---
 
-## Task 2: Let's Learn About Crawlers
+## Let's Learn About Crawlers
 
 Crawler itu kayak agen rahasia yang tugasnya ngumpulin informasi.
 
@@ -43,7 +43,7 @@ Dia ngambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keyword
 
 ---
 
-## Task 3: Enter: Search Engine Optimisation (SEO)
+## Enter: Search Engine Optimisation (SEO)
 
 SEO itu seni bikin website kita disukai sama Google biar muncul di halaman pertama.
 
@@ -70,7 +70,7 @@ Task ini sebenernya nyuruh kita pake tool kayak "SEO Site Checkup" buat ngecek p
 
 ---
 
-## Task 4: Beepboop - robots.txt
+## Beepboop - robots.txt
 
 Task ini ngebahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
 
@@ -123,7 +123,7 @@ File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, 
 
 ---
 
-## Task 6: What is Google Dorking?
+## What is Google Dorking?
 
 Ini dia menu utamanya: **Google Dorking**.
 Teknik pake operator pencarian Google buat nemuin hasil yang spesifik banget. Di dunia security, ini dipake buat **Reconnaissance** (nyari info target).

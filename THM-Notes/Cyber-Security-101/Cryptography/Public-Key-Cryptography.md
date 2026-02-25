@@ -11,14 +11,14 @@
 
 ---
 
-## Task 1: Introduction
+## Introduction
 
 **Konsep Dasar:**
 Room ini ngebahas **Public Key Cryptography** (atau Asymmetric Encryption), yang jadi fondasi keamanan komunikasi internet sekarang (kayak HTTPS dan SSH). Beda sama Symmetric Encryption yang cuma pake satu kunci, Asymmetric Encryption pake sepasang kunci: **Public Key** dan **Private Key**.
 
 ---
 
-## Task 2: Common Use of Asymmetric Encryption
+## Common Use of Asymmetric Encryption
 
 **Analogi Kunci:**
 Bayangin sebuah kotak pos (public key) yang bisa diakses siapa aja buat masukin surat. Tapi, cuma orang yang megang kunci kotak pos itu (private key) yang bisa buka dan ambil surat di dalamnya.
@@ -30,7 +30,7 @@ Bayangin sebuah kotak pos (public key) yang bisa diakses siapa aja buat masukin 
 
 ---
 
-## Task 3: RSA
+## RSA
 
 **RSA (Rivest-Shamir-Adleman):**
 Algoritma asymmetric paling populer yang keamanannya tergantung sama **kesulitan memfaktorkan bilangan prima yang sangat besar**.
@@ -51,7 +51,7 @@ Algoritma asymmetric paling populer yang keamanannya tergantung sama **kesulitan
 
 ---
 
-## Task 4: Diffie-Hellman Key Exchange
+## Diffie-Hellman Key Exchange
 
 **Konsep:**
 Metode buat dua pihak (Alice dan Bob) nyepakatin sebuah **Shared Secret Key** lewat jalur komunikasi yang gak aman, tanpa pernah ngirim kunci rahasia itu sendiri.
@@ -74,7 +74,7 @@ Metode buat dua pihak (Alice dan Bob) nyepakatin sebuah **Shared Secret Key** le
 
 ---
 
-## Task 5: SSH
+## SSH
 
 **Secure Shell (SSH):**
 Protokol jaringan yang pake kriptografi kunci publik buat ngamanin login jarak jauh dan layanan jaringan lainnya.
@@ -93,7 +93,7 @@ File Private Key RSA biasanya diawali pake header:
 
 ---
 
-## Task 6: Digital Signatures and Certificates
+## Digital Signatures and Certificates
 
 **Digital Signature (Tanda Tangan Digital):**
 Dipake buat buktiin **autentisitas** (pengirim asli) dan **integritas** (pesan gak berubah) dari suatu pesan atau dokumen.
@@ -108,7 +108,7 @@ File yang ngikat Public Key sama identitas pemiliknya (kayak website), ditandata
 
 ---
 
-## Task 7: PGP and GPG
+## PGP and GPG
 
 **PGP (Pretty Good Privacy) & GPG (GNU Privacy Guard):**
 Standar buat enkripsi file dan email. GPG itu implementasi open-source dari standar OpenPGP.

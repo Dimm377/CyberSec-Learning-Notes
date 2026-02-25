@@ -8,7 +8,7 @@
 
 ---
 
-## Task 1: Introduction
+## Introduction
 
 Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
 
@@ -22,7 +22,7 @@ Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu.
 
 ---
 
-## Task 2: Web Application Overview
+## Web Application Overview
 
 Intinya, aplikasi web itu kerjanya pakai konsep **Client-Server**. Ada yang minta (kita), ada yang ngelayanin (server).
 
@@ -59,7 +59,7 @@ Biar gampang, bayangin web app itu seperti sebuah planet.
 
 ---
 
-## Task 3: Uniform Resource Locator (URL)
+## Uniform Resource Locator (URL)
 
 URL itu sebenernya alamat lengkap buat nyari resource di internet/web server. Ibaratnya kayak alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
 
@@ -105,7 +105,7 @@ Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` b
 
 ---
 
-## Task 4: HTTP Messages
+## HTTP Messages
 
 HTTP itu bahasa yang dipake Client dan Server buat ngobrol. komunikasi mereka bentuknya pesan teks sederhana.
 
@@ -138,7 +138,7 @@ Sebuah pesan HTTP biasanya punya format seperti ini:
 
 ---
 
-## Task 5: HTTP Request (Method & Request Line)
+## HTTP Request (Method & Request Line)
 
 membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya ada 3 bagian penting:
 
@@ -171,7 +171,7 @@ membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya 
 
 ---
 
-## Task 6: HTTP Request (Headers & Body)
+## HTTP Request (Headers & Body)
 
 Setelah baris pertama (Request Line), ada **Headers** dan **Body**.
 
@@ -266,7 +266,7 @@ Content-Type: application/xml
 
 ---
 
-## Task 7: HTTP Response (Status Line & Codes)
+## HTTP Response (Status Line & Codes)
 
 Pas server ngebales request kita, dia kirim **HTTP Response**. Baris pertamanya namanya **Status Line**.
 
@@ -311,7 +311,7 @@ Isinya ada 3 macem:
 
 ---
 
-## Task 8: HTTP Response (Headers & Body)
+## HTTP Response (Headers & Body)
 
 Sama kayak Request, Response juga punya **Headers** dan **Body**.
 
@@ -348,7 +348,7 @@ Isi surat balesan dari server. Biasanya berupa:
 
 ---
 
-## Task 9: Security Headers
+## Security Headers
 
 Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tambahan buat website kita. Ini penting banget buat ngehalau serangan kayak XSS, Clickjacking, dll.
 
@@ -390,7 +390,7 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
 
 ---
 
-## Task 10: Practical Task: Making HTTP Requests
+## Practical Task: Making HTTP Requests
 
 Nah, sekarang saatnya praktek! Di task ini kita bakal mainan sama **Mini Emulator** buat simulasi kirim request ke API.
 
@@ -445,7 +445,7 @@ Misi: Hapus user dengan ID 1.
 
 ---
 
-## Task 11: Conclusion
+## Conclusion
 
 **Ringkasan yang udah kita pelajari:**
 

@@ -9,7 +9,7 @@
 
 ---
 
-## Task 1: Key Terms
+## Key Terms
 
 **Konsep Dasar:**
 
@@ -23,7 +23,7 @@
 
 ---
 
-## Task 2: What is a hash function?
+## What is a hash function?
 
 **Definisi:**
 Fungsi hash beda sama enkripsi. **Gak ada kunci**, dan dimaksudkan biar **mustahil (atau secara komputasi gak praktis)** buat balikin output jadi input.
@@ -72,7 +72,7 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 
 ---
 
-## Task 3: Insecure Password Storage for Authentication
+## Insecure Password Storage for Authentication
 
 **Risiko Penyimpanan Password:**
 
@@ -84,7 +84,7 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 
 ---
 
-## Task 4: Using Hashing for Secure Password Storage
+## Using Hashing for Secure Password Storage
 
 **Goal:** Ngamanin password dari serangan Rainbow Table dan Hash Collision.
 
@@ -107,7 +107,7 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 
 ---
 
-## Task 5: Recognising Password Hashes
+## Recognising Password Hashes
 
 **Goal:** Identifikasi format hash password yang umum ditemuin di sistem Unix dan Windows.
 
@@ -150,7 +150,7 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 
 ---
 
-## Task 6: Password Cracking
+## Password Cracking
 
 **Konsep:**
 Hashing itu fungsi satu arah (one-way). Kita gak bisa "mendekripsi" hash.
@@ -175,7 +175,7 @@ Hashing itu fungsi satu arah (one-way). Kita gak bisa "mendekripsi" hash.
 
 ---
 
-## Task 7: Hashing for Integrity Checking
+## Hashing for Integrity Checking
 
 **Goal:** Mastiin file asli dan gak dimodifikasi (tampered).
 
@@ -199,7 +199,7 @@ Hashing standar cuma jamin **Integritas** (file gak berubah), tapi gak jamin **A
 
 ---
 
-## Task 8: Conclusion
+## Conclusion
 
 **Ringkasan Perbedaan Utama:**
 

@@ -9,7 +9,7 @@
 
 ---
 
-## Task 1: Introduction
+## Introduction
 
 Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kita bakal belajar dasar-dasar yang penting sebelum masuk ke penjelasan yang lebih kompleks.
 
@@ -22,7 +22,7 @@ Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kit
 - Cipher asimetris umum
 - Matematika dasar yang sering dipake di kriptografi (XOR & Modulo)
 
-## Task 2: Importance of Cryptography
+## Importance of Cryptography
 
 Cryptography itu praktek dan studi tentang teknik komunikasi yang aman dan perlindungan data di mana ada pihak ketiga (lawan). Intinya, lawan gak boleh sampe liat (disclose) atau ngubah (alter) isi pesan tersebut.
 
@@ -39,7 +39,7 @@ Selain itu, cryptography juga dipake buat memenuhi standar regulasi internasiona
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** ?
 
-## Task 3: Plaintext to Ciphertext
+## Plaintext to Ciphertext
 
 Di sini kita belajar gimana data berubah bentuk dari yang bisa dibaca manusia "plaintext" jadi sebuah kode rahasia "ciphertext".
 
@@ -66,7 +66,7 @@ Di sini kita belajar gimana data berubah bentuk dari yang bisa dibaca manusia "p
 - **Question:** What do you call the process that returns the plaintext?
 - **Answer:** ?
 
-## Task 4: Historical Cipher
+## Historical Cipher
 
 Ini ngebahas metode enkripsi kuno yang jadi dasar buat cryptography modern. Meskipun sekarang dianggep lemah, ngerti logika di baliknya penting banget.
 
@@ -112,7 +112,7 @@ Mesin enkripsi yang dipake tentara Jerman waktu Perang Dunia II.
 - **Answer:** ?
   > (Penjelasan: Bisa pake tool online kayak [Cryptii](https://cryptii.com/pipes/caesar-cipher). Masukin ciphertext `Xld Hzhz Apntyel dlhte` dan pake **Shift 11** ke arah kanan buat dapetin teks aslinya)\_
 
-## Task 5: Types of Encryption
+## Types of Encryption
 
 Dalam kriptografi modern, ada dua kategori utama enkripsi: **Symmetric** (Simetris) dan **Asymmetric** (Asimetris).
 
@@ -161,7 +161,7 @@ Pake **sepasang kunci**: _Public Key_ (buat mengenkripsi/mengunci) dan _Private 
 
 - **Question:** Which encryption standard uses the same key to encrypt and decrypt?
 - **Answer:** ?
-## Task 6: Basic Math
+## Basic Math
 
 Kriptografi modern dibangun di atas fondasi matematika. Task ini ngebahas dua operasi logika dan aritmatika yang paling sering muncul dalam algoritma keamanan.
 

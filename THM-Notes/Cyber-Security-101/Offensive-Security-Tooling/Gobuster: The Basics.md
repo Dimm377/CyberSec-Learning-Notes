@@ -4,7 +4,7 @@
 - **Category:** Offensive Security Tooling
 - **Difficulty:** Easy
 
-## Task 1: Introduction
+## Introduction
 
 Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissance. Di sini kita bakal belajar bagaimana cara tool ini bisa menemukan directory web, subdomain, sampai virtual host. (Vhost)
 
@@ -16,7 +16,7 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 - Cara pakai Gobuster buat ngintip **virtual hosts**
 - caranya memilih dan memakai **wordlist** yang cocok untuk scanning
 
-## Task 2: Environment & Setup
+## Environment & Setup
 
 Karena Gobuster ini dibuat pakai bahasa **Go**, dia cukup fleksibel dan bisa jalan di berbagai OS (Linux, macOS, bahkan Windows). Berikut cara install-nya biar kita bisa langsung praktek.
 
@@ -57,7 +57,7 @@ Caranya:
 2.  Ekstrak filenya.
 3.  Jalanin lewat CMD atau PowerShell (`.\gobuster.exe ...`).
 
-## Task 3: Gobuster: Introduction
+## Gobuster: Introduction
 
 Gobuster adalah _open-source offensive tool_ yang ditulis menggunakan bahasa **Go**. Alat ini bekerja dengan cara _brute-forcing_ untuk menemukan directory web, subdomain DNS, vhosts, Amazon S3 buckets, hingga Google Cloud Storage menggunakan wordlist tertentu.
 
@@ -150,7 +150,7 @@ contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration 
 - `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal ngambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan ngirim request ke sana.
 - `-t 64`: Ini ngeset jumlah threads jadi 64. Bikin proses scan jadi jauh lebih ngebut dibanding default-nya.
 
-## Task 4: Use Case: Directory And File Enumeration
+## Use Case: Directory And File Enumeration
 
 Gobuster punya mode `dir` yang berguna untuk enumerate directory dan file di sebuah website. Ini terpakai pas lagi pentest buat nyari tau struktur direktori target.
 
@@ -214,7 +214,7 @@ Contoh kedua, kalau mau nyari file spesifik (misal PHP atau JS), kita bisa pake 
 
 `gobuster dir -u "http://www.yourbrokenweb.thm" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.js`
 
-## Task 5: Use Case: DNS Subdomain Enumeration
+## Use Case: DNS Subdomain Enumeration
 
 Mode selanjutnya yang bakal kita bahas adalah mode `dns`. Mode ini memungkinkan Gobuster buat nge-bruteforce subdomain.
 
@@ -287,7 +287,7 @@ Finished
 
 Nah, dari hasil di atas kita nemu subdomain kayak `shop`, `academy`, sama `primary` yang mungkin gak keliatan dari halaman utama.
 
-## Task 6: Use Case: Vhost Enumeration
+## Use Case: Vhost Enumeration
 
 Mode terakhir yang bakal kita bahas adalah mode `vhost`. Mode ini mengizinkan Gobuster buat nge-bruteforce virtual host.
 

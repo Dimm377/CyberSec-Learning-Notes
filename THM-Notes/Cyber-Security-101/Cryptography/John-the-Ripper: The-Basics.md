@@ -8,7 +8,7 @@
 
 ---
 
-## Task 1: Introduction
+## Introduction
 
 **Apa itu John the Ripper (JtR)?**
 John the Ripper itu salah satu tool "password cracker" paling populer dan fleksibel. Tool ini dirancang buat mendeteksi password yang lemah (weak password) dengan cara lakuin proses cracking hash penggunanya.
@@ -25,7 +25,7 @@ Buat pake JtR dengan efektif, perlu paham dasar-dasar:
 
 ---
 
-## Task 2: Basic Terms
+## Basic Terms
 
 Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 
@@ -44,7 +44,7 @@ Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 
 ---
 
-## Task 3: Setting Up Your System
+## Setting Up Your System
 
 Di task ini, kita siapin environment buat pake John the Ripper.
 
@@ -71,7 +71,7 @@ Wordlist yang paling umum dipake buat CTF dan belajar itu `rockyou.txt`.
 
 ---
 
-## Task 4: Wordlists & Regex
+## Wordlists & Regex
 
 Di task ini, kita belajar cara pake wordlist dan identifikasi jenis hash.
 
@@ -106,7 +106,7 @@ Berikut jawaban buat latihan hash yang dikasih:
 
 ---
 
-## Task 5: Cracking Windows Authentication
+## Cracking Windows Authentication
 
 Task ini ngebahas cara crack hash otentikasi Windows, atau sering disebut **NTLM**.
 
@@ -134,7 +134,7 @@ Buat latihan ini, kita diminta nge-crack file `ntlm.txt`.
 
 ---
 
-## Task 6: Cracking /etc/shadow
+## Cracking /etc/shadow
 
 Task ini ngajarin cara crack password user di Linux pake gabungan file `/etc/passwd` dan `/etc/shadow`.
 
@@ -167,7 +167,7 @@ Task ini ngajarin cara crack password user di Linux pake gabungan file `/etc/pas
 
 ---
 
-## Task 7: Single Crack Mode
+## Single Crack Mode
 
 Task ini ngebahas **Single Crack Mode**, fitur JtR buat nge-crack password yang mirip sama username-nya.
 
@@ -198,7 +198,7 @@ Task ini ngebahas **Single Crack Mode**, fitur JtR buat nge-crack password yang 
 
 ---
 
-## Task 8: Custom Rules
+## Custom Rules
 
 Task ini ngajarin cara bikin aturan (rules) sendiri buat modifikasi wordlist. Ini berguna kalau kita tau pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
 
@@ -227,7 +227,7 @@ Misal kita mau bikin rule bernama `THMRules` yang nambahin angka di belakang kat
 
 ---
 
-## Task 9: Cracking ZIP Password
+## Cracking ZIP Password
 
 Task ini ngebahas cara crack file ZIP yang di-password. John gak bisa baca file ZIP langsung, jadi butuh "perantara".
 
@@ -261,7 +261,7 @@ Kita pake tool bernama `zip2john` buat ngubah file ZIP jadi format hash yang bis
 
 ---
 
-## Task 10: Cracking RAR Archive
+## Cracking RAR Archive
 
 Mirip sama ZIP, buat file RAR kita butuh tool perantara bernama `rar2john`.
 
@@ -295,7 +295,7 @@ Ngubah file RAR jadi format hash buat John.
 
 ---
 
-## Task 11: Cracking SSH Keys
+## Cracking SSH Keys
 
 Task terakhir ini ngajarin cara crack private key SSH (`id_rsa`) yang diproteksi passphrase.
 

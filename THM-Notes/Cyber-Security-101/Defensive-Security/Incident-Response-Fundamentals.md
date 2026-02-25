@@ -4,7 +4,7 @@
 - **Kategori:** Defensive Security
 - **Difficulty:** easy
 
-## Task 1: Introduction to Incident Response
+## Introduction to Incident Response
 
 Bayangin kamu tinggal di jalan yang rawan kejahatan dengan banyak barang mahal di rumah. Pasti kepikiran buat punya security guard dan beberapa kamera CCTV di rumah. Menyembunyikan barang berharga di ruangan bawah tanah tersembunyi juga ide bagus kalau ada penyusup yang berhasil masuk ke rumah. Ini semua langkah-langkah yang kamu rencanain buat keamanan rumah, bahkan sebelum serangan terjadi.
 
@@ -24,7 +24,7 @@ Room ini bakal bantu kamu memahami konsep-konsep penting dari incident response 
 - Tools buat Incident Detection dan Response beserta peran PlayBooks
 - Incident Response Plan
 
-## Task 2: What are Incidents?
+## What are Incidents?
 
 Berbagai proses (interaktif & background) jalan di perangkat kita dan menghasilkan **events**. Events ini dimasukkin ke **security solutions** sebagai **logs** buat mendeteksi aktivitas berbahaya. Tantangan sebenarnya dimulai setelah security solution berhasil mendeteksi aktivitas mencurigakan dan memicu _alert_.
 
@@ -47,7 +47,7 @@ Kalau ada banyak insiden terjadi bersamaan, tim keamanan butuh prioritas berdasa
 
 * *Contoh*: Dari gambar di atas, **Title** merujuk ke ID tiket dari sebuah alert/insiden. Tim SOC akan memprioritaskan penyelesaian tiket **TKS-21** dan **MCA-36** terlebih dahulu karena statusnya **Critical**, sedangkan tiket dengan status Low seperti IAM-01 bisa ditunda pengerjaannya.
 
-## Task 3: Types of Incidents
+## Types of Incidents
 
 Insiden keamanan siber itu ada banyak jenisnya, bukan cuma sebatas hacking biasa. Berbagai jenis insiden ini bisa terjadi secara mandiri atau serentak pada satu korban.
 
@@ -67,7 +67,7 @@ Tiap insiden ini punya potensi ngerusak yang unik, dan dampaknya gak bisa dipuku
 - Kenapa Insider Attack dianggap lebih berbahaya dari pada serangan dari luar (pihak eksternal)?
 - Apa contoh paling umum dari insiden Denial of Service (DoS)?
 
-## Task 4: Incident Response Process
+## Incident Response Process
 
 Karena *nature* dari tiap insiden itu beda-beda, menangani banyak insiden sekaligus di suatu environment bisa jadi kerusuhan besar. Makanya, butuh sebuah proses terstruktur atau kerangka kerja (**Framework**) buat menangani insiden biar lebih terarah.
 
@@ -129,7 +129,7 @@ Komponen utama dari *Incident Response Plan* itu mencakup:
 - Memangnya buat apa sebuah organisasi bikin standar _Incident Response Plan_, dan siapa petinggi yang harus meleges/memvalidasi dokumen ini?
 - Kenapa _Communication plan_ dimasukin sebagai salah satu komponen penting pas nyusun _Incident Response Plan_?
 
-## Task 5: Incident Response Techniques
+## Incident Response Techniques
 
 Ingat kan kalau fase **Identification** (SANS) atau **Detection and Analysis** (NIST) itu susah *kalo cuma dikerjain secara manual* pake mata manusia. Maka dari itu, muncul beragam alat canggih (*security solutions*) buat bantu deteksi insiden secara otomatis, bahkan sampai bantuin merespon insiden secara langsung (misal mengisolasi / *containment*).
 

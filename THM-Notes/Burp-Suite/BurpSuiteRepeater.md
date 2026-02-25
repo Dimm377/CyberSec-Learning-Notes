@@ -13,14 +13,14 @@
 
 Burp Repeater itu bagian dari Burp Suite yang bikin kita bisa nangkep, modifikasi, dan ngirim ulang permintaan HTTP secara manual berkali-kali. Tool ini penting banget buat pengujian kerentanan web karena kita bisa liat respons server secara real-time setelah lakuin perubahan kecil di payload.
 
-## Task 2: What is Repeater?
+## What is Repeater?
 
 Repeater bikin kita bisa lakuin manipulasi request secara manual.
 
 - **Manual Testing:** Beda sama Intruder yang otomatis, Repeater dipake buat pengujian manual yang lebih teliti.
 - **Efficiency:** Kita bisa nyimpen riwayat request dan modifikasi parameter tertentu tanpa harus ngulang proses intercept di browser.
 
-## Task 3: Basic Usage
+## Basic Usage
 
 Proses dasar penggunaan Repeater dalam workflow penetration testing:
 
@@ -29,7 +29,7 @@ Proses dasar penggunaan Repeater dalam workflow penetration testing:
 3. **Modify & Send:** Pindah ke tab Repeater, ubah isi request, terus klik **Send**.
 4. **Analysis:** Amati respon server di panel sebelah kanan buat nyari kejanggalan.
 
-## Task 4: Views & Layouts
+## Views & Layouts
 
 Repeater nyediain berbagai cara buat liat data request dan response.
 
@@ -38,7 +38,7 @@ Repeater nyediain berbagai cara buat liat data request dan response.
 - **Render:** Nampilin respon HTML seolah-olah di dalam browser (visual).
 - **Headers:** Daftar header HTTP yang disusun secara sistematis biar gampang dibaca.
 
-## Task 5: Inspector
+## Inspector
 
 Panel **Inspector** di sisi kanan bikin kita gampang modifikasi elemen request tanpa harus edit teks mentahnya.
 
@@ -46,7 +46,7 @@ Panel **Inspector** di sisi kanan bikin kita gampang modifikasi elemen request t
 - **Body Parameters:** Modifikasi data yang dikirim lewat metode POST.
 - **Attributes:** Edit detail protokol kayak versi HTTP.
 
-## Task 6: Practical Example
+## Practical Example
 
 Dalam praktik ini, kita belajar manipulasi header `User-Agent` atau parameter tertentu buat liat gimana server ngasih respon yang beda.
 

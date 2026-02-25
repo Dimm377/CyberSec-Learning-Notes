@@ -9,13 +9,13 @@
 
 ---
 
-## Task 1: Brief
+## Brief
 
 **SQL Injection (SQLi)** itu kerentanan keamanan web yang bikin penyerang bisa manipulasi query yang dibuat aplikasi ke database-nya. Ini bikin penyerang bisa liat data yang biasanya gak bisa mereka ambil, kayak data milik pengguna lain, atau data apa pun yang bisa diakses sama aplikasi itu sendiri. Dalam banyak kasus, penyerang bisa modifikasi atau hapus data ini, nyebabin perubahan permanen di konten atau aplikasi.
 
 ---
 
-## Task 2: What is a Database?
+## What is a Database?
 
 **Database** itu kumpulan data yang terstruktur.
 *   **DBMS (Database Management System):** Software yang dipake buat ngelola database (misal MySQL, PostgreSQL, Microsoft SQL Server).
@@ -26,7 +26,7 @@
 
 ---
 
-## Task 3: What is SQL?
+## What is SQL?
 
 **SQL (Structured Query Language)** itu bahasa standar buat berinteraksi sama Relational Database.
 
@@ -50,7 +50,7 @@
 
 ---
 
-## Task 4: What is SQL Injection?
+## What is SQL Injection?
 
 SQL Injection terjadi waktu input pengguna yang gak dipercaya digabungin secara dinamis langsung ke dalam query database tanpa sanitasi yang bener.
 
@@ -69,7 +69,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ---
 
-## Task 5: In-Band SQLi
+## In-Band SQLi
 
 **In-Band SQLi** itu waktu penyerang pake saluran komunikasi yang sama buat nge-launch serangan dan ngumpulin hasilnya.
 
@@ -84,7 +84,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ---
 
-## Task 6: Blind SQLi - Authentication Bypass
+## Blind SQLi - Authentication Bypass
 
 **Blind SQLi:** Aplikasi gak nge-return hasil query SQL secara langsung.
 **Authentication Bypass:**
@@ -94,7 +94,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ---
 
-## Task 7: Blind SQLi - Boolean Based
+## Blind SQLi - Boolean Based
 
 **Konsep:**
 *   Aplikasi ngasih respons yang beda (konten halaman, kode status HTTP) tergantung apakah query bernilai TRUE atau FALSE.
@@ -113,7 +113,7 @@ admin' AND SUBSTRING((SELECT password FROM users WHERE username='admin'), 1, 1) 
 
 ---
 
-## Task 8: Blind SQLi - Time Based
+## Blind SQLi - Time Based
 
 **Konsep:**
 *   Dipake waktu aplikasi GAK ngasih perbedaan respons yang keliatan (gak ada error, gak ada perubahan konten).
@@ -132,7 +132,7 @@ Kalau versi database diawali angka '5', tidur selama 5 detik:
 
 ---
 
-## Task 9: Out-of-Band SQLi
+## Out-of-Band SQLi
 
 **Konsep:**
 *   Dipake waktu teknik In-Band dan Blind gak memungkinkan (misal, pemrosesan asinkron).
@@ -147,7 +147,7 @@ Minta file dari server penyerang, bocorin data di subdomain:
 
 ---
 
-## Task 10: Remediation
+## Remediation
 
 **Cara Ngatasin:**
 

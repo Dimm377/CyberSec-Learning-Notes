@@ -11,13 +11,13 @@
 
 ---
 
-## Task 1 & 2: Introduction
+## & 2: Introduction
 
 Nmap (Network Mapper) itu tool open-source paling populer buat audit keamanan dan penemuan jaringan. Tool ini bekerja dengan ngirim paket khusus ke target dan nganalisis responnya buat nentuin host yang aktif, port yang terbuka, sampai sistem operasi yang dipake.
 
 ---
 
-## Task 3: Nmap Switches
+## Nmap Switches
 
 Ngerti "mantra" atau flag dasar buat ngontrol Nmap:
 
@@ -31,7 +31,7 @@ Ngerti "mantra" atau flag dasar buat ngontrol Nmap:
 
 ---
 
-## Task 4 - 7: Scan Types (TCP, SYN, UDP)
+## 7: Scan Types (TCP, SYN, UDP)
 
 Ngerti mekanika di balik layar scan:
 
@@ -41,7 +41,7 @@ Ngerti mekanika di balik layar scan:
 
 ---
 
-## Task 8: NULL, FIN, and Xmas Scans
+## NULL, FIN, and Xmas Scans
 
 Teknik "siluman" buat lewatin firewall lama:
 
@@ -52,7 +52,7 @@ Teknik "siluman" buat lewatin firewall lama:
 
 ---
 
-## Task 9: ICMP Network Scanning
+## ICMP Network Scanning
 
 Dipake buat memetakan host yang aktif di jaringan luas (Ping Sweep).
 
@@ -61,7 +61,7 @@ Dipake buat memetakan host yang aktif di jaringan luas (Ping Sweep).
 
 ---
 
-## Task 10 & 11: NSE Scripts (The Powerhouse)
+## & 11: NSE Scripts (The Powerhouse)
 
 Nmap Scripting Engine (NSE) bikin kita bisa ngotomatisasi tugas-tugas kompleks.
 
@@ -71,7 +71,7 @@ Nmap Scripting Engine (NSE) bikin kita bisa ngotomatisasi tugas-tugas kompleks.
 
 ---
 
-## Task 12: Firewall Evasion
+## Firewall Evasion
 
 Teknik buat ngehindarin deteksi IDS/IPS:
 

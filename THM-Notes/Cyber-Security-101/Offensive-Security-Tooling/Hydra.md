@@ -4,7 +4,7 @@
 - **Category:** Offensive Security Tooling
 - **Difficulty:** Easy
 
-## Task 1: Introduction
+## Introduction
 
 ### What is Hydra?
 
@@ -35,7 +35,7 @@ Seringkali, CCTV atau Web Frameworks pake default credentials kayak `admin:passw
 
 Jadi, ganti default password dan bikin kombinasi yang rumit biar susah di hack
 
-## Task 2: Using Hydra
+## Using Hydra
 
 Sebenernya Hydra ini udah masuk ke official repository banyak distro Linux, jadi install nya mudah.
 

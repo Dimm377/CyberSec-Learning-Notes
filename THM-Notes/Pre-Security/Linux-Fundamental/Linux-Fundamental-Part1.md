@@ -61,7 +61,7 @@ Operator bikin kita bisa ngarahin output atau nggabungin beberapa perintah sekal
 
 ---
 
-### Task 8: Conclusions & Summaries
+### Conclusions & Summaries
 
 Nguasain dasar-dasar ini itu syarat mutlak sebelum belajar administrasi sistem atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya bakal dipake buat nge-exploit sistem atau lakuin _privilege escalation_.
 
