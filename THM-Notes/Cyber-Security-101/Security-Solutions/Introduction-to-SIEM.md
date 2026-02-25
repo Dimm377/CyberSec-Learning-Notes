@@ -23,7 +23,7 @@ Security Information and Event Management system (SIEM) adalah sistem yang mengu
 Beberapa perangkat dalam jaringan berkomunikasi satu sama lain dan, sebagian besar waktu, dengan Internet melalui router. Gambar di bawah menunjukkan contoh jaringan sederhana yang terdiri dari beberapa Endpoint berbasis Linux/Windows, satu server data, dan satu situs web.
 
 <p align="center">
-<img src="../../Assets/Images/Logs-Event.png" alt="Network Diagram" width="400px"/>
+<img src="../../Assets/Images/Logs-Event.png" alt="Network Diagram" width="700px"/>
 </p>
 
 Perangkat-perangkat ini terus menghasilkan log eventyang terjadi di dalamnya,  Log yang mereka hasilkan berfungsi sebagai jejak semua aktivitas dan sangat membantu untuk mengidentifikasi aktivitas berbahaya atau melakukan troubleshooting.
