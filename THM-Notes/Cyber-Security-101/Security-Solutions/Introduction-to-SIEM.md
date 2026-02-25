@@ -6,53 +6,81 @@
 
 ## Introduction to SIEM
 
-Security Information and Event Management system (SIEM) adalah sistem yang mengumpulkan, menganalisis, dan mengelola data keamanan dari berbagai sumber dalam jaringan. SIEM membantu dalam mendeteksi, menganalisis, dan merespons insiden keamanan secara real-time
+**Security Information and Event Management (SIEM)** adalah sebuah security solution_ yang bertugas mengumpulkan, menganalisis, dan mengelola data keamanan dari berbagai sumber di dalam jaringan. Secara fungsional, SIEM membantu tim keamanan seperti _Security Operations Center_ / SOC untuk mendeteksi keanehan, menganalisis ancaman, dan merespons insiden keamanan secara *real-time*.
 
 ### Learning Objectives
 
-- Memahami berbagai jenis data keamanan yang dikumpulkan oleh SIEM
-- Identifikasi batasan dalam bekerja dengan log yang terisolasi
-- Mengenali tentang pentingnya SIEM sebagai security solution
-- Explore tentang fitur-fitur yang ada di SIEM
-- Mempelajari berbagai jenis log yang dikumpulkan oleh SIEM
+Setelah menyelesaikan modul ini, kita akan memahami:
+- Berbagai jenis data keamanan yang dikumpulkan oleh sistem SIEM.
+- Titik buta (batasan) yang terjadi ketika log hanya dibiarkan terisolasi di masing-masing perangkat.
+- Pentingnya posisi SIEM sebagai pondasi solusi keamanan siber modern.
+- Cara kerja dan fitur-fitur utama yang disediakan oleh alat SIEM.
+
+---
 
 ## Logs Everywhere, Answers Anywhere
 
 ### Log Everywhere
 
-Beberapa perangkat dalam jaringan berkomunikasi satu sama lain dan, sebagian besar waktu, dengan Internet melalui router. Gambar di bawah menunjukkan contoh jaringan sederhana yang terdiri dari beberapa Endpoint berbasis Linux/Windows, satu server data, dan satu situs web.
+Di dalam sebuah arsitektur jaringan, perangkat akan terus berkomunikasi satu sama lain maupun dengan dunia luar (internet) melalui *router*. Gambar di bawah ini mengilustrasikan contoh jaringan sederhana yang terdiri dari perangkat *endpoint* (PC Linux/Windows), sebuah *Data Server*, dan sebuah situs web.
 
 <p align="center">
 <img src="../../Assets/Images/Logs-Event.png" alt="Network Diagram" width="700px"/>
 </p>
 
-Perangkat-perangkat ini terus menghasilkan log eventyang terjadi di dalamnya,  Log yang mereka hasilkan berfungsi sebagai jejak semua aktivitas dan sangat membantu untuk mengidentifikasi aktivitas berbahaya atau melakukan troubleshooting.
+Setiap perangkat tersebut secara aktif menghasilkan **Log Events** secara berkelanjutan. Rangkaian log ini berfungsi sebagai jejak digital historis dari setiap aktivitas komputer, yang menjadi instrumen krusial bagi analis keamanan untuk mengejar jejak peretasan maupun sekadar melakukan _troubleshooting_ sistem.
 
- Sumber log dibagi menjadi dua kategori:
+Secara garis besar, klasifikasi pengumpulan _log_ ini dibagi menjadi dua kategori utama:
 
-### Host-Centric Log Sources
+### 1. Host-Centric Log Sources
 
-Sumber log ini mencatat peristiwa yang terjadi di dalam atau terkait dengan host
-Perangkat yang menghasilkan log yang berpusat pada host mencakup Windows, Linux, server, dll.
+Ini adalah sumber log yang fokus mencatat peristiwa spesifik di dalam komponen internal sebuah mesin atau perangkat. Perangkat penghasil _Host-Centric Log_ meliputi komputer pengguna (Windows/Linux) maupun _server_ utama.
 
-Beberapa contoh log yang berpusat pada host adalah:
+Beberapa contoh aktivitas yang dicatat dalam log ini:
+- Interaksi pengguna saat membuka, mengakses, atau menghapus sebuah file.
+- Percobaan autentikasi (login sukses maupun gagal) ke dalam sistem operasi.
+- Modifikasi terhadap *registry* sistem (penambahan, pengubahan, atau penghapusan _key_).
+- Eksekusi _script_ melalui terminal seperti PowerShell.
+- Penjalanan program (file *executable*).
 
-- User sedang mengakses sebuah file
-- User sedang login ke dalam sistem
-- Suatu proses menambah/mengedit/menghapus kunci atau nilai registry
-- Menjalankan PowerShell
-- Menjalankan sebuah program executable
 
-### Network-Centric Log Sources
+### 2. Network-Centric Log Sources
 
-jenis log yang terkait jaringan, dihasilkan ketika host berkomunikasi satu sama lain atau mengakses internet untuk mengunjungi situs web, Perangkat yang menghasilkan log yang berpusat pada jaringan adalah firewall, IDS/IPS, router, dll. Beberapa contoh log yang berpusat pada jaringan adalah:
+Berbeda dengan _host-centric_, log jenis ini berfokus pada aktivitas lalu lintas jaringan. Ini mencakup komunikasi antar perangkat di dalam area lokal maupun komunikasi keluar menuju internet. Perangkat pembuat log ini biasanya beroperasi di level infrastruktur perantara, seperti _Firewall_, _Router_, maupun sistem deteksi intrusi (IDS/IPS).
 
-- Koneksi ke SSH
-- Akses File melalui FTP
-- Web Traffic
-- User sedang mengakses internet menggunakan VPN
-- Aktivitas berbagi file
+Beberapa contoh aktivitas yang dicatat di jaringan:
+- Rekam jejak koneksi *remote* (misal via protokol SSH).
+- Transfer dan akses file menggunakan protokol FTP.
+- Lalu lintas aktivitas _browsing_ dan akses situs (*Web Traffic*).
+- Indikasi *user* yang menjalin koneksi aman (atau menyembunyikan IP) ke internet melalui VPN.
+- Aktivitas pembagian komputasi jaringan secara masif (*file sharing*).
+
+---
 
 ### Answers Nowhere
 
-Dari Penjelasan soal log tersebut, sepertinya terlihat sangat mudah untuk mencari log yang terisolasi.
+Melihat penjabaran masifnya data _log_ di atas, secara teori mencari jejak aktivitas hacker seharusnya menjadi sangat mudah. Namun, di real world tidak sesederhana itu.
+
+Beberapa kendala yang mungkin terjadi:
+
+- **Volume Data yang Masif:** Banyaknya sumber log yang tersebar di berbagai perangkat membuat proses pemeriksaan log satu per satu sangat memakan waktu.
+- **Tidak Terpusat (*No Centralization*):** Karena _log_ pada dasarnya menetap (tersimpan) di mesin asalnya, analis dituntut untuk melakukan sambungan *remote login* (seperti lewat SSH untuk Linux, atau RDP untuk Windows) ke setiap perangkat secara manual hanya untuk membacanya. Proses ini sangat tidak efisien dan akan menguras waktu berharga saat jalannya penyelidikan.
+- **Konteks Log Terbatas (*Limited Context*):** Satu kejadian _log_ aja nggak pernah bisa menceritakan gambaran utuh dari sebuah peretasan. Aktivitas _login_ yang kelihatannya normal di satu komputer ternyata bisa jadi awal mula insiden penyusupan beruntun (*Lateral Movement*) kalau nggak dianalisa barengan (dikorelasikan) sama rekam jejak komputer lain di sekitarnya.
+- **Analisis Terbatas (*Limited Analysis*):** setiap log source menghasilkan banyak logs tiap detik nya, menganalisis setiap log secara manual untuk mencari event yang abnormal itu hampir mustahil dilakukan manusia, kadang para analis keamanan melewatkan banyak hal penting.
+- **Masalah Format log (*format log issue*):** analis keamanan perlu mengetahui format log dari setiap log source yang berbeda beda, ini akan memakan waktu dan tenaga.
+
+## Why SIEM ?
+
+Sebelumnya kita sudah membahas tentang log, log source dan kategorinya, dan kendala analis keamanan saat mengidentifikasi sebuah log, lalu bagaimana SIEM sebagai solusi keamanan bisa membantu ?
+
+Disinilah SIEM berperan sebagai solusi keamanan modern, Security Information and Event Management (SIEM) adalah alat yang dirancang untuk mengumpulkan, menganalisis, dan mengelola data keamanan dari berbagai sumber di dalam jaringan
+
+### Fitur utama SIEM
+
+SIEM tidak hanya mengatasi kendala-kendala yang dihadapi analis keamanan, tetapi juga meningkatkan efisiensi tim SOC saat menganalisis log.
+
+Berikut adalah fitur-fitur utama dari SIEM:
+
+- **Centralized Log Collection:**
+
+**SIEM** mengumpulkan log dari berbagai sumber di dalam jaringan lalu dipindahkan ke dalam satu tempat / kelompok. sehingga analis keamanan tidak perlu lagi melakukan secara manual misalnya melakukan remote login pakai SSH atau RDP ke setiap perangkat untuk membaca log.
