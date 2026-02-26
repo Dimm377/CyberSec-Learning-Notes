@@ -168,3 +168,8 @@ Contoh log web server apache:
 ### Log Ingestion
 
 Semua sumber log memberikan banyak informasi, tapi setiap security solution seperti SIEM punya cara masing-masing untuk menerima log tersebut, ini beberapa metode yang digunakan SIEM:
+
+1. **Agent / Forwarder (Program Agen):** Ibarat ngirim intel berukuran sangat kecil (program agen) untuk diinstal di komputer/server target (*Endpoint*). Tugas aplikasi mungil ini murni cuma buat nangkap semua aktivitas penting dan nyebrangin data *log*-nya langsung ke server pusat SIEM (Contoh terkenal: *Splunk Forwarder*).
+2. **Syslog (Bahasa Standar Industri):** Ini adalah protokol sejuta umat. Mayoritas sistem di dunia (mulai dari *web server* sampai *database*) udah nyediain fitur bawaan ini buat ngirim *log* secara langsung & *real-time* ke server yang dituju (SIEM).
+3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (kayak Splunk atau ELK). setelah diunggah, data acak itu bakal diolah (*normalized*) biar gampang dibaca.
+4. **Port-Forwarding (Buka Jalur Pintu):** Analis bisa *setting* server SIEM buat selalu standby pada satu nomor pintu/saluran (*port*) spesifik. Jadi, semua komputer jajaran direksi sampai divisi *marketing* tinggal diperintah untuk nge-*forward* tumpukan *log* harian mereka ke saluran komunikasi itu.
