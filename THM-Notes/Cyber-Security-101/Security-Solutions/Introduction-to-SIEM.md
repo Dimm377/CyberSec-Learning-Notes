@@ -115,4 +115,7 @@ Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk m
 - Health Alert System
 - Daftar percobaan login yang gagal
 - Jumlah aktivitas (Event) yang ada di log
--
+- Rules Triggered ( Menunjukkan seberapa sering indikasi ancaman bentrok dengan aturan/kebijakan khusus yang sudah dibuat analis di dalam sistem SIEM)
+- Top Domain Visited (Domain yang paling sering diakses): Berguna mendeteksi secara visual jika tiba-tiba ada banyak traffic yang mengarah ke situs tak terdaftar
+
+## Log, Source, And Ingestion
