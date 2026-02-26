@@ -84,3 +84,7 @@ Berikut adalah fitur-fitur utama dari SIEM:
 - **Centralized Log Collection:**
 
 **SIEM** mengumpulkan log dari berbagai sumber di dalam jaringan lalu dipindahkan ke dalam satu tempat / kelompok. sehingga analis keamanan tidak perlu lagi melakukan secara manual misalnya melakukan remote login pakai SSH atau RDP ke setiap perangkat untuk membaca log.
+
+- **Normalization of Logs:**
+
+Raw log memiliki ukuran yang besar dan format yang berbeda beda, sehingga SIEM melakukan normalisasi log untuk membuat format log menjadi seragam. sehingga analis keamanan tidak perlu lagi mengetahui format log dari setiap log source yang berbeda beda.
