@@ -125,3 +125,18 @@ Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk m
 Setiap aktivitas yang terjadi pada perangkat yang ada di dalam jaringan akan menghasilkan log, seperti user mengunjungi sebuah website, connect ke SSH, dll
 
 berikut beberapa alat yang dipakai untuk menampilkan log disebuah perangkat:
+
+### Windows Event Viewer
+
+Di windows OS, kita bisa melihat log dengan menggunakan **Event Viewer** yang juga log tersebut dapat diteruskan ke SIEM untuk dianalisis lebih lanjut.
+
+<p>
+<img src="../../Assets/Images/Event-Viewer.png" alt="Windows Event Viewer" width="800px">
+</p>
+
+### Linux Log Files
+
+OS Linux menyimpan log tentang event, errors, peringatan, dan informasi sistem lainnya yang tersimpan dalam bentuk file teks yang tersebar di berbagai direktori antara lain:
+
+- `/var/log/httpd/:` Berisi tentang HTTP Request / Response dan error logs
+- `/var/log/cron:` Berisi tentang aktivitas penjadwalan tugas (cron jobs)
