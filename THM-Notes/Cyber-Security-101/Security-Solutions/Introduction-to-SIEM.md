@@ -119,3 +119,9 @@ Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk m
 - Top Domain Visited (Domain yang paling sering diakses): Berguna mendeteksi secara visual jika tiba-tiba ada banyak traffic yang mengarah ke situs tak terdaftar
 
 ## Log, Source, And Ingestion
+
+### Log Source
+
+Setiap aktivitas yang terjadi pada perangkat yang ada di dalam jaringan akan menghasilkan log, seperti user mengunjungi sebuah website, connect ke SSH, dll
+
+berikut beberapa alat yang dipakai untuk menampilkan log disebuah perangkat:
