@@ -143,12 +143,11 @@ OS Linux menyimpan log tentang event, errors, peringatan, dan informasi sistem l
 - `/var/log/auth.log and /var/log/secure:` Berisi tentang aktivitas login dan authentikasi user
 - `/var/log/kern:` Berisi tentang aktivitas kernel
 
-salah satu contoh log kernel `/var/log/kern`:
-
-**Contoh wujud _Raw Log_ Kernel Linux (`/var/log/kern.log`):**
+salah satu contoh log kernel (`/var/log/kern`):
 
 ```zsh
-May 14 10:25:01 linux-server kernel: [    0.000000] Linux version 5.15.0-72-generic (buildd@lcy02-amd64-046)
-May 14 10:25:05 linux-server kernel: [    2.143210] usb 1-1: new high-speed USB device number 2 using ehci-pci
-May 14 10:26:12 linux-server kernel: [   68.421901] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.  Check SNMP counters.
-May 14 10:28:45 linux-server kernel: [  221.751233] Out of memory: Killed process 8432 (python3) total-vm:451200kB, anon-rss:201400kB, file-rss:0kB
+Feb 26 14:32:10 ubuntu-server kernel: [123456.789123] [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55:66:77:88:99:aa:bb:08:00 SRC=192.168.1.100 DST=192.168.1.50 LEN=60 TOS=0x00 PREC=0x00 TTL=64 ID=39564 DF PROTO=TCP SPT=49152 DPT=22 WINDOW=29200 RES=0x00 SYN URGP=0
+Feb 26 14:35:22 ubuntu-server kernel: [123648.123456] audit: type=1400 audit(1708932922.123:45): apparmor="DENIED" operation="exec" profile="/usr/sbin/nginx" name="/bin/bash" pid=8892 comm="nginx" requested_mask="x" denied_mask="x" fsuid=33 ouid=0
+```
+
+### Web Server Log
