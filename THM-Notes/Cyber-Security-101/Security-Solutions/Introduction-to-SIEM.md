@@ -140,3 +140,15 @@ OS Linux menyimpan log tentang event, errors, peringatan, dan informasi sistem l
 
 - `/var/log/httpd/:` Berisi tentang HTTP Request / Response dan error logs
 - `/var/log/cron:` Berisi tentang aktivitas penjadwalan tugas (cron jobs)
+- `/var/log/auth.log and /var/log/secure:` Berisi tentang aktivitas login dan authentikasi user
+- `/var/log/kern:` Berisi tentang aktivitas kernel
+
+salah satu contoh log kernel `/var/log/kern`:
+
+**Contoh wujud _Raw Log_ Kernel Linux (`/var/log/kern.log`):**
+
+```zsh
+May 14 10:25:01 linux-server kernel: [    0.000000] Linux version 5.15.0-72-generic (buildd@lcy02-amd64-046)
+May 14 10:25:05 linux-server kernel: [    2.143210] usb 1-1: new high-speed USB device number 2 using ehci-pci
+May 14 10:26:12 linux-server kernel: [   68.421901] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.  Check SNMP counters.
+May 14 10:28:45 linux-server kernel: [  221.751233] Out of memory: Killed process 8432 (python3) total-vm:451200kB, anon-rss:201400kB, file-rss:0kB
