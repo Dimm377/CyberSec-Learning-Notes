@@ -151,3 +151,20 @@ Feb 26 14:35:22 ubuntu-server kernel: [123648.123456] audit: type=1400 audit(170
 ```
 
 ### Web Server Log
+
+Penting untuk memantau semua Request dan Response yang masuk dan keluar dari web server, di linux lokasi umum untuk mencatat log web server adalah `/var/log/httpd/` dan `/var/log/apache/`
+
+Contoh log web server apache:
+
+```zsh
+192.168.1.55 - - [26/Feb/2026:14:01:12 +0700] "GET /index.php HTTP/1.1" 200 4521 "https://google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0"
+192.168.1.55 - - [26/Feb/2026:14:01:15 +0700] "GET /assets/style.css HTTP/1.1" 200 1205 "http://kantor.id/index.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+45.33.12.99 - - [26/Feb/2026:15:22:04 +0700] "POST /login.php HTTP/1.1" 401 532 "-" "curl/7.68.0"
+45.33.12.99 - - [26/Feb/2026:15:22:05 +0700] "POST /login.php HTTP/1.1" 401 532 "-" "curl/7.68.0"
+45.33.12.99 - - [26/Feb/2026:15:22:08 +0700] "POST /login.php HTTP/1.1" 200 1855 "-" "curl/7.68.0"
+103.45.67.88 - - [26/Feb/2026:16:05:30 +0700] "GET /product.php?id=1'+OR+'1'='1 HTTP/1.1" 500 241 "-" "sqlmap/1.8"
+```
+
+### Log Ingestion
+
+Semua sumber log memberikan banyak informasi, tapi setiap security solution seperti SIEM punya cara masing-masing untuk menerima log tersebut, ini beberapa metode yang digunakan SIEM:
