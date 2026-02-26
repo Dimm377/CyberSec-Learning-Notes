@@ -183,6 +183,34 @@ Kita tahu bahwa SIEM akan memicu peringatan (alert) jika aktivitas mencurigakan 
 SIEM memiliki sebuah aturan deteksi (**Detection Rule**), aturan aturan inilah yang berperan penting dalam mendeteksi ancaman secara tepat waktu, sehingga analis dapat segera menindaklanjuti ancaman tersebut, contoh logika detection rule:
 
 - **Indikasi Brute-Force (`Multiple Failed Login Attempts`):** *"Jika ada user yang gagal login 5 kali berturut-turut hanya dalam rentang waktu 10 detik, segera bunyikan alarm peringatan Brute-Force."*
-- **Brute-Force Sukses (`Successful Login After multiple Login Attempts`):** Ini jauh lebih horor. *"Jika setelah berkali-kali gagal login, tiba-tiba di detik berikutnya login tersebut divalidasi 'SUKSES', alarm level tinggi harus berbunyi karena hacker 99% baru saja berhasil menjebol celah password."*
+- **Brute-Force Sukses (`Successful Login After multiple Login Attempts`):** Ini jauh lebih mengerikan. *"Jika setelah berkali-kali gagal login, tiba-tiba di detik berikutnya login tersebut divalidasi 'SUKSES', alarm level tinggi harus berbunyi karena hacker 99% baru saja berhasil menjebol celah password."*
 - **Penyusupan Fisik USB (`USB Insertion`):** *"Bunyikan peringatan setiap kali ada karyawan yang sembarangan mencolokkan Flashdisk ke komputer kantor."* (Aturan wajib kalau perusahaan melarang ketat flashdisk demi mencegah bocornya data atau masuknya malware jahat kayak *Rubber Ducky*).
 - **Penyedotan Data Keluar / Exfiltration (`Outbound Traffic`):** *"Jika secara abnormal terjadi lalu lintas paket pengiriman data KELUAR jaringan (outbound traffic) yang ukurannya melampaui 25 MB, nyalakan alarm percobaan pembocoran data."* (Ini indikasi terkuat hacker udah berhasil masuk, membungkus (*zip*) dokumen rahasia, dan lagi diam-diam mengunggahnya ke server mereka).
+
+### How is Detection Rule Created?
+
+Untuk menjelaskan bagaimana aturan deteksi dibuat, kita lihat contoh kasus ini:
+
+### Case 1: Hacker Menghapus Jejak (*Clearing Logs*)
+
+Biasanya, hal pertama yang dilakuin *hacker* setelah peretasan selesai (masuk fase *post-exploitation*) adalah bersih-bersih alias **menghapus semua *log*** di server supaya mereka tidak bisa terlacak.
+
+Tapi anehnya (dan beruntungnya buat analis), aksi penghapusan log di *Windows* ini malah otomatis trigger log *event* baru yang kodenya sangat spesifik, yaitu **Event ID 104**.
+
+Berdasarkan *blunder* si *hacker* itu, analis keamanan bisa langsung membuat *Detection Rule* seperti ini:
+
+> **Rule:** *IF* sumber log berasal dari `WinEventLog` **AND** EventID yang muncul adalah `104` -- *THEN* segera picu alarm bertuliskan **"Event Log Cleared"** (Awas, ada yang sengaja hapus rekam jejak).
+### Case 2: Eksekusi Perintah Pasca-Eksploitasi (*Post-Exploitation*)
+
+Setelah *hacker* berhasil menembus server dan mendapatkan akses (misalnya lewat kerentanan web), hal pertama yang pasti mereka cek adalah: *"aku masuk sebagai siapa nih?"*
+
+Mereka biasanya akan mengetikkan perintah sakti `whoami` di dalam terminal server yang mereka retas. Tujuannya buat cek apakah mereka punya akses selevel Administrator (`root`) atau cuma *user* biasa.
+
+Analisis dari pola tingkah *hacker* ini:
+- **Log Source:** Kita butuh log bawaan dari Windows.
+- **Event ID:** Kita butuh memantau **Event ID 4688**. Event ID ini adalah alarm khusus Windows yang mencatat "Setiap kali ada Proses/Program Baru yang Berjalan".
+- **NewProcessName:** Kita incar nama proses spesifik yang bahaya (dalam hal ini instruksi terminal `whoami`).
+
+Dengan merangkai 3 petunjuk di atas, kita bisa pasang jebakan deteksi seperti ini:
+
+> **Rule:** *IF* sumber log adalah `WinEventLog` **AND** EventCode yang muncul adalah `4688`, **AND** di dalamnya terdapat proses bernamakan `whoami` -- *THEN* segera picu alarm **"WHOAMI Command Execution"** (Peringatan: Ada penyusup yang sedang mengecek *privilege* / hak aksesnya).
