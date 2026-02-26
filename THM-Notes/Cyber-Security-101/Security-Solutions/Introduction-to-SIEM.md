@@ -87,4 +87,32 @@ Berikut adalah fitur-fitur utama dari SIEM:
 
 - **Normalization of Logs:**
 
-Raw log memiliki ukuran yang besar dan format yang berbeda beda, sehingga SIEM melakukan normalisasi log untuk membuat format log menjadi seragam. sehingga analis keamanan tidak perlu lagi mengetahui format log dari setiap log source yang berbeda beda.
+Raw log memiliki format dasar laporan yang berbeda-beda, sehingga SIEM melakukan parsing (memecah isi menjadi kolom inti) lalu dilanjutkan proses normalisasi untuk menyeragamkan format log tersebut dalam satu bahasa tampilan yang sama, sehingga analis keamanan tidak perlu lagi mengetahui format log dari setiap log source yang berbeda beda.
+
+- **Correlation of Logs:**
+
+**SIEM** mengkorelasikan log dari berbagai sumber di dalam jaringan untuk mendeteksi aktivitas yang mencurigakan dan menganalisa pola nya. sehingga analis keamanan tidak perlu lagi menganalisis setiap log secara manual untuk mencari event yang abnormal.
+
+contoh aktivitas yang ada di sistem user selama waktu 5 menit:
+
+1. Wowok login melalui VPN dari IP yang belum pernah digunakan sebelumnya
+2. Wowok mengakses beberapa dokumen yang ada di shared drive / folder
+3. Wowok menjalankan file script di PowerShell
+4. Secara diam-diam, sistem merespons dengan membangun koneksi keluar (Outbound Network Connection) menuju alamat IP server asing di internet
+
+Jika analis keamanan memeriksa log satu per satu, mereka mungkin akan melewatkan aktivitas mencurigakan ini. Namun, dengan **SIEM**, aktivitas ini akan dikorelasikan dan memicu peringatan (alert) karena aktivitas ini tidak sesuai dengan perilaku normal user (anomali).
+
+- **Real-time Alerting:**
+
+**SIEM** akan mendeteksi aktivitas mencurigakan dan memicu peringatan (alert) secara real-time kepada analis keamanan, sehingga analis keamanan dapat segera menindaklanjuti insiden tersebut, analis juga bisa mmebuat aturan baru untuk mendeteksi aktivitas mencurigakan yang baru muncul.
+
+- **Dashboards and Reporting:**
+
+Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk memvisualisasikan data log yang dikumpulkan oleh SIEM, sehingga analis keamanan dapat dengan mudah memantau aktivitas di dalam jaringan dan membuat laporan untuk manajemen, dan berikut beberapa informasi apa aja yang bisa ditampilkan di dashboard:
+
+- Alert Highlight
+- Notifikasi System
+- Health Alert System
+- Daftar percobaan login yang gagal
+- Jumlah aktivitas (Event) yang ada di log
+-
