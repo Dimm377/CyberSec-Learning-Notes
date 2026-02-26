@@ -173,3 +173,16 @@ Semua sumber log memberikan banyak informasi, tapi setiap security solution sepe
 2. **Syslog (Bahasa Standar Industri):** Ini adalah protokol sejuta umat. Mayoritas sistem di dunia (mulai dari *web server* sampai *database*) udah nyediain fitur bawaan ini buat ngirim *log* secara langsung & *real-time* ke server yang dituju (SIEM).
 3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (kayak Splunk atau ELK). setelah diunggah, data acak itu bakal diolah (*normalized*) biar gampang dibaca.
 4. **Port-Forwarding (Buka Jalur Pintu):** Analis bisa *setting* server SIEM buat selalu standby pada satu nomor pintu/saluran (*port*) spesifik. Jadi, semua komputer jajaran direksi sampai divisi *marketing* tinggal diperintah untuk nge-*forward* tumpukan *log* harian mereka ke saluran komunikasi itu.
+
+## Alerting Process and Analysis
+
+### Behind the Triggered Alerts
+
+Kita tahu bahwa SIEM akan memicu peringatan (alert) jika aktivitas mencurigakan terdeteksi, namun bagaimana sih peringatan ini terjadi?
+
+SIEM memiliki sebuah aturan deteksi (**Detection Rule**), aturan aturan inilah yang berperan penting dalam mendeteksi ancaman secara tepat waktu, sehingga analis dapat segera menindaklanjuti ancaman tersebut, contoh logika detection rule:
+
+- **Indikasi Brute-Force (`Multiple Failed Login Attempts`):** *"Jika ada user yang gagal login 5 kali berturut-turut hanya dalam rentang waktu 10 detik, segera bunyikan alarm peringatan Brute-Force."*
+- **Brute-Force Sukses (`Successful Login After multiple Login Attempts`):** Ini jauh lebih horor. *"Jika setelah berkali-kali gagal login, tiba-tiba di detik berikutnya login tersebut divalidasi 'SUKSES', alarm level tinggi harus berbunyi karena hacker 99% baru saja berhasil menjebol celah password."*
+- **Penyusupan Fisik USB (`USB Insertion`):** *"Bunyikan peringatan setiap kali ada karyawan yang sembarangan mencolokkan Flashdisk ke komputer kantor."* (Aturan wajib kalau perusahaan melarang ketat flashdisk demi mencegah bocornya data atau masuknya malware jahat kayak *Rubber Ducky*).
+- **Penyedotan Data Keluar / Exfiltration (`Outbound Traffic`):** *"Jika secara abnormal terjadi lalu lintas paket pengiriman data KELUAR jaringan (outbound traffic) yang ukurannya melampaui 25 MB, nyalakan alarm percobaan pembocoran data."* (Ini indikasi terkuat hacker udah berhasil masuk, membungkus (*zip*) dokumen rahasia, dan lagi diam-diam mengunggahnya ke server mereka).
