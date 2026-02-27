@@ -42,3 +42,7 @@ Berdasarkan letak di mana sistem ini di install, IDS terbagi menjadi dua kelompo
   Ini adalah **Sistem CCTV Utama** yang mengawasi seluruh bangunan operasional.
   NIDS tidak peduli dengan urusan individu perangkat. Ia diletakkan di titik persimpangan jaringan (seperti di belakang Router atau *Switch*) untuk memantau lalu lintas data dari semua perangkat yang terhubung dalam ekosistem jaringan tersebut.
   *Fungsi Utama:* Memberikan gambaran (*centralized view*) terpusat mengenai segala hal yang terjadi di dalam jaringan secara keseluruhan.
+
+<P>
+<img src="../../Assets/Images/NIDS-HIDS.png" alt="Network Diagram" width="700px"/>
+</p>
