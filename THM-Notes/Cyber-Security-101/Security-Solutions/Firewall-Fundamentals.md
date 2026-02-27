@@ -116,6 +116,7 @@ Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan p
    | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
    | :---: | :---: | :---: | :---: | :---: | :---: |
    | **Allow** | `192.168.1.0/24` | Any (Mana saja) | TCP | 80 | Outbound |
+
    *(Cara Bacanya: "Firewall, tolong **Izinkan (Allow)** jaringan karyawan kita (`192.168.1.0/24`) jalan **Keluar (Outbound)** ke **Website Manapun (Any)** lewat **Port 80 (TCP)**.")*
 
 2. **Deny (Tolak / Blokir):**
@@ -124,6 +125,7 @@ Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan p
    | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
    | :---: | :---: | :---: | :---: | :---: | :---: |
    | **Deny** | Any (Siapa saja) | `192.168.1.0/24` | TCP | 22 | Inbound |
+
    *(Cara Bacanya: "Firewall, tolong **Blokir (Deny)** dari **Siapapun (Any)** yang mau **Masuk (Inbound)** ke jaringan kita (`192.168.1.0/24`) lewat jalur **Port 22 (TCP/SSH)**.")*
 
 3. **Forward (Teruskan):**
@@ -132,6 +134,7 @@ Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan p
    | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
    | :---: | :---: | :---: | :---: | :---: | :---: |
    | **Forward** | Any (Siapa saja) | `192.168.1.8` | TCP | 80 | Inbound |
+
    *(Cara Bacanya: "Firewall, tolong **Teruskan (Forward)** pengunjung **Dari Mana Saja (Any)** yang mau **Masuk (Inbound)** lewat **Port 80 (TCP)**, langsung kirim ke komputer server kita di alamat `192.168.1.8`.")*
 
 ### Directionality of Rules (*Arah Lalu Lintas*)
