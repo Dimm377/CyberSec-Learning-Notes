@@ -12,7 +12,7 @@ Nah, sama seperti fungsi satpam tersebut, **Firewall** adalah sistem keamanan ya
 
 Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan internal kita yang aman dari jaringan eksternal (Internet). Berbekal aturan khusus (*rules*), Firewall akan memutuskan apakah suatu data diizinkan masuk atau akan diblokir mentah-mentah.
 
-<P>
+<P align="center">
 <img src="../../Assets/Images/Firewall.png" alt="Firewall" width="800px"/>
 </p>
 
