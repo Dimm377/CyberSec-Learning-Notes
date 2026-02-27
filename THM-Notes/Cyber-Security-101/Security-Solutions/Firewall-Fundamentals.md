@@ -81,8 +81,18 @@ Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipa
 | **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
 | **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
 | **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Udah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama kayak Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
-| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat ngelindungin Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
+| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
 
 ## Rules in Firewall
 
-Firewall memberikan kita akses penuh untuk mengatur traffic yang masuk dan keluar dari jaringan.
+Firewall memberikan kita **kekuasaan penuh (*control*)** untuk mengatur *traffic* yang masuk dan keluar dari jaringan.
+
+Meski dari *Firewall* sudah dibekali aturan keamanan standar, bagian paling seru untuk seorang Analis/Admin adalah kita bisa membuat **Aturan Sendiri (*Custom Rules*)** yang spesifik.
+
+**Contoh Kasus (Skenario Akses SSH):**
+Normalnya, buat menjaga server dari *hacker* , kita bakal pasang aturan: *"Firewall Tolak mentah-mentah (*Deny*) semua orang asing dari luar yang mencoba masuk ke server kita lewat jalur SSH (Port 22)."*
+
+Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* dari *cafe* dan butuh akses SSH ke server itu. Di sinilah saksinya *Custom Rules* bekerja. Kita tinggal tambahin instruksi pengecualian:
+*"Tolak semua akses SSH **KECUALI** kalau orang itu datang dari alamat IP `192.168.100.55` (Ini IP WiFi *cafe* tempat kita nongkrong). Kalau si IP itu yang minta masuk, bukain pintunya (*Allow*)"*
+
+Intinya: **Aturan Firewall (*Firewall Rules*) itu adalah hukum mutlak buatan sendiri.** Kita yang menentukan siapa yang harus ditolak, dan siapa pengecualian yang boleh masuk.
