@@ -64,20 +64,23 @@ Dia bukan cuma satpam, tapi udah kayak **Sistem Pertahanan Militer Lengkap**:
 - Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
 - Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
 
-### Ringkasan Karakteristik *Firewall*
-
-Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipakai, cek tabel di bawah ini:
-
-| Tipe Firewall | Karakteristik Utama |
-| :--- | :--- |
-| **Stateless Firewall** | - Cuma bisa penyaringan dasar (*Basic filtering*)<br>- Gak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok buat jaringan yang butuh kecepatan tinggi karena kerjanya ngebut |
-| **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Bener-bener mantau jaringan dan mencatat koneksi yang jalan |
-| **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
-| **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Udah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama kayak Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
-
 > **Note:**
 > BONUS:
 
 ### Web Application Firewall (WAF)
 
 Kalau *Firewall* biasa tugasnya mengamankan pintu server secara umum, WAF punya tugas spesifik: **Mengamankan Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi kayak *SQL Injection* atau *Cross-Site Scripting (XSS)*.
+
+### Ringkasan Karakteristik Firewall
+
+Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipakai, cek tabel di bawah ini:
+
+| Tipe Firewall | Karakteristik Utama |
+| :--- | :--- |
+| **Stateless Firewall** | - Cuma bisa penyaringan dasar (*Basic filtering*)<br>- Gak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok buat jaringan yang butuh kecepatan tinggi karena kerjanya ngebut |
+| **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
+| **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
+| **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Udah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama kayak Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
+| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat ngelindungin Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
+
+
