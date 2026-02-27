@@ -134,3 +134,86 @@ Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan p
    | **Forward** | Any (Siapa saja) | `192.168.1.8` | TCP | 80 | Inbound |
    *(Cara Bacanya: "Firewall, tolong **Teruskan (Forward)** pengunjung **Dari Mana Saja (Any)** yang mau **Masuk (Inbound)** lewat **Port 80 (TCP)**, langsung kirim ke komputer server kita di alamat `192.168.1.8`.")*
 
+### Directionality of Rules (*Arah Lalu Lintas*)
+
+Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kategori besar yang gampang dibedakan:
+
+1. **Inbound Rules (Aturan Masuk):**
+   Ini aturan mutlak buat "Tamu dari Luar". *Rule* ini berfokus buat nyaring siapa saja pengunjung internet luar yang boleh menyentuh perangkat/jaringan internal kita.
+   *Contoh:* Mengizinkan *traffic* masuk ke *port* 80 supaya orang-orang di luar sana bisa mengunjungi Web Server publik milik perusahaan kita.
+
+2. **Outbound Rules (Aturan Keluar):**
+   Ini kebalikannya, yaitu aturan khusus buat "Orang Dalem" yang mau keluar rumah. *Rule* ini mengatur perangkat di jaringan kita sendiri yang mencoba ngakses internet/dunia luar.
+   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar ngirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas biar kalau ada komputer karyawan yang kena virus, virusnya nggak bisa nyebar ngirim *spam email* ke luar!).
+
+3. **Forward Rules (Aturan Teruskan):**
+   Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar biar langsung nyampe ke server tujuan di dalam jaringan kita.
+   *Contoh:* Kalau ada *traffic* HTTP (Port 80) yang datang bermaksud mau buka website, si Firewall bakal nangkap tu paket, terus langsung **meneruskan jalurnya** ke alamat IP *Web Server* internal kita.
+
+## Windows Defender Firewall
+
+Kita tidak perlu beli *hardware* mahal buat merasakan bagaimana *firewall* bekerja. Microsoft sudah berbaik hati memberikan kita **Windows Defender Firewall**, fitur *Security Guard* bawaan gratisan di semua OS Windows.
+
+Fitur ini udah cukup untuk mencakup semua fungsionalitas dasar seperti memblokir program mencurigakan, mengizinkan aplikasi tertentu, sampai membuat *Custom Rules* (*Inbound/Outbound*) seperti yang kita bahas di atas.
+
+**Cara Mengakses Windows Defender Firewall:**
+Cukup pencet tombol Windows + R di *keyboard*, terus ketik aja *"wf.msc"* di kolom *search*. Dari situ kita bisa mulai melakukan konfigurasi firewall.
+
+### Network Profiles
+
+Secara cerdas, OS Windows punya fitur bernama **Network Location Awareness (NLA)**. Fitur ini bisa mendeteksi kita lagi terhubung ke jaringan di mana, lalu otomatis menampilkan settingan security(*Firewall Profile*) yang paling pas buat tempat itu.
+
+Secara *default*, ada dua profil yang dipakai si Firewall Windows:
+
+1. **Private Networks (Jaringan Pribadi / Aman):**
+   Ini profil santai. Aktif otomatis waktu kita connect ke WiFi rumah atau WiFi kantor yang emang sudah disetting *Trusted* (Dipercaya). Aturannya lebih longgar, karena komputer sekeliling kita adalah keluarga atau teman satu kerjaan (bisa *sharing printer*, *file sharing*, dll).
+
+2. **Guest or Public Networks (Jaringan Publik / Rawan):**
+   Ini profil restricted. Otomatis aktif waktu kita numpang WiFi gratisan di kafe, restoran, atau bandara. Di tempat ini, kita dikelilingi ribuan perangkat asing yang berpotensi jadi *hacker*.
+   *Skenario:* Saat profil Publik ini aktif, *firewall* bisa kita atur untuk **Menutup Pintu Rapat-Rapat (Blokir total semua Inbound Connection)** ke perangkat kita, dan cuma mengizinkan kita buat akses internet (*Outbound*). Kerennya, saat kita pulang dan tersambung lagi ke WiFi rumah, aturan ketat ini bakal dicabut otomatis tanpa harus kita atur manual.
+
+## Linux Firewall (Netfilter & iptables)
+
+Kalau sebelumnya kita membahas firewall bawaannya Windows, sekarang gimana nasib *user* Linux? Tenang saja, Linux justru surganya *firewall*. Di dalam OS Linux, ada sebuah *framework* (kerangka kerja) canggih yang tertanam langsung di inti sistemnya (*kernel*). Namanya adalah **Netfilter**.
+
+### Netfilter
+
+*Netfilter* adalah mesin penggerak utama alias **pondasi dari semua fungsionalitas *firewall* di Linux** (mulai dari penyaringan paket data, *Network Address Translation/NAT*, sampai pelacakan jejak koneksi).
+
+Karena *Netfilter* ini cuma sekadar mesin di belakang layar, kita butuh alat (*utilities*/aplikasi) buat bisa komunikasi dan memberi perintah ke mesin ini. Nah, berikut adalah 3 alat paling populer yang bertugas menerjemahkan perintah kita ke *Netfilter*:
+
+1. **iptables:**
+   Ini adalah pelopor dan alat *firewall* **paling populer & paling banyak dipakai** di berbagai distro Linux. Dia berinteraksi langsung sama *Netfilter* buat menyediakan ratusan fitur super canggih untuk mengontrol lalu lintas jaringan.
+2. **nftables:**
+   Ini adalah versi *Next-Gen* alias penerus sah dari `iptables`. Dia bawa kemampuan *filtering* dan *NAT* yang jauh lebih cepat dan canggih, tapi tetep berakar di atas pondasi *Netfilter*.
+3. **firewalld:**
+   Sama-sama nyuruh si *Netfilter*, tapi *utility* satu ini cara kerjanya beda. Dia didesain punya aturan *pre-defined* (aturan siap pakai) dan mengenalkan konsep Zona Jaringan (*Network Zones*) biar penggunanya tidak perlu pusing memikirkan aturan dari nol.
+
+### UFW (Uncomplicated Firewall)
+
+Sesuai namanya (*Uncomplicated* = tidak bikin ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang males berurusan sama *syntax* `iptables` yang panjang dan rumit.
+
+UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang bakal menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
+
+Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh akses `sudo` atau root*):
+
+1. **Mengecek Status Firewall:**
+   Untuk cek Firewall lagi (*inactive*) atau lagi kerja (*active*).
+   ```bash
+   user@ubuntu:~$ sudo ufw status
+   Status: inactive
+   ```
+
+2. **Menyalakan / Mengaktifkan Firewall:**
+   Untuk mengaktifkan Firewall (sekaligus bikin dia otomatis nyala tiap PC *restart*).
+   ```bash
+   user@ubuntu:~$ sudo ufw enable
+   Firewall is active and enabled on system startup
+   ```
+
+3. **Mematikan Firewall:**
+   Untuk mematikan Firewall.
+   ```bash
+   user@ubuntu:~$ sudo ufw disable
+   Firewall stopped and disabled on system startup
+   ```
