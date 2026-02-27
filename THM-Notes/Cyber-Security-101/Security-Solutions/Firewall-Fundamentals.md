@@ -83,4 +83,6 @@ Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipa
 | **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Udah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama kayak Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
 | **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat ngelindungin Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
 
+## Rules in Firewall
 
+Firewall memberikan kita akses penuh untuk mengatur traffic yang masuk dan keluar dari jaringan.
