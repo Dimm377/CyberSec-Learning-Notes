@@ -223,3 +223,35 @@ Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh aks
    user@arch:~$ sudo ufw disable
    Firewall stopped and disabled on system startup
    ```
+
+4. **Mengatur Kebijakan Utama (*Default Policy*):**
+   Ini ibarat instruksi dasar buat firewall kalau ada paket yang tidak ada aturannya. Kebijakan standar keamanan biasanya adalah **"Tolak Semuanya" (*Default Deny*)**.
+   Contoh command kalau kita mau memblokir secara *default* semua orang dari dalam yang mau keluar (*outgoing*):
+   ```bash
+   user@arch:~$ sudo ufw default deny outgoing
+   ```
+   *(Sebaliknya, kalau ditanya blokir semua tamu yang mau masuk: `sudo ufw default deny incoming`)*
+
+5. **Memblokir Port Spesifik:**
+   Setelah menetapkan aturan dasar, kita bisa mulai ngasih instruksi khusus. Misalnya kita mau blokir paksa tamu (*incoming*) yang mau masuk lewat gerbang SSH (Port 22 Transport Protokol TCP):
+   ```bash
+   user@arch:~$ sudo ufw deny 22/tcp
+   Rule added
+   Rule added (v6)
+   ```
+
+6. **Melihat Daftar Aturan dengan Nomor Urut:**
+   Semakin lama, buku catatan *firewall* lu bakal kepanjangan. Biar gampang ngaturnya, suruh UFW nampilin semua daftarnya lengkap dengan "Nomor Urut" (*Numbered*):
+   ```bash
+   user@arch:~$ sudo ufw status numbered
+   ```
+
+7. **Menghapus Aturan (*Delete Rule*):**
+   Punya nomor urut dari `status numbered` itu krusial banget buat menghapus aturan yang salah atau udah gak kepake. Lu tinggal panggil perintah *delete* dan masukin nomor aturannya (misal nyabut aturan di urutan ke-2):
+   ```bash
+   user@arch:~$ sudo ufw delete 2
+   Deleting:
+    deny 22/tcp
+   Proceed with operation (y|n)? y
+   Rule deleted (v6)
+   ```
