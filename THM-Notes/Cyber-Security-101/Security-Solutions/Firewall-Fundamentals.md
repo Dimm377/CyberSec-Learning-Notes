@@ -159,6 +159,12 @@ Fitur ini sudah cukup untuk mencakup semua fungsionalitas dasar seperti membloki
 **Cara Mengakses Windows Defender Firewall:**
 Cukup pencet tombol Windows + R di *keyboard*, terus ketik aja *"wf.msc"* di kolom *search*. Dari situ kita bisa mulai melakukan konfigurasi firewall.
 
+dan ini adalah tampilan network profile dari Windows Defender Firewall:
+
+<p>
+<img src="../../Assets/Images/WDF.png" alt="Windows Defender Firewall">
+</p>
+
 ### Network Profiles
 
 Secara cerdas, OS Windows punya fitur bernama **Network Location Awareness (NLA)**. Fitur ini bisa mendeteksi kita lagi terhubung ke jaringan di mana, lalu otomatis menampilkan settingan security(*Firewall Profile*) yang paling pas buat tempat itu.
