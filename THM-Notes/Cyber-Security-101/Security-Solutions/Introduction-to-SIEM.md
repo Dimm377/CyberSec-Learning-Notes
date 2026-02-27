@@ -202,15 +202,42 @@ Berdasarkan *blunder* si *hacker* itu, analis keamanan bisa langsung membuat *De
 > **Rule:** *IF* sumber log berasal dari `WinEventLog` **AND** EventID yang muncul adalah `104` -- *THEN* segera picu alarm bertuliskan **"Event Log Cleared"** (Awas, ada yang sengaja hapus rekam jejak).
 ### Case 2: Eksekusi Perintah Pasca-Eksploitasi (*Post-Exploitation*)
 
-Setelah *hacker* berhasil menembus server dan mendapatkan akses (misalnya lewat kerentanan web), hal pertama yang pasti mereka cek adalah: *"aku masuk sebagai siapa nih?"*
+Setelah *hacker* berhasil menembus server dan mendapatkan akses (misalnya lewat kerentanan web), hal pertama yang pasti mereka cek adalah: *"aku masuk sebagai siapa?"*
 
-Mereka biasanya akan mengetikkan perintah sakti `whoami` di dalam terminal server yang mereka retas. Tujuannya buat cek apakah mereka punya akses selevel Administrator (`root`) atau cuma *user* biasa.
+Mereka biasanya akan mengetikkan perintah `whoami` di dalam terminal server yang mereka retas. Tujuannya buat cek apakah mereka punya akses selevel Administrator (`root`) atau cuma *user* biasa.
 
 Analisis dari pola tingkah *hacker* ini:
 - **Log Source:** Kita butuh log bawaan dari Windows.
 - **Event ID:** Kita butuh memantau **Event ID 4688**. Event ID ini adalah alarm khusus Windows yang mencatat "Setiap kali ada Proses/Program Baru yang Berjalan".
 - **NewProcessName:** Kita incar nama proses spesifik yang bahaya (dalam hal ini instruksi terminal `whoami`).
 
-Dengan merangkai 3 petunjuk di atas, kita bisa pasang jebakan deteksi seperti ini:
+Dengan merangkai 3 petunjuk di atas, kita bisa pasang rule deteksi seperti ini:
 
 > **Rule:** *IF* sumber log adalah `WinEventLog` **AND** EventCode yang muncul adalah `4688`, **AND** di dalamnya terdapat proses bernamakan `whoami` -- *THEN* segera picu alarm **"WHOAMI Command Execution"** (Peringatan: Ada penyusup yang sedang mengecek *privilege* / hak aksesnya).
+
+#### Why is Log Normalization Important?
+
+Pernah baca kalimat *"Aturan deteksi mengawasi nilai bidang tertentu agar dapat dipicu"*? Maksud aslinya (dari bahasa Inggris: *Field-Value Pairs*) adalah: **SIEM itu bodoh kalau cuma dikasih teks mentah panjang.**
+
+Contoh log mentah:
+`"Pada jam 12:00, Wowok login pakai IP 192.168.1.5 dari Windows."`
+
+Kalau kita masukin teks di atas, *Detection Rule* kita bakal gagal mendeteksi ancaman, karena mesin nggak bisa baca format paragraf. Di sinilah proses **Normalisasi (Normalization)** bekerja. Log mentah tadi bakal dipotong dan dirapikan jadi format **Bidang/Kunci (Field) dan Nilai (Value)**:
+- `Time`: `12:00`
+- `User`: `Wowok`
+- `Source_IP`: `192.168.1.5`
+
+Nah, kalau formatnya udah rapi dipotong-potong per *Field* begini, *Detection Rule* baru bisa bekerja. Misal aturan kita bilang: *"Kalau `User` sama dengan `Wowok` dan `Source_IP` dari luar negeri, bunyikan alert"*
+
+Intinya: **Tanpa log yang dinormalisasi (dirapikan ke format Field=Value), aturan deteksi (Detection Rule) nggak akan bisa nangkap variabel atau memicu alarm apa pun.**
+
+### Alert Investigation
+
+Saat sedang memantau menggunakan SIEM, seorang analis menghabiskan sebagian besar waktunya di dashboard SIEM, karena dashboard SIEM menyediakan visualisasi data yang memudahkan analis untuk memantau semua peringatan (alert) yang muncul. Berdasarkan gambar pedoman investigasi di atas, jika sebuah alarm menyala, analis wajib melakukan urutan investigasi seperti berikut:
+
+1. **Evaluasi Awal (True vs False Positive):**
+   - **False Positive (Alarm Palsu):** Analis menyimpulkan kalau ini hanya alarm palsu (perilaku normal yang tidak sengaja menyentuh sensitivitas aturan). Solusinya: Analis harus *tuning* (memodifikasi) *Detection Rule* biar ke depannya tidak lagi memicu alarm untuk kasus yang sama.
+   - **True Positive (Ancaman Nyata):** Analis yakin ini adalah insiden, maka lanjut ke tahap investigasi mendalam.
+2. **Contact the Asset Owner (Interogasi Pemilik Perangkat):** Analis menghubungi karyawan/pemilik IP perangkat yang bermasalah. *"Pak Wowok, apakah benar jam segini bapak colok flashdisk / akses file keuangan?"*
+3. **Isolate Infected Host (Karantina Mesin):** Jika Pak Wowok membantah atau mesin terkonfirmasi memang sedang diambil alih _hacker_, langkah darurat pertama adalah mencabut mesin Pak Wowok dari jaringan (diisolasi/karantina) agar _hacker_ tidak menyebar ke komputer lain (*Lateral Movement*).
+4. **Block Suspicious IP (Blokir Penyerang):** Analis segera ke sistem *Firewall* utama, memasukkan alamat IP milik sang _hacker_ ke dalam daftar hitam (*Blacklist*), dan memutus total jalur komunikasi mereka.
