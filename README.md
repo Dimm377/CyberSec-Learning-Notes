@@ -143,6 +143,7 @@
 | No. | Notes                                                                                                         | Description                       |
 | :-: | ------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | 1.  | [Introduction to SIEM](THM-Notes/Cyber-Security-101/Security-Solutions/Introduction-to-SIEM.md)               | Introduction to Security Information & Event Management  |
+| 2.  | [Firewall Fundamentals](THM-Notes/Cyber-Security-101/Security-Solutions/Firewall-Fundamentals.md)             | Introduction to Firewalls         |
 
 </details>
 
