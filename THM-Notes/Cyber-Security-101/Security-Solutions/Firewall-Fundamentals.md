@@ -154,7 +154,7 @@ Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kat
 
 Kita tidak perlu beli *hardware* mahal buat merasakan bagaimana *firewall* bekerja. Microsoft sudah berbaik hati memberikan kita **Windows Defender Firewall**, fitur *Security Guard* bawaan gratisan di semua OS Windows.
 
-Fitur ini udah cukup untuk mencakup semua fungsionalitas dasar seperti memblokir program mencurigakan, mengizinkan aplikasi tertentu, sampai membuat *Custom Rules* (*Inbound/Outbound*) seperti yang kita bahas di atas.
+Fitur ini sudah cukup untuk mencakup semua fungsionalitas dasar seperti memblokir program mencurigakan, mengizinkan aplikasi tertentu, sampai membuat *Custom Rules* (*Inbound/Outbound*) seperti yang kita bahas di atas.
 
 **Cara Mengakses Windows Defender Firewall:**
 Cukup pencet tombol Windows + R di *keyboard*, terus ketik aja *"wf.msc"* di kolom *search*. Dari situ kita bisa mulai melakukan konfigurasi firewall.
@@ -200,20 +200,20 @@ Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh aks
 1. **Mengecek Status Firewall:**
    Untuk cek Firewall lagi (*inactive*) atau lagi kerja (*active*).
    ```bash
-   user@ubuntu:~$ sudo ufw status
+   user@arch:~$ sudo ufw status
    Status: inactive
    ```
 
 2. **Menyalakan / Mengaktifkan Firewall:**
    Untuk mengaktifkan Firewall (sekaligus bikin dia otomatis nyala tiap PC *restart*).
    ```bash
-   user@ubuntu:~$ sudo ufw enable
+   user@arch:~$ sudo ufw enable
    Firewall is active and enabled on system startup
    ```
 
 3. **Mematikan Firewall:**
    Untuk mematikan Firewall.
    ```bash
-   user@ubuntu:~$ sudo ufw disable
+   user@arch:~$ sudo ufw disable
    Firewall stopped and disabled on system startup
    ```
