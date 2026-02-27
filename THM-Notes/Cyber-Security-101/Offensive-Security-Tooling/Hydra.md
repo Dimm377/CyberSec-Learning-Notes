@@ -10,7 +10,7 @@
 
 **Hydra** adalah tools password cracking yang menggunakan metode _brute force_. Singkatnya, ini adalah tools buat "maksa masuk" ke sistem dengan nebak password secara cepat.
 
-Hydra bisa jalanin _brute force_ attack ke berbagai layanan autentikasi. Bayangin lu lagi nyoba nebak password seseorang secara manual di layanan kayak **SSH**, **Web Application Form**, **FTP**, atau **SNMP**. Nah, Hydra ini ngelakuin hal yang sama tapi jauh lebih cepet karena dia bakal nyoba login pake daftar password (wordlist) yang udah kita siapkan.
+Hydra bisa jalanin _brute force_ attack ke berbagai layanan autentikasi. Bayangin kamu lagi nyoba nebak password seseorang secara manual di layanan seperti **SSH**, **Web Application Form**, **FTP**, atau **SNMP**. Nah, Hydra ini ngelakuin hal yang sama tapi jauh lebih cepat karena dia bakal nyoba login pakai daftar password (wordlist) yang sudah kita siapkan.
 
 Tujuannya simpel: Nemuin password yang bener.
 
@@ -21,23 +21,23 @@ Buat info lebih lengkap soal opsi tiap protokol, bisa cek di [Kali Hydra tool pa
 
 ### Kenapa Password Kuat Itu Penting?
 
-Tool kayak Hydra ini menunjukkan kenapa kita WAJIB banget pake password yang kuat.
+Tool seperti Hydra ini menunjukkan kenapa kita WAJIB banget pakai password yang kuat.
 
 Kalau passwordnya misal:
 
-- password umum (kayak `password123`, `qwerty`, `admin123`),
-- Gak ada karakter spesialnya,
+- password umum (seperti `password123`, `qwerty`, `admin123`),
+- Tidak ada karakter spesialnya,
 - Atau kurang dari 8 karakter,
 
-Maka password itu bakal gampang banget ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pake password pasaran, Hydra bakal nemuin itu dalam sekejap.
+Maka password itu bakal gampang banget ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pakai password pasaran, Hydra bakal nemuin itu dalam sekejap.
 
-Seringkali, CCTV atau Web Frameworks pake default credentials kayak `admin:password`. Ini jelas gak aman sama sekali dan bakal jadi sasaran empuk buat tools kayak gini.
+Seringkali, CCTV atau Web Frameworks pakai default credentials seperti `admin:password`. Ini jelas tidak aman sama sekali dan bakal jadi sasaran empuk buat tools seperti gini.
 
-Jadi, ganti default password dan bikin kombinasi yang rumit biar susah di hack
+Jadi, ganti default password dan membuat kombinasi yang rumit agar susah di hack
 
 ## Using Hydra
 
-Sebenernya Hydra ini udah masuk ke official repository banyak distro Linux, jadi install nya mudah.
+Sebenernya Hydra ini sudah masuk ke official repository banyak distro Linux, jadi install nya mudah.
 
 - **Ubuntu / Kali / Debian**:
 
@@ -60,11 +60,11 @@ Kalau mau compile sendiri atau cari versi paling baru, bisa langsung cek di repo
 
 ### Hydra Commands
 
-Opsi yang kita pake di Hydra itu tergantung banget sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau nge-brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya bakal kayak gini:
+Opsi yang kita pakai di Hydra itu tergantung banget sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau nge-brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya bakal seperti gini:
 
 `hydra -l user -P passlist.txt ftp://10.48.163.55`
 
-Nah, buat mesin yang lagi kita deploy ini, berikut adalah command buat pake Hydra di **SSH** dan **Web Form** (POST method).
+Nah, buat mesin yang lagi kita deploy ini, berikut adalah command buat pakai Hydra di **SSH** dan **Web Form** (POST method).
 
 #### SSH
 
@@ -75,22 +75,22 @@ Format dasarnya:
 | Option | Description                                                  |
 | :----- | :----------------------------------------------------------- |
 | `-l`   | Spesifik username (SSH) buat login.                          |
-| `-P`   | Ngasih tau Hydra kalau kita pake list password (wordlist).   |
+| `-P`   | Memberi tau Hydra kalau kita pakai list password (wordlist).   |
 | `-t`   | jumlah threads yang jalan bersamaan (paralel / multithread). |
 
 Contoh real-nya: `hydra -l root -P passwords.txt 10.48.163.55 -t 4 ssh`
 
 Artinya:
 
-- Hydra bakal pake `root` sebagai username buat login **ssh**.
+- Hydra bakal pakai `root` sebagai username buat login **ssh**.
 - Dia bakal nyobain semua password yang ada di file `passwords.txt`.
-- Bakal ada 4 threads yang jalan barengan (paralel), ditandain sama flag `-t 4`. Biar lebih ngebut dikit tapi gak bikin server down.
+- Bakal ada 4 threads yang jalan bersamaan (paralel), ditandain sama flag `-t 4`. Agar lebih ngebut dikit tapi tidak membuat server down.
 
 ### Post Web Form
 
-Kita juga bisa pake Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipake (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus liat request nya / pakai tools yang namanya **Burp Suite**
+Kita juga bisa pakai Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipake (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus melihat request nya / pakai tools yang namanya **Burp Suite**
 
-Kalau ternyata pake **POST**, command-nya kira-kira bakal seperti ini:
+Kalau ternyata pakai **POST**, command-nya kira-kira bakal seperti ini:
 
 `hydra -l <username> -P <passlist> 10.48.163.55 http-post-form "<path>:<login_credentials>:<invalid_response>"`
 
@@ -112,6 +112,6 @@ Penjelasannya:
 - `"/`: Path login page-nya ada di root (`/`).
 - `:username=^USER^&password=^PASS^`: Ini body request-nya. `^USER^` bakal diganti `root`, dan `^PASS^` bakal diganti sama isi `passwords.txt` satu-satu.
 - `:F=incorrect"`: Kalau di response ada kata `incorrect`, berarti password SALAH. Hydra bakal lanjut ke password berikutnya.
-- `-V`: Verbose mode, biar keliatan prosesnya.
+- `-V`: Verbose mode, agar keliatan prosesnya.
 
-_Note: Kalau web servernya jalan di port yang gak standar (bukan 80/443), tambahin flag `-s <port>`._
+_Note: Kalau web servernya jalan di port yang tidak standar (bukan 80/443), tambahin flag `-s <port>`._

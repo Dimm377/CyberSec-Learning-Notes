@@ -18,7 +18,7 @@ John the Ripper itu salah satu tool "password cracker" paling populer dan fleksi
 - **Open Source:** Gratis dan bisa dimodifikasi.
 
 **Prasyarat:**
-Buat pake JtR dengan efektif, perlu paham dasar-dasar:
+Buat pakai JtR dengan efektif, perlu paham dasar-dasar:
 
 1.  **Command Line (Linux/Unix):** Navigasi folder, jalanin command.
 2.  **Hashing Basics:** Paham bedanya hashing vs enkripsi.
@@ -30,26 +30,26 @@ Buat pake JtR dengan efektif, perlu paham dasar-dasar:
 Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 
 1.  **Hash:**
-    - Hash itu representasi data (kayak password) yang udah diubah jadi string karakter pake panjang tetap (fixed-length) pake algoritma matematika tertentu (MD5, SHA1, SHA256, dll).
+    - Hash itu representasi data (seperti password) yang sudah diubah jadi string karakter pakai panjang tetap (fixed-length) pakai algoritma matematika tertentu (MD5, SHA1, SHA256, dll).
     - Sifat utama hash itu **One-Way Function** (Satu Arah). Kita bisa ubah "password123" jadi hash, tapi SANGAT SULIT (secara komputasi mustahil) buat balikin hash jadi "password123" secara langsung (dekripsi).
 
 2.  **Dictionary Attack:**
-    - Karena hash gak bisa didekripsi, cara paling umum buat mecahinnya itu pake **menebak**.
+    - Karena hash tidak bisa didekripsi, cara paling umum buat mecahinnya itu pakai **menebak**.
     - Kita punya daftar kata-kata yang mungkin jadi password (**Wordlist** / Dictionary), misal: `rockyou.txt`.
-    - JtR bakal ngambil setiap kata dari wordlist -> ngubahnya jadi hash -> ngebandingin sama hash target. Kalau cocok, berarti password ketemu!
+    - JtR bakal mengambil setiap kata dari wordlist -> ngubahnya jadi hash -> ngebandingin sama hash target. Kalau cocok, berarti password ketemu!
 
 3.  **Hash Identifier:**
     - Sebelum nge-crack hash, kita HARUS tau dulu jenis algoritmanya (apakah MD5? SHA256? NTLM?).
-    - Tools kayak `hash-identifier` atau layanan online bisa bantuin ngenali jenis hash dari format/panjangnya.
+    - Tools seperti `hash-identifier` atau layanan online bisa bantuin ngenali jenis hash dari format/panjangnya.
 
 ---
 
 ## Setting Up Your System
 
-Di task ini, kita siapin environment buat pake John the Ripper.
+Di task ini, kita siapin environment buat pakai John the Ripper.
 
 **1. Instalasi John the Ripper:**
-Kalau belum terinstall (biasanya udah ada di Kali Linux/Parrot), bisa diinstall pake command:
+Kalau belum terinstall (biasanya sudah ada di Kali Linux/Parrot), bisa diinstall pakai command:
 
 ```bash
 sudo apt install john
@@ -73,10 +73,10 @@ Wordlist yang paling umum dipake buat CTF dan belajar itu `rockyou.txt`.
 
 ## Wordlists & Regex
 
-Di task ini, kita belajar cara pake wordlist dan identifikasi jenis hash.
+Di task ini, kita belajar cara pakai wordlist dan identifikasi jenis hash.
 
 **1. Identifikasi Hash:**
-Sebelum cracking, kita harus tau jenis hash-nya. Bisa pake tool bawaan `hash-identifier` atau script `hash-id.py` yang disediain di soal.
+Sebelum cracking, kita harus tau jenis hash-nya. Bisa pakai tool bawaan `hash-identifier` atau script `hash-id.py` yang disediain di soal.
 
 ```bash
 hash-identifier
@@ -84,7 +84,7 @@ hash-identifier
 ```
 
 **2. Cracking Process:**
-Pake command: `john --format=[format] --wordlist=[path_wordlist] [file_hash]`
+Pakai command: `john --format=[format] --wordlist=[path_wordlist] [file_hash]`
 
 Berikut jawaban buat latihan hash yang dikasih:
 
@@ -108,14 +108,14 @@ Berikut jawaban buat latihan hash yang dikasih:
 
 ## Cracking Windows Authentication
 
-Task ini ngebahas cara crack hash otentikasi Windows, atau sering disebut **NTLM**.
+Task ini membahas cara crack hash otentikasi Windows, atau sering disebut **NTLM**.
 
 **1. Apa itu NTLM?**
-NTLM (New Technology LAN Manager) itu protokol otentikasi lama yang dipake Windows. Meski udah ada Kerberos, NTLM masih sering ditemuin.
+NTLM (New Technology LAN Manager) itu protokol otentikasi lama yang dipake Windows. Meski sudah ada Kerberos, NTLM masih sering ditemuin.
 
 **2. Identifikasi & Format:**
 
-- Hash NTLM biasanya disimpen di file kayak `ntlm.txt`.
+- Hash NTLM biasanya disimpen di file seperti `ntlm.txt`.
 - Format John the Ripper buat NTLM itu `NT`.
 
 **3. Cracking Process:**
@@ -136,27 +136,27 @@ Buat latihan ini, kita diminta nge-crack file `ntlm.txt`.
 
 ## Cracking /etc/shadow
 
-Task ini ngajarin cara crack password user di Linux pake gabungan file `/etc/passwd` dan `/etc/shadow`.
+Task ini ngajarin cara crack password user di Linux pakai gabungan file `/etc/passwd` dan `/etc/shadow`.
 
 **1. Konsep Dasar:**
 
 - `/etc/passwd`: Berisi informasi user (bisa dibaca semua user).
 - `/etc/shadow`: Berisi hash password (cuma bisa dibaca root).
-- Buat cracking, John butuh kedua file ini digabung biar formatnya dikenali.
+- Buat cracking, John butuh kedua file ini digabung agar formatnya dikenali.
 
 **2. Langkah-langkah:**
 
 - **Step 1: Unshadow**
-  Kita harus gabungin kedua file itu jadi satu file (misal `unshadowed.txt`) pake command `unshadow`.
+  Kita harus gabungin kedua file itu jadi satu file (misal `unshadowed.txt`) pakai command `unshadow`.
 
   ```bash
   unshadow [path_passwd] [path_shadow] > unshadowed.txt
   ```
 
-  _(Buat latihan ini, pake `local_passwd` dan `local_shadow` yang ada di folder hasil ekstrak tadi)_
+  _(Buat latihan ini, pakai `local_passwd` dan `local_shadow` yang ada di folder hasil ekstrak tadi)_
 
 - **Step 2: Cracking**
-  Setelah jadi satu file, langsung crack pake John (biasanya auto-detect format `sha512crypt` atau sejenisnya).
+  Setelah jadi satu file, langsung crack pakai John (biasanya auto-detect format `sha512crypt` atau sejenisnya).
 
   ```bash
   john --wordlist=/home/dimm/wordlists/rockyou.txt unshadowed.txt
@@ -169,12 +169,12 @@ Task ini ngajarin cara crack password user di Linux pake gabungan file `/etc/pas
 
 ## Single Crack Mode
 
-Task ini ngebahas **Single Crack Mode**, fitur JtR buat nge-crack password yang mirip sama username-nya.
+Task ini membahas **Single Crack Mode**, fitur JtR buat nge-crack password yang mirip sama username-nya.
 
 **1. Konsep:**
 
 - Berguna kalau password user itu variasi dari nama pengguna (misal: user `admin` punya password `Admin123`).
-- Gak butuh wordlist eksternal, JtR bakal manipulasi (mangle) username buat nebak password.
+- Tidak butuh wordlist eksternal, JtR bakal manipulasi (mangle) username buat nebak password.
 
 **2. Langkah-langkah:**
 
@@ -187,20 +187,20 @@ Task ini ngebahas **Single Crack Mode**, fitur JtR buat nge-crack password yang 
   ```
 
 - **Step 2: Cracking**
-  Pake flag `--single`. Kita juga perlu kasih tau format hash-nya (MD5).
+  Pakai flag `--single`. Kita juga perlu kasih tau format hash-nya (MD5).
 
   ```bash
   john --single --format=raw-md5 hash7-siap.txt
   ```
 
 - **Step 3: Hasil**
-  JtR bakal nyoba variasi "Joker" (kayak "Joker1", "joker", dll) sampe ketemu passwordnya.
+  JtR bakal nyoba variasi "Joker" (seperti "Joker1", "joker", dll) sampai ketemu passwordnya.
 
 ---
 
 ## Custom Rules
 
-Task ini ngajarin cara bikin aturan (rules) sendiri buat modifikasi wordlist. Ini berguna kalau kita tau pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
+Task ini ngajarin cara membuat aturan (rules) sendiri buat modifikasi wordlist. Ini berguna kalau kita tau pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
 
 **1. Lokasi Config:**
 Rules didefinisiin di file konfigurasi John, biasanya di `/etc/john/john.conf`.
@@ -213,14 +213,14 @@ Rules didefinisiin di file konfigurasi John, biasanya di `/etc/john/john.conf`.
 - `c`: Capitalize (huruf pertama jadi besar).
 
 **3. Contoh Penggunaan:**
-Misal kita mau bikin rule bernama `THMRules` yang nambahin angka di belakang kata.
+Misal kita mau membuat rule bernama `THMRules` yang nambahin angka di belakang kata.
 
 - Edit `john.conf`, tambahin di bagian `[List.Rules:THMRules]`:
   ```
   [List.Rules:THMRules]
   Az"[0-9]"
   ```
-- Jalanin John pake flag `--rule`:
+- Jalanin John pakai flag `--rule`:
   ```bash
   john --wordlist=wordlist.txt --rule=THMRules hash.txt
   ```
@@ -229,15 +229,15 @@ Misal kita mau bikin rule bernama `THMRules` yang nambahin angka di belakang kat
 
 ## Cracking ZIP Password
 
-Task ini ngebahas cara crack file ZIP yang di-password. John gak bisa baca file ZIP langsung, jadi butuh "perantara".
+Task ini membahas cara crack file ZIP yang di-password. John tidak bisa baca file ZIP langsung, jadi butuh "perantara".
 
 **1. Tool: zip2john**
-Kita pake tool bernama `zip2john` buat ngubah file ZIP jadi format hash yang bisa dibaca John.
+Kita pakai tool bernama `zip2john` buat mengubah file ZIP jadi format hash yang bisa dibaca John.
 
 **2. Langkah-langkah:**
 
 - **Step 1: Convert to Hash**
-  Pake `zip2john` dan simpen outputnya ke file teks (misal `zip_hash.txt`).
+  Pakai `zip2john` dan simpen outputnya ke file teks (misal `zip_hash.txt`).
 
   ```bash
   zip2john [file_zip] > [output_hash]
@@ -250,14 +250,14 @@ Kita pake tool bernama `zip2john` buat ngubah file ZIP jadi format hash yang bis
   ```
 
 - **Step 2: Cracking**
-  Crack file hash itu kayak biasa.
+  Crack file hash itu seperti biasa.
 
   ```bash
   john --wordlist=/home/dimm/wordlists/rockyou.txt zip_hash.txt
   ```
 
 - **Step 3: Hasil**
-  Password file ZIP bakal muncul. Pake password itu buat ekstrak file aslinya (`unzip secure.zip`).
+  Password file ZIP bakal muncul. Pakai password itu buat ekstrak file aslinya (`unzip secure.zip`).
 
 ---
 
@@ -266,12 +266,12 @@ Kita pake tool bernama `zip2john` buat ngubah file ZIP jadi format hash yang bis
 Mirip sama ZIP, buat file RAR kita butuh tool perantara bernama `rar2john`.
 
 **1. Tool: rar2john**
-Ngubah file RAR jadi format hash buat John.
+Mengubah file RAR jadi format hash buat John.
 
 **2. Langkah-langkah:**
 
 - **Step 1: Convert to Hash**
-  Pake `rar2john` buat ekstrak hash dari file RAR.
+  Pakai `rar2john` buat ekstrak hash dari file RAR.
 
   ```bash
   rar2john [file_rar] > [output_hash]
@@ -291,7 +291,7 @@ Ngubah file RAR jadi format hash buat John.
   ```
 
 - **Step 3: Hasil**
-  Password file RAR bakal muncul. Pake buat ekstrak (`unrar x secure.rar`).
+  Password file RAR bakal muncul. Pakai buat ekstrak (`unrar x secure.rar`).
 
 ---
 
@@ -300,7 +300,7 @@ Ngubah file RAR jadi format hash buat John.
 Task terakhir ini ngajarin cara crack private key SSH (`id_rsa`) yang diproteksi passphrase.
 
 **1. Tool: ssh2john**
-Sama kayak ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
+Sama seperti ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
 
 **2. Langkah-langkah:**
 
@@ -317,10 +317,10 @@ Sama kayak ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
   ssh2john id_rsa > ssh_hash.txt
   ```
 
-  _(Note: Kalau command `ssh2john` gak ditemuin, coba cari script python-nya pake `locate ssh2john` atau `find / -name ssh2john_`)\*
+  _(Note: Kalau command `ssh2john` tidak ditemuin, coba cari script python-nya pakai `locate ssh2john` atau `find / -name ssh2john_`)\*
 
   > [!TIP]
-  > **Biar gak ribet ngetik path panjang, bikin alias aja di terminal:**
+  > **Agar tidak ribet ngetik path panjang, membuat alias saja di terminal:**
   > `echo "alias ssh2john='python ~/JohnTheRipper/run/ssh2john.py'" >> ~/.zshrc`
 
 - **Step 2: Cracking**

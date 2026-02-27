@@ -8,7 +8,7 @@
 
 **SOC** (_Security Operations Center_) = tim spesialis keamanan yang memantau, mendeteksi, dan merespons ancaman cyber 24/7.
 
-Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk _Threat Actors_ → keamanan tradisional (antivirus/firewall biasa) udah gak cukup.
+Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk _Threat Actors_ → keamanan tradisional (antivirus/firewall biasa) sudah tidak cukup.
 
 **Learning Objectives:** Pondasi SOC, taktik Detection & Response, peran People/Processes/Technology, hands-on.
 
@@ -20,7 +20,7 @@ Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk
 
 ### Detection
 - **Detect vulnerabilities** — Temuin sistem yang belum di-patch / punya celah keamanan
-- **Detect unauthorized activity** — Deteksi login mencurigakan (IP/lokasi gak wajar)
+- **Detect unauthorized activity** — Deteksi login mencurigakan (IP/lokasi tidak wajar)
 - **Detect intrusions** — Akses ilegal yang berhasil masuk (exploit, malware)
 
 ### Response
@@ -47,7 +47,7 @@ Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _Fal
 - **SOC Analyst L2** — Investigasi lebih dalam, correlate log data
 - **SOC Analyst L3** — Threat Hunting, komando Incident Response kritis
 - **Security Engineer** — Deploy & konfigurasi infrastruktur security
-- **Detection Engineer** — Bikin & pertajam Security Rules
+- **Detection Engineer** — Membuat & pertajam Security Rules
 - **SOC Manager** — Atur Processes, lapor ke CISO
 
 > **Note:** Struktur tim SOC fleksibel, tergantung skala organisasi.
@@ -59,13 +59,13 @@ Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _Fal
 - Analis yang correlate log data? → **?**
 - Analis yang Threat Hunting & komando IR? → **?**
 - Yang deploy infrastruktur security? → **?**
-- Yang bikin Security Rules? → **?**
+- Yang membuat Security Rules? → **?**
 - Yang atur Processes & lapor ke CISO? → **?**
 
 ## Processes
 
 ### Alert Triage
-Langkah pertama SOC — klasifikasi severity tiap alert pake **5 Ws:**
+Langkah pertama SOC — klasifikasi severity tiap alert pakai **5 Ws:**
 
 <p align="center">
 <img src="../../Assets/Images/5WS.png" alt="5 Ws of Alert Triage">

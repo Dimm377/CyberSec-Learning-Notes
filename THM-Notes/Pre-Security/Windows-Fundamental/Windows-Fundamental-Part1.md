@@ -13,7 +13,7 @@
 
 ## Overview
 
-Catatan ini merangkum pondasi dasar sistem operasi Windows. Ngerti komponen-komponen ini penting banget buat audit keamanan maupun analisis forensik, terutama buat kita yang terbiasa di lingkungan Linux. Fokus utamanya di sini itu ngerti struktur sistem, manajemen file, dan kontrol akses.
+Catatan ini merangkum pondasi dasar sistem operasi Windows. Mengerti komponen-komponen ini penting banget buat audit keamanan maupun analisis forensik, terutama buat kita yang terbiasa di lingkungan Linux. Fokus utamanya di sini itu mengerti struktur sistem, manajemen file, dan kontrol akses.
 
 ---
 
@@ -33,16 +33,16 @@ Windows hadir dalam berbagai edisi yang disesuaiin sama kebutuhan beban kerja da
 Antarmuka visual Windows yang jadi tempat kita berinteraksi lewat elemen-elemen berikut:
 
 - **Start Menu:** Pusat navigasi aplikasi, dokumen, dan pencarian sistem.
-- **Taskbar:** Nampilin aplikasi yang lagi jalan dan nyediain jalan pintas (_shortcuts_).
-- **Notification Area (System Tray):** Letaknya di pojok kanan bawah; nampilin status sistem kayak jam, jaringan, dan ikon **Volume**.
+- **Taskbar:** Menampilkan aplikasi yang lagi jalan dan menyediakan jalan pintas (_shortcuts_).
+- **Notification Area (System Tray):** Letaknya di pojok kanan bawah; menampilkan status sistem seperti jam, jaringan, dan ikon **Volume**.
 
 ---
 
 ## The File System (NTFS)
 
-Windows pake **NTFS** (New Technology File System) sebagai standar modern buat penyimpanan data.
+Windows pakai **NTFS** (New Technology File System) sebagai standar modern buat penyimpanan data.
 
-- **Drive Letters:** Pake sistem huruf (kayak `C:`) buat identifikasi partisi, beda sama Linux yang pake _mount points_ (`/`).
+- **Drive Letters:** Pakai sistem huruf (seperti `C:`) buat identifikasi partisi, beda sama Linux yang pakai _mount points_ (`/`).
 - **NTFS Permissions:** Mekanisme kontrol akses (Read, Write, Execute) terhadap file dan folder buat pengguna atau grup tertentu.
 
 ---
@@ -52,8 +52,8 @@ Windows pake **NTFS** (New Technology File System) sebagai standar modern buat p
 Struktur direktori yang paling penting buat integritas sistem operasi Windows:
 
 - **\Windows:** Folder utama tempat sistem operasi terinstal.
-- **\System32:** Berisi file sistem inti (_binary_), _driver_ perangkat, dan alat penting kayak Command Prompt (`cmd.exe`) serta PowerShell.
-- **Keamanan:** Folder ini sering jadi target malware buat nyamar atau ngelakuin modifikasi file sistem biar susah dideteksi sama pengguna awam.
+- **\System32:** Berisi file sistem inti (_binary_), _driver_ perangkat, dan alat penting seperti Command Prompt (`cmd.exe`) serta PowerShell.
+- **Keamanan:** Folder ini sering jadi target malware buat nyamar atau ngelakuin modifikasi file sistem agar susah dideteksi sama pengguna awam.
 
 ---
 
@@ -73,7 +73,7 @@ Utility utama buat mantau kesehatan performa dan mendeteksi keanehan di sistem:
 
 - **Processes:** Ngelacak penggunaan CPU, memori, dan disk oleh aplikasi serta layanan sistem yang aktif.
 - **Performance:** Grafik _real-time_ yang nunjukin beban kerja _hardware_.
-- **Startup:** Ngelola aplikasi yang jalan otomatis waktu _booting_. Ini titik kritis buat nyari jejak persistensi malware.
+- **Startup:** Ngelola aplikasi yang jalan otomatis waktu _booting_. Ini titik kritis buat mencari jejak persistensi malware.
 
 ---
 

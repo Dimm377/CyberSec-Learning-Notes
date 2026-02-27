@@ -106,7 +106,7 @@ Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat p
 
 ### Apa itu SQLMap?
 
-SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengotomatisasi proses pendeteksian dan eksploitasi kerentanan SQLi. Tool ini bahkan udah bawaan (_built-in_) di beberapa OS Linux _pentesting_.
+SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengotomatisasi proses pendeteksian dan eksploitasi kerentanan SQLi. Tool ini bahkan sudah bawaan (_built-in_) di beberapa OS Linux _pentesting_.
 
 ### Menggunakan SQLMap
 
@@ -119,7 +119,7 @@ Mode ini bakal memandu kamu secara interaktif, nanya langkah demi langkah buat n
 sqlmap --wizard
 ```
 
-_Output_ di terminal kamu (seperti gambar) kurang lebih bakal nampilin _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target:
+_Output_ di terminal kamu (seperti gambar) kurang lebih bakal menampilkan _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target:
 
 ```text
 user@arch:~$ sqlmap --wizard
@@ -155,7 +155,7 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
 2. **Authenticated Scanning (Cookie-Based Testing):**
    Di dunia nyata, jalur fatal yang rentan SQLi seringkali _di belakang pintu masuk_ (contoh: dashboard admin, profile user), yang artinya kamu harus **_login_** dulu. Kalau kamu langsung pakai sqlmap biasa, _request_ aneh bakal nyangkut di halaman login (unauthenticated).
 
-   **Solusi:** Kamu harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri user yang udah _login_.
+   **Solusi:** Kamu harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri user yang sudah _login_.
 
    ```bash
    sqlmap -u "http://target.com/admin/search?id=1" --cookie="SESSIONID=abcdef123456"
@@ -164,7 +164,7 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
 3. **POST-Based Testing (Intercepted Requests):**
    Gimana kalau _input_ datanya tersembunyi, contohnya di _form login_ atau register yang pakai metode `POST`? URL-nya bakal keliatan bersih (misal cuma `http://target.com/login`), karena datanya dikirim lewat _request body_.
 
-   **Solusi:** Menjadi _Hacker_ sejati berarti kamu harus _intercept_ (tangkap) _request raw_ tersebut (biasanya pakai alat _Proxy_ kayak Burp Suite), lalu _save_ hasil _request_ mentahnya ke dalam file `.txt`. Setelah itu, serahkan file tersebut ke SQLMap menggunakan _flag_ `-r` (Request file).
+   **Solusi:** Menjadi _Hacker_ sejati berarti kamu harus _intercept_ (tangkap) _request raw_ tersebut (biasanya pakai alat _Proxy_ seperti Burp Suite), lalu _save_ hasil _request_ mentahnya ke dalam file `.txt`. Setelah itu, serahkan file tersebut ke SQLMap menggunakan _flag_ `-r` (Request file).
 
    ```bash
    user@arch:~$ sqlmap -r intercepted_request.txt
@@ -230,7 +230,7 @@ back-end DBMS: MySQL >= 5.1
 Perhatikan baris-baris penting dari output di atas:
 
 1. **WAF/IPS/IDS Check (`checking if the target is protected...`)**
-   SQLMap secara otomatis bakal nyari tau dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
+   SQLMap secara otomatis bakal mencari tau dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
 2. **Injection Point Confirmation (`GET parameter 'cat' is vulnerable...`)**
    Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi yang artinya bisa diinjeksi.
 3. **Payload Autopsy (Tipe Serangan yang Berhasil)**
@@ -268,7 +268,7 @@ available databases [2]:
 _Dari gambar terminal di atas, SQLMap sukses mengambil nama database yaitu `users` dan `members`._
 
 **2. Melihat Isi Tabel (`-D <nama_database> --tables`)**
-Setelah tahu sasarannya (misal database `users`), kamu bongkar buat melihat ada tabel apa aja di dalamnya. Tentukan databasenya spesifik dengan `-D users` lalu akhiri dengan `--tables`.
+Setelah tahu sasarannya (misal database `users`), kamu bongkar buat melihat ada tabel apa saja di dalamnya. Tentukan databasenya spesifik dengan `-D users` lalu akhiri dengan `--tables`.
 
 ```bash
 user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1 -D users --tables
@@ -352,7 +352,7 @@ Table: thomas
 [text removed]
 ```
 
-_Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan jelas ada field `Date`, `name`, dan `pass`. Kalau parameter hash-nya sulit kayak MD5/Bcrypt, SQLMap bahkan nawarin opsi otomatis buat nge-crack hash tersebut pakai dictionary attack secara instan._
+_Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan jelas ada field `Date`, `name`, dan `pass`. Kalau parameter hash-nya sulit seperti MD5/Bcrypt, SQLMap bahkan nawarin opsi otomatis buat nge-crack hash tersebut pakai dictionary attack secara instan._
 
 ---
 
@@ -360,7 +360,7 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 
 1. Dalam skenario nyata, kenapa kita memakai SQLMap daripada mengeksploitasi kerentanan SQLi secara manual murni?
 2. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin panen isi data tabel secara spesifik!
-3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu udah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
+3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu sudah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
 4. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
 
 ## Personal Practical

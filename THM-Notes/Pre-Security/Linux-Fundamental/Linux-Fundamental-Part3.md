@@ -13,7 +13,7 @@
 
 # Overview
 
-Room ini fokus ke alat-alat utility yang bakal sering dipake sehari-hari, cara ngelola proses sistem, sampai mengotomatisasi tugas biar sistem tetap jalan optimal.
+Room ini fokus ke alat-alat utility yang bakal sering dipake sehari-hari, cara ngelola proses sistem, sampai mengotomatisasi tugas agar sistem tetap jalan optimal.
 
 ---
 
@@ -28,19 +28,19 @@ Edit file langsung lewat terminal itu skill wajib. Room ini ngenalin dua editor 
 
 ### General/Useful Utilities
 
-Linux nyediain banyak alat kecil yang berguna banget buat transfer data dan komunikasi:
+Linux menyediakan banyak alat kecil yang berguna banget buat transfer data dan komunikasi:
 
 - **`wget`**: Download file langsung dari web server lewat terminal.
 - **`scp` (Secure Copy)**: Salin file antar mesin secara aman lewat protokol SSH.
-- **Serving Files**: Kita bisa pake modul Python (`python3 -m http.server`) buat bikin web server instan dan berbagi file di jaringan lokal.
+- **Serving Files**: Kita bisa pakai modul Python (`python3 -m http.server`) buat membuat web server instan dan berbagi file di jaringan lokal.
 
 ---
 
 ### Processes 101
 
-Belajar cara liat dan ngendaliin aplikasi yang lagi jalan di latar belakang:
+Belajar cara melihat dan ngendaliin aplikasi yang lagi jalan di latar belakang:
 
-- **`ps aux`**: Liat daftar semua proses yang lagi jalan secara detail.
+- **`ps aux`**: Melihat daftar semua proses yang lagi jalan secara detail.
 - **`top`**: Monitor penggunaan sumber daya sistem (CPU & RAM) secara real-time.
 - **`kill`**: Kirim sinyal ke proses berdasarkan PID (Process ID).
   - **SIGTERM (15)**: Minta proses berhenti secara sopan (cleanup).
@@ -51,7 +51,7 @@ Belajar cara liat dan ngendaliin aplikasi yang lagi jalan di latar belakang:
 
 ### Maintaining Your System: Automation
 
-Biar nggak perlu ngerjain tugas yang sama berulang-ulang, Linux pake **cron**.
+Agar tidak perlu ngerjain tugas yang sama berulang-ulang, Linux pakai **cron**.
 
 - **`crontab -e`**: Edit file konfigurasi cron buat ngatur jadwal eksekusi skrip atau perintah secara otomatis di waktu tertentu.
 
@@ -62,18 +62,18 @@ Biar nggak perlu ngerjain tugas yang sama berulang-ulang, Linux pake **cron**.
 Ngatur perangkat lunak di distribusi berbasis Debian/Ubuntu:
 
 - **`apt`**: Alat utama buat install, update, dan hapus aplikasi.
-- **Repositories**: Pahami bahwa Linux narik aplikasi dari gudang data (repo) terpusat, beda sama Windows yang biasanya pake file installer `.exe`.
+- **Repositories**: Pahami bahwa Linux narik aplikasi dari gudang data (repo) terpusat, beda sama Windows yang biasanya pakai file installer `.exe`.
 
 ---
 
 ### Maintaining Your System: Logs
 
-Sistem Linux nyatet semua aktivitas di dalam file log yang biasanya ada di direktori `/var/log`. Ngecek log itu langkah penting waktu troubleshooting atau investigasi keamanan.
+Sistem Linux nyatet semua aktivitas di dalam file log yang biasanya ada di direktori `/var/log`. Mengecek log itu langkah penting waktu troubleshooting atau investigasi keamanan.
 
 ---
 
 ### Conclusions & Summaries
 
-Dengan selesainya room ini, kita udah punya pondasi yang kuat buat ngoperasiin Linux secara profesional. Langkah selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
+Dengan selesainya room ini, kita sudah punya pondasi yang kuat buat ngoperasiin Linux secara profesional. Langkah selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
 
 > **Note:** Automate everything. Jangan habisin waktu buat tugas manual kalau kamu bisa tulis satu baris perintah di crontab.

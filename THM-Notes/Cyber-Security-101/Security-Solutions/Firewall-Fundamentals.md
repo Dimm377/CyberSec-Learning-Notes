@@ -50,16 +50,16 @@ Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku cat
 
 ### 3. Proxy Firewall (Asisten Kurir)
 
-Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya udah di ruangan VIP (**OSI Layer 7**).
+Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya sudah di ruangan VIP (**OSI Layer 7**).
 Kelemahan *firewall* sebelumnya adalah mereka hanya mengecek "kulit/amplop"-nya saja, tidak berani buka isinya. *Proxy* memecahkan masalah itu:
-- Dia bertindak layaknya **Asisten Kurir Pribadi**. Pas kamu mau kunjungi server luar, si *Proxy* yang bakal repot-repot pergi nemuin server itu, ngambil datanya, lalu nganterin balik ke kamu.
+- Dia bertindak layaknya **Asisten Kurir Pribadi**. Pas kamu mau kunjungi server luar, si *Proxy* yang bakal repot-repot pergi nemuin server itu, mengambil datanya, lalu nganterin balik ke kamu.
 - Karena dia yang ngambilin barang, dia bakal ngebongkar isinya dulu. Kalau isinya *malware*, langsung dia buang.
 - Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
 
 ### 4. Next-Generation Firewall (NGFW) (Unit Pasukan Khusus)
 
 Ini adalah *Firewall Last Boss* sejuta umat zaman sekarang. NGFW beroperasi nyapu bersih dari **OSI Layer 3 sampai Layer 7**.
-Dia bukan cuma satpam, tapi udah kayak **Sistem Pertahanan Militer Lengkap**:
+Dia bukan cuma satpam, tapi sudah seperti **Sistem Pertahanan Militer Lengkap**:
 - Punya fitur *Deep Packet Inspection* (mengecek paket sampai ke dalem-dalemnya).
 - Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
 - Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
@@ -69,11 +69,11 @@ Dia bukan cuma satpam, tapi udah kayak **Sistem Pertahanan Militer Lengkap**:
 
 ### Web Application Firewall (WAF)
 
-Kalau *Firewall* biasa tugasnya mengamankan pintu server secara umum, WAF punya tugas spesifik: **Mengamankan Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi kayak *SQL Injection* atau *Cross-Site Scripting (XSS)*.
+Kalau *Firewall* biasa tugasnya mengamankan pintu server secara umum, WAF punya tugas spesifik: **Mengamankan Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi seperti *SQL Injection* atau *Cross-Site Scripting (XSS)*.
 
 ### Ringkasan Karakteristik Firewall
 
-Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipakai, cek tabel di bawah ini:
+Agar makin gampang buat *review* atau menentukan *firewall* mana yang pas buat dipakai, cek tabel di bawah ini:
 
 | Tipe Firewall | Karakteristik Utama |
 | :--- | :--- |
@@ -81,7 +81,7 @@ Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipa
 | **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
 | **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
 | **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
-| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
+| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik seperti *SQL Injection* & *Cross-Site Scripting (XSS)* |
 
 ## Rules in Firewall
 
@@ -97,7 +97,7 @@ Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* 
 
 Intinya: **Aturan Firewall (*Firewall Rules*) itu adalah hukum mutlak buatan sendiri.** Kita yang menentukan siapa yang harus ditolak, dan siapa pengecualian yang boleh masuk.
 
-Setiap kali kita bikin satu hukum/aturan buat si Firewall, ada **6 komponen dasar** yang wajib kita tentukan ini dia isinya:
+Setiap kali kita membuat satu hukum/aturan buat si Firewall, ada **6 komponen dasar** yang wajib kita tentukan ini dia isinya:
 
 1. **Source Address (IP Asal):** Siapa tamunya? Ini adalah alamat IP perangkat si pengirim data.
 2. **Destination Address (IP Tujuan):** Mau ketemu siapa di dalam? Ini adalah alamat IP perangkat target yang mau dituju.
@@ -147,11 +147,11 @@ Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kat
 
 2. **Outbound Rules (Aturan Keluar):**
    Ini kebalikannya, yaitu aturan khusus buat "Orang Dalem" yang mau keluar rumah. *Rule* ini mengatur perangkat di jaringan kita sendiri yang mencoba mengakses internet/dunia luar.
-   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas biar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
+   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas agar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
 
 3. **Forward Rules (Aturan Teruskan):**
-   Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar biar langsung nyampe ke server tujuan di dalam jaringan kita.
-   *Contoh:* Kalau ada *traffic* HTTP (Port 80) yang datang bermaksud mau buka website, si Firewall bakal nangkap tu paket, terus langsung **meneruskan jalurnya** ke alamat IP *Web Server* internal kita.
+   Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar agar langsung nyampe ke server tujuan di dalam jaringan kita.
+   *Contoh:* Kalau ada *traffic* HTTP (Port 80) yang datang bermaksud mau buka website, si Firewall bakal menangkap tu paket, terus langsung **meneruskan jalurnya** ke alamat IP *Web Server* internal kita.
 
 ## Windows Defender Firewall
 
@@ -160,7 +160,7 @@ Kita tidak perlu beli *hardware* mahal buat merasakan bagaimana *firewall* beker
 Fitur ini sudah cukup untuk mencakup semua fungsionalitas dasar seperti memblokir program mencurigakan, mengizinkan aplikasi tertentu, sampai membuat *Custom Rules* (*Inbound/Outbound*) seperti yang kita bahas di atas.
 
 **Cara Mengakses Windows Defender Firewall:**
-Cukup pencet tombol Windows + R di *keyboard*, terus ketik aja *"wf.msc"* di kolom *search*. Dari situ kita bisa mulai melakukan konfigurasi firewall.
+Cukup pencet tombol Windows + R di *keyboard*, terus ketik saja *"wf.msc"* di kolom *search*. Dari situ kita bisa mulai melakukan konfigurasi firewall.
 
 dan ini adalah tampilan network profile dari Windows Defender Firewall:
 
@@ -196,11 +196,11 @@ Karena *Netfilter* ini cuma sekadar mesin di belakang layar, kita butuh alat (*u
 2. **nftables:**
    Ini adalah versi *Next-Gen* alias penerus sah dari `iptables`. Dia bawa kemampuan *filtering* dan *NAT* yang jauh lebih cepat dan canggih, tapi tetep berakar di atas pondasi *Netfilter*.
 3. **firewalld:**
-   Sama-sama memerintah si *Netfilter*, tapi *utility* satu ini cara kerjanya beda. Dia didesain punya aturan *pre-defined* (aturan siap pakai) dan mengenalkan konsep Zona Jaringan (*Network Zones*) biar penggunanya tidak perlu pusing memikirkan aturan dari nol.
+   Sama-sama memerintah si *Netfilter*, tapi *utility* satu ini cara kerjanya beda. Dia didesain punya aturan *pre-defined* (aturan siap pakai) dan mengenalkan konsep Zona Jaringan (*Network Zones*) agar penggunanya tidak perlu pusing memikirkan aturan dari nol.
 
 ### UFW (Uncomplicated Firewall)
 
-Sesuai namanya (*Uncomplicated* = tidak bikin ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang malas berurusan sama *syntax* `iptables` yang panjang dan rumit.
+Sesuai namanya (*Uncomplicated* = tidak membuat ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang malas berurusan sama *syntax* `iptables` yang panjang dan rumit.
 
 UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang bakal menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
 

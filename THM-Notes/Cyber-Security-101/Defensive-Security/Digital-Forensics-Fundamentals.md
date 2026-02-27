@@ -35,7 +35,7 @@
 </p>
 
 1. **Collection** — Identifikasi & kumpulin semua perangkat (laptop, USB, kamera, dll.) tanpa mengubah data asli.
-2. **Examination** — Filter data yang relevan dari data yang udah dikumpulin (misal: filter file berdasarkan tanggal tertentu).
+2. **Examination** — Filter data yang relevan dari data yang sudah dikumpulin (misal: filter file berdasarkan tanggal tertentu).
 3. **Analysis** — Hubungkan berbagai bukti dan buat timeline kronologis aktivitas.
 4. **Reporting** — Buat laporan detail berisi metodologi, temuan, dan rekomendasi.
 
@@ -60,7 +60,7 @@
 Pengambilan bukti harus dilakukan dengan aman tanpa mengubah data asli. Beberapa praktik penting:
 
 ### Proper Authorization
-Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa izin → gak sah di pengadilan.
+Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa izin → tidak sah di pengadilan.
 
 <p align="center">
 <img src="../../Assets/Images/Search-Warranty.png" alt="Search Warranty">
@@ -71,7 +71,7 @@ Dokumen formal yang mencatat semua detail tentang bukti:
 - Deskripsi bukti (nama, jenis)
 - Siapa yang ngumpulin & kapan
 - Lokasi penyimpanan
-- Siapa aja yang akses & kapan
+- Siapa saja yang akses & kapan
 
 Contoh form: [NIST Sample Chain of Custody Form](https://www.nist.gov/document/sample-chain-custody-form)
 
@@ -125,7 +125,7 @@ Download file kasus: [Download Task Files](../../Assets/Images/ransom-lettter-2-
 
 ### Analisis Metadata PDF
 
-Pake `pdfinfo` buat baca metadata PDF. Install: `sudo apt install poppler-utils` atau `sudo pacman -S poppler`.
+Pakai `pdfinfo` buat baca metadata PDF. Install: `sudo apt install poppler-utils` atau `sudo pacman -S poppler`.
 
 <p align="center">
 <img src="../../Assets/Images/ransom-Letter.png" alt="Ransom Letter">

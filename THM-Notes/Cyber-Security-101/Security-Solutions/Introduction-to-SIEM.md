@@ -65,7 +65,7 @@ Beberapa kendala yang mungkin terjadi:
 
 - **Volume Data yang Masif:** Banyaknya sumber log yang tersebar di berbagai perangkat membuat proses pemeriksaan log satu per satu sangat memakan waktu.
 - **Tidak Terpusat (*No Centralization*):** Karena _log_ pada dasarnya menetap (tersimpan) di mesin asalnya, analis dituntut untuk melakukan sambungan *remote login* (seperti lewat SSH untuk Linux, atau RDP untuk Windows) ke setiap perangkat secara manual hanya untuk membacanya. Proses ini sangat tidak efisien dan akan menguras waktu berharga saat jalannya penyelidikan.
-- **Konteks Log Terbatas (*Limited Context*):** Satu kejadian _log_ saja tidak pernah bisa menceritakan gambaran utuh dari sebuah peretasan. Aktivitas _login_ yang kelihatannya normal di satu komputer ternyata bisa jadi awal mula insiden penyusupan beruntun (*Lateral Movement*) kalau tidak dianalisa barengan (dikorelasikan) sama rekam jejak komputer lain di sekitarnya.
+- **Konteks Log Terbatas (*Limited Context*):** Satu kejadian _log_ saja tidak pernah bisa menceritakan gambaran utuh dari sebuah peretasan. Aktivitas _login_ yang kelihatannya normal di satu komputer ternyata bisa jadi awal mula insiden penyusupan beruntun (*Lateral Movement*) kalau tidak dianalisa bersamaan (dikorelasikan) sama rekam jejak komputer lain di sekitarnya.
 - **Analisis Terbatas (*Limited Analysis*):** setiap log source menghasilkan banyak logs tiap detik nya, menganalisis setiap log secara manual untuk mencari event yang abnormal itu hampir mustahil dilakukan manusia, kadang para analis keamanan melewatkan banyak hal penting.
 - **Masalah Format log (*format log issue*):** analis keamanan perlu mengetahui format log dari setiap log source yang berbeda beda, ini akan memakan waktu dan tenaga.
 
@@ -108,7 +108,7 @@ Jika analis keamanan memeriksa log satu per satu, mereka mungkin akan melewatkan
 
 - **Dashboards and Reporting:**
 
-Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk memvisualisasikan data log yang dikumpulkan oleh SIEM, sehingga analis keamanan dapat dengan mudah memantau aktivitas di dalam jaringan dan membuat laporan untuk manajemen, dan berikut beberapa informasi apa aja yang bisa ditampilkan di dashboard:
+Dashboard merupakan bagian penting dari SIEM, karena dashboard digunakan untuk memvisualisasikan data log yang dikumpulkan oleh SIEM, sehingga analis keamanan dapat dengan mudah memantau aktivitas di dalam jaringan dan membuat laporan untuk manajemen, dan berikut beberapa informasi apa saja yang bisa ditampilkan di dashboard:
 
 - Alert Highlight
 - Notifikasi System
@@ -169,9 +169,9 @@ Contoh log web server apache:
 
 Semua sumber log memberikan banyak informasi, tapi setiap security solution seperti SIEM punya cara masing-masing untuk menerima log tersebut, ini beberapa metode yang digunakan SIEM:
 
-1. **Agent / Forwarder (Program Agen):** Ibarat ngirim intel berukuran sangat kecil (program agen) untuk diinstal di komputer/server target (*Endpoint*). Tugas aplikasi mungil ini murni cuma buat nangkap semua aktivitas penting dan nyebrangin data *log*-nya langsung ke server pusat SIEM (Contoh terkenal: *Splunk Forwarder*).
+1. **Agent / Forwarder (Program Agen):** Ibarat mengirim intel berukuran sangat kecil (program agen) untuk diinstal di komputer/server target (*Endpoint*). Tugas aplikasi mungil ini murni cuma buat menangkap semua aktivitas penting dan nyebrangin data *log*-nya langsung ke server pusat SIEM (Contoh terkenal: *Splunk Forwarder*).
 2. **Syslog (Bahasa Standar Industri):** Ini adalah protokol sejuta umat. Mayoritas sistem di dunia (mulai dari *web server* sampai *database*) sudah menyediakan fitur bawaan ini buat mengirim *log* secara langsung & *real-time* ke server yang dituju (SIEM).
-3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (kayak Splunk atau ELK). setelah diunggah, data acak itu bakal diolah (*normalized*) biar gampang dibaca.
+3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (seperti Splunk atau ELK). setelah diunggah, data acak itu bakal diolah (*normalized*) agar gampang dibaca.
 4. **Port-Forwarding (Buka Jalur Pintu):** Analis bisa *setting* server SIEM buat selalu standby pada satu nomor pintu/saluran (*port*) spesifik. Jadi, semua komputer jajaran direksi sampai divisi *marketing* tinggal diperintah untuk nge-*forward* tumpukan *log* harian mereka ke saluran komunikasi itu.
 
 ## Alerting Process and Analysis
@@ -184,7 +184,7 @@ SIEM memiliki sebuah aturan deteksi (**Detection Rule**), aturan aturan inilah y
 
 - **Indikasi Brute-Force (`Multiple Failed Login Attempts`):** *"Jika ada user yang gagal login 5 kali berturut-turut hanya dalam rentang waktu 10 detik, segera bunyikan alarm peringatan Brute-Force."*
 - **Brute-Force Sukses (`Successful Login After multiple Login Attempts`):** Ini jauh lebih mengerikan. *"Jika setelah berkali-kali gagal login, tiba-tiba di detik berikutnya login tersebut divalidasi 'SUKSES', alarm level tinggi harus berbunyi karena hacker 99% baru saja berhasil menjebol celah password."*
-- **Penyusupan Fisik USB (`USB Insertion`):** *"Bunyikan peringatan setiap kali ada karyawan yang sembarangan mencolokkan Flashdisk ke komputer kantor."* (Aturan wajib kalau perusahaan melarang ketat flashdisk demi mencegah bocornya data atau masuknya malware jahat kayak *Rubber Ducky*).
+- **Penyusupan Fisik USB (`USB Insertion`):** *"Bunyikan peringatan setiap kali ada karyawan yang sembarangan mencolokkan Flashdisk ke komputer kantor."* (Aturan wajib kalau perusahaan melarang ketat flashdisk demi mencegah bocornya data atau masuknya malware jahat seperti *Rubber Ducky*).
 - **Penyedotan Data Keluar / Exfiltration (`Outbound Traffic`):** *"Jika secara abnormal terjadi lalu lintas paket pengiriman data KELUAR jaringan (outbound traffic) yang ukurannya melampaui 25 MB, nyalakan alarm percobaan pembocoran data."* (Ini indikasi terkuat hacker sudah berhasil masuk, membungkus (*zip*) dokumen rahasia, dan lagi diam-diam mengunggahnya ke server mereka).
 
 ### How is Detection Rule Created?
@@ -237,7 +237,7 @@ Intinya: **Tanpa log yang dinormalisasi (dirapikan ke format Field=Value), atura
 Saat sedang memantau menggunakan SIEM, seorang analis menghabiskan sebagian besar waktunya di dashboard SIEM, karena dashboard SIEM menyediakan visualisasi data yang memudahkan analis untuk memantau semua peringatan (alert) yang muncul. Berdasarkan gambar pedoman investigasi di atas, jika sebuah alarm menyala, analis wajib melakukan urutan investigasi seperti berikut:
 
 1. **Evaluasi Awal (True vs False Positive):**
-   - **False Positive (Alarm Palsu):** Analis menyimpulkan kalau ini hanya alarm palsu (perilaku normal yang tidak sengaja menyentuh sensitivitas aturan). Solusinya: Analis harus *tuning* (memodifikasi) *Detection Rule* biar ke depannya tidak lagi memicu alarm untuk kasus yang sama.
+   - **False Positive (Alarm Palsu):** Analis menyimpulkan kalau ini hanya alarm palsu (perilaku normal yang tidak sengaja menyentuh sensitivitas aturan). Solusinya: Analis harus *tuning* (memodifikasi) *Detection Rule* agar ke depannya tidak lagi memicu alarm untuk kasus yang sama.
    - **True Positive (Ancaman Nyata):** Analis yakin ini adalah insiden, maka lanjut ke tahap investigasi mendalam.
 2. **Contact the Asset Owner (Interogasi Pemilik Perangkat):** Analis menghubungi karyawan/pemilik IP perangkat yang bermasalah. *"Pak Wowok, apakah benar jam segini bapak colok flashdisk / akses file keuangan?"*
 3. **Isolate Infected Host (Karantina Mesin):** Jika Pak Wowok membantah atau mesin terkonfirmasi memang sedang diambil alih _hacker_, langkah darurat pertama adalah mencabut mesin Pak Wowok dari jaringan (diisolasi/karantina) agar _hacker_ tidak menyebar ke komputer lain (*Lateral Movement*).

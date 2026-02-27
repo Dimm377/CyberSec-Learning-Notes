@@ -28,7 +28,7 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa membuat website itu
 
 - Gunakan **Let** ketika ingin nilai di dalam nya berubah
 - Pakai **Const** kalau ingin nilai nya tetap
-- Lupakan **Var** Udah kuno ngapain make ini yang penting 2 diatas itu sekarang
+- Lupakan **Var** Sudah kuno ngapain make ini yang penting 2 diatas itu sekarang
 
 ### Data Types
 
@@ -58,7 +58,7 @@ sapaDunia();
 
 ### Why do you have to use functions?
 
-- Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan kayak prinsip **DRY (Don't Repeat yourself)**
+- Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan seperti prinsip **DRY (Don't Repeat yourself)**
 
 - Organized: Kode nya jadi lebih rapi dan lebih mudah dibaca nantinya
 
@@ -120,8 +120,8 @@ Task ini sebenernya cuma review singkat dan demo script sederhana.
 Ilustrasinya ada kode JS buat nambahin angka.
 
 **Poin Penting:**
-*   **Interpreted Language:** JavaScript itu bahasa yang diterjemahkan baris per baris saat dijalankan (oleh browser), bukan dicompile jadi file binary dulu kayak C++ atau Java.
-*   **Variable Manipulation:** Kita bisa ubah nilai variabel kapan aja (kalau pake `let` atau `var`).
+*   **Interpreted Language:** JavaScript itu bahasa yang diterjemahkan baris per baris saat dijalankan (oleh browser), bukan dicompile jadi file binary dulu seperti C++ atau Java.
+*   **Variable Manipulation:** Kita bisa ubah nilai variabel kapan saja (kalau pakai `let` atau `var`).
 
 **Answer the questions below:**
 
@@ -136,11 +136,11 @@ Ilustrasinya ada kode JS buat nambahin angka.
 
 ## Integrating JavaScript in HTML
 
-Di task ini, kita diminta buat eksperimen pake file yang udah disediain: `external_test.html`.
-Tujuannya biar paham bedanya **Internal** vs **External** JS.
+Di task ini, kita diminta buat eksperimen pakai file yang sudah disediain: `external_test.html`.
+Tujuannya agar paham bedanya **Internal** vs **External** JS.
 
 **1. Internal JavaScript**
-Kode JS ditulis langsung di dalem file HTML pake tag `<script>`.
+Kode JS ditulis langsung di dalem file HTML pakai tag `<script>`.
 *   **Contoh:**
     ```html
     <!-- Di dalam file HTML -->
@@ -150,7 +150,7 @@ Kode JS ditulis langsung di dalem file HTML pake tag `<script>`.
     ```
 
 **2. External JavaScript**
-Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake atribut `src`.
+Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pakai atribut `src`.
 *   **Skenario Room:**
     *   Kita punya file HTML: `external_test.html`.
     *   Kita punya file JS: `thm_external.js`.
@@ -159,7 +159,7 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake a
         <!-- Di dalam external_test.html -->
         <script src="thm_external.js"></script>
         ```
-*   **Kenapa pake External?**
+*   **Kenapa pakai External?**
     *   Bisa dipake ulang di banyak halaman (Reusability).
     *   Kode lebih rapi & bersih.
 
@@ -181,22 +181,22 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pake a
 
 ## Abusing Dialogue Functions
 
-JavaScript punya 3 fungsi bawaan buat nampilin pop-up (dialogue box) ke user. Ini sering dipake buat interaksi, tapi bisa juga disalahgunain buat nge-prank (atau serangan XSS).
+JavaScript punya 3 fungsi bawaan buat menampilkan pop-up (dialogue box) ke user. Ini sering dipake buat interaksi, tapi bisa juga disalahgunain buat nge-prank (atau serangan XSS).
 
 **3 Fungsi Utama:**
 1.  **`alert("Pesan")`**
-    *   Cuma nampilin pesan + tombol OK.
+    *   Cuma menampilkan pesan + tombol OK.
     *   *Abuse:* Kalo ditaruh di loop tanpa henti (`while(true)`), browser bakal hang/crash karena pop-up muncul terus.
 2.  **`prompt("Input Sesuatu")`**
     *   Minta input teks dari user.
     *   Nilai yang diinput bisa disimpen di variabel.
     *   Contoh: `let nama = prompt("Siapa nama kamu?");`
 3.  **`confirm("Yakin?")`**
-    *   Nampilin pilihan OK (return `true`) atau Cancel (return `false`).
+    *   Menampilkan pilihan OK (return `true`) atau Cancel (return `false`).
 
 **Skenario di Room:**
 Kita dikasih file `invoice.html` yang isinya ada script nakal.
-Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
+Pas dibuka, dia bakal nge-loop menampilkan alert "Hacked" berkali-kali.
 
 **Answer the questions below:**
 
@@ -213,10 +213,10 @@ Pas dibuka, dia bakal nge-loop nampilin alert "Hacked" berkali-kali.
 
 ## Bypassing Control Flow Statements
 
-Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma ngandelin JS doang itu **GAK AMAN**.
+Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma ngandelin JS saja itu **TIDAK AMAN**.
 
 **Konsep:**
-*   Website pake `if-else` buat ngecek sesuatu (misal: Umur > 18, Password bener/salah).
+*   Website pakai `if-else` buat mengecek sesuatu (misal: Umur > 18, Password bener/salah).
 *   Kita bisa manipulasi alur ini lewat **Browser Console** atau **Debugger**.
 *   Caranya: Ubah nilai variabel di tengah jalan, atau ubah logikanya.
 
@@ -237,15 +237,15 @@ Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang ber
 ## Exploring Minified Files
 
 Kode JS di production biasanya di-**Minify** dan di-**Obfuscate**.
-*   **Minification:** Hapus spasi, enter, komentar. Tujuannya biar file kecil & load cepet.
-*   **Obfuscation:** Bikin kode jadi ribet dibaca manusia (ubah nama variabel jadi `a`, `b`, `x`, dll). Tujuannya biar susah dicolong/dibaca orang lain.
+*   **Minification:** Hapus spasi, enter, komentar. Tujuannya agar file kecil & load cepat.
+*   **Obfuscation:** Membuat kode jadi ribet dibaca manusia (ubah nama variabel jadi `a`, `b`, `x`, dll). Tujuannya agar susah dicolong/dibaca orang lain.
 
 **Cara Baca (Deobfuscate):**
-*   Pake fitur **"Pretty Print"** (tanda `{}` di DevTools Chrome/Firefox).
-*   Pake tool online kayak **JSNice** atau **Beautifier**.
+*   Pakai fitur **"Pretty Print"** (tanda `{}` di DevTools Chrome/Firefox).
+*   Pakai tool online seperti **JSNice** atau **Beautifier**.
 
 **Skenario Room:**
-Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus baca nilai variabel `age` dari kode hex yang ribet.
+Kita dikasih file `hello.html` dan script yang sudah di-obfuscate. Kita harus baca nilai variabel `age` dari kode hex yang ribet.
 
 **Answer the questions below:**
 
@@ -259,19 +259,19 @@ Kita dikasih file `hello.html` dan script yang udah di-obfuscate. Kita harus bac
 
 ## Best Practices
 
-Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan main (Best Practices):
+Agar kode JavaScript kita aman dan tidak gampang dihack, ada beberapa aturan main (Best Practices):
 
 1.  **Don't rely solely on Client-Side Validation**
-    *   Jangan cuma ngandelin JS buat validasi (kayak cek umur atau password tadi).
+    *   Jangan cuma ngandelin JS buat validasi (seperti cek umur atau password tadi).
     *   *Alasannya:* JS berjalan di browser user, jadi user bisa matiin atau manipulasi kodenya. Validasi WAJIB lakuin lagi di **Server-Side**.
 
 2.  **Don't Include Untrusted Libraries**
-    *   Hati-hati kalau ngambil script dari internet (CDN atau library asing).
+    *   Hati-hati kalau mengambil script dari internet (CDN atau library asing).
     *   Kalau script itu disusupi malware, website kita juga kena dampaknya (Supply Chain Attack).
 
-3.  **Hati-hati nyimpen Secrets**
+3.  **Hati-hati menyimpan Secrets**
     *   JANGAN PERNAH simpen API Key, Password, atau Token di dalam kode JS.
-    *   Ingat, **View Source** itu gampang banget. Siapapun bisa liat.
+    *   Ingat, **View Source** itu gampang banget. Siapapun bisa melihat.
 
 **Answer the questions below:**
 
@@ -284,16 +284,16 @@ Biar kode JavaScript kita aman dan nggak gampang dihack, ada beberapa aturan mai
 
 Selesai sudah room **Javascript Essentials** ini!
 
-**Kita udah belajar:**
+**Kita sudah belajar:**
 1.  **Basic JS:** Variable, Data Types, Functions, Loops.
 2.  **HTML Integration:** Internal vs External JS.
 3.  **Dialogue Functions:** `alert`, `prompt`, `confirm`.
 4.  **Security Concepts:**
     *   Client-Side Bypass (Control Flow).
     *   Minification & Obfuscation.
-    *   Bahaya nyimpen rahasia di JS.
+    *   Bahaya menyimpan rahasia di JS.
 
-JavaScript itu powerful banget buat bikin web interaktif, tapi kalau nggak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!*
+JavaScript itu powerful banget buat membuat web interaktif, tapi kalau tidak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!*
 
 
 

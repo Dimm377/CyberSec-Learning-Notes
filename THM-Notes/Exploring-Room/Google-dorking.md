@@ -13,22 +13,22 @@
 Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-jalan terus di internet buat nyatet semua website yang dia temui.
 
 Cara kerjanya:
-1.  **Crawling:** Bot jalan-jalan nyari konten.
+1.  **Crawling:** Bot jalan-jalan mencari konten.
 2.  **Indexing:** Konten disimpen di database raksasa Google.
-3.  **Searching:** Pas kita ngetik di Google, dia nyari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
+3.  **Searching:** Pas kita ngetik di Google, dia mencari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
 
 ---
 
 ## Let's Learn About Crawlers
 
-Crawler itu kayak agen rahasia yang tugasnya ngumpulin informasi.
+Crawler itu seperti agen rahasia yang tugasnya ngumpulin informasi.
 
 **Istilah Penting:**
 *   **Crawler / Spider:** Program yang otomatis jelajahin internet.
-*   **Index:** Database tempat nyimpen hasil jelajah si crawler.
+*   **Index:** Database tempat menyimpan hasil jelajah si crawler.
 
 **Apa yang diambil Crawler?**
-Dia ngambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keywords ini Google tau website kita itu tentang apa (misal: "Resep Masakan", "Tutorial Hacking", dll).
+Dia mengambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keywords ini Google tau website kita itu tentang apa (misal: "Resep Masakan", "Tutorial Hacking", dll).
 
 **Answer the questions below:**
 
@@ -45,14 +45,14 @@ Dia ngambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keyword
 
 ## Enter: Search Engine Optimisation (SEO)
 
-SEO itu seni bikin website kita disukai sama Google biar muncul di halaman pertama.
+SEO itu seni membuat website kita disukai sama Google agar muncul di halaman pertama.
 
 **Topik SEO:**
 1.  **Keywords:** Kata kunci yang relevan.
 2.  **Meta Title:** Judul halaman yang muncul di tab browser & hasil pencarian.
 3.  **Sitemap:** Peta situs.
 
-Task ini sebenernya nyuruh kita pake tool kayak "SEO Site Checkup" buat ngecek performa website `tryhackme.com` vs `googledorking.cmnatic.co.uk`.
+Task ini sebenernya memerintah kita pakai tool seperti "SEO Site Checkup" buat mengecek performa website `tryhackme.com` vs `googledorking.cmnatic.co.uk`.
 
 **Answer the questions below:**
 
@@ -72,16 +72,16 @@ Task ini sebenernya nyuruh kita pake tool kayak "SEO Site Checkup" buat ngecek p
 
 ## Beepboop - robots.txt
 
-Task ini ngebahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
+Task ini membahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
 
 **Apa itu robots.txt?**
-File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, Bingbot, dll) halaman mana yang boleh diambil (index) dan mana yang enggak.
+File teks biasa yang dipake webmaster buat memberi tau crawler (seperti Googlebot, Bingbot, dll) halaman mana yang boleh diambil (index) dan mana yang enggak.
 
 **Poin Penting:**
 
 1.  **Lokasi File:** Wajib ada di root domain.
     *   Misal website `ablog.com`, filenya pasti ada di `ablog.com/robots.txt`.
-    *   Ga bisa ditaruh di subfolder kayak `ablog.com/site/robots.txt`.
+    *   Ga bisa ditaruh di subfolder seperti `ablog.com/site/robots.txt`.
 
 2.  **Sitemap:** Peta situs yang isinya daftar semua link di website. Biasanya lokasinya di `/sitemap.xml`.
 
@@ -126,40 +126,40 @@ File teks biasa yang dipake webmaster buat ngasih tau crawler (kayak Googlebot, 
 ## What is Google Dorking?
 
 Ini dia menu utamanya: **Google Dorking**.
-Teknik pake operator pencarian Google buat nemuin hasil yang spesifik banget. Di dunia security, ini dipake buat **Reconnaissance** (nyari info target).
+Teknik pakai operator pencarian Google buat nemuin hasil yang spesifik banget. Di dunia security, ini dipake buat **Reconnaissance** (mencari info target).
 
 ### 1. Basic Operators (Operator Dasar)
-- **`site:`** -> Nyari di domain spesifik.
+- **`site:`** -> Mencari di domain spesifik.
   - Contoh: `site:tryhackme.com` (Cuma hasil dari THM).
   - Contoh: `site:.go.id` (Cuma hasil dari domain pemerintah Indonesia).
-- **`filetype:`** (atau `ext:`) -> Nyari jenis file tertentu.
+- **`filetype:`** (atau `ext:`) -> Mencari jenis file tertentu.
   - Contoh: `filetype:pdf` (Dokumen PDF).
   - Contoh: `ext:log` (File log, bahaya kalo bocor!).
-- **`inurl:`** -> Nyari kata di dalam URL.
+- **`inurl:`** -> Mencari kata di dalam URL.
   - Contoh: `inurl:admin` (Kemungkinan halaman admin).
-- **`intitle:`** -> Nyari kata di Judul Halaman (Tab Browser).
+- **`intitle:`** -> Mencari kata di Judul Halaman (Tab Browser).
   - Contoh: `intitle:login` (Halaman login).
-- **`intext:`** -> Nyari kata di dalam isi artikel/body halaman.
-  - Contoh: `intext:"password"` (Nyari kata password di halaman).
+- **`intext:`** -> Mencari kata di dalam isi artikel/body halaman.
+  - Contoh: `intext:"password"` (Mencari kata password di halaman).
 
 ### 2. Advanced Combinations (Combo Sakti)
 Gabungin operator di atas buat hasil yang ngeri.
 
-**a. Nyari Halaman Login / Admin Panel:**
+**a. Mencari Halaman Login / Admin Panel:**
 - `site:target.com intitle:"login"` -> Halaman login di target.
 - `inurl:admin intitle:"login"` -> Halaman login admin secara umum.
 
-**b. Nyari File Sensitif / Bocor:**
-- `filetype:log intext:"password"` -> Nyari file log yang isinya ada kata password.
+**b. Mencari File Sensitif / Bocor:**
+- `filetype:log intext:"password"` -> Mencari file log yang isinya ada kata password.
 - `intitle:"index of" "backup"` -> **Directory Listing** (Folder kebuka) yang isinya file backup.
 - `site:gov.id filetype:pdf "rahasia"` -> Dokumen rahasia instansi pemerintah (Jangan disalahgunain!).
 
-**c. Nyari Config File:**
+**c. Mencari Config File:**
 - `ext:conf` atau `ext:cnf` -> File konfigurasi server.
 - `inurl:wp-config.txt` -> Konfigurasi WordPress yang bocor.
 
 ### 3. Google Dorking Database (GHDB)
-Ada database isinya ribuan dork yang udah ditemuin orang lain: **Exploit-DB (GHDB)**. Isinya dork buat nyari CCTV, printer online, password, dll.
+Ada database isinya ribuan dork yang sudah ditemuin orang lain: **Exploit-DB (GHDB)**. Isinya dork buat mencari CCTV, printer online, password, dll.
 
 **Answer the questions below:**
 
