@@ -13,7 +13,7 @@ Nah, sama seperti fungsi satpam tersebut, **Firewall** adalah sistem keamanan ya
 Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan internal kita yang aman dari jaringan eksternal (Internet). Berbekal aturan khusus (*rules*), Firewall akan memutuskan apakah suatu data diizinkan masuk atau akan diblokir mentah-mentah.
 
 <P align="center">
-<img src="../../Assets/Images/Firewall.png" alt="Firewall" width="800px"/>
+<img src="../../Assets/Images/Firewall.png" alt="Firewall" width="600px"/>
 </p>
 
 ### Learning Objectives
@@ -69,4 +69,4 @@ Dia bukan cuma satpam, tapi udah kayak **Sistem Pertahanan Militer Lengkap**:
 
 ### Web Application Firewall (WAF)
 
-Kalau *Firewall* biasa tugasnya ngamanin pintu server secara umum, WAF ini tugasnya spesifik: **Ngamanin Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi kayak *SQL Injection* atau *Cross-Site Scripting (XSS)*.
+Kalau *Firewall* biasa tugasnya mengamankan pintu server secara umum, WAF punya tugas spesifik: **Mengamankan Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi kayak *SQL Injection* atau *Cross-Site Scripting (XSS)*.
