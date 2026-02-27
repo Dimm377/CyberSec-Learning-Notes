@@ -96,3 +96,12 @@ Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* 
 *"Tolak semua akses SSH **KECUALI** kalau orang itu datang dari alamat IP `192.168.100.55` (Ini IP WiFi *cafe* tempat kita nongkrong). Kalau si IP itu yang minta masuk, bukain pintunya (*Allow*)"*
 
 Intinya: **Aturan Firewall (*Firewall Rules*) itu adalah hukum mutlak buatan sendiri.** Kita yang menentukan siapa yang harus ditolak, dan siapa pengecualian yang boleh masuk.
+
+Setiap kali kita bikin satu hukum/aturan buat si Firewall, ada **6 komponen dasar** yang wajib kita tentukan ini dia isinya:
+
+1. **Source Address (IP Asal):** Siapa tamunya? Ini adalah alamat IP perangkat si pengirim data.
+2. **Destination Address (IP Tujuan):** Mau ketemu siapa di dalam? Ini adalah alamat IP perangkat target yang mau dituju.
+3. **Port (Pintu Jalur):** Mau lewat pintu nomor berapa? (Misal: Port 80 buat HTTP, Port 22 buat SSH).
+4. **Protocol (Bahasa Komunikasi):** Mereka bakal komunikasi pakai bahasa apa? (TCP, UDP, ICMP, dll).
+5. **Action (Status Eksekusi):** Perintah terakhir buat si firewall. Kalau semua ciri-ciri di atas terpenuhi, mau diapakan paketnya? Diizinkan masuk (**Allow/Accept**), atau ditendang keluar (**Deny/Drop**)?
+6. **Direction (Arah Lalu Lintas):** Aturan ini diatur untuk orang luar yang mau **masuk** (*Inbound / Ingress*) atau orang dalem yang mau **keluar** dari jaringan kita (*Outbound / Egress*)?
