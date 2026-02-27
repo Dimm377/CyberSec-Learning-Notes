@@ -44,7 +44,7 @@ Berdasarkan letak di mana sistem ini di install, IDS terbagi menjadi dua kelompo
   *Fungsi Utama:* Memberikan gambaran (*centralized view*) terpusat mengenai segala hal yang terjadi di dalam jaringan secara keseluruhan.
 
 <P align="center">
-<img src="../../Assets/Images/NIDS-HIDS.png" alt="NIDS-HIDS" width="700px"/>
+<img src="../../Assets/Images/NIDS-HIDS.png" alt="NIDS-HIDS" width="400px"/>
 </p>
 
 ### 2. Detection Modes (Cara Deteksi)
