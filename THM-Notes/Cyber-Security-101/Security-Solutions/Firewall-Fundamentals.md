@@ -13,7 +13,7 @@ Nah, sama seperti fungsi satpam tersebut, **Firewall** adalah sistem keamanan ya
 Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan internal kita yang aman dari jaringan eksternal (Internet). Berbekal aturan khusus (*rules*), Firewall akan memutuskan apakah suatu data diizinkan masuk atau akan diblokir mentah-mentah.
 
 <P>
-<img src="../../Assets/Images/Firewall.png" alt="Firewall" width="700px"/>
+<img src="../../Assets/Images/Firewall.png" alt="Firewall" width="800px"/>
 </p>
 
 ### Learning Objectives
@@ -25,8 +25,8 @@ Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan 
 
 ## Type Of Firewall
 
-<P>
-<img src="../../Assets/Images/Type-of-Firewall.png" alt="Type of Firewall" width="700px"/>
+<P align="center">
+<img src="../../Assets/Images/Firewall-type.png" alt="Type of Firewall" width="800px"/>
 </p>
 
 nyatanya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing dirancang dengan tujuannya sendiri
