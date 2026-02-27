@@ -28,3 +28,10 @@ Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan 
 <P>
 <img src="../../Assets/Images/Type-of-Firewall.png" alt="Type of Firewall" width="700px"/>
 </p>
+nyatanya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing dirancang dengan tujuannya sendiri.
+
+Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjanya. Mereka beroperasi di **lapisan (*layer*) OSI Model yang berbeda-beda**. Ibaratnya, ada satpam yang hanya memeriksa KTP di pagar depan, ada juga yang sampai memeriksa isi tas sampai ke dalam-dalamnya di ruang VIP
+
+Berikut adalah beberapa kategori Firewall yang wajib kita tahu:
+
+
