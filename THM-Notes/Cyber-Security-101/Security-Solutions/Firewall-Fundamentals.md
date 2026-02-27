@@ -34,25 +34,38 @@ Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjany
 
 Berikut adalah beberapa kategori Firewall yang wajib kita tahu:
 
-### Stateless Firewall
+### 1. Stateless Firewall (Satpam Pemalas)
 
-Stateless Firewall adalah jenis firewall yang paling dasar. Firewall ini bekerja dengan memeriksa setiap paket data secara terpisah, tanpa mempertimbangkan konteks atau riwayat koneksi sebelumnya. Firewall ini hanya memeriksa header paket data, seperti alamat IP sumber dan tujuan, serta nomor port.
+*Stateless Firewall* ini ibarat **satpam pemalas** yang jaga di gerbang depan (Beroperasi di **OSI Layer 3 & 4**).
+Dia kerja super cepat buat meriksa *header* paket data (ngecek IP dari mana, mau ke mana, dan lewat Port berapa). TAPI kelemahannya: dia **GAK PUNYA INGATAN**.
+- Dia gak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
+- Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu udah diblokir.
 
-### Stateful Firewall
+### 2. Stateful Firewall (Satpam Rajin)
 
-Stateful Firewall adalah jenis firewall yang lebih canggih. Firewall ini bekerja dengan memeriksa setiap paket data secara terpisah, tetapi juga mempertimbangkan konteks atau riwayat koneksi sebelumnya. Firewall ini memeriksa header paket data, serta tabel koneksi yang menyimpan informasi tentang koneksi yang sedang berlangsung.
+Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku catatan (*State Table*) kemana-mana (Beroperasi di **OSI Layer 3 & 4** juga).
+- Kalau ada paket yang diizinin masuk, dia bakal catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia bakal otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
+- Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal catet cirinya buat nolak paket serupa di masa depan secara otomatis. Jauh lebih aman
 
-### Proxy Firewall
+### 3. Proxy Firewall (Asisten Kurir)
 
-Proxy Firewall adalah jenis firewall yang bekerja dengan memeriksa setiap paket data secara terpisah, tetapi juga mempertimbangkan konteks atau riwayat koneksi sebelumnya. Firewall ini memeriksa header paket data, serta tabel koneksi yang menyimpan informasi tentang koneksi yang sedang berlangsung.
+Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya udah di ruangan VIP (**OSI Layer 7**).
+Kelemahan *firewall* sebelumnya adalah mereka cuma cek "kulit/amplop"-nya doang, gak berani buka isinya. *Proxy* memecahkan masalah itu:
+- Dia bertindak layaknya **Asisten Kurir Pribadi**. Pas kamu mau kunjungi server luar, si *Proxy* yang bakal repot-repot pergi nemuin server itu, ngambil datanya, lalu nganterin balik ke kamu.
+- Karena dia yang ngambilin barang, dia bakal ngebongkar isinya dulu. Kalau isinya *malware*, langsung dia buang.
+- Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
 
-### Next-Generation Firewall (NGFW)
+### 4. Next-Generation Firewall (NGFW) (Unit Pasukan Khusus)
 
-Next-Generation Firewall (NGFW) adalah jenis firewall yang paling canggih. Firewall ini bekerja dengan memeriksa setiap paket data secara terpisah, tetapi juga mempertimbangkan konteks atau riwayat koneksi sebelumnya. Firewall ini memeriksa header paket data, serta tabel koneksi yang menyimpan informasi tentang koneksi yang sedang berlangsung.
+Ini adalah *Firewall Last Boss* sejuta umat zaman sekarang. NGFW beroperasi nyapu bersih dari **OSI Layer 3 sampai Layer 7**.
+Dia bukan cuma satpam, tapi udah kayak **Sistem Pertahanan Militer Lengkap**:
+- Punya fitur *Deep Packet Inspection* (mengecek paket sampai ke dalem-dalemnya).
+- Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
+- Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
 
 > **Note:**
 > BONUS:
 
 ### Web Application Firewall (WAF)
 
-Web Application Firewall (WAF) adalah jenis firewall yang bekerja dengan memeriksa setiap paket data secara terpisah, tetapi juga mempertimbangkan konteks atau riwayat koneksi sebelumnya. Firewall ini memeriksa header paket data, serta tabel koneksi yang menyimpan informasi tentang koneksi yang sedang berlangsung.
+Kalau *Firewall* biasa tugasnya ngamanin pintu server secara umum, WAF ini tugasnya spesifik: **Ngamanin Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi kayak *SQL Injection* atau *Cross-Site Scripting (XSS)*.
