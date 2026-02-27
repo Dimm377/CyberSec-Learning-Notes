@@ -103,5 +103,34 @@ Setiap kali kita bikin satu hukum/aturan buat si Firewall, ada **6 komponen dasa
 2. **Destination Address (IP Tujuan):** Mau ketemu siapa di dalam? Ini adalah alamat IP perangkat target yang mau dituju.
 3. **Port (Pintu Jalur):** Mau lewat pintu nomor berapa? (Misal: Port 80 buat HTTP, Port 22 buat SSH).
 4. **Protocol (Bahasa Komunikasi):** Mereka bakal komunikasi pakai bahasa apa? (TCP, UDP, ICMP, dll).
-5. **Action (Status Eksekusi):** Perintah terakhir buat si firewall. Kalau semua ciri-ciri di atas terpenuhi, mau diapakan paketnya? Diizinkan masuk (**Allow/Accept**), atau ditendang keluar (**Deny/Drop**)?
+5. **Action (Status Eksekusi):** Perintah terakhir buat si firewall. Kalau semua ciri-ciri di atas terpenuhi, mau diapakan paketnya? Diizinkan masuk, atau ditendang keluar
 6. **Direction (Arah Lalu Lintas):** Aturan ini diatur untuk orang luar yang mau **masuk** (*Inbound / Ingress*) atau orang dalem yang mau **keluar** dari jaringan kita (*Outbound / Egress*)?
+
+### Type of Actions
+
+Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan paket data dengan daftar aturan. Ada 3 jenis keputusan utama yang bisa kita tentukan:
+
+1. **Allow (Silahkan Lewat):**
+   Ini adalah lampu hijau. Kalau paket datanya di-*Allow*, *firewall* bakal membukakan pintu dan membiarkan paket itu masuk dengan aman.
+   *Contoh Implementasi:* Mengizinkan semua karyawan di jaringan kita agar bisa *browsing* *website* (HTTP) ke Internet.
+   | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
+   | :---: | :---: | :---: | :---: | :---: | :---: |
+   | **Allow** | `192.168.1.0/24` | Any (Mana saja) | TCP | 80 | Outbound |
+   *(Cara Bacanya: "Firewall, tolong **Izinkan (Allow)** jaringan karyawan kita (`192.168.1.0/24`) jalan **Keluar (Outbound)** ke **Website Manapun (Any)** lewat **Port 80 (TCP)**.")*
+
+2. **Deny (Tolak / Blokir):**
+   Ini adalah lampu merah mutlak. Paket akan **ditolak dan diblokir** seketika (*bisa dengan cara di-Drop diam-diam atau di-Reject terang-terangan*). Ini adalah pondasi utama pengamanan server untuk mencegah *traffic* jahat/mencurigakan.
+   *Contoh Implementasi:* Menolak semua *traffic* asing (Internet) yang mencoba masuk ke server (*Inbound*) lewat jalur *remote* SSH.
+   | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
+   | :---: | :---: | :---: | :---: | :---: | :---: |
+   | **Deny** | Any (Siapa saja) | `192.168.1.0/24` | TCP | 22 | Inbound |
+   *(Cara Bacanya: "Firewall, tolong **Blokir (Deny)** dari **Siapapun (Any)** yang mau **Masuk (Inbound)** ke jaringan kita (`192.168.1.0/24`) lewat jalur **Port 22 (TCP/SSH)**.")*
+
+3. **Forward (Teruskan):**
+   Nah, *Action* satu ini beda. Dia bukan cuma jaga pintu, tapi bertindak sebagai *Gateway/Router*. Kalau paket diberi label *Forward*, *firewall* bakal capture paket itu dan langsung **meneruskan paket** ke segmen jaringan lain di dalam.
+   *Contoh Implementasi:* Meneruskan semua *traffic* pengunjung internet yang mau buka *port* web (80) langsung ke *Web Server* internal kita.
+   | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
+   | :---: | :---: | :---: | :---: | :---: | :---: |
+   | **Forward** | Any (Siapa saja) | `192.168.1.8` | TCP | 80 | Inbound |
+   *(Cara Bacanya: "Firewall, tolong **Teruskan (Forward)** pengunjung **Dari Mana Saja (Any)** yang mau **Masuk (Inbound)** lewat **Port 80 (TCP)**, langsung kirim ke komputer server kita di alamat `192.168.1.8`.")*
+
