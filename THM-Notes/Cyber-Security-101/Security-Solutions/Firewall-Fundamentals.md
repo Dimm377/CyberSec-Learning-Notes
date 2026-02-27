@@ -38,9 +38,9 @@ Berikut adalah beberapa kategori Firewall yang wajib kita tahu:
 ### 1. Stateless Firewall (Satpam Pemalas)
 
 *Stateless Firewall* ini ibarat **satpam pemalas** yang jaga di gerbang depan (Beroperasi di **OSI Layer 3 & 4**).
-Dia kerja super cepat buat meriksa *header* paket data (ngecek IP dari mana, mau ke mana, dan lewat Port berapa). TAPI kelemahannya: dia **GAK PUNYA INGATAN**.
-- Dia gak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
-- Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu udah diblokir.
+Dia kerja super cepat buat memeriksa *header* paket data (mengecek IP dari mana, mau ke mana, dan lewat Port berapa). TAPI kelemahannya: dia **TIDAK PUNYA INGATAN**.
+- Dia tidak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
+- Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu sudah diblokir.
 
 ### 2. Stateful Firewall (Satpam Rajin)
 
@@ -51,7 +51,7 @@ Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku cat
 ### 3. Proxy Firewall (Asisten Kurir)
 
 Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya udah di ruangan VIP (**OSI Layer 7**).
-Kelemahan *firewall* sebelumnya adalah mereka cuma cek "kulit/amplop"-nya doang, gak berani buka isinya. *Proxy* memecahkan masalah itu:
+Kelemahan *firewall* sebelumnya adalah mereka hanya mengecek "kulit/amplop"-nya saja, tidak berani buka isinya. *Proxy* memecahkan masalah itu:
 - Dia bertindak layaknya **Asisten Kurir Pribadi**. Pas kamu mau kunjungi server luar, si *Proxy* yang bakal repot-repot pergi nemuin server itu, ngambil datanya, lalu nganterin balik ke kamu.
 - Karena dia yang ngambilin barang, dia bakal ngebongkar isinya dulu. Kalau isinya *malware*, langsung dia buang.
 - Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
@@ -77,10 +77,10 @@ Biar makin gampang buat *review* atau nentuin *firewall* mana yang pas buat dipa
 
 | Tipe Firewall | Karakteristik Utama |
 | :--- | :--- |
-| **Stateless Firewall** | - Cuma bisa penyaringan dasar (*Basic filtering*)<br>- Gak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok buat jaringan yang butuh kecepatan tinggi karena kerjanya ngebut |
+| **Stateless Firewall** | - Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok buat jaringan yang butuh kecepatan tinggi karena kerjanya ngebut |
 | **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
 | **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
-| **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Udah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama kayak Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
+| **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
 | **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik kayak *SQL Injection* & *Cross-Site Scripting (XSS)* |
 
 ## Rules in Firewall
@@ -146,8 +146,8 @@ Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kat
    *Contoh:* Mengizinkan *traffic* masuk ke *port* 80 supaya orang-orang di luar sana bisa mengunjungi Web Server publik milik perusahaan kita.
 
 2. **Outbound Rules (Aturan Keluar):**
-   Ini kebalikannya, yaitu aturan khusus buat "Orang Dalem" yang mau keluar rumah. *Rule* ini mengatur perangkat di jaringan kita sendiri yang mencoba ngakses internet/dunia luar.
-   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar ngirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas biar kalau ada komputer karyawan yang kena virus, virusnya nggak bisa nyebar ngirim *spam email* ke luar!).
+   Ini kebalikannya, yaitu aturan khusus buat "Orang Dalem" yang mau keluar rumah. *Rule* ini mengatur perangkat di jaringan kita sendiri yang mencoba mengakses internet/dunia luar.
+   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas biar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
 
 3. **Forward Rules (Aturan Teruskan):**
    Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar biar langsung nyampe ke server tujuan di dalam jaringan kita.
@@ -183,7 +183,7 @@ Secara *default*, ada dua profil yang dipakai si Firewall Windows:
 
 ## Linux Firewall (Netfilter & iptables)
 
-Kalau sebelumnya kita membahas firewall bawaannya Windows, sekarang gimana nasib *user* Linux? Tenang saja, Linux justru surganya *firewall*. Di dalam OS Linux, ada sebuah *framework* (kerangka kerja) canggih yang tertanam langsung di inti sistemnya (*kernel*). Namanya adalah **Netfilter**.
+Kalau sebelumnya kita membahas firewall bawaannya Windows, sekarang gimana nasib *user* Linux? Tenang saja, di dalam OS Linux, ada sebuah *framework* (kerangka kerja) canggih yang tertanam langsung di inti sistemnya (*kernel*). Namanya adalah **Netfilter**.
 
 ### Netfilter
 
@@ -196,11 +196,11 @@ Karena *Netfilter* ini cuma sekadar mesin di belakang layar, kita butuh alat (*u
 2. **nftables:**
    Ini adalah versi *Next-Gen* alias penerus sah dari `iptables`. Dia bawa kemampuan *filtering* dan *NAT* yang jauh lebih cepat dan canggih, tapi tetep berakar di atas pondasi *Netfilter*.
 3. **firewalld:**
-   Sama-sama nyuruh si *Netfilter*, tapi *utility* satu ini cara kerjanya beda. Dia didesain punya aturan *pre-defined* (aturan siap pakai) dan mengenalkan konsep Zona Jaringan (*Network Zones*) biar penggunanya tidak perlu pusing memikirkan aturan dari nol.
+   Sama-sama memerintah si *Netfilter*, tapi *utility* satu ini cara kerjanya beda. Dia didesain punya aturan *pre-defined* (aturan siap pakai) dan mengenalkan konsep Zona Jaringan (*Network Zones*) biar penggunanya tidak perlu pusing memikirkan aturan dari nol.
 
 ### UFW (Uncomplicated Firewall)
 
-Sesuai namanya (*Uncomplicated* = tidak bikin ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang males berurusan sama *syntax* `iptables` yang panjang dan rumit.
+Sesuai namanya (*Uncomplicated* = tidak bikin ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang malas berurusan sama *syntax* `iptables` yang panjang dan rumit.
 
 UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang bakal menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
 
@@ -214,7 +214,7 @@ Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh aks
    ```
 
 2. **Menyalakan / Mengaktifkan Firewall:**
-   Untuk mengaktifkan Firewall (sekaligus bikin dia otomatis nyala tiap PC *restart*).
+   Untuk mengaktifkan Firewall (sekaligus membuat dia otomatis nyala tiap PC *restart*).
    ```bash
    user@arch:~$ sudo ufw enable
    Firewall is active and enabled on system startup
@@ -236,7 +236,7 @@ Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh aks
    *(Sebaliknya, kalau ditanya blokir semua tamu yang mau masuk: `sudo ufw default deny incoming`)*
 
 5. **Memblokir Port Spesifik:**
-   Setelah menetapkan aturan dasar, kita bisa mulai ngasih instruksi khusus. Misalnya kita mau blokir paksa tamu (*incoming*) yang mau masuk lewat gerbang SSH (Port 22 Transport Protokol TCP):
+   Setelah menetapkan aturan dasar, kita bisa mulai memberi instruksi khusus. Misalnya kita mau paksa blokir tamu (*incoming*) yang mau masuk lewat gerbang SSH (Port 22 Transport Protokol TCP):
    ```bash
    user@arch:~$ sudo ufw deny 22/tcp
    Rule added
@@ -244,13 +244,13 @@ Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh aks
    ```
 
 6. **Melihat Daftar Aturan dengan Nomor Urut:**
-   Semakin lama, buku catatan *firewall* lu bakal kepanjangan. Biar gampang ngaturnya, suruh UFW nampilin semua daftarnya lengkap dengan "Nomor Urut" (*Numbered*):
+   Semakin lama, buku catatan *firewall* bakal kepanjangan. Agar gampang mengaturnya, suruh UFW menampilkan semua daftarnya lengkap dengan "Nomor Urut" (*Numbered*):
    ```bash
    user@arch:~$ sudo ufw status numbered
    ```
 
 7. **Menghapus Aturan (*Delete Rule*):**
-   Punya nomor urut dari `status numbered` itu krusial banget buat menghapus aturan yang salah atau udah gak kepake. Lu tinggal panggil perintah *delete* dan masukin nomor aturannya (misal nyabut aturan di urutan ke-2):
+   Punya nomor urut dari `status numbered` itu krusial banget buat menghapus aturan yang salah atau sudah tidak terpakai. Tinggal panggil perintah *delete* dan masukkan nomor aturannya (misal mencabut aturan di urutan ke-2):
    ```bash
    user@arch:~$ sudo ufw delete 2
    Deleting:
