@@ -97,3 +97,34 @@ Semua kecerdasan Snort bergantung pada *Rule Files* (Kumpulan Aturan). Aturan in
 *(Meski kegunaan paling relevan dari Snort adalah sebagai NIDS, penggunaan mode lain [Sniffer/Logging] bebas disesuaikan dengan kebutuhan situasional tim)*.
 
 ## Snort Usage
+
+### Catatan Penting Saat Instalasi Snort
+
+Saat proses pemasangan awal (*installation*), kita wajib menentukan *Network Interface* (Kartu Jaringan) dan rentang IP yang akan diawasi. Secara bawaan (*default*), Snort hanya akan peduli dan menangkap paket data yang memang ditujukan khusus ke perangkat *host* tempat ia diinstal saja.
+
+**Bagaimana agar Snort bisa mengawasi seluruh jaringan (bertindak sebagai NIDS)?**
+Kita harus memaksa Kartu Jaringan pada perangkat tersebut untuk masuk ke dalam **Promiscuous Mode** (Mode Menerima Segala Arah). Dengan mode ini, Kartu Jaringan akan menerima seluruh paket data yang lalu lalang di sekitarnya, terlepas paket itu ditujukan untuk dirinya atau bukan.
+
+### Struktur Direktori dan Konfigurasi Snort
+
+Setelah diinstal, wujud fisik dari otak dan catatan Snort akan tersimpan di dalam direktori `/etc/snort`.
+
+Di dalam direktori ini, terdapat berbagai macam *file* penting. Namun, yang dipercaya memegang peran sebagai **Key File** adalah *file* khusus bernama `snort.conf` (*Configuration File*).
+
+Melalui `snort.conf` inilah, seorang Administrator Keamanan memberikan instruksi operasional kepada Snort:
+- Aturan pendeteksian mana saja yang boleh dibaca dan diaktifkan.
+- Rentang wilayah/IP jaringan mana yang wajib dipantau siang dan malam.
+- Dan berbagai macam *setting* teknis lainnya.
+
+Sedangkan, *file-file* yang memuat *database* ribuan rekam jejak ancaman (*Signatures*) akan disimpan secara terpisah dan diamankan di dalam sebuah sarang (*folder*) yang dinamakan **`rules`**.
+
+Berikut adalah contoh di Terminal ketika kita membedah isi dari direktori Snort:
+
+```bash
+user@arch:~$ ls /etc/snort
+classification.config  reference.config  snort.arch.conf
+community-sid-msg.map  rules             threshold.conf
+gen-msg.map            snort.conf        unicode.map
+```
+
+### Rule Format
