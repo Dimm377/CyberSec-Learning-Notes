@@ -128,3 +128,27 @@ gen-msg.map            snort.conf        unicode.map
 ```
 
 ### Rule Format
+
+Agar Snort bisa bekerja, kita harus menulis aturan dengan tata letak (*Syntax*) yang sangat presisi. Sebagai contoh, mari kita bedah anatomi dari sebuah *rule* sederhana yang dirancang untuk mendeteksi datangnya paket *ping* (Protokol ICMP) ke dalam jaringan pangkalan kita:
+
+<p align="center">
+<img src="../../Assets/Images/snort-format.png" alt="Snort Format" width="700px"/>
+</p>
+
+Aturan tersebut terlihat seperti baris kode yang membingungkan, namun fungsinya sangat masuk akal jika dipecah per komponen:
+
+- **Action (*Tindakan Utama*):** `alert`
+  Menentukan apa respons Snort jika ada paket data yang tertangkap basah cocok dengan parameter aturan ini. Dalam hal ini, tindakannya adalah membunyikan alarm peringatan (`alert`).
+- **Protocol (*Bahasa Komunikasi*):** `icmp`
+  Target protokol spesifik yang sedang diawasi. Pada contoh ini, kita secara spesifik menargetkan paket ping yang menggunakan protokol `ICMP`.
+- **Source IP & Port (*Asal Keberangkatan*):** `any any`
+  Menentukan dari alamat IP mana dan melalui *port* manakah paket tersebut diizinkan berasal. Kata sakti `any` (apa saja) berarti Snort akan mengawasi *traffic* yang datang dari titik mana pun di internet tanpa pilih pilih.
+- **Direction Operator (*Panah Arah Tujuan*):** `->`
+  Tanda panah ini mutlak untuk menunjukkan rute perjalanan paket. Artinya, paket ini bergerak dari wilayah *Source* (sisi kiri) menuju masuk ke wilayah *Destination* (sisi kanan).
+- **Destination IP & Port (*Titik Pendaratan*):** `$HOME_NET any`
+  Di mana titik tujuan paket ini yang kita anggap sebagai bahaya? `$HOME_NET` adalah sebuah variabel. Nilainya otomatis merujuk kembali kepada jangkauan IP jaringan internal kita yang sebelumnya telah didata di dalam `snort.conf`. Sedangkan *port* tujuannya diatur terbuka lebar ke `any` (seluruh *port*).
+- **Rule Metadata / Options (*Informasi Tambahan*):** `(msg:...; sid:...; rev:...;)`
+  Bagian yang dikurung sepasang tanda kurung ini adalah informasi tambahan (*Rule Options*). Semuanya diletakkan berderet di bagian paling akhir kalimat:
+  - **`msg` (*Message*):** Teks pesan (contoh: "Ping Detected") yang akan langsung dimunculkan di layar (*console*) saat peringatan terpicu. Ini adalah pesan yang disampaikan snort agar tim analis keamanan paham jenis bahaya apa yang sedang terjadi.
+  - **`sid` (*Signature ID*):** Nomor identitas unik (*Signature*) milik aturan ini. Ibarat nomor KTP, setiap *rule* wajib memiliki nomor tunggal yang berbeda (di sini nilainya: `10001`) agar tidak tertukar satu sama lain saat proses evaluasi.
+  - **`rev` (*Revision*):** Nomor rekaman edisi referensi. Jika besok hari tim analis merevisi *rule* ini menjadi lebih canggih, nilai `rev` wajib mereka naikkan satu angka (misal menjadi `rev:2`). Tujuannya murni sebagai rekam jejak versi.
