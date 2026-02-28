@@ -87,3 +87,13 @@ Semua kecerdasan Snort bergantung pada *Rule Files* (Kumpulan Aturan). Aturan in
 <p align="center">
 <img src="../../Assets/Images/Snort-mode.png" alt="Snort Modes" width="700px"/>
 </p>
+
+| Snort Mode | Deskripsi Analogi (*Description*) | Kasus Penggunaan (*Use Case*) |
+| :--- | :--- | :--- |
+| **Packet Sniffer Mode** | Mode hanya digunakan snort untuk membaca dan menampilkan lalu lintas jaringan mentah (*raw traffic*) ke layar terminal secara *real-time*. Tidak ada proses analisis keamanan yang terjadi (tidak bertindak sebagai IDS). | Sangat berguna bagi tim jaringan (*Network Engineer*) yang butuh melihat aliran data harian untuk melakukan *troubleshooting* (mendiagnosis masalah kinerja jaringan). |
+| **Packet Logging Mode** | Mode **Perekam Kotak Hitam (*Black Box*)**. Snort difungsikan semata-mata untuk merekam seluruh paket lalu lintas ke dalam format standar `PCAP`. | Digunakan oleh tim forensik digital (*Digital Forensics*). Mereka membutuhkan *file log* dari Snort ini untuk menyelidiki akar penyebab (*root cause*) suatu serangan yang sudah terlanjur membobol sistem. |
+| **Network Intrusion Detection System (NIDS) Mode** | Mode **Deteksi Intrusi Sebenarnya**. Ini adalah mode utama di mana Snort aktif bekerja penuh sebagai IDS (*Sistem CCTV Pintar*). Ia mencocokkan lalu lintas dengan *database* rekam jejak (*Signatures*) dan membunyikan peringatan (*Alerts*). | Wajib dihidupkan jika Tim Keamanan membutuhkan pemantauan proaktif dan sistem peringatan dini dari sebuah potensi ancaman peretasan. |
+
+*(Meski kegunaan paling relevan dari Snort adalah sebagai NIDS, penggunaan mode lain [Sniffer/Logging] bebas disesuaikan dengan kebutuhan situasional tim)*.
+
+## Snort Usage
