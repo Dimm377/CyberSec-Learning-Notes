@@ -152,3 +152,71 @@ Aturan tersebut terlihat seperti baris kode yang membingungkan, namun fungsinya 
   - **`msg` (*Message*):** Teks pesan (contoh: "Ping Detected") yang akan langsung dimunculkan di layar (*console*) saat peringatan terpicu. Ini adalah pesan yang disampaikan snort agar tim analis keamanan paham jenis bahaya apa yang sedang terjadi.
   - **`sid` (*Signature ID*):** Nomor identitas unik (*Signature*) milik aturan ini. Ibarat nomor KTP, setiap *rule* wajib memiliki nomor tunggal yang berbeda (di sini nilainya: `10001`) agar tidak tertukar satu sama lain saat proses evaluasi.
   - **`rev` (*Revision*):** Nomor rekaman edisi referensi. Jika besok hari tim analis merevisi *rule* ini menjadi lebih canggih, nilai `rev` wajib mereka naikkan satu angka (misal menjadi `rev:2`). Tujuannya murni sebagai rekam jejak versi.
+
+### Rule Creation
+
+Mari kita praktikkan penulisan resep keamanan di atas. Semua *rule* buatan sendiri (*Custom Rules*) biasanya dikumpulkan ke dalam satu *file* spesifik bernama `local.rules`.
+
+Pertama, buka *file* `local.rules` tersebut menggunakan teks editor (misalnya `nano`) dengan hak akses penuh (`sudo`):
+```bash
+ubuntu@tryhackme:~$ sudo nano /etc/snort/rules/local.rules
+```
+
+Kemudian, tambahkan baris aturan pantauan kita di baris paling bawah *file* tersebut:
+```snort
+alert icmp any any -> 127.0.0.1 any (msg:"Loopback Ping Detected"; sid:10003; rev:1;)
+```
+*(Catatan: Biarkan aturan-aturan lama yang sudah ada di dalamnya tetap hidup, jangan dihapus).*
+
+maksud dari *rule* di atas:
+"Jika ada paket ping (`icmp`) dari siapapun dan dari *port* manapun (`any any`) yang menuju (`->`) tepat ke alamat IP lokal komputer kita sendiri (`127.0.0.1`) di *port* manapun (`any`), maka segera bunyikan alarm (`alert`) dan tampilkan tulisan `Loopback Ping Detected`."
+
+Setelah ditambahkan, simpan modifikasi *file* tersebut.
+
+### Rule Testing
+
+Setelah diberikan instruksi baru, saatnya kita mengaktifkan Snort untuk menguji apakah ia benar-benar bisa menaati dan mendeteksi ancaman sesuai *rule* `local.rules` kita.
+
+Jalankan perintah pengaktifan Snort berikut di layar terminal:
+```bash
+user@arch:~$ sudo snort -q -l /var/log/snort -i lo -A console -c /etc/snort/snort.conf
+```
+*Command di atas pada dasarnya memerintahkan Snort untuk hidup, membaca konfigurasi utama (`snort.conf`), mendengarkan secara pasif di kartu jaringan lokal (`-i lo`), merekam hasil pantauan (`-l`), dan menampilkan alarm peringatannya langsung ke layar.*
+
+Karena instruksi yang kita buat khusus terfokus untuk mendeteksi datangnya paket Ping (ICMP) menuju alamat IP lokal (*loopback* `127.0.0.1`), maka cara menguji (*testing*) pembuktiannya sangat sederhana: cukup *ping* ke alamat IP lokal komputer sendiri untuk melihat apakah alarm Snort menyala.
+
+```bash
+user@arch:~$ ping 127.0.0.1
+```
+
+Output di bawah menunjukkan peringatan "Loopback Ping Detected" yang dihasilkan Snort ketika kita melakukan ping ke IP loopback host kita. Artinya aturan kami berfungsi dengan baik.
+
+```bash
+user@arch:~$ sudo snort -q -l /var/log/snort -i lo -A console -c /etc/snort/snort.conf
+07/24-10:46:52.401504  [**] [1:1000001:1] Loopback Ping Detected [**] [Priority: 0] {ICMP} 127.0.0.1 -> 127.0.0.1
+07/24-10:46:53.406552  [**] [1:1000001:1] Loopback Ping Detected [**] [Priority: 0] {ICMP} 127.0.0.1 -> 127.0.0.1
+07/24-10:46:54.410544  [**] [1:1000001:1] Loopback Ping Detected [**] [Priority: 0] {ICMP} 127.0.0.1 -> 127.0.0.1
+```
+
+### Referensi Tambahan
+
+Untuk penguasaan penulisan *rule* Snort yang lebih dalam dan bervariasi (seperti pendeteksian serangan *Web*, *Malware*, dsb), sangat disarankan untuk merujuk langsung pada **Docs Resmi Snort** melalui tautan berikut:
+- [Official Snort Documentation (snort.org/documents)](https://www.snort.org/documents)
+
+### Running Snort on PCAP Files
+
+Sejauh ini kita melihat ketangguhan Snort dalam mendeteksi ancaman pada lalu lintas jaringan yang sedang berjalan masuk secara seketika (*real-time traffic*).
+
+Namun di dunia nyata, adakalanya kita akan menemui skenario di mana Sistem Keamanan sudah terlanjur kebobolan, dan yang tersisa hanyalah sekumpulan *file log* rekaman aktivitas jaringan masa lalu. *File* ini biasanya terekam dalam format standar yang disebut **PCAP** (*Packet Capture*).
+
+Bagaikan memutar kembali kaset rekaman CCTV lama untuk mencari wajah pelaku pencurian, Snort sangat mampu ditugaskan untuk membaca dan menganalisis *file* PCAP lama untuk keperluan investigasi Digital Forensics
+
+Berikut adalah perintah (*command*) dengan hak akses Penuh (*sudo privilege*) yang bisa digunakan untuk menjalankan skenario ini:
+
+```bash
+user@arch:~$ sudo snort -q -l /var/log/snort -r Task.pcap -A console -c /etc/snort/snort.conf
+```
+*(Catatan: Ganti nama `Task.pcap` dengan lokasi *file* `PCAP` spesifik yang ingin dianalisis).*
+
+Bisa diperhatikan bahwa command yang diketik hampir persis sama dengan perintah Snort sebelumnya. Satu-satunya kunci perbedaannya terletak pada pergantian operator sumber asal paket:
+- Instruksi **`-i lo`** (mengawasi kartu Antarmuka/Interface secara langsung) kini telah **digantikan oleh `-r Task.pcap`** (menginstruksikan Snort untuk membaca/*read* dari sebuah *file* statis).
