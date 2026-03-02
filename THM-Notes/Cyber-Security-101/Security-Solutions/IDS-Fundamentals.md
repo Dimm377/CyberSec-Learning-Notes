@@ -214,9 +214,9 @@ Bagaikan memutar kembali kaset rekaman CCTV lama untuk mencari wajah pelaku penc
 Berikut adalah perintah (*command*) dengan hak akses Penuh (*sudo privilege*) yang bisa digunakan untuk menjalankan skenario ini:
 
 ```bash
-user@arch:~$ sudo snort -q -l /var/log/snort -r Task.pcap -A console -c /etc/snort/snort.conf
+user@arch:~$ sudo snort -q -l /var/log/snort -r example.pcap -A console -c /etc/snort/snort.conf
 ```
-*(Catatan: Ganti nama `Task.pcap` dengan lokasi *file* `PCAP` spesifik yang ingin dianalisis).*
+*(Catatan: Ganti nama `example.pcap` dengan lokasi *file* `PCAP` spesifik yang ingin dianalisis).*
 
 Bisa diperhatikan bahwa command yang diketik hampir persis sama dengan perintah Snort sebelumnya. Satu-satunya kunci perbedaannya terletak pada pergantian operator sumber asal paket:
-- Instruksi **`-i lo`** (mengawasi kartu Antarmuka/Interface secara langsung) kini telah **digantikan oleh `-r Task.pcap`** (menginstruksikan Snort untuk membaca/*read* dari sebuah *file* statis).
+- Instruksi **`-i lo`** (mengawasi kartu Antarmuka/Interface secara langsung) kini telah **digantikan oleh `-r example.pcap`** (menginstruksikan Snort untuk membaca/*read* dari sebuah *file* statis).
