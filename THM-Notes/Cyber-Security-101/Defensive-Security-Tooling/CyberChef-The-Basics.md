@@ -84,3 +84,58 @@ Berikut beberapa operasi yang sering dipakai dalam perjalanan belajar cyber secu
 ---
 
 Jika kita mengarahkan kursor ke operasi tertentu, akan muncul tooltip yang memberikan informasi lebih detail tentang operasi tersebut.
+
+### Recipe Area
+
+**Recipe Area** adalah **jantung dari CyberChef**. Di sinilah kamu:
+- Memilih dan menyusun operasi-operasi yang ingin dijalankan
+- Mengatur urutan eksekusinya (operasi dijalankan dari atas ke bawah)
+- Menyetel argumen dan opsi tiap operasi
+
+Juga bisa **drag & drop** operasi dari Operations Area langsung ke Recipe Area.
+
+Fitur-fitur yang tersedia di Recipe Area:
+
+| Tombol | Fungsi |
+| ------ | ------ |
+| `Save recipe` | Menyimpan susunan operasi yang sudah dibuat |
+| `Load recipe` | Memuat recipe yang pernah disimpan sebelumnya |
+| `Clear Recipe` | Menghapus semua operasi dari recipe saat ini |
+
+Di bagian bawah Recipe Area terdapat dua kontrol penting:
+- **`BAKE!`** — Tombol untuk memproses data dengan recipe yang sudah disusun.
+- **`Auto Bake`** _(checkbox)_ — Kalau dicentang, CyberChef akan otomatis memproses ulang setiap kali ada perubahan tanpa perlu klik `BAKE!` setiap saat.
+
+---
+
+### Input Area
+
+**Input Area** adalah tempat kamu memasukkan data yang ingin diproses — bisa dengan cara:
+- **Mengetik** langsung
+- **Paste** dari clipboard
+- **Drag & drop** file ke area ini
+
+Fitur-fitur tambahan di Input Area:
+
+| Fitur | Fungsi |
+| ----- | ------ |
+| `Add a new input tab` | Membuat tab input baru untuk menggunakan nilai yang berbeda dari tab sebelumnya |
+| `Open folder as input` | Upload seluruh folder sebagai input sekaligus |
+| `Open file as input` | Upload satu file sebagai input |
+| `Clear input and output` | Menghapus semua nilai input dan output yang ada |
+| `Reset pane layout` | Mengembalikan tampilan antarmuka ke ukuran _default_ |
+
+### Output Area
+
+**Output Area** adalah tempat CyberChef menampilkan **hasil pemrosesan** data kamu setelah di-_bake_. Hasilnya ditampilkan secara jelas dan mudah dibaca.
+
+Fitur-fitur yang tersedia:
+
+| Fitur | Fungsi |
+| ----- | ------ |
+| `Save output to file` | Menyimpan hasil output ke file `.dat` |
+| `Copy raw output to the clipboard` | Menyalin output mentah langsung ke clipboard untuk dipakai di aplikasi atau dokumen lain |
+| `Replace input with output` | Menimpa nilai input dengan hasil output saat ini (berguna untuk chaining operasi secara manual) |
+| `Maximise output pane` | Memperbesar panel output ke ukuran _default_ |
+
+---
