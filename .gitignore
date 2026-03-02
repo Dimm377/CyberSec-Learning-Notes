@@ -1,5 +1,4 @@
 # IDE / Editor
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -8,7 +7,9 @@
 # OS files
 .DS_Store
 Thumbs.db
-
+.coding_assistant_rules.md
+.gitignore
 # Temporary files
 *.tmp
 *.bak
+_TEMPLATE.md

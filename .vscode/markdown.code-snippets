@@ -1,0 +1,172 @@
+{
+  // ═══════════════════════════════════════════════
+  //  THM ROOM TEMPLATE
+  // ═══════════════════════════════════════════════
+  "THM Room Template": {
+    "scope": "markdown",
+    "prefix": "!thm",
+    "body": [
+      "# TryHackMe: ${1:Room Name}",
+      "",
+      "- **Room Link:** [${1:Room Name}](https://tryhackme.com/room/${2:room-slug})",
+      "- **Category:** ${3:Category}",
+      "- **Difficulty:** ${4|Easy,Medium,Hard|}",
+      "",
+      "## Type of ${5:Topic}",
+      "",
+      "### 1. ${6:First Section Title}",
+      "",
+      "${7:Penjelasan section ini...}",
+      "",
+      "---",
+      "",
+      "### 2. ${8:Second Section Title}",
+      "",
+      "${9:Penjelasan section ini...}",
+      "",
+      "---",
+      "",
+      "### Uji Ingatan (Active Recall)",
+      "",
+      "| No. | Pertanyaan | Jawaban |",
+      "| :-: | ---------- | ------- |",
+      "| 1. | ${10:Pertanyaan 1?} | ${11:Jawaban} |",
+      "| 2. | ${12:Pertanyaan 2?} | ${13:Jawaban} |",
+      "| 3. | ${14:Pertanyaan 3?} | ${15:Jawaban} |",
+      ""
+    ],
+    "description": "Template lengkap untuk room TryHackMe"
+  },
+  // ═══════════════════════════════════════════════
+  //  TASK / SECTION TEMPLATE
+  // ═══════════════════════════════════════════════
+  "Task Section": {
+    "scope": "markdown",
+    "prefix": "!task",
+    "body": [
+      "### ${1:No}. ${2:Task Title}",
+      "",
+      "${3:Penjelasan task ini...}",
+      "",
+      "```${4:bash}",
+      "${5:# command atau code}",
+      "```",
+      "",
+      "---",
+      ""
+    ],
+    "description": "Section template untuk satu Task/bagian"
+  },
+  // ═══════════════════════════════════════════════
+  //  ACTIVE RECALL BLOCK
+  // ═══════════════════════════════════════════════
+  "Active Recall": {
+    "scope": "markdown",
+    "prefix": "!recall",
+    "body": [
+      "### Uji Ingatan (Active Recall)",
+      "",
+      "| No. | Pertanyaan | Jawaban |",
+      "| :-: | ---------- | ------- |",
+      "| 1. | ${1:Pertanyaan?} | ${2:Jawaban} |",
+      "| 2. | ${3:Pertanyaan?} | ${4:Jawaban} |",
+      "| 3. | ${5:Pertanyaan?} | ${6:Jawaban} |",
+      ""
+    ],
+    "description": "Blok Uji Ingatan / Active Recall"
+  },
+  // ═══════════════════════════════════════════════
+  //  QUICK TABLE
+  // ═══════════════════════════════════════════════
+  "Markdown Table": {
+    "scope": "markdown",
+    "prefix": "!table",
+    "body": [
+      "| ${1:Header 1} | ${2:Header 2} | ${3:Header 3} |",
+      "| ---------- | ---------- | ---------- |",
+      "| ${4:Data} | ${5:Data} | ${6:Data} |",
+      "| ${7:Data} | ${8:Data} | ${9:Data} |",
+      ""
+    ],
+    "description": "Quick markdown table"
+  },
+  // ═══════════════════════════════════════════════
+  //  CODE BLOCK
+  // ═══════════════════════════════════════════════
+  "Code Block": {
+    "scope": "markdown",
+    "prefix": "!code",
+    "body": [
+      "```${1|bash,python,javascript,sql,html,css,php,c,json|}",
+      "${2:code here}",
+      "```",
+      ""
+    ],
+    "description": "Fenced code block dengan language picker"
+  },
+  // ═══════════════════════════════════════════════
+  //  IMAGE TAG (CENTERED)
+  // ═══════════════════════════════════════════════
+  "Centered Image": {
+    "scope": "markdown",
+    "prefix": "!img",
+    "body": [
+      "<p align=\"center\">",
+      "  <img src=\"${1:path/to/image.png}\" alt=\"${2:description}\" width=\"${3:500}px\"/>",
+      "</p>",
+      ""
+    ],
+    "description": "Centered image dengan custom width"
+  },
+  // ═══════════════════════════════════════════════
+  //  CALLOUT / TIP BLOCK
+  // ═══════════════════════════════════════════════
+  "Callout Block": {
+    "scope": "markdown",
+    "prefix": "!tip",
+    "body": [
+      "> **${1|Catatan,Penting,Tips,Perhatian|}:** ${2:isi callout}",
+      ""
+    ],
+    "description": "Callout / admonition block"
+  },
+  // ═══════════════════════════════════════════════
+  //  METHODOLOGY SECTION (OFFENSIVE)
+  // ═══════════════════════════════════════════════
+  "Attack Methodology": {
+    "scope": "markdown",
+    "prefix": "!attack",
+    "body": [
+      "### Alur Serangan (Methodology)",
+      "",
+      "**Skenario:** ${1:Deskripsi skenario serangan}",
+      "",
+      "| Tahap | Aksi | Tool |",
+      "| ----- | ---- | ---- |",
+      "| 1. Reconnaissance | ${2:...} | ${3:...} |",
+      "| 2. Scanning | ${4:...} | ${5:...} |",
+      "| 3. Exploitation | ${6:...} | ${7:...} |",
+      "| 4. Post-Exploitation | ${8:...} | ${9:...} |",
+      "",
+      "### Perspektif Defensif (Mitigasi)",
+      "",
+      "- ${10:Cara mencegah/mendeteksi serangan ini}",
+      ""
+    ],
+    "description": "Template alur serangan + mitigasi"
+  },
+  // ═══════════════════════════════════════════════
+  //  HORIZONTAL RULE
+  // ═══════════════════════════════════════════════
+  "Divider": {
+    "scope": "markdown",
+    "prefix": "!hr",
+    "body": [
+      "",
+      "---",
+      "",
+      ""
+    ],
+    "description": "Horizontal rule / divider"
+  }
+}
