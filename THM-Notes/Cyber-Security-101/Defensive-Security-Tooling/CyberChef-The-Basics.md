@@ -139,3 +139,39 @@ Fitur-fitur yang tersedia:
 | `Maximise output pane` | Memperbesar panel output ke ukuran _default_ |
 
 ---
+
+## Before Anything Else
+
+Sebelum memakai CyberChef, penting untuk punya **mental model** yang jelas. Ada 4 langkah berpikir yang harus diikuti setiap kali menggunakan CyberChef:
+
+<p align="center">
+  <img src="../../Assets/Images/4step.png" alt="4 step" width="500px"/>
+</p>
+
+### Penjelasan Tiap Langkah
+
+**Step 1 — Tentukan tujuan yang jelas:**
+Sebelum melakukan apapun, jawab dulu pertanyaan: **"Apa yang ingin aku capai?"**
+Tujuan yang spesifik memberi arah dan fokus. Contoh: _"Saat investigasi keamanan, aku menemukan string aneh — aku ingin tahu pesan tersembunyi di baliknya, kalau ada."_
+
+**Step 2 — Masukkan data ke Input Area:**
+Paste atau upload data yang ingin diproses. Di contoh di atas, paste atau upload string aneh yang kamu temukan.
+
+**Step 3 — Pilih operasi yang relevan:**
+Ini bagian yang membutuhkan sedikit riset jika kamu belum familiar. Dari contoh di atas, setelah diteliti, string tersebut kemungkinan menggunakan enkripsi/encoding. Maka coba operasi-operasi dari kategori **Encryption/Encoding** seperti `ROT13`, `Base64`, `Base85`, atau `ROT47`.
+
+**Step 4 — Cek output:**
+Tanyakan: **"Apakah hasilnya sesuai tujuan?"**
+- **Ya** → Selesai
+- **Tidak** → Ulangi dari Step 1 (redefinisi tujuan) atau Step 3 (coba operasi lain)
+
+### Contoh Nyata
+
+| Step | Aksi |
+| ---- | ---- |
+| 1 | Menemukan string aneh saat investigasi → ingin tahu isinya |
+| 2 | Paste string aneh ke Input Area |
+| 3 | Coba operasi `ROT13`, `Base64`, `Base85`, `ROT47` |
+| 4 | Cek output — apakah muncul pesan yang masuk akal? |
+
+---
