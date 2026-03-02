@@ -145,6 +145,7 @@
 | 1.  | [Introduction to SIEM](THM-Notes/Cyber-Security-101/Security-Solutions/Introduction-to-SIEM.md)               | Introduction to Security Information & Event Management  |
 | 2.  | [Firewall Fundamentals](THM-Notes/Cyber-Security-101/Security-Solutions/Firewall-Fundamentals.md)             | Introduction to Firewalls         |
 | 3.  | [IDS Fundamentals](THM-Notes/Cyber-Security-101/Security-Solutions/IDS-Fundamentals.md)                       | Introduction to Intrusion Detection Systems |
+| 4.  | [Vulnerability Scanner Overview](THM-Notes/Cyber-Security-101/Security-Solutions/Vulnerability-Scanner-Overview.md) | Introduction to Vulnerability Scanners |
 
 </details>
 
