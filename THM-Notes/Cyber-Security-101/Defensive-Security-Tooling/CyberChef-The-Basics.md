@@ -82,3 +82,5 @@ Berikut beberapa operasi yang sering dipakai dalam perjalanan belajar cyber secu
 | **ROT13** | Caesar cipher sederhana yang menggeser karakter alfabet sebesar 13 posisi | `Digital Forensics and Incident Response` → `Qvtvgny Sberafvpf naq Vapvqrag Erfcbafr` |
 
 ---
+
+Jika kita mengarahkan kursor ke operasi tertentu, akan muncul tooltip yang memberikan informasi lebih detail tentang operasi tersebut.
