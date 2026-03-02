@@ -149,6 +149,17 @@
 
 </details>
 
+<details>
+<summary>Defensive Security Tooling</summary>
+
+<br>
+
+| No. | Notes                                                                                                                          | Description                   |
+| :-: | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- |
+| 1.  | [CyberChef The Basics](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/CyberChef-The-Basics.md)                        | Introduction to CyberChef, the Swiss Army knife for cyber security professionals |
+
+</details>
+
 </details>
 
 <details>
