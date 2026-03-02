@@ -63,7 +63,7 @@ CyberChef terdiri dari 4 area masing-masing dengan fungsi berbeda:
 4. Output
 
 <p align="center">
-  <img src="../../Assets/Images/CyberChef.png" alt="CyberChef Interface" width="500px"/>
+  <img src="../../Assets/Images/CyberChef.png" alt="CyberChef Interface" width="700px"/>
 </p>
 
 ### Operations Area
@@ -145,7 +145,7 @@ Fitur-fitur yang tersedia:
 Sebelum memakai CyberChef, penting untuk punya **mental model** yang jelas. Ada 4 langkah berpikir yang harus diikuti setiap kali menggunakan CyberChef:
 
 <p align="center">
-  <img src="../../Assets/Images/4step.png" alt="4 step" width="500px"/>
+  <img src="../../Assets/Images/4step.png" alt="4 step" width="800px"/>
 </p>
 
 ### Penjelasan Tiap Langkah
