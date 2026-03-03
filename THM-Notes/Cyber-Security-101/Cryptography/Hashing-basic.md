@@ -208,4 +208,36 @@ Hashing standar cuma jamin **Integritas** (file tidak berubah), tapi tidak jamin
 - **Encoding:** Mengirim binary file lewat email (Base64), URL encoding.
 - **Encryption:** Mengirim pesan rahasia (WA/Signal), HTTPS.
 
+---
 
+## Attack Flow Awareness
+
+Hashing muncul di banyak titik dalam _attack chain_, baik dari sisi attacker maupun defender:
+
+| Tahap | Peran Hashing |
+| ----- | ------------- |
+| **Post-Exploitation** | Setelah masuk ke sistem, attacker mencari file password (contoh: `/etc/shadow` di Linux, `SAM` di Windows) yang berisi hash credentials |
+| **Credential Access** | Attacker meng-_crack_ hash yang didapat untuk mendapatkan password plaintext |
+| **Lateral Movement** | Password yang berhasil di-crack bisa dipakai untuk login ke sistem lain di jaringan (password reuse) |
+| **Defense (Integrity)** | Blue Team menggunakan hash checksum untuk mendeteksi file yang dimodifikasi oleh malware |
+
+**Teknik Attacker:**
+- **Pass-the-Hash (PtH):** Di Windows, attacker bisa menggunakan NTLM hash **tanpa perlu** meng-crack-nya jadi plaintext. Cukup hash-nya saja untuk melakukan autentikasi.
+- **Kerberoasting:** Meng-request service ticket dari Active Directory lalu meng-_crack_ hash-nya secara offline.
+
+---
+
+## For Real World Relevance
+
+- **Data Breaches:** Hampir setiap data breach besar melibatkan hash cracking. Jika organisasi menggunakan hashing yang lemah (MD5 tanpa salt), jutaan password bisa di-crack dalam hitungan jam menggunakan GPU modern.
+- **Forensics:** Investigator menggunakan hash checksum untuk memverifikasi integritas barang bukti digital. Satu perubahan kecil di file bukti akan mengubah hash-nya dan membatalkan bukti di pengadilan.
+- **Password Policy:** Standar industri sekarang mengharuskan penggunaan **bcrypt** atau **Argon2** (bukan MD5/SHA1) karena keduanya sengaja dirancang lambat untuk mempersulit brute force.
+
+---
+
+## Questions
+
+1. Kenapa MD5 dan SHA1 dianggap tidak aman untuk password storage meskipun keduanya masih _one-way functions_?
+2. Apa yang membuat teknik **Pass-the-Hash** berbahaya? Kenapa meng-_crack_ hash bahkan tidak diperlukan dalam skenario ini?
+3. Jika kamu menemukan hash `$6$` di file `/etc/shadow` target, tools dan wordlist apa yang akan kamu gunakan, dan berapa estimasi waktu cracking-nya?
+4. Dari perspektif Blue Team, bagaimana cara memastikan bahwa password storage di organisasimu tahan terhadap serangan cracking modern?

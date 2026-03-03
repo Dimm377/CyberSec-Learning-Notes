@@ -115,3 +115,37 @@ Penjelasannya:
 - `-V`: Verbose mode, agar keliatan prosesnya.
 
 _Note: Kalau web servernya jalan di port yang tidak standar (bukan 80/443), tambahin flag `-s <port>`._
+
+---
+
+## Attack Flow Awareness
+
+Hydra beroperasi di tahap **Initial Access** dalam _attack chain_:
+
+| Tahap | Peran Hydra |
+| ----- | ----------- |
+| **Reconnaissance** | Setelah Nmap menemukan port SSH/FTP/HTTP terbuka, Hydra menjadi langkah logis berikutnya |
+| **Initial Access** | Brute force credentials untuk mendapatkan akses pertama ke sistem target |
+| **Lateral Movement** | Bisa digunakan lagi untuk brute force layanan internal setelah mendapatkan akses di satu mesin |
+
+**Perspektif Blue Team:**
+- **Deteksi:** Monitoring _failed login attempts_ yang massal dalam waktu singkat (log analysis via SIEM).
+- **Mitigasi:** Implementasi _rate limiting_, _account lockout policy_, dan _fail2ban_ untuk memblokir IP setelah sejumlah percobaan gagal.
+- **MFA:** Multi-Factor Authentication membuat brute force menjadi tidak berguna meskipun password ditemukan.
+
+---
+
+## For Real World Relevance
+
+- **Pentest Engagement:** Hydra sering dipakai di fase awal pentest untuk menguji kekuatan password policy organisasi. Default credentials di router, CCTV, dan IoT devices adalah target paling umum.
+- **Credential Stuffing:** Di dunia nyata, attacker tidak hanya brute force random — mereka menggunakan database password yang bocor dari breach sebelumnya dan mencobanya di layanan lain (_credential stuffing_). Hydra bisa disimulasikan untuk skenario ini.
+- **Compliance Audit:** Banyak standar keamanan (seperti PCI-DSS) mengharuskan organisasi menguji ketahanan passwordnya. Hydra menjadi salah satu tool yang dipakai auditor.
+
+---
+
+## Questions
+
+1. Kenapa flag `-t 4` direkomendasikan untuk SSH dan bukan angka yang lebih tinggi?
+2. Apa perbedaan mendasar antara _brute force_ dan _credential stuffing_? Teknik mana yang lebih berbahaya di dunia nyata dan kenapa?
+3. Jika target menerapkan _account lockout_ setelah 5 percobaan gagal, strategi apa yang bisa dipakai attacker untuk tetap melakukan brute force tanpa mengunci akun?
+4. Bagaimana cara mendeteksi serangan Hydra dari sisi Blue Team menggunakan SIEM?

@@ -86,4 +86,38 @@ Teknik buat ngehindarin deteksi IDS/IPS:
 
 Nmap itu fondasi dari setiap pengujian penetrasi. Dengan menguasai berbagai tipe scan dan skrip NSE, kita bisa mendapatkan informasi mendalam tentang target dengan cara yang efisien dan terkontrol.
 
-> **Tip:** "Scan smart, not just fast."
+
+
+---
+
+## Attack Flow Awareness
+
+Nmap adalah tool pertama yang dijalankan dalam hampir semua engagement:
+
+| Tahap | Peran Nmap |
+| ----- | ---------- |
+| **Reconnaissance** | Menemukan host aktif, port terbuka, versi layanan, dan OS target |
+| **Vulnerability Assessment** | NSE scripts (`--script=vuln`) bisa mendeteksi kerentanan umum tanpa exploit |
+| **Firewall Evasion** | Teknik fragmentasi dan scan timing dipakai untuk menghindari deteksi IDS/IPS |
+
+**Perspektif Blue Team:**
+- **IDS/IPS Detection:** Snort dan Suricata punya signature khusus untuk mendeteksi pola scan Nmap (terutama SYN scan massal dan Xmas scan).
+- **Honeypots:** Blue Team bisa memasang honeypot di port-port tertentu untuk mendeteksi reconnaissance.
+- **Log Monitoring:** Lonjakan koneksi ke banyak port dari satu IP dalam waktu singkat adalah indikator kuat sedang terjadi port scanning.
+
+---
+
+## For Real World Relevance
+
+- **Pentest Fase Pertama:** Di setiap engagement pentest profesional, Nmap adalah tool pertama yang dijalankan. Hasilnya menentukan seluruh arah serangan selanjutnya.
+- **Asset Discovery:** Tim IT dan Security menggunakan Nmap secara rutin untuk menemukan perangkat yang terhubung ke jaringan tanpa izin (_rogue devices_).
+- **Compliance Scanning:** Standar seperti PCI-DSS mengharuskan organisasi melakukan _network scanning_ secara berkala untuk menemukan layanan yang terekspos.
+
+---
+
+## Questions
+
+1. Kenapa SYN Scan (`-sS`) dijadikan scan default oleh Nmap dan bukan TCP Connect Scan (`-sT`)?
+2. Apa yang dimaksud dengan status `open|filtered` pada UDP scan dan kenapa Nmap memberikan status ambigu ini?
+3. Jika target menggunakan IDS yang mendeteksi SYN scan, teknik evasion apa yang akan kamu coba dan kenapa?
+4. Bagaimana cara Blue Team membedakan antara port scanning yang sah (dari tim IT internal) dan yang jahat (dari attacker)?

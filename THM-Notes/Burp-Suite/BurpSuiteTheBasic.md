@@ -70,4 +70,37 @@ Alat pendukung yang membuat Burp Suite makin lengkap:
 - **Comparer**: Bandingin dua _response_ HTTP yang beda buat mencari perbedaan tipis (seperti waktu _blind SQL injection_).
 - **Extender (BApp Store)**: Tempat masang ekstensi tambahan seperti **Logger++** atau **Turbo Intruder** buat ningkatin kemampuan Burp Suite.
 
-> **Note:** Alat hebat tidak bakal berguna di tangan orang yang tidak paham konsep dasarnya. Pahami protokol HTTP, maka bakal paham cara merusaknya.
+
+---
+
+## Attack Flow Awareness
+
+Burp Suite berperan utama di tahap **Reconnaissance** dan **Initial Access** untuk web application:
+
+| Tahap | Peran Burp Suite |
+| ----- | ---------------- |
+| **Reconnaissance** | Site Map memetakan seluruh struktur aplikasi web target, menemukan endpoint tersembunyi |
+| **Initial Access** | Proxy + Repeater dipakai untuk menemukan dan mengeksploitasi vulnerability (SQLi, XSS, IDOR, dll) |
+| **Post-Exploitation** | Menganalisis session tokens, cookies, dan mekanisme autentikasi untuk escalation |
+
+**Perspektif Blue Team:**
+- **WAF (Web Application Firewall):** Bisa mendeteksi pola request yang tidak wajar dari Burp Intruder (request massal ke satu endpoint).
+- **Rate Limiting:** Membatasi jumlah request per IP buat memperlambat serangan otomatis.
+- **Logging:** Setiap request yang melewati server harus di-log untuk analisis forensik pasca-insiden.
+
+---
+
+## For Real World Relevance
+
+- **Bug Bounty:** Burp Suite adalah senjata utama Bug Hunter. Platform seperti HackerOne dan Bugcrowd dipenuhi laporan yang ditemukan menggunakan Burp Proxy + Repeater.
+- **Web App Pentest:** Di engagement profesional, pentester menggunakan Burp Suite Pro untuk melakukan _active scanning_ dan menemukan vulnerability secara otomatis sebelum melakukan verifikasi manual.
+- **OWASP Top 10:** Hampir semua vulnerability di OWASP Top 10 (SQLi, XSS, Broken Access Control, dll) bisa ditemukan dan dieksploitasi menggunakan Burp Suite.
+
+---
+
+## Questions
+
+1. Kenapa memahami HTTP protocol adalah prasyarat mutlak sebelum bisa efektif menggunakan Burp Suite?
+2. Apa keuntungan strategis menggunakan _Scope_ di Burp Suite saat melakukan pentest terhadap aplikasi web yang besar?
+3. Dalam skenario _Blind SQL Injection_, bagaimana fitur **Comparer** di Burp Suite bisa membantu mengonfirmasi keberadaan vulnerability?
+4. Jika kamu seorang Blue Teamer, bagaimana cara membedakan traffic normal dari traffic yang dimanipulasi menggunakan Burp Proxy di log server?

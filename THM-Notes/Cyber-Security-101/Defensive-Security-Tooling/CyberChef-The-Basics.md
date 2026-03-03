@@ -80,7 +80,7 @@ Fitur penting:
 
 ## Attack Flow Awareness
 
-CyberChef bukan sekadar kalkulator, tapi alat krusial dalam rantai serangan dan pertahanan:
+CyberChef adalah alat krusial dalam attack chain dan pertahanan:
 
 1. **Initial Access**: Attacker sering mengirim payload yang di-_encode_ dengan Base64 atau XOR untuk melewati firewall/antivirus. Defender menggunakan CyberChef untuk men-_decode_ payload tersebut dan melihat niat asli attacker.
 2. **Exfiltration**: Sebelum mencuri data, attacker mungkin mengompres atau mengenkripsi data tersebut. CyberChef membantu menganalisis format data yang akan keluar dari jaringan.
@@ -99,12 +99,9 @@ Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef 
 
 ## Questions
 
-### Quick Check
 1. Mengapa urutan operasi dalam **Recipe Area** sangat krusial?
 2. Dalam tahap *Initial Access*, apa kegunaan utama CyberChef bagi seorang Defender?
-
-### Deep Thinking Question
-- Jika kamu menemukan string yang terlihat seperti Base64 namun gagal di-_decode_ menggunakan operasi `From Base64` standar, apa langkah investigasi selanjutnya yang akan kamu lakukan di CyberChef?
-- Bagaimana cara memitigasi risiko attacker menggunakan teknik *encoding* berlapis untuk menyembunyikan serangan mereka?
+3. Jika kamu menemukan string yang terlihat seperti Base64 namun gagal di-_decode_ menggunakan operasi `From Base64` standar, apa langkah investigasi selanjutnya yang akan kamu lakukan di CyberChef?
+4. Bagaimana cara memitigasi risiko attacker menggunakan teknik *encoding* berlapis untuk menyembunyikan serangan mereka?
 
 ---
