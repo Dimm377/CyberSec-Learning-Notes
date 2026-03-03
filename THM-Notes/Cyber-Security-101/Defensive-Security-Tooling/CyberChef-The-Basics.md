@@ -8,9 +8,9 @@
 
 ### What is CyberChef?
 
-Bayangkan kamu punya **pisau Swiss Army** — satu alat yang punya puluhan fungsi berbeda dalam satu genggaman. Itulah CyberChef: sebuah aplikasi web yang ringan dan intuitif, dirancang khusus untuk berbagai cyber operations langsung dari browser tanpa perlu install apapun.
+Bayangkan kamu punya **pisau Swiss Army** — satu alat yang punya puluhan fungsi berbeda dalam satu genggaman. Itulah CyberChef: sebuah aplikasi web yang ringan dan intuitif, dirancang khusus untuk berbagai _cyber operations_ langsung dari browser tanpa perlu install apapun.
 
-CyberChef bekerja dengan konsep **Recipe** — yaitu serangkaian operasi yang dijalankan secara berurutan terhadap sebuah data. cukup susun operasi-operasi yang kamu butuhkan, lalu CyberChef akan memprosesnya satu per satu secara otomatis.
+CyberChef bekerja dengan konsep **Recipe** — yaitu serangkaian operasi yang dijalankan secara berurutan terhadap sebuah data. Cukup susun operasi-operasi yang kamu butuhkan, lalu CyberChef akan memprosesnya satu per satu secara otomatis sesuai urutan yang kamu buat.
 
 Contoh operasi yang bisa dilakukan:
 
@@ -22,7 +22,7 @@ Contoh operasi yang bisa dilakukan:
 
 ### Learning Objectives
 
-kita akan mempelajari:
+Kita akan mempelajari:
 - Apa itu CyberChef dan bagaimana cara kerjanya.
 - Cara navigasi antarmuka CyberChef.
 - Operasi-operasi umum yang sering dipakai.
@@ -39,139 +39,72 @@ Ada dua cara untuk mengakses dan menjalankan CyberChef:
 Cara paling mudah — cukup punya **browser** dan **koneksi internet**. Langsung buka lewat link resminya:
 [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
 
-Tidak perlu install apapun.
-
 ### Offline / Local Copy
 
-Kalau kamu mau pakai CyberChef tanpa internet (misalnya di lab yang environtmenya terisolasi), kamu bisa download file rilis-nya dari [GitHub repository CyberChef](https://github.com/gchq/CyberChef/releases). Kompatibel dengan **Windows** dan **Linux**.
-
+Jika kamu harus bekerja di lingkungan yang terisolasi (tanpa internet), kamu bisa mendownload file rilisnya langsung dari [GitHub repository CyberChef](https://github.com/gchq/CyberChef/releases). Ini penting untuk menjaga kerahasiaan data sensitif agar tidak keluar ke internet.
 
 | Metode | Kebutuhan | Kapan Dipakai |
 | ------ | --------- | ------------- |
-| **Online** | Browser + internet | Penggunaan sehari-hari, cepat dan mudah |
-| **Offline** | Download file rilis | Lab terisolasi, tanpa internet, audit yang ketat |
+| **Online** | Browser + internet | Penggunaan cepat, belajar, atau data tidak sensitif |
+| **Offline** | Download file rilis | Analisis malware, data rahasia, atau lab terisolasi |
 
 ---
 
 ## Navigating the Interface
 
-CyberChef terdiri dari 4 area masing-masing dengan fungsi berbeda:
+CyberChef terdiri dari 4 area utama:
 
-1. Operations
-2. Recipe
-3. Input
-4. Output
-
-<p align="center">
-  <img src="../../Assets/Images/CyberChef.png" alt="CyberChef Interface" width="700px"/>
-</p>
+1. **Operations**: Perpustakaan operasi.
+2. **Recipe**: Tempat menyusun langkah-langkah (logika).
+3. **Input**: Data mentah yang mau diproses.
+4. **Output**: Hasil akhir setelah diproses.
 
 ### Operations Area
 
-**Operations Area** adalah perpustakaan lengkap semua operasi yang bisa dilakukan CyberChef. Semua operasi dikategorikan dengan rapi, dan ada fitur **search** untuk menemukan operasi tertentu dengan cepat — sangat berguna ketika kamu tahu nama operasinya tapi tidak tahu ada di kategori mana.
+Ini adalah daftar lengkap semua kemampuan CyberChef. Gunakan fitur **search** jika kamu sudah tahu apa yang dicari. Beberapa operasi penting:
 
-Berikut beberapa operasi yang sering dipakai dalam perjalanan belajar cyber security:
-
-| Operasi | Fungsi | Contoh |
-| ------- | ------ | ------ |
-| **From Morse Code** | Mengubah kode Morse menjadi karakter alfanumerik (huruf kapital) | `- ... .-. . - . ...` → `THREATS` |
-| **URL Encode** | Mengubah karakter URL yang punya makna khusus ke format _percent-encoding_ (format URL/URI) | `https://tryhackme.com/r/room/cyberchefbasics` → `https%3A%2F%2Ftryhackme...` |
-| **To Base64** | Meng-encode data mentah ke format ASCII Base64 | `This is fun!` → `VGhpcyBpcyBmdW4h` |
-| **To Hex** | Mengubah string menjadi representasi heksadesimal | `This Hex conversion is awesome!` → `54 68 69 73 20 48 65 78...` |
-| **To Decimal** | Mengubah data menjadi array bilangan bulat desimal | `This Decimal conversion is awesome!` → `84 104 105 115 32...` |
-| **ROT13** | Caesar cipher sederhana yang menggeser karakter alfabet sebesar 13 posisi | `Digital Forensics and Incident Response` → `Qvtvgny Sberafvpf naq Vapvqrag Erfcbafr` |
-
----
-
-Jika kita mengarahkan kursor ke operasi tertentu, akan muncul tooltip yang memberikan informasi lebih detail tentang operasi tersebut.
+- **From Morse Code**: Mengubah titik-garis jadi teks.
+- **URL Decode**: Membersihkan karakter aneh di URL (seperti `%20` jadi spasi).
+- **To Base64**: Mengubah teks jadi format Base64 yang sering dipakai untuk menyembunyikan payload.
+- **ROT13**: Menggeser huruf (cipher sederhana) untuk mengaburkan teks.
 
 ### Recipe Area
 
-**Recipe Area** adalah **jantung dari CyberChef**. Di sinilah kamu:
-- Memilih dan menyusun operasi-operasi yang ingin dijalankan
-- Mengatur urutan eksekusinya (operasi dijalankan dari atas ke bawah)
-- Menyetel argumen dan opsi tiap operasi
+Ini adalah **jantung dari CyberChef**. Di sini kamu menentukan urutan kerja. Operasi akan dijalankan dari **atas ke bawah**.
 
-Juga bisa **drag & drop** operasi dari Operations Area langsung ke Recipe Area.
-
-Fitur-fitur yang tersedia di Recipe Area:
-
-| Tombol | Fungsi |
-| ------ | ------ |
-| `Save recipe` | Menyimpan susunan operasi yang sudah dibuat |
-| `Load recipe` | Memuat recipe yang pernah disimpan sebelumnya |
-| `Clear Recipe` | Menghapus semua operasi dari recipe saat ini |
-
-Di bagian bawah Recipe Area terdapat dua kontrol penting:
-- **`BAKE!`** — Tombol untuk memproses data dengan recipe yang sudah disusun.
-- **`Auto Bake`** _(checkbox)_ — Kalau dicentang, CyberChef akan otomatis memproses ulang setiap kali ada perubahan tanpa perlu klik `BAKE!` setiap saat.
+Fitur penting:
+- **`BAKE!`**: Tombol eksekusi.
+- **`Auto Bake`**: Jika aktif, hasil akan langsung muncul setiap kali ada perubahan di Input atau Recipe.
 
 ---
 
-### Input Area
+## Attack Flow Awareness
 
-**Input Area** adalah tempat kamu memasukkan data yang ingin diproses — bisa dengan cara:
-- **Mengetik** langsung
-- **Paste** dari clipboard
-- **Drag & drop** file ke area ini
+CyberChef bukan sekadar kalkulator, tapi alat krusial dalam rantai serangan dan pertahanan:
 
-Fitur-fitur tambahan di Input Area:
-
-| Fitur | Fungsi |
-| ----- | ------ |
-| `Add a new input tab` | Membuat tab input baru untuk menggunakan nilai yang berbeda dari tab sebelumnya |
-| `Open folder as input` | Upload seluruh folder sebagai input sekaligus |
-| `Open file as input` | Upload satu file sebagai input |
-| `Clear input and output` | Menghapus semua nilai input dan output yang ada |
-| `Reset pane layout` | Mengembalikan tampilan antarmuka ke ukuran _default_ |
-
-### Output Area
-
-**Output Area** adalah tempat CyberChef menampilkan **hasil pemrosesan** data kamu setelah di-_bake_. Hasilnya ditampilkan secara jelas dan mudah dibaca.
-
-Fitur-fitur yang tersedia:
-
-| Fitur | Fungsi |
-| ----- | ------ |
-| `Save output to file` | Menyimpan hasil output ke file `.dat` |
-| `Copy raw output to the clipboard` | Menyalin output mentah langsung ke clipboard untuk dipakai di aplikasi atau dokumen lain |
-| `Replace input with output` | Menimpa nilai input dengan hasil output saat ini (berguna untuk chaining operasi secara manual) |
-| `Maximise output pane` | Memperbesar panel output ke ukuran _default_ |
+1. **Initial Access**: Attacker sering mengirim payload yang di-_encode_ dengan Base64 atau XOR untuk melewati firewall/antivirus. Defender menggunakan CyberChef untuk men-_decode_ payload tersebut dan melihat niat asli attacker.
+2. **Exfiltration**: Sebelum mencuri data, attacker mungkin mengompres atau mengenkripsi data tersebut. CyberChef membantu menganalisis format data yang akan keluar dari jaringan.
+3. **Reconnaissance**: Menemukan string terenkripsi dalam script JavaScript di sebuah website? CyberChef adalah alat pertama untuk mencoba berbagai cipher umum.
 
 ---
 
-## Before Anything Else
+## For Real World Relevance
 
-Sebelum memakai CyberChef, penting untuk punya **mental model** yang jelas. Ada 4 langkah berpikir yang harus diikuti setiap kali menggunakan CyberChef:
+Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef setiap hari untuk:
+- **De-obfuscation**: Membongkar script PowerShell atau JavaScript jahat yang sengaja dibuat sulit dibaca.
+- **Log Analysis**: Membersihkan log dari format URL encoding agar bisa dibaca manusia.
+- **Malware Analysis**: Mengekstrak konfigurasi (seperti alamat C2 server) dari file malware yang terenkripsi sederhana.
 
-<p align="center">
-  <img src="../../Assets/Images/4step.png" alt="4 step" width="800px"/>
-</p>
+---
 
-### Penjelasan Tiap Langkah
+## Questions
 
-**Step 1 — Tentukan tujuan yang jelas:**
-Sebelum melakukan apapun, jawab dulu pertanyaan: **"Apa yang ingin aku capai?"**
-Tujuan yang spesifik memberi arah dan fokus. Contoh: _"Saat investigasi keamanan, aku menemukan string aneh — aku ingin tahu pesan tersembunyi di baliknya, kalau ada."_
+### Quick Check
+1. Mengapa urutan operasi dalam **Recipe Area** sangat krusial?
+2. Dalam tahap *Initial Access*, apa kegunaan utama CyberChef bagi seorang Defender?
 
-**Step 2 — Masukkan data ke Input Area:**
-Paste atau upload data yang ingin diproses. Di contoh di atas, paste atau upload string aneh yang kamu temukan.
-
-**Step 3 — Pilih operasi yang relevan:**
-Ini bagian yang membutuhkan sedikit riset jika kamu belum familiar. Dari contoh di atas, setelah diteliti, string tersebut kemungkinan menggunakan enkripsi/encoding. Maka coba operasi-operasi dari kategori **Encryption/Encoding** seperti `ROT13`, `Base64`, `Base85`, atau `ROT47`.
-
-**Step 4 — Cek output:**
-Tanyakan: **"Apakah hasilnya sesuai tujuan?"**
-- **Ya** → Selesai
-- **Tidak** → Ulangi dari Step 1 (redefinisi tujuan) atau Step 3 (coba operasi lain)
-
-### Contoh Nyata
-
-| Step | Aksi |
-| ---- | ---- |
-| 1 | Menemukan string aneh saat investigasi → ingin tahu isinya |
-| 2 | Paste string aneh ke Input Area |
-| 3 | Coba operasi `ROT13`, `Base64`, `Base85`, `ROT47` |
-| 4 | Cek output — apakah muncul pesan yang masuk akal? |
+### Deep Thinking Question
+- Jika kamu menemukan string yang terlihat seperti Base64 namun gagal di-_decode_ menggunakan operasi `From Base64` standar, apa langkah investigasi selanjutnya yang akan kamu lakukan di CyberChef?
+- Bagaimana cara memitigasi risiko attacker menggunakan teknik *encoding* berlapis untuk menyembunyikan serangan mereka?
 
 ---
