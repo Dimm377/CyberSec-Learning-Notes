@@ -8,6 +8,7 @@
 .DS_Store
 Thumbs.db
 .coding_assistant_rules.md
+THM-Notes-Analysis.md
 .gitignore
 # Temporary files
 *.tmp
