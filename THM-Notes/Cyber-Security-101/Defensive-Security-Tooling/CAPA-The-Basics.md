@@ -60,6 +60,7 @@ Keindahan CAPA adalah dia **mengemas pengalaman bertahun-tahun reverse engineeri
 - **Incident Responder** yang butuh jawaban cepat: "File ini bisa ngapain aja?"
 
 ---
+## Dissecting CAPA Results Part 1: General Information, MITRE and MAEC
 
 ### MITRE ATT&CK
 
@@ -77,8 +78,6 @@ ATT&CK Tactic::ATT&CK Technique::Technique Identifier
 | ------ | ------ | ---------- |
 | `Tactic::Technique::ID` | `Defense Evasion::Obfuscated Files or Information::T1027` | **Defense Evasion** = Taktik, **Obfuscated Files or Information** = Teknik, **T1027** = ID Teknik |
 | `Tactic::Technique::Sub-Technique::ID.Sub-ID` | `Defense Evasion::Obfuscated Files or Information::Indicator Removal from Tools T1027.005` | Sama seperti di atas + **Indicator Removal from Tools** = Sub-Teknik, **005** = Sub-ID |
-
-> Tidak semua output CAPA akan memiliki Sub-Technique. Beberapa hanya menampilkan sampai level Technique saja.
 
 ---
 
@@ -107,7 +106,74 @@ Dengan memetakan perilaku file ke MITRE ATT&CK, analis atau defender bisa **meny
 | MAEC Category | MAEC Value |
 | ------------- | ---------- |
 | `malware-category` | `launcher` |
+| `downloader` | `Emotet` |
 
-Ini memberitahu kita bahwa file yang dianalisis dikategorikan sebagai **launcher** — yaitu program yang fungsinya untuk menjalankan (_launch_) payload atau program lain yang lebih berbahaya.
+Dua nilai (values) MAEC yang paling sering ditemukan oleh CAPA adalah **Launcher** dan **Downloader**.
+
+| MAEC Value | Keterangan |
+| ---------- | ---------- |
+| **Launcher** | Menunjukkan perilaku yang memicu jalannya program lain, mirip dengan cara kerja malware. |
+| **Downloader** | Menunjukkan perilaku mengambil (download) dan menjalankan file dari luar. Biasanya ditemukan pada malware yang lebih kompleks. |
+
+#### Launcher
+Jika CAPA menandai sebuah file sebagai `launcher`, artinya file tersebut menunjukkan behavior seperti (tapi tidak terbatas pada):
+- **Dropping additional payloads:** Menjatuhkan/menyimpan file berbahaya lain ke dalam sistem.
+- **Activating persistence mechanisms:** Memasang _backdoor_ agar tetap bisa diakses meskipun sistem di-_restart_.
+- **Connecting to C2 servers:** Menghubungi _Command-and-Control server_ untuk menerima perintah dari penyerang.
+- **Executing specific functions:** Menjalankan fungsi atau perintah tertentu secara langsung.
+
+#### Downloader
+Jika CAPA memberikan tag `downloader`, artinya file tersebut menunjukkan behavior seperti:
+- **Fetching additional payloads:** Mengunduh file malware sekunder atau _resource_ tambahan langsung dari internet.
+- **Pulling in updates:** Mengambil kode atau instruksi terbaru dari server luar.
+- **Executing secondary stages:** Menjalankan tahapan infection berikutnya (stage 2).
+- **Retrieving configuration files:** Mengambil file konfigurasi yang akan mendikte bagaimana malware tersebut harus beroperasi.
+---
+
+## Dissecting CAPA Results Part 2: Malware Behavior and Catalogue
+
+### Malware Behavior Catalogue (MBC)
+
+**MBC** dirancang untuk mendukung berbagai aspek analisis malware — seperti _labelling_, _similarity analysis_, dan _standardized reporting_. Intinya, MBC adalah **katalog objektif dan perilaku malware**.
+
+MBC bisa dihubungkan ke metode ATT&CK dan mencatat semua _behaviours_ serta _code features_ yang ditemukan saat analisis malware. Perlu dicatat: **nama-nama perilaku di MBC bisa berbeda dari ATT&CK** — informasi di MBC **melengkapi** (bukan menduplikasi) konten yang ada di ATT&CK.
+
+**Contoh output MBC dari CAPA:**
+
+| MBC Objective | MBC Behavior |
+| ------------- | ------------ |
+| **ANTI-BEHAVIORAL ANALYSIS** | Virtual Machine Detection `[B0009]` |
+| **ANTI-STATIC ANALYSIS** | Executable Code Obfuscation::Argument Obfuscation `[B0032.020]` |
+| | Executable Code Obfuscation::Stack Strings `[B0032.017]` |
+| **COMMUNICATION** | HTTP Communication `[C0002]` |
+| | HTTP Communication::Read Header `[C0002.014]` |
+| **DATA** | Check String `[C0019]` |
+| | Encode Data::Base64 `[C0026.001]` |
+| | Encode Data::XOR `[C0026.002]` |
+| **DEFENSE EVASION** | Obfuscated Files or Information::Encoding-Standard Algorithm `[E1027.m02]` |
+| **DISCOVERY** | File and Directory Discovery `[E1083]` |
+| **EXECUTION** | Command and Scripting Interpreter `[E1059]` |
+| **FILE SYSTEM** | Create Directory `[C0046]`, Delete File `[C0047]`, Read File `[C0051]`, Writes File `[C0052]` |
+| **MEMORY** | Allocate Memory `[C0007]` |
+| **PROCESS** | Create Process `[C0017]` |
+
+**Format output MBC di CAPA:**
+
+MBC memiliki dua format representasi:
+
+| Format | Contoh | Penjelasan |
+| ------ | ------ | ---------- |
+| `OBJECTIVE::Behavior::Method[Identifier]` | `ANTI-STATIC ANALYSIS::Executable Code Obfuscation::Argument Obfuscation [B0032.020]` | **Anti-static Analysis** = Objective, **Executable Code Obfuscation** = Behavior, **Argument Obfuscation** = Method, **B0032.020** = Identifier |
+| `OBJECTIVE::Behavior::[Identifier]` | `COMMUNICATION::HTTP Communication:: [C0002]` | **Communication** = Objective, **HTTP Communication** = Behavior, **C0002** = Identifier |
+
+Perbedaan antara kedua format: format pertama memiliki detail tambahan berupa **Method**, yang bisa dianggap sebagai _sub-technique_.
+
+**Istilah kunci yang harus dipahami:**
+
+| Istilah | Arti |
+| ------- | ---- |
+| **Objective** | Tujuan utama dari perilaku malware (mirip "Tactic" di ATT&CK) |
+| **Behavior** | Tindakan spesifik yang dilakukan malware untuk mencapai objective (mirip "Technique") |
+| **Method** | Detail lebih lanjut dari sebuah behavior — cara spesifik yang dipakai (mirip "Sub-Technique") |
 
 ---
