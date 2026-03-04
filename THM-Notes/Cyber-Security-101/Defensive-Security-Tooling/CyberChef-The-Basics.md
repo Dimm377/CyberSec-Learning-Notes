@@ -105,3 +105,22 @@ Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef 
 4. Bagaimana cara memitigasi risiko attacker menggunakan teknik *encoding* berlapis untuk menyembunyikan serangan mereka?
 
 ---
+
+## Practice, Practice, Practice
+
+Untuk bisa efektif menggunakan CyberChef, penting untuk mengenal **kategori operasi** yang paling sering dipakai. Semakin familiar kamu dengan kategorinya, semakin cepat kamu bisa menemukan operasi yang tepat saat dibutuhkan.
+
+### Extractors
+
+Kategori **Extractors** digunakan untuk **menarik informasi spesifik** dari sebuah teks atau data besar. Sangat berguna saat analisis log, email phishing, atau output malware.
+
+| Operasi | Fungsi |
+| ------- | ------ |
+| `Extract IP addresses` | Mengekstrak semua alamat **IPv4 dan IPv6** yang valid dari input |
+| `Extract URLs` | Mengekstrak semua **URL** dari input — protokol (`http`, `ftp`, dll.) wajib ada, kalau tidak akan terlalu banyak _false positive_ |
+| `Extract email addresses` | Mengekstrak semua **alamat email** dari input (format: `apapun@domain.com`) |
+
+**Contoh penggunaan `Extract email addresses`:**
+Jika input mengandung teks panjang, operasi ini akan otomatis menarik semua string yang berbentuk `sesuatu@domain.com` — contoh: `support@hotmail.com`, `noreply@google.com`, `admin@user.com`.
+
+---
