@@ -205,3 +205,37 @@ Perbedaan antara kedua format: format pertama memiliki detail tambahan berupa **
 > Output final CAPA menampilkan Objective dan Micro-Objective di bawah satu kolom yang sama yaitu kolom **Objective**.
 
 ---
+
+### MBC Behaviors
+
+Kolom **MBC Behaviors** berisi daftar _behaviours_ dan _micro-behaviors_ beserta method dan identifier-nya.
+
+| Objective | Behavior | ID | Penjelasan |
+| --------- | -------- | -- | ---------- |
+| **Anti-Behavioral Analysis** | Virtual Machine Detection | `B0009` | Malware memeriksa apakah dia berjalan di lingkungan virtual — mengecek user, artefak, dan informasi sistem |
+| **Anti-Static Analysis** | Executable Code Obfuscation | `B0032` | Kode sengaja di-_obfuscate_ untuk menghindari static analysis, termasuk data dan text section-nya |
+| **Execution** | Command and Scripting Interpreter | `E1059` | Malware mengeksploitasi interpreter seperti `cmd.exe`, `PowerShell`, `Bash`, `Python`, `Perl`, atau `JavaScript` untuk menjalankan perintah |
+| **Discovery** | File and Directory Discovery | `E1083` | Malware mencari file spesifik di lokasi tertentu dengan cara meng-enumerate file dan direktori |
+| **Anti-Static Analysis, Defense Evasion** | Obfuscated Files or Information | `E1027` | Malware meng-_obfuscate_ file/informasi dengan encoding, enkripsi, atau metode lain agar sulit dianalisis |
+
+### Micro-Behavior
+
+Istilah "low-level behaviors" dalam analisis malware merujuk pada aksi yang **belum tentu berbahaya** dan bisa ditemukan di berbagai jenis software biasa. Perilaku ini disebut "micro-behaviors" dalam _Malware Behavior Characteristics_ (MBC). Contohnya termasuk pembuatan TCP socket dan evaluasi kondisi tertentu di dalam string.
+
+> Penting: **perilaku yang dikategorikan low-level bukan berarti tidak berbahaya** — ia tetap bisa menjadi bagian dari rantai serangan malware yang lebih besar.
+
+| Micro-Objective | Micro-Behavior | ID | Penjelasan |
+| --------------- | -------------- | -- | ---------- |
+| **MEMORY** | Allocate Memory | `C0007` | Malware sering mengalokasikan memori sebagai strategi untuk _unpack_ dirinya sendiri dan menjalankan kode berbahaya |
+| **PROCESS** | Create Process | `C0017` | Malware membuat proses baru via WMI atau shellcode, bisa juga membuat _suspended process_ |
+| **COMMUNICATION** | HTTP Communication | `C0002` | Malware mampu menginisiasi komunikasi HTTP |
+| **DATA** | Check String | `C0019` | Malware memeriksa string untuk mengidentifikasi karakteristik spesifik seperti konten ASCII, nomor kartu kredit, dan panjang string |
+| **DATA** | Encode Data | `C0026` | Malware mampu meng-encode data menggunakan Base64 dan XOR |
+| **FILE SYSTEM** | Create Directory | `C0046` | Malware bisa membuat direktori baru |
+| **FILE SYSTEM** | Delete File | `C0047` | Malware bisa menghapus file |
+| **FILE SYSTEM** | Read File | `C0051` | Malware bisa membaca file |
+| **FILE SYSTEM** | Writes File | `C0052` | Malware bisa menulis ke file |
+
+> Output final CAPA menampilkan Behavior dan Micro-Behavior di bawah satu kolom yang sama yaitu kolom **Behavior**.
+
+---
