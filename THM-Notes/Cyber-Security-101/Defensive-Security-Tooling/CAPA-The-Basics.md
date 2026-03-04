@@ -81,3 +81,33 @@ ATT&CK Tactic::ATT&CK Technique::Technique Identifier
 > Tidak semua output CAPA akan memiliki Sub-Technique. Beberapa hanya menampilkan sampai level Technique saja.
 
 ---
+
+**Contoh output MITRE ATT&CK dari CAPA:**
+
+| ATT&CK Tactic | ATT&CK Technique |
+| -------------- | ----------------- |
+| **DEFENSE EVASION** | Obfuscated Files or Information `[T1027]` |
+| | Obfuscated Files or Information::Indicator Removal from Tools `[T1027.005]` |
+| | Virtualization/Sandbox Evasion::System Checks `[T1497.001]` |
+| **DISCOVERY** | File and Directory Discovery `[T1083]` |
+| **EXECUTION** | Command and Scripting Interpreter::PowerShell `[T1059.001]` |
+| | Shared Modules `[T1129]` |
+| **IMPACT** | Resource Hijacking `[T1496]` |
+| **PERSISTENCE** | Scheduled Task/Job::At `[T1053.002]` |
+| | Scheduled Task/Job::Scheduled Task `[T1053.005]` |
+
+Dengan memetakan perilaku file ke MITRE ATT&CK, analis atau defender bisa **menyempitkan cakupan investigasi** selama insiden — karena sudah tahu apa saja yang _mungkin_ dilakukan file tersebut berdasarkan _playbook_ penyerang.
+
+### MAEC
+
+**MAEC** (_Malware Attribute Enumeration and Characterization_) adalah bahasa standar yang dirancang untuk meng-_encode_ dan mengkomunikasikan detail kompleks tentang malware. MAEC mencakup berbagai atribut: _behaviours_, _artefacts_, dan _interconnections_ antar berbagai sample malware. Fungsinya sebagai **sistem standar untuk melacak dan menganalisis** kerumitan suatu malware.
+
+**Contoh output MAEC dari CAPA:**
+
+| MAEC Category | MAEC Value |
+| ------------- | ---------- |
+| `malware-category` | `launcher` |
+
+Ini memberitahu kita bahwa file yang dianalisis dikategorikan sebagai **launcher** — yaitu program yang fungsinya untuk menjalankan (_launch_) payload atau program lain yang lebih berbahaya.
+
+---
