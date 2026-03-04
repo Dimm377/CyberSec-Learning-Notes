@@ -177,3 +177,31 @@ Perbedaan antara kedua format: format pertama memiliki detail tambahan berupa **
 | **Method** | Detail lebih lanjut dari sebuah behavior — cara spesifik yang dipakai (mirip "Sub-Technique") |
 
 ---
+
+### Objective
+
+**Objective** di MBC didasarkan pada **taktik ATT&CK dalam konteks perilaku malware** — namun tidak semuanya disertakan. MBC juga punya objective tambahan seperti _Anti-Behavioral_ dan _Anti-Static Analysis_ yang dirancang khusus untuk **karakterisasi malware**.
+
+| Objective | Penjelasan |
+| --------- | ---------- |
+| **Anti-Behavioral Analysis** | Malware mencoba menghindari deteksi dengan menghalangi analisis perilaku menggunakan tools seperti _sandbox_ atau _debugger_ |
+| **Anti-Static Analysis** | Malware menambah kompleksitas pada _static analysis_, sehingga mempersulit analis untuk memahami perilaku dan niat malware tersebut |
+| **Collection** | Malware fokus mengidentifikasi dan mengumpulkan informasi dari mesin atau jaringan target |
+| **Command and Control** | Malware membangun komunikasi dengan _C2 server_, _peer-to-peer network_, atau metode lain untuk menerima perintah, mengeksfiltrasi data, atau menjalankan aksi berbahaya |
+| **Credential Access** | Malware bertujuan mencuri credential akun seperti _username_ dan _password_ |
+| **Defense Evasion** | Malware berusaha melewati dan mengelabui berbagai mekanisme deteksi dan keamanan dalam sistem agar tidak terdeteksi |
+
+### Micro-Objective
+
+**Micro-objective** berkaitan dengan **micro-behaviors** — yaitu aksi yang dilakukan oleh software yang **belum tentu berbahaya** secara inheren dan bisa ditemukan di berbagai jenis aplikasi (contoh: aplikasi messaging). Namun, perilaku-perilaku ini **sering disalahgunakan** oleh malware — itulah kenapa CAPA tetap menandainya.
+
+| Micro-Objective | Penjelasan |
+| --------------- | ---------- |
+| **PROCESS** | Perilaku terkait proses: Creating Process, Setting Thread Context, Terminating Process, Checking Mutex |
+| **MEMORY** | Perilaku terkait memori: Allocating Memory, Changing Memory Protection, Freeing Memory |
+| **COMMUNICATION** | Perilaku terkait jaringan: DNS, FTP, HTTP, ICMP, SMTP network traffic |
+| **DATA** | Perilaku terkait data: Checking strings, compressing, decoding, dan encoding data |
+
+> Output final CAPA menampilkan Objective dan Micro-Objective di bawah satu kolom yang sama yaitu kolom **Objective**.
+
+---
