@@ -124,3 +124,36 @@ Kategori **Extractors** digunakan untuk **menarik informasi spesifik** dari sebu
 Jika input mengandung teks panjang, operasi ini akan otomatis menarik semua string yang berbentuk `sesuatu@domain.com` — contoh: `support@hotmail.com`, `noreply@google.com`, `admin@user.com`.
 
 ---
+
+### Date and Time
+
+Kategori **Date / Time** digunakan untuk mengkonversi format waktu, khususnya yang berkaitan dengan **UNIX Timestamp**.
+
+| Operasi | Fungsi |
+| ------- | ------ |
+| `From UNIX Timestamp` | Mengubah UNIX timestamp menjadi format tanggal/waktu yang bisa dibaca |
+| `To UNIX Timestamp` | Mengubah string tanggal/waktu menjadi UNIX timestamp |
+
+**Apa itu UNIX Timestamp?**
+Sebuah nilai 32-bit yang merepresentasikan jumlah detik sejak **1 Januari 1970 UTC** (_UNIX epoch_).
+
+**Contoh:**
+- `Fri Sep 6 20:30:22 +04 2024` → `To UNIX Timestamp` → `1725654622`
+- `1725654622` → `From UNIX Timestamp` → `Fri Sep 6 20:30:22 +04 2024`
+
+### Data Format
+
+Kategori **Data Format** berisi operasi-operasi untuk mengkonversi data antar format encoding. Ini adalah kategori yang **paling sering dipakai** dalam analisis keamanan.
+
+| Operasi | Fungsi | Contoh |
+| ------- | ------ | ------ |
+| `From Base64` | Decode string Base64 kembali ke data asli | `V2VsY29tZSB0byBUcnlIYWNrTWUh` → `Welcome to tryhackme!` |
+| `URL Decode` | Decode karakter _percent-encoded_ URI/URL ke nilai aslinya | `https%3A%2F%2Fgchq.github.io%2FCyberChef%2F` → `https://gchq.github.io/CyberChef/` |
+| `From Base85` | Decode string Base85 — lebih efisien dari Base64 | `BOu!rDIj7BEbo7` → `hello world` |
+| `From Base58` | Decode Base58 — menghilangkan karakter yang mudah tertukar (`l`, `I`, `0`, `O`) | `AXLU7qR` → `Thm58` |
+| `To Base62` | Encode data ke format Base62 — menghasilkan string yang lebih pendek | `Thm62` → `6NiRkOY` |
+
+**Apa itu Base Encodings?**
+Operasi seperti `Base(64, 85, 58, 62)` termasuk kategori **base encodings** — yaitu teknik mengubah data biner (string 0 dan 1) menjadi representasi teks menggunakan kumpulan karakter ASCII tertentu. Masing-masing varian punya keunggulan tersendiri tergantung skenario penggunaannya.
+
+---
