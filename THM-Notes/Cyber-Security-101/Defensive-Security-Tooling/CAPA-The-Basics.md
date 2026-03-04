@@ -58,3 +58,26 @@ Keindahan CAPA adalah dia **mengemas pengalaman bertahun-tahun reverse engineeri
 - **Malware Analyst** yang butuh analisis cepat
 - **Threat Hunter** yang ingin memahami kapabilitas binary tanpa harus membongkar assembly-nya
 - **Incident Responder** yang butuh jawaban cepat: "File ini bisa ngapain aja?"
+
+---
+
+### MITRE ATT&CK
+
+**MITRE ATT&CK** (_Adversarial Tactics, Techniques, and Common Knowledge_) adalah framework global yang mendokumentasikan **taktik dan teknik** yang digunakan oleh _threat actors_ di setiap tahap serangan cyber. Anggap saja ini sebagai **buku panduan strategis** yang menjelaskan metode penyerang — mulai dari _gaining initial access_, _escalating privileges_, _evading defenses_, _moving laterally_, hingga _data exfiltration_.
+
+CAPA memetakan hasilnya ke format ATT&CK. Berikut cara membaca formatnya:
+
+**Format dasar:**
+
+```
+ATT&CK Tactic::ATT&CK Technique::Technique Identifier
+```
+
+| Format | Contoh | Penjelasan |
+| ------ | ------ | ---------- |
+| `Tactic::Technique::ID` | `Defense Evasion::Obfuscated Files or Information::T1027` | **Defense Evasion** = Taktik, **Obfuscated Files or Information** = Teknik, **T1027** = ID Teknik |
+| `Tactic::Technique::Sub-Technique::ID.Sub-ID` | `Defense Evasion::Obfuscated Files or Information::Indicator Removal from Tools T1027.005` | Sama seperti di atas + **Indicator Removal from Tools** = Sub-Teknik, **005** = Sub-ID |
+
+> Tidak semua output CAPA akan memiliki Sub-Technique. Beberapa hanya menampilkan sampai level Technique saja.
+
+---
