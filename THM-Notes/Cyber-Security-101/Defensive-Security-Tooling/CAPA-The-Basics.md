@@ -239,3 +239,38 @@ Istilah "low-level behaviors" dalam analisis malware merujuk pada aksi yang **be
 > Output final CAPA menampilkan Behavior dan Micro-Behavior di bawah satu kolom yang sama yaitu kolom **Behavior**.
 
 ---
+
+### Methods
+
+Terakhir, ada **Methods** — detail paling spesifik dari sebuah behavior. Methods terikat ke behavior tertentu; untuk melihat semua method yang tersedia, kita perlu merujuk ke dokumentasi tiap behavior/micro-behavior.
+
+| Behavior | Method (Sub-Technique) | ID | Penjelasan |
+| -------- | ---------------------- | -- | ---------- |
+| Executable Code Obfuscation | **Argument Obfuscation** | `B0032.020` | Argumen sederhana ke API calls dikalkulasi saat _runtime_, mempersulit analisis |
+| Executable Code Obfuscation | **Stack Strings** | `B0032.017` | String dibangun dan didekripsi di stack saat digunakan, lalu dibuang untuk menghindari referensi yang jelas |
+| HTTP Communication | **Read Header** | `C0002.014` | Membaca HTTP header |
+| Encode Data | **Base64** | `C0026.001` | Malware bisa meng-encode data menggunakan Base64 |
+| Encode Data | **XOR** | `C0026.002` | Malware bisa menggunakan XOR untuk meng-encode data |
+| Obfuscated Files or Information | **Encoding-Standard Algorithm** | `E1027.m02` | Meng-encode sample malware, file, atau informasi lain menggunakan algoritma standar (misalnya Base64) |
+
+### Recap: Cara Membaca Output MBC
+
+Contoh output dari CAPA:
+
+```
+MBC Objective: DATA
+MBC Behavior:  Encode Data::Base64 [C0026.001]
+```
+
+Cara membacanya:
+
+| Label | Value | Penjelasan |
+| ----- | ----- | ---------- |
+| **MBC Objective** | `DATA` | Perilaku terkait data: checking strings, compressing, decoding, dan encoding data |
+| **MBC Behavior** | `Encode Data` | Malware mampu meng-encode data menggunakan Base64 dan XOR |
+| **Method** | `Base64` | Secara spesifik, malware meng-encode data menggunakan Base64 |
+| **Identifier** | `C0026.001` | ID unik yang merelasikan informasi tentang behavior ini — berfungsi juga sebagai tag referensi |
+
+**Kesimpulan:** dari informasi ini, kita bisa langsung menyimpulkan bahwa file tersebut **menggunakan skema encoding Base64**.
+
+---
