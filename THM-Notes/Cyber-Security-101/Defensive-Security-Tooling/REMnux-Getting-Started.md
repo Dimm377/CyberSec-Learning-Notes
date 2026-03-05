@@ -30,3 +30,6 @@ Setelah menyelesaikan room ini, kamu akan menguasai cara:
 - Familiar dengan _tools_ yang digunakan untuk menganalisis _memory images_.
 
 ---
+
+## File Analysis Tools
+
