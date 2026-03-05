@@ -52,7 +52,6 @@ Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
 Biar lebih jelas gimana bentuk aslinya pas lagi jalan, cek cuplikan di bawah ini:
 
 <video src="./videos/wireshark-task2-demo.mp4" controls="controls" style="max-width: 100%;">
-  Your browser does not support the video tag.
 </video>
 
 ---
