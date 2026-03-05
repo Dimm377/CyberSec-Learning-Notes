@@ -11,49 +11,65 @@
 
 ## Overview
 
-- Membahas fundamental paling dasar tentang apa itu networking
-- **Simulasi wifi hotel:** Praktik langsung buat ngelihat alur data di jaringan wifi hotel lewat 2 skenario pengguna:
-  - **Pengguna 1 (Sudah bayar layanan wifi):** router bakal ngizinin dan mengirim data dengan lancar
-  - **Pengguna 2 (Belum bayar layanan wifi):** setiap kali pengguna 2 mengirim data, permintaannya bakal ditolak sama router
-- Identitas perangkat (Mengerti peran penting IP Address dan MAC Address buat memastikan data sampai ke tujuan yang tepat)
+Room ini membahas fundamental paling dasar tentang apa itu networking, identitas perangkat di jaringan, dan cara menguji konektivitas.
 
-## Task Summary & Key Concept
+---
 
-### 1. What is Networking?
+### What is Networking?
 
-Networking itu proses menghubungkan komputer atau perangkat lain supaya bisa saling berkomunikasi dan berbagi sumber daya. Prosesnya melibatkan penggunaan _networking devices_ seperti switch, hub, kabel, dan router buat ngebangun jaringan. Networking juga ngatur dan ngelola koneksi agar data bisa dikirim dan diterima dengan efisien. Tujuannya simpel: membuat perangkat-perangkat ini bisa ngobrol dan kerja bareng di berbagai lingkungan.
+**Networking** itu proses menghubungkan komputer atau perangkat lain supaya bisa saling berkomunikasi dan berbagi sumber daya, Bayangkan **sistem pos** — setiap rumah (perangkat) punya alamat, dan ada infrastruktur jalan + kantor pos (switch, router, kabel) yang memastikan surat (data) sampai ke tujuan yang benar.
 
-### Where can the network be found?
+**Dimana jaringan bisa ditemukan?** Di mana-mana — rumah, kantor, sekolah, fasilitas umum, sistem transportasi, jaringan listrik, dan tentunya internet itu sendiri.
 
-Jaringan bisa ditemuin di mana-mana, mulai dari rumah, kantor, sekolah, fasilitas umum, sampai infrastruktur seperti sistem transportasi, jaringan listrik, dan tentunya internet.
+**Simulasi WiFi Hotel (dari room ini):**
 
-### Identity networks
+| Pengguna | Kondisi | Hasil |
+| -------- | ------- | ----- |
+| **User 1** | Sudah bayar layanan WiFi | Router mengizinkan dan mengirim data lancar |
+| **User 2** | Belum bayar layanan WiFi | Setiap permintaan data ditolak oleh router |
+
+---
+
+### Identitas di Jaringan
+
+Agar data sampai ke tujuan yang tepat, setiap perangkat butuh **identitas**. Ada dua jenis:
 
 #### IP Address (Internet Protocol Address)
 
-IP Address itu deretan angka yang dipake buat ngidentifikasi perangkat di jaringan, supaya perangkat-perangkat ini bisa saling berkomunikasi dan tukar data lewat internet. Ada 2 jenis alamat IP:
+IP Address itu ibarat **alamat rumah** — deretan angka yang dipakai buat mengidentifikasi perangkat di jaringan.
 
-- **IPv4:** terdiri dari 4 kelompok angka yang dipisahin titik (disebut octet), **contoh: (`192.168.1.1`)**. Pakai alamat 32-bit, jadi bisa nampung sekitar 4,3 miliar alamat unik.
-
-- **IPv6:** versi terbaru dari IP Address yang dibuat buat ngatasi keterbatasan IPv4. Pakai alamat 128-bit, jadi jumlah alamat uniknya jauh lebih banyak. Alamatnya terdiri dari 8 kelompok 4 digit heksadesimal yang dipisahin titik dua (`:`).
-  **contoh:(`2001:0db8:85a3:0000:0000:8a2e:0370:7334`)**
+| Versi | Format | Kapasitas | Contoh |
+| ----- | ------ | --------- | ------ |
+| **IPv4** | 4 oktet, 32-bit | ~4,3 miliar alamat | `192.168.1.1` |
+| **IPv6** | 8 kelompok heksadesimal, 128-bit | Hampir tak terbatas | `2001:0db8:85a3:0000:0000:8a2e:0370:7334` |
 
 #### MAC Address (Media Access Control Address)
 
-MAC Address itu identitas fisik jaringan yang permanen dan unik, ada di setiap perangkat jaringan. Alamat ini sudah ditentuin sama pabrik yang membuat perangkatnya. Pakai alamat 48-bit yang terdiri dari 12 karakter heksadesimal, dipisahin tanda titik dua (`:`).
+MAC Address itu ibarat **nomor seri akta kelahiran** — identitas fisik yang permanen dan unik, sudah ditentukan oleh pabrik sejak perangkat diproduksi.
+
+| Aspek | Detail |
+| ----- | ------ |
+| **Format** | 48-bit, 12 karakter heksadesimal dipisah titik dua (`:`) |
+| **Contoh** | `A4:C3:F0:85:AA:D3` |
+| **Sifat** | Permanen (tapi bisa di-spoof untuk keperluan pentesting) |
+
+---
 
 ### Ping (ICMP)
 
-Ping itu salah satu alat jaringan paling dasar. Ping pakai paket ICMP (Internet Control Message Protocol) buat mendiagnosis masalah konektivitas, ngukur latensi jaringan, dan menentukan apakah perangkat bisa dijangkau di jaringan.
+**Ping** itu salah satu tool jaringan paling dasar — ibarat **mengetuk pintu rumah seseorang** untuk mengecek apakah mereka ada di rumah.
 
-Syntax buat pakai ping:
+Ping menggunakan paket **ICMP** (Internet Control Message Protocol) untuk:
+- Mendiagnosis masalah konektivitas
+- Mengukur latensi jaringan (seberapa cepat respon)
+- Menentukan apakah perangkat bisa dijangkau
 
-```
-$ ping website url / IP address
+```bash
+ping google.com
 ```
 
 <p align="center">
 <img src="../../Assets/Images/ping.png" alt="Ping">
 </p>
 
-Di gambar itu aku nge ping ke URL `google.com`. Ping kasih tau bahwa Google bales pakai alamat IPv6, aku mengirim 8 paket ICMP dengan waktu sekitar 39.4 ms.
+Di gambar di atas, ping ke `google.com` menghasilkan respon IPv6 dengan waktu sekitar 39.4 ms per paket.
