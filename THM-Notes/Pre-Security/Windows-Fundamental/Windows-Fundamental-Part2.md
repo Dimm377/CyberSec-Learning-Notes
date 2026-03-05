@@ -9,71 +9,84 @@
 
 ---
 
----
-
 ## Overview
 
-Setelah paham navigasi dasar, fokusnya pindah ke alat-alat administratif (System Utilities) yang dipake buat ngelola konfigurasi, mantau sumber daya, dan mengerti struktur internal Windows. Pengetahuan ini penting banget buat seorang administrator maupun security analyst buat mendeteksi keanehan di sistem.
+Setelah paham navigasi dasar, fokusnya pindah ke **alat-alat administratif** (System Utilities) yang dipakai buat mengelola konfigurasi, memantau sumber daya, dan mengerti struktur internal Windows. Pengetahuan ini krusial buat seorang security analyst.
 
 ---
 
-## System Configuration (msconfig)
+### System Configuration (msconfig)
 
-`msconfig` itu utility utama buat ngelola proses startup dan opsi boot sistem.
+`msconfig` itu utility utama buat mengelola proses startup dan opsi boot — ibarat **panel kontrol mesin** yang menentukan bagaimana sistem menyala.
 
-- **Startup Selection:** Membuat kita bisa milih antara Normal, Diagnostic, atau Selective startup buat proses troubleshooting.
-- **Boot Options:** Ngatur opsi booting seperti _Safe Mode_, yang berguna banget waktu sistem error atau terinfeksi malware.
-- **Services Management:** Membuat kita bisa nonaktifin background process yang tidak diperluin buat ningkatin performa atau ngisolasi proses mencurigakan.
-
----
-
-## User Account Control (UAC)
-
-UAC itu lapisan keamanan yang nyegah perubahan tingkat sistem secara sembarangan.
-
-- **Fungsi Utama:** Memberi peringatan atau minta credential admin waktu ada aplikasi yang nyoba ngemodif file sistem atau pengaturan sensitif.
-- **Konfigurasi:** Tingkat sensitivitas UAC bisa diatur lewat `UserAccountControlSettings.exe` buat nyeimbangin antara keamanan dan kenyamanan pengguna.
+| Fitur | Fungsi |
+| ----- | ------ |
+| **Startup Selection** | Pilih antara Normal, Diagnostic, atau Selective startup buat troubleshooting |
+| **Boot Options** | Atur opsi booting seperti _Safe Mode_ — berguna saat sistem error atau terinfeksi malware |
+| **Services Management** | Nonaktifkan background process yang ga diperlukan — bisa buat isolasi proses mencurigakan |
 
 ---
 
-## Computer Management (compmgmt.msc)
+### User Account Control (UAC)
 
-Console administratif terpusat yang nggabungin berbagai alat penting dalam satu tampilan.
+**UAC** itu lapisan keamanan yang mencegah perubahan tingkat sistem secara sembarangan — ibarat **satpam yang minta konfirmasi** sebelum siapapun boleh masuk ke ruangan penting.
 
-- **Task Scheduler:** Dipake buat menjadwalkan tugas otomatis. Dalam perspektif keamanan, ini sering dimanfaatin malware buat teknik persistensi agar tetap jalan meski sistem sudah di-restart.
-- **Event Viewer:** Log sistem yang nyatet setiap kejadian penting (Error, Warning, Information). Analisis log di bagian _Security_ penting banget buat mendeteksi upaya login yang tidak sah.
-- **Shared Folders:** Mantau folder mana saja yang dibagiin di jaringan, termasuk folder tersembunyi yang ditandai sama simbol `$`.
-
----
-
-## System Information & Resource Monitor
-
-Alat buat mendapatkan visibilitas mendalam tentang perangkat keras dan penggunaan sumber daya secara real-time.
-
-- **System Information (msinfo32.exe):** Memberi detail lengkap soal spesifikasi hardware, versi kernel, sampai variabel lingkungan (environment variables).
-- **Resource Monitor (resmon.exe):** Memberi gambaran lebih detail dibanding Task Manager, mencakup penggunaan CPU, Memory, Disk, dan Network oleh setiap proses yang aktif.
+| Aspek | Detail |
+| ----- | ------ |
+| **Fungsi Utama** | Memberi peringatan / minta credential admin saat aplikasi mencoba memodifikasi file sistem |
+| **Konfigurasi** | Tingkat sensitivitas bisa diatur lewat `UserAccountControlSettings.exe` |
 
 ---
 
-## Windows Registry (regedit)
+### Computer Management (compmgmt.msc)
 
-Database hierarkis yang menyimpan hampir seluruh pengaturan sistem operasi dan aplikasi pihak ketiga.
+Console administratif terpusat yang menggabungkan berbagai tool penting dalam satu tampilan:
 
-- **Structure:** Data disimpen dalam struktur yang disebut _Hives_, seperti `HKEY_LOCAL_MACHINE` (HKLM) buat pengaturan global dan `HKEY_CURRENT_USER` (HKCU) buat pengaturan user aktif.
-- **Security Insight:** Registry sering jadi target modifikasi sama penyerang buat nonaktifin fitur keamanan (seperti Windows Defender) atau nyembunyiin konfigurasi malware.
-
----
-
-## Command Line Utilities
-
-Meskipun Windows berbasis GUI, penggunaan Command Prompt tetap penting buat tugas cepat.
-
-- **ipconfig:** Alat standar buat melihat konfigurasi IP, subnet mask, dan gateway. Pakai parameter `/all` buat info tambahan seperti alamat fisik (MAC Address) dan server DNS.
+| Tool | Fungsi | Relevansi Keamanan |
+| ---- | ------ | ------------------ |
+| **Task Scheduler** | Menjadwalkan tugas otomatis | Sering dimanfaatkan malware buat **persistensi** (tetap jalan meski restart) |
+| **Event Viewer** | Log sistem yang mencatat setiap kejadian (Error, Warning, Info) | Bagian _Security_ penting buat mendeteksi upaya login tidak sah |
+| **Shared Folders** | Memantau folder yang dibagikan di jaringan | Folder tersembunyi ditandai simbol `$` |
 
 ---
 
-## Conclusion
+### System Information & Resource Monitor
 
-Menguasai utility administratif ini yang ngebedain pengguna biasa sama seorang profesional IT/Security. Kemampuan navigasi Registry, analisis Event Logs, dan monitoring Resource Monitor itu pondasi utama dalam pertahanan cyber di lingkungan Windows.
+Tools buat mendapatkan visibilitas mendalam tentang hardware dan penggunaan resource:
 
-> **Mindset Tip:** "Don't just trust the GUI." Selalu verifikasi aktivitas mencurigakan lewat log dan monitor sumber daya buat melihat apa yang beneran terjadi di balik layar.
+| Tool | Fungsi |
+| ---- | ------ |
+| `msinfo32.exe` (System Information) | Detail lengkap: spesifikasi hardware, versi kernel, environment variables |
+| `resmon.exe` (Resource Monitor) | Lebih detail dari Task Manager — CPU, Memory, Disk, Network per proses |
+
+---
+
+### Windows Registry (regedit)
+
+**Registry** itu database hierarkis yang menyimpan hampir seluruh pengaturan sistem operasi. Ibarat **DNA dari Windows** — mengontrol perilaku seluruh sistem.
+
+| Hive | Cakupan | Fungsi |
+| ---- | ------- | ------ |
+| **HKEY_LOCAL_MACHINE** (HKLM) | Pengaturan global | Konfigurasi sistem, hardware, software yang berlaku buat semua user |
+| **HKEY_CURRENT_USER** (HKCU) | Pengaturan user aktif | Preferensi dan konfigurasi user yang sedang login |
+
+> **Security Insight:** Registry sering jadi target penyerang buat menonaktifkan fitur keamanan (seperti Windows Defender) atau menyembunyikan konfigurasi malware.
+
+---
+
+### Command Line Utilities
+
+Meskipun Windows berbasis GUI, command line tetap penting buat tugas cepat:
+
+| Command | Fungsi |
+| ------- | ------ |
+| `ipconfig` | Melihat konfigurasi IP, subnet mask, dan gateway |
+| `ipconfig /all` | Info lengkap termasuk MAC Address dan DNS server |
+
+---
+
+### Conclusion
+
+Menguasai utility administratif ini yang membedakan pengguna biasa sama seorang profesional IT/Security. Kemampuan navigasi Registry, analisis Event Logs, dan monitoring Resource Monitor itu pondasi utama dalam pertahanan cyber di lingkungan Windows.
+
+> **Mindset Tip:** Selalu verifikasi aktivitas mencurigakan lewat log dan monitor sumber daya buat melihat apa yang benar-benar terjadi di balik layar.
