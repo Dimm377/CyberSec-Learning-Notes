@@ -48,11 +48,6 @@ Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
 
 ---
 
-### 🎥 Video Tutorial: GUI Overview
-Biar lebih jelas gimana bentuk aslinya pas lagi jalan, cek cuplikan di bawah ini:
-
-![Wireshark GUI Demo](https://github.com/Dimm377/CyberSec-Learning-Notes/raw/main/THM-Notes/Cyber-Security-101/Networking/videos/wireshark-task2-demo.mp4)
-
 ---
 
 ---
