@@ -9,118 +9,97 @@
 
 ---
 
----
-
 ## Introduction
 
-**Konsep Dasar:**
-Room ini membahas **Public Key Cryptography** (atau Asymmetric Encryption), yang jadi fondasi keamanan komunikasi internet sekarang (seperti HTTPS dan SSH). Beda sama Symmetric Encryption yang cuma pakai satu kunci, Asymmetric Encryption pakai sepasang kunci: **Public Key** dan **Private Key**.
+Room ini membahas **Public Key Cryptography** (Asymmetric Encryption) — pondasi keamanan komunikasi internet modern (HTTPS, SSH, Digital Signatures). Beda sama Symmetric Encryption yang cuma pakai satu kunci, Asymmetric pakai sepasang kunci: **Public Key** dan **Private Key**.
+
+*(Konsep dasar cryptography ada di catatan [Cryptography Basic](./Cryptography-Basic.md))*
 
 ---
 
-## Common Use of Asymmetric Encryption
+### Symmetric vs Asymmetric
 
-**Analogi Kunci:**
-Bayangin sebuah kotak pos (public key) yang bisa diakses siapa saja buat memasukkan surat. Tapi, cuma orang yang megang kunci kotak pos itu (private key) yang bisa buka dan ambil surat di dalamnya.
+Bayangkan sebuah **kotak pos** (Public Key) yang bisa diakses siapa saja buat memasukkan surat. Tapi cuma orang yang pegang kunci kotak pos itu (Private Key) yang bisa buka dan ambil surat di dalamnya.
 
-**Perbedaan Utama:**
-
-- **Symmetric Encryption:** Cepat, efisien buat data besar, tapi susah di distribusi kunci (key distribution problem).
-- **Asymmetric Encryption:** Lebih lambat, tapi aman banget buat pertukaran kunci awal (Key Exchange) dan verifikasi identitas (Digital Signature).
-
----
-
-## RSA
-
-**RSA (Rivest-Shamir-Adleman):**
-Algoritma asymmetric paling populer yang keamanannya tergantung sama **kesulitan memfaktorkan bilangan prima yang sangat besar**.
-
-**Komponen Utama:**
-
-1.  **Modulus (n):** Hasil perkalian dua bilangan prima besar (`p` dan `q`).
-    - Rumus: `n = p * q`
-2.  **Public Key (e):** Eksponen publik buat enkripsi (biasanya 65537).
-3.  **Private Key (d):** Eksponen privat buat dekripsi, dihitung dari kebalikan `e` modulo `ϕ(n)`.
-4.  **Totient (ϕ(n)):** Jumlah bilangan yang relatif prima terhadap `n`.
-    - Rumus: `ϕ(n) = (p-1) * (q-1)`
-
-**Cara Kerja:**
-
-- **Enkripsi:** `Ciphertext = Message^e mod n`
-- **Dekripsi:** `Message = Ciphertext^d mod n`
+| Aspek | Symmetric | Asymmetric |
+| ----- | --------- | ---------- |
+| **Jumlah Kunci** | 1 (sama buat encrypt/decrypt) | 2 (Public + Private) |
+| **Kecepatan** | Cepat, efisien buat data besar | Lebih lambat |
+| **Kelemahan** | Susah distribusi kunci aman | Komputasi lebih berat |
+| **Use Case** | Enkripsi data bulk (AES) | Key Exchange, Digital Signature |
 
 ---
 
-## Diffie-Hellman Key Exchange
+### RSA (Rivest-Shamir-Adleman)
 
-**Konsep:**
-Metode buat dua pihak (Alice dan Bob) menyepakati sebuah **Shared Secret Key** lewat jalur komunikasi yang tidak aman, tanpa pernah mengirim kunci rahasia itu sendiri.
+Algoritma asymmetric paling populer — keamanannya tergantung pada **kesulitan memfaktorkan bilangan prima yang sangat besar**:
 
-**Variabel:**
+| Komponen | Rumus / Detail |
+| -------- | -------------- |
+| **Modulus (n)** | `n = p × q` (p dan q = bilangan prima besar) |
+| **Totient ϕ(n)** | `ϕ(n) = (p-1) × (q-1)` |
+| **Public Key (e)** | Eksponen publik buat enkripsi (biasanya 65537) |
+| **Private Key (d)** | Eksponen privat buat dekripsi — kebalikan `e` modulo `ϕ(n)` |
 
-- `g` (generator) dan `p` (prime): Angka publik yang diketahui semua orang.
-- `a`: Kunci rahasia Alice.
-- `b`: Kunci rahasia Bob.
-- `A`: Kunci publik Alice (`g^a mod p`).
-- `B`: Kunci publik Bob (`g^b mod p`).
-
-**Proses Pertukaran:**
-
-1.  Alice mengirim `A` ke Bob.
-2.  Bob mengirim `B` ke Alice.
-3.  Alice ngitung `Shared Secret = B^a mod p`.
-4.  Bob ngitung `Shared Secret = A^b mod p`.
-5.  Hasilnya pasti sama, dan nilai inilah yang jadi kunci rahasia bersama.
+| Proses | Formula |
+| ------ | ------- |
+| **Enkripsi** | `Ciphertext = Message^e mod n` |
+| **Dekripsi** | `Message = Ciphertext^d mod n` |
 
 ---
 
-## SSH
+### Diffie-Hellman Key Exchange
 
-**Secure Shell (SSH):**
-Protokol jaringan yang pakai kriptografi kunci publik buat ngamanin login jarak jauh dan layanan jaringan lainnya.
+Metode buat dua pihak (Alice dan Bob) menyepakati **Shared Secret Key** lewat jalur yang tidak aman — tanpa pernah mengirim kunci rahasia itu sendiri:
 
-**Implementasi:**
-Waktu pakai SSH key authentication:
+| Langkah | Alice | Bob |
+| :-----: | ----- | --- |
+| **1** | Hitung `A = g^a mod p`, kirim `A` ke Bob | Hitung `B = g^b mod p`, kirim `B` ke Alice |
+| **2** | Terima `B`, hitung `Secret = B^a mod p` | Terima `A`, hitung `Secret = A^b mod p` |
+| **3** | Hasilnya **sama** → jadi kunci rahasia bersama | Hasilnya **sama** → jadi kunci rahasia bersama |
 
-1.  Client punya sepasang kunci (Public & Private).
-2.  Public Key ditaruh di server (dalam file `~/.ssh/authorized_keys`).
-3.  Waktu login, server nantang client buat buktiin kepemilikan Private Key yang sesuai.
-4.  Kalau berhasil, akses dikasih tanpa perlu mengirim password.
-
-**Header Private Key:**
-File Private Key RSA biasanya diawali pakai header:
-`-----BEGIN RSA PRIVATE KEY-----`
+> `g` (generator) dan `p` (prime) = angka publik. `a` dan `b` = kunci rahasia masing-masing.
 
 ---
 
-## Digital Signatures and Certificates
+### SSH (Secure Shell)
 
-**Digital Signature (Tanda Tangan Digital):**
-Dipake buat buktiin **autentisitas** (pengirim asli) dan **integritas** (pesan tidak berubah) dari suatu pesan atau dokumen.
+Protokol jaringan yang pakai kriptografi kunci publik buat mengamankan login jarak jauh:
 
-**Cara Kerja:**
+*(Penjelasan SSH juga ada di catatan [Networking Secure Protocols](../Networking/Networking-Secure-Protocols.md))*
 
-- **Signing:** Pengirim membuat hash dari pesan, terus meng-enkripsi hash itu pakai **Private Key** miliknya.
-- **Verifying:** Penerima men-dekripsi signature pakai **Public Key** pengirim buat mendapatkan hash asli, terus ngebandinginnya sama hash pesan yang diterima.
+| Langkah | Proses |
+| :-----: | ------ |
+| **1** | Client punya sepasang kunci (Public & Private) |
+| **2** | Public Key ditaruh di server (`~/.ssh/authorized_keys`) |
+| **3** | Saat login, server menantang client buat membuktikan kepemilikan Private Key |
+| **4** | Kalau berhasil, akses diberikan tanpa perlu mengirim password |
 
-**Certificates (Sertifikat Digital):**
-File yang ngikat Public Key sama identitas pemiliknya (seperti website), ditandatangani sama otoritas tepercaya (Certificate Authority/CA). Contoh CA gratis populer itu **Let's Encrypt**.
+> **Header Private Key RSA:** `-----BEGIN RSA PRIVATE KEY-----`
 
 ---
 
-## PGP and GPG
+### Digital Signatures & Certificates
 
-**PGP (Pretty Good Privacy) & GPG (GNU Privacy Guard):**
-Standar buat enkripsi file dan email. GPG itu implementasi open-source dari standar OpenPGP.
+**Digital Signature** — membuktikan **autentisitas** (pengirim asli) dan **integritas** (pesan tidak berubah):
 
-**Workflow Dasar:**
+| Proses | Cara Kerja |
+| ------ | ---------- |
+| **Signing** | Pengirim membuat hash dari pesan → mengenkripsi hash pakai **Private Key** miliknya |
+| **Verifying** | Penerima mendekripsi signature pakai **Public Key** pengirim → membandingkan dengan hash pesan yang diterima |
 
-1.  **Import Key:** Import kunci publik/privat orang lain ke keyring lokal.
-    - Command: `gpg --import keyfile.asc`
-2.  **Encrypt:** Enkripsi file buat penerima tertentu.
-    - Command: `gpg --recipient user --encrypt file.txt`
-3.  **Decrypt:** Buka file terenkripsi pakai Private Key kita.
-    - Command: `gpg --decrypt file.gpg`
+**Certificates (Sertifikat Digital):** File yang mengikat Public Key sama identitas pemiliknya (seperti website), ditandatangani Certificate Authority (CA). Contoh CA gratis populer: **Let's Encrypt**.
 
-**Passphrase:**
-Private Key GPG biasanya dilindungi pakai passphrase tambahan sebagai lapisan keamanan ekstra.
+---
+
+### PGP & GPG
+
+**PGP** (Pretty Good Privacy) & **GPG** (GNU Privacy Guard) — standar buat enkripsi file dan email. GPG itu implementasi open-source dari standar OpenPGP.
+
+| Langkah | Command | Fungsi |
+| ------- | ------- | ------ |
+| **Import Key** | `gpg --import keyfile.asc` | Import kunci publik/privat ke keyring lokal |
+| **Encrypt** | `gpg --recipient user --encrypt file.txt` | Enkripsi file buat penerima tertentu |
+| **Decrypt** | `gpg --decrypt file.gpg` | Buka file terenkripsi pakai Private Key |
+
+> **Passphrase:** Private Key GPG biasanya dilindungi pakai passphrase tambahan sebagai lapisan keamanan ekstra.
