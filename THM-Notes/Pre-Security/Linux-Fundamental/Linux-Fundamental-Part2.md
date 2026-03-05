@@ -9,65 +9,91 @@
 
 ---
 
----
+## Overview
 
-## # Overview
-
-Di bagian kedua ini, fokusnya pindah dari perintah navigasi dasar ke manajemen sistem yang lebih lanjut. Materinya mencakup akses jarak jauh (SSH), penggunaan parameter perintah (Flags/Switches), manipulasi file dan direktori, serta pemahaman mendalam tentang sistem perizinan (Permissions) di Linux.
+Di bagian kedua ini, fokusnya pindah dari perintah navigasi dasar ke **manajemen sistem** yang lebih lanjut. Materinya mencakup akses jarak jauh (SSH), penggunaan parameter perintah (Flags/Switches), manipulasi file dan direktori, serta pemahaman mendalam tentang sistem perizinan (Permissions) di Linux.
 
 ---
 
-## ### Task 2: Accessing Your Linux Machine Using SSH
+### Accessing Your Linux Machine Using SSH
 
-SSH (Secure Shell) itu protokol standar buat mengakses dan ngelola mesin Linux dari jarak jauh lewat jalur yang terenkripsi.
+**SSH (Secure Shell)** itu protokol standar buat mengakses dan mengelola mesin Linux dari jarak jauh lewat jalur yang terenkripsi.
 
-- **Koneksi:** Pakai perintah `ssh [username]@[IP_Address]`.
-- **Keamanan:** Beda sama Telnet, SSH mengenkripsi seluruh trafik termasuk kredensial login, jadi aman dari penyadapan di jaringan.
+Analogi: Kalau Telnet itu ibarat ngobrol lewat **jalan terbuka** (siapa saja bisa nguping), SSH itu ngobrol lewat **terowongan bawah tanah yang terkunci** — hanya kamu dan server yang bisa dengar.
 
----
+```bash
+ssh username@10.10.10.10
+```
 
-## ### Task 3: Introduction to Flags and Switches
-
-Perintah Linux jarang dipake sendirian. Sebagian besar perintah punya "Flags" atau "Switches" buat nge-modif perilakunya.
-
-- **Manual Pages:** Perintah `man` itu sumber info utama buat ngeliat semua opsi yang tersedia di suatu perintah (contoh: `man ls`).
-- **Common Flags:**
-  - `--help`: Menampilkan ringkasan penggunaan perintah.
-  - `-a` (All): Dipake di `ls` buat ngeliat file tersembunyi (dotfiles).
-  - `-l` (Long): Menampilkan detail file seperti izin, pemilik, dan ukuran.
+| Aspek | Telnet | SSH |
+| ----- | ------ | --- |
+| **Enkripsi** | Tidak ada (plain text) | Seluruh traffic terenkripsi |
+| **Keamanan** | Rentan penyadapan | Aman dari Man in the Middle Attack (MITM) |
+| **Penggunaan** | Cek port terbuka | Remote access server |
 
 ---
 
-## ### Task 4: Filesystem Management
+### Introduction to Flags and Switches
 
-Manajemen file itu kemampuan dasar buat ngorganisir data di dalam sistem.
+Perintah Linux jarang dipakai sendirian. Sebagian besar perintah punya **Flags** atau **Switches** buat memodifikasi perilakunya — ibarat **tombol pengaturan** di remote AC (bisa di dinginkan, bisa di hangatkan, bisa diatur timer).
 
-- **mkdir:** Membuat direktori baru.
-- **touch:** Membuat file kosong atau update timestamp.
-- **cp (Copy):** Salin file atau direktori. Pakai `-r` buat salin direktori secara rekursif.
-- **mv (Move):** Pindahin file atau ganti nama file/direktori.
-- **rm (Remove):** Hapus file. Pakai `-r` buat hapus direktori beserta isinya. _Hati-hati: Di Linux, file yang dihapus lewat terminal tidak masuk ke Trash._
-
----
-
-## ### Task 5: Permissions 101
-
-Linux itu sistem multi-user, jadi hak akses itu penting banget buat keamanan.
-
-- **User Types:**
-  - **Owner:** User yang membuat file.
-  - **Group:** Sekelompok user yang punya hak akses sama.
-  - **Others:** Semua user lain di sistem.
-- **Permission Types:**
-  - **Read (r):** Izin buat melihat isi file atau daftar file di direktori.
-  - **Write (w):** Izin buat modifikasi file atau nambahin/hapus file di direktori.
-  - **Execute (x):** Izin buat jalanin file sebagai program atau masuk ke direktori.
-- **chmod:** Perintah buat mengubah izin file, bisa pakai mode simbolik (u+x, g-w) atau numerik (755, 644).
+| Tool/Flag | Fungsi |
+| --------- | ------ |
+| `man <command>` | Membuka halaman manual — sumber info lengkap semua opsi yang tersedia |
+| `--help` | Menampilkan ringkasan penggunaan perintah |
+| `-a` (All) | Di `ls` → menampilkan file tersembunyi (dotfiles yang diawali `.`) |
+| `-l` (Long) | Di `ls` → menampilkan detail: izin, pemilik, ukuran, dan tanggal |
 
 ---
 
-## ### Task 6: Summary
+### Filesystem Management
 
-Bagian ini merangkum pentingnya menguasai terminal buat efisiensi kerja di Linux. Mengerti SSH dan Permissions itu pondasi utama sebelum lanjut ke materi yang lebih kompleks seperti _Privilege Escalation_ atau _Server Configuration_.
+Manajemen file itu kemampuan dasar buat mengorganisir data di dalam sistem. Ibarat **penataan barang di rumah** — kamu harus bisa membuat lemari baru, memindahkan barang, menyalin dokumen, dan membuang yang ga perlu.
 
-> **Note:** Di Linux, "Everything is a file". Kalau kamu sudah menguasai cara ngelola file dan izinnya, kamu menguasai sistemnya.
+| Command | Fungsi | Catatan Penting |
+| ------- | ------ | --------------- |
+| `mkdir` | Membuat direktori baru | `mkdir folder_baru` |
+| `touch` | Membuat file kosong / update timestamp | `touch catatan.txt` |
+| `cp` | Menyalin file atau direktori | Pakai `-r` buat salin direktori secara rekursif |
+| `mv` | Memindahkan file / mengganti nama | `mv lama.txt baru.txt` |
+| `rm` | Menghapus file | Pakai `-r` buat hapus direktori + isinya |
+
+> **Hati-hati:** Di Linux, file yang dihapus lewat terminal **tidak masuk ke Trash** — langsung hilang permanen
+
+---
+
+### Permissions 101
+
+Linux itu sistem **multi-user**, jadi hak akses itu krusial buat keamanan, Setiap file punya **3 jenis kunci pintu**, dan setiap kunci bisa dipegang oleh 3 kelompok orang berbeda.
+
+**Tiga kelompok pemegang kunci:**
+
+| Kelompok | Siapa |
+| -------- | ----- |
+| **Owner** | User yang membuat file |
+| **Group** | Sekelompok user yang punya hak akses sama |
+| **Others** | Semua user lain di sistem |
+
+**Tiga jenis izin:**
+
+| Izin | Simbol | Fungsi | Nilai Numerik |
+| ---- | :----: | ------ | :-----------: |
+| **Read** | `r` | Melihat isi file / daftar file di direktori | `4` |
+| **Write** | `w` | Memodifikasi file / menambah-hapus file di direktori | `2` |
+| **Execute** | `x` | Menjalankan file sebagai program / masuk ke direktori | `1` |
+
+**Mengubah izin dengan `chmod`:**
+
+| Format | Contoh | Artinya |
+| ------ | ------ | ------- |
+| **Simbolik** | `chmod u+x script.sh` | Tambahkan izin execute untuk owner |
+| **Numerik** | `chmod 755 script.sh` | Owner: rwx (7), Group: r-x (5), Others: r-x (5) |
+| **Numerik** | `chmod 644 file.txt` | Owner: rw- (6), Group: r-- (4), Others: r-- (4) |
+
+---
+
+### Summary
+
+Mengerti SSH dan Permissions itu **pondasi utama** sebelum lanjut ke materi yang lebih kompleks seperti _Privilege Escalation_ atau _Server Configuration_.
+
+> **Note:** Di Linux, **"Everything is a file"**. Kalau kamu sudah menguasai cara mengelola file dan izinnya, kamu menguasai sistemnya.
