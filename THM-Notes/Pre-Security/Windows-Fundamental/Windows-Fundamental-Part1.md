@@ -9,75 +9,86 @@
 
 ---
 
----
-
 ## Overview
 
-Catatan ini merangkum pondasi dasar sistem operasi Windows. Mengerti komponen-komponen ini penting banget buat audit keamanan maupun analisis forensik, terutama buat kita yang terbiasa di lingkungan Linux. Fokus utamanya di sini itu mengerti struktur sistem, manajemen file, dan kontrol akses.
+Catatan ini merangkum pondasi dasar sistem operasi Windows. Mengerti komponen-komponen ini penting buat audit keamanan maupun analisis forensik, terutama buat yang terbiasa di lingkungan Linux.
 
 ---
 
-## Windows Editions
+### Windows Editions
 
-Windows hadir dalam berbagai edisi yang disesuaiin sama kebutuhan beban kerja dan fitur keamanan:
+Windows hadir dalam berbagai edisi yang disesuaikan dengan kebutuhan:
 
-- **Home:** Edisi standar buat pengguna personal dengan fitur dasar.
-- **Pro:** Nambahin fitur enkripsi (BitLocker) dan kemampuan buat gabung ke _Domain_ perusahaan.
-- **Enterprise:** Versi terlengkap buat manajemen IT skala besar dengan fitur keamanan tingkat tinggi.
-- **Server:** Didesain khusus buat jalanin infrastruktur jaringan, layanan _backend_, dan _database_.
-
----
-
-## The Desktop GUI
-
-Antarmuka visual Windows yang jadi tempat kita berinteraksi lewat elemen-elemen berikut:
-
-- **Start Menu:** Pusat navigasi aplikasi, dokumen, dan pencarian sistem.
-- **Taskbar:** Menampilkan aplikasi yang lagi jalan dan menyediakan jalan pintas (_shortcuts_).
-- **Notification Area (System Tray):** Letaknya di pojok kanan bawah; menampilkan status sistem seperti jam, jaringan, dan ikon **Volume**.
+| Edisi | Target Pengguna | Fitur Kunci |
+| ----- | --------------- | ----------- |
+| **Home** | Pengguna personal | Fitur dasar, tanpa domain join |
+| **Pro** | Profesional / bisnis kecil | Enkripsi (BitLocker), bisa gabung ke _Domain_ perusahaan |
+| **Enterprise** | Organisasi besar | Manajemen IT skala besar, fitur keamanan tingkat tinggi |
+| **Server** | Infrastruktur jaringan | Dirancang buat menjalankan layanan _backend_ dan _database_ |
 
 ---
 
-## The File System (NTFS)
+### The Desktop GUI
 
-Windows pakai **NTFS** (New Technology File System) sebagai standar modern buat penyimpanan data.
+Antarmuka visual Windows — ibarat **dashboard mobil** yang menampilkan semua informasi penting:
 
-- **Drive Letters:** Pakai sistem huruf (seperti `C:`) buat identifikasi partisi, beda sama Linux yang pakai _mount points_ (`/`).
-- **NTFS Permissions:** Mekanisme kontrol akses (Read, Write, Execute) terhadap file dan folder buat pengguna atau grup tertentu.
-
----
-
-## The Heart of Windows: System32
-
-Struktur direktori yang paling penting buat integritas sistem operasi Windows:
-
-- **\Windows:** Folder utama tempat sistem operasi terinstal.
-- **\System32:** Berisi file sistem inti (_binary_), _driver_ perangkat, dan alat penting seperti Command Prompt (`cmd.exe`) serta PowerShell.
-- **Keamanan:** Folder ini sering jadi target malware buat nyamar atau ngelakuin modifikasi file sistem agar susah dideteksi sama pengguna awam.
+| Elemen | Fungsi |
+| ------ | ------ |
+| **Start Menu** | Pusat navigasi aplikasi, dokumen, dan pencarian sistem |
+| **Taskbar** | Menampilkan aplikasi yang sedang berjalan + jalan pintas (_shortcuts_) |
+| **System Tray** (pojok kanan bawah) | Status sistem: jam, jaringan, volume, notifikasi |
 
 ---
 
-## User Accounts & Security Control
+### The File System (NTFS)
 
-Pilar keamanan yang ngebatasin hak istimewa pengguna di dalam sistem:
+Windows pakai **NTFS** (New Technology File System) sebagai standar penyimpanan data modern.
 
-- **User Accounts:** Pembagian antara akun **Administrator** (punya hak penuh) dan **Standard User** (punya hak terbatas).
-- **User Account Control (UAC):** Fitur keamanan yang minta konfirmasi sebelum aplikasi lakuin perubahan tingkat sistem, buat nyegah eksekusi program berbahaya secara diam-diam.
-- **Settings vs Control Panel:** Dua antarmuka utama buat konfigurasi, di mana Control Panel lebih banyak dipake buat pengaturan teknis yang bersifat _legacy_.
-
----
-
-## Task Manager
-
-Utility utama buat mantau kesehatan performa dan mendeteksi keanehan di sistem:
-
-- **Processes:** Ngelacak penggunaan CPU, memori, dan disk oleh aplikasi serta layanan sistem yang aktif.
-- **Performance:** Grafik _real-time_ yang nunjukin beban kerja _hardware_.
-- **Startup:** Ngelola aplikasi yang jalan otomatis waktu _booting_. Ini titik kritis buat mencari jejak persistensi malware.
+| Aspek | Windows (NTFS) | Linux (ext4) |
+| ----- | -------------- | ------------ |
+| **Identifikasi Partisi** | Huruf drive (`C:`, `D:`) | Mount points (`/`, `/home`) |
+| **Kontrol Akses** | NTFS Permissions (Read, Write, Execute) per file/folder | Unix Permissions (rwx) per user/group/others |
+| **Case Sensitivity** | Tidak (File.txt = file.txt) | Ya (File.txt ≠ file.txt) |
 
 ---
 
-## Conclusion
+### The Heart of Windows: System32
+
+Struktur direktori paling penting buat integritas sistem operasi. Ibarat **otak** dari Windows — kalau rusak, seluruh sistem bisa lumpuh.
+
+| Direktori | Fungsi | Catatan Keamanan |
+| --------- | ------ | ---------------- |
+| `\Windows` | Folder utama sistem operasi | — |
+| `\System32` | File sistem inti, driver, `cmd.exe`, PowerShell | Sering jadi target malware buat nyamar atau modifikasi file sistem |
+
+---
+
+### User Accounts & Security Control
+
+Pilar keamanan yang membatasi hak istimewa pengguna di dalam sistem:
+
+| Konsep | Analogi | Fungsi |
+| ------ | ------- | ------ |
+| **Administrator** | Pemilik gedung — akses ke semua ruangan | Hak penuh atas sistem |
+| **Standard User** | Penyewa biasa — akses terbatas | Hak terbatas, ga bisa install/uninstall bebas |
+| **UAC** (User Account Control) | Satpam yang minta konfirmasi sebelum buka pintu | Mencegah eksekusi program berbahaya secara diam-diam |
+
+**Settings vs Control Panel:** Dua antarmuka buat konfigurasi. Control Panel lebih banyak dipakai buat pengaturan teknis yang bersifat _legacy_.
+
+---
+
+### Task Manager
+
+Utility utama buat memantau kesehatan sistem — ibarat **monitor kesehatan** yang mendeteksi keanehan:
+
+| Tab | Fungsi | Relevansi Keamanan |
+| --- | ------ | ------------------ |
+| **Processes** | Melacak penggunaan CPU, memori, dan disk | Mendeteksi proses mencurigakan |
+| **Performance** | Grafik _real-time_ beban kerja hardware | Melihat anomali resource usage |
+| **Startup** | Mengelola aplikasi yang jalan otomatis saat _booting_ | **Titik kritis buat mencari jejak persistensi malware** |
+
+---
+
+### Conclusion
 
 Menguasai Windows Fundamentals memberikan perspektif baru tentang bagaimana sistem operasi paling populer di dunia ini bekerja. Mengerti struktur file dan manajemen proses adalah langkah awal yang solid untuk menjadi seorang security analyst.
-
