@@ -11,17 +11,15 @@
 
 ---
 
----
-
 ## Overview
 
-- OSI Model itu kerangka konsep yang membuat sistem komunikasi di jaringan punya bahasa yang sama. Tujuannya buat memastikan sistem bisa saling berkomunikasi pakai protokol yang sudah disepakati secara global.
+OSI Model itu kerangka konseptual yang membuat sistem komunikasi di jaringan punya **bahasa yang sama**. Tujuannya memastikan perangkat dari berbagai produsen bisa saling berkomunikasi pakai protokol yang sudah disepakati secara global.
 
-### What is OSI Model ?
+---
 
-OSI Model (Open System Interconnection Model) itu kerangka konsep yang membagi jaringan jadi 7 lapisan: Physical, Data Link, Network, Transport, Session, Presentation, Application.
+### What is OSI Model?
 
-#### 7 layer OSI Model:
+**OSI Model** (Open System Interconnection Model) membagi proses komunikasi jaringan jadi **7 lapisan**. Setiap lapisan punya tugas spesifik — ibarat **jalur produksi di pabrik** di mana setiap stasiun mengerjakan satu bagian sampai produk (data) siap dikirim.
 
 <p align="center">
 <img src="../../Assets/Images/OSI.png" alt="OSI Model">
@@ -29,48 +27,61 @@ OSI Model (Open System Interconnection Model) itu kerangka konsep yang membagi j
 
 ---
 
-### Penjelasan setiap Layer OSI Model:
+### 7 Layer OSI Model
 
-1. **Physical:** Lapisan pertama yang tugasnya mengirim data secara fisik lewat media transmisi seperti kabel ethernet, sinyal listrik, kabel optik, modem, dan antena.
+| Layer | Nama | Analogi | Fungsi Utama | Data Unit |
+| :---: | ---- | ------- | ------------ | --------- |
+| 7 | **Application** | Meja pelayanan (berhadapan langsung dengan kamu) | Menyediakan layanan jaringan ke aplikasi (browser, email) | Data |
+| 6 | **Presentation** | Penerjemah bahasa + tukang segel amplop | Encoding, kompresi, enkripsi/dekripsi data | Data |
+| 5 | **Session** | Operator telepon (buka-tutup sambungan) | Mengelola sesi komunikasi antar aplikasi | Data |
+| 4 | **Transport** | Jasa pengiriman (kilat vs reguler) | Pengiriman data end-to-end, flow control | Segment |
+| 3 | **Network** | Pengantar paket (pilih rute antar kota) | Routing, pengalamatan IP | Packet |
+| 2 | **Data Link** | Kurir lokal (kirim di satu area) | Pengalamatan fisik (MAC), error detection | Frame |
+| 1 | **Physical** | Jalan raya, kabel, truk | Transmisi bit mentah lewat media fisik | Bits |
 
-2. **Data Link:** Lapisan kedua yang fokus di pengalamatan fisik transmisi data. Lapisan ini nerima data dari lapisan Network dan nambahin MAC Address supaya perangkat bisa saling kenal. Simpelnya, lapisan ini bantu perangkat yang terhubung ke jaringan agar bisa saling berkomunikasi.
+> **Mnemonic buat menghafal (dari bawah ke atas):** **P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way
 
-3. **Network:** Lapisan ketiga yang tugasnya ngarahin data dari satu perangkat ke perangkat lain di jaringan yang berbeda. Pakai IP Address buat menentukan rute terbaik buat mengirim data di jaringan yang kompleks.
+---
 
-Ada 5 protokol yang aku pelajari:
+### Layer 3: Network — Protokol Penting
 
-- **IP (Internet Protocol):** Protokol buat pengalamatan dan pengiriman data di jaringan.
-- **ICMP (Internet Control Message Protocol):** Protokol buat mengirim pesan kontrol dan error antar perangkat jaringan.
-- **ARP (Address Resolution Protocol):** Protokol yang menghubungkan / menerjemahkan IP Address ke MAC Address.
-- **OSPF (Open Shortest Path First):** Protokol _link-state_ yang menentukan jalur tercepat berdasarkan _bandwidth_ (cost). OSPF efisien banget karena punya peta lengkap topologi jaringan.
-- **RIP (Routing Information Protocol):** Protokol _distance-vector_ yang pakai jumlah lompatan router (**hop count**) buat menentukan jalur terbaik. Protokol ini punya batas maksimal 15 lompatan (hop).
+| Protokol | Fungsi |
+| -------- | ------ |
+| **IP** (Internet Protocol) | Pengalamatan dan pengiriman data di jaringan |
+| **ICMP** (Internet Control Message Protocol) | Mengirim pesan kontrol dan error antar perangkat |
+| **ARP** (Address Resolution Protocol) | Menerjemahkan IP Address ke MAC Address |
+| **OSPF** (Open Shortest Path First) | Protokol _link-state_ — menentukan jalur tercepat berdasarkan _bandwidth_. Punya peta lengkap topologi jaringan |
+| **RIP** (Routing Information Protocol) | Protokol _distance-vector_ — pakai jumlah lompatan (**hop count**) buat menentukan jalur. Batas maksimal 15 hop |
 
-4. **Transport:** Lapisan keempat yang tugasnya ngelola pengiriman data antar perangkat dan memastikan data diterima dengan benar. Unit data di lapisan ini disebut segmen, bukan lagi packet.
+---
 
-Ada 2 protokol di lapisan Transport:
+### Layer 4: Transport — TCP vs UDP
 
-- **TCP (Transmission Control Protocol):** Protokol yang menyediakan pengiriman data secara handal dan teratur, menjamin data nyampe ke tujuan dalam urutan yang benar.
-- **UDP (User Datagram Protocol):** Protokol yang lebih cepat dari TCP tapi tidak menjamin pengiriman yang handal dan urutan data yang teratur.
+| Aspek | **TCP** | **UDP** |
+| :---- | :------ | :------ |
+| **Analogi** | Telepon (harus tersambung dulu) | Walkie-talkie (langsung bicara) |
+| **Keandalan** | Sangat Handal (Reliable) | Tidak Handal (Unreliable) |
+| **Koneksi** | Connection-oriented | Connectionless |
+| **Kecepatan** | Lebih lambat (banyak pengecekan) | Sangat cepat (tanpa hambatan) |
+| **Pengiriman Ulang** | Mengirim ulang data yang hilang/rusak | Tidak mengirim ulang |
+| **Urutan Data** | Data diterima sesuai urutan | Data bisa diterima berantakan |
+| **Contoh Penggunaan** | Web (HTTP), Email, Transfer File | Streaming Video, Game Online, VoIP |
 
+---
 
-| Perbedaan             | TCP (Transmission Control Protocol)      | UDP (User Datagram Protocol)             |
-| :-------------------- | :--------------------------------------- | :--------------------------------------- |
-| **Keandalan**         | Sangat Handal (Reliable)                 | Tidak Handal (Unreliable)                |
-| **Koneksi**           | Connection-oriented                      | Connectionless                           |
-| **Kecepatan**         | Lebih Lambat (Banyak proses pengecekan)  | Sangat Cepat (Tanpa hambatan)            |
-| **Pengiriman Ulang**  | Mengirim ulang data yang hilang/rusak    | Tidak mengirim ulang data yang hilang    |
-| **Urutan Data**       | Data diterima sesuai urutan yang dikirim | Data bisa diterima berantakan/tidak urut |
-| **Contoh Penggunaan** | Web (HTTP), Email, Transfer File         | Streaming Video, Game Online, VoIP       |
+### Layer 5: Session — Protokol Penting
 
-5. **Session:** Lapisan kelima yang fungsinya ngelola sesi antar 2 perangkat -- menetapkan, mempertahankan, dan mengakhiri koneksi agar aplikasi berkomunikasi dengan lancar. Simpelnya, lapisan ini bantu jaga komunikasi tetap teratur antar aplikasi yang berbeda.
+| Protokol | Fungsi |
+| -------- | ------ |
+| **RPC** (Remote Procedure Call) | Memungkinkan program minta layanan dari program lain di komputer berbeda — menyederhanakan komunikasi antar aplikasi |
+| **SMB** (Server Message Block) | Berbagi file, printer, dan sumber daya lainnya di jaringan lokal |
 
-Protokol yang ada di lapisan ini:
+---
 
-- **RPC (Remote Procedure Call):** Protokol ini membuat suatu program bisa minta layanan dari program lain di komputer yang beda jaringan. Intinya nyederhanain komunikasi antar aplikasi tanpa harus ngurusin detail jaringan.
-- **SMB (Server Message Block):** Protokol ini dipake buat berbagi file, printer, dan sumber daya lainnya di jaringan. Dengan SMB, kita bisa ngelola dan mengakses data dengan gampang di jaringan tanpa harus pindah tempat.
+### Layer 6: Presentation
 
-6. **Presentation:** Lapisan keenam ini jadi penerjemah data agar bisa dipahami sama aplikasi / lapisan ke-7 (Application). Memastikan data disajiin dalam format yang bener supaya bisa diproses dengan baik. Lapisan ini juga yang ngurusin enkripsi dan dekripsi buat keamanan.
+Lapisan ini jadi **penerjemah data** — memastikan data disajikan dalam format yang benar agar bisa diproses oleh lapisan Application. Juga menangani enkripsi dan dekripsi buat keamanan.
 
-7. **Application:** Lapisan ketujuh, yang paling deket sama pengguna. Menyediakan layanan jaringan buat aplikasi perangkat lunak seperti web browser (HTTP/HTTPS) atau email.
+### Layer 7: Application
 
-> **mnemonic:** "**P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way", (Physical, Data Link, Network, Transport, Session, Presentation, Application).
+Lapisan yang paling dekat sama pengguna. Menyediakan layanan jaringan buat aplikasi seperti web browser (HTTP/HTTPS), email (SMTP), dan transfer file (FTP).
