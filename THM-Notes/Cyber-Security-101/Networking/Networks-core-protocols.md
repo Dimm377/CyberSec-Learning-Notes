@@ -9,64 +9,72 @@
 
 ---
 
----
-
 ## Overview
 
-Room ini membahas protokol-protokol inti yang sering ditemuin di dunia nyata, mulai dari gimana kita mencari alamat (DNS), mengakses web (HTTP), sampai cara kerja email (SMTP/POP3/IMAP). Mengerti protokol ini penting banget buat praktisi keamanan buat melihat gimana data ditukar dan celah apa yang mungkin ada di sana.
+Room ini membahas protokol-protokol inti yang sering ditemukan di dunia nyata — dari mencari alamat (DNS), mengakses web (HTTP), transfer file (FTP), sampai cara kerja email (SMTP/POP3/IMAP). Mengerti protokol ini penting buat praktisi keamanan buat melihat bagaimana data ditukar dan celah apa yang mungkin ada.
 
 ---
 
-## Remembering Addresses (DNS)
+### DNS (Remembering Addresses)
 
-DNS nerjemahin nama domain jadi IP address agar perangkat kita bisa berkomunikasi.
+DNS menerjemahkan nama domain jadi IP address agar perangkat bisa berkomunikasi:
 
-- **AAAA Record:** Dipake khusus buat memetakan domain ke alamat **IPv6**.
-- **MX Record:** Menentukan mail server yang bertanggung jawab buat domain tersebut.
-- **CNAME:** Alias yang ngarahin satu domain ke domain lainnya.
+| Record | Fungsi |
+| ------ | ------ |
+| **A** | Memetakan domain ke alamat **IPv4** |
+| **AAAA** | Memetakan domain ke alamat **IPv6** |
+| **MX** | Menentukan mail server yang bertanggung jawab buat domain |
+| **CNAME** | Alias yang mengarahkan satu domain ke domain lainnya |
 
----
-
-## WHOIS
-
-WHOIS dipake buat mencari informasi pendaftaran domain, seperti siapa pemiliknya dan kapan domain itu dibuat.
-
-- **Praktik:** Mencari informasi pendaftaran domain populer pakai perintah `whois <domain>`.
-- **Historical Data:** Berguna di fase pengintaian (Reconnaissance) buat tau umur dan legitimasi sebuah domain.
+*(Penjelasan lebih lengkap tentang DNS ada di catatan [DNS-In-Details](../../Pre-Security/How-The-Web-Works/DNS-In-Details.md))*
 
 ---
 
-## Accessing the Web
+### WHOIS
 
-Protokol utama buat transmisi data di web. Di room ini, kita pakai cara manual (Telnet) buat melihat interaksi mentah sama server.
+WHOIS dipakai buat mencari informasi pendaftaran domain — siapa pemiliknya, kapan dibuat, dan kapan expired:
 
-- **Telnet Interaction:**
-  1. Hubungin ke IP target: `telnet MACHINE_IP 80`.
-  2. Memasukkan request manual: `GET /flag.html HTTP/1.1`.
-  3. Tambahin header Host: `Host: MACHINE_IP` (tekan Enter dua kali).
-- **The Flag:** **`THM{TELNET-HTTP}`**.
-
----
-
-## FTP (Transferring Files)
-
-Protokol buat transfer file. Seringkali punya celah kalau dikonfigurasi sebagai _Anonymous Login_.
-
-- **Anonymous Login:** Masuk pakai username `anonymous` tanpa perlu password.
-- **Commands:**
-  - `ls` buat melihat file.
-  - `get` buat download file (misal: `get flag.txt`).
-- **The Flag:** **`THM{FAST-FTP}`**.
+| Aspek | Detail |
+| ----- | ------ |
+| **Command** | `whois <domain>` |
+| **Kegunaan di Recon** | Mengetahui umur dan legitimasi sebuah domain pada fase pengintaian (Reconnaissance) |
 
 ---
 
-## 8: Email Protocols (SMTP, POP3, IMAP)
+### Accessing the Web (HTTP via Telnet)
 
-Protokol yang nanganin pengiriman dan pengambilan pesan email.
+Di room ini, kita pakai cara manual (Telnet) buat melihat interaksi mentah dengan server:
 
-- **SMTP (Sending):** Protokol pengiriman email. Perintah `DATA` dipake buat mulai nulis isi pesan, dan titik `.` di baris baru buat ngakhirinnya.
-- **POP3 (Receiving):** Protokol buat download email dari server ke klien lokal. Server yang umum dipake itu **Dovecot**.
-- **The Flag (POP3):** Mengambil pesan ke-4 pakai perintah `RETR 4` menghasilkan flag **`THM{TELNET_RETR_EMAIL}`**.
-- **IMAP (Synchronizing):** Lebih canggih dari POP3 karena nyinkronisasi email antar perangkat. Perintah buat mengambil pesan ke-4 itu `FETCH 4 body[]`.
+```bash
+telnet MACHINE_IP 80
+GET /flag.html HTTP/1.1
+Host: MACHINE_IP
+```
 
-> **Tip:** "The flag is in the details."
+*(Tekan Enter dua kali setelah header Host)*
+
+---
+
+### FTP (File Transfer Protocol)
+
+Protokol buat transfer file. Seringkali punya celah kalau dikonfigurasi sebagai _Anonymous Login_:
+
+| Konsep | Detail |
+| ------ | ------ |
+| **Anonymous Login** | Masuk pakai username `anonymous` tanpa password |
+| **`ls`** | Melihat daftar file di server |
+| **`get <file>`** | Download file dari server (contoh: `get flag.txt`) |
+
+---
+
+### Email Protocols (SMTP, POP3, IMAP)
+
+Protokol yang menangani pengiriman dan pengambilan pesan email:
+
+| Protokol | Fungsi | Cara Kerja |
+| -------- | ------ | ---------- |
+| **SMTP** | Kirim email | Perintah `DATA` buat mulai nulis pesan, titik `.` di baris baru buat mengakhiri |
+| **POP3** | Download email ke lokal | Server umum: **Dovecot**. Perintah `RETR <nomor>` buat mengambil pesan |
+| **IMAP** | Sinkronisasi email antar perangkat | Lebih canggih dari POP3. Perintah `FETCH <nomor> body[]` buat mengambil pesan |
+
+> **Tip:** The flag is in the details.

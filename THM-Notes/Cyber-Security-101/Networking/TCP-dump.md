@@ -1,4 +1,4 @@
-# TryHackMe: tcpdump
+# TryHackMe: TCP-dump
 
 
 ---
@@ -24,7 +24,7 @@ Mengerti switch dasar buat ngontrol gimana `tcpdump` bekerja.
 - **`-i` (Interface):** Menentukan interface mana yang bakal dipantau (misal: `-i eth0` atau `-i tun0`).
 - **`-n` (Numeric):** Nyegah `tcpdump` nerjemahin alamat IP jadi nama host, jadi prosesnya lebih cepat.
 - **`-v`, `-vv`, `-vvv` (Verbose):** Menampilkan detail paket yang lebih mendalam.
-- **`-c` (Count):** Berhenti setelah nangkep jumlah paket tertentu.
+- **`-c` (Count):** Berhenti setelah capture jumlah paket tertentu.
 - **`-w` (Write):** Menyimpan hasil tangkapan ke dalam file `.pcap`.
 - **`-r` (Read):** Baca file `.pcap` yang sudah disimpen sebelumnya.
 - **`-A` (ASCII):** Menampilkan isi paket dalam format teks yang bisa dibaca (berguna banget buat mencari password plain-text).

@@ -11,53 +11,77 @@
 
 ## Overview
 
-Setelah belajar protokol inti (core), room ini membahas versi secure-nya dari protokol-protokol tersebut. Fokus utama kita itu mengerti gimana enkripsi (SSL/TLS) melindungi data sensitif agar tidak bisa dibaca sama pihak ketiga waktu transit di jaringan.
+Setelah belajar protokol inti (core), room ini membahas **versi secure-nya**. Fokus utamanya mengerti bagaimana enkripsi (SSL/TLS) melindungi data sensitif agar tidak bisa dibaca pihak ketiga saat transit di jaringan.
 
-## SSH (Secure Shell)
+---
 
-SSH itu pengganti Telnet yang jauh lebih aman buat akses remote terminal.
+### Protokol Insecure vs Secure
 
-- **Enkripsi:** Beda sama Telnet yang mengirim password dalam bentuk _plain-text_, SSH mengenkripsi seluruh sesi komunikasi.
-- **Port:** Secara default jalan di **Port 22**.
-- **Autentikasi:** Support _Public Key Authentication_ yang jauh lebih aman daripada sekadar password biasa.
+| Protokol Lama | Masalah | Versi Secure | Port |
+| ------------- | ------- | ------------ | :--: |
+| Telnet | Password dikirim plain-text | **SSH** | 22 |
+| HTTP | Data tidak dienkripsi | **HTTPS** | 443 |
+| FTP | Credential dan data terbuka | **SFTP** / **FTPS** | 22 / 990 |
+| SMTP | Email bisa disadap | **SMTPS** | 465 |
+| IMAP | Email bisa disadap | **IMAPS** | 993 |
+| POP3 | Email bisa disadap | **POP3S** | 995 |
 
-## HTTPS (Hypertext Transfer Protocol Secure)
+---
 
-Versi aman dari HTTP yang dipake hampir seluruh website modern sekarang.
+### SSH (Secure Shell)
 
-- **SSL/TLS:** HTTPS pakai sertifikat SSL/TLS buat mengenkripsi traffic antara browser dan server.
-- **Port:** Secara default jalan di **Port 443**.
-- **Integritas:** Jamin bahwa data yang dikirim tidak dimanipulasi di tengah jalan (Integrity).
+Pengganti Telnet yang jauh lebih aman buat akses remote terminal:
 
-## SFTP & FTPS (Secure File Transfer)
+| Aspek | Detail |
+| ----- | ------ |
+| **Enkripsi** | Seluruh sesi komunikasi dienkripsi (beda dengan Telnet yang plain-text) |
+| **Port** | Default **Port 22** |
+| **Autentikasi** | Support _Public Key Authentication_ — lebih aman daripada password biasa |
 
-Dua cara beda buat ngamanin protokol FTP yang sebenernya sangat tidak aman.
+---
 
-- **SFTP (SSH File Transfer Protocol):** Jalan di atas protokol SSH (Port 22). Populer banget karena cuma butuh satu port terbuka.
-- **FTPS (FTP over SSL):** Pakai SSL/TLS buat mengenkripsi koneksi FTP standar (Port 990 atau 21 dengan STARTTLS).
+### HTTPS (Hypertext Transfer Protocol Secure)
 
-## IPsec & VPNs
+Versi aman dari HTTP yang dipakai hampir seluruh website modern:
 
-Protokol yang bekerja di level network (Layer 3) buat ngamanin seluruh traffic antar dua titik.
+| Aspek | Detail |
+| ----- | ------ |
+| **SSL/TLS** | Mengenkripsi traffic antara browser dan server pakai sertifikat |
+| **Port** | Default **Port 443** |
+| **Integritas** | Menjamin data tidak dimanipulasi di tengah jalan |
 
-- **VPN (Virtual Private Network):** Membuat tunnel terenkripsi di atas jaringan publik (Internet).
-- **IPsec:** Kumpulan protokol yang dipake buat autentikasi dan enkripsi paket IP. Sering dipake di koneksi Site-to-Site VPN.
+---
 
-## Secure Email (SMTPS, IMAPS, POP3S)
+### Secure File Transfer (SFTP vs FTPS)
 
-Ngamanin komunikasi email dari pengintaian pakai enkripsi SSL/TLS.
+Dua cara berbeda buat mengamankan FTP yang pada dasarnya sangat tidak aman:
 
-- **SMTPS (Simple Mail Transfer Protocol Secure):**
-  - **Port:** 465.
-  - **Fungsi:** Dipake buat **pengiriman** email dari client ke server atau antar server secara aman.
-  - **Detail:** Pakai _Implicit TLS_ buat mengenkripsi seluruh sesi komunikasi sejak awal koneksi dibuat.
-- **IMAPS (Internet Message Access Protocol Secure):**
-  - **Port:** 993.
-  - **Fungsi:** Dipake buat **pengambilan dan sinkronisasi** email dari server secara dua arah.
-  - **Detail:** Membuat sinkronisasi email antar perangkat jadi mungkin, jadi pesan tetap tersimpan di server.
-- **POP3S (Post Office Protocol v3 Secure):**
-  - **Port:** 995.
-  - **Fungsi:** Dipake buat **download** email dari server ke perangkat lokal.
-  - **Detail:** Secara tradisional menghapus email dari server setelah berhasil didownload ke client lokal.
+| Protokol | Cara Kerja | Port | Keunggulan |
+| -------- | ---------- | :--: | ---------- |
+| **SFTP** (SSH File Transfer Protocol) | Berjalan di atas protokol SSH | 22 | Cuma butuh satu port terbuka — populer |
+| **FTPS** (FTP over SSL) | Pakai SSL/TLS buat enkripsi koneksi FTP | 990 / 21 (STARTTLS) | Kompatibel dengan infrastruktur FTP lama |
 
-> **Tip:** "Encryption is not a wall, it's a puzzle." Cuma karena datanya terenkripsi, bukan berarti sistemnya tidak bisa ditembus.
+---
+
+### IPsec & VPNs
+
+Protokol yang bekerja di level network (Layer 3) buat mengamankan seluruh traffic antar dua titik:
+
+| Teknologi | Fungsi |
+| --------- | ------ |
+| **VPN** | Membuat tunnel terenkripsi di atas jaringan publik (Internet) |
+| **IPsec** | Kumpulan protokol buat autentikasi dan enkripsi paket IP — sering dipakai di Site-to-Site VPN |
+
+---
+
+### Secure Email Protocols
+
+Mengamankan komunikasi email dari pengintaian pakai enkripsi SSL/TLS:
+
+| Protokol | Port | Fungsi |
+| -------- | :--: | ------ |
+| **SMTPS** | 465 | **Pengiriman** email dari client ke server — pakai _Implicit TLS_ sejak awal koneksi |
+| **IMAPS** | 993 | **Sinkronisasi** email dua arah antar perangkat — pesan tetap tersimpan di server |
+| **POP3S** | 995 | **Download** email ke perangkat lokal — secara tradisional menghapus email dari server setelah download |
+
+> **Tip:** Encryption is not a wall, it's a puzzle. Cuma karena datanya terenkripsi, bukan berarti sistemnya tidak bisa ditembus.
