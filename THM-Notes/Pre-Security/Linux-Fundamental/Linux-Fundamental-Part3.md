@@ -9,71 +9,84 @@
 
 ---
 
----
+## Overview
 
-# Overview
-
-Room ini fokus ke alat-alat utility yang bakal sering dipake sehari-hari, cara ngelola proses sistem, sampai mengotomatisasi tugas agar sistem tetap jalan optimal.
+Room ini fokus ke alat-alat utility yang bakal sering dipakai sehari-hari, cara mengelola proses sistem, sampai mengotomatisasi tugas agar sistem tetap berjalan optimal.
 
 ---
 
 ### Terminal Text Editors
 
-Edit file langsung lewat terminal itu skill wajib. Room ini ngenalin dua editor utama:
+Edit file langsung lewat terminal itu skill wajib. Dua editor utama:
 
-- **Nano:** Editor yang ramah banget buat pemula, ada panduan tombol di bagian bawah.
-- **Vim/Vi:** Editor yang jauh lebih sakti dengan mode perintah yang beda-beda. _Note: Karena aku pengguna LazyVim di Arch, bagian ini terasa sangat familiar._
+| Editor | Analogi | Karakteristik |
+| ------ | ------- | ------------- |
+| **Nano** | Notepad sederhana — tinggal tulis | Ramah pemula, ada panduan shortcut di bagian bawah layar |
+| **Vim/Neovim** | Cockpit pesawat — powerful tapi butuh pelatihan | Editor dengan mode berbeda (Normal, Insert, Visual). Jauh lebih cepat begitu sudah terbiasa |
 
 ---
 
 ### General/Useful Utilities
 
-Linux menyediakan banyak alat kecil yang berguna banget buat transfer data dan komunikasi:
+Linux menyediakan banyak tools kecil yang sangat berguna buat transfer data dan komunikasi:
 
-- **`wget`**: Download file langsung dari web server lewat terminal.
-- **`scp` (Secure Copy)**: Salin file antar mesin secara aman lewat protokol SSH.
-- **Serving Files**: Kita bisa pakai modul Python (`python3 -m http.server`) buat membuat web server instan dan berbagi file di jaringan lokal.
+| Tool | Analogi | Fungsi |
+| ---- | ------- | ------ |
+| `wget` | **Kurir pengantar** — kasih URL, dia langsung jemput | Download file langsung dari web server lewat terminal |
+| `scp` | **Truk lapis baja** — kirim file lewat jalur aman | Salin file antar mesin secara aman lewat protokol SSH |
+| `python3 -m http.server` | **Buka lapak dadakan** | Membuat web server instan buat berbagi file di jaringan lokal |
 
 ---
 
 ### Processes 101
 
-Belajar cara melihat dan ngendaliin aplikasi yang lagi jalan di latar belakang:
+Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan — ibarat **task manager** di Windows, tapi lebih powerful.
 
-- **`ps aux`**: Melihat daftar semua proses yang lagi jalan secara detail.
-- **`top`**: Monitor penggunaan sumber daya sistem (CPU & RAM) secara real-time.
-- **`kill`**: Kirim sinyal ke proses berdasarkan PID (Process ID).
-  - **SIGTERM (15)**: Minta proses berhenti secara sopan (cleanup).
-  - **SIGKILL (9)**: Hentiin proses secara paksa.
-  - **SIGSTOP (19)**: Tangguhkan proses sementara.
+| Command | Fungsi |
+| ------- | ------ |
+| `ps aux` | Melihat daftar semua proses yang sedang berjalan secara detail |
+| `htop / btop` | Monitor penggunaan CPU & RAM secara real-time |
+| `kill <PID>` | Mengirim sinyal ke proses berdasarkan Process ID |
+
+**Jenis sinyal `kill`:**
+
+| Signal | Nomor | Analogi | Fungsi |
+| ------ | :---: | ------- | ------ |
+| **SIGTERM** | 15 | Minta sopan: Tolong berhenti ya | Proses diminta berhenti dan diberi waktu cleanup |
+| **SIGKILL** | 9 | Menghentikan secara paksa | Hentikan proses secara paksa — tanpa cleanup |
+| **SIGSTOP** | 19 | Menangguhkan proses | Tangguhkan proses sementara (bisa dilanjut nanti) |
 
 ---
 
 ### Maintaining Your System: Automation
 
-Agar tidak perlu ngerjain tugas yang sama berulang-ulang, Linux pakai **cron**.
+Agar tidak perlu mengerjakan tugas yang sama berulang-ulang, Linux punya **cron** — ibarat **alarm/pengingat otomatis** yang menjalankan perintah di waktu yang sudah ditentukan.
 
-- **`crontab -e`**: Edit file konfigurasi cron buat ngatur jadwal eksekusi skrip atau perintah secara otomatis di waktu tertentu.
+| Command | Fungsi |
+| ------- | ------ |
+| `crontab -e` | Edit jadwal cron — atur kapan script/perintah dieksekusi otomatis |
 
 ---
 
 ### Maintaining Your System: Package Management
 
-Ngatur perangkat lunak di distribusi berbasis Debian/Ubuntu:
+Mengelola perangkat lunak di distribusi berbasis Debian/Ubuntu:
 
-- **`apt`**: Alat utama buat install, update, dan hapus aplikasi.
-- **Repositories**: Pahami bahwa Linux narik aplikasi dari gudang data (repo) terpusat, beda sama Windows yang biasanya pakai file installer `.exe`.
+| Konsep | Analogi | Penjelasan |
+| ------ | ------- | ---------- |
+| **`apt`** | Play Store di HP | Tool utama buat install, update, dan hapus aplikasi |
+| **Repositories** | Gudang aplikasi terpusat | Linux mengambil aplikasi dari repo, beda sama Windows yang pakai file installer `.exe` |
 
 ---
 
 ### Maintaining Your System: Logs
 
-Sistem Linux nyatet semua aktivitas di dalam file log yang biasanya ada di direktori `/var/log`. Mengecek log itu langkah penting waktu troubleshooting atau investigasi keamanan.
+Sistem Linux mencatat semua aktivitas di dalam file log yang tersimpan di `/var/log`. Ibarat **rekaman CCTV** — kalau ada masalah atau insiden keamanan, log adalah tempat pertama yang harus dicek.
 
 ---
 
 ### Conclusions & Summaries
 
-Dengan selesainya room ini, kita sudah punya pondasi yang kuat buat ngoperasiin Linux secara profesional. Langkah selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
+Dengan selesainya room ini, kita sudah punya pondasi yang kuat buat mengoperasikan Linux secara profesional. Langkah selanjutnya adalah mendalami teknik-teknik keamanan dan administrasi yang lebih kompleks.
 
-> **Note:** Automate everything. Jangan habisin waktu buat tugas manual kalau kamu bisa tulis satu baris perintah di crontab.
+> **Note:** Automate everything. Jangan habiskan waktu buat tugas manual kalau kamu bisa tulis satu baris perintah di crontab.
