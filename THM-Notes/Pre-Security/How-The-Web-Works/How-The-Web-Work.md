@@ -9,93 +9,105 @@
 
 ---
 
-# Overview
+## Overview
 
-Belajar proses fundamental dalam pembuatan situs web, termasuk gimana browser berinteraksi sama web server.
+Belajar proses fundamental dalam pembuatan situs web, termasuk bagaimana browser berinteraksi sama web server.
 
-### How The Web Works ?
+### How The Web Works?
 
-Pada dasarnya, web bekerja pakai model **Client-Server**. Ini interaksi terus-menerus antara browser yang lagi kamu pakai sama komputer di lokasi lain yang menyediakan data.
+Pada dasarnya, web bekerja pakai model **Client-Server**. Analogi paling gampang: bayangkan kamu lagi di **restoran** (lagi lagi restoran, karena emang mirip).
 
-#### **1. Siklus Request & Response**
+- **Client** = Kamu (yang memesan makanan lewat browser)
+- **Server** = Dapur (yang menyiapkan dan mengirimkan makanan/data)
 
-Setiap kali kamu akses sebuah URL, ada proses timbal balik seperti gini:
+#### Siklus Request & Response
 
-- **Request (Permintaan):** Browser kamu (Client) mengirim permintaan ke web server buat mendapatkan informasi halaman tertentu.
-- **Processing:** Server nerima permintaan itu, memprosesnya (misal: mencari file di disk), dan nyiapin datanya.
-- **Response (Tanggapan):** Server mengirim balik data yang diminta (seperti HTML, gambar, atau CSS) ke browser kamu.
-- **Rendering:** Browser nerima data itu dan nampilinnya jadi halaman web yang bisa kamu melihat dan pakai.
+Setiap kali kamu akses sebuah URL, terjadi proses bolak balik seperti ini:
 
-#### **2. Dua Komponen Utama Website**
+| Tahap | Analogi Restoran | Yang Terjadi |
+| ----- | ---------------- | ------------ |
+| **Request** | Kamu kasih orderan ke pelayan | Browser mengirim permintaan ke web server |
+| **Processing** | Dapur masak pesananmu | Server memproses permintaan (cari file, query database, dll) |
+| **Response** | Pelayan bawa makanan ke mejamu | Server mengirim balik data (HTML, gambar, CSS) ke browser |
+| **Rendering** | Kamu makan dan menikmatinya | Browser menampilkan data jadi halaman web yang bisa dilihat |
 
-Website terbagi jadi dua bagian yang punya peran beda tapi saling melengkapi:
+#### Dua Komponen Utama Website
 
-- **Front-End (Client-Side):** Semua yang di-render dan ditampilin sama browser. Ini komponen visual yang langsung berinteraksi sama pengguna.
-- **Back-End (Server-Side):** Server yang memproses permintaan dan ngelola data di balik layar sebelum dikirim balik sebagai respon.
+| Komponen | Analogi | Penjelasan |
+| -------- | ------- | ---------- |
+| **Front-End** (Client-Side) | Ruang makan restoran (yang dilihat pengunjung) | Semua yang di-render dan ditampilkan oleh browser — komponen visual yang langsung berinteraksi sama pengguna |
+| **Back-End** (Server-Side) | Dapur restoran (tersembunyi di belakang) | Server yang memproses permintaan dan mengelola data di balik layar |
+
+---
 
 ### HTML (HyperText Markup Language)
 
-Website pada dasarnya dibangun pakai tiga teknologi utama:
+Website dibangun pakai tiga teknologi utama. Analogi paling gampang — bayangkan membangun **rumah**:
 
-- **HTML:** Dipake buat ngebangun struktur dan mendefinisiin kerangka website.
-- **CSS:** Dipake buat mempercantik tampilan dengan nambahin gaya atau _styling_.
-- **JavaScript:** Dipake buat mengimplementasiin fitur kompleks dan interaktivitas di halaman.
+| Teknologi | Analogi Rumah | Fungsi |
+| --------- | ------------- | ------ |
+| **HTML** | Kerangka dan struktur bangunan (dinding, atap, pintu) | Membangun struktur dan mendefinisikan kerangka website |
+| **CSS** | Cat, wallpaper, dan dekorasi interior | Mempercantik tampilan dengan styling |
+| **JavaScript** | Listrik, AC, dan sistem otomatisasi | Mengimplementasikan fitur kompleks dan interaktivitas |
 
-#### **Struktur Dasar HTML**
+#### Struktur Dasar HTML
 
-HTML pakai elemen atau **tags** buat memberi tau browser cara menampilkan konten. Ini komponen utamanya:
+HTML pakai elemen atau **tags** buat memberi tau browser cara menampilkan konten:
 
-| Tag               | Deskripsi                                                  |
-| :---------------- | :--------------------------------------------------------- |
-| `<!DOCTYPE html>` | Mendefinisiin bahwa halaman ini adalah dokumen HTML5.      |
-| `<html>`          | Elemen akar (_root_) dari seluruh halaman HTML.            |
-| `<head>`          | Berisi informasi metadata tentang halaman (seperti judul).   |
-| `<body>`          | Berisi semua konten yang bakal ditampilin di browser.      |
-| `<h1>`            | Dipake buat membuat judul besar (_heading_).                 |
-| `<p>`             | Dipake buat membuat paragraf.                                |
+| Tag | Fungsi |
+| :-- | :----- |
+| `<!DOCTYPE html>` | Mendefinisikan bahwa halaman ini adalah dokumen HTML5 |
+| `<html>` | Elemen akar (_root_) dari seluruh halaman |
+| `<head>` | Berisi metadata tentang halaman (judul, link CSS, dll) |
+| `<body>` | Berisi semua konten yang ditampilkan di browser |
+| `<h1>` | Membuat judul besar (_heading_) |
+| `<p>` | Membuat paragraf |
 
-#### **Mengenal Attributes**
+#### Mengenal Attributes
 
-Setiap tag bisa punya atribut buat memberi informasi tambahan atau gaya:
+Setiap tag bisa punya **atribut** — ibarat label nama atau stiker identitas yang ditempel di elemen:
 
-- **Class (`class`):** Dipake buat memberi gaya yang sama ke banyak elemen sekaligus.
-- **Src (`src`):** Dipake di tag gambar (`<img>`) buat menentukan lokasi file gambar.
-- **ID (`id`):** Bersifat **unik**. Satu elemen cuma boleh punya satu ID tertentu buat ngebedain dia dari elemen lain. Dipake buat _styling_ khusus dan identifikasi oleh JavaScript.
+| Atribut | Analogi | Fungsi |
+| ------- | ------- | ------ |
+| **class** | Seragam tim (banyak orang bisa pakai seragam yang sama) | Memberi gaya yang sama ke banyak elemen sekaligus |
+| **src** | Alamat foto di album | Menentukan lokasi file (gambar, script, dll) |
+| **id** | Nomor KTP (unik per orang) | Identitas unik per elemen — untuk styling khusus dan akses JavaScript |
 
-> **Note:** Hacker sering pakai fitur "View Page Source" (Ctrl+U) buat mencari informasi sensitif yang tidak sengaja ditinggalin developer di komentar HTML.
+> **Note:** Hacker sering pakai fitur "View Page Source" (Ctrl+U) buat mencari informasi sensitif yang tidak sengaja ditinggalkan developer di komentar HTML.
 
-### JavaScript
+---
 
 ### JavaScript (Functionality & Interactivity)
 
-JavaScript dipake buat ngontrol fungsionalitas halaman web. Tanpa JavaScript, halaman web bakal statis dan tidak interaktif.
+JavaScript membuat halaman web menjadi hidup. Tanpa JavaScript, halaman web itu ibarat **poster statis** — cuma bisa dilihat, ga bisa diajak interaksi.
 
-#### **1. Cara Menambahkan JavaScript**
+#### Cara Menambahkan JavaScript
 
-Kode JavaScript bisa dimasukin ke halaman web dengan dua cara:
+| Metode | Cara |
+| ------ | ---- |
+| **Internal** | Langsung di dalam tag `<script>` di file HTML |
+| **Remote/Eksternal** | Pakai atribut `src`: `<script src="/path/to/file.js"></script>` |
 
-- **Internal:** Langsung di dalam tag `<script>`.
-- **Remote:** Pakai atribut `src` buat nge-load file eksternal:
-  `<script src="/location/of/javascript_file.js"></script>`
+#### Memanipulasi Elemen HTML
 
-#### **2. Memanipulasi Elemen HTML**
-
-JavaScript bisa mencari elemen berdasarkan **ID** dan mengubah isinya secara dinamis. Contohnya:
+JavaScript bisa mencari elemen berdasarkan **ID** dan mengubah isinya secara dinamis:
 
 ```javascript
 document.getElementById("demo").innerHTML = "Element has been changed";
 ```
 
-_Kode di atas mencari elemen dengan ID "demo" dan mengubah teksnya jadi "Element has been changed"._
+_Kode di atas mencari elemen dengan ID "demo" dan mengubah teksnya._
 
-#### **3. Events (Kejadian)**
+#### Events (Kejadian)
 
-Elemen HTML bisa trigger JavaScript lewat "Event", seperti:
+Elemen HTML bisa men-trigger JavaScript lewat yang namanya "Event":
 
-- **onclick:** Terjadi waktu elemen di-klik.
-- **onhover:** Terjadi waktu kursor ada di atas elemen.
+| Event | Kapan Terjadi |
+| ----- | ------------- |
+| **onclick** | Saat elemen di-klik |
+| **onhover** | Saat kursor ada di atas elemen |
 
-**Contoh implementasi pada tombol:**
+Contoh implementasi pada tombol:
 
 ```html
 <button onclick='document.getElementById("demo").innerHTML = "Button Clicked";'>
@@ -103,40 +115,41 @@ Elemen HTML bisa trigger JavaScript lewat "Event", seperti:
 </button>
 ```
 
-_Waktu tombol di-klik, teks di elemen dengan ID "demo" bakal berubah jadi "Button Clicked"._
+---
 
 ### Sensitive Data Exposure
 
-Sensitive Data Exposure terjadi waktu informasi sensitif dalam bentuk teks biasa (_clear-text_) keekspos di kode sumber _frontend_ yang bisa diakses publik.
+Sensitive Data Exposure terjadi saat informasi sensitif dalam bentuk teks biasa (_clear-text_) keekspos di kode sumber _frontend_ yang bisa diakses publik.
 
-#### **Mengapa Hal Ini Terjadi?**
+Bayangkan jika seorang developer **lupa mengunci buku catatan rahasia** mereka dan meninggalkannya terbuka di meja resepsionis. Siapa saja yang lewat bisa membacanya.
 
-Developer sering lupa ngehapus data penting selama proses development, seperti:
+**Contoh data yang sering bocor:**
 
-- **Credential Login:** Username atau password yang ditulis langsung di kode HTML/JavaScript.
-- **Tautan Tersembunyi:** Link ke halaman privat yang tidak seharusnya diketahui pengguna umum.
-- **Komentar HTML:** Catatan internal developer yang berisi informasi sensitif.
+| Tipe Kebocoran | Contoh |
+| -------------- | ------ |
+| **Credential Login** | Username/password yang ditulis langsung di kode HTML/JavaScript |
+| **Tautan Tersembunyi** | Link ke halaman admin atau panel privat |
+| **Komentar HTML** | Catatan internal developer yang berisi informasi sensitif |
 
-#### **Langkah Penilaian Keamanan (Reconnaissance):**
+> **Note:** Langkah pertama seorang pentester saat menilai keamanan web app: periksa _Page Source Code_ (Ctrl+U) untuk mencari kebocoran data.
 
-Salah satu hal pertama yang harus dilakuin waktu menilai keamanan aplikasi web adalah ninjau kode sumber halaman (_Page Source Code_) buat mencari kebocoran data.
-
-> **Note:** Penyerang bisa manfaatin informasi yang bocor ini buat eskalasi akses ke komponen _backend_ atau bagian aplikasi lainnya.
+---
 
 ### HTML Injection
 
-HTML Injection itu kerentanan yang terjadi waktu input pengguna ditampilin di halaman web tanpa lewat proses filtrasi atau sanitasi yang tepat. Ini membuat penyerang bisa "nyuntikin" kode HTML mereka sendiri ke situs web korban.
+HTML Injection itu kerentanan yang terjadi saat input pengguna ditampilkan di halaman web **tanpa proses sanitasi yang tepat**. Analogi: Bayangkan papan pengumuman publik yang siapa saja bisa mencoret dan menambahkan tulisan — termasuk tulisan berbahaya.
 
-#### **Cara Kerja HTML Injection**
+**Cara Kerja HTML Injection:**
 
-1. **Input:** Pengguna memasukkan tag HTML (misal: `<h1>Hacked</h1>`) ke kolom input (seperti kolom komentar atau nama).
-2. **Failure to Sanitize:** Server nerima input itu dan nyimpennya atau langsung nampilinnya balik tanpa mengubah karakter khusus jadi teks aman.
-3. **Execution:** Browser nerjemahin input itu sebagai kode HTML asli dan nge-render-nya, jadi tampilan halaman berubah sesuai keinginan penyerang.
+| Tahap | Yang Terjadi |
+| ----- | ------------ |
+| **Input** | Penyerang memasukkan tag HTML (misal: `<h1>Hacked</h1>`) ke kolom input |
+| **Failure to Sanitize** | Server menerima input dan menampilkannya balik tanpa memfilter karakter khusus |
+| **Execution** | Browser menerjemahkan input itu sebagai kode HTML asli dan me-render-nya |
 
-#### **Dampak dari HTML Injection:**
-
-- **Defacement:** Mengubah konten visual website (misal: ganti gambar atau teks).
-- **Phishing:** Nyuntikin formulir login palsu buat nyuri data pengguna lain.
-- **Redirection:** Ngarahin pengguna ke situs berbahaya pakai tag `<a>`.
+**Dampak dari HTML Injection:**
+- **Defacement:** Mengubah konten visual website
+- **Phishing:** Menyuntikkan formulir login palsu buat mencuri data pengguna
+- **Redirection:** Mengarahkan pengguna ke situs berbahaya pakai tag `<a>`
 
 > **Note:** **"All User Input is Evil."** Jangan pernah menampilkan input user secara langsung tanpa proses _encoding_ atau _filtering_ di sisi server.
