@@ -9,100 +9,81 @@
 
 ---
 
-# Overview
+## Overview
 
-### What is DNS ?
+### What is DNS?
 
-DNS (Domain Name System) itu cara simpel buat kita berkomunikasi sama perangkat di internet tanpa harus ngapalin angka-angka kompleks.
+Pernah nyari kontak teman di HP pakai namanya (Budi) daripada menghafal nomor teleponnya (`0812-xxxx-xxxx`)? 
+
+**DNS (Domain Name System)** bekerja persis seperti **Buku Telepon raksasa untuk internet**. Bayangkan jika kamu harus mengetik IP address seperti `142.250.190.46` setiap kali mau membuka Google. Ribet, kan? DNS menerjemahkan nama domain yang mudah diingat manusia (seperti `google.com`) menjadi deretan angka (IP Address) yang dipahami komputer.
 
 ### Domain Hierarchy
 
-Domain Hierarchy itu sistem penamaan terstruktur yang bentuknya seperti pohon terbalik. Setiap tingkatan dipisahin pakai tanda (`.`) dan dibaca dari kanan ke kiri. Sistem ini memastikan setiap alamat di internet itu unik dan bisa dikelola secara terdistribusi.
-
-Struktur Domain Hierarchy:
+Cara kerja penamaan DNS itu punya sistem yang rapi, disebut **Domain Hierarchy**. Bentuknya menyerupai struktur organisasi atau pohon terbalik. 
+Setiap tingkatan dipisahkan pakai tanda titik (`.`) dan **dibaca dari kanan ke kiri**. Semakin ke kanan, semakin tinggi posisinya di hierarki. Sistem ini memastikan setiap alamat di internet itu unik.
 
 <p align="center">
 <img src="../../Assets/Images/DNS.png" alt="DNS">
 </p>
 
-### 1. Root Domain
+#### Root Domain
+Ini tingkatan tertingginya. Berada di ujung paling atas sistem hierarki, dilambangkan cukup dengan satu tanda titik (`.`). 
+Contoh: Di URL `tryhackme.com.`, nah tanda `.` paling akhir yang tidak terlihat itu adalah *Root Domain*. Root ini krusial buat mengarahkan pencarian alamat ke cabang yang benar.
 
-Root domain itu tingkat paling tinggi di sistem domain hierarchy. Diwakili sama tanda titik (`.`) dan ada di puncak nama domain. Contoh: `domain.com`, si `.` itu adalah root domain. Root domain penting banget buat resolusi DNS karena bantu menavigasi seluruh struktur domain.
+#### TLD (Top Level Domain)
+Ini level persis di bawah root. TLD itu bagian paling kanan yang kelihatan jelas di nama domain (contohnya `.com` di `google.com`).
 
-### 2. TLD (Top Level Domain)
+TLD sendiri dibagi jadi dua kelompok utama:
+- **gTLD (Generic TLD):** Memberitahu bidang atau tujuan situs tersebut.
+  - `.com` (Komersial)
+  - `.org` (Organisasi)
+  - `.edu` (Edukasi/Pendidikan)
+- **ccTLD (Country Code TLD):** Menunjukan asal geografis atau negara dari situs tersebut.
+  - `.id` (Indonesia)
+  - `.co.uk` (Inggris Raya)
 
-TLD itu bagian paling kanan dari nama domain. Contoh: `domain.com`, tepat setelah titik terakhir yaitu `.com`.
+*(Info tambahan: Di era modern sekarang juga banyak TLD baru yang lebih unik dan spesifik kayak `.online`, `.club`, atau `.biz`).*
 
-TLD dibagi jadi dua kategori utama:
-
-1. **gTLD (Generic Top Level Domain):** Dipake buat memberi tau pengguna tentang tujuan atau bidang situs tersebut.
-
-Contoh:
-
-- **.com:** Buat tujuan komersial (Commercial)
-
-- **.org:** Buat situs organisasi (Organization)
-
-- **.edu:** Buat instansi pendidikan (Education)
-
-- **.gov:** Buat instansi pemerintah (Government)
-
-2. **ccTLD (Country Code Top Level Domain):** Dipake buat nunjukin lokasi geografis atau asal negara dari sebuah situs (domain).
-
-Contoh:
-
-- **.co.uk:** Buat situs yang berbasis di Inggris (United Kingdom)
-
-- **.id:** Buat situs negaraku, yaitu Indonesia
-
-### Nama domain di era Modern (sekarang)
-
-- .online
-
-- .club
-
-- .biz
-
-- dan banyak lagi
+---
 
 ### DNS Record Types
 
-DNS pakai berbagai tipe record buat menyimpan data spesifik. Ini daftar yang paling umum:
+Server DNS tidak cuma menyimpan nama dan nomor. Mereka menggunakan berbagai formulir(record) untuk menyimpan jenis data yang berbeda. Ibarat *Buku Identitas*, ini tipe-tipe informasi yang disimpan DNS:
 
-- **A Record:** Record ini dipetakan ke alamat IPv4, misalnya 104.26.10.229
+| Record Type | Analogi & Fungsi Utama |
+| ----------- | ---------------- |
+| **A Record** | **(KTP Standar / IPv4)** Memetakan nama domain secara langsung ke alamat IPv4 (contoh: `104.26.10.229`). |
+| **AAAA Record** | **(KTP Modern / IPv6)** Memetakan nama domain secara langsung ke alamat IPv6 yang formatnya lebih kompleks (contoh: `2606:4700:20::...`). |
+| **CNAME** | **(Nama Samaran / Alias)** Ga ngarah langsung ke IP, melainkan mengarahkan sebuah alias ke domain asli (Canonical). Contoh: `www.tryhackme.com` diarahin pakai CNAME ke domain asli `tryhackme.com`. |
+| **MX Record** | **(Kantor Pos)** Menentukan server mana yang ditugaskan khusus buat mengurus penjemputan/pengiriman *email* di domain tersebut. |
+| **TXT Record** | **(Papan Pengumuman)** Record fleksibel yang isinya teks bebas. Sangat sering dipakai admin buat membuktikan kepemilikan domain Google/AWS, atau untuk pengaturan keamanan email (SPF/DKIM/DMARC). |
 
-- **AAAA Record:** Record ini dipetakan ke alamat IPv6, misalnya 2606:4700:20::681a:be5
+---
 
-- **CNAME Record:** CNAME (Canonical Name) itu tipe record yang fungsinya memetakan nama alias (nama samaran) ke nama domain lain yang bersifat canonical (nama asli). Bedanya sama A Record, CNAME tidak langsung ngarah ke alamat IP tapi ngarahin query ke domain lain.
+### Making A Request (Gimana Cara DNS Mencari Alamat?)
 
-- **MX Record:** MX (Mail Exchange) Record itu tipe record yang fungsinya menentukan mail server mana yang bertanggung jawab nerima email buat sebuah domain.
+Proses nerjemahin nama domain ke IP Address itu lumayan panjang. Analogi sederhananya ibarat kamu lagi **nanya alamat rumah teman yang baru pindah**. Ini urutannya:
 
-- **TXT Record:** TXT (Text) Record itu tipe DNS yang ngebolehin pemilik domain buat memasukkan informasi berbasis teks ke sistem DNS. Beda sama record DNS lain yang strukturnya kaku buat alamat IP atau server, TXT record itu kolom teks bebas yang fleksibel banget buat berbagai keperluan administratif dan keamanan.
+1. **Local Cache Check (Nanya memori sendiri):** 
+   Sebelum repot nanya keluar, komputermu ngecek dulu di memori lokal (_cache_). Siapa tau alamatnya baru aja dicari kemaren dan masih diingat. Ini dilakukan buat menghemat waktu dan _bandwidth_.
+2. **Recursive Resolver (Nanya pak RT):** 
+   Kalau di _cache_ lokal gak ada, alamat dicari lewat Recursive DNS (biasanya server milik provider internetmu atau server publik kayak `8.8.8.8`). Resolver inilah pelayan yang keliling internet nanyain alamat spesifik buat kamu.  
+3. **The Root Server (Nanya kantor pusat):** 
+   Resolver melempar nanya ke Root Server di puncak rantai DNS. Root ngerespons: *"Aku gak tau spesifik alamatnya, tapi karena belakangnya `.com`, coba deh kamu nanya server spesialis `.com`."*
+4. **TLD Server (Nanya kelurahan setempat):** 
+   Resolver kemudian bertanya ke TLD Server yang mengurus `.com`. Server ini ngerespons: *"Aku tau sistem siapa yang handle `tryhackme`, coba kamu tanya Authoritative Server mereka."*
+5. **Authoritative Server (Ketemu yang punya rumah):** 
+   Inilah server ujung dan sumber kebenaran tertinggi. Server ini menyimpan database asli dari _records_ miliknya. Dia akan kasih jawaban final ke Resolver: *"Aha! `tryhackme.com` mengarah ke A record dengan IP `104.26.x.x`."*
 
-### Making A Request
+Begitu jawaban pastinya didapet, Resolver menyerahkan IP tersebut ke browser kamu untuk nampilin websitenya.
 
-Proses ini adalah urutan langkah yang dilakuin sistem buat menerjemahkan nama domain jadi IP Address, melibatkan koordinasi antar beberapa server DNS yang berbeda.
-
-1. **Local Cache Check:** Sebelum minta ke jaringan luar, sistem bakal cek dulu secara internal. Ini mekanisme pertahanan pertama buat meminimalkan latensi dan beban traffic internet.
-
-2. **Recursive Resolver:** Kalau info-nya tidak ketemu secara lokal, tugas pencarian diserahin ke Recursive Resolver. Ini server yang jadi perantara buat client.
-
-3. **The Root Server:** Root Name Server itu infrastruktur yang jadi tulang punggung (_backbone_) dari seluruh sistem DNS di internet. Berada di puncak hierarki DNS, server ini jadi otoritas pertama yang nanganin permintaan kalau info-nya tidak ada di cache.
-
-4. **TLD (Top Level Domain Server):** TLD Name Server jadi jembatan antara infrastruktur pusat (Root) dan server spesifik milik organisasi. Server ini bertanggung jawab ngelola informasi tentang semua domain yang ada di bawah satu ekstensi tertentu (seperti .com, .org, atau .id).
-
-5. **Authoritative DNS Server:** Authoritative DNS server itu server yang bertanggung jawab menyimpan DNS record buat nama domain tertentu. Server ini menyimpan database asli dari berbagai tipe record (seperti A, MX, TXT). Semua perubahan, penambahan, atau penghapusan DNS record di domain kamu cuma bisa dilakuin di server otoritatif ini.
+---
 
 ### TTL (Time To Live)
 
-TTL itu parameter numerik di setiap DNS Record yang menentukan berapa lama (dalam detik) informasi itu masih valid sebelum dianggap kedaluwarsa sama sistem caching.
+**TTL** itu sama kayak **tanggal kedaluwarsa** (_expiration date_) pada makanan, tapi khusus buat data _cache_ DNS. TTL menentukan berapa lama (dalam hitungan detik) komputer atau Resolver bisa mengingat IP Address dari sebuah domain.
 
-Mekanisme kerja TTL:
-
-1. **Penerimaan Data:** Waktu Recursive Resolver dapet jawaban dari Authoritative Server, jawaban itu dateng bareng nilai TTL (misalnya: 3600, yang artinya 1 jam).
-
-2. **Caching:** Resolver bakal menyimpan data itu di memorinya dan mulai hitung mundur dari 3600 ke 0.
-
-3. **Penggunaan Cache:** Selama angkanya belum nyampe 0, kalau ada orang lain yang nanya domain yang sama, Resolver bakal langsung kasih jawaban dari memorinya tanpa nanya lagi ke server otoritatif.
-
-4. **Refresh:** Begitu angkanya nyampe 0, data dianggap "basi". Resolver bakal hapus data itu dan lakuin pencarian ulang (Re-query) buat memastikan alamat IP-nya masih sama atau sudah berubah.
+**Bagaimana mekanisme kerjanya?**
+1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapet stempel TTL (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
+2. **Penggunaan Instan:** Selama 1 jam itu, kalau ada orang lain nanya domain yang sama, Resolver ngasih tau dari _cache_ memori tanpa perlu keliling nanya TLD dkk lagi.
+3. **Expire & Refresh (Kadaluarsa):** Begitu angkanya nyentuh 0, memori dihapus dan dianggap kadaluarsa. Kalau ada nanya lagi, Resolver wajib *Re-query* (mengulangi proses dari awal) mencari informasi _fresh_ (baru). Hal ini menjamin lalu lintas internet gak diarahkan ke _server_ yang udah usang andaikata admin website baru ganti IP.

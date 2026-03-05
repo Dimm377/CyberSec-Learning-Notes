@@ -51,4 +51,4 @@ Protokol transport yang menentukan gimana data dikirim.
 Praktik pakai perintah dasar buat berinteraksi sama tools networking.
 
 - **Netcat (nc):** _Swiss-army knife_ buat jaringan. Dipake buat baca atau tulis data di koneksi jaringan.
-- **Telnet:** Protokol lama buat akses _remote_ teks, sekarang sering dipake buat mengecek apakah sebuah port TCP terbuka.
+- **Telnet:** Protokol lama buat akses _remote_ teks, sekarang sering dipakai untuk mengecek apakah sebuah port TCP terbuka.
