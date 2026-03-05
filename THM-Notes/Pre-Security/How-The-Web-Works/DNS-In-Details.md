@@ -75,7 +75,7 @@ Proses nerjemahin nama domain ke IP Address itu lumayan panjang. Analogi sederha
 5. **Authoritative Server (Ketemu yang punya rumah):** 
    Inilah server ujung dan sumber kebenaran tertinggi. Server ini menyimpan database asli dari _records_ miliknya. Dia akan kasih jawaban final ke Resolver: *"Aha! `tryhackme.com` mengarah ke A record dengan IP `104.26.x.x`."*
 
-Begitu jawaban pastinya didapet, Resolver menyerahkan IP tersebut ke browser kamu untuk nampilin websitenya.
+Begitu jawaban pastinya didapatkan, Resolver menyerahkan IP tersebut ke browser kamu untuk nampilin websitenya.
 
 ---
 
@@ -84,6 +84,6 @@ Begitu jawaban pastinya didapet, Resolver menyerahkan IP tersebut ke browser kam
 **TTL** itu sama kayak **tanggal kedaluwarsa** (_expiration date_) pada makanan, tapi khusus buat data _cache_ DNS. TTL menentukan berapa lama (dalam hitungan detik) komputer atau Resolver bisa mengingat IP Address dari sebuah domain.
 
 **Bagaimana mekanisme kerjanya?**
-1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapet stempel TTL (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
+1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapet tanda berupa **TTL** (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
 2. **Penggunaan Instan:** Selama 1 jam itu, kalau ada orang lain nanya domain yang sama, Resolver ngasih tau dari _cache_ memori tanpa perlu keliling nanya TLD dkk lagi.
 3. **Expire & Refresh (Kadaluarsa):** Begitu angkanya nyentuh 0, memori dihapus dan dianggap kadaluarsa. Kalau ada nanya lagi, Resolver wajib *Re-query* (mengulangi proses dari awal) mencari informasi _fresh_ (baru). Hal ini menjamin lalu lintas internet gak diarahkan ke _server_ yang udah usang andaikata admin website baru ganti IP.
