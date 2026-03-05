@@ -51,7 +51,7 @@ Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
 ### 🎥 Video Tutorial: GUI Overview
 Biar lebih jelas gimana bentuk aslinya pas lagi jalan, cek cuplikan di bawah ini:
 
-<video src="./videos/2026-03-05 21-17-55.mp4" controls="controls" style="max-width: 100%;">
+<video src="./videos/wireshark-gui-demo.mp4" controls="controls" style="max-width: 100%;">
   Your browser does not support the video tag.
 </video>
 
