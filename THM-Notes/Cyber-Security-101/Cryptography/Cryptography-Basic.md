@@ -11,45 +11,38 @@
 
 ## Introduction
 
-Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kita bakal belajar dasar-dasar yang penting sebelum masuk ke penjelasan yang lebih kompleks.
+Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kita belajar dasar-dasar yang penting sebelum masuk ke penjelasan lebih kompleks.
 
-**Materi yang bakal dipelajari:**
+*(Room lanjutannya: [Hashing Basic](./Hashing-basic.md) dan [Public Key Cryptography](./Public-Key-Cryptography.md))*
 
-- Istilah-istilah penting dalam cryptography
-- Pentingnya cryptography di dunia digital
-- Mengenal Caesar Cipher dan algoritma historis lainnya
-- Standar cipher simetris (AES, DES, 3DES)
-- Cipher asimetris umum
-- Matematika dasar yang sering dipake di kriptografi (XOR & Modulo)
+---
 
-## Importance of Cryptography
+### Importance of Cryptography
 
-Cryptography itu praktek dan studi tentang teknik komunikasi yang aman dan perlindungan data di mana ada pihak ketiga (lawan). Intinya, lawan tidak boleh sampai melihat (disclose) atau mengubah (alter) isi pesan tersebut.
+Cryptography itu praktik dan studi tentang teknik komunikasi yang aman di mana ada pihak ketiga (lawan). Cryptography jadi vital di era digital karena menjamin tiga hal utama:
 
-Cryptography jadi vital di era digital karena jamin tiga hal utama:
-
-1. **Confidentiality (Kerahasiaan):** Cuma orang yang berhak yang bisa baca datanya.
-2. **Integrity (Integritas):** Memastikan data tidak berubah pas lagi dikirim.
-3. **Authenticity (Keaslian):** Memastikan kalau pengirim data emang beneran orang yang dia klaim.
-
-Selain itu, cryptography juga dipake buat memenuhi standar regulasi internasional.
+| Pilar | Fungsi |
+| ----- | ------ |
+| **Confidentiality** (Kerahasiaan) | Cuma orang yang berhak yang bisa baca datanya |
+| **Integrity** (Integritas) | Memastikan data tidak berubah saat dikirim |
+| **Authenticity** (Keaslian) | Memastikan pengirim data benar-benar orang yang dia klaim |
 
 **Answer the questions below:**
 
 - **Question:** What is the standard required for handling credit card information?
 - **Answer:** ?
 
-## Plaintext to Ciphertext
+### Plaintext to Ciphertext
 
-Di sini kita belajar gimana data berubah bentuk dari yang bisa dibaca manusia "plaintext" jadi sebuah kode rahasia "ciphertext".
+Data berubah bentuk dari yang bisa dibaca manusia (plaintext) jadi kode rahasia (ciphertext):
 
-**Key Value:**
-
-- **Plaintext:** Data asli atau pesan sebelum dienkripsi. Pesan ini masih bisa dibaca sama siapa saja (readable), misalnya teks "hello", foto pribadi, informasi penting, dll.
-- **Ciphertext:** Hasil dari proses enkripsi. Pesan ini kelihatan berantakan dan tidak punya arti buat siapa pun yang tidak punya kuncinya (unreadable).
-- **Encryption (Enkripsi):** Proses mengubah **Plaintext** jadi **Ciphertext** pakai algoritma dan kunci tertentu.
-- **Decryption (Dekripsi):** Proses kebalikannya, yaitu mengubah **Ciphertext** balik jadi **Plaintext** agar bisa dibaca lagi.
-- **Key (Kunci):** Informasi yang dipake sama algoritma kriptografi buat membuat proses enkripsi/dekripsi jadi unik.
+| Istilah | Definisi |
+| ------- | -------- |
+| **Plaintext** | Data asli sebelum dienkripsi — bisa dibaca siapa saja (teks, foto, informasi sensitif) |
+| **Ciphertext** | Hasil enkripsi — terlihat berantakan dan tidak punya arti tanpa kunci |
+| **Encryption** | Proses mengubah Plaintext → Ciphertext pakai algoritma dan kunci |
+| **Decryption** | Proses kebalikannya: Ciphertext → Plaintext |
+| **Key** | Informasi yang dipakai algoritma buat membuat enkripsi/dekripsi jadi unik |
 
 <p align="center">
 <img src="../../Assets/Images/chiper.png" alt="Cipher">
@@ -66,36 +59,21 @@ Di sini kita belajar gimana data berubah bentuk dari yang bisa dibaca manusia "p
 - **Question:** What do you call the process that returns the plaintext?
 - **Answer:** ?
 
-## Historical Cipher
+### Historical Cipher
 
-Ini membahas metode enkripsi kuno yang jadi dasar buat cryptography modern. Meskipun sekarang dianggap lemah, mengerti logika di baliknya penting banget.
+Metode enkripsi kuno yang jadi dasar cryptography modern. Meskipun sekarang dianggap lemah, mengerti logikanya penting:
 
-### 1. Caesar Cipher
-
-Ini salah satu teknik paling tua dan paling simpel.
-
-- **Cara Kerja:** Lakuin pergeseran (shift) setiap huruf dalam alfabet pakai jumlah tertentu.
-- **Contoh:** Dengan pergeseran 3 (Shift 3), huruf 'A' bakal jadi 'D', 'B' jadi 'E', dan seterusnya.
-- **ROT13:** Varian populer dari Caesar Cipher yang nggeser huruf sebanyak 13 posisi. Karena alfabet ada 26 huruf, jalanin ROT13 dua kali di pesan yang sama bakal balikin ke teks asli.
+| Cipher | Cara Kerja | Kekuatan |
+| ------ | ---------- | -------- |
+| **Caesar Cipher** | Geser setiap huruf sejumlah posisi tetap (contoh: Shift 3 → A jadi D) | Sangat lemah — cuma 25 kemungkinan |
+| **ROT13** | Varian Caesar dengan shift 13 — jalankan dua kali kembali ke teks asli | Sama lemahnya, tapi populer buat obscuring |
+| **Vigenère Cipher** | Polyalphabetic substitution — setiap huruf digeser berbeda berdasarkan keyword | Lebih kuat — frekuensi huruf tidak berpola tetap |
+| **Enigma Machine** | Rotor berputar setiap kali tombol ditekan — satu huruf bisa jadi huruf berbeda | Dipecahkan Alan Turing → cikal bakal komputer modern |
 
 <p align="center">
 <img src="../../Assets/Images/Encryption.png" alt="Encryption">
 <img src="../../Assets/Images/Decryption.png" alt="Decryption">
 </p>
-
-### 2. Vigenère Cipher
-
-Metode ini lebih canggih karena pakai kata kunci (keyword) buat menentukan jumlah pergeseran.
-
-- **Cara Kerja:** Disebut polyalphabetic substitution karena setiap huruf di plaintext bisa digeser pakai jumlah yang beda-beda tergantung huruf yang sesuai di keyword-nya.
-- **Keunggulan:** Lebih susah dipecahin daripada Caesar Cipher karena frekuensi kemunculan hurufnya tidak berpola tetap.
-
-### 3. Enigma Machine
-
-Mesin enkripsi yang dipake tentara Jerman waktu Perang Dunia II.
-
-- **Cara Kerja:** Pakai sistem rotor yang terus berputar setiap kali tombol ditekan, jadi satu huruf yang sama bisa berubah jadi huruf yang beda berkali-kali.
-- **Sejarah:** Enigma dianggap mustahil dipecahin sampai akhirnya tim yang dipimpin Alan Turing berhasil mecahinnya, yang kemudian jadi cikal bakal komputer modern.
 
 **Answer the questions below:**
 
@@ -112,33 +90,35 @@ Mesin enkripsi yang dipake tentara Jerman waktu Perang Dunia II.
 - **Answer:** ?
   > (Penjelasan: Bisa pakai tool online seperti [Cryptii](https://cryptii.com/pipes/caesar-cipher). Memasukkan ciphertext `Xld Hzhz Apntyel dlhte` dan pakai **Shift 11** ke arah kanan buat mendapatkan teks aslinya)\_
 
-## Types of Encryption
+### Types of Encryption
 
-Dalam kriptografi modern, ada dua kategori utama enkripsi: **Symmetric** (Simetris) dan **Asymmetric** (Asimetris).
+Dalam kriptografi modern, ada dua kategori utama:
 
-### 1. Symmetric Encryption
+#### 1. Symmetric Encryption
 
-Pakai **kunci yang sama** buat proses enkripsi dan dekripsi (disebut juga _private key cryptography_).
+Pakai **kunci yang sama** buat enkripsi dan dekripsi. Kelemahan utama: bagaimana mendistribusikan kunci secara aman ke penerima.
 
-- **Kelemahan:** Tantangannya itu gimana caranya distribusiin kunci secara aman ke penerima.
-- **Algoritma Utama:**
-  - **DES (Data Encryption Standard):** Diadopsi tahun 1977, pakai kunci 56-bit. Sudah berhasil di-crack tahun 1999 dalam waktu kurang dari 24 jam.
-  - **3DES (Triple DES):** Jalanin DES tiga kali. Kunci 168-bit (efektivitas 112-bit). Sudah mulai ditinggalin sejak 2019.
-  - **AES (Advanced Encryption Standard):** Standar global saat ini (diadopsi tahun **2001**). Pakai kunci 128, 192, atau 256 bit. Aman banget dan efisien.
+| Algoritma | Tahun | Ukuran Kunci | Status |
+| --------- | :---: | ------------ | ------ |
+| **DES** | 1977 | 56-bit | Di-crack 1999 dalam <24 jam — **tidak aman** |
+| **3DES** | — | 168-bit (efektif 112-bit) | Ditinggalkan sejak 2019 |
+| **AES** | 2001 | 128 / 192 / 256-bit | **Standar global saat ini** — aman dan efisien |
 
 <p align="center">
 <img src="../../Assets/Images/Symmetric.png" alt="Symmetric">
 </p>
 
-### 2. Asymmetric Encryption
+#### 2. Asymmetric Encryption
 
-Pakai **sepasang kunci**: _Public Key_ (buat mengenkripsi/mengunci) dan _Private Key_ (buat mendekripsi/membuka).
+Pakai **sepasang kunci**: _Public Key_ (mengenkripsi) dan _Private Key_ (mendekripsi). Cuma pemilik Private Key yang bisa membuka data.
 
-- **Konsep:** Cuma pemilik _Private Key_ yang bisa buka data yang dikunci pakai _Public Key_-nya.
-- **Algoritma Utama:**
-  - **RSA:** Pakai problem matematika faktorisasi bilangan prima besar. Rekomendasi kunci minimal 2048-bit.
-  - **Diffie-Hellman:** Dipake buat pertukaran kunci secara aman.
-  - **ECC (Elliptic Curve Cryptography):** Lebih efisien; kunci 256-bit ECC setara kekuatannya sama RSA 3072-bit.
+*(Penjelasan lebih dalam ada di catatan [Public Key Cryptography](./Public-Key-Cryptography.md))*
+
+| Algoritma | Basis Matematika | Rekomendasi Kunci |
+| --------- | ---------------- | ----------------- |
+| **RSA** | Faktorisasi bilangan prima besar | Minimal 2048-bit |
+| **Diffie-Hellman** | Discrete logarithm | Buat pertukaran kunci secara aman |
+| **ECC** | Elliptic curve | 256-bit ECC ≈ RSA 3072-bit (lebih efisien) |
 
 <p align="center">
 <img src="../../Assets/Images/Asymmetric.png" alt="Asymmetric">
