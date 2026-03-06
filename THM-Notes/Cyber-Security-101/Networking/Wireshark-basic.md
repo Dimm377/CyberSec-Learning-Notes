@@ -101,3 +101,56 @@ Coba cek penampakan *Coloring Rules Default* dari Wireshark di bawah ini:
 </p>
 
 ---
+
+### Traffic Sniffing
+
+Selain membaca file rekaman (PCAP), keahlian utama Wireshark adalah kemampuannya untuk *sniffing* atau monitoring *traffic* jaringan secara *live* saat itu juga. 
+
+Di bagian kiri *Toolbar* atas, ada 3 tombol penting buat ngendaliin *sniffing*:
+
+- **Blue Shark Button (Start):** Mulai menangkap (*capturing*) *traffic* di jaringan.
+- **Red Square Button (Stop):** Menghentikan proses penangkapan sementara jika sudah selesai analisis.
+- **Green Arrow Button (Restart):** Mengulang proses *sniffing* dari awal lagi.
+
+Saat *sniffing* lagi dijalankan, kita bisa cek bagian *Status Bar* (paling bawah layar) untuk memastikan dua hal:
+1.  **Interface yang Dipakai:** (Contoh: `eth0`) Biar gak salah jalur yang di sniff.
+2.  **Jumlah Paket:** (Contoh: `Packets: 122`) Menunjukkan seberapa banyak data yang udah kekumpul.
+
+Biar lebih jelas letak tombol sama statusnya, lihat referensi GUI di bawah:
+
+<p>
+<img src="../../Assets/Images/Shark-Button.png" alt="Wireshark Sniffing Controls" width="800px" />
+</p>
+
+---
+
+### Merge PCAP Files
+
+Wireshark juga punya fitur untuk menggabungkan dua file `.pcap` yang berbeda jadi satu file. 
+
+1. Pastiin udah buka satu file pcap utama di Wireshark.
+2. Buka menu **File > Merge**.
+3. Pilih file pcap kedua yang mau digabungin.
+4. Wireshark bakal ngasih tau total paket (baris) dari file kedua yang dipilih. 
+5. Klik **Open**, dan dua file itu bakal bersatu jadi satu _merged workspace_ (seperti *Untitled*).
+
+**Ingat:** Karena hasil gabungannya masih *temporary*, **jangan lupa klik Save As** untuk menyimpan file *pcap* gabungannya sebelum mulai analisis.
+
+### View File Details
+
+Penting untuk tau identitas asli dari file pcap yang sedang di analisis, apalagi kalau sedang menangani banyak file pcap dari berbagai kasus yang beda. Di bagian *File Details* ini, kita bisa lihat info krusial dan statistik penting biar tau file mana yang harus diprioritasin:
+- **File hash** (SHA256/MD5 buat bukti forensik biar tau filenya belum diubah)
+- **Capture time** (Kapan traffic ini direkam)
+- **Komentar file** (Catatan dari analis sebelumnya)
+- **Interface & Statistics** (Berapa banyak paket dan byte data yang kerekam)
+
+Ada **dua cara** cepat buat buka jendela detail ini:
+1. Lewat menu atas: **Statistics > Capture File Properties**
+2. Lewat *shortcut* GUI: Klik **icon pcap kecil di pojok kiri bawah** (sebelah nama file).
+
+<p>
+<img src="../../Assets/Images/View-details.png" alt="Wireshark View File Details" width="800px" />
+</p>
+
+---
+
