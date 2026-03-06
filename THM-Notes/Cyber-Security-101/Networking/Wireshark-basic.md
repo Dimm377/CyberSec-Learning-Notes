@@ -65,18 +65,39 @@ Ibarat kita lagi jadi detektif yang meriksa surat, 3 jendela ini mewakili kedala
 
 | Jendela Utama (*Pane*) | Fungsi & Analogi Detektif |
 | ---------------------- | ------------------------- |
-| **1. Packet List** (Atas) | **Ibarat Buku Tamu.** Ini adalah daftar panjang semua paket (mobil kurir) yang tertangkap. Di sini Kita bisa lihat rangkuman *high-level*: nomor urut, jam lewat (*Time*), siapa pengirim (*Source*), ke mana tujuannya (*Destination*), jalur yang dipakai (*Protocol*), dan info singkatnya. |
-| **2. Packet Details** (Tengah) | **Ibarat Membongkar Isi Amplop Surat.** Kalau Kita klik salah satu baris di *Packet List*, jendela tengah ini bakal mengurai isi paketnya berlapis-lapis sesuai *OSI Layers*. Dari mulai bungkus luar (lapisan fisik/MAC) sampai ke inti jeroannya (protokol aplikasi seperti HTTP). |
-| **3. Packet Bytes** (Bawah) | **Ibarat Melihat DNA / Atom dari Suratnya.** Ini adalah bentuk data paling mentah. Jendela ini menampilkan data paket dalam wujud *Hexadecimal* (angka *hex*) dan *ASCII* (teks yang bisa dibaca manusia). Terkadang Kita bisa nemu teks *password* atau *payload* tersembunyi bertebaran di sini. |
+| **1. Packet List** | **Ibarat Buku Tamu.** Ini adalah daftar panjang semua paket (mobil kurir) yang tertangkap. Di sini Kita bisa lihat rangkuman *high-level*: nomor urut, jam lewat (*Time*), siapa pengirim (*Source*), ke mana tujuannya (*Destination*), jalur yang dipakai (*Protocol*), dan info singkatnya. |
+| **2. Packet Details** | **Ibarat Membongkar Isi Amplop Surat.** Kalau Kita klik salah satu baris di *Packet List*, jendela tengah ini bakal mengurai isi paketnya berlapis-lapis sesuai *OSI Layers*. Dari mulai bungkus luar (lapisan fisik/MAC) sampai ke inti jeroannya (protokol aplikasi seperti HTTP). |
+| **3. Packet Bytes** | **Ibarat Melihat DNA / Atom dari Suratnya.** Ini adalah bentuk data paling mentah, Bagian ini menampilkan data paket dalam wujud *Hexadecimal* (angka *hex*) dan *ASCII* (teks yang bisa dibaca manusia). Terkadang Kita bisa nemu teks *password* atau *payload* tersembunyi bertebaran di sini. |
 
 Di pojok pojok layar Wireshark yang lagi aktif, ada informasi penunjang tambahan:
 - **File Name:** Nama file pcap yang lagi dibuka (ada di *tab browser* atas, dan *status bar* bawah kiri).
 - **Total Packets:** Total jumlah baris catatan (jumlah paket) yang berhasil terekam (di *status bar* bawah kanan).
 
-Biar ada bayangan wujud aslinya, liat gambar di bawah ini yang nge-sorot 3 jendela utama tadi:
+Biar kebayang gimana, liat gambar di bawah ini yang menyorot 3 jendela utama tadi:
 
 <p>
 <img src="../../Assets/Images/Pcap.png" alt="Wireshark PCAP Loading Interface" width="800px" />
+</p>
+
+---
+
+### Colouring Packets
+
+Pernah merhatiin kenapa baris-baris paket di Wireshark punya warna beda-beda? Itu bukan buat hiasan doang. Wireshark pakai sistem pewarnaan biar mata kita gampang menemukan masalah (anomali) atau protokol tertentu tanpa harus membaca detailnya satu per satu. 
+
+Wireshark punya **Dua Jenis Metode Pewarnaan**:
+
+| Jenis Pewarnaan | Karakteristik | Cara Akses |
+| :--- | :--- | :--- |
+| **Permanent Rules** | Aturan paten yang disimpen di profil lo. Aturan ini bakal tetep ada tiap kali lo buka Wireshark lagi di sesi berikutnya. | Klik menu **View > Coloring Rules** *(Bisa juga buat bikin rule custom sendiri)* |
+| **Temporary Rules** | Aturan sementara yang cuma aktif selama sesi Wireshark. Kalau aplikasinya ditutup, warnanya ilang. | Klik kanan di paket **Colorize Conversation** (atau via menu **View > Conversation Filter**) |
+
+Biar tampilan warnanya aktif (atau kalau mau matiin biar polos aja), bisa pakai opsi **View > Colorise Packet List**.
+
+Coba cek penampakan *Coloring Rules Default* dari Wireshark di bawah ini:
+
+<p>
+<img src="../../Assets/Images/Coloring-filter.png" alt="Wireshark Default Coloring Rules" width="800px" />
 </p>
 
 ---
