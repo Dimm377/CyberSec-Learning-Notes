@@ -427,7 +427,7 @@ Misal nemu *IP Address* atau Protokol tertentu di jendela *Packet List* atau *Pa
 2. Klik kanan.
 3. Pilih **Apply as Filter** > Pilih cabangnya (misal: *Selected* buat filter yang persis sama, atau *Not Selected* buat membuang traffic itu).
 
-Otomatis, rumusnya bakal terisi sendiri di kolom *Display Filter Bar* atas. sangat praktis kan? 
+Otomatis, rumusnya akan terisi di kolom *Display Filter Bar* atas. sangat praktis kan? 
 
 Penting untuk diingat: Total paket asli vs total paket yang berhasil difilter bakal selalu kelihatan di **Status Bar** paling bawah (pojok kanan).
 
