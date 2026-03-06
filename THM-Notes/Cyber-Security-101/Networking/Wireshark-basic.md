@@ -154,3 +154,40 @@ Ada **dua cara** cepat buat buka jendela detail ini:
 
 ---
 
+## Packet Dissection
+
+*Packet dissection* (bedah paket) itu intinya adalah menerjemahkan detail isi paket ke dalam bentuk protokol dan kolom-kolom yang gampang kita baca. Wireshark mendukung banyak protokol bawaan buat dibedah, dan bahkan bisa bikin *script* pembedah (*dissector scripts*) sendiri.
+
+> **Note:** Kemampuan ini bergantung banget dengan seberapa paham kita soal konsep **OSI Model**. Jadi pastikan pondasi OSI Layer kita udah kuat agar membaca ini kerasa gampang.
+
+### Packet Details (Membedah Lapis Demi Lapis)
+
+Masih ingat **Jendela Tengah (*Packet Details*)** yang kita bahas sebelumnya? Nah, ini adalah *core* / inti kemampuannya Wireshark. Saat kita klik salah satu paket di *Packet List* atas, Wireshark bakal membuka "amplop" paket tersebut berlapis-lapis sesuai dengan konsep OSI Model.
+
+Pecahan lapisan ini biasanya ada **5 sampai 7 tingkat**. Di bawah ini adalah contoh ngebedah Paket HTTP nomor urut 27. Kita bisa lihat blok merah yang nandain pembagian lapisannya mulai dari `Frame` (paling liar/fisik) sampai `Hypertext Transfer Protocol` (paling abstrak/aplikasi).
+
+<p>
+<img src="../../Assets/Images/Packet-dissections.png" alt="Wireshark Packet Dissection (OSI Layers)" width="800px" />
+</p>
+
+Setiap kali kita klik baris informasi di **Packet Details**, perhatikan kalau di jendela bawahnya (**Packet Bytes**) bakal meng-*highlight* (warna biru) tampilan bytes mentah (*hex*) dari informasi yang lagi kita pilih. Ini bukti kalau apa yang ada di *Details* adalah terjemahan langsung dari data mentahnya (*Bytes*).
+
+<p>
+<img src="../../Assets/Images/detail-packet.png" alt="Packet Details to Packet Bytes Correlation" width="800px" />
+</p>
+
+Kalau kita perbesar (*zoom-in*) jendela *Packet Details*, kita bisa lihat ada **7 lapisan utama** yang mendedahkan detail paket dari fisik ke aplikasi:
+
+1. **`frame/packet`** (Rangkuman paket mentah & dari *interface* mana tangkapannya)
+2. **`source [MAC]` / Ethernet II** (Alamat fisik (*MAC Address*) dari pengirim & penerima)
+3. **`source [IP]` / IPv4/v6** (Alamat logika (*IP Address*) dari pengirim & penerima)
+4. **`protocol` / TCP/UDP** (Jalur komunikasi, misal TCP *port* 80 / 443)
+5. **`protocol errors`** (Sisa atau gabungan / reassembly dari segmen TCP jika ada)
+6. **`application protocol`** (Protokol tingkat atasnya, contoh: HTTP, DNS, FTP)
+7. **`application data`** (Inti data yang lagi dikirim, misal isi teks *HTML*, dll)
+
+<p>
+<img src="../../Assets/Images/detail-pane.png" alt="A closer view of the Details Pane" width="800px" />
+</p>
+
+---
