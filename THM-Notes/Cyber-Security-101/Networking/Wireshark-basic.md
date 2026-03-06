@@ -380,3 +380,55 @@ Cara ganti format waktunya:
 Klik menu baris atas **View > Time Display Format > [Pilih format yang lo butuhin, misal UTC Date and Time]**
 
 ---
+
+### Expert Info
+
+Wireshark bukan cuma menampilkan data mentah, tapi dia juga bisa mendeteksi anomali (keanehan) atau masalah (*problems*) pada protokol tertentu. Fitur peringatan ini dikumpulkan dalam wujud **Expert Info**.
+
+> **Peringatan:** Sistem Expert Info ini cuma bersifat *suggestion* (saran/dugaan). Jadi akan selalu ada kemungkinan terjadinya *false positive* (dibilang bahaya padahal normal) atau *false negative* (dibilang normal padahal bahaya).
+
+Expert info membagi peringatannya ke dalam beberapa **Tingkat Keparahan (Severity)** yang dibedakan dengan warna khusus:
+
+| Severity (Keparahan) | Colour (Warna) | Penjelasan Info |
+| :--- | :---: | :--- |
+| **Chat** | <span style="color:#007BFF">**Blue**</span> | Informasi standar soal alur kerja rutin (*usual workflow*). Normal dan bukan ancaman. |
+| **Note** | <span style="color:#17A2B8">**Cyan**</span> | Kejadian yang cukup penting (*notable events*), contoh: kode *error* di level aplikasi. |
+| **Warn** | <span style="color:#FFC107">**Yellow**</span> | Peringatan serius. Contoh: *error code* yang tidak wajar atau *problem statements*. |
+| **Error** | <span style="color:#DC3545">**Red**</span> | Masalah kritikal! Biasanya menandakan ada paket cacat (*malformed packets*). |
+
+Selain tingkat keparahan, peringatan ini juga dikelompokkan berdasarkan **Tipe Kasus (Group)** yang paling sering ditemui:
+
+| Group A | Info Group A | Group B | Info Group B |
+| :--- | :--- | :--- | :--- |
+| **Checksum** | Ada *error* / ketidaksesuaian di *checksum* paket. | **Deprecated** | Protokol yang dipakai udah (*deprecated*). |
+| **Comment** | Ada paket yang disisipi komentar (*Packet comment*). | **Malformed** | Ditemukan bentuk paket cacat (*malformed*). |
+
+---
+
+## Packet Filtering
+
+Wireshark punya *filter engine* yang membantu analis mengurangi *traffic* yang tidak penting (*noise*) untuk fokus menemukan kejadian spesifik. 
+
+Di Wireshark, *filter* dibagi jadi dua pendekatan utama:
+1. **Capture Filters:** dipakai untuk **Capture** paket tertentu saja *sebelum* trafficnya masuk dan disimpan ke *memory* aplikasi (misal: capture cuma paket HTTP port 80 aja).
+2. **Display Filters:** Dipakai untuk "**Menampilkan**" paket tertentu saja dari file PCAP yang *sudah berhasil ditangkap (capture)* secara utuh. (Fokus kita di *basic room* ini murni membahas *Display Filter*).
+
+Sebenarnya, menulis syntax/rumus *filter* itu lumayan ribet. Tapi Wireshark punya antarmuka (GUI), Ada satu aturan (*Golden Rule*) untuk analis jaringan yang malas untuk menulis rumus *queries* manual:
+
+> **"If you can click on it, you can filter and copy it"** 
+> *(Kalau kamu bisa ngekliknya, berati kamu bisa memfilternya).*
+
+### Apply as Filter
+
+Ini adalah cara *basic* dan paling ampuh untuk *filtering*, kita tidak perlu menghafal syntax panjang-panjang. 
+
+Misal nemu *IP Address* atau Protokol tertentu di jendela *Packet List* atau *Packet Details*, kita cukup:
+1. Blok/Klik kolom target yang mau di filter.
+2. Klik kanan.
+3. Pilih **Apply as Filter** > Pilih cabangnya (misal: *Selected* buat filter yang persis sama, atau *Not Selected* buat membuang traffic itu).
+
+Otomatis, rumusnya bakal terisi sendiri di kolom *Display Filter Bar* atas. sangat praktis kan? 
+
+Penting untuk diingat: Total paket asli vs total paket yang berhasil difilter bakal selalu kelihatan di **Status Bar** paling bawah (pojok kanan).
+
+---
