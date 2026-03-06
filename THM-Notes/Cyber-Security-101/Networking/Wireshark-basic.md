@@ -284,12 +284,58 @@ Di contoh bawah ini pakai *Hypertext Transfer Protocol* (HTTP). Kita bisa gali h
 
 Ini adalah bagian terakhir *(Application Data / Line-based text data)* yang menampilkan **isi asli** dari paket yang dikirim.
 
-Kalau protokolnya nggak dienkripsi (misal HTTP biasa, bukan HTTPS), kita bisa membaca pesan aslinya tanpa halangan. Di contoh SS lu, Wireshark nge-bedah dan nampilin naskah *script/HTML* mentahnya (dimulai dari `<html><head>...`).
+Kalau protokolnya tidak dienkripsi (misal HTTP biasa, bukan HTTPS), kita bisa membaca pesan aslinya tanpa halangan. Di contoh SS, Wireshark membedah dan menampilkan file *script/HTML* mentahnya (dimulai dari `<html><head>...`).
 
 Contohnya kalau skenarionya lagi capture *form login* HTTP, nah *password* polos si target bakal kelihatan di baris ini. Mengerikan kalau disalahgunakan kan? Makanya SSL/TLS (HTTPS) diciptakan
 
 <p>
 <img src="../../Assets/Images/App-Data.png" alt="Layer 7: Application Data / Payload" width="800px" />
 </p>
+
+---
+
+## Packet Navigation
+
+### Packet Numbers
+
+Wireshark menghitung dan memberikan nomor unik (berurutan) untuk setiap paket yang berhasil ditangkap. Ini akan berguna saat proses analisis di dalam file *capture* yang ukurannya besar. 
+
+Dengan adanya identitas di kolom **No.** ini, kita jadi lebih mudah mengingat posisi, memanggil ulang paket spesifik, dan mencari referensi *event* tertentu tanpa kebingungan. Nomor urut ini juga terhubung dan sama persis dengan angka yang tertera di bagian `Frame` pada jendela *Packet Details*.
+
+### Go to Packet
+
+Karena setiap paket sudah ada nomor urut yang pasti, kita bisa memanfaatkan fitur lompat cepat tanpa harus repot *scroll* manual secara perlahan.
+
+Fitur *Go to Packet* ini sangat mempermudah kita untuk:
+- Melompat bolak-balik ke nomor paket spesifik dengan instan.
+- Melacak *frame* demi *frame* dan mengikuti alur percakapan / pertukaran data (*conversation*) tertentu lebih gampang.
+
+Cara mengakses fiturnya sangat mudah:
+1. Klik menu baris atas: **Go > Go to Packet...**, kemudian masukkan nomor paket yang dicari.
+2. Atau bisa langsung memasukkan nomor di kolom teks penelusuran paket, dan pakai tombol *Previous/Next Packet* di bagian *toolbar* utama
+
+---
+
+### Find Packets
+
+Selain lompat ke nomor tertentu, Wireshark punya fitur penelusuran (*Find*) untuk mencari paket berdasarkan isi datanya. Ini adalah *skill* penting untuk menangkap pola serangan (seperti *Intrusion*) atau jejak *error* mesin di *network traffic*.
+
+Ada dua catatan penting saat melakukan pencarian supaya langsung ketemu:
+1. **Pilih Tipe Input:** Wireshark menolak untuk mencari asal-asalan. Dia menerima 4 jenis input (*Display filter*, *Hex*, *String*, dan *Regex*). Pencarian pakai *String* (teks biasa) dan *Regex* (pola khusus) paling sering dipakai di lapangan
+2. **Pilih Jendela Target Spesifik:** Wireshark terbagi jadi 3 jendela utama (*Packet List*, *Packet Details*, *Packet Bytes*). Nah, kalau kata kuncinya ada tersembunyi di *Packet Details* (lapisan OSI) tapi kita *setting* area penelusurannya di *Packet List* (tabel ringkasan depan), Wireshark bakal memberitahu kalau dia tidak menemukan apa-apa.
+
+Cara panggil kotak penelusurannya: Klik menu **Edit > Find Packet...** (Atau bisa pakai *shortcut keyboard* standar kalau ada).
+
+### Mark Packets
+
+Untuk menandai sebuah temuan penting (agar ga hilang atau terlewat saat *scroll* hal lain), gunakan fitur **Mark Packets**. 
+
+Fitur mark ini bekerja seperti stabilo. Paket yang diberi tanda akan otomatis diubah jadi warna latar **Hitam**, menimpa pewarnaan protokol *default*-nya. Ini bikin fokus mata kita tidak terganggu dan gampang kalau suatu saat *packet* tersebut mau diekspor khusus buat bukti penyidikan.
+
+Cara pakainya simple:
+- Lewat barisan menu atas: **Edit > Mark/Unmark Packet**
+- Atau cara lebih wajar: **Klik kanan di baris paket spesifik > Mark/Unmark Packet**
+
+> **Catatan Penting:** Tanda warna hitam yang diberikan ini cuma sementara alias hilang seiring selesainya sesi analisis. Saat aplikasi Wireshark ditutup tanpa mem-*backup* file ulang, tanda-tanda yang dibuat ikutan hilang.
 
 ---
