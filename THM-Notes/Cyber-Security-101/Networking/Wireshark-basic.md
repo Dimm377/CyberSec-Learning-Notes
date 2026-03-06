@@ -44,10 +44,4 @@ Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
 | **Display Filter Bar** | Kolom utama buat mengetik *query filter* (menyaring data yang lagi dilihat). |
 | **Recent Files** | Daftar file yang barusan dibuka/dianalisis. Bisa diklik ganda buat buka lagi. |
 | **Capture Filter and Interfaces** | Tempat mengatur *capture filter* (filter yang jalan **sebelum** merekam) dan memilih titik tangkap (misal: antarmuka jaringan seperti `eth0`, `lo`, atau `ens33`). |
-| **Status Bar** | Baris paling bawah yang menunjukkan status *tool*, profil, dan informasi numerik paket. |
-
----
-
----
-
----
+| **Status Bar** | Baris paling bawah yang menunjukkan status *tool*, profil, dan informasi nomor paket. |
