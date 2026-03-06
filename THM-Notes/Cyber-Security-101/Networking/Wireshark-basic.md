@@ -432,3 +432,77 @@ Otomatis, rumusnya akan terisi di kolom *Display Filter Bar* atas. sangat prakti
 Penting untuk diingat: Total paket asli vs total paket yang berhasil difilter bakal selalu kelihatan di **Status Bar** paling bawah (pojok kanan).
 
 ---
+
+### Conversation Filter
+
+Kalau fitur *Apply as Filter* di atas biasanya memfilter hanya dari **satu entitas** (misalnya cuma menampilkan IP A), maka berbeda dengan *Conversation Filter*.
+
+Terkadang kalau kita sedang memeriksa satu aktivitas mencurigakan, kita juga ingin melihat **seluruh riwayat percakapannya**. Kita ingin melihat semua paket yang saling terhubung bolak-balik antara dua alamat IP atau *Port* yang spesifik. Nah, disinilah *Conversation Filter* berguna.
+
+Fitur ini bertugas untuk membedah "percakapan saksi utama" dan **menyembunyikan total** semua lautan paket (*noise*) yang tidak relevan dari layar utama kita.
+
+Cara panggilnya:
+- **Klik kanan > Conversation Filter > [Pilih tipenya, misal IPv4 atau TCP]**
+- Atau via baris menu atas: **Analyse > Conversation Filter**
+
+---
+
+### Colourise Conversation
+
+Opsi ini sebenarnya mirip dengan *Conversation Filter*, tapi ada satu perbedaan yang mencolok: **Dia tidak menyembunyikan paket lain**.
+
+Alih-alih memfilter dan mengurangi jumlah paket yang tampil di layar, fitur *Colourise Conversation* ini cuma bekerja sebagai penanda stabilo untuk paket-paket yang saling berhubungan. Warnanya akan menimpa aturan pewarnaan (*Colouring Rules*) yang sudah ada sebelumnya, sehingga rantai komunikasi target langsung terlihat menonjol di tumpukan PCAP.
+
+Cara pakainya:
+1. **Klik kanan > Colourise Conversation** atau via menu **View > Colourise Conversation**.
+2. Kalau sudah selesai analisis dan ingin mengembalikan warnanya seperti semula, cukup eksekusi **View > Colourise Conversation > Reset Colourisation**.
+
+### Prepare as Filter
+
+Nah, kalau fitur *Apply as Filter* (yang kita bahas di awal) itu ibarat Sekali klik, filter langsung jalan maka *Prepare as Filter* ini ibarat Draft dulu, jalaninnya nanti
+
+Fitur ini berguna kalau kita mau membuat *Display Filter* yang kompleks atau menggabungkan beberapa kondisi (menggunakan logika **AND** / **OR**). Wireshark hanya akan **mengetikkan** sintaks *query* tersebut di kolom pencarian atas, tapi akan menunggu sampai kita menekan tombol `Enter` secara manual buat mengeksekusinya.
+
+Cara aksesnya persis sama: **Klik kanan > Prepare as Filter**. Kemudian kita tinggal gabungkan saja memakai opsi seperti *... and selected* atau *... or selected*.
+
+---
+
+### Apply as Column
+
+Secara *default*, *Packet List* di Wireshark cuma menampilkan kolom standar (No, Time, Source, Destination, Protocol, Length, Info). Tapi bagaimana kalau kita butuh melihat nilai spesifik dari lapisan OSI (misalnya melihat panjang header tertentu) langsung di halaman depan tanpa perlu membukanya satu-satu?
+
+Gunakan fitur **Apply as Column**. Fitur ini memungkinkan kita mengambil suatu nilai/parameter dari *Packet Details*, lalu menjadikannya "kolom permanen baru" di tabel *Packet List*. Ini sangat efisien untuk membandingkan satu parameter spesifik melintasi ribuan paket secara visual.
+
+Cara pakainya gampang:
+Cari *value* yang diinginkan di jendela *Packet Details* > **Klik kanan > Apply as Column**. (Ingat, kita bisa menggeser atau menyembunyikan kolom kapan pun dengan klik kanan di *header* tabel).
+
+### Follow Stream
+
+Wireshark menangkap data mentah (raw traffic) dalam wujud potongan-potongan paket kecil (terfragmentasi). Untuk seorang analis jaringan, membaca satu-satu serpihan paket ini jelas bikin bingung, apalagi kalau mau melihat wujud utuh aplikasinya.
+
+Fitur **Follow Stream** ibarat mesin penyusun teka-teki (*puzzle*). Fitur ini akan menyusun dan merangkai (*reconstruct*) serpihan ratusan paket menjadi satu aliran data utuh persis seperti yang dibaca oleh aplikasi (Application-level data). 
+
+Kalau jaringannya tidak dienkripsi (seperti HTTP biasa, FTP, atau Telnet), fitur ini bisa langsung membaca *username*, *password*, atau percakapan utuh dalam wujud teks murni (*plain text*) di jendela terpisah. Di jendela stream ini, teks berwarna **merah** menandakan arahan dari *Client* (Client -> Server), dan teks **biru** berarti respon dari *Server* (Server -> Client).
+
+Cara aksesnya:
+**Klik kanan pada paket target > Follow > [Pilih Stream-nya, misal TCP / UDP / HTTP Stream]**
+
+---
+
+## Simple Display Filter Queries
+
+Selain mengandalkan klik kanan antarmuka, untuk bergerak lebih cepat analis juga sering mengetik langsung *query filter* dasar di baris pencarian (*Display Filter Bar*). Wireshark menyediakan banyak sekali opsi, tapi kita akan bahas filter yang paling mendasar.
+
+### Filter By Protocol Name
+Cara paling mudah, Kalau kita hanya ingin melihat lalu lintas khusus untuk satu protokol (membuang semua trafik yang tidak relevan):
+- Ketik langsung nama protokolnya *(harus huruf kecil semua)*.
+- Contoh: `http`, `ftp`, `dns`, `arp`, `icmp`, `ssh`.
+
+### Filter By Protocol Port Number
+Kadang aplikasi menggunakan *port* yang tidak standar, atau sebaliknya, kita ingin merestriksi pencarian berdasarkan nomor *port*-nya tanpa memedulikan protokol jaringannya.
+
+Sintaks penulisan dasarnya memadukan nama protokol Transport Layer (`tcp` atau `udp`) ditambah atribut `port` dan angka portnya.
+- Contoh format: `<protocol>.port == <nomer port>`
+- Contoh penerapan murni: `tcp.port == 80` (Hanya akan menampilkan trafik HTTP di atas TCP port 80).
+
+---
