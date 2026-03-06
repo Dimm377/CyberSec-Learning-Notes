@@ -49,7 +49,7 @@ Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
 Gambar dibawah menunjukkan tampilan utama Wireshark, juga bagian yang disorot sudah dijelaskan di atas:
 
 <p>
-<img src="../../Assets/Images/main-Wireshark.png" alt="Wireshark GUI" width="800px" />
+<img src="../../Assets/Images/main-Wiresharkl.png" alt="Wireshark GUI" width="800px" />
 </p>
 
 ### Loading a PCAP File
