@@ -339,3 +339,44 @@ Cara pakainya simple:
 > **Catatan Penting:** Tanda warna hitam yang diberikan ini cuma sementara alias hilang seiring selesainya sesi analisis. Saat aplikasi Wireshark ditutup tanpa mem-*backup* file ulang, tanda-tanda yang dibuat ikutan hilang.
 
 ---
+
+### Packet Comments
+
+Selain ditandai pakai stabilo (*Marking*), kita juga bisa memberi catatan digital alias *Comments* di paket tertentu. Fitur ini sangat membantu:
+- Sebagai pengingat (*reminder*) diri sendiri saat sedang melakukan investigasi panjang.
+- Sebagai alat komunikasi / penunjuk *point of interest* kalau file PCAP-nya ingin dianalisa bareng analis lain.
+
+Beda sama *Mark Packets* yang sementara, **Packet Comments bakal permanen** di dalam file PCAP sampai kita sendiri yang menghapusnya (*note:* pastikan pilih ekstensi `.pcapng` saat *save* supaya komentarnya ikut tersimpan).
+
+Cara aksesnya: **Klik kanan pada paket > Packet Comments...**
+
+### Export Packets
+
+Pernah kebayang buka file *capture* yang isinya ribuan atau jutaan paket? Berat banget. Karena Wireshark itu bukan IDS (dia cuma alat pembaca), kita yang harus memilah mana paket normal mana yang berbahaya.
+
+Jika sudah menemukan kumpulan paket (*scope*) yang isinya aktivitas mencurigakan (*suspicious*), kita bisa memisahkan paket-paket tertentu saja ke dalam file PCAP baru. Hal ini bikin data lebih bersih dan relevan tanpa harus share 99% paket *noise* atau repetitif ke analis lain.
+
+Cara mengekstraknya: Klik menu **File > Export Specified Packets...** 
+
+### Export Objects (Files)
+
+Ini adalah trik andalan buat *Security Analyst*. Wireshark ternyata sanggup untuk **mengekstrak ulang file utuh** (misal gambar, PDF, lagu, atau bahkan *malware* / *executable*) yang pernah dikirim melalui jaringan tersebut
+
+Syarat utamanya cuma satu: protokol waktu pengirimannya tidak dienkripsi alias masih bentuk polos atau didukung Wireshark (*HTTP*, *FTP*, *SMB*, *DICOM*, *IMF*, *TFTP*). Jadi kalau ada orang yang *tertangkap* (ketahuan) mengirim virus via HTTP, kita bisa mengekstrak *malware* mentahnya dari dalam Wireshark untuk dianalisis lebih lanjut secara statis maupun dinamis.
+
+Cara akses fiturnya: Klik menu **File > Export Objects > [Pilih Protokolnya, misal HTTP]**
+
+---
+
+### Time Display Format
+
+Secara *default*, Wireshark mwngueutkan paket berdasarkan waktu capture dengan format **"Seconds Since Beginning of Capture"** (Detik ke-sekian sejak tombol *Start* ditekan). 
+
+Format bawaan ini oke untuk durasi singkat, tapi **jelek jika untuk investigasi**. Bayangin kita harus mencocokan log *error* di server yang formatnya pake jam/tanggal (misalnya jam `10:30 Pagi`), dengan format detik Wireshark (misal detik ke `4502`). Bikin pusing
+
+Makanya, *best practice* (kebiasaan umum) para analis adalah langsung mengubah format tampilannya ke **UTC Time** (*Coordinated Universal Time*) atau **Local Time** supaya waktunya gampang dicocokkan kapan *event* persisnya terjadi.
+
+Cara ganti format waktunya:
+Klik menu baris atas **View > Time Display Format > [Pilih format yang lo butuhin, misal UTC Date and Time]**
+
+---
