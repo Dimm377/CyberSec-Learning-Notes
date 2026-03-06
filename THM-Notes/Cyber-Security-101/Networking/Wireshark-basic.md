@@ -236,3 +236,60 @@ Di bagian *Internet Protocol Version 4/6* ini, kita bisa menguliti banyak info p
 </p>
 
 ---
+
+### Protocol (Layer 4)
+
+Masuk ke ranah *Transport* OSI Layer. Di bagian ini Wireshark bakal menjabarkan cara pengiriman datanya, biasanya via **TCP** (jalur aman, terjamin) atau **UDP** (jalur cepat, ngebut, ga peduli paket ilang, ga terjamin).
+
+Bagian *Transmission Control Protocol* (kalau pakai TCP) itu super detail. Kita bisa investigasi:
+- **Source Port & Destination Port:** (Contoh: *Port* 80 buat web HTTP, *Port* 443 HTTPS).
+- **Sequence (Seq) & Acknowledgment (Ack) Number:** Ini adalah sistem "nomor antrean" paket TCP biar datanya tidak tersesat dan dikonfirmasi sama penerima.
+- **Flags:** Status spesifik koneksi (Misal: paket tipe SYN buat mulai koneksi, FIN buat memutus koneksi, PSH buat kirim data).
+
+<p>
+<img src="../../Assets/Images/Protocols.png" alt="Layer 4: Protocol (TCP/UDP)" width="800px" />
+</p>
+
+---
+
+### Protocol Errors (Sisa/Gabungan Layer 4)
+
+Lapisan ini sejatinya masih kelanjutan (ekstensi) dari Layer 4 (Transport). Kita tidak selalu liat blok ini di setiap paket.
+
+Tapi, kadang kalau datanya terlalu besar (misal ngirim file gambar atau HTML gede), paketnya bakal di-*slice* alias dipotong-potong jadi banyak segmen TCP kecil. Nah, Wireshark cukup pintar untuk mengumpulkan lagi (merakit ulang / *Reassembled*) bongkahan-bongkahan data TCP tersebut, biar kita bisa lihat wujud gabungannya di baris ini sebelum dilempar naik ke Layer ke-7 (Aplikasi).
+
+<p>
+<img src="../../Assets/Images/Protocols-error.png" alt="5th Layer: Protocol Errors / Reassembled TCP" width="800px" />
+</p>
+
+---
+
+### Application Protocol (Layer 5/7)
+
+Akhirnya kita sampai di lapisan yang biasa dipakai sehari-hari: *Application Layer*. Di sinilah Wireshark membedah protokol spesifik dari aplikasi yang lagi jalan, contohnya **HTTP** buat *browsing*, **FTP** buat transfer file, atau **DNS** buat *resolving* nama domain.
+
+Di contoh bawah ini pakai *Hypertext Transfer Protocol* (HTTP). Kita bisa gali harta karun penting kayak:
+- *Request* apa yang diminta klien (misal `GET /page.html`).
+- *Response Code* dari server (misal `200 OK` atau `404 Not Found`).
+- Jenis konten (*Content-Type*: text/html, image/png).
+- Terus informasi teknis lainnya kayak *Host/Server* dan *Date*.
+
+<p>
+<img src="../../Assets/Images/App-protocols.png" alt="Layer 6: Application Protocol (HTTP/FTP/etc)" width="800px" />
+</p>
+
+---
+
+### Application Data (The Payload)
+
+Ini adalah bagian terakhir *(Application Data / Line-based text data)* yang menampilkan **isi asli** dari paket yang dikirim.
+
+Kalau protokolnya nggak dienkripsi (misal HTTP biasa, bukan HTTPS), kita bisa membaca pesan aslinya tanpa halangan. Di contoh SS lu, Wireshark nge-bedah dan nampilin naskah *script/HTML* mentahnya (dimulai dari `<html><head>...`).
+
+Contohnya kalau skenarionya lagi capture *form login* HTTP, nah *password* polos si target bakal kelihatan di baris ini. Mengerikan kalau disalahgunakan kan? Makanya SSL/TLS (HTTPS) diciptakan
+
+<p>
+<img src="../../Assets/Images/App-Data.png" alt="Layer 7: Application Data / Payload" width="800px" />
+</p>
+
+---
