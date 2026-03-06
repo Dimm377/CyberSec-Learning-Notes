@@ -191,3 +191,48 @@ Kalau kita perbesar (*zoom-in*) jendela *Packet Details*, kita bisa lihat ada **
 </p>
 
 ---
+
+### The Frame (Layer 1)
+
+Ini adalah lapisan terdasar yang merepresentasikan Layer **Physical** (Fisik) pada model OSI. 
+Bagian ini murni menceritakan "informasi penangkapan" paket, bukan membicarakan isi datanya. Di sini kita bisa cek detail meta-data seperti:
+- **Frame Number:** Paket ke berapa yang lagi kita lihat.
+- **Arrival Time:** Cap waktu spesifik kapan sinyal/paket ini dikirim.
+- **Length:** Ukuran asli paket di kabel keras (*bytes on wire*) vs ukuran yang berhasil direkam Wireshark (*captured*).
+- Status rekaman dan interface yang dipakai.
+
+Biar lebih jelas, lu bisa liat isinya saat dibuka (*expand*) di bawah ini:
+
+<p>
+<img src="../../Assets/Images/the-frame.png" alt="Layer 1: The Frame" width="800px" />
+</p>
+
+---
+
+### Source [MAC] (Layer 2)
+
+Ini adalah lapisan *Data Link*. Disini kita mulai membahas soal identitas perangkat keras di jaringan lokal. Bagian ini menampilkan **MAC Address** dari mesin pengirim (*Source*) dan mesin penerima (*Destination*). 
+
+Kalau kita *expand* *Ethernet II* ini, kita tidak hanya melihat nomor seri MAC-nya doang, tapi kadang bisa ketahuan juga vendor/merek *network card* (NIC) apa yang dipake sama *device*-nya (misal: Xerox, Intel, Apple, dll).
+
+<p>
+<img src="../../Assets/Images/source-Mac.png" alt="Layer 2: Source MAC Address" width="800px" />
+</p>
+
+---
+
+### Source [IP] (Layer 3)
+
+Naik satu tingkat ke fungsi *routing*, ini mewakili *Network* OSI Layer, Kalau di Layer 2 kita mainnya MAC Address (lokal), di Layer 3 kita main pakai **IPv4/IPv6 Address** (publik/antar jaringan).
+
+Di bagian *Internet Protocol Version 4/6* ini, kita bisa menguliti banyak info penting seperti:
+- Siapa IP sumbernya (Source) & siapa targetnya (Destination).
+- Panjang alamat *header*.
+- *Time to Live* (TTL) — umur paket sebelum dibuang dari jaringan (ini berguna untuk mengetahui *Operating System* korban).
+- Protokol di atasnya apa (misal TCP atau UDP).
+
+<p>
+<img src="../../Assets/Images/Source-IP.png" alt="Layer 3: Source IP Address" width="800px" />
+</p>
+
+---
