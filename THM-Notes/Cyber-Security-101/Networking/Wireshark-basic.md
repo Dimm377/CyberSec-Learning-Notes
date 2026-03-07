@@ -11,42 +11,42 @@
 
 ## Task 1: Introduction
 
-**Wireshark** adalah alat analisis paket jaringan (*open-source*) yang paling populer di dunia. Ibarat sebuah **mikroskop** atau **mesin X-Ray** buat jaringan — dia membuat kita bisa melihat apa yang sebenarnya terjadi di dalam jaringan atau udara (Wi-Fi), membedah setiap bit data yang lewat.
+**Wireshark** adalah alat analisis paket jaringan (*open-source*) yang paling populer di dunia. Ibarat sebuah **mikroskop** atau **mesin X-Ray** buat jaringan — dia bikin kamu bisa ngeliat apa yang sebenarnya terjadi di dalam kabel jaringan atau udara (Wi-Fi), ngebedah setiap bit data yang lewat.
 
 **Kegunaan Utama:**
-- **Sniffing:** Mengintip traffic yang sedang jalan secara *live*.
-- **Investigating PCAP:** Membedah rekaman traffic (file `.pcap`) yang sudah diambil sebelumnya.
+- **Sniffing:** Ngintip traffic yang lagi jalan secara *live*.
+- **Investigating PCAP:** Ngebedah rekaman traffic (file `.pcap`) yang udah diambil sebelumnya.
 
-### Learning Objectives (Tujuan Kita):
-Di room ini, kita bakal fokus menguasai:
+### Learning Objectives (Tujuan Belajar):
+Di room ini, kamu bakal fokus nguasain:
 1. Navigasi dan konfigurasi dasar Wireshark.
-2. Membedah paket buat mencari informasi di setiap lapisan **TCP/IP**.
-3. Cara pakai **Display Filters** buat memfilter data yang kita butuhkan.
+2. Ngebedah paket buat nyari informasi di setiap lapisan **TCP/IP**.
+3. Cara pakai **Display Filters** buat nyaring data yang kamu butuhin.
 
 ---
 
 ## Tool Overview
 
-### Use Cases (Kapan Kita Pakai Wireshark?)
-Wireshark bisa dipakai buat banyak hal:
-1. **Troubleshooting Jaringan:** Mendeteksi titik kegagalan (*failure points*) atau kemacetan (*congestion*) di jaringan.
-2. **Mendeteksi Anomali Keamanan:** Mencari *host* mencurigakan, penggunaan *port* yang tidak biasa, atau *traffic* nakal.
-3. **Mempelajari Protokol:** Menginvestigasi detail protokol seperti *response code* HTTP atau isi *payload* data.
+### Use Cases (Kapan Pakai Wireshark?)
+Wireshark bisa dipake buat banyak hal:
+1. **Troubleshooting Jaringan:** Nyari titik masalah (*failure points*) atau kemacetan (*congestion*) di jaringan.
+2. **Mendeteksi Anomali Keamanan:** Nyari *host* mencurigakan, pemakaian *port* yang ga wajar, atau *traffic* nakal.
+3. **Mempelajari Protokol:** Ngulik detail protokol kayak *response code* HTTP atau isi *payload* data.
 
-> **Catatan Penting:** Wireshark **BUKAN** *Intrusion Detection System* (IDS). Dia tidak bisa mencegah serangan atau memberi peringatan otomatis. Dia hanya mengizinkan kita membedah paket secara mendalam dan dia **tidak memodifikasi** paket, cuma membacanya. Jadi, mendeteksi anomali itu bergantung penuh pada wawasan si analyst.
+> **Catatan Penting:** Wireshark **BUKAN** *Intrusion Detection System* (IDS). Dia ga bisa nyegah serangan atau ngasih peringatan otomatis. Dia cuma ngasih jalan buat kamu ngebedah paket sedalam mungkin dan **tidak memodifikasi** paket, murni cuma ngebaca. Jadi, urusan deteksi itu bergantung penuh sama insting kamu sebagai analis.
 
 ### GUI and Data
-Tampilan antarmuka utama Wireshark dibagi menjadi 5 bagian penting:
+Tampilan utama Wireshark dibagi jadi 5 bagian penting:
 
 | Bagian GUI | Penjelasan Fungsinya |
 | ---------- | -------------------- |
-| **Toolbar** | Menu utama yang berisi *shortcuts* untuk *packet sniffing*, *filtering*, menyortir, meringkas, mengekspor, atau menggabungkan file `.pcap`. |
-| **Display Filter Bar** | Kolom utama untuk mengetik *query filter* (menyaring data yang lagi dilihat). |
-| **Recent Files** | Daftar file yang barusan dibuka/dianalisis. Bisa diklik untuk buka lagi kalau ingin melanjutkan analisis. |
-| **Capture Filter and Interfaces** | Tempat mengatur *capture filter* (filter yang jalan **sebelum** merekam) dan memilih capture interface (misal: antarmuka jaringan seperti `eth0`, `lo`, atau `ens33`). |
-| **Status Bar** | Baris paling bawah yang menunjukkan status *tool*, profil, dan informasi nomor paket. |
+| **Toolbar** | Menu utama yang isinya *shortcuts* buat *packet sniffing*, *filtering*, nyortir, ngeringkas, ekspor, atau gabungin file `.pcap`. |
+| **Display Filter Bar** | Kolom penelusuran utama buat ngetik *query filter* (nyaring data yang lagi ditampilin). |
+| **Recent Files** | Daftar file rekaman yang barusan dibuka. Tinggal klik buat ngelanjutin analisis. |
+| **Capture Filter and Interfaces** | Tempat ngatur *capture filter* (aturan saringan **sebelum** mulai ngerekam) dan milih jalur antarmuka (misal: `eth0`, `lo`, atau `ens33`). |
+| **Status Bar** | Baris paling bawah yang ngasih tau status *tool*, profil, sama jumlah paket. |
 
-Gambar dibawah menunjukkan tampilan utama Wireshark, juga bagian yang disorot sudah dijelaskan di atas:
+Gambar di bawah nunjukin tampilan utama Wireshark, bagian yang disorot udah dijelasin di tabel atas:
 
 <p>
 <img src="../../Assets/Images/main-Wiresharkl.png" alt="Wireshark GUI" width="800px" />
@@ -54,26 +54,26 @@ Gambar dibawah menunjukkan tampilan utama Wireshark, juga bagian yang disorot su
 
 ### Loading a PCAP File
 
-Sebelum membedah data, kita harus memasukkan file rekamannya (`.pcap` atau `.pcapng`). Caranya simple:
-1. Pakai menu **File > Open**,
+Sebelum mulai ngebedah data, kamu harus masukin file rekamannya (`.pcap` atau `.pcapng`). Caranya lumayan simple:
+1. Cukup lewat menu **File > Open**,
 2. **Drag & drop** file langsung ke jendela Wireshark, atau
-3. Cukup **klik ganda** di file `.pcap` yang mau di analisis.
+3. **Klik ganda** aja di file `.pcap` yang mau dianalisis.
 
-Begitu file masuk, tampilan layar akan penuh dengan barisan data yang terlihat seperti bahasa *matrix*. Agar tidak *overwhelmed*, Kita cuma perlu fokus ke **3 jendela utama (*panes*)** ini. 
+Begitu filenya masuk, layar kamu bakal penuh sama barisan data yang sekilas mirip bahasa *matrix*. Biar ga *overwhelmed*, kamu cuma perlu fokus ke **3 jendela utama (*panes*)** ini. 
 
-Ibarat kita lagi jadi detektif yang meriksa surat, 3 jendela ini mewakili kedalaman analisisnya:
+Ibarat kamu lagi jadi detektif yang meriksa surat, 3 jendela ini mewakili tingkat kedalaman analisisnya:
 
 | Jendela Utama (*Pane*) | Fungsi & Analogi Detektif |
 | ---------------------- | ------------------------- |
-| **1. Packet List** | **Ibarat Buku Tamu.** Ini adalah daftar panjang semua paket (mobil kurir) yang tertangkap. Di sini Kita bisa lihat rangkuman *high-level*: nomor urut, jam lewat (*Time*), siapa pengirim (*Source*), ke mana tujuannya (*Destination*), jalur yang dipakai (*Protocol*), dan info singkatnya. |
-| **2. Packet Details** | **Ibarat Membongkar Isi Amplop Surat.** Kalau Kita klik salah satu baris di *Packet List*, jendela tengah ini bakal mengurai isi paketnya berlapis-lapis sesuai *OSI Layers*. Dari mulai bungkus luar (lapisan fisik/MAC) sampai ke inti jeroannya (protokol aplikasi seperti HTTP). |
-| **3. Packet Bytes** | **Ibarat Melihat DNA / Atom dari Suratnya.** Ini adalah bentuk data paling mentah, Bagian ini menampilkan data paket dalam wujud *Hexadecimal* (angka *hex*) dan *ASCII* (teks yang bisa dibaca manusia). Terkadang Kita bisa nemu teks *password* atau *payload* tersembunyi bertebaran di sini. |
+| **1. Packet List** | **Ibarat Buku Tamu.** Ini adalah daftar panjang semua paket (mobil kurir) yang ketangkep. Di sini kamu bisa ngeliat rangkuman *high-level*: nomor urut, jam lewat (*Time*), siapa pengirim (*Source*), ke mana tujuannya (*Destination*), jalur yang dipake (*Protocol*), dan info singkatnya. |
+| **2. Packet Details** | **Ibarat Ngebongkar Isi Amplop Surat.** Kalau kamu klik salah satu baris di *Packet List*, jendela tengah ini bakal mengurai isi paketnya berlapis-lapis sesuai teori *OSI Layers*. Dari mulai bungkus luar (lapisan fisik/MAC) sampai ke inti dalamnya (protokol aplikasi kayak HTTP). |
+| **3. Packet Bytes** | **Ibarat Ngeliat DNA / Atom dari Suratnya.** Ini adalah bentuk data paling mentah. Bagian ini nampilin data paket dalam wujud *Hexadecimal* (angka *hex*) dan *ASCII* (teks yang bisa dibaca manusia). Kadang kamu bisa nemu teks *password* atau *payload* tersembunyi yang bertebaran di sini. |
 
-Di pojok pojok layar Wireshark yang lagi aktif, ada informasi penunjang tambahan:
-- **File Name:** Nama file pcap yang lagi dibuka (ada di *tab browser* atas, dan *status bar* bawah kiri).
-- **Total Packets:** Total jumlah baris catatan (jumlah paket) yang berhasil terekam (di *status bar* bawah kanan).
+Di pojokan layar Wireshark, ada informasi tambahan buat *tracking*:
+- **File Name:** Nama file pcap yang lagi dibuka (ada di *tab browser* atas, dan *status bar* sudut kiri bawah).
+- **Total Packets:** Total baris catatan (jumlah paket) yang sukses terekam (di *status bar* paduan kanan bawah).
 
-Biar kebayang gimana, liat gambar di bawah ini yang menyorot 3 jendela utama tadi:
+Biar ada bayangan, cek gambar di bawah yang menyoroti 3 jendela utama tadi:
 
 <p>
 <img src="../../Assets/Images/Pcap.png" alt="Wireshark PCAP Loading Interface" width="800px" />
@@ -83,18 +83,18 @@ Biar kebayang gimana, liat gambar di bawah ini yang menyorot 3 jendela utama tad
 
 ### Colouring Packets
 
-Pernah merhatiin kenapa baris-baris paket di Wireshark punya warna beda-beda? Itu bukan buat hiasan doang. Wireshark pakai sistem pewarnaan biar mata kita gampang menemukan masalah (anomali) atau protokol tertentu tanpa harus membaca detailnya satu per satu. 
+Pernah merhatiin kenapa barisan paket di Wireshark punya warna beda-beda? Itu bukan buat hiasan. Wireshark pake sistem pewarnaan biar mata kamu gampang ngenalin masalah (anomali) atau nemuin protokol tertentu tanpa harus meriksa detailnya satu per satu. 
 
 Wireshark punya **Dua Jenis Metode Pewarnaan**:
 
 | Jenis Pewarnaan | Karakteristik | Cara Akses |
 | :--- | :--- | :--- |
-| **Permanent Rules** | Aturan paten yang disimpen di profil lo. Aturan ini bakal tetep ada tiap kali lo buka Wireshark lagi di sesi berikutnya. | Klik menu **View > Coloring Rules** *(Bisa juga buat bikin rule custom sendiri)* |
-| **Temporary Rules** | Aturan sementara yang cuma aktif selama sesi Wireshark. Kalau aplikasinya ditutup, warnanya ilang. | Klik kanan di paket **Colorize Conversation** (atau via menu **View > Conversation Filter**) |
+| **Permanent Rules** | Aturan paten yang disimpan di profilmu. Aturan ini bakal tetep ada tiap kali kamu buka Wireshark di sesi berikutnya. | Klik menu **View > Coloring Rules** *(Bisa juga buat bikin rule custom-mu sendiri)* |
+| **Temporary Rules** | Aturan sementara yang cuma aktif selama sesi Wireshark jalan. Kalau aplikasinya ditutup, warnanya bakal ilang. | Klik kanan di baris paket > **Colorize Conversation** (atau via menu **View > Conversation Filter**) |
 
-Biar tampilan warnanya aktif (atau kalau mau matiin biar polos aja), bisa pakai opsi **View > Colorise Packet List**.
+Biar tampilan warnanya aktif (atau kalau mau dimatiin biar polos matanya ga capek), kamu bisa pake setelan **View > Colorise Packet List**.
 
-Coba cek penampakan *Coloring Rules Default* dari Wireshark di bawah ini:
+Coba cek penampakan *Coloring Rules Default* bawaan Wireshark di bawah ini:
 
 <p>
 <img src="../../Assets/Images/Coloring-filter.png" alt="Wireshark Default Coloring Rules" width="800px" />
@@ -104,19 +104,19 @@ Coba cek penampakan *Coloring Rules Default* dari Wireshark di bawah ini:
 
 ### Traffic Sniffing
 
-Selain membaca file rekaman (PCAP), keahlian utama Wireshark adalah kemampuannya untuk *sniffing* atau monitoring *traffic* jaringan secara *live* saat itu juga. 
+Selain kemampuan ngebaca file rekaman (PCAP), keahlian unggulan Wireshark adalah kemampuannya buat *sniffing* atau memonitor *traffic* jaringan secara *live* saat itu juga. 
 
-Di bagian kiri *Toolbar* atas, ada 3 tombol penting buat ngendaliin *sniffing*:
+Di bagian kiri *Toolbar* atas, ada 3 tombol berguna buat melakukan *sniffing*:
 
-- **Blue Shark Button (Start):** Mulai menangkap (*capturing*) *traffic* di jaringan.
-- **Red Square Button (Stop):** Menghentikan proses penangkapan sementara jika sudah selesai analisis.
-- **Green Arrow Button (Restart):** Mengulang proses *sniffing* dari awal lagi.
+- **Blue Shark Button (Start):** Mulai nangkep (*capturing*) *traffic* yang lagi lalu-lalang di jaringan.
+- **Red Square Button (Stop):** Menghentikan penangkapan sementara kalau kamu udah selesai analisis.
+- **Green Arrow Button (Restart):** Ngulang proses *sniffing* bersih dari awal lagi.
 
-Saat *sniffing* lagi dijalankan, kita bisa cek bagian *Status Bar* (paling bawah layar) untuk memastikan dua hal:
-1.  **Interface yang Dipakai:** (Contoh: `eth0`) Biar gak salah jalur yang di sniff.
-2.  **Jumlah Paket:** (Contoh: `Packets: 122`) Menunjukkan seberapa banyak data yang udah kekumpul.
+Pas *sniffing* lagi jalan, kamu bisa ngecek bagian *Status Bar* (paling bawah layar) buat mastiin dua hal ini:
+1.  **Interface yang Dipakai:** (Contoh: `eth0`) Biar kamu ga salah nyadap jalur.
+2.  **Jumlah Paket:** (Contoh: `Packets: 122`) Nunjukin udah seberapa banyak data yang sukses kekumpul.
 
-Biar lebih jelas letak tombol sama statusnya, lihat referensi GUI di bawah:
+Biar lebih jelas posisi tombol sama statusnya, lihat referensi GUI ini ya:
 
 <p>
 <img src="../../Assets/Images/Shark-Button.png" alt="Wireshark Sniffing Controls" width="800px" />
@@ -126,27 +126,27 @@ Biar lebih jelas letak tombol sama statusnya, lihat referensi GUI di bawah:
 
 ### Merge PCAP Files
 
-Wireshark juga punya fitur untuk menggabungkan dua file `.pcap` yang berbeda jadi satu file. 
+Wireshark juga punya fitur oke buat ngegabungin dua file `.pcap` yang pisah jadi satu file utuh. 
 
-1. Pastiin udah buka satu file pcap utama di Wireshark.
+1. Pastiin kamu udah buka satu file pcap utama di Wireshark.
 2. Buka menu **File > Merge**.
 3. Pilih file pcap kedua yang mau digabungin.
-4. Wireshark bakal ngasih tau total paket (baris) dari file kedua yang dipilih. 
-5. Klik **Open**, dan dua file itu bakal bersatu jadi satu _merged workspace_ (seperti *Untitled*).
+4. Wireshark bakal ngasih tau estimasi total paket dari file kedua. 
+5. Tinggal klik **Open**, dan dua file itu bakal nyatu jadi satu _merged workspace_ (tandanya namanya jadi *Untitled*).
 
-**Ingat:** Karena hasil gabungannya masih *temporary*, **jangan lupa klik Save As** untuk menyimpan file *pcap* gabungannya sebelum mulai analisis.
+**Ingat:** Karena hasil gabungannya ini sifatnya masih *temporary*, **jangan lupa klik Save As** buat nyimpen file PCAP gabungannya ke laptop sebelum kamu mulai sibuk analisis.
 
 ### View File Details
 
-Penting untuk tau identitas asli dari file pcap yang sedang di analisis, apalagi kalau sedang menangani banyak file pcap dari berbagai kasus yang beda. Di bagian *File Details* ini, kita bisa lihat info krusial dan statistik penting biar tau file mana yang harus diprioritasin:
-- **File hash** (SHA256/MD5 buat bukti forensik biar tau filenya belum diubah)
-- **Capture time** (Kapan traffic ini direkam)
-- **Komentar file** (Catatan dari analis sebelumnya)
-- **Interface & Statistics** (Berapa banyak paket dan byte data yang kerekam)
+Penting banget buat tau identitas asli dari file pcap yang lagi kamu analisis, apalagi kalau bos nyodorin banyak file pcap dari berbagai kasus yang beda-beda. Di bagian *File Details* ini, kamu bisa ngeliat info krusial dan statistik penting biar tau file mana yang diseriusin duluan:
+- **File hash** (SHA256/MD5 buat bukti forensik ke pengadilan biar terbukti filenya belum diotak-atik)
+- **Capture time** (Kapan *traffic* ini direkam kejadiannya)
+- **Komentar file** (Catatan obrolan dari analis lain yang megang file ini sebelumnya)
+- **Interface & Statistics** (Berapa banyak paket dan byte data raksasa yang kerekam)
 
-Ada **dua cara** cepat buat buka jendela detail ini:
+Ada **dua cara** cepat buat ngebuka jendela detail ini:
 1. Lewat menu atas: **Statistics > Capture File Properties**
-2. Lewat *shortcut* GUI: Klik **icon pcap kecil di pojok kiri bawah** (sebelah nama file).
+2. Lewat *shortcut* GUI: Cukup klik **icon pcap kecil di pojok kiri bawah** (persis di sebelah nama file).
 
 <p>
 <img src="../../Assets/Images/View-details.png" alt="Wireshark View File Details" width="800px" />
@@ -156,33 +156,33 @@ Ada **dua cara** cepat buat buka jendela detail ini:
 
 ## Packet Dissection
 
-*Packet dissection* (bedah paket) itu intinya adalah menerjemahkan detail isi paket ke dalam bentuk protokol dan kolom-kolom yang gampang kita baca. Wireshark mendukung banyak protokol bawaan buat dibedah, dan bahkan bisa bikin *script* pembedah (*dissector scripts*) sendiri.
+*Packet dissection* (bedah paket) itu intinya adalah nerjemahin detail isi paket ke dalam wujud protokol dan kolom-kolom yang gampang buat dibaca. Wireshark punya banyak banget dukungan protokol bawaan buat dibedah, dan kamu bahkan bisa bikin *script* pembedah (*dissector scripts*) kamu sendiri.
 
-> **Note:** Kemampuan ini bergantung banget dengan seberapa paham kita soal konsep **OSI Model**. Jadi pastikan pondasi OSI Layer kita udah kuat agar membaca ini kerasa gampang.
+> **Note:** Kemampuan ini bergantung banget sama seberapa paham kamu soal konsep **OSI Model**. Jadi pastiin pondasi OSI Layer kamu udah kuat biar ngebaca beginian kerasa gampang.
 
-### Packet Details (Membedah Lapis Demi Lapis)
+### Packet Details (Ngebedah Lapis Demi Lapis)
 
-Masih ingat **Jendela Tengah (*Packet Details*)** yang kita bahas sebelumnya? Nah, ini adalah *core* / inti kemampuannya Wireshark. Saat kita klik salah satu paket di *Packet List* atas, Wireshark bakal membuka "amplop" paket tersebut berlapis-lapis sesuai dengan konsep OSI Model.
+Masih inget **Jendela Tengah (*Packet Details*)** yang udah dibahas sebelumnya? Nah, ini adalah *core* / inti kemampuannya Wireshark. Saat kamu klik salah satu paket di *Packet List* atas, Wireshark bakal ngebuka "amplop" paket tersebut berlapis-lapis sesuai sama konsep OSI Model.
 
-Pecahan lapisan ini biasanya ada **5 sampai 7 tingkat**. Di bawah ini adalah contoh ngebedah Paket HTTP nomor urut 27. Kita bisa lihat blok merah yang nandain pembagian lapisannya mulai dari `Frame` (paling liar/fisik) sampai `Hypertext Transfer Protocol` (paling abstrak/aplikasi).
+Pecahan lapisan ini biasanya ada **5 sampai 7 tingkat**. Di bawah ini adalah contoh ngebedah Paket HTTP nomor urut 27. Kamu bisa liat blok merah yang nandain pembagian lapisannya mulai dari `Frame` (paling liar/fisik) sampai `Hypertext Transfer Protocol` (paling abstrak/aplikasi).
 
 <p>
 <img src="../../Assets/Images/Packet-dissections.png" alt="Wireshark Packet Dissection (OSI Layers)" width="800px" />
 </p>
 
-Setiap kali kita klik baris informasi di **Packet Details**, perhatikan kalau di jendela bawahnya (**Packet Bytes**) bakal meng-*highlight* (warna biru) tampilan bytes mentah (*hex*) dari informasi yang lagi kita pilih. Ini bukti kalau apa yang ada di *Details* adalah terjemahan langsung dari data mentahnya (*Bytes*).
+Setiap kali kamu ngeklik barisan informasi di **Packet Details**, perhatiin deh kalau di jendela bawahnya (**Packet Bytes**) bakal ngasih *highlight* (warna biru) ke tampilan bytes mentah (*hex*) dari info yang lagi kamu pilih. Ini bukti kuat kalau apa yang ditampilin di *Details* adalah terjemahan langsung dari data mentahnya (*Bytes*).
 
 <p>
 <img src="../../Assets/Images/detail-packet.png" alt="Packet Details to Packet Bytes Correlation" width="800px" />
 </p>
 
-Kalau kita perbesar (*zoom-in*) jendela *Packet Details*, kita bisa lihat ada **7 lapisan utama** yang mendedahkan detail paket dari fisik ke aplikasi:
+Kalau kamu perbesar (*zoom-in*) jendela *Packet Details*, kamu bisa liat ada **7 lapisan utama** yang nelanjangin detail paket dari fisik naik ke aplikasi:
 
-1. **`frame/packet`** (Rangkuman paket mentah & dari *interface* mana tangkapannya)
+1. **`frame/packet`** (Rangkuman paket mentah & dari *interface* mana nangkepnya)
 2. **`source [MAC]` / Ethernet II** (Alamat fisik (*MAC Address*) dari pengirim & penerima)
 3. **`source [IP]` / IPv4/v6** (Alamat logika (*IP Address*) dari pengirim & penerima)
 4. **`protocol` / TCP/UDP** (Jalur komunikasi, misal TCP *port* 80 / 443)
-5. **`protocol errors`** (Sisa atau gabungan / reassembly dari segmen TCP jika ada)
+5. **`protocol errors`** (Sisa atau gabungan / *reassembly* dari potongan TCP kalau ada)
 6. **`application protocol`** (Protokol tingkat atasnya, contoh: HTTP, DNS, FTP)
 7. **`application data`** (Inti data yang lagi dikirim, misal isi teks *HTML*, dll)
 
@@ -194,14 +194,14 @@ Kalau kita perbesar (*zoom-in*) jendela *Packet Details*, kita bisa lihat ada **
 
 ### The Frame (Layer 1)
 
-Ini adalah lapisan terdasar yang merepresentasikan Layer **Physical** (Fisik) pada model OSI. 
-Bagian ini murni menceritakan "informasi penangkapan" paket, bukan membicarakan isi datanya. Di sini kita bisa cek detail meta-data seperti:
-- **Frame Number:** Paket ke berapa yang lagi kita lihat.
-- **Arrival Time:** Cap waktu spesifik kapan sinyal/paket ini dikirim.
+Ini adalah lapisan terdasar yang ngewakilin spesifikasi **Physical** (Fisik) pada model OSI. 
+Bagian ini murni cuma nyeritain "informasi penangkapan" paket, bukan ngomongin isi datanya. Di sini kamu bisa ngecek detail meta-data kayak:
+- **Frame Number:** Paket ke berapa yang lagi kamu liat.
+- **Arrival Time:** Cap waktu spesifik kapan sinyal/paket ini nyampe.
 - **Length:** Ukuran asli paket di kabel keras (*bytes on wire*) vs ukuran yang berhasil direkam Wireshark (*captured*).
-- Status rekaman dan interface yang dipakai.
+- Status rekaman dan interface yang dipake.
 
-Biar lebih jelas, lu bisa liat isinya saat dibuka (*expand*) di bawah ini:
+Biar lebih jelas, kamu bisa liat isinya pas bagian ini dibuka (*expand*):
 
 <p>
 <img src="../../Assets/Images/the-frame.png" alt="Layer 1: The Frame" width="800px" />
@@ -211,9 +211,9 @@ Biar lebih jelas, lu bisa liat isinya saat dibuka (*expand*) di bawah ini:
 
 ### Source [MAC] (Layer 2)
 
-Ini adalah lapisan *Data Link*. Disini kita mulai membahas soal identitas perangkat keras di jaringan lokal. Bagian ini menampilkan **MAC Address** dari mesin pengirim (*Source*) dan mesin penerima (*Destination*). 
+Ini adalah lapisan *Data Link*. Di sini kamu mulai ngebahas soal identitas perangkat keras di jaringan lokal. Bagian ini nampilin **MAC Address** dari jeroan mesin si pengirim (*Source*) dan mesin si penerima (*Destination*). 
 
-Kalau kita *expand* *Ethernet II* ini, kita tidak hanya melihat nomor seri MAC-nya doang, tapi kadang bisa ketahuan juga vendor/merek *network card* (NIC) apa yang dipake sama *device*-nya (misal: Xerox, Intel, Apple, dll).
+Kalau kamu *expand* bagian *Ethernet II* ini, kamu nggak cuma merhatiin nomor seri MAC-nya doang, tapi kadang bisa ketahuan juga vendor/merek *network card* (NIC) apa yang dipake sama *device* tersebut (misal: Xerox, Intel, Apple, dll).
 
 <p>
 <img src="../../Assets/Images/source-Mac.png" alt="Layer 2: Source MAC Address" width="800px" />
@@ -223,13 +223,13 @@ Kalau kita *expand* *Ethernet II* ini, kita tidak hanya melihat nomor seri MAC-n
 
 ### Source [IP] (Layer 3)
 
-Naik satu tingkat ke fungsi *routing*, ini mewakili *Network* OSI Layer, Kalau di Layer 2 kita mainnya MAC Address (lokal), di Layer 3 kita main pakai **IPv4/IPv6 Address** (publik/antar jaringan).
+Naik satu tingkat ke fungsi *routing*, ini ngewakilin *Network Layer* di OSI. Kalau di Layer 2 kamu mainnya MAC Address (sesama mesin lokal), di Layer 3 ini kamu main pake **IPv4/IPv6 Address** (publik/antar jaringan luas).
 
-Di bagian *Internet Protocol Version 4/6* ini, kita bisa menguliti banyak info penting seperti:
+Di bagian *Internet Protocol Version 4/6* ini, kamu bisa nguliti banyak info penting kayak:
 - Siapa IP sumbernya (Source) & siapa targetnya (Destination).
 - Panjang alamat *header*.
-- *Time to Live* (TTL) — umur paket sebelum dibuang dari jaringan (ini berguna untuk mengetahui *Operating System* korban).
-- Protokol di atasnya apa (misal TCP atau UDP).
+- *Time to Live* (TTL) — umur paket sebelum layu dan dibuang dari jaringan (ini info emas buat nebak *Operating System* mesin korban).
+- Protokol di atasnya mau pake apa (misal TCP atau UDP).
 
 <p>
 <img src="../../Assets/Images/Source-IP.png" alt="Layer 3: Source IP Address" width="800px" />
@@ -239,12 +239,12 @@ Di bagian *Internet Protocol Version 4/6* ini, kita bisa menguliti banyak info p
 
 ### Protocol (Layer 4)
 
-Masuk ke ranah *Transport* OSI Layer. Di bagian ini Wireshark bakal menjabarkan cara pengiriman datanya, biasanya via **TCP** (jalur aman, terjamin) atau **UDP** (jalur cepat, ngebut, ga peduli paket ilang, ga terjamin).
+Kita masuk ke ranah *Transport* OSI Layer. Di bagian ini Wireshark bakal ngejabarin cara lalu-lintas datanya dikirim, yang paling sering nongol itu **TCP** (jalur aman, paket dijamin nyampe berurutan) atau **UDP** (jalur cepat, ngebut, bodo amat kalau ada paket ilang di jalan).
 
-Bagian *Transmission Control Protocol* (kalau pakai TCP) itu super detail. Kita bisa investigasi:
-- **Source Port & Destination Port:** (Contoh: *Port* 80 buat web HTTP, *Port* 443 HTTPS).
-- **Sequence (Seq) & Acknowledgment (Ack) Number:** Ini adalah sistem "nomor antrean" paket TCP biar datanya tidak tersesat dan dikonfirmasi sama penerima.
-- **Flags:** Status spesifik koneksi (Misal: paket tipe SYN buat mulai koneksi, FIN buat memutus koneksi, PSH buat kirim data).
+Bagian *Transmission Control Protocol* (kalau pake TCP) itu detail banget. Kamu bisa nginvestigasi:
+- **Source Port & Destination Port:** (Contoh: *Port* 80 buat web HTTP biasa, *Port* 443 buat HTTPS aman).
+- **Sequence (Seq) & Acknowledgment (Ack) Number:** Ini sistem "nomor antrean" paket TCP biar datanya nggak nyasar dan dikonfirmasi sama si empunya rumah.
+- **Flags:** Status spesifik dari koneksinya (Misal: ada bendera SYN buat ngajak kenalan/koneksi, FIN buat mutusin koneksi pamit pulang, PSH buat kirim data).
 
 <p>
 <img src="../../Assets/Images/Protocols.png" alt="Layer 4: Protocol (TCP/UDP)" width="800px" />
@@ -254,9 +254,9 @@ Bagian *Transmission Control Protocol* (kalau pakai TCP) itu super detail. Kita 
 
 ### Protocol Errors (Sisa/Gabungan Layer 4)
 
-Lapisan ini sejatinya masih kelanjutan (ekstensi) dari Layer 4 (Transport). Kita tidak selalu liat blok ini di setiap paket.
+Lapisan yang kelima ini sejatinya masih sisaan (ekstensi) dari Layer 4 (Transport). Kamu nggak bakal selalu nemuin blok ini di setiap paket.
 
-Tapi, kadang kalau datanya terlalu besar (misal ngirim file gambar atau HTML gede), paketnya bakal di-*slice* alias dipotong-potong jadi banyak segmen TCP kecil. Nah, Wireshark cukup pintar untuk mengumpulkan lagi (merakit ulang / *Reassembled*) bongkahan-bongkahan data TCP tersebut, biar kita bisa lihat wujud gabungannya di baris ini sebelum dilempar naik ke Layer ke-7 (Aplikasi).
+Tapi, kadang kalau datanya kelewat gemuk (misal waktu ngirim file gambar atau kodingan HTML panjang), paketnya bakal di-*slice* alias dipotong-potong paksa jadi banyak segmen TCP kecil. Nah, Wireshark cukup pinter buat mungutin dan ngerakit ulang (*Reassembled*) bongkahan-bongkahan data TCP yang pecah tadi, biar kamu bisa liat wujud aslinya ngegabung di baris ini sebelum dilempar naik ke Layer ke-7 (Aplikasi).
 
 <p>
 <img src="../../Assets/Images/Protocols-error.png" alt="5th Layer: Protocol Errors / Reassembled TCP" width="800px" />
@@ -266,13 +266,13 @@ Tapi, kadang kalau datanya terlalu besar (misal ngirim file gambar atau HTML ged
 
 ### Application Protocol (Layer 5/7)
 
-Akhirnya kita sampai di lapisan yang biasa dipakai sehari-hari: *Application Layer*. Di sinilah Wireshark membedah protokol spesifik dari aplikasi yang lagi jalan, contohnya **HTTP** buat *browsing*, **FTP** buat transfer file, atau **DNS** buat *resolving* nama domain.
+Akhirnya nyampe juga di lapisan yang paling deket dan sering dipake manusia sehari-hari: *Application Layer*. Di sinilah Wireshark membedah protokol spesifik dari aplikasi yang lagi dipake, contohnya **HTTP** pas lagi *browsing*, **FTP** buat mindahin transfer file, atau **DNS** buat nanya alamat web domain.
 
-Di contoh bawah ini pakai *Hypertext Transfer Protocol* (HTTP). Kita bisa gali harta karun penting kayak:
-- *Request* apa yang diminta klien (misal `GET /page.html`).
-- *Response Code* dari server (misal `200 OK` atau `404 Not Found`).
+Di contoh SS bawah ini dia pake *Hypertext Transfer Protocol* (HTTP). Kamu bisa nyekrop harta karun penting kayak:
+- *Request* apa yang lagi diminta si klien (misal `GET /page.html`).
+- *Response Code* jawaban dari servernya (misal `200 OK` dapet, atau `404 Not Found` ditolak).
 - Jenis konten (*Content-Type*: text/html, image/png).
-- Terus informasi teknis lainnya kayak *Host/Server* dan *Date*.
+- Terus informasi teknis *header* lainnya kayak nama *Host/Server* dan jam *Date*.
 
 <p>
 <img src="../../Assets/Images/App-protocols.png" alt="Layer 6: Application Protocol (HTTP/FTP/etc)" width="800px" />
@@ -282,11 +282,11 @@ Di contoh bawah ini pakai *Hypertext Transfer Protocol* (HTTP). Kita bisa gali h
 
 ### Application Data (The Payload)
 
-Ini adalah bagian terakhir *(Application Data / Line-based text data)* yang menampilkan **isi asli** dari paket yang dikirim.
+Ini adalah ujung perjalanan *(Application Data / Line-based text data)* yang bakal nampilin secara terang-terangan **isi asli** dari paket yang dikirim.
 
-Kalau protokolnya tidak dienkripsi (misal HTTP biasa, bukan HTTPS), kita bisa membaca pesan aslinya tanpa halangan. Di contoh SS, Wireshark membedah dan menampilkan file *script/HTML* mentahnya (dimulai dari `<html><head>...`).
+Kalau protokolnya nggak dienkripsi (misal HTTP biasa, bukan HTTPS), kamu bisa baca pesan curhatannya tanpa halangan sama sekali. Di contoh SS, Wireshark ngebongkar dan berani nampilin file *script/HTML* mentahnya (bisa kelihatan kode tag `<html><head>...`).
 
-Contohnya kalau skenarionya lagi capture *form login* HTTP, nah *password* polos si target bakal kelihatan di baris ini. Mengerikan kalau disalahgunakan kan? Makanya SSL/TLS (HTTPS) diciptakan
+Bayangin kalau skenarionya kamu lagi nangkep *traffic* dari *form login* HTTP, nah *password* aslinya si korban (*plain text*) bakal nongol jelas di depan mata di baris ini. Mengerikan kan kalau kecolongan? Makanya web modern wajib pake SSL/TLS (HTTPS).
 
 <p>
 <img src="../../Assets/Images/App-Data.png" alt="Layer 7: Application Data / Payload" width="800px" />
@@ -298,225 +298,225 @@ Contohnya kalau skenarionya lagi capture *form login* HTTP, nah *password* polos
 
 ### Packet Numbers
 
-Wireshark menghitung dan memberikan nomor unik (berurutan) untuk setiap paket yang berhasil ditangkap. Ini akan berguna saat proses analisis di dalam file *capture* yang ukurannya besar. 
+Wireshark ngitung dan ngasih nomor unik (berurutan) buat setiap paket yang berhasil ditangkep. Ini bakal berguna banget pas proses analisis file *capture* yang ukurannya raksasa. 
 
-Dengan adanya identitas di kolom **No.** ini, kita jadi lebih mudah mengingat posisi, memanggil ulang paket spesifik, dan mencari referensi *event* tertentu tanpa kebingungan. Nomor urut ini juga terhubung dan sama persis dengan angka yang tertera di bagian `Frame` pada jendela *Packet Details*.
+Dengan adanya identitas di kolom **No.** ini, kamu jadi lebih gampang nginget posisi, manggil ulang paket spesifik, dan nyari referensi *event* tertentu tanpa bingung. Nomor urut ini juga nyambung dan persis sama dengan angka yang tertera di bagian `Frame` pada jendela *Packet Details*.
 
 ### Go to Packet
 
-Karena setiap paket sudah ada nomor urut yang pasti, kita bisa memanfaatkan fitur lompat cepat tanpa harus repot *scroll* manual secara perlahan.
+Karena setiap paket udah punya nomor urut yang pasti, kamu bisa manfaatin fitur lompat cepat tanpa harus repot *scroll* manual pelan-pelan.
 
-Fitur *Go to Packet* ini sangat mempermudah kita untuk:
-- Melompat bolak-balik ke nomor paket spesifik dengan instan.
-- Melacak *frame* demi *frame* dan mengikuti alur percakapan / pertukaran data (*conversation*) tertentu lebih gampang.
+Fitur *Go to Packet* ini sangat ngebantu kamu buat:
+- Lompat bolak-balik ke nomor paket spesifik dengan instan.
+- Ngelacak *frame* demi *frame* dan ngikutin alur percakapan / pertukaran data (*conversation*) tertentu jadi jauh lebih gampang.
 
-Cara mengakses fiturnya sangat mudah:
-1. Klik menu baris atas: **Go > Go to Packet...**, kemudian masukkan nomor paket yang dicari.
-2. Atau bisa langsung memasukkan nomor di kolom teks penelusuran paket, dan pakai tombol *Previous/Next Packet* di bagian *toolbar* utama
+Cara ngakses fiturnya simpel banget:
+1. Klik menu baris atas: **Go > Go to Packet...**, terus masukin nomor paket yang dicari.
+2. Atau bisa langsung ngetik nomor di kolom teks penelusuran paket, dan pake tombol *Previous/Next Packet* di bagian *toolbar* utama.
 
 ---
 
 ### Find Packets
 
-Selain lompat ke nomor tertentu, Wireshark punya fitur penelusuran (*Find*) untuk mencari paket berdasarkan isi datanya. Ini adalah *skill* penting untuk menangkap pola serangan (seperti *Intrusion*) atau jejak *error* mesin di *network traffic*.
+Selain lompat ke nomor tertentu, Wireshark punya fitur penelusuran (*Find*) buat nyari paket berdasarkan isi datanya. Ini *skill* penting banget buat nangkep pola serangan (kayak *Intrusion*) atau jejak *error* mesin di tengah lautan *network traffic*.
 
-Ada dua catatan penting saat melakukan pencarian supaya langsung ketemu:
-1. **Pilih Tipe Input:** Wireshark menolak untuk mencari asal-asalan. Dia menerima 4 jenis input (*Display filter*, *Hex*, *String*, dan *Regex*). Pencarian pakai *String* (teks biasa) dan *Regex* (pola khusus) paling sering dipakai di lapangan
-2. **Pilih Jendela Target Spesifik:** Wireshark terbagi jadi 3 jendela utama (*Packet List*, *Packet Details*, *Packet Bytes*). Nah, kalau kata kuncinya ada tersembunyi di *Packet Details* (lapisan OSI) tapi kita *setting* area penelusurannya di *Packet List* (tabel ringkasan depan), Wireshark bakal memberitahu kalau dia tidak menemukan apa-apa.
+Ada dua aturan main pas lagi nyari supaya langsung ketemu:
+1. **Pilih Tipe Input:** Wireshark nolak nyari asal-asalan. Dia cuma nerima 4 jenis input (*Display filter*, *Hex*, *String*, dan *Regex*). Pencarian pake *String* (teks biasa) dan *Regex* (pola khusus) itu yang paling sering dipake analis di lapangan.
+2. **Pilih Jendela Target Spesifik:** Wireshark terbagi jadi 3 jendela utama (*Packet List*, *Packet Details*, *Packet Bytes*). Nah, kalau kata kunci yang dicari nyelip di dalem *Packet Details* (lapisan OSI) tapi kamu masang target penelusurannya di *Packet List* (tabel ringkasan depan), Wireshark bakal lapor kalau dia ga nemu apa-apa.
 
-Cara panggil kotak penelusurannya: Klik menu **Edit > Find Packet...** (Atau bisa pakai *shortcut keyboard* standar kalau ada).
+Cara manggil kotak penelusurannya: Klik menu **Edit > Find Packet...** (Atau mending pake *shortcut keyboard* standar kalau ada).
 
 ### Mark Packets
 
-Untuk menandai sebuah temuan penting (agar ga hilang atau terlewat saat *scroll* hal lain), gunakan fitur **Mark Packets**. 
+Buat nandain temuan penting (biar ga ilang atau kelewat pas asyik *scroll* nyari hal lain), gunain fitur **Mark Packets**. 
 
-Fitur mark ini bekerja seperti stabilo. Paket yang diberi tanda akan otomatis diubah jadi warna latar **Hitam**, menimpa pewarnaan protokol *default*-nya. Ini bikin fokus mata kita tidak terganggu dan gampang kalau suatu saat *packet* tersebut mau diekspor khusus buat bukti penyidikan.
+Fitur mark ini kerjanya murni kayak stabilo. Paket yang ditandain bakal otomatis ganti warna latar jadi **Hitam**, numpuk di atas pewarnaan *default*-nya protokol. Ini bikin fokus matamu ga gampang pecah dan ngebantu banget kalau suatu saat *packet* tersebut mau di-*ekspor* khusus buat barang bukti penyidikan.
 
-Cara pakainya simple:
-- Lewat barisan menu atas: **Edit > Mark/Unmark Packet**
-- Atau cara lebih wajar: **Klik kanan di baris paket spesifik > Mark/Unmark Packet**
+Cara pakainya simpel:
+- Lewat baris menu atas: **Edit > Mark/Unmark Packet**
+- Atau cara yang lebih masuk akal: **Klik kanan di baris paket spesifik > Mark/Unmark Packet**
 
-> **Catatan Penting:** Tanda warna hitam yang diberikan ini cuma sementara alias hilang seiring selesainya sesi analisis. Saat aplikasi Wireshark ditutup tanpa mem-*backup* file ulang, tanda-tanda yang dibuat ikutan hilang.
+> **Catatan Penting:** Tanda stabilo hitam ini sifatnya cuma sementara, alias langsung ilang begitu sesi analisismu kelar. Kalau aplikasi Wireshark ditutup tanpa menyimpen ulang filenya, semua status *"Marked"* itu bakal ikutan musnah.
 
 ---
 
 ### Packet Comments
 
-Selain ditandai pakai stabilo (*Marking*), kita juga bisa memberi catatan digital alias *Comments* di paket tertentu. Fitur ini sangat membantu:
-- Sebagai pengingat (*reminder*) diri sendiri saat sedang melakukan investigasi panjang.
-- Sebagai alat komunikasi / penunjuk *point of interest* kalau file PCAP-nya ingin dianalisa bareng analis lain.
+Selain ditandain pake stabilo (*Marking*), kamu juga bisa nyisipin catatan digital alias *Comments* di paket tertentu. Fitur ini ngebantu banget:
+- Sebagai pengingat (*reminder*) buat dirimu sendiri pas lagi jalanin investigasi panjang.
+- Sebagai alat komunikasi / penunjuk titik penting kalau file PCAP-nya mau dianalisis keroyokan bareng analis SOC lain.
 
-Beda sama *Mark Packets* yang sementara, **Packet Comments bakal permanen** di dalam file PCAP sampai kita sendiri yang menghapusnya (*note:* pastikan pilih ekstensi `.pcapng` saat *save* supaya komentarnya ikut tersimpan).
+Beda sama *Mark Packets* yang raib kalau ditutup, **Packet Comments bakal permanen** nempel di dalam file PCAP sampai kamu sendiri yang ngehapusnya (*note:* pastiin pilih ekstensi `.pcapng` pas nge-*save* biar komentarnya tetep utuh).
 
-Cara aksesnya: **Klik kanan pada paket > Packet Comments...**
+Cara nambahinnya: **Klik kanan pada paket target > Packet Comments...**
 
 ### Export Packets
 
-Pernah kebayang buka file *capture* yang isinya ribuan atau jutaan paket? Berat banget. Karena Wireshark itu bukan IDS (dia cuma alat pembaca), kita yang harus memilah mana paket normal mana yang berbahaya.
+Pernah ngebayangin buka file *capture* yang ukurannya sampai jutaan paket? Berat banget, sumpah. Karena Wireshark itu cuma mesin pembaca statis (bukan *IDS* otomatis), kamulah yang ditugaskan milih mana paket normal dan mana paket jahat.
 
-Jika sudah menemukan kumpulan paket (*scope*) yang isinya aktivitas mencurigakan (*suspicious*), kita bisa memisahkan paket-paket tertentu saja ke dalam file PCAP baru. Hal ini bikin data lebih bersih dan relevan tanpa harus share 99% paket *noise* atau repetitif ke analis lain.
+Kalau kamu udah nemu kumpulan paket (*scope*) yang isinya aktivitas mencurigakan (*suspicious*), kamu bisa misahin paket-paket spesifik itu ke dalam file PCAP baru yang lebih terisolasi. Tujuannya biar datamu kelihatan bersih dan kamu ga perlu repot nge-*share* 99% paket *noise* ke analis lainnya.
 
-Cara mengekstraknya: Klik menu **File > Export Specified Packets...** 
+Cara ngekstraknya: Klik menu **File > Export Specified Packets...** 
 
 ### Export Objects (Files)
 
-Ini adalah trik andalan buat *Security Analyst*. Wireshark ternyata sanggup untuk **mengekstrak ulang file utuh** (misal gambar, PDF, lagu, atau bahkan *malware* / *executable*) yang pernah dikirim melalui jaringan tersebut
+Ini dia trik andalan para *Security Analyst*. Wireshark ternyata sanggup lho buat **mengekstrak ulang file utuh** (misal gambar, PDF, dokumen bajakan, atau *malware* / *.exe*) yang diem-diem lewat di jaringan tersebut.
 
-Syarat utamanya cuma satu: protokol waktu pengirimannya tidak dienkripsi alias masih bentuk polos atau didukung Wireshark (*HTTP*, *FTP*, *SMB*, *DICOM*, *IMF*, *TFTP*). Jadi kalau ada orang yang *tertangkap* (ketahuan) mengirim virus via HTTP, kita bisa mengekstrak *malware* mentahnya dari dalam Wireshark untuk dianalisis lebih lanjut secara statis maupun dinamis.
+Syarat mutlaknya cuma satu: protokol waktu pas ngirim harus nggak digembok enkripsi (alias masih polos) atau minimal protokol pendukung standar (*HTTP*, *FTP*, *SMB*, *DICOM*, *IMF*, *TFTP*). Jadi misal ada penjahat nyebar virus cuma via HTTP, kamu bisa langsung nyedot *malware* mentahnya pake Wireshark buat dibedah lebih dalam di ruang isolasi lab (*sandbox*).
 
-Cara akses fiturnya: Klik menu **File > Export Objects > [Pilih Protokolnya, misal HTTP]**
+Cara narik filenya: Klik menu **File > Export Objects > [Pilih Protokol terkait, misal HTTP]**
 
 ---
 
 ### Time Display Format
 
-Secara *default*, Wireshark mwngueutkan paket berdasarkan waktu capture dengan format **"Seconds Since Beginning of Capture"** (Detik ke-sekian sejak tombol *Start* ditekan). 
+Secara bawaan (*default*), Wireshark bakal ngurutin paket berdasarkan waktu penangkapan dengan format **"Seconds Since Beginning of Capture"** (Rekaman detik ke-sekian sejak tombol *Start* ditekan). 
 
-Format bawaan ini oke untuk durasi singkat, tapi **jelek jika untuk investigasi**. Bayangin kita harus mencocokan log *error* di server yang formatnya pake jam/tanggal (misalnya jam `10:30 Pagi`), dengan format detik Wireshark (misal detik ke `4502`). Bikin pusing
+Format detik ini emang oke buat narasi durasi singkat, tapi **jadi mimpi buruk kalau dipake buat investigasi**. Bayangin kamu disuruh nyocokin log *error* *Server* yang formatnya jam dan tanggal (misalnya kejadian terekam jam `10:30 Pagi`), dicocokin sama riwayat detik Wireshark (misal di detik ke `4502`). Bikin pening kepala.
 
-Makanya, *best practice* (kebiasaan umum) para analis adalah langsung mengubah format tampilannya ke **UTC Time** (*Coordinated Universal Time*) atau **Local Time** supaya waktunya gampang dicocokkan kapan *event* persisnya terjadi.
+Makanya, *best practice* (kebiasaan emas) analis kawakan adalah mutlak ngubah format tampilannya dulu ke **UTC Time** (*Coordinated Universal Time*) atau **Local Time** supaya patokan jamnya sinkron dan gampang dicari kapan kejadian *event* aneh itu persisnya numpang lewat.
 
-Cara ganti format waktunya:
-Klik menu baris atas **View > Time Display Format > [Pilih format yang lo butuhin, misal UTC Date and Time]**
+Cara ngerubah format jamnya:
+Klik opsi menu atas **View > Time Display Format > [Pilih format yang menurutmu paling pas, misal UTC Date and Time]**
 
 ---
 
 ### Expert Info
 
-Wireshark bukan cuma menampilkan data mentah, tapi dia juga bisa mendeteksi anomali (keanehan) atau masalah (*problems*) pada protokol tertentu. Fitur peringatan ini dikumpulkan dalam wujud **Expert Info**.
+Wireshark bukan cuma modal nampilin baris data mentah, tapi dia sediain fitur buat mendeteksi gejala aneh (anomali) atau masalah (*problems*) teknis protokol. Rangkuman peringatan intelijen ini dikumpulin di satu wadah bernama **Expert Info**.
 
-> **Peringatan:** Sistem Expert Info ini cuma bersifat *suggestion* (saran/dugaan). Jadi akan selalu ada kemungkinan terjadinya *false positive* (dibilang bahaya padahal normal) atau *false negative* (dibilang normal padahal bahaya).
+> **Peringatan:** Analisis sistem Expert Info ini murni bertindak sebagai *suggestion* (saran/dugaan awal). Jadi bakal selalu ada kemungkinan terjadinya *false positive* (disangka malapetaka padahal fajar wajar) atau *false negative* (disangka normal padahal bom waktu). Jangan ditelen mentah-mentah hasil tebakannya!
 
-Expert info membagi peringatannya ke dalam beberapa **Tingkat Keparahan (Severity)** yang dibedakan dengan warna khusus:
+Expert info membagi level peringatannya ke dalem tingkatan status **Keparahan (Severity)** yang dibedain lewat bendera warna:
 
 | Severity (Keparahan) | Colour (Warna) | Penjelasan Info |
 | :--- | :---: | :--- |
-| **Chat** | <span style="color:#007BFF">**Blue**</span> | Informasi standar soal alur kerja rutin (*usual workflow*). Normal dan bukan ancaman. |
-| **Note** | <span style="color:#17A2B8">**Cyan**</span> | Kejadian yang cukup penting (*notable events*), contoh: kode *error* di level aplikasi. |
-| **Warn** | <span style="color:#FFC107">**Yellow**</span> | Peringatan serius. Contoh: *error code* yang tidak wajar atau *problem statements*. |
-| **Error** | <span style="color:#DC3545">**Red**</span> | Masalah kritikal! Biasanya menandakan ada paket cacat (*malformed packets*). |
+| **Chat** | <span style="color:#007BFF">**Blue**</span> | Informasi standar soal alur kerja rutin (*usual workflow*). Sangat normal dan bukan sinyal ancaman. |
+| **Note** | <span style="color:#17A2B8">**Cyan**</span> | Kejadian yang cukup unik (*notable events*), biasanya memuat catatan kode *error* wajar di level aplikasi. |
+| **Warn** | <span style="color:#FFC107">**Yellow**</span> | Peringatan lumayan serius. Ngasih laporan *error code* yang nggak lumrah alias nimbulin masalah (*problem statements*). |
+| **Error** | <span style="color:#DC3545">**Red**</span> | Tanda silang darurat! Menandakan ada paket data pecah berantakan atau cacat teknis (*malformed packets*). |
 
-Selain tingkat keparahan, peringatan ini juga dikelompokkan berdasarkan **Tipe Kasus (Group)** yang paling sering ditemui:
+Selain dinilai dari seberapa parah, peringatan ini juga dikelompokin dari jenis asal usul **Kasusnya (Group)**:
 
 | Group A | Info Group A | Group B | Info Group B |
 | :--- | :--- | :--- | :--- |
-| **Checksum** | Ada *error* / ketidaksesuaian di *checksum* paket. | **Deprecated** | Protokol yang dipakai udah (*deprecated*). |
-| **Comment** | Ada paket yang disisipi komentar (*Packet comment*). | **Malformed** | Ditemukan bentuk paket cacat (*malformed*). |
+| **Checksum** | Bukti itungan validasi *checksum* paket nggak sinkron. | **Deprecated** | Protokol jaman old yang nekat digunain (*deprecated*). |
+| **Comment** | Ada analis yang ninggalin jejak komentar (*Packet comment*). | **Malformed** | Nemu paket yang strukturnya berantakan nggak wangun (*malformed*). |
 
 ---
 
 ## Packet Filtering
 
-Wireshark punya *filter engine* yang membantu analis mengurangi *traffic* yang tidak penting (*noise*) untuk fokus menemukan kejadian spesifik. 
+Wireshark punya *filter engine* sakti yang ngebantu analis ngebabat habis *traffic* yang ga penting (*noise*) biar bisa fokus nemuin kejadian spesifik. 
 
-Di Wireshark, *filter* dibagi jadi dua pendekatan utama:
-1. **Capture Filters:** dipakai untuk **Capture** paket tertentu saja *sebelum* trafficnya masuk dan disimpan ke *memory* aplikasi (misal: capture cuma paket HTTP port 80 aja).
-2. **Display Filters:** Dipakai untuk "**Menampilkan**" paket tertentu saja dari file PCAP yang *sudah berhasil ditangkap (capture)* secara utuh. (Fokus kita di *basic room* ini murni membahas *Display Filter*).
+Di Wireshark, *filter* itu dibagi jadi dua mesin utama:
+1. **Capture Filters:** Dipake buat **Nangkep** paket inceran aja *sebelum* gerbong *traffic*-nya masuk dan disimpen ke *memory* aplikasi (misal: "cuma mau nangkep paket HTTP port 80 aja, sisanya buang").
+2. **Display Filters:** Dipake buat "**Nampilin**" paket tertentu aja dari file PCAP yang *udah berhasil ditangkep* secara utuh. (Fokus kamu di *basic room* ini murni cuma bakal mainan *Display Filter*).
 
-Sebenarnya, menulis syntax/rumus *filter* itu lumayan ribet. Tapi Wireshark punya antarmuka (GUI), Ada satu aturan (*Golden Rule*) untuk analis jaringan yang malas untuk menulis rumus *queries* manual:
+Sebenernya nulis aturan/sintaks *filter* secara manual itu lumayan ribet. Bersyukurnya, Wireshark punya antarmuka gampang. Ada satu aturan (*Golden Rule*) buat analis jaringan yang mager nulis rumus *queries* sendiri:
 
 > **"If you can click on it, you can filter and copy it"** 
-> *(Kalau kamu bisa ngekliknya, berati kamu bisa memfilternya).*
+> *(Kalau kamu bisa ngeklik bagian itu, berarti kamu niscaya bisa ngefilternya).*
 
 ### Apply as Filter
 
-Ini adalah cara *basic* dan paling ampuh untuk *filtering*, kita tidak perlu menghafal syntax panjang-panjang. 
+Ini adalah cara paling *basic* tapi super ampuh buat *filtering*, kamu ga perlu repot ngafalin sintaks panjang-panjang. 
 
-Misal nemu *IP Address* atau Protokol tertentu di jendela *Packet List* atau *Packet Details*, kita cukup:
-1. Blok/Klik kolom target yang mau di filter.
+Misal nemu *IP Address* atau Protokol tertentu lewat depan mata di jendela *Packet List* atau *Packet Details*, kamu tinggal:
+1. Blok/Klik baris target yang mau dijaring.
 2. Klik kanan.
-3. Pilih **Apply as Filter** > Pilih cabangnya (misal: *Selected* buat filter yang persis sama, atau *Not Selected* buat membuang traffic itu).
+3. Pilih panggilannya **Apply as Filter** > Pilih cabangnya (misal: *Selected* buat filter yang persis nyocokin temuanmu, atau *Not Selected* buat ngebuang jauh-jauh traffic pengganggu itu).
 
-Otomatis, rumusnya akan terisi di kolom *Display Filter Bar* atas. sangat praktis kan? 
+Otomatis, rumusnya bakal nongol terisi sendiri di kolom *Display Filter Bar* atas. Praktis banget kan? 
 
-Penting untuk diingat: Total paket asli vs total paket yang berhasil difilter bakal selalu kelihatan di **Status Bar** paling bawah (pojok kanan).
+Penting buat nyatet: Total paket asli bawaan file dibandingin total paket sisa yang berhasil nembus filter bakal selalu ketauan di **Status Bar** paling bawah (pojok kanan).
 
 ---
 
 ### Conversation Filter
 
-Kalau fitur *Apply as Filter* di atas biasanya memfilter hanya dari **satu entitas** (misalnya cuma menampilkan IP A), maka berbeda dengan *Conversation Filter*.
+Kalau jurus *Apply as Filter* di atas biasanya memfilter cuma dari **satu entitas mutlak** (misalnya jaring cuma nampilin rumah Si A), maka beda cerita dengan *Conversation Filter*.
 
-Terkadang kalau kita sedang memeriksa satu aktivitas mencurigakan, kita juga ingin melihat **seluruh riwayat percakapannya**. Kita ingin melihat semua paket yang saling terhubung bolak-balik antara dua alamat IP atau *Port* yang spesifik. Nah, disinilah *Conversation Filter* berguna.
+Terkadang pas kamu lagi nyelidikin satu aktivitas yang baunya nggak enak, kamu pasti butuh ngeliat **seluruh riwayat percakapannya**. Kamu kepengen liat semua paket yang lari ganti-gantian bolak-balik antara dua alamat IP atau *Port* spesifik tersebut. Nah, di sinilah wujud *Conversation Filter* berjasa.
 
-Fitur ini bertugas untuk membedah "percakapan saksi utama" dan **menyembunyikan total** semua lautan paket (*noise*) yang tidak relevan dari layar utama kita.
+Fitur ini bertugas buat ngulitin "percakapan saksi utama" dan **nyembunyiin total** semua lautan paket pelengkap (*noise*) yang nggak relevan dari *pane* utamamu.
 
-Cara panggilnya:
-- **Klik kanan > Conversation Filter > [Pilih tipenya, misal IPv4 atau TCP]**
+Cara aksesnya:
+- **Klik kanan > Conversation Filter > [Pilih target sasarannya, misal IPv4 atau TCP]**
 - Atau via baris menu atas: **Analyse > Conversation Filter**
 
 ---
 
 ### Colourise Conversation
 
-Opsi ini sebenarnya mirip dengan *Conversation Filter*, tapi ada satu perbedaan yang mencolok: **Dia tidak menyembunyikan paket lain**.
+Opsi ini sebenarnya beda-beda tipis deketnya sama *Conversation Filter* barusan, tapi ada satu beda yang nge-jreng: **Dia sama sekali ga nyembunyiin paket dari aktor lain**.
 
-Alih-alih memfilter dan mengurangi jumlah paket yang tampil di layar, fitur *Colourise Conversation* ini cuma bekerja sebagai penanda stabilo untuk paket-paket yang saling berhubungan. Warnanya akan menimpa aturan pewarnaan (*Colouring Rules*) yang sudah ada sebelumnya, sehingga rantai komunikasi target langsung terlihat menonjol di tumpukan PCAP.
+Ketimbang memfilter dan mengurangi jumlah paket yang tampil di layar, opsi *Colourise Conversation* cuma naruh warna stabilo doang buat narik perhatian blok paket yang saling tektokan. Warnanya bakal nimpa aturan pewarnaan (*Colouring Rules*) bawaan. Efeknya, rantai dialog inceran kamu langsung keliatan nyala terang nonjol di tumpukan PCAP.
 
 Cara pakainya:
-1. **Klik kanan > Colourise Conversation** atau via menu **View > Colourise Conversation**.
-2. Kalau sudah selesai analisis dan ingin mengembalikan warnanya seperti semula, cukup eksekusi **View > Colourise Conversation > Reset Colourisation**.
+1. **Klik kanan paket target > Colourise Conversation** (atau via menu **View > Colourise Conversation**).
+2. Kalau investigasi udah kelar dan kamu pengen ngebalikin warnanya kayak sediakala, tekan **View > Colourise Conversation > Reset Colourisation**.
 
 ### Prepare as Filter
 
-Nah, kalau fitur *Apply as Filter* (yang kita bahas di awal) itu ibarat Sekali klik, filter langsung jalan maka *Prepare as Filter* ini ibarat Draft dulu, jalaninnya nanti
+Nah, kalau fitur *Apply as Filter* (yang kita bahas di awal) itu ibarat "Sekali klik, filter lansung jalan", si *Prepare as Filter* ini lebih rileks pakenya layaknya "Bikin draf dulu, eksekusinya nanti".
 
-Fitur ini berguna kalau kita mau membuat *Display Filter* yang kompleks atau menggabungkan beberapa kondisi (menggunakan logika **AND** / **OR**). Wireshark hanya akan **mengetikkan** sintaks *query* tersebut di kolom pencarian atas, tapi akan menunggu sampai kita menekan tombol `Enter` secara manual buat mengeksekusinya.
+Opsi ini ngena banget pas kamu niat meracik *Display Filter* yang syaratnya kompleks berlapis (butuh paduan logika **AND** / **OR**). Si Wireshark cuma bertugas ngebantu **ngetikin** sintaks algoritmanya di kolom pencarian atas, tapi bakalan diam nunggu kamu neken tombol `Enter` secara manual buat mutusin eksekusinya.
 
-Cara aksesnya persis sama: **Klik kanan > Prepare as Filter**. Kemudian kita tinggal gabungkan saja memakai opsi seperti *... and selected* atau *... or selected*.
+Cara aksesnya persis sama kaya sebelahnya: **Klik kanan > Prepare as Filter**. Barulah kamu tempelin aja gabungan logikanya pake pilihan opsi semacam *... and selected* atau *... or selected*.
 
 ---
 
 ### Apply as Column
 
-Secara *default*, *Packet List* di Wireshark cuma menampilkan kolom standar (No, Time, Source, Destination, Protocol, Length, Info). Tapi bagaimana kalau kita butuh melihat nilai spesifik dari lapisan OSI (misalnya melihat panjang header tertentu) langsung di halaman depan tanpa perlu membukanya satu-satu?
+Secara bawaan (*default*), *Packet List* tabel di Wireshark pelit nampilin jendela data (cuma ngasih kolom standar No, Time, Source, Destination, Protocol, Length, Info). Terus gimana dong kalau kamu pengen mantau nilai spesifik daleman lapisan OSI (misalnya manjangin ukuran besaran *header*) persis nongkrong di halaman depan tanpa ngabisin waktu ngebukanya satu-satu?
 
-Gunakan fitur **Apply as Column**. Fitur ini memungkinkan kita mengambil suatu nilai/parameter dari *Packet Details*, lalu menjadikannya "kolom permanen baru" di tabel *Packet List*. Ini sangat efisien untuk membandingkan satu parameter spesifik melintasi ribuan paket secara visual.
+Solusi nyamannya: pake fitur **Apply as Column**. Fitur ini ngasih kebebasan buat ngerampas satu nilai/parameter sakti dari kedalaman *Packet Details*, lalu menyulapnya buat nongkrong selamanya jadi "kolom permanen baru" di halaman muka tabel *Packet List*. Ini efisien parah buat kerjaan nyocokin satu parameter kunci ngelintasin ribuan paket sekaligus dengan sekilas mata!
 
 Cara pakainya gampang:
-Cari *value* yang diinginkan di jendela *Packet Details* > **Klik kanan > Apply as Column**. (Ingat, kita bisa menggeser atau menyembunyikan kolom kapan pun dengan klik kanan di *header* tabel).
+Cari *value* incerannya di jendela *Packet Details* > **Klik kanan > Apply as Column**. (Oiya, kalau posisinya jelek, arah kolom barunya ini bebas ditarik geser, atau disembunyiin kapan pun dengan ngklik kanan di *header* tabel atasannya).
 
 ### Follow Stream
 
-Wireshark menangkap data mentah (raw traffic) dalam wujud potongan-potongan paket kecil (terfragmentasi). Untuk seorang analis jaringan, membaca satu-satu serpihan paket ini jelas bikin bingung, apalagi kalau mau melihat wujud utuh aplikasinya.
+Wireshark emang kerjanya nanduk data mentah (*raw traffic*) pake porsi sekecil sisa serpihan paket (terfragmentasi). Sebagai analis jaringan, stres mah iya kalau dititah ngebaca potongan sisa ini satu per satu. Biar waras dan tau makna aplikasinya secara utuh, kita butuh alat penerjemah rekonstruksi.
 
-Fitur **Follow Stream** ibarat mesin penyusun teka-teki (*puzzle*). Fitur ini akan menyusun dan merangkai (*reconstruct*) serpihan ratusan paket menjadi satu aliran data utuh persis seperti yang dibaca oleh aplikasi (Application-level data). 
+Fitur luhur **Follow Stream** ibarat mesin penyusun *teka-teki puzzle otomatis*. Opsi ini bakal nyusun ulang dan ngerangkai (*reconstruct*) pecahan dari ratusan debu paket tadi jadi satu aliran utuh dialog aplikasi (*Application-level data*). 
 
-Kalau jaringannya tidak dienkripsi (seperti HTTP biasa, FTP, atau Telnet), fitur ini bisa langsung membaca *username*, *password*, atau percakapan utuh dalam wujud teks murni (*plain text*) di jendela terpisah. Di jendela stream ini, teks berwarna **merah** menandakan arahan dari *Client* (Client -> Server), dan teks **biru** berarti respon dari *Server* (Server -> Client).
+Kalau naasnya lajur jaringannya telanjang bulat alias bodong nggak dienkripsi (seperti HTTP biasa, FTP, atau fasilitas Telnet), menu ini langsung berubah wujud jadi **senjata pamungkas**. Kamu bisa dengan gampang membaca wujud *username*, *password*, atau curhatan chat utuh aslinya di wujud baris (*plain text*) layar kepisah. Di dialog papannya stream ini, teks berwarna **merah** nandain bacotan sang *Client* (menuju Server), dan arah teks **biru** berarti itu tektokan balasannya si *Server* (ke Client).
 
-Cara aksesnya:
-**Klik kanan pada paket target > Follow > [Pilih Stream-nya, misal TCP / UDP / HTTP Stream]**
+Cara mbukanya standar:
+**Klik kanan di paket data target > Follow > [Pilih Stream salurannya, misal TCP / UDP / HTTP Stream]**
 
 ---
 
 ## Simple Display Filter Queries
 
-Selain mengandalkan klik kanan antarmuka, untuk bergerak lebih cepat analis juga sering mengetik langsung *query filter* dasar di baris pencarian (*Display Filter Bar*). Wireshark menyediakan banyak sekali opsi, tapi kita akan bahas filter yang paling mendasar.
+Selain mengandalkan *cheat* klik kanan antarmuka, analis tulen di lapangan lebih nyaman dan cepet geraknya pake ngetik *query filter* dasar langsung di baris penelusuran (*Display Filter Bar*). Wireshark punya banyak banget opsi, tapi kamu bakal kita bekelin filter yang paling esensial dan mendasar.
 
 ### Filter By Protocol Name
-Cara paling mudah, Kalau kita hanya ingin melihat lalu lintas khusus untuk satu protokol (membuang semua trafik yang tidak relevan):
-- Ketik langsung nama protokolnya *(harus huruf kecil semua)*.
-- Contoh: `http`, `ftp`, `dns`, `arp`, `icmp`, `ssh`.
+Metode pencarian tersolid dan lugu. Pas kamu pengen ngerucutin saringan khusus buat merhatiin satu protokol doang (ngebabat spesies trafik liar lainnya):
+- Langsung ketik nama jenis protokolnya di *search bar* *(wajib diketik dalam huruf kecil semua)*.
+- Contoh amunisinya: `http`, `ftp`, `dns`, `arp`, `icmp`, `ssh`.
 
 ### Filter By Protocol Port Number
-Kadang aplikasi menggunakan *port* yang tidak standar, atau sebaliknya, kita ingin merestriksi pencarian berdasarkan nomor *port*-nya tanpa memedulikan protokol jaringannya.
+Pusing nyari karna aplikasinya iseng pake *port* ajaib, atau saat kamu ditarget cuma boleh peduli fokus ke nomor gembok *port*-nya si tersangka ngabain embel-embel si jaringannya apa wujud protokolnya.
 
-Sintaks penulisan dasarnya memadukan nama protokol Transport Layer (`tcp` atau `udp`) ditambah atribut `port` dan angka portnya.
-- Contoh format: `<protocol>.port == <nomer port>`
-- Contoh penerapan murni: `tcp.port == 80` (Hanya akan menampilkan traffic HTTP di atas TCP port 80).
+Sintaksnya gampang, tinggal paduin jenis nama *Transport Layer*-nya (`tcp` atau `udp`) digabung lekat kata *port* dan nyebutin angkanya.
+- Pola formatnya: `<protocol>.port == <nomer port>`
+- Contoh skenario real saringannya: `tcp.port == 80` (Hanya bakalan rela ngelolosin wujud traffic HTTP yang numpang jalurnya di port 80 doang).
 
 ### Filter By IP
-Saat menganalisis file PCAP, seringkali kita butuh mengisolasi *traffic* yang keluar-masuk dari satu alamat IP spesifik (entah itu IP *Server* atau kecurigaan ke IP *Attacker*).
+Kebutuhan pas lagi ngebongkar arsip PCAP, rata-rata kamu diwajibin buat ngisolasi jalur *traffic* cuma murni terpaku ke satu alamat IP target aja (entah IP si *Server* atau ngintai mesin IP si *Attacker*).
 
-Sintaks dasar untuk menarget IP secara general (berlaku sebagai pengirim atau penerima) adalah `ip.addr`.
-- Contoh format: `ip.addr == <IP address>`
-- Contoh penerapan: `ip.addr == 192.168.1.2` (Hanya akan menampilkan paket yang baris *Source* atau *Destination*-nya mengandung IP tersebut).
+Pondasi utama sintaks dasarnya saat menarget IP general ini (entah dia yang ngirim pesen atau yang dapet paketan) itu namanya adalah `ip.addr`.
+- Contoh pola manggilnya: `ip.addr == <IP address>`
+- Contoh penerapan eksekusinya: `ip.addr == 192.168.1.2` (Bakal langsung nyaring jaringan supaya ngeluarin wujud paket yang baris *Source* ato *Destination*-nya mengandung IP tersebut).
 
 ---
 
 ## Real-World Relevance
 
-Di skenario *Security Operations Center (SOC)* atau simulasi *Red Teaming* dunia nyata, Wireshark ibarat mata elang para analis:
-- **Analisis Malware & Incident Response:** *Malware* jadul atau C2 (*Command and Control*) murahan kadang cuma berkomunikasi pakai HTTP atau DNS biasa tanpa perlindungan enkripsi sepeserpun. Tim SOC akan menggunakan *Follow Stream* dan *Export Objects* yang sudah kita pelajari demi merekonstruksi alat retas tersebut (*malware payload*) langsung dari *network traffic* sebelum mengeksekusinya di dalam ruang lab *sandbox*.
-- **Pencurian Kredensial (Cleartext Sniffing):** Dalam fase pergerakan lateral (*Lateral Movement*), penyerang yang sudah lolos ke dalam Intranet bisa membuka Wireshark (atau `tcpdump` di OS target) untuk menyadap dan merampas akun dewa (*admin creds*) yang dikirim via FTP, Telnet, atau aplikasi web internal yang malas di-instal sertifikat SSL/HTTPS.
-- **Kesimpulan Risiko:** Teknik penyadapan ini sangat mengerikan karena tidak meninggalkan *log* serangan yang berisik di *Intrusion Detection System (IDS)* manapun—karena sifatnya yang cuma "membaca/menguping", bukan mengirim jurus *exploit*. 
+Di skenario ketatnya rutinitas *Security Operations Center (SOC)* atau simulasi medan perang *Red Teaming* di dunia nyata, Wireshark ibarat "Mata Elang" analis:
+- **Analisis Malware & Incident Response:** *Malware* jadul atau skrip C2 (*Command and Control*) kampungan kadang masih nekat berkomunasi murni via HTTP atau DNS biasa tanpa pelindung enkripsi sepeserpun. Pasukan SOC bakal menggunakan *Follow Stream* dan *Export Objects* yang barusan kamu pelajari buat merakit bongkahan *malware payload* langsung nge-ekstraknya utuh dari *network traffic* sebelum mengeksekusinya di dalam ruang kurungan lab forensik *sandbox*.
+- **Pencurian Kredensial (Cleartext Sniffing):** Dalam fase lompat melintang antar mesin (*Lateral Movement*), penyerang yang udah mujur nembus Intranet sasaran bisa kapan aja gelar Wireshark (atau wujud terminal alias `tcpdump` di OS target) buat nyadap lalin dan ngerampok akun dewa (*admin creds*) staf dalem yang masih teledor dikirim via FTP, Telnet tua, atau parahnya aplikasi web internal yang pada alergi di-instal gembok sertifikat SSL/HTTPS.
+- **Kesimpulan Risiko:** Teknik serangan berbasis penyadapan murni ini ngeri banget! Kenapa? Karena perbuatannya nguping nyadap alat sekelas Wireshark sama sekali kagak ninggalin *log* bising cipratan serangan yang mancing ngamuknya alarm *Intrusion Detection System (IDS)* manapun—alasan amannya karena sifatnya yang cuma "duduk, mendengarkan/nguping", bebas nangkep info ga ngelakuin aksi ofensif nembakin meriam *exploit*. 
