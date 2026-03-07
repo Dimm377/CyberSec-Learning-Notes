@@ -78,3 +78,22 @@ Sebagai analis pemula, insting yang harus kamu tajamkan adalah mencari anomali k
 - Alamat *Public IP* aneh yang bukan mikik perusahaanmu.
 - Tulisan berakhiran `.exe` atau `.pdf`.
 - Perintah *download* atau eksekusi *shell/CMD*.
+
+**Membersihkan Sampah Script (Deobfuscation) Pakai CyberChef**
+Ngomong-ngomong soal anomali, pas kamu *scroll* hasil *decompress* tadi, kamu gampang banget nemuin baris *script* panjang yang bentuknya penuh simbol aneh, misalnya:
+`"^p*o^*w*e*r*s^^h*e*l^*l* *^-w*i*n^*d*o*w^*s*t*y^*l*e*..."`
+
+Itu bukan *error*. Pembuat *malware*-nya sengaja menyisipkan karakter sampah (kayak `*` dan `^`) biar *tools* antivirus bingung membacanya. Teknik ngumpetin wujud asli ini namanya **Obfuscation**.
+
+Dilihat dari baris *script* (contoh variabel `Sqtnew`), ketahuan kalau ada perintah `Replace` buat membuang karakter `*` dan `^` sebelum *script*-nya dieksekusi diam-diam di komputer korban. 
+
+Tugas kamu sekarang adalah membuang sampah itu secara manual biar wujud aslinya kelihatan, tools yang paling pas buat kerjaan ginian adalah **CyberChef** (*swiss army knife*-nya anak *cybersec*).
+
+*Langkah praktek:*
+1. Buka **CyberChef** (bisa dari *browser* di dalam mesin REMnux atau _online_).
+2. *Copy* kalimat acak-acakan tadi dan *paste* ke kotak **Input** di CyberChef.
+3. Di sebelah kiri (*Operations*), cari dan geser fitur **Find/Replace** ke kolom *Recipe* (seret dua kali karena kita mau membuang dua simbol berbeda).
+4. Di Find/Replace pertama: Isi kolom *Find* dengan tanda bintang `*`, biarkan kotak *Replace* **kosong melompong** (alias dihapus).
+5. Di Find/Replace kedua: Isi kolom *Find* dengan tanda caping `^`, dan biarkan kotak *Replace* kosong juga.
+
+dan di kotak **Output** pojok kanan bawah, deretan sampah itu bakal terbaca jelas sebagai perintah jahat (*Powershell* tersembunyi).
