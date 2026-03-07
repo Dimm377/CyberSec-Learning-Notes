@@ -39,7 +39,7 @@ Nah, fitur *Proxy* ini adalah nyawanya Burp Suite. Dia memerankan posisi penipu 
 Di belantara internet, kalau kamu ngelepas rante proxy, Burp bakal mencatat smua sampah trafik latar (kayak paket *telemetry* Google atau *update window*s). Biar fokus ga ambyar, kamu butuh The Scope.
 
 - **Site Map**: Fitur visual keren membentuk jaring laba-laba. Dia ngasih gambaran peta struktur folder hirarki dan dahan file yang terintip terang dari web aplikasi targetmu.
-- **Scope**: Kekang pembatas lu lho! Bikin *traffic log* kamu disaring (di-*filter*) super bersih. Burp cuma bakal pasang mata dan telinga menangkap gerak-gerik trafik dari domain/URL yang emang udah disahkan jadi wilayah sasarannya lho doang.
+- **Scope**: Kekang pembatas lu lho! Bikin *traffic log* kamu disaring (di-*filter*) super bersih. Burp cuma bakal pasang mata dan telinga menangkap gerak-gerik trafik dari domain/URL yang emang udah disahkan jadi wilayah sasarannya doang.
 
 ---
 
