@@ -27,6 +27,7 @@ Setiap tingkatan dipisahkan pakai tanda titik (`.`) dan **dibaca dari kanan ke k
 </p>
 
 #### Root Domain
+
 Ini tingkatan tertingginya. Berada di ujung paling atas sistem hierarki, dilambangkan cukup dengan satu tanda titik (`.`). 
 Contoh: Di URL `tryhackme.com.`, nah tanda `.` paling akhir yang tidak terlihat itu adalah *Root Domain*. Root ini krusial buat mengarahkan pencarian alamat ke cabang yang benar.
 

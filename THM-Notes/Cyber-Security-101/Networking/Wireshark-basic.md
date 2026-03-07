@@ -503,6 +503,20 @@ Kadang aplikasi menggunakan *port* yang tidak standar, atau sebaliknya, kita ing
 
 Sintaks penulisan dasarnya memadukan nama protokol Transport Layer (`tcp` atau `udp`) ditambah atribut `port` dan angka portnya.
 - Contoh format: `<protocol>.port == <nomer port>`
-- Contoh penerapan murni: `tcp.port == 80` (Hanya akan menampilkan trafik HTTP di atas TCP port 80).
+- Contoh penerapan murni: `tcp.port == 80` (Hanya akan menampilkan traffic HTTP di atas TCP port 80).
+
+### Filter By IP
+Saat menganalisis file PCAP, seringkali kita butuh mengisolasi *traffic* yang keluar-masuk dari satu alamat IP spesifik (entah itu IP *Server* atau kecurigaan ke IP *Attacker*).
+
+Sintaks dasar untuk menarget IP secara general (berlaku sebagai pengirim atau penerima) adalah `ip.addr`.
+- Contoh format: `ip.addr == <IP address>`
+- Contoh penerapan: `ip.addr == 192.168.1.2` (Hanya akan menampilkan paket yang baris *Source* atau *Destination*-nya mengandung IP tersebut).
 
 ---
+
+## Real-World Relevance
+
+Di skenario *Security Operations Center (SOC)* atau simulasi *Red Teaming* dunia nyata, Wireshark ibarat mata elang para analis:
+- **Analisis Malware & Incident Response:** *Malware* jadul atau C2 (*Command and Control*) murahan kadang cuma berkomunikasi pakai HTTP atau DNS biasa tanpa perlindungan enkripsi sepeserpun. Tim SOC akan menggunakan *Follow Stream* dan *Export Objects* yang sudah kita pelajari demi merekonstruksi alat retas tersebut (*malware payload*) langsung dari *network traffic* sebelum mengeksekusinya di dalam ruang lab *sandbox*.
+- **Pencurian Kredensial (Cleartext Sniffing):** Dalam fase pergerakan lateral (*Lateral Movement*), penyerang yang sudah lolos ke dalam Intranet bisa membuka Wireshark (atau `tcpdump` di OS target) untuk menyadap dan merampas akun dewa (*admin creds*) yang dikirim via FTP, Telnet, atau aplikasi web internal yang malas di-instal sertifikat SSL/HTTPS.
+- **Kesimpulan Risiko:** Teknik penyadapan ini sangat mengerikan karena tidak meninggalkan *log* serangan yang berisik di *Intrusion Detection System (IDS)* manapun—karena sifatnya yang cuma "membaca/menguping", bukan mengirim jurus *exploit*. 
