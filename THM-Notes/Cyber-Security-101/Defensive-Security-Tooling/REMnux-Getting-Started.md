@@ -96,4 +96,6 @@ Tugas kamu sekarang adalah membuang sampah itu secara manual biar wujud aslinya 
 4. Di Find/Replace pertama: Isi kolom *Find* dengan tanda bintang `*`, biarkan kotak *Replace* **kosong melompong** (alias dihapus).
 5. Di Find/Replace kedua: Isi kolom *Find* dengan tanda caping `^`, dan biarkan kotak *Replace* kosong juga.
 
+![CyberChef Deobfuscation](../../Assets/Images/agentesla.png)
+
 dan di kotak **Output** pojok kanan bawah, deretan sampah itu bakal terbaca jelas sebagai perintah jahat (*Powershell* tersembunyi).
