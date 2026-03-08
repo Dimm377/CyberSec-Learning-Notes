@@ -113,3 +113,33 @@ Berikut adalah daftar dan fungsinya:
 | **FLOSS** | Ahli pemeras teks. Dia bertugas mengekstrak dan memperjelas teks/kata-kata rahasia (*strings*) yang sengaja disamarkan (*obfuscated*) di dalam program jahat menggunakan teknik *static analysis* tingkat lanjut. |
 
 > Tips: Kamu bisa ikutan ngebuka *tools*-nya satu-satu di dalam **FlareVM** biar terbiasa sama <i>interface</i> aslinya pas kita bahas cara kerjanya lebih dalam nanti.
+
+### 1. Process Monitor (Procmon)
+
+**Procmon** adalah alat super canggih bawaan Windows, Bayangkan **Procmon** sebagai **Dashcam Kamera Pelacak** beresolusi tinggi yang terpasang di jantung sistem operasi komputer kamu.
+
+Tugas utamanya adalah membiarkan kamu **melihat, merekam, dan melacak** semua aktivitas *file* Windows secara *real-time*. Dia terus-menerus memantau dan mencatat tiga area vital:
+1. Pergerakan *File System* (buka/tutup/edit *file*).
+2. Perubahan *Registry* (buku catatan inti Windows).
+3. Aktivitas *Thread/Process* (naik-turunnya program yang hidup).
+
+Karena kemampuannya yang sangat detail, *tool* ini menjadi andalan untuk riset *malware*, *troubleshooting* aplikasi, hingga investigasi forensik digital.
+
+**Contoh Investigasi Menggunakan Procmon:**
+
+Mari kita lihat tangkapan layar dari hasil rekaman Procmon di bawah ini:
+
+![Procmon Activity Log](../../Assets/Images/Procmon.png)
+
+Berdasarkan baris rekaman tersebut, terlihat bahwa ada proses bernama `lsass.exe` yang sukses membaca *file* penting bernama `samsrv.dll` secara berulang kali.
+
+**Apa itu LSASS?**
+**LSASS** (*Local Security Authority Subsystem Service*) adalah pos satpam utama di Windows yang mengurus urusan autentikasi (pemeriksaan identitas dan *password* pengguna saat *login*). Karena dia memegang kunci, aplikasi wajar ini akan sering berkomunikasi dengan *file* sistem krusial lainnya (seperti `lsasrv.dll`).
+
+**Lalu, di mana letak bahayanya?**
+Meski `lsass.exe` adalah aplikasi resmi bawaan Windows, dia sering **dijadikan target vulnerability**. *Hacker* sangat suka menggunakan *tool* jahat seperti **Mimikatz** untuk menyerang dan menyedot memori LSASS demi mencuri *password* yang ada di sana (teknik ini disebut *Credential Dumping*).
+
+**Mental Model Analis:**
+Jadi, saat kamu melihat layar Procmon, insting utamamu adalah mencari **anomali (keganjilan)**. Jika kamu melihat aktivitas yang mencurigakan di sekitar proses LSASS misalnya ada program asing yang tiba-tiba membaca atau mencoba menulis data ke dalam memori `lsass.exe` itu adalah sinyal bahaya (bendera merah) yang harus segera kamu investigasi lebih dalam
+
+*(Tenang saja, contoh gambar di atas hanyalah aktivitas sistem normal, tidak ada tanda-tanda infeksi malware).*
