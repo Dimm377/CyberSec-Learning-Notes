@@ -169,4 +169,28 @@ Ini membuktikan bahwa aplikasi CFF Explorer tadi secara sah dibuka melalui layar
 Teknik ini sangat berguna untuk memantau apakah ada proses aneh yang mendadak dimunculkan **(spawned)** dari aplikasi yang tidak seharusnya. Pelaku kejahatan cyber (*threat actors*) sangat sering menyalahgunakan dokumen kantoran (seperti Word Document, *file* LNK, atau ISO) untuk menyebarkan ancaman.
 
 **Mental Model Analis:**
-Ketika kamu curiga, lihat *parent process*-nya, Sebagai contoh, sangatlah wajar jika aplikasi *Microsoft Word* (*Parent*) membuka dokumen teks (*Child*). Tapi akan menjadi **sangat tidak wajar dan berbahaya** jika *Microsoft Word* (*Parent*) tiba-tiba secara diam-diam membuka aplikasi *Command Prompt* atau *PowerShell* (*Child*) di belakang layar. Itulah fungsi utama Process Explorer: melacak asal-usul lahirnya sebuah program jahat
+Ketika kamu curiga, lihat *parent process*-nya Sebagai contoh, sangatlah wajar jika aplikasi *Microsoft Word* (*Parent*) membuka dokumen teks (*Child*). Tapi akan menjadi **sangat tidak wajar dan berbahaya** jika *Microsoft Word* (*Parent*) tiba-tiba secara diam-diam membuka aplikasi *Command Prompt* atau *PowerShell* (*Child*) di belakang layar. Itulah fungsi utama Process Explorer: melacak asal-usul lahirnya sebuah program jahat
+
+### 3. HxD (Hex Editor)
+
+Kalau *Process Explorer* tadi mengurus program yang lagi hidup, **HxD** adalah spesialis operasi bedah untuk *file* yang mati. Alat ini disebut *Hex Editor*, yang fungsinya ibarat **Mikroskop DNA**. Ia sanggup membedah struktur paling dasar penyusun sebuah *file* hingga ke level bongkahan angka primitif (*hexadecimal*). 
+
+Dengan HxD, kamu bisa membaca, mencari, memulihkan, hingga memodifikasi data mentah biner secara sangat presisi.
+
+**Contoh Investigasi Menggunakan HxD:**
+
+Anggap saja analis kita menemukan *file* teks mencurigakan bernama `possible_medusa.txt`. Pas dibuka pakai *Notepad* biasa, bentuknya pasti cuma huruf acak-acakan kayak bahasa alien. Nah, lewat HxD, wujud aslinya akan ketahuan.
+
+![HxD Hex Editor Inspection](../../Assets/Images/HxD.png)
+
+Cara membaca *interface* HxD di atas:
+- Ruangan sebelah **Kiri** menampilkan susunan kode DNA mentah dari *file* (kumpulan angka/huruf *Hexadecimal*).
+- Ruangan sebelah **Tengah** mencoba menerjemahkan angka-angka DNA tadi menjadi bentuk teks *ASCII* (tulisan manusia) sebisanya.
+- Ruangan sebelah **Kanan** adalah panel **Data Inspector**. Panel ini sangat krusial karena bertugas sebagai kalkulator pintar penyadur bahasa alien ke berbagai wujud tipe data manusia (apakah itu angka biasa, tanggal, atau nilai spesifik spesifik lainnya).
+
+**Mental Model Analis - Number "4D 5A":**
+Satu insting terpenting analis saat membuka sebuah *file* asing pakai Hex Editor adalah melihat dua pasang angka pertama di pojok kiri atas (*Header*). Pada gambar di atas, tertulis angka **`4D 5A`** (atau huruf "MZ" di sisi ASCII).
+
+Ini adalah **Bendera Merah**, Angka `4D 5A` adalah kode sandi universal bawaan Microsoft Windows untuk menandakan bahwa *file* ini adalah **Aplikasi yang Bisa Dijalankan (*Executable* / `.exe`)**, terlepas dari apapun nama dan ekstensinya  
+
+Jadi, walaupun *hacker*-nya pintar menyamarkan nama *file* menjadi `possible_medusa.txt` biar dikira tulisan *memo* biasa, HxD berhasil membongkar kedoknya bahwa *file* itu sejatinya siap dieksekusi sebagai virus. Jangan pernah ketipu sama tampilan luar nya ya
