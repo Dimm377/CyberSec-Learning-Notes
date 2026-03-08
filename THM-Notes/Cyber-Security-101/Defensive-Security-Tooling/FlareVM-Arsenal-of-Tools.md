@@ -47,7 +47,38 @@ Ada dua metode utama dalam menginvestigasi sebuah *malware*. Ibarat pos satpam y
 > - **Dynamic Analysis:** Mengambil paket tersebut, memasukkannya ke dalam ruangan isolasi tebal (*sandbox*), lalu sengaja **membuka dan memicunya** untuk melihat efek apa yang terjadi pada ruangan tersebut (metode tes langsung).
 
 Alat pemantau andalannya:
-- **Process Hacker**: Versi "Task Manager" super canggih. Sangat informatif untuk memantau program apa saja yang sedang berjalan (*process watcher*) dan melihat penggunaan memori sistem.
+- **Process Hacker**: Versi Task Manager yang super canggih. Sangat informatif untuk memantau program apa saja yang sedang berjalan (*process watcher*) dan melihat penggunaan memori sistem.
 - **PEview**: Alat ringan untuk mengintip isi dari komponen pembangun *file* `.exe` (berjenis PE).
 - **Dependency Walker**: Alat yang digunakan untuk melihat daftar *file library* pendukung (DLL bawaan Windows) apa saja yang diam-diam "dipanggil" dan dibutuhkan oleh suatu aplikasi.
 - **DIE (Detect It Easy)**: Alat serbaguna untuk mendeteksi apakah suatu *file* dilindungi oleh pengunci (*packer*, *cryptor*) dan alat pembuat (*compiler*) tertentu.
+
+### 4. Forensics & Incident Response
+Kategori ini ibarat tim forensik polisi (*CSI*) yang turun ke tempat kejadian perkara (TKP). *Digital Forensics* bertugas mengumpulkan, menganalisis, dan mengamankan barang bukti (dari *harddisk*, jaringan, sampai rekaman RAM memori). Sementara *Incident Response* fokus pada pertolongan pertama: mendeteksi, mengisolasi, membasmi ancaman pencuri (*hacker/malware*), dan memulihkan sistem yang rusak.
+
+Alat spesialis forensik:
+- **Volatility**: *Framework* wajib untuk menganalisis dan membongkar barang bukti berupa rekaman memori (*RAM dump*).
+- **Rekall**: *Framework* alternatif untuk forensik memori, biasanya sangat berguna saat tim sedang melakukan respon insiden.
+- **FTK Imager**: Alat standar industri forensik untuk mengkloning (membuat *image*) isi *harddisk* mentah-mentah secara aman untuk dianalisis.
+
+### 5. Network Analysis
+Ini dia alat penyadap jaringannya analis cyber. Ibarat memasang CCTV dan alat penyadap telepon di seluruh rumah, alat-alat ini membantu kamu memeriksa aliran pola data yang keluar-masuk di kabel jaringan.
+
+Alat pemantau jaringan:
+- **Wireshark**: Mikroskop jaringan paling populer di dunia. Bisa merekam dan membedah percakapan data (protokol) antar komputer secara *live*.
+- **Nmap**: Pemindai jaringan legendaris pemetaan komputer dan mencari tahu pintu (*port*) mana saja yang terbuka dan rentan diserang.
+- **Netcat**: Tool Swiss Army Knife dunia jaringan. Bisa dipakai untuk membaca dan menulis data kosong ke dalam koneksi jaringan, sangat berguna untuk tes sederhana.
+
+### 6. File Analysis
+Ibarat meneliti sidik jari dan komposisi kimiawi darah di lab, teknik ini murni digunakan untuk meneliti susunan komponen sebuah *file* dari dasar untuk mencari bibit ancaman keamanan di dalamnya.
+
+Alat bedah *file*:
+- **FileInsight**: Program spesialis untuk membaca dan mengedit *file* biner (kumpulan angka bahasa komputer).
+- **Hex Fiend**: *Hex editor* (editor yang menampilkan angka dasar heksadesimal komputer) yang sangat ringan dan cepat.
+- **HxD**: *Hex editor* andalan sejuta umat untuk melihat dan mengedit bahasa mentah biner dari sebuah *file*.
+
+### 7. Scripting & Automation
+Analisis manual itu capek dan rentan salah (karena *human error*). Kategori ini ibarat kamu membuat lengan robot pabrik untuk menjalankan tugas-tugas receh dan berulang secara otomatis, sehingga kinerja analis jadi jauh lebih cepat.
+
+Alat otomasi andalan:
+- **Python**: Bahasa pemrograman favorit analis keamanan. Fokus utamanya dipakai untuk menjalankan modul dan tools otomatis.
+- **PowerShell Empire**: Kerangka kerja (*framework*) berbasis PowerShell yang biasa dipakai *hacker*/*tester* untuk aktivitas setelah penyusupan (mempertahankan akses ke komputer korban).
