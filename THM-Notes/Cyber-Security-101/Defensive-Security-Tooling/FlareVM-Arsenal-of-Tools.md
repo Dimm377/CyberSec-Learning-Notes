@@ -214,3 +214,73 @@ Lewat panel antarmukanya, CFF Explorer langsung menelanjangi semua profil *file*
 1. **Informasi Dasar:** Kelihatan kalau `cryptominer.bin` ini sebenarnya adalah aplikasi biner berformat *Portable Executable 64 .NET Assembly* yang ukurannya `1.91 MB`. Tersaji juga secara runtut tanggal *file* ini dibuat, dimodifikasi, dan terakhir kali diakses.
 2. **Sidik Jari Digital:** CFF Explorer otomatis menghitung **MD5** dan **SHA-1** *hashes* dari *file* tersebut. *Hash* inilah sidik jari mati yang nantinya dimasukkan analis ke perpustakaan virus *online* (seperti *VirusTotal*) untuk menanyakan *"Kira-kira ada analis dunia lain yang mengenali sidik jari virus ini nggak?"*
 3. **Anomali KTP Palsu:** Di tabel bawah, perhatikan detail kolom `FileDescription` dan `OriginalFilename`. *Hacker* diam-diam mencoba memalsukan KTP *file* ini dengan mendeskripsikannya sebagai `REGEDIT` (aplikasi registry bawaan Windows), padahal nama *file* nya adalah *cryptominer.bin*. Aplikasi resmi Microsoft tidak mungkin memiliki perbedaan mencolok seperti ini.
+
+### 5. Wireshark
+
+Bicara soal lalu lintas jaringan, **Wireshark** adalah alat pantau terkuat yang ada saat ini. Bayangkan Wireshark sebagai **Pos Menara CCTV di Jalan Raya**. Ia dipasang untuk mengawasi setiap deret mobil (paket data) yang lewat, menginspeksi isi muatannya, hingga melacak mobil mana yang mencurigakan atau mencoba menyelundupkan barang curian keluar dari sistem (*data exfiltration*).
+
+**Contoh Investigasi Menggunakan Wireshark:**
+
+Berikut adalah hasil gambaran jaringan komunikasi yang sedang terjadi.
+
+![Wireshark Packet Analysis](../../Assets/Images/Wireshark.png)
+
+Dalam gambar di atas, kamu bisa melihat rentetan koneksi antar komputer. Hal yang paling menarik adalah baris paket data yang menggunakan protokol **TLSv1.2**.
+
+**Mengapa ini penting?**
+Protokol TLS (*Transport Layer Security*) sejatinya adalah terowongan baja pelindung (*encrypted connection*) yang biasa dipakai supaya percakapan rahasia di internet tidak mudah disadap. Namun, Protokol ini pedang bermata dua. *Hacker* yang cerdik juga sering memanfaatkan jalur aman enkripsi TLSv1.2 ini untuk menutupi dan menyelundupkan kodenya agar lolos dari blokade keamanan jaringan (ibarat maling yang naik mobil lapis baja milik pejabat aparat).
+
+---
+
+### 6. PEstudio
+
+Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static Analysis**. Kalau di dunia nyata, PEstudio ibarat **Mesin X-Ray di Pemeriksaan Keamanan Bandara**. Kamu bertugas memeriksa isi koper penumpang yang mencurigakan sedetail mungkin **tanpa harus** membukanya sama sekali. Cara ini sangat krusial dan aman agar bom atau racun di dalam *file* aplikasinya tidak meledak mengenai komputermu.
+
+**Contoh Investigasi Menggunakan PEstudio:**
+
+![PEstudio Static Analysis](../../Assets/Images/PEstudio.png)
+
+Gambar di atas menunjukkan layar PEstudio yang sedang memeriksa secara detail aplikasi biner bernama `PSexec.exe` *(Hanya sebagai sampel analisis)*.
+
+Mari kita bahas temuan pentingnya:
+1. **Angka *Entropy* (6.596):** *Entropy* adalah pengukur tingkat kebingungan atau seberapa padat/acak sebuah *file*. Nilai logis dari 6.596 mengindikasikan bahwa *file* ini kemungkinan besar sedang dibungkus rapat (*packed*) atau dienkripsi. Di dunia analis, ini adalah tanda bahaya karena mayoritas *malware* menggunakan trik *packing* untuk menyembunyikan diri dari deteksi Antivirus.
+2. **Pedang Bermata Dua (*Dual-Use Nature*):** *File* `PSexec.exe` versi 2.34 (rakitan *Visual C++ 8*) yang sedang dicek ternyata adalah alat **resmi** Administrator sistem yang biasa dipakai untuk mengeksekusi program di komputer orang lain secara jarak jauh (*remote*). 
+
+Nah, di sinilah analis diuji. Walaupun `PSexec.exe` adalah aplikasi original bawaan, *tool* ini teramat sering **dibajak dan disalahgunakan** secara ekstrem oleh *hacker* *(secara spesifik di fase peretasan akhir / Post-Exploitation)* untuk menyebarkan serangannya lebih luas ke seisi jaringan kantor milik korban. Jadi, wajar jika keberadaannya dalam situasi investigasi langsung memicu alarm peringatan di kepala seorang analis.
+
+---
+
+### 7. FLOSS (FLARE Obfuscated String Solver)
+
+Kalau kamu butuh mengulik informasi rahasia dari mulut seorang tawanan yang tutup mulut, maka **FLOSS** adalah **Ahli Interogasi** andalanmu. 
+
+Di dunia *malware*, *hacker* sering kali menyembunyikan kata-kata penting (*strings*)—seperti alamat *website* *server* bos mereka, nilai *password*, nama *file* rahasia lokal, atau pesan *error*—ke dalam wujud sandi acak (*obfuscated*) agar Antivirus kebingungan. 
+
+Tugas utama FLOSS adalah memaksa program jahat ini mengeluarkan secara otomatis semua kata-kata yang disembunyikannya tersebut melalui teknik eksekusi dan analisis lanjutan dari *static analysis*.
+
+**Contoh Eksekusi Terminal FLOSS:**
+
+Mari kita lihat interogasi FLOSS saat menyidang *malware* ganas bernama `cobaltstrike.exe` lewat *Command Line/Terminal*:
+
+```powershell
+PS C:\Users\Administrator\Desktop\Sample > floss .\cobaltstrike.exe
+INFO: floss: extracting static strings
+finding decoding function features: 100%|█████████████████████████████████████████████| 74/74 [00:00<00:00, 2370.15 functions/s, skipped 0 library functions]
+INFO: floss.stackstrings: extracting stackstrings from 50 functions
+extracting stackstrings: 100%|██████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 128.00 functions/s]
+INFO: floss.tightstrings: extracting tightstrings from 4 functions...
+extracting tightstrings from function 0x402e80: 100%|██████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 31.99 functions/s]
+INFO: floss.string_decoder: decoding strings
+emulating function 0x402e80 (call 1/1): 100%|████████████████████████████████████████████████████████████████████████| 21/21 [00:09<00:00,  2.21 functions/s]
+INFO: floss: finished execution after 265.61 seconds
+INFO: floss: rendering results
+```
+
+**Membaca Hasil Interogasi:**
+Pada pengetesan di atas, FLOSS berhasil mengekstrak dan memeras **189 kata statis (*static strings*)** dari dalam body virus tersebut. Rentetan 189 kata ini ibarat catatan saku si virus yang berisi:
+- **Alamat *Website* (URLs) / Alamat IP:** Kemungkinan besar ini adalah lokasi *server* tempat *hacker* mengontrol si virus (*Command and Control Server*).
+- **Lokasi Direktori (*Paths*):** Menunjukkan di mana si virus berencana menanamkan diri di dalam komputermu.
+- **Isi Kunci Enkripsi dan Nama *Registry*.**
+
+**Bendera Merah Tambahan:**
+Perhatikan bahwa dari interogasi di atas, FLOSS **tidak berhasil** menemukan data di kolom *decoded strings*. Ini malah menjadi petunjuk penting: Ini menandakan bahwa pembuat *malware* benar-benar sangat niat membuat kode penyamaran (*obfuscation*) yang jauh lebih rumit, atau virus ini membangkitkan senjatanya (*dynamically generated*) langsung saat ia dieksekusi, bukan disimpan sebagai teks mati di badannya. Menutupi diri dengan cara kompleks seperti ini adalah **ciri khas** dari *malware* berbahaya sejati.
