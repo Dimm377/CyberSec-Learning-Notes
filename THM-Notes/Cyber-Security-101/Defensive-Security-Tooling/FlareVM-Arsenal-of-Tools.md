@@ -82,3 +82,16 @@ Analisis manual itu capek dan rentan salah (karena *human error*). Kategori ini 
 Alat otomasi andalan:
 - **Python**: Bahasa pemrograman favorit analis keamanan. Fokus utamanya dipakai untuk menjalankan modul dan tools otomatis.
 - **PowerShell Empire**: Kerangka kerja (*framework*) berbasis PowerShell yang biasa dipakai *hacker*/*tester* untuk aktivitas setelah penyusupan (mempertahankan akses ke komputer korban).
+
+### 8. Sysinternals Suite
+Ini adalah kumpulan perkakas pisau beda khusus sistem operasi Windows. Alat-alat ini dirancang spesifik buat bantu tenaga profesional IT dan developer untuk mengelola, memperbaiki masalah (*troubleshoot*), dan mendiagnosa masalah di dalam Windows.
+
+Tiga serangkai utamanya:
+- **Autoruns**: Alat intelijen buat nyari tahu program *executables* apa saja yang diam-diam *dijalankan* secara otomatis ketika komputer baru pertama kali nyala (*boot-up*). Sangat vital buat nyari *malware* yang berada di sistem.
+- **Process Explorer**: *Task Manager* yang super detail dan detail menyangkut proses-proses yang lagi hidup di komputer kamu.
+- **Process Monitor**: Kamera pengawas *real-time*. Dia mencatat setiap tarikan napas dan pergerakan dari seluruh proses dan *thread* yang aktif di sistem tanpa ada yang lolos.
+
+---
+
+> **Bingung ngeliat daftarnya?**  
+> Santai aja Kamu **nggak perlu** menghafal dan menguasai semua alat ini dalam semalam (bisa makan waktu berbulan-bulan). Tujuannya di sini cuma buat mengenalkan bahwa: *"Ada lho satu kotak berisi lengkap perkakas ajaib, jadi kamu tahu alat mana yang pas saat butuh ngerjain tugas spesifik nanti."*
