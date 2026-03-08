@@ -127,7 +127,7 @@ Karena kemampuannya yang sangat detail, *tool* ini menjadi andalan untuk riset *
 
 **Contoh Investigasi Menggunakan Procmon:**
 
-Mari kita lihat tangkapan layar dari hasil rekaman Procmon di bawah ini:
+Mari kita lihat gambar layar dari hasil rekaman Procmon di bawah ini:
 
 ![Procmon Activity Log](../../Assets/Images/Procmon.png)
 
@@ -143,3 +143,30 @@ Meski `lsass.exe` adalah aplikasi resmi bawaan Windows, dia sering **dijadikan t
 Jadi, saat kamu melihat layar Procmon, insting utamamu adalah mencari **anomali (keganjilan)**. Jika kamu melihat aktivitas yang mencurigakan di sekitar proses LSASS misalnya ada program asing yang tiba-tiba membaca atau mencoba menulis data ke dalam memori `lsass.exe` itu adalah sinyal bahaya (bendera merah) yang harus segera kamu investigasi lebih dalam
 
 *(Tenang saja, contoh gambar di atas hanyalah aktivitas sistem normal, tidak ada tanda-tanda infeksi malware).*
+
+### 2. Process Explorer (Procexp)
+
+**Process Explorer** adalah jenis alat yang memberikan analisis mendalam tentang semua program yang sedang aktif di komputermu. Kalau Procmon tadi adalah CCTV yang merekam aktivitas gerakan, maka **Process Explorer** adalah **Buku Induk Kependudukan** dan **Pohon Silsilah Keluarga** dari proses komputer.
+
+Alat ini memungkinkanmu untuk:
+- Melihat daftar lengkap program yang aktif beserta akun pengguna (*user accounts*) yang menjalankannya.
+- Mencari tahu program mana yang saat ini sedang mengakses, membuka, atau mengunci sebuah *file* atau folder tertentu.
+- Memeriksa asal-usul atau silsilah keluarga dari sebuah program (hubungan *parent-child*).
+
+**Contoh Investigasi Menggunakan Process Explorer:**
+
+Perhatikan gambar di bawah ini saat kita membuka aplikasi CFF Explorer:
+
+![Process Explorer showing parent-child relationship](../../Assets/Images/Procexp.png)
+
+Dari gambar di bawah ini, kamu bisa melihat **Silsilah Keluarga** (*Parent-child relationship*) dari prosesnya:
+- `explorer.exe` (Wujud antarmuka layar *desktop* Windows) bertindak sebagai aplikasi **Induk** (*Parent*).
+- Induk ini berada di tingkat atas, dan di bawahnya muncul sebuah cabang baru berisikan `CFF Explorer.exe` yang bertindak sebagai aplikasi **Anak** (*Child*).
+
+Ini membuktikan bahwa aplikasi CFF Explorer tadi secara sah dibuka melalui layar *desktop* biasa oleh sang pengguna.
+
+**Lalu, kenapa Silsilah Keluarga (*Parent-Process*) ini penting?**
+Teknik ini sangat berguna untuk memantau apakah ada proses aneh yang mendadak dimunculkan **(spawned)** dari aplikasi yang tidak seharusnya. Pelaku kejahatan cyber (*threat actors*) sangat sering menyalahgunakan dokumen kantoran (seperti Word Document, *file* LNK, atau ISO) untuk menyebarkan ancaman.
+
+**Mental Model Analis:**
+Ketika kamu curiga, lihat *parent process*-nya, Sebagai contoh, sangatlah wajar jika aplikasi *Microsoft Word* (*Parent*) membuka dokumen teks (*Child*). Tapi akan menjadi **sangat tidak wajar dan berbahaya** jika *Microsoft Word* (*Parent*) tiba-tiba secara diam-diam membuka aplikasi *Command Prompt* atau *PowerShell* (*Child*) di belakang layar. Itulah fungsi utama Process Explorer: melacak asal-usul lahirnya sebuah program jahat
