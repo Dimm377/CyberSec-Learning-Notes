@@ -156,7 +156,10 @@
 
 | No. | Notes                                                                                                                          | Description                   |
 | :-: | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- |
-| 1.  | [CyberChef The Basics](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/CyberChef-The-Basics.md)                        | Introduction to CyberChef, the Swiss Army knife for cyber security professionals |
+| 1.  | [CyberChef The Basics](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/CyberChef-The-Basics.md)                        | Introduction to CyberChef |
+| 2.  | [CAPA The Basics](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/CAPA-The-Basics.md)                                  | CAPA malware capability analysis |
+| 3.  | [REMnux Getting Started](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/REMnux-Getting-Started.md)                    | REMnux environment and tools |
+| 4.  | [FlareVM Arsenal of Tools](THM-Notes/Cyber-Security-101/Defensive-Security-Tooling/FlareVM-Arsenal-of-Tools.md)                | Overview of FlareVM tools |
 
 </details>
 
