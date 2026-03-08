@@ -45,6 +45,7 @@ Kalo kamu bingung, OLE2 (*Object Linking and Embedding*) itu teknologi jadul bua
 **Cara Pakainya:**
 Misal kamu dapet *file* mencurigakan bernama `agenttesla.xlsm`. Cukup panggil *tool*-nya di terminal:
 
+![oledump agenttesla output](../../Assets/Images/agentesla.png)
 ```bash
 oledump.py agenttesla.xlsm
 ```
@@ -96,6 +97,27 @@ Tugas kamu sekarang adalah membuang sampah itu secara manual biar wujud aslinya 
 4. Di Find/Replace pertama: Isi kolom *Find* dengan tanda bintang `*`, biarkan kotak *Replace* **kosong melompong** (alias dihapus).
 5. Di Find/Replace kedua: Isi kolom *Find* dengan tanda caping `^`, dan biarkan kotak *Replace* kosong juga.
 
-![CyberChef Deobfuscation](../../Assets/Images/agentesla.png)
-
 dan di kotak **Output** pojok kanan bawah, deretan sampah itu bakal terbaca jelas sebagai perintah jahat (*Powershell* tersembunyi).
+
+---
+
+## Memory Investigation: Evidence Preprocessing
+
+Di ranah Digital Forensik, analis tidak hanya melihat *file* di dalam *harddisk*. Seringkali mereka harus membedah **Memory Image** (jejak rekaman RAM komputer korban pas lagi nyala). Kenapa? Karena *malware* modern biasanya tidak meninggalkan jejak di *harddisk* (*fileless*), tapi murni jalan dan bersembunyi di dalam *Memory* (RAM).
+
+### Volatility 3: Membaca Isi RAM
+
+Senjata utama yang sudah otomatis ada di REMnux untuk urusan ini adalah **Volatility**. *Tool* ini sangat handal untuk membedah isi yang tersembunyi dari rekaman *memory image*, seperti melihat daftar aplikasi apa saja yang sedang berjalan secara *live* saat insiden terjadi, bahkan mendeteksi *password* yang sempat diketik korban.
+
+Disini, fokus pembelajarannya menggunakan **Volatility 3** (versi terbaru). Karena ilmu mengupas hasil Volatility butuh pembahasan yang sangat panjang, di tahap Getting Started ini kamu hanya dituntut paham cara menjalankan *command*-nya dan merasakan proses menunggu alat ini bekerja (tiap *plugin* biasanya memakan waktu 2-3 menit untuk memunculkan *output*).
+
+**Plugin Windows Utama:**
+Jika target analisismu adalah mesin Windows, berikut deretan *parameter* (atau *plugins*) Volatility bawaan yang wajib kamu kenali fungsinya:
+
+- `windows.pstree.PsTree`: Menampilkan daftar *process* (aplikasi yang berjalan) dalam bentuk pohon hierarki. Dari sini terlihat jelas mana aplikasi induk yang memanggil/menjalankan aplikasi mencurigakan lainnya.
+- `windows.pslist.PsList`: Versi lebih dasar dari PsTree, sekadar menampilkan daftar lurus ke bawah untuk semua *process* yang sedang aktif.
+- `windows.cmdline.CmdLine`: Mengecek perintah lengkap (*command line arguments*) yang digunakan untuk menjalankan aplikasi tersebut (terkadang perintah eksekusi *malware* tertulis jelas di bagian akhir argumennya).
+- `windows.filescan.FileScan`: Mencari tahu *file* apa saja yang sempat tersentuh atau terbuka di dalam memori saat itu.
+- `windows.dlllist.DllList`: Mengintip daftar DLL (*library* pendukung bawaan Windows) yang sedang digunakan (*loaded*) oleh sebuah aplikasi.
+- `windows.malfind.Malfind`: *Plugin* andalan, otomatis mencari area *memory* aneh hasil injeksi tersembunyi yang berpotensi murni menyimpan kode *malware*.
+- `windows.psscan.PsScan`: Digunakan untuk mencari *process* yang sudah mati atau sengaja disembunyikan oleh trik *rootkit* (sehingga aplikasinya tidak terlihat lagi kalau cuma dicek pakai `PsList` biasa).
