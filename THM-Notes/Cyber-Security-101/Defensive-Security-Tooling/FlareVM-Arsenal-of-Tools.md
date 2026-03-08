@@ -194,3 +194,23 @@ Satu insting terpenting analis saat membuka sebuah *file* asing pakai Hex Editor
 Ini adalah **Bendera Merah**, Angka `4D 5A` adalah kode sandi universal bawaan Microsoft Windows untuk menandakan bahwa *file* ini adalah **Aplikasi yang Bisa Dijalankan (*Executable* / `.exe`)**, terlepas dari apapun nama dan ekstensinya  
 
 Jadi, walaupun *hacker*-nya pintar menyamarkan nama *file* menjadi `possible_medusa.txt` biar dikira tulisan *memo* biasa, HxD berhasil membongkar kedoknya bahwa *file* itu sejatinya siap dieksekusi sebagai virus. Jangan pernah ketipu sama tampilan luar nya ya
+
+### 4. CFF Explorer
+
+Kalau *HxD* membelah struktur sampai ke tingkat DNA, **CFF Explorer** bekerja layaknya alat **Pengecek KTP Digital** dan **Pemindai Sidik Jari** di pos imigrasi.
+
+Aplikasi ini menyajikan informasi *file* yang sangat terperinci. Tugas utamanya adalah membongkar kartu identitas (*properties*) sebuah sistem untuk:
+- Menghasilkan dan memeriksa sidik jari digital (*file hashes*) demi verifikasi integritas.
+- Memastikan darimana asal muasal sebuah *file* (apakah asli dari Microsoft atau susupan).
+- Mencari kejanggalan atau modifikasi (*alterations*) aneh pada kolom informasi yang bisa jadi disembunyikan oleh *hacker*.
+
+**Contoh Investigasi Menggunakan CFF Explorer:**
+
+Dalam gambar di bawah, analis sedang memeriksa *file* mencurigakan bernama `cryptominer.bin`.
+
+![CFF Explorer Analysis](../../Assets/Images/CFF.png)
+
+Lewat panel antarmukanya, CFF Explorer langsung menelanjangi semua profil *file* tersebut:
+1. **Informasi Dasar:** Kelihatan kalau `cryptominer.bin` ini sebenarnya adalah aplikasi biner berformat *Portable Executable 64 .NET Assembly* yang ukurannya `1.91 MB`. Tersaji juga secara runtut tanggal *file* ini dibuat, dimodifikasi, dan terakhir kali diakses.
+2. **Sidik Jari Digital:** CFF Explorer otomatis menghitung **MD5** dan **SHA-1** *hashes* dari *file* tersebut. *Hash* inilah sidik jari mati yang nantinya dimasukkan analis ke perpustakaan virus *online* (seperti *VirusTotal*) untuk menanyakan *"Kira-kira ada analis dunia lain yang mengenali sidik jari virus ini nggak?"*
+3. **Anomali KTP Palsu:** Di tabel bawah, perhatikan detail kolom `FileDescription` dan `OriginalFilename`. *Hacker* diam-diam mencoba memalsukan KTP *file* ini dengan mendeskripsikannya sebagai `REGEDIT` (aplikasi registry bawaan Windows), padahal nama *file* nya adalah *cryptominer.bin*. Aplikasi resmi Microsoft tidak mungkin memiliki perbedaan mencolok seperti ini.
