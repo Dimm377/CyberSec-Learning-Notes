@@ -95,3 +95,21 @@ Tiga serangkai utamanya:
 
 > **Bingung ngeliat daftarnya?**  
 > Santai aja Kamu **nggak perlu** menghafal dan menguasai semua alat ini dalam semalam (bisa makan waktu berbulan-bulan). Tujuannya di sini cuma buat mengenalkan bahwa: *"Ada lho satu kotak berisi lengkap perkakas ajaib, jadi kamu tahu alat mana yang pas saat butuh ngerjain tugas spesifik nanti."*
+
+## Commonly Used Tools for Investigation: Overview
+
+Dari sekian banyak *tools* yang dibahas sebelumnya, cuma segelintir saja yang akan sering banget kamu pakai untuk investigasi tahap awal. Anggap ini adalah paket "P3K Utama" atau *starter pack* seorang analis.
+
+Berikut adalah daftar dan fungsinya:
+
+| Nama Tool | Nilai Investigasi (*Investigative Value*) |
+| :--- | :--- |
+| **Procmon** (*Process Monitor*) | Ahlinya melacak seluruh aktivitas sistem secara detail. Sangat handal untuk ngerjain riset *malware*, *troubleshooting* PC yang rusak, sampai nyari barang bukti digital (*forensic investigations*). |
+| **Process Explorer** | Alat untuk melihat silsilah keluarga sebuah program (*Parent-child relationship*). Jadi ketahuan program mana yang melahirkan proses jahat tersebut, lengkap dengan lokasi *file library* (DLL) yang dimuat. |
+| **HxD** | *Hex editor* andalan untuk memeriksa sampai mengedit struktur dasar sebuah *file* dari balik layar (level bahasa biner/heksadesimal). |
+| **Wireshark** | Bertugas mirip pos pantau CCTV lalu lintas. Kerjanya mengobservasi pergerakan data di kabel jaringan buat nyari aktivitas komunikasi yang ganjil (*unusual activity*). |
+| **CFF Explorer** | Sering dipakai untuk mengekstrak sidik jari digital (*file hashes*) demi mengecek integritas file, serta memastikan apakah sebuah file bawaan sistem itu asli atau udah disusupi. |
+| **PEStudio** | *Tool* spesialis untuk urusan *Static Analysis*. Kamu bisa menguliti properti dan sifat-sifat mencurigakan dari sebuah aplikasi **tanpa harus** menjalankannya sama sekali (main aman). |
+| **FLOSS** | Ahli pemeras teks. Dia bertugas mengekstrak dan memperjelas teks/kata-kata rahasia (*strings*) yang sengaja disamarkan (*obfuscated*) di dalam program jahat menggunakan teknik *static analysis* tingkat lanjut. |
+
+> Tips: Kamu bisa ikutan ngebuka *tools*-nya satu-satu di dalam **FlareVM** biar terbiasa sama <i>interface</i> aslinya pas kita bahas cara kerjanya lebih dalam nanti.
