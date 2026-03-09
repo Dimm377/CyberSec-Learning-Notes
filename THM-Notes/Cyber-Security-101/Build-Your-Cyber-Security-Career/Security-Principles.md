@@ -324,3 +324,61 @@ Prinsip ini menganggap rasa percaya sebagai sebuah **kerahasiaan/kerentanan** (*
 
 **Poin Utama:**
 *Zero Trust* membantu membatasi kerusakan jika terjadi kebocoran (*data breach*), karena penyerang tidak bisa bebas bergerak ke bagian lain tanpa verifikasi ulang. Meskipun implementasi *Zero Trust* yang ekstrem bisa menghambat bisnis, perusahaan tetap harus menerapkannya sesuai kemampuan dan kebutuhan.
+
+## Vulnerability, Threat, dan Risk
+
+Dalam dunia keamanan, ada tiga istilah yang sering bikin bingung tapi punya arti yang sangat spesifik. Memahami perbedaan ketiganya adalah kunci untuk bisa menganalisis keamanan secara profesional.
+
+### 1. Vulnerability (Kerentanan)
+**Vulnerability** adalah sebuah kelemahan. Ini bisa berupa celah di kode software, konfigurasi yang salah, atau bahkan kecerobohan manusia.
+
+- **Analogi:** Bayangkan sebuah **Showroom Mobil** yang dinding dan pintunya terbuat dari **kaca biasa**. Sifat kaca yang mudah pecah adalah sebuah **Vulnerability** (kelemahan).
+
+### 2. Threat (Ancaman)
+**Threat** adalah potensi bahaya yang bisa memanfaatkan kelemahan tersebut. Ini adalah aksi atau kejadian yang bisa merusak sistem.
+
+- **Analogi:** Karena dinding showroom tadi dari kaca, maka ada **Threat** (ancaman) bahwa seseorang bisa memecah kaca tersebut untuk masuk dan mencuri mobil. Ancaman ini nyata karena ada kelemahan yang bisa dimanfaatkan.
+
+### 3. Risk (Risiko)
+**Risk** adalah perhitungan antara seberapa besar kemungkinan (*likelihood*) sebuah ancaman terjadi dan apa dampak (*impact*)-nya terhadap bisnis atau sistem.
+
+- **Analogi:** Pemilik showroom harus menghitung **Risk**-nya. Seberapa besar kemungkinan kaca itu pecah? Dan kalau pecah, berapa kerugian mobil yang hilang? Jika showroom itu ada di lingkungan rawan kejahatan, maka *Risk*-nya sangat tinggi.
+
+---
+
+### Studi Kasus: Database Rumah Sakit
+
+Bayangkan kamu bekerja di tim IT sebuah rumah sakit:
+
+1.  **Vulnerability:** Kamu baru tahu kalau sistem database rekam medis yang kamu pakai punya celah keamanan (*bug*).
+2.  **Threat:** Di forum hacker, beredar kabar bahwa sudah ada kode eksploitasi (*Proof of Concept*) yang bisa menembus database tersebut. Sekarang, ancamannya menjadi sangat nyata.
+3.  **Risk:** Kamu harus menghitung risikonya. Jika database itu dibobol, data pribadi ribuan pasien akan hilang dan rumah sakit bisa dituntut secara hukum.
+
+**Kesimpulan:**
+Tugas utama seorang ahli keamanan bukan cuma mencari **Vulnerability**, tapi juga menilai **Threat** yang ada, lalu menghitung **Risk** untuk menentukan langkah apa yang harus diambil (apakah harus segera dipatch, atau cukup dipantau saja).
+
+## Conclusion
+
+Room ini telah membahas berbagai prinsip dan konsep dasar keamanan yang sangat penting bagi seorang praktisi cybersecurity. Kita sudah membahas konsep **CIA** dan **DAD**, memahami istilah seperti *authenticity*, *non-repudiation*, hingga perbedaan antara *vulnerability*, *threat*, dan *risk*. Kita juga sudah mengintip model keamanan klasik dan standar internasional **ISO/IEC 19249**, serta strategi pertahanan seperti **Defence in Depth** dan **Zero Trust**.
+
+Satu hal lagi yang sangat relevan di era *Cloud Computing* saat ini adalah:
+
+### Shared Responsibility Model (Model Tanggung Jawab Bersama)
+Di dunia cloud, keamanan itu bukan cuma tugas penyedia layanan (seperti AWS atau Azure), tapi tugas bersama antara **penyedia (Provider)** dan **pengguna (User)**.
+
+- **Analogi:** Bayangkan kamu **Menyewa Apartemen**.
+    - **Tanggung Jawab Pengelola:** Memastikan gerbang utama aman, lift berfungsi, dan bangunan tidak roboh.
+    - **Tanggung Jawab Kamu:** Memastikan pintu unitmu dikunci, tidak sembarang kasih kunci ke orang asing, dan mematikan kompor saat keluar. Kalau kamu lupa kunci pintu lalu kecurian, itu bukan salah pengelola gedung.
+
+Dalam dunia IT:
+- **IaaS (Infrastructure as a Service):** User punya kontrol penuh (dan tanggung jawab penuh) atas Sistem Operasi dan aplikasi di dalamnya. Provider cuma urus hardware dan kabel.
+- **SaaS (Software as a Service):** User hampir tidak punya akses ke OS. Tanggung jawab user lebih ke arah pengelolaan data dan hak akses user, sementara provider urus hampir semuanya (OS, hardware, jaringan).
+
+---
+
+### Real-World Relevance
+
+Prinsip-prinsip ini bukan cuma teori buku teks. Di dunia nyata:
+- **Zero Trust** sekarang jadi standar wajib di perusahaan besar untuk mencegah serangan *Ransomware* menyebar ke seluruh jaringan.
+- Kegagalan memahami **Shared Responsibility Model** sering jadi penyebab kebocoran data di Cloud (misalnya: salah konfigurasi *bucket* penyimpanan yang terbuka untuk publik).
+- Tanpa **Defence in Depth**, satu kesalahan kecil dari karyawan (misal: klik link phishing) bisa langsung membuat seluruh sistem perusahaan lumpuh.
