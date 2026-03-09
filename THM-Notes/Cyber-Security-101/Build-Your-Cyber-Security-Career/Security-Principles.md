@@ -266,3 +266,37 @@ Berbagi satu perangkat keras fisik untuk digunakan oleh banyak sistem operasi se
 
 - **Analogi:** Bayangkan kamu menyewa sebuah **Unit Apartemen**, Meskipun semua unit berada di satu gedung fisik yang sama, setiap unit mandiri dan terisolasi. Jika ada kebakaran (serangan malware) di satu unit, unit lain tidak langsung ikut terbakar.
 - **Contoh Teknis:** Menggunakan *Virtual Machines* (VM) atau *Container* untuk menjalankan aplikasi. Ini menciptakan batasan keamanan yang jelas dan memungkinkan kita memantau program berbahaya tanpa merusak sistem utama.
+
+---
+
+Selain prinsip arsitektur, ISO/IEC 19249 juga mengajarkan lima **prinsip desain** keamanan:
+
+### 1. Least Privilege (Hak Akses Minimum)
+Memberikan hak akses sekecil mungkin yang dibutuhkan seseorang untuk menyelesaikan tugasnya, tidak lebih dan tidak kurang.
+
+- **Analogi:** Jika kamu mempekerjakan tukang kebun, kamu hanya memberinya kunci **pagar**, bukan kunci **kamar tidurmu**. Dia cuma butuh akses ke halaman untuk sekedar memotong rumput.
+- **Contoh Teknis:** Jika seorang user hanya perlu melihat sebuah dokumen, berikan dia akses **Read-only**, jangan berikan akses **Write** (edit) apalagi **Admin**.
+
+### 2. Attack Surface Minimisation (Minimalisir Permukaan Serangan)
+Setiap sistem pasti punya celah. Strategi terbaik adalah mengurangi permukaan yang bisa diserang oleh hacker.
+
+- **Analogi:** Bayangkan sebuah rumah dengan 10 pintu dan 20 jendela. Itu sangat sulit dijaga. Lebih aman jika rumah tersebut cuma punya **1 pintu utama** dan jendela yang tertutup rapat.
+- **Contoh Teknis:** Mematikan (*disable*) layanan atau port yang tidak digunakan di sistem Linux. Semakin sedikit layanan yang jalan, semakin sedikit pintu yang bisa dicoba oleh hacker.
+
+### 3. Centralized Parameter Validation (Validasi Parameter Terpusat)
+Banyak serangan (seperti DoS atau RCE) terjadi karena sistem menerima input berbahaya dari user. Semua input harus divalidasi di satu tempat terpusat agar konsisten.
+
+- **Analogi:** Seperti pemeriksaan di **Bandara**. Semua penumpang harus lewat satu pintu *security check* yang sama sebelum masuk ke pesawat. Tidak boleh ada yang masuk lewat pintu belakang tanpa diperiksa.
+- **Contoh Teknis:** Menggunakan satu *library* atau sistem khusus untuk mengecek semua data yang masuk ke aplikasi, pastikan tidak ada karakter aneh yang bisa merusak database.
+
+### 4. Centralized General Security Services (Layanan Keamanan Terpusat)
+Memusatkan layanan keamanan (seperti autentikasi) di satu tempat agar lebih mudah dikelola dan diawasi.
+
+- **Analogi:** Menggunakan **Satu Master Key** atau sistem kartu akses yang dikelola oleh admin pusat di sebuah gedung perkantoran.
+- **Contoh Teknis:** Membangun server pusat untuk proses *login* (Authentication). Jadi, semua aplikasi di perusahaan tersebut menggunakan satu database user yang sama untuk memverifikasi identitas.
+
+### 5. Preparing for Error and Exception Handling (Penanganan Error & Eksepsi)
+Sistem harus dirancang untuk tetap aman bahkan saat terjadi error (*fail-safe*). Pastikan pesan error tidak membocorkan informasi rahasia.
+
+- **Analogi:** **Pintu Darurat Otomatis**. Jika terjadi kebakaran (error), pintu tersebut harus otomatis terbuka (*fail-safe open*) agar orang bisa keluar, bukan malah terkunci didalam.
+- **Contoh Teknis:** Jika sebuah *firewall* mengalami *crash*, pengaturannya harus dibuat untuk **memblokir semua traffic** (*block all*), bukan malah membiarkan semua trafik lewat. Selain itu, jangan tampilkan pesan error yang isinya detail database atau memori server ke user umum.
