@@ -86,3 +86,36 @@ Tiga unsur di atas tidak selalu memiliki beban prioritas yang sama. Tergantung p
 - **Availability:** Cukup penting agar semua mahasiswa bisa melihat hasilnya tanpa kendala teknis.
 
 ---
+
+## Authenticity & Non-repudiation
+
+Selain tiga pilar CIA, ada dua konsep tambahan yang sangat krusial agar sebuah sistem bisa dipercaya:
+
+### 1. Authenticity (Keaslian)
+Memastikan bahwa data atau transaksi benar-benar berasal dari sumber yang asli, bukan palsu atau hasil manipulasi.
+
+- **Contoh:** Jika sebuah perusahaan menerima pesanan 1000 unit mobil, mereka harus yakin kalau pesanan itu benar-benar dari pembeli asli, bukan *prank* atau pesanan fiktif dari kompetitor.
+
+### 2. Non-repudiation (Anti penyangkalan)
+Memastikan bahwa pengirim data atau pelaku transaksi tidak bisa menyangkal perbuatannya di kemudian hari.
+
+- **Contoh:** Masih di kasus pesanan 1000 mobil tadi. Setelah mobil dikirim, jangan sampai si pembeli bisa bilang, "Eh, saya nggak pernah pesan mobil itu kok". Sistem harus punya bukti kuat (seperti tanda tangan digital) yang membuat mereka tidak bisa mengelak.
+
+---
+
+## Parkerian Hexad
+
+Pada tahun 1998, Donn Parker mengusulkan **Parkerian Hexad**, yaitu kumpulan enam elemen keamanan. Empat di antaranya sudah kita bahas (Availability, Integrity, Authenticity, Confidentiality). Mari kita bahas dua elemen sisanya:
+
+### 1. Utility (Kegunaan)
+Fokus pada seberapa bermanfaat informasi tersebut. Data mungkin ada, tapi kalau tidak bisa digunakan, nilainya nol (*no utility*).
+
+- **Contoh:** Kamu punya laptop dengan penyimpanan terenkripsi. Kamu masih punya laptopnya, disk-nya utuh (masih ada *Availability*), tapi kalau kamu **kehilangan kunci dekripsinya**, datanya jadi tidak berguna. Kamu punya datanya, tapi tidak bisa dibaca.
+
+### 2. Possession (Kepemilikan/Kendali)
+Fokus pada perlindungan informasi dari pengambilan, penyalinan, atau pengendalian oleh pihak yang tidak sah.
+
+- **Contoh 1:** Seorang penyerang mencuri *backup drive* (hardisk cadangan) milikmu. Meskipun kamu mungkin masih punya data aslinya di laptop, fakta bahwa orang lain memegang kendali atas salinan datamu berarti kamu telah kehilangan *Possession*.
+- **Contoh 2:** *Ransomware*, Penyerang mengenkripsi datamu dan meminta tebusan. Meskipun datanya masih ada di komputermu, kamu kehilangan kendali untuk mengakses atau mengelolanya.
+
+## DAD
