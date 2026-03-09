@@ -26,3 +26,53 @@ Training bukan cuma soal belajar tool baru, tapi punya dampak besar bagi tim:
 
 ---
  
+## Cyber Security Training for Large Organizations
+
+Setiap organisasi punya kebutuhan yang berbeda. Bayangkan seperti membeli baju: tim kecil mungkin cukup dengan baju yang sudah jadi di toko (*off-the-shelf*), tapi perusahaan besar biasanya butuh baju yang dijahit khusus (*custom*) supaya pas dengan badannya.
+
+### Kapan Harus Menggunakan Custom Training?
+
+- **Tim Kecil:** Biasanya lebih logis menggunakan materi yang sudah tersedia secara umum (*off-the-shelf*). Praktis dan langsung bisa dipakai.
+- **Tim Besar (>20 orang):** Jika tim sudah melebihi ukuran tertentu atau punya kebutuhan yang sangat spesifik, materi standar mungkin tidak lagi efektif. Di sinilah **Custom Training** berperan.
+
+Dalam TryHackMe, ada fitur bernama **"Content Studio"**. Fitur ini memungkinkan organisasi untuk memodifikasi modul yang sudah ada atau bahkan membuat modul baru sesuai dengan prioritas dan kebutuhan spesifik mereka. Kustomisasi seperti ini bisa meningkatkan efektivitas belajar karyawan secara signifikan.
+
+### Kebutuhan Integrasi Perusahaan Besar
+
+Perusahaan besar atau korporasi biasanya tidak ingin solusi yang berdiri sendiri (*standalone*). Mereka ingin platform training tersebut bisa dengan sistem software yang sudah mereka miliki.
+
+Beberapa fitur kunci yang biasanya dicari oleh korporasi besar adalah:
+- **SSO (Single Sign-On):** Supaya karyawan nggak perlu hafal banyak password. Cukup login sekali pakai akun kantor, sudah bisa akses platform training.
+- **API yang Terdokumentasi Baik:** Memungkinkan perusahaan untuk menghubungkan data training ke dalam sistem manajemen internal mereka secara otomatis.
+
+Dengan adanya fungsi-fungsi ini, proses training bisa berjalan mulus (*seamless*) di dalam ekosistem teknologi perusahaan.
+
+---
+
+## Write a Cyber Security Training Proposal
+
+Perusahaan yang cerdas memandang karyawan sebagai aset berharga, mirip seperti orang kaya yang berinvestasi pada saham atau properti. Namun, kadang manajemen perlu "disenggol" sedikit supaya paham betapa pentingnya investasi di bidang training ini.
+
+### Menghitung Dampak Finansial Training (ROI)
+
+Cara paling ampuh meyakinkan bos adalah dengan **angka**. Mari kita bedah skenario perhitungan **Return On Investment (ROI)** berikut:
+
+* **Situasi:** Sebuah tim cybersecurity punya **10 karyawan**.
+* **Biaya Gaji:** Masing-masing digaji **$80,000** per tahun.
+* **Asumsi:** Training bisa meningkatkan produktivitas tim sebesar **4%**.
+
+**Mari kita hitung simulasinya:**
+1. **Penghematan/Keuntungan (Gains):** 10 orang x 4% x $80,000 = **$32,000**.
+2. **Biaya Training:** Misal biaya training $500/orang, maka totalnya **$5,000** (10 x $500).
+3. **ROI (Return On Investment):** $32,000 / $5,000 = **640%**.
+
+Bayangkan, dengan modal $5,000, perusahaan mendapatkan kembalian berupa produktivitas senilai $32,000. Itu adalah ROI sebesar **640%** Angka yang sangat menggiurkan bagi bisnis manapun.
+
+### Tips Menulis Proposal Training
+
+Jika kamu ingin meminta budget training ke atasan, jangan cuma bilang "saya ingin belajar". Gunakan pendekatan yang profesional:
+- **Fokus pada Value:** Jelaskan bagaimana training ini bisa menghemat uang perusahaan atau mencegah kerugian akibat serangan cyber.
+- **Gunakan Data:** Masukkan perhitungan ROI seperti contoh di atas.
+- **Gunakan Template:** TryHackMe menyediakan contoh proposal (*Cost savings by investing in Cyber Security training*) yang bisa kamu download untuk meningkatkan peluang disetujuinya budget training.
+
+---
