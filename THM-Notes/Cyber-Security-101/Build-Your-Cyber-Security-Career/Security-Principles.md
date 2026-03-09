@@ -118,4 +118,34 @@ Fokus pada perlindungan informasi dari pengambilan, penyalinan, atau pengendalia
 - **Contoh 1:** Seorang penyerang mencuri *backup drive* (hardisk cadangan) milikmu. Meskipun kamu mungkin masih punya data aslinya di laptop, fakta bahwa orang lain memegang kendali atas salinan datamu berarti kamu telah kehilangan *Possession*.
 - **Contoh 2:** *Ransomware*, Penyerang mengenkripsi datamu dan meminta tebusan. Meskipun datanya masih ada di komputermu, kamu kehilangan kendali untuk mengakses atau mengelolanya.
 
-## DAD
+## The DAD Triad
+
+Kalau CIA Triad adalah apa yang ingin kita **capai**, maka **DAD Triad** adalah kebalikannya—yaitu apa yang terjadi kalau keamanan kita **gagal**. DAD adalah singkatan dari *Disclosure, Alteration,* dan *Destruction*.
+
+### 1. Disclosure (Pengungkapan)
+Ini adalah lawan dari **Confidentiality**. Terjadi saat data rahasia terekspos ke pihak yang tidak berwenang.
+
+Bayangkan kamu punya buku harian rahasia, lalu seseorang mencurinya dan memposting isinya di media sosial. Rahasiamu sudah terungkap (*disclosed*).
+
+### 2. Alteration (Perubahan)
+Ini adalah lawan dari **Integrity**. Terjadi saat data diubah secara tidak sah, sehingga kebenarannya tidak bisa lagi dipercaya.
+
+Bayangkan kamu menulis cek senilai 1 juta rupiah, tapi seseorang menambahkan angka nol di belakangnya sehingga menjadi 10 juta. Nilai integritas cek tersebut sudah rusak karena adanya perubahan (*alteration*).
+
+### 3. Destruction/Denial (Penghancuran/Penolakan)
+Ini adalah lawan dari **Availability**. Terjadi saat data atau sistem dihancurkan atau dibuat tidak bisa diakses sama sekali.
+
+Bayangkan kamu ingin masuk ke rumahmu, tapi seseorang mengelas pintu rumahmu atau membakar rumah tersebut. Layanan rumahmu sudah tidak tersedia lagi karena penghancuran (*destruction*).
+
+---
+
+### Studi Kasus: Rekam Medis Pasien
+
+Mari kita satukan semuanya dengan contoh sistem rumah sakit:
+
+- **Disclosure:** Hacker mencuri database riwayat penyakit pasien dan menjualnya di *dark web*. Pasien malu dan rumah sakit kehilangan kepercayaan karena kegagalan menjaga kerahasiaan.
+- **Alteration:** Bayangkan betapa bahayanya jika hacker mengubah golongan darah pasien di database, Dokter bisa memberikan transfusi yang salah, dan ini bisa berakibat **fatal (kematian)** karena rusaknya integritas data.
+- **Destruction/Denial:** Rumah sakit modern sekarang sudah *paperless* (semua digital). Jika hacker melakukan serangan **Ransomware** yang mengunci semua database, dokter tidak bisa melihat riwayat alergi obat pasien. Operasi bisa tertunda dan seluruh fasilitas lumpuh.
+
+**Poin Penting:**
+Menjaga keseimbangan antara CIA itu sangat sulit. Kalau kamu terlalu ekstrem menjaga kerahasiaan (*Confidentiality*), bisa-bisa akses datanya jadi sangat lambat dan susah (*Availability* terganggu). Implementasi keamanan yang baik adalah tentang mencari **titik tengah (balance)** yang pas.
