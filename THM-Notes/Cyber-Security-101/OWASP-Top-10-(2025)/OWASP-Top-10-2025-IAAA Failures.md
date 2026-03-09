@@ -76,3 +76,38 @@ Ini adalah cara licik untuk mengelabui aplikasi agar memberikan akses ke akun or
 Ini adalah bentuk kegagalan serius dalam tahap **Authentication** pada model IAAA.
 
 ---
+
+## A09: Logging & Alerting Failures
+
+Pernah lihat gedung yang punya CCTV tapi tidak ada rekamannya atau tidak ada satpam yang memantau? Itu adalah gambaran **Logging & Alerting Failures**.
+
+Dalam keamanan siber, **Logging** adalah pondasi dari **Accountability** (Akuntabilitas). Artinya, kita harus bisa membuktikan: *siapa melakukan apa, kapan, dan dari mana.*
+
+### Apa yang Terjadi Jika Logging Gagal?
+Tanpa catatan yang baik, tim keamanan (*defenders*) tidak bisa mendeteksi atau menyelidiki serangan. Kegagalan ini biasanya terlihat seperti:
+*   **Missing Authentication Events:** Tidak mencatat kapan seseorang login atau logout.
+*   **Vague Error Logs:** Log yang terlalu umum sehingga tidak memberikan informasi berguna.
+*   **No Alerting on Brute-force:** Sistem diam saja saat ada ribuan kali kegagalan login atau perubahan hak akses yang mencurigakan.
+*   **Short Retention:** Catatan log dihapus terlalu cepat sebelum sempat diselidiki.
+*   **Tampering Risks:** Log disimpan di tempat yang bisa dijangkau dan diubah oleh penyerang untuk menghapus jejak mereka.
+
+### Kenapa Ini Bahaya?
+Bayangkan ada penyerang masuk ke sistem. Jika tidak ada log yang mencatat aktivitas mereka, kita tidak akan pernah tahu:
+1.  Dari mana asal serangan (IP address)?
+2.  Akun mana saja yang sudah dikompromi?
+3.  Data sensitif apa yang sudah diakses atau dicuri?
+
+Tanpa akuntabilitas yang kuat, sebuah aplikasi ibarat rumah tanpa pintu yang bisa dimasuki siapa saja tanpa meninggalkan jejak.
+
+---
+
+## Conclusion
+
+Room **OWASP Top 10 (2025): IAAA Failures** ini mengajarkan kita bahwa mengamankan identitas dan akses bukan cuma soal pasang password. 
+
+Kita harus memastikan:
+1.  **Access Control** yang ketat agar user tidak bisa saling intip data (**Authorisation**).
+2.  **Authentication** yang kuat agar identitas tidak mudah dipalsukan atau dikelabui.
+3.  **Logging & Alerting** yang sigap agar setiap tindakan mencurigakan terekam dan bisa ditindaklanjuti (**Accountability**).
+
+Penerapan **IAAA** yang solid adalah kunci utama untuk menjaga aplikasi dari penyalahgunaan akses yang fatal.
