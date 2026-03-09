@@ -6,6 +6,17 @@
 
 ---
 
+### Learning Objectives
+Di *room* ini, kita akan membedah pondasi utama cybersecurity, yaitu:
+- Memahami fungsi keamanan: **CIA Triad** (*Confidentiality, Integrity, Availability*).
+- Mengenal kebalikan dari CIA, yaitu **DAD Triad** (*Disclosure, Alteration, Destruction/Denial*).
+- Mengenal model keamanan dasar seperti **Bell-LaPadula**.
+- Mempelajari prinsip keamanan penting: **Defense-in-Depth**, **Zero Trust**, dan **Trust but Verify**.
+- Mengenal standar **ISO/IEC 19249**.
+- Memahami perbedaan antara **Vulnerability**, **Threat**, dan **Risk**.
+
+---
+
 ## 1. Introduction
 
 Saat ini, kata **Security** atau keamanan sudah menjadi semacam **Istilah populer** di perusahaan teknologi. Hampir semua perusahaan berani mengklaim bahwa layanan atau produk mereka itu aman. Tapi pertanyaannya: **Aman buat siapa?**
@@ -37,7 +48,7 @@ Tujuannya? Untuk membuat biaya dan waktu yang harus dikeluarkan oleh lawan (*Adv
 **Gembok Rumah vs Maling Pro**
 Bayangkan rumahmu, kamu bisa pasang pagar tinggi, CCTV, kabel berduri, hingga satpam 24 jam
 - **Apakah rumahmu 100% aman?** Tidak, kalau ada agen rahasia sekelas *Mission Impossible* pakai helikopter dan alat tercanggih di dunia, mereka tetap bisa masuk.
-- **Lalu buat apa pasang itu semua?** Supaya maling biasa menyerah saat melihat pertahananmu yang rumit, lalu dia memilih pindah ke rumah tetangga yang pagarnya terbuka lebar.
+- **Lalu untuk pasang itu semua?** Supaya maling biasa menyerah saat melihat pertahananmu yang rumit, lalu dia memilih pindah ke rumah tetangga yang pagarnya terbuka lebar.
 
 **Inti Pembelajaran:**
 Sangatlah lucu kalau kamu menerapkan cara pengamanan **balita** untuk menghadapi **mata-mata profesional**. Karena itulah, **mengenal lawan (Adversary)** adalah langkah wajib supaya kita bisa mempelajari pola serangan mereka dan menerapkan **Kontrol Keamanan** yang memang sesuai porsinya.
