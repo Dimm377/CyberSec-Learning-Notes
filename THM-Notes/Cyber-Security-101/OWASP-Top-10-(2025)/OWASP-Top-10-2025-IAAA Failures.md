@@ -34,3 +34,45 @@ Keempat item tersebut adalah:
 Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan dengan kegagalan dalam penerapan IAAA. Kelemahan di sini bisa sangat fatal karena memungkinkan penyerang untuk mengakses data pengguna lain atau mendapatkan hak akses lebih (*privilege*) dari yang seharusnya mereka miliki.
 
 ---
+
+## A01: Broken Access Control
+
+**Broken Access Control** terjadi ketika server tidak memeriksa dengan benar **siapa yang boleh mengakses apa** di setiap permintaan. Masalah ini muncul karena aplikasi terlalu percaya pada input dari sisi pengguna (*client*).
+
+Celah yang paling umum di kategori ini adalah **IDOR (Insecure Direct Object Reference)**.
+
+### Apa itu IDOR?
+Bayangkan kamu sedang melihat data akunmu dan muncul parameter di URL seperti `?accountID=7`. Jika kamu iseng mengganti angkanya menjadi `?accountID=6` dan tiba-tiba kamu bisa melihat atau bahkan mengedit data orang lain, itulah IDOR.
+
+### Tipe-Tipe Privilege Escalation
+Dalam praktiknya, kegagalan kontrol akses ini terbagi menjadi dua:
+
+1.  **Horizontal Privilege Escalation:**
+    *   Mengakses data milik pengguna lain yang level atau perannya sama denganmu.
+    *   **Analogi:** Kamu penyewa apartemen, dan kamu bisa masuk ke unit tetanggamu yang juga penyewa biasa.
+2.  **Vertical Privilege Escalation:**
+    *   Meloncat dari pengguna biasa ke tindakan yang hanya boleh dilakukan oleh admin.
+    *   **Analogi:** Kamu penyewa biasa, tapi tiba-tiba bisa masuk ke ruang panel utama gedung atau ruang manajer.
+
+**Ingat:** Jika kamu bisa memanipulasi ID di URL untuk melihat data sensitif (misalnya mencari user yang punya saldo lebih dari $1 juta), berarti sistem tersebut memiliki celah keamanan yang serius.
+
+---
+
+## A07: Authentication Failures
+
+Jika *Access Control* (A01) bicara tentang apa yang boleh kamu lakukan, maka **Authentication** bicara tentang membuktikan siapa kamu. **Authentication Failures** terjadi ketika aplikasi tidak bisa memverifikasi identitas pengguna dengan andal.
+
+### Masalah Umum pada Autentikasi:
+*   **Username Enumeration:** Penyerang bisa menebak apakah sebuah username ada di database atau tidak (misal melalui pesan error yang berbeda).
+*   **Weak Passwords:** Penggunaan password yang gampang ditebak dan tidak adanya sistem penguncian (*account lockout*) setelah beberapa kali gagal login.
+*   **Logic Flaws:** Celah dalam alur login atau registrasi.
+*   **Insecure Session Handling:** Penanganan cookie atau sesi yang tidak aman, sehingga bisa dicuri atau dimanipulasi.
+
+### Contoh Kasus: Account Confusion
+Ini adalah cara licik untuk mengelabui aplikasi agar memberikan akses ke akun orang lain.
+*   **Skenario:** Kita tahu ada user bernama `admin`. Kita mencoba mendaftar akun baru dengan nama yang sangat mirip, misalnya `aDmiN`.
+*   **Kenapa ini berhasil?** Jika aplikasi tidak menstandarisasi penulisan username (misalnya mengubah semuanya jadi huruf kecil sebelum disimpan) atau tidak mengecek keunikan secara mendalam, aplikasi mungkin akan bingung dan menganggap kamu adalah admin asli saat kamu login.
+
+Ini adalah bentuk kegagalan serius dalam tahap **Authentication** pada model IAAA.
+
+---
