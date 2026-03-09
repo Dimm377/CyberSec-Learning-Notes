@@ -60,6 +60,15 @@
 <br>
 
 <details>
+<summary>Build Your Cyber Security Career</summary>
+
+| No. | Notes                                                                                                        | Description             |
+| :-: | ------------------------------------------------------------------------------------------------------------ | ----------------------- |
+| 1.  | [Security Principles](THM-Notes/Cyber-Security-101/Build-Your-Cyber-Security-Career/Security-Principles.md) | Learn about the security triad and common security models and principles. |
+
+</details>
+
+<details>
 <summary>Networking</summary>
 
 | No. | Notes                                                                                                 | Description                 |
