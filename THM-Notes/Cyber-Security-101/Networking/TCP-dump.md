@@ -72,5 +72,3 @@ Di bagian praktik, kita diminta mencari informasi spesifik di dalam file pcap at
 ### Conclusion
 
 `tcpdump` itu tool yang wajib dikuasai setiap praktisi keamanan. Meskipun Wireshark lebih enak dipandang, `tcpdump` memberi kecepatan dan fleksibilitas yang tidak terkalahkan di lingkungan terminal.
-
-

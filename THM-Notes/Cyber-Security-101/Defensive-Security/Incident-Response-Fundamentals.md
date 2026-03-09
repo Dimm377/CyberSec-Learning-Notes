@@ -160,4 +160,3 @@ Di sisi lain, ada yang namanya **Runbooks**. Bedanya, Runbooks itu instruksi yan
 - Singkatnya, buat apa sih SOC butuh **SIEM** padahal sudah punya security analyst manusia?
 - Apa kelebihan **EDR** dibandingin **Antivirus (AV)** jaman dulu?
 - Dalam _incident response_, apa bedanya **Playbook** sama **Runbook**?
-

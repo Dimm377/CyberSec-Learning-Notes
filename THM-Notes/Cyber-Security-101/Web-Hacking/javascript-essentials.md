@@ -107,11 +107,6 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
 
     ```
 
-**Answer the questions below:**
-
-- **Question:** What term allows you to run a code block multiple times as long as it is a condition?
-- **Answer:** ?
-
 ---
 
 ## JavaScript Overview
@@ -122,15 +117,6 @@ Ilustrasinya ada kode JS buat nambahin angka.
 **Poin Penting:**
 *   **Interpreted Language:** JavaScript itu bahasa yang diterjemahkan baris per baris saat dijalankan (oleh browser), bukan dicompile jadi file binary dulu seperti C++ atau Java.
 *   **Variable Manipulation:** Kita bisa ubah nilai variabel kapan saja (kalau pakai `let` atau `var`).
-
-**Answer the questions below:**
-
-- **Question:** What is the code output if the value of x is changed to 10?
-- **Answer:** ?
-
-
-- **Question:** Is JavaScript a compiled or interpreted language?
-- **Answer:** ?
 
 ---
 
@@ -163,20 +149,6 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pakai 
     *   Bisa dipake ulang di banyak halaman (Reusability).
     *   Kode lebih rapi & bersih.
 
-**Answer the questions below:**
-
-- **Question:** Which type of JavaScript integration places the code directly within the HTML document?
-- **Answer:** ?
-
-- **Question:** Which method is better for reusing JS across multiple web pages?
-- **Answer:** ?
-
-- **Question:** What is the name of the external JS file that is being called by "external_test.html"?
-- **Answer:** ?
-
-- **Question:** What attribute links an external JS file in the script tag?
-- **Answer:** ?
-
 ---
 
 ## Abusing Dialogue Functions
@@ -198,17 +170,6 @@ JavaScript punya 3 fungsi bawaan buat menampilkan pop-up (dialogue box) ke user.
 Kita dikasih file `invoice.html` yang isinya ada script nakal.
 Pas dibuka, dia bakal nge-loop menampilkan alert "Hacked" berkali-kali.
 
-**Answer the questions below:**
-
-- **Question:** In the file "invoice.html", how many times does the code show the alert "Hacked"?
-- **Answer:** ?
-
-- **Question:** Which of the JS interactive elements should be used to display a dialogue box that asks the user for input?
-- **Answer:** ?
-
-- **Question:** If the user enters "Tesla", what value is stored in the carName variable in `carName = prompt("What is your car name?")`?
-- **Answer:** ?
-
 ---
 
 ## Bypassing Control Flow Statements
@@ -224,14 +185,6 @@ Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang ber
 *   Ada pengecekan umur.
 *   Ada form login admin.
 
-**Answer the questions below:**
-
-- **Question:** What is the message displayed if you enter the age less than 18?
-- **Answer:** ?
-
-- **Question:** What is the password for the user admin?
-- **Answer:** ?
-
 ---
 
 ## Exploring Minified Files
@@ -246,14 +199,6 @@ Kode JS di production biasanya di-**Minify** dan di-**Obfuscate**.
 
 **Skenario Room:**
 Kita dikasih file `hello.html` dan script yang sudah di-obfuscate. Kita harus baca nilai variabel `age` dari kode hex yang ribet.
-
-**Answer the questions below:**
-
-- **Question:** What is the alert message shown after running the file "hello.html"?
-- **Answer:** ?
-
-- **Question:** What is the value of the age variable in the following obfuscated code snippet?
-- **Answer:** ?
 
 ---
 
@@ -273,16 +218,11 @@ Agar kode JavaScript kita aman dan tidak gampang dihack, ada beberapa aturan mai
     *   JANGAN PERNAH simpen API Key, Password, atau Token di dalam kode JS.
     *   Ingat, **View Source** itu gampang banget. Siapapun bisa melihat.
 
-**Answer the questions below:**
-
-- **Question:** Is it a good practice to blindly include JS in your code from any source (yea/nay)?
-- **Answer:** ?
-
 ---
 
 ## Conclusion
 
-Selesai sudah room **Javascript Essentials** ini!
+Selesai sudah room **Javascript Essentials** ini
 
 **Kita sudah belajar:**
 1.  **Basic JS:** Variable, Data Types, Functions, Loops.
@@ -294,8 +234,3 @@ Selesai sudah room **Javascript Essentials** ini!
     *   Bahaya menyimpan rahasia di JS.
 
 JavaScript itu powerful banget buat membuat web interaktif, tapi kalau tidak ati-ati, bisa jadi celah keamanan yang fatal. *Stay curious and keep learning!*
-
-
-
-
-

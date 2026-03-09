@@ -1,6 +1,4 @@
-# TryHackMe - Web Application Basics
-
----
+# TryHackMe: Web Application Basics
 
 - **Room Link:** [Web Application Basics](https://tryhackme.com/room/webapplicationbasics)
 - **Category:** Web Hacking
@@ -10,52 +8,34 @@
 
 ## Introduction
 
-Room ini bakal ngajarin kita basic-basic gimana sih cara kerja aplikasi web itu. Penting banget nih buat pondasi hacking.
+_Room_ ini memberikan dasar-dasar mengenai mekanisme kerja aplikasi web, yang merupakan fondasi krusial bagi aktivitas pengujian keamanan web.
 
-**Learning Objectives:**
-
-- Paham apa itu Web Application.
-- Bedah apa yang ada di URL.
-- Gimana cara HTTP bekerja (Request & Response).
-- Apa itu HTTP Methods dan kode-kode response-nya.
-- Kenapa HTTP Headers dan Cookies itu penting.
+### Learning Objective:
+- Memahami pengertian Aplikasi Web.
+- Membedah komponen-komponen yang terdapat pada URL.
+- Memahami cara kerja protokol HTTP (Permintaan & Tanggapan).
+- Mengenal Metode HTTP dan kode status tanggapan.
+- Memahami peran penting Header HTTP dan _Cookies_.
 
 ---
 
 ## Web Application Overview
 
-Intinya, aplikasi web itu kerjanya pakai konsep **Client-Server**. Ada yang minta (kita), ada yang ngelayanin (server).
+Aplikasi web beroperasi menggunakan arsitektur **Client-Server**. Klien (seperti peramban web) mengirimkan permintaan, sementara peladen (_server_) memproses dan memberikan tanggapan.
 
-**Analogi (Planet):**
-Agar gampang, bayangin web app itu seperti sebuah planet.
+### Komponen Utama:
 
-- **Permukaan Planet (Front-End):** Bagian luar yang kelihatan, bisa kita injak, dan kita nikmati pemandangannya. Ini ibarat **Front-End** yang kita lihat di browser (tampilan website, tombol, warna-warni HTML/CSS).
-- **Inti Planet (Back-End):** Bagian dalem planet yang tidak kelihatan tapi super penting. Di sana ada magma dan struktur geologi yang membuat planetnya tetep hidup dan utuh. Ini ibarat **Back-End** (server & database) yang mengerjakan semua proses di balik layar.
+1.  **Front-End (Sisi Klien):**
+    - Bagian yang dapat dilihat dan berinteraksi langsung dengan pengguna.
+    - Beroperasi di dalam peramban web pengguna.
+    - Teknologi utama: **HTML** (Struktur), **CSS** (Presentasi), dan **JavaScript** (Logika Interaktif).
 
-**Komponen Utama:**
-
-1.  **Front-End (Client-Side):**
-    - Ini bagian yang kita melihat dan bisa kita interaksi.
-    - Jalan di browser laptop/hp kita.
-    - Teknologinya: **HTML** (Kerangkanya), **CSS** (Bajunya/Tampilannya), **JavaScript** (Otaknya/Interaksinya).
-
-2.  **Back-End (Server-Side):**
-    - Bagian dapur yang ngeracik data & logika sebuah aplikasi.
-    - Isinya ada:
-      - **Web Server:** Tukang kirim konten web ke kita (Contoh: Apache, Nginx).
-      - **Database:** Gudang penyimpanan data (Contoh: MySQL, PostgreSQL).
-      - **WAF (Web Application Firewall):** Satpam opsional yang jagain server dari serangan hacker, sebenarnya bukan opsional kalo buat zaman sekarang wkwk
-
-**Answer the questions below:**
-
-- **Question:** Which component on a computer is responsible for hosting and delivering content for web applications?
-- **Answer:** ?
-
-- **Question:** Which tool is used to access and interact with web applications?
-- **Answer:** ?
-
-- **Question:** Which component acts as a protective layer, filtering incoming traffic to block malicious attacks, and ensuring the security of the web application?
-- **Answer:** ?
+2.  **Back-End (Sisi Peladen):**
+    - Bagian yang mengelola logika aplikasi dan pengolahan data di balik layar.
+    - Terdiri dari:
+      - **Web Server:** Mengirimkan konten web kepada klien (Contoh: Apache, Nginx).
+      - **Database:** Penyimpanan data terstruktur (Contoh: MySQL, PostgreSQL).
+      - **Web Application Firewall (WAF):** Lapisan keamanan untuk menyaring lalu lintas berbahaya ke peladen.
 
 ---
 
@@ -158,17 +138,6 @@ membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya 
 3.  **HTTP Version (`HTTP/1.1`):**
     - Versi protokol-nya. **HTTP/1.1** itu yang paling standar dan umum dipake sekarang.
 
-**Answer the questions below:**
-
-- **Question:** What is the most common HTTP version used?
-- **Answer:** ?
-
-- **Question:** What HTTP verb is used to request the options available for a given service?
-- **Answer:** ?
-
-- **Question:** Which part of the HTTP request indicates the resource the client wants to access?
-- **Answer:** ?
-
 ---
 
 ## HTTP Request (Headers & Body)
@@ -180,89 +149,10 @@ Setelah baris pertama (Request Line), ada **Headers** dan **Body**.
 Ini seperti label paketan. Memberi tau info tambahan soal paketnya.
 Contoh header yang sering muncul:
 
-- **Host:** Wajib ada! Memberi tau kita mau ke domain mana (misal `tryhackme.com`).
-- **User-Agent:** Identitas browser yang kita pakai (misal Chrome, Firefox, atau script Python/curl).
-- **Referer:** Memberi tau kita dateng dari link mana (asal muasal).
-- **Accept-Encoding:** Client bilang "saya bisa baca file yang dikompres pakai format gzip lho".
-- **Cookie:** Tiket/token identitas kita (agar server tau kita sudah login).
-
-### 2. HTTP Body
-
-Ini isi paketannya. Biasanya dipake kalo kita kirim data (pakai method POST).
-Format isinya wajib dikasih tau lewat header **Content-Type**:
-
-**a. application/x-www-form-urlencoded**
-Format paling standar, mirip query string.
-
-```http
-POST /profile HTTP/1.1
-Host: tryhackme.com
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 33
-
-name=Aleksandra&age=27&country=US
-```
-
-**b. multipart/form-data**
-Buat upload file. Ada batas pemisah (boundary) antar datanya.
-
-```http
-POST /upload HTTP/1.1
-Host: tryhackme.com
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-----WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="username"
-
-aleksandra
-----WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="profile_pic"; filename="aleksandra.jpg"
-Content-Type: image/jpeg
-
-[Binary Data Here representing the image]
-----WebKitFormBoundary7MA4YWxkTrZu0gW--
-```
-
-**c. application/json**
-Format data modern, pakai kurung kurawal `{}`. Sering dipake API.
-
-```http
-POST /api/user HTTP/1.1
-Host: tryhackme.com
-Content-Type: application/json
-
-{
-    "name": "Aleksandra",
-    "age": 27,
-    "country": "US"
-}
-```
-
-**d. application/xml**
-Format agak jadul, pakai tag HTML-style `<>`.
-
-```http
-POST /api/user HTTP/1.1
-Host: tryhackme.com
-Content-Type: application/xml
-
-<user>
-    <name>Aleksandra</name>
-    <age>27</age>
-    <country>US</country>
-</user>
-```
-
-**Answer the questions below:**
-
-- **Question:** What header is used to specify the domain name of the web server?
-- **Answer:** ?
-
-- **Question:** Which header identifies the client software (browser) making the request?
-- **Answer:** ?
-
-- **Question:** What is the Content-Type for standard HTML form submissions?
-- **Answer:** ?
+- **Host:** Domain tujuan permintaan (Wajib disertakan).
+- **User-Agent:** Menyediakan informasi mengenai jenis peramban atau perangkat klien.
+- **Referer:** Alamat asal tautan sebelum menuju ke halaman saat ini.
+- **Cookie:** Token identitas yang digunakan peladen untuk mengenali sesi pengguna.
 
 ---
 
@@ -301,14 +191,6 @@ Isinya ada 3 macem:
   - **500 Internal Server Error:** Server-nya error, codingan backend-nya ngawur.
   - **503 Service Unavailable:** Server lagi down atau keberatan beban (gara ga ada dana).
 
-**Answer the questions below:**
-
-- **Question:** What part of an HTTP response provides the HTTP version, status code, and a brief explanation of the response's outcome?
-- **Answer:** ?
-
-- **Question:** Which category of HTTP response codes indicates that the web server encountered an internal error?
-- **Answer:** ?
-
 ---
 
 ## HTTP Response (Headers & Body)
@@ -334,17 +216,6 @@ Isi surat balesan dari server. Biasanya berupa:
 - Kode HTML halaman webnya.
 - File gambar/PDF.
 - Data JSON (kalo API).
-
-**Answer the questions below:**
-
-- **Question:** Which HTTP response header can reveal information about the web server's software and version, potentially exposing it to security risks if not removed?
-- **Answer:** ?
-
-- **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to ensure they are only transmitted over HTTPS, protecting them from being exposed during unencrypted transmissions?
-- **Answer:** ?
-
-- **Question:** Which flag should be added to cookies in the Set-Cookie HTTP response header to prevent client-side scripts (like JavaScript) from accessing them, thereby mitigating XSS attacks?
-- **Answer:** ?
 
 ---
 
@@ -376,18 +247,6 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
 4.  **X-Frame-Options:**
     - Buat nyegah website kita di-embed di dalam `<iframe>` website orang lain.
     - Ini buat nyegah serangan **Clickjacking** (orang membuat layer transparan di atas website kita buat nipu user suruh klik tombol).
-
-**Answer the questions below:**
-
-- **Question:** In a Content Security Policy (CSP) configuration, which property can be set to define where scripts can be loaded from?
-- **Answer:** ?
-
-- **Question:** When configuring the Strict-Transport-Security (HSTS) header to ensure that all subdomains of a site also use HTTPS, which directive should be included to apply the security policy to both the main domain and its subdomains?
-- **Answer:** ?
-
-- **Question:** Which HTTP header directive is used to prevent browsers from interpreting files as a different MIME type than what is specified by the server, thereby mitigating content type sniffing attacks?
-- **Answer:** ?
-
 
 ---
 
