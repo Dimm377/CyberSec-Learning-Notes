@@ -230,3 +230,39 @@ Bayangkan kamu punya dokumen sangat penting dan perhiasan mahal di rumah:
 Meskipun lapisan-lapisan ini mungkin tidak bisa menghentikan pencuri yang sangat profesional (ingat Rule: *100% Security is a Myth*), tapi lapisan yang banyak ini akan **memperlambat** mereka dan membuat sebagian besar pencuri biasa menyerah karena pertahanannya terlalu rumit. 
 
 Dalam dunia digital, lapisan ini bisa berupa kombinasi dari *firewall*, antivirus, enkripsi, *multi-factor authentication* (MFA), hingga pelatihan kesadaran keamanan bagi karyawan.
+
+## ISO / IEC 19249
+
+International Organization for Standardization (ISO) dan International Electrotechnical Commission (IEC) membuat standar **ISO/IEC 19249** sebagai katalog prinsip-prinsip arsitektur dan desain untuk produk dan sistem yang aman.
+
+Ada lima prinsip arsitektur utama yang disebutkan dalam standar ini:
+
+### 1. Domain Separation (Pemisahan Domain)
+Menyusun komponen-komponen yang berkaitan ke dalam satu entitas yang terpisah. Setiap entitas punya domain dan atribut keamanannya masing-masing.
+
+- **Analogi:** Bayangkan sebuah **Hotel**, Tamu di kamar 101 tidak bisa (dan tidak boleh) masuk ke kamar 102. Mereka dipisahkan oleh dinding dan kunci yang berbeda. 
+- **Contoh Teknis:** Di dalam prosesor x86, ada yang namanya **Privilege Levels**. Sistem operasi (Kernel) berjalan di **Ring 0** (paling berkuasa), sedangkan aplikasi biasa seperti browser berjalan di **Ring 3** (paling terbatas). Ini menjaga agar aplikasi tidak bisa mengubah sistem utama.
+
+### 2. Layering (Pelapisan)
+Membagi sistem menjadi berbagai level atau lapisan abstrak. Ini memudahkan kita untuk menerapkan kebijakan keamanan yang berbeda di setiap levelnya.
+
+- **Analogi:** Bayangkan **Baju Musim Dingin**. Kamu pakai kaos (lapisan dasar), lalu sweter (lapisan hangat), baru jaket (lapisan pelindung luar). Setiap lapisan punya fungsi sendiri untuk melindungimu.
+- **Contoh Teknis:** Model **OSI (Open Systems Interconnection)** yang punya 7 lapisan. Setiap lapisan (seperti Transport atau Network) memberikan layanan spesifik dan menjaga integritas data sebelum dikirim ke lapisan di atasnya.
+
+### 3. Encapsulation (Enkapsulasi)
+Menyembunyikan detail implementasi di level rendah dan mencegah manipulasi data secara langsung. Kita hanya memberikan akses melalui metode tertentu yang sudah ditentukan
+
+- **Analogi:** Bayangkan sebuah **Remote TV**. Kamu cuma perlu tahu cara pencet tombol Volume Up, kamu tidak perlu tahu bagaimana sirkuit di dalamnya bekerja mengubah tegangan listrik untuk mengeraskan suara
+- **Contoh Teknis:** Dalam pemrograman (OOP), kita pakai metode `increment()` untuk menambah angka, daripada membiarkan user mengubah variabel `seconds` secara langsung. Ini mencegah user memasukkan data yang nggak valid (misal: detik diisi angka negatif)
+
+### 4. Redundancy (Redundansi)
+Menyediakan komponen cadangan untuk menjamin ketersediaan (*Availability*) dan integritas data jika terjadi kegagalan.
+
+- **Analogi:** Bayangkan sebuah **Ban cadangan** di mobil, Kalau ban utama bocor di jalan, perjalananmu tidak terhenti sepenuhnya karena kamu punya ban cadangan.
+- **Contoh Teknis:** Penggunaan dua *Power Supply* pada server (kalau satu mati, server tetap hidup) atau konfigurasi **RAID 5** pada penyimpanan data (kalau satu hardisk rusak, datanya masih bisa dipulihkan dari hardisk yang tersisa)
+
+### 5. Virtualization (Virtualisasi)
+Berbagi satu perangkat keras fisik untuk digunakan oleh banyak sistem operasi secara bersamaan. Ini memberikan kemampuan *sandboxing* yang kuat.
+
+- **Analogi:** Bayangkan kamu menyewa sebuah **Unit Apartemen**, Meskipun semua unit berada di satu gedung fisik yang sama, setiap unit mandiri dan terisolasi. Jika ada kebakaran (serangan malware) di satu unit, unit lain tidak langsung ikut terbakar.
+- **Contoh Teknis:** Menggunakan *Virtual Machines* (VM) atau *Container* untuk menjalankan aplikasi. Ini menciptakan batasan keamanan yang jelas dan memungkinkan kita memantau program berbahaya tanpa merusak sistem utama.
