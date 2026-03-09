@@ -126,3 +126,53 @@ Tujuannya cuma satu: Paham cara kerja musuh agar bisa membuat pertahanan yang le
 ---
 
 ## Penetration Tester
+
+**Penetration Tester** (sering disebut *Pentester* atau *Ethical Hacker*) adalah peran yang paling populer di mata pemula. Tugas mereka adalah menguji keamanan produk teknologi (aplikasi, jaringan, sistem) untuk menemukan celah keamanan sebelum hacker jahat menemukannya.
+
+Beda dengan hacker jahat, Pentester melakukan peretasan secara sistematis dan legal untuk memberikan wawasan teknis kepada perusahaan agar mereka bisa memperbaiki masalah tersebut.
+
+### Apa Saja Tanggung Jawabnya?
+
+- **Uji Penetrasi:** Melakukan simulasi serangan pada sistem komputer, jaringan, dan aplikasi berbasis web.
+- **Security Assessment:** Melakukan audit, penilaian keamanan, dan analisis kebijakan untuk melihat di mana letak kelemahannya.
+- **Reporting & Advokasi:** Mengevaluasi temuan, menyusun laporan insiden, dan memberikan rekomendasi langkah-langkah pencegahan serangan yang nyata.
+
+### Learning Paths
+
+Jika kamu ingin menjadi White Hat yang profesional, TryHackMe menyarankan alur ini:
+
+1. **JR Penetration Tester:** Belajar metodologi dan alat dasar pentesting.
+2. **Offensive Pentesting:** Fokus pada teknik eksploitasi tingkat lanjut.
+
+---
+
+## Red Teamer
+
+Jika *Pentester* lebih fokus mencari celah teknis sebanyak-banyaknya, **Red Teamer** punya misi yang lebih spesifik: **Menguji kesiapan tim pertahanan (Blue Team)** secara keseluruhan.
+
+Mereka berperan sebagai musuh nyata (*Adversary*) yang mencoba masuk ke organisasi dengan meniru taktik, teknik, dan prosedur (TTP) penjahat cyber sungguhan. Serangan Red Team bisa berlangsung lama (hingga satu bulan) dan biasanya dilakukan oleh tim eksternal untuk menguji apakah sistem deteksi dan respon perusahaan benar-benar berfungsi.
+
+### Apa Saja Tanggung Jawabnya?
+
+- **Meniru Threat Actor:** Bertindak sebagai penyerang untuk menemukan celah yang bisa dieksploitasi, menjaga akses agar tidak ketahuan, dan menghindari deteksi.
+- **Evaluasi Kontrol Keamanan:** Menilai efektivitas alat keamanan, intelijen ancaman (*threat intelligence*), dan prosedur respon insiden perusahaan.
+- **Data-Driven Insights:** Memberikan data nyata tentang bagaimana serangan bisa terjadi di dunia asli agar perusahaan bisa melakukan mitigasi sebelum kejadian beneran.
+
+### Learning Paths
+
+Jalur untuk menjadi Red Teamer profesional biasanya butuh pengalaman lebih luas:
+
+1.  **JR Penetration Tester:** Dasar-dasar serangan.
+2.  **Offensive Pentesting:** Teknik eksploitasi lanjut.
+3.  **Red Teamer:** Belajar strategi simulasi serangan tingkat organisasi.
+
+---
+
+## Real-World Relevance
+
+Memahami berbagai peran di Cybersecurity bukan cuma soal memilih pekerjaan, tapi soal memahami **ekosistem pertahanan**. Di dunia nyata:
+- Tanpa **Security Analyst**, perusahaan buta terhadap serangan yang sedang mengintai.
+- Tanpa **Security Engineer**, tidak ada sistem pertahanan yang dibangun.
+- Tanpa **Red Teamer**, perusahaan tidak tahu apakah sistem pertahanan mereka benar benar kuat saat diserang musuh sungguhan.
+
+Kolaborasi antar peran inilah yang menjaga data sensitif jutaan orang tetap aman setiap harinya.
