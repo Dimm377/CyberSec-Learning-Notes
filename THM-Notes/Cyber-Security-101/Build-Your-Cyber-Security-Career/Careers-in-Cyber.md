@@ -92,3 +92,37 @@ Untuk kamu yang suka tantangan dan aksi cepat, ikuti alur belajar ini:
 1.  **SOC Level 1:** Pondasi utama untuk memahami cara kerja pusat operasional keamanan.
 
 ---
+
+## Digital Forensics Examiner
+
+Kalau kamu suka menonton film detektif atau serial CSI (Crime Scene Investigation), peran ini mungkin paling cocok buat kamu, **Digital Forensics Examiner** adalah **Detektif Forensik** yang bertugas mengumpulkan dan menganalisis bukti digital untuk memecahkan kasus.
+
+Peran ini bisa bekerja di dua sisi:
+1.  **Penegakan Hukum (Law Enforcement):** Fokus pada pengumpulan bukti untuk menjerat pelaku kejahatan atau membebaskan orang yang tidak bersalah.
+2.  **Pertahanan Perusahaan (Corporate Defense):** Menggunakan keahlian forensik untuk menganalisis insiden internal, seperti pelanggaran kebijakan perusahaan.
+
+### Apa Saja Tanggung Jawabnya?
+
+- **Pengumpulan Bukti Digital:** Mengambil data dari berbagai perangkat (*hard drive*, HP, server) dengan tetap mengikuti prosedur hukum yang ketat agar bukti tersebut sah di mata hukum.
+- **Analisis Data:** Membedah bukti digital untuk menemukan jawaban terkait kasus yang sedang ditangani (misalnya: siapa yang mengakses file ini, kapan serangan terjadi).
+- **Dokumentasi & Pelaporan:** Menyusun laporan teknis yang mendalam tentang temuan mereka untuk digunakan dalam proses hukum atau evaluasi internal.
+
+---
+
+## Malware Analyst
+
+Kalau kamu punya rasa ingin tahu yang tinggi tentang bagaimana virus atau software jahat bekerja, maka **Malware Analyst** adalah jalan ninjamu. Peran ini sering juga disebut sebagai **Reverse Engineer**.
+
+Tugas inti mereka adalah mengubah program yang sudah jadi (bahasa mesin) kembali ke kode yang bisa dibaca manusia untuk memahami perilakunya. Karena itu, peran ini butuh pemahaman coding yang kuat, terutama bahasa tingkat rendah seperti **C** dan **Assembly**.
+
+### Apa Saja Tanggung Jawabnya?
+
+- **Static Analysis:** Membedah program tanpa menjalankannya (reverse-engineering) untuk melihat strukturnya.
+- **Dynamic Analysis:** Menjalankan malware di lingkungan yang aman dan terkendali (*sandbox*) untuk melihat apa yang sebenarnya dilakukan malware tersebut saat aktif.
+- **Reporting:** Menyusun laporan tentang aktivitas malware, cara mendeteksinya, dan dampaknya terhadap sistem.
+
+Tujuannya cuma satu: Paham cara kerja musuh agar bisa membuat pertahanan yang lebih baik.
+
+---
+
+## Penetration Tester
