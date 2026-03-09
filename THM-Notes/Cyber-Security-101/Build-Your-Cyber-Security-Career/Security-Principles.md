@@ -149,3 +149,59 @@ Mari kita satukan semuanya dengan contoh sistem rumah sakit:
 
 **Poin Penting:**
 Menjaga keseimbangan antara CIA itu sangat sulit. Kalau kamu terlalu ekstrem menjaga kerahasiaan (*Confidentiality*), bisa-bisa akses datanya jadi sangat lambat dan susah (*Availability* terganggu). Implementasi keamanan yang baik adalah tentang mencari **titik tengah (balance)** yang pas.
+
+## Fundamental Concepts of Security Models
+
+Setelah kita paham pilar CIA, pertanyaannya: **Gimana cara kita membangun sistem yang menjamin pilar-pilar tersebut tetap kokoh?** Jawabannya adalah dengan menggunakan **Security Models**.
+
+Di sini kita akan bahas tiga model dasar:
+
+### 1. Bell-LaPadula Model
+
+Model ini tujuannya cuma satu: Menjaga **Confidentiality** (Kerahasiaan). Model ini sangat kaku dan biasanya dipakai di lingkungan militer. 
+
+Prinsip utamanya ada tiga:
+
+1. **Simple Security Property:** Dikenal dengan istilah **"No Read Up"**. Artinya, subjek dengan level keamanan rendah dilarang membaca data yang level keamanannya lebih tinggi. (Anak magang nggak boleh baca dokumen rahasia Direktur).
+2. **Star Security Property ($\star$):** Dikenal dengan istilah **"No Write Down"**. Artinya, subjek dengan level keamanan tinggi dilarang menulis/membocorkan informasi ke level yang lebih rendah. (Direktur dilarang menulis rahasia perusahaan di grup chat karyawan umum).
+3. **Discretionary-Security Property:** Menggunakan *Access Matrix* untuk menentukan siapa boleh baca/tulis apa.
+
+| Subjects | Object A | Object B |
+| :--- | :--- | :--- |
+| Subject 1 | Write | No access |
+| Subject 2 | Read/Write | Read |
+
+- **Ringkasan:** **"Write Up, Read Down"**. Kamu boleh berbagi info ke level atas, tapi cuma boleh baca info dari level bawah/setara.
+- **Kelemahan:** Model ini tidak dirancang untuk urusan bagi-bagi file (*file sharing*) yang fleksibel.
+
+---
+
+### 2. Biba Model
+
+Kalau Bell-LaPadula fokus ke kerahasiaan, **Biba Model** fokus ke **Integrity** (Integritas). Tujuannya biar data nggak dikotori atau dimanipulasi oleh pihak yang nggak punya otoritas.
+
+Prinsip utamanya adalah kebalikan dari Bell-LaPadula:
+
+1. **Simple Integrity Property:** Dikenal dengan istilah **"No Read Down"**. Subjek dengan integritas tinggi dilarang membaca data dari level bawah agar pikirannya tidak termakan oleh info yang hoax.
+2. **Star Integrity Property ($\star$):** Dikenal dengan istilah **"No Write Up"**. Subjek dengan integritas rendah dilarang menulis/mengubah data di level yang lebih tinggi agar data di atas tetep bersih.
+
+- **Ringkasan:** **"Read Up, Write Down"**. Ini kontras banget sama Bell-LaPadula. Logikanya: Info dari atas pasti valid, jadi boleh dibaca. Tapi orang bawah nggak boleh nulis ke atas biar integritas data di atas terjaga.
+- **Kelemahan:** Model ini lemah terhadap ancaman dari dalam (*insider threat*).
+
+---
+
+### 3. Clark-Wilson Model
+
+Sama seperti Biba, model ini juga mengejar **Integrity** (Integritas), tapi dengan cara yang lebih modern dan kompleks. Model ini punya beberapa konsep kunci:
+
+- **Constrained Data Item (CDI):** Ini adalah tipe data yang integritasnya sangat penting dan ingin kita jaga (misal: saldo bank).
+- **Unconstrained Data Item (UDI):** Ini adalah data yang belum divalidasi, seperti input dari user atau sistem lain yang bisa saja "kotor".
+- **Transformation Procedures (TPs):** Ini adalah prosedur atau operasi terprogram (seperti baca/tulis) yang berfungsi menjaga integritas CDI. Jadi, akses ke data nggak langsung, tapi harus lewat prosedur ini.
+- **Integrity Verification Procedures (IVPs):** Prosedur yang bertugas mengecek dan memastikan bahwa data (CDI) tetap valid dan benar.
+
+Selain tiga model di atas (Bell-LaPadula, Biba, Clark-Wilson), masih banyak model lain yang bisa dipelajari, contohnya:
+-   Brewer and Nash model
+-   Goguen-Meseguer model
+-   Sutherland model
+-   Graham-Denning model
+-   Harrison-Ruzzo-Ullman model
