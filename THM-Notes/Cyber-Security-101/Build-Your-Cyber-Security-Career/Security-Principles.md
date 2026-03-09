@@ -300,3 +300,27 @@ Sistem harus dirancang untuk tetap aman bahkan saat terjadi error (*fail-safe*).
 
 - **Analogi:** **Pintu Darurat Otomatis**. Jika terjadi kebakaran (error), pintu tersebut harus otomatis terbuka (*fail-safe open*) agar orang bisa keluar, bukan malah terkunci didalam.
 - **Contoh Teknis:** Jika sebuah *firewall* mengalami *crash*, pengaturannya harus dibuat untuk **memblokir semua traffic** (*block all*), bukan malah membiarkan semua trafik lewat. Selain itu, jangan tampilkan pesan error yang isinya detail database atau memori server ke user umum.
+
+## Zero Trust VS Trust but Verify
+
+Kepercayaan (*Trust*) adalah topik yang sangat kompleks. Di dunia nyata, kita nggak bisa hidup tanpa rasa percaya misalnya, kita harus percaya bahwa vendor laptop tidak menanam *spyware* di perangkat kita, Tapi di dunia keamanan, kita butuh prinsip yang lebih ketat.
+
+Ada dua prinsip utama mengenai kepercayaan ini:
+
+### 1. Trust but Verify (Percaya tapi Verifikasi)
+Prinsip ini mengajarkan bahwa meskipun kita mempercayai sebuah entitas (user atau sistem) dan perilakunya, kita harus **selalu melakukan verifikasi**.
+
+- **Analogi:** Bayangkan kamu punya **Asisten Rumah Tangga** yang sudah bekerja bertahun-tahun dan sangat kamu percayai. Kamu memberinya kunci rumah, tapi kamu tetap memasang **CCTV** dan sesekali mengecek laporan pengeluaran belanja untuk memastikan semuanya tetap jujur dan normal.
+- **Konsep Teknis:** Verifikasi biasanya dilakukan melalui mekanisme **Logging** (pencatatan aktivitas). Karena memeriksa semua log secara manual itu mustahil, kita menggunakan sistem otomatis seperti *Proxy*, IDS (*Intrusion Detection System*), dan IPS (*Intrusion Prevention System*).
+
+### 2. Zero Trust (Nol Kepercayaan)
+Prinsip ini menganggap rasa percaya sebagai sebuah **kerahasiaan/kerentanan** (*vulnerability*). Slogannya adalah: **"Never trust, always verify."** (Jangan pernah percaya, selalu verifikasi).
+
+- **Analogi:** Bayangkan sebuah **Gedung Rahasia Pemerintah**. Tidak peduli kamu itu karyawan lama atau bos besar, setiap mau naik lift kamu harus *tap* kartu, mau masuk ruangan harus *tap* lagi, bahkan mau buka lemari pun harus pakai sidik jari. Tidak ada rasa percaya hanya berdasarkan jabatan atau lokasi.
+- **Konsep Teknis:** 
+    - Setiap entitas dianggap berbahaya sampai terbukti sebaliknya. 
+    - Lokasi jaringan (seperti berada di dalam kantor) tidak otomatis membuat perangkat dipercayai. 
+    - **Microsegmentation:** Membagi jaringan menjadi segmen-segmen yang sangat kecil (bisa sekecil satu perangkat saja), di mana setiap komunikasi antar segmen butuh autentikasi dan pengecekan akses (ACL).
+
+**Poin Utama:**
+*Zero Trust* membantu membatasi kerusakan jika terjadi kebocoran (*data breach*), karena penyerang tidak bisa bebas bergerak ke bagian lain tanpa verifikasi ulang. Meskipun implementasi *Zero Trust* yang ekstrem bisa menghambat bisnis, perusahaan tetap harus menerapkannya sesuai kemampuan dan kebutuhan.
