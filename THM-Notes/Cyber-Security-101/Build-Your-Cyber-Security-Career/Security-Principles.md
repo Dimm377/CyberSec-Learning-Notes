@@ -52,3 +52,37 @@ Bayangkan rumahmu, kamu bisa pasang pagar tinggi, CCTV, kabel berduri, hingga sa
 
 **Inti Pembelajaran:**
 Sangatlah lucu kalau kamu menerapkan cara pengamanan **balita** untuk menghadapi **mata-mata profesional**. Karena itulah, **mengenal lawan (Adversary)** adalah langkah wajib supaya kita bisa mempelajari pola serangan mereka dan menerapkan **Kontrol Keamanan** yang memang sesuai porsinya.
+
+## The CIA Triad
+
+Sebelum kita mengeklaim suatu sistem itu "aman", kita perlu membedah apa saja unsur yang membentuk keamanan tersebut. Di dunia *cybersecurity*, ada tiga tiang utama yang menjadi standar penilaian, yaitu **CIA Triad**:
+
+### 1. Confidentiality (Kerahasiaan)
+Menjamin bahwa data hanya bisa diakses oleh orang yang memang berhak.
+
+- **Contoh 1: Resep Rahasia Perusahaan.** Perusahaan seperti KCF atau Coca-Cola punya resep rahasia yang cuma diketahui segelintir orang, Kalau resepnya bocor ke saingan, mereka rugi besar.
+- **Contoh 2: Chat/DM Pribadi.** Saat kamu kirim pesan curhat ke teman lewat aplikasi chat, pesan tersebut di-enkripsi agar cuma kamu dan temanmu yang bisa baca. Pihak lain (termasuk hacker atau penyedia layanan) tidak boleh tahu isinya.
+
+### 2. Integrity (Integritas)
+Menjamin bahwa data tidak bisa diubah secara tidak sah, dan kita bisa mendeteksi jika ada perubahan yang terjadi.
+
+- **Contoh 1: Saldo Rekening Bank.** Bayangkan kamu punya saldo 100 miliar, tiba-tiba besok berubah jadi 100 juta tanpa ada transaksi apa pun, Itu artinya integritas datanya dirusak, Saldo harus tetap benar dan tidak boleh berubah secara tidak sah.
+- **Contoh 2: Isi Surat Keputusan (SK).** Jika isi sebuah surat keputusan resmi pemerintah diubah satu kata saja (misal dari "Ditolak" jadi "Disetujui") oleh pihak luar, maka seluruh sistem birokrasi bisa kacau.
+
+### 3. Availability (Ketersediaan)
+Menjamin bahwa sistem atau layanan selalu siap digunakan kapan pun dibutuhkan oleh pengguna yang sah.
+
+- **Contoh 1: Nomor Darurat (112).** Saat ada kebakaran atau keadaan darurat, nomor telepon darurat harus bisa dihubungi setiap detik, Kalau sistem teleponnya mati, nyawa orang bisa jadi taruhannya.
+- **Contoh 2: Layanan Video Streaming.** Bayangkan malam minggu kamu sedang mau menonton film favorit, tapi aplikasinya terus-menerus *loading* atau servernya *down*, Pengguna pasti merasa dirugikan karena layanan yang mereka bayar tidak tersedia saat dibutuhkan.
+
+---
+
+### Penting: Skala Prioritas CIA
+Tiga unsur di atas tidak selalu memiliki beban prioritas yang sama. Tergantung pada apa yang sedang kita amankan, terkadang salah satu unsur jauh lebih penting dibanding yang lain.
+
+**Contoh: Pengumuman Kelulusan Kampus**
+- **Confidentiality:** Tidak terlalu penting, karena pengumumannya memang bersifat publik.
+- **Integrity:** **Sangat Kritis.** Jangan sampai nama orang yang tidak lulus diubah menjadi lulus di daftar pengumuman.
+- **Availability:** Cukup penting agar semua mahasiswa bisa melihat hasilnya tanpa kendala teknis.
+
+---
