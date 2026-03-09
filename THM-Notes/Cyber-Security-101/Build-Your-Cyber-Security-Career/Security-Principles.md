@@ -205,3 +205,28 @@ Selain tiga model di atas (Bell-LaPadula, Biba, Clark-Wilson), masih banyak mode
 -   Sutherland model
 -   Graham-Denning model
 -   Harrison-Ruzzo-Ullman model
+
+## Defence in Depth
+
+**Defence-in-Depth** (atau sering disebut *Multi-Level Security*) adalah strategi keamanan yang menggunakan banyak lapisan pertahanan untuk melindungi data atau sistem. 
+
+Konsep utamanya sangat sederhana: **Kalau satu lapisan jebol, masih ada lapisan lain yang menghadang penyerang.**
+
+<p align="center">
+<img src="../../../Assets/Images/Defence-ind-depth.png" alt="Defence in Depth">
+</p>
+
+### Mengamankan Barang Berharga
+
+Bayangkan kamu punya dokumen sangat penting dan perhiasan mahal di rumah:
+
+1.  **Level 1:** Kamu menaruhnya di dalam **laci meja** yang dikunci.
+2.  **Level 2:** Apakah laci saja cukup? Tentu tidak. Kamu memastikan **pintu kamar** selalu dikunci.
+3.  **Level 3:** Kamu juga mengunci **pintu utama rumah**.
+4.  **Level 4:** Kamu mengunci **pagar depan rumah**.
+5.  **Level 5:** Kamu memasang **kamera CCTV** di berbagai sudut untuk memantau pergerakan.
+
+**Tujuannya?**
+Meskipun lapisan-lapisan ini mungkin tidak bisa menghentikan pencuri yang sangat profesional (ingat Rule: *100% Security is a Myth*), tapi lapisan yang banyak ini akan **memperlambat** mereka dan membuat sebagian besar pencuri biasa menyerah karena pertahanannya terlalu rumit. 
+
+Dalam dunia digital, lapisan ini bisa berupa kombinasi dari *firewall*, antivirus, enkripsi, *multi-factor authentication* (MFA), hingga pelatihan kesadaran keamanan bagi karyawan.
