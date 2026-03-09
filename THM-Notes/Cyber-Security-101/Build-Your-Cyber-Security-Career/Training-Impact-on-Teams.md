@@ -73,6 +73,41 @@ Bayangkan, dengan modal $5,000, perusahaan mendapatkan kembalian berupa produkti
 Jika kamu ingin meminta budget training ke atasan, jangan cuma bilang "saya ingin belajar". Gunakan pendekatan yang profesional:
 - **Fokus pada Value:** Jelaskan bagaimana training ini bisa menghemat uang perusahaan atau mencegah kerugian akibat serangan cyber.
 - **Gunakan Data:** Masukkan perhitungan ROI seperti contoh di atas.
-- **Gunakan Template:** TryHackMe menyediakan contoh proposal (*Cost savings by investing in Cyber Security training*) yang bisa kamu download untuk meningkatkan peluang disetujuinya budget training.
+- **Gunakan Template:** TryHackMe menyediakan contoh proposal ([Cost savings by investing in Cyber Security training](../../../Assets/Docs/CyberSecurityTraining-1-PageBusinessCase-1729084331110.pdf)) yang bisa kamu download untuk meningkatkan peluang disetujuinya budget training.
 
 ---
+
+## Vendor Selection
+
+Setelah paham pentingnya *training*, langkah selanjutnya adalah memilih **Vendor** (penyedia layanan training) yang tepat. Memilih vendor itu seperti memilih sekolah: harus dicek kualitasnya supaya investasi perusahaan nggak sia-sia.
+
+Berikut adalah daftar pertanyaan kritis yang harus dijawab saat proses pemilihan vendor:
+
+- **Target Audience:** Untuk siapa training ini dibeli? (Apakah untuk tim teknis, manajemen, atau seluruh karyawan?)
+- **Profil Karyawan:** Apa latar belakang, pengalaman, peran, dan topik yang relevan bagi karyawanmu?
+- **Rekam Jejak Vendor:** Apakah vendor tersebut punya pengalaman menangani organisasi yang mirip dengan perusahaanmu?
+- **Kualitas Konten:** Bagaimana luasnya (*breadth*), kedalamannya (*depth*), dan kualitas materi untuk topik yang kamu anggap penting?
+- **Efisiensi Platform:** Apakah pengguna bisa belajar, berlatih (*train*), dan praktik di satu platform yang sama? (Poin ini sangat penting agar proses belajar tidak terpecah-pecah).
+- **Pertimbangan Biaya (CFO Perspective):** Bagi Direktur Keuangan (CFO), biaya itu penting. Namun, perlu diingat bahwa biaya training biasanya jauh lebih kecil dibandingkan keuntungan dari peningkatan produktivitas dan keamanan tim.
+
+Memikirkan dan menjawab pertanyaan-pertanyaan ini adalah langkah krusial supaya perusahaan bisa memilih vendor optimal yang benar-benar sesuai dengan kebutuhan tim.
+
+---
+
+## Conclusion
+
+Sebagai penutup, *training* bukan cuma pelengkap opsional, tapi komponen inti untuk meningkatkan performa tim cybersecurity. Di dunia kerja yang serba cepat, konsep **Lifelong Learning** (belajar sepanjang hidup) adalah kunci sukses. Banyak perusahaan besar yang sadar akan hal ini dan mewajibkan karyawan mereka untuk rutin ikut training.
+
+Keuntungannya dua arah:
+1. **Bagi Karyawan:** Skill makin terasah dan karir makin cerah.
+2. **Bagi Perusahaan:** Tim makin solid dan sistem makin aman dari serangan.
+
+Jika kamu ingin tahu lebih lanjut bagaimana implementasinya di level organisasi, kamu bisa cek [business.tryhackme.com](https://business.tryhackme.com) atau [TryHackMe Classrooms](https://tryhackme.com/classrooms) untuk institusi pendidikan.
+
+---
+
+## Real-World Relevance
+
+Di dunia nyata, *training* adalah investasi pertahanan yang paling murah dibandingkan biaya yang harus dikeluarkan jika terjadi kebocoran data (*data breach*). 
+- Seorang admin server yang terlatih bisa menutup celah keamanan dalam hitungan menit lewat *patching* yang tepat.
+- Tanpa training, kesalahan kecil seperti salah konfigurasi bisa menjadi pintu masuk bagi serangan jutaan dollar.
