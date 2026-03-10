@@ -16,6 +16,14 @@ kita bakal bahas tujuan pembelajaran berikut:
 - Cara Setup dan Menggunakan Reverse dan Bind Shells
 - Deploy Web Shells
 
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Initial Access / Post-Exploitation** — setelah menemukan celah (RCE, file upload, dll) untuk mendapatkan akses interaktif ke mesin target.
+- **Prasyarat:** Sudah menemukan vulnerability yang bisa dieksploitasi (RCE, command injection, file upload) atau memiliki kredensial valid.
+- **Tanda keberhasilan:** Prompt shell muncul (`$` atau `#`) di terminal attacker, dan command `whoami`/`id` mengembalikan info user target.
+
+> **Common Mistake:** Lupa menjalankan listener (`nc -lvnp PORT`) **sebelum** mengirim payload reverse shell ke target. Akibatnya, payload terkirim tapi tidak ada yang menangkap koneksinya — serangan gagal total.
+
 ## Shells Overview
 
 ### What is a Shell?
@@ -44,6 +52,20 @@ Reverse shell, atau kadang disebut **"connect back shell"**, adalah teknik palin
 Bedanya sama shell biasa, di sini **koneksi dimulai dari sistem target ke mesin attacker**.
 
 Kenapa begini? Agar bisa menghindari deteksi firewall. Biasanya firewall memblokir koneksi masuk (ingress) sembarangan, tapi membolehkan koneksi keluar (egress). Jadi kalau target yang connect duluan ke kita, firewall seringkali akan membolehkan dan kita mendapatkan shell.
+
+```mermaid
+sequenceDiagram
+    participant A as Attacker
+    participant F as Firewall
+    participant T as Target
+
+    Note over A: 1. Start Listener (nc -lvnp 4444)
+    Note over T: 2. Payload dijalankan di target
+    T->>F: Koneksi keluar (egress) ke Attacker:4444
+    F-->>A: Firewall membolehkan (egress allowed)
+    A-->>T: Shell session terbuka
+    Note over A,T: Attacker sekarang punya akses shell
+```
 
 ### How Reverse Shells Work
 

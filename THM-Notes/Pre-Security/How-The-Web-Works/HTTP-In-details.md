@@ -54,6 +54,19 @@ Komponen-komponen URL:
 
 Ini contoh nyata percakapan antara browser (client) dan server. Ibarat **surat pesanan** dan **balasan dari dapur**:
 
+```mermaid
+sequenceDiagram
+    participant C as Client (Browser)
+    participant S as Web Server
+
+    C->>S: GET /index.html HTTP/1.1
+    Note over C,S: Request dikirim dengan Headers
+    S-->>C: HTTP/1.1 200 OK
+    Note over C,S: Response + HTML body dikirim balik
+    C->>S: GET /style.css HTTP/1.1
+    S-->>C: HTTP/1.1 200 OK (CSS file)
+```
+
 **Contoh Request (Surat Pesanan):**
 
 ```http

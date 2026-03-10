@@ -12,7 +12,15 @@
 
 Hydra bisa menjalankan _brute force_ attack ke berbagai layanan autentikasi. Bayangkan kamu sedang mencoba menebak password seseorang secara manual di layanan seperti **SSH**, **Web Application Form**, **FTP**, atau **SNMP**. Nah, Hydra ini melakukan hal yang sama tapi jauh lebih cepat karena dia akan mencoba login menggunakan daftar password (wordlist) yang sudah kita siapkan.
 
-Tujuannya simpel: Nemuin password yang bener.
+Tujuannya simpel: menemukan password yang benar.
+
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Initial Access** — setelah menemukan service terbuka (SSH, FTP, HTTP login) dari hasil Nmap.
+- **Prasyarat:** Mengetahui username (atau daftar username) dan memiliki wordlist password. Service target harus bisa diakses dari jaringan kita.
+- **Tanda keberhasilan:** Hydra menampilkan `[PORT][SERVICE] host: TARGET login: USER password: PASS` berwarna hijau.
+
+> **Common Mistake:** Menggunakan flag `-l` (huruf kecil, single username) padahal bermaksud `-L` (huruf besar, file daftar username) — atau sebaliknya. Salah satu huruf bisa membuat Hydra hanya mencoba 1 username alih-alih ribuan.
 
 Menurut repositori resminya, Hydra support alias bisa nge-brute force BANYAK banget protokol, contohnya:
 "Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, TeamSpeak (TS2), Telnet, VMware-Auth, VNC, dan XMPP."

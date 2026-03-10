@@ -12,6 +12,13 @@ Nah, sama seperti fungsi satpam tersebut, **Firewall** adalah sistem keamanan ya
 
 Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan internal kita yang aman dari jaringan eksternal (Internet). Berbekal aturan khusus (*rules*), Firewall akan memutuskan apakah suatu data diizinkan masuk atau akan diblokir mentah-mentah.
 
+```mermaid
+flowchart LR
+    Internet["Internet (Untrusted)"] <-->|Traffic| FW["Firewall"]
+    FW <-->|Allowed| LAN["Internal Network (Trusted)"]
+    FW -.-x|Blocked| X["Malicious Traffic"]
+```
+
 <P align="center">
 <img src="../../Assets/Images/Firewall.png" alt="Firewall" width="600px"/>
 </p>

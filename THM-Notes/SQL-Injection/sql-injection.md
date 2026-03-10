@@ -11,9 +11,15 @@
 
 ## Brief
 
-**SQL Injection (SQLi)** itu kerentanan keamanan web yang membuat penyerang bisa manipulasi query yang dibuat aplikasi ke database-nya. Ini membuat penyerang bisa melihat data yang biasanya tidak bisa mereka ambil, seperti data milik pengguna lain, atau data apa pun yang bisa diakses sama aplikasi itu sendiri. Dalam banyak kasus, penyerang bisa modifikasi atau hapus data ini, nyebabin perubahan permanen di konten atau aplikasi.
+**SQL Injection (SQLi)** itu kerentanan keamanan web yang membuat penyerang bisa manipulasi query yang dibuat aplikasi ke database-nya. Ini membuat penyerang bisa melihat data yang biasanya tidak bisa mereka ambil, seperti data milik pengguna lain, atau data apa pun yang bisa diakses sama aplikasi itu sendiri. Dalam banyak kasus, penyerang bisa modifikasi atau hapus data ini, menyebabkan perubahan permanen di konten atau aplikasi.
 
----
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan input field di web application yang berinteraksi dengan database.
+- **Prasyarat:** Menemukan parameter input (form login, search bar, URL parameter) yang tidak di-sanitasi dengan benar.
+- **Tanda keberhasilan:** Query yang dimodifikasi mengembalikan data yang seharusnya tidak bisa diakses, atau bypass autentikasi berhasil.
+
+> **Common Mistake:** Menggunakan tanda kutip yang salah. Beberapa database menggunakan `'` (single quote) dan ada yang menggunakan `"` (double quote). Coba keduanya jika payload tidak bekerja.
 
 ## What is a Database?
 

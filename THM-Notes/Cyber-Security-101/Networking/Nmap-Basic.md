@@ -12,7 +12,13 @@
 
 Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan dan pemetaan jaringan. Ibarat radar, *tool* ini membantu kamu mengirim paket khusus ke target dan menganalisis respons baliknya. Dari situ, kamu bisa mengetahui *host* mana saja yang aktif, *port* mana yang terbuka, sampai jenis OS apa yang dipakai target.
 
----
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — langkah paling awal dalam attack chain sebelum eksploitasi.
+- **Prasyarat:** Akses jaringan ke target (bisa langsung atau via VPN/tunnel).
+- **Tanda keberhasilan:** Daftar port terbuka, versi service, dan OS fingerprint muncul di output.
+
+> **Common Mistake:** Menjalankan SYN scan (`-sS`) tanpa `sudo` akan otomatis fallback ke TCP Connect scan (`-sT`) yang lebih lambat dan lebih berisik. Selalu gunakan `sudo nmap` untuk mendapatkan hasil terbaik.
 
 ## Nmap Switches
 

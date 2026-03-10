@@ -24,6 +24,16 @@ Room ini akan membantu kamu memahami konsep-konsep penting dari incident respons
 - Tools buat Incident Detection dan Response beserta peran PlayBooks
 - Incident Response Plan
 
+```mermaid
+flowchart LR
+    A[Preparation] --> B[Detection & Analysis]
+    B --> C[Containment]
+    C --> D[Eradication]
+    D --> E[Recovery]
+    E --> F[Post-Incident Activity]
+    F -.->|Lessons Learned| A
+```
+
 ## What are Incidents?
 
 Berbagai proses (interaktif & background) berjalan di perangkat kita dan menghasilkan **events**. Events ini dimasukkan ke **security solutions** sebagai **logs** untuk mendeteksi aktivitas berbahaya. Tantangan sebenarnya dimulai setelah security solution berhasil mendeteksi aktivitas mencurigakan dan memicu _alert_.

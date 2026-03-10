@@ -13,6 +13,13 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 - Memahami dasar dasar dari enumeration
 - Cara menggunakan Gobuster untuk mencari direktori dan file tersembunyi yang ada di web
 - Cara pakai Gobuster untuk menemukan **subdomain** yang tidak terekspos
+- Cara pakai Gobuster untuk menemukan **Virtual Hosts** (Vhost)
+
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — mencari directory, file, subdomain, dan vhost tersembunyi di target web.
+- **Prasyarat:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
+- **Tanda keberhasilan:** Gobuster menampilkan daftar path dengan status code `200`, `301`, `302`, atau `403` yang mengindikasikan resource yang ada.
 - Cara pakai Gobuster buat ngintip **virtual hosts**
 - caranya memilih dan memakai **wordlist** yang cocok untuk scanning
 

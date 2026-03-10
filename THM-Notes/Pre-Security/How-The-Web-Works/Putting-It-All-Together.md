@@ -50,4 +50,15 @@ Secara garis besar, ketika kamu mengetik URL di browser, ini yang terjadi secara
 5. **Processing & Database** — Server memproses permintaan dan berinteraksi dengan Database jika diperlukan
 6. **Response** — Data dikirim balik ke browser untuk dirender
 
+```mermaid
+flowchart LR
+    A["Browser"] -->|1. DNS| B["DNS Server"]
+    B -->|IP Address| A
+    A -->|2. Request| C["WAF"]
+    C -->|3. Filter| D["Load Balancer"]
+    D -->|4. Route| E["Web Server"]
+    E <-->|5. Query| F["Database"]
+    E -->|6. Response| A
+```
+
 > **Note:** Memahami infrastruktur ini penting, agar tau titik lemah mana yang bisa dieksploitasi, apakah itu di level DNS, WAF bypass, atau Database injection.

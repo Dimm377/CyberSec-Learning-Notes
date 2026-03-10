@@ -78,6 +78,27 @@ Proses nerjemahin nama domain ke IP Address itu lumayan panjang. Analogi sederha
 
 Begitu jawaban pastinya didapatkan, Resolver menyerahkan IP tersebut ke browser kamu untuk nampilin websitenya.
 
+```mermaid
+sequenceDiagram
+    participant B as Browser
+    participant C as Local Cache
+    participant R as Recursive Resolver
+    participant Root as Root Server
+    participant TLD as TLD Server (.com)
+    participant A as Authoritative Server
+
+    B->>C: tryhackme.com?
+    C-->>B: Tidak ada di cache
+    B->>R: Tolong carikan IP tryhackme.com
+    R->>Root: Siapa yang handle .com?
+    Root-->>R: Tanya TLD Server .com
+    R->>TLD: Siapa yang handle tryhackme.com?
+    TLD-->>R: Tanya Authoritative Server mereka
+    R->>A: IP dari tryhackme.com?
+    A-->>R: 104.26.x.x (TTL: 3600)
+    R-->>B: 104.26.x.x
+```
+
 ---
 
 ### TTL (Time To Live)

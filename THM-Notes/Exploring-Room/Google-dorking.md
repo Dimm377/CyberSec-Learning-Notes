@@ -12,6 +12,12 @@
 
 Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-jalan terus di internet buat nyatet semua website yang dia temui.
 
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Reconnaissance / OSINT** — langkah paling awal untuk mengumpulkan informasi tentang target tanpa menyentuh infrastruktur mereka langsung.
+- **Prasyarat:** Hanya butuh browser dan akses ke Google. Tidak perlu tools khusus.
+- **Tanda keberhasilan:** Menemukan informasi sensitif yang terekspos (file config, login page, directory listing, credential) lewat hasil pencarian Google.
+
 Cara kerjanya:
 1.  **Crawling:** Bot jalan-jalan mencari konten.
 2.  **Indexing:** Konten disimpen di database raksasa Google.

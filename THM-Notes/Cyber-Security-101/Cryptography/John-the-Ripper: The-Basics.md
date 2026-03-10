@@ -13,6 +13,14 @@
 **Apa itu John the Ripper (JtR)?**
 John the Ripper itu salah satu tool "password cracker" paling populer dan fleksibel. Tool ini dirancang buat mendeteksi password yang lemah (weak password) dengan cara lakuin proses cracking hash penggunanya.
 
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap **Post-Exploitation / Credential Access** — setelah berhasil mendapatkan file hash (dari dump database, `/etc/shadow`, SAM, atau NTDS.dit).
+- **Prasyarat:** Memiliki file hash yang ingin di-crack dan wordlist (misalnya `rockyou.txt`). Harus tahu jenis hash-nya (MD5, SHA256, NTLM, dll).
+- **Tanda keberhasilan:** JtR menampilkan password plaintext di samping hash yang berhasil di-crack.
+
+> **Common Mistake:** Langsung menjalankan JtR tanpa mengonversi format hash terlebih dahulu. Misalnya, untuk SSH key harus pakai `ssh2john` dulu, untuk ZIP pakai `zip2john`. Tanpa konversi, JtR tidak akan mengenali formatnya.
+
 - **Kecepatan Tinggi:** Mampu lakuin cracking super cepat.
 - **Fleksibilitas:** Support ratusan format hash (bukan cuma password user, tapi juga file ZIP terenkripsi, kunci SSH, dll).
 - **Open Source:** Gratis dan bisa dimodifikasi.
