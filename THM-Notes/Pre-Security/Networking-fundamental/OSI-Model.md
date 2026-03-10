@@ -21,16 +21,6 @@ OSI Model itu kerangka konseptual yang membuat sistem komunikasi di jaringan pun
 
 **OSI Model** (Open System Interconnection Model) membagi proses komunikasi jaringan jadi **7 lapisan**. Setiap lapisan punya tugas spesifik — ibarat **jalur produksi di pabrik** di mana setiap stasiun mengerjakan satu bagian sampai produk (data) siap dikirim.
 
-```mermaid
-flowchart TB
-    L7["Layer 7: Application"] --> L6["Layer 6: Presentation"]
-    L6 --> L5["Layer 5: Session"]
-    L5 --> L4["Layer 4: Transport"]
-    L4 --> L3["Layer 3: Network"]
-    L3 --> L2["Layer 2: Data Link"]
-    L2 --> L1["Layer 1: Physical"]
-```
-
 <p align="center">
 <img src="../../Assets/Images/OSI.png" alt="OSI Model">
 </p>
