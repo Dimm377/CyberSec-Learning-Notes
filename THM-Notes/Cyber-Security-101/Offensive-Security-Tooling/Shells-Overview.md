@@ -24,6 +24,9 @@ kita bakal bahas tujuan pembelajaran berikut:
 
 > **Common Mistake:** Lupa menjalankan listener (`nc -lvnp PORT`) **sebelum** mengirim payload reverse shell ke target. Akibatnya, payload terkirim tapi tidak ada yang menangkap koneksinya — serangan gagal total.
 
+(Untuk mencari port terbuka sebelum menyerang, cek catatan [Nmap Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Nmap-Basic.md). Jika butuh brute force kredensial, cek catatan [Hydra](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Hydra.md))
+
+
 ## Shells Overview
 
 ### What is a Shell?

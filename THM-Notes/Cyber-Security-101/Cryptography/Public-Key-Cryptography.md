@@ -13,6 +13,8 @@
 
 Room ini membahas **Public Key Cryptography** (Asymmetric Encryption) — pondasi keamanan komunikasi internet modern (HTTPS, SSH, Digital Signatures). Beda sama Symmetric Encryption yang cuma pakai satu kunci, Asymmetric pakai sepasang kunci: **Public Key** dan **Private Key**.
 
+(Jika kamu belum membaca dasar-dasar kriptografi, mulai dulu dari [Cryptography Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Cryptography-Basic.md). Penerapan PKI di protokol jaringan dibahas di [Networking Secure Protocols](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Networking-Secure-Protocols.md))
+
 *(Konsep dasar cryptography ada di catatan [Cryptography Basic](./Cryptography-Basic.md))*
 
 ---

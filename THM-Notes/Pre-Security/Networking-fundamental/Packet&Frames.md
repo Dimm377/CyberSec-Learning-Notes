@@ -13,6 +13,8 @@
 
 Room ini membahas bagaimana data dipecah jadi bagian kecil (Packets dan Frames) buat mencegah _bottleneck_ di jaringan, serta cara TCP membangun koneksi lewat Three-way Handshake.
 
+(Konsep layer OSI yang menjadi dasar enkapsulasi ini dijelaskan lebih detail di catatan [OSI Model](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/Networking-fundamental/OSI-Model.md))
+
 ---
 
 ### What are Packets & Frames?

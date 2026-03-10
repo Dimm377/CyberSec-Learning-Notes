@@ -12,6 +12,8 @@ Untuk memperbaiki celah *blind spot* (titik buta) inilah, para arsitek jaringan 
 
 Jika *Firewall* adalah satpam di pos penjagaan depan, maka **IDS adalah kamera pengawas (CCTV) berteknologi tinggi** yang dipasang menyebar di seluruh sudut ruangan dalam jaringan.
 
+(Penjelasan lengkap tentang Firewall sebagai "satpam gerbang depan" ada di catatan [Firewall Fundamentals](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Security-Solutions/Firewall-Fundamentals.md))
+
 **Sistem Kerja Utama IDS:**
 1. **Memantau Tanpa Henti:** IDS berada di dalam infrastruktur (berbeda dengan Firewall yang ada di batas luar) dan terus memantau seluruh lalu lintas data (*traffic*) yang berlalu-lalang di dalam.
 2. **Mendeteksi Kejanggalan:** Layaknya CCTV pintar, IDS akan menganalisis setiap paket data untuk mencari pergerakan abnormal (*Anomaly*) atau mencocokkannya dengan rekam jejak kriminal (*Signature-based detection*).

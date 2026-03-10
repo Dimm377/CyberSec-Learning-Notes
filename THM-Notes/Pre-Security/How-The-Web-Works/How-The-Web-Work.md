@@ -13,6 +13,8 @@
 
 Belajar proses fundamental dalam pembuatan situs web, termasuk bagaimana browser berinteraksi sama web server.
 
+(Untuk detail lengkap tentang protokol HTTP, cek catatan [HTTP In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/HTTP-In-details.md). Proses pencarian alamat server dijelaskan di [DNS In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/DNS-In-Details.md))
+
 ### How The Web Works?
 
 Pada dasarnya, web bekerja pakai model **Client-Server**. Analogi paling gampang: bayangkan kamu lagi di **restoran** (lagi lagi restoran, karena emang mirip).

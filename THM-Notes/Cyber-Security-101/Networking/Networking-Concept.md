@@ -27,6 +27,9 @@
 
 > **Mnemonic buat menghafal urutan dari bawah ke atas:** **P**lease **D**o **N**ot **T**hrow **S**pinach **P**izza **A**way (Physical, Data Link, Network, Transport, Session, Presentation, Application)
 
+(Penjelasan lebih detail per-layer ada di catatan [OSI Model](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/Networking-fundamental/OSI-Model.md) dan alur resolusi nama domain di [DNS In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/DNS-In-Details.md))
+
+
 ---
 
 ### TCP/IP Model

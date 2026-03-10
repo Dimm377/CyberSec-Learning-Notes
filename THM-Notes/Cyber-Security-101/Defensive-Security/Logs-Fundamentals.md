@@ -8,6 +8,8 @@
 
 Room ini membahas tuntas tentang apa itu _Logs_, kenapa sangat penting, dan bagaimana cara membaca jejak-jejak digital.
 
+(Logs adalah sumber data utama yang dianalisis oleh tim [SOC](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Defensive-Security/SOC-Fundamentals.md). Untuk analisis traffic jaringan secara visual, cek catatan [Wireshark Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Wireshark-basic.md))
+
 ## Introduction to Logs
 
 Attacker pasti berusaha sebisa mungkin menghapus jejak (meninggalkan _trace_ sesedikit mungkin) di sistem korban agar tidak ketahuan. Tapi bagaimana tim Security tetap bisa mengetahui cara serangannya terjadi, bahkan menemukan siapa dalangnya?

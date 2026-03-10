@@ -13,6 +13,8 @@
 
 Room ini membahas cara jaringan lokal bisa terhubung ke jaringan luar lewat Port Forwarding, Firewall, dan VPN.
 
+(Untuk dasar-dasar jaringan lokal, cek catatan [Intro To LAN](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/Networking-fundamental/Intro-To-LAN.md). Penjelasan mendalam tentang firewall ada di [Firewall Fundamentals](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Security-Solutions/Firewall-Fundamentals.md))
+
 ---
 
 ### What is Port Forwarding?

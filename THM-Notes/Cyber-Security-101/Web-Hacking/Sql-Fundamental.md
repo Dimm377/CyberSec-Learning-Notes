@@ -19,6 +19,9 @@ Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal b
 - Paham cara menggunakan SQL Clauses **(perintah tambahan untuk menyaring data)**
 - Paham cara jalanin berbagai **Operations**, **Operators**, dan **Functions** di dalam SQL
 
+(Setelah paham dasar SQL, kamu bisa lanjut belajar cara mengeksploitasinya di catatan [SQL Injection](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/SQL-Injection/sql-injection.md) atau menggunakan tool otomatis [SQLMap](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/SQLMap: The Basics.md))
+
+
 ## Databases 101
 
 ### Introducing Databases

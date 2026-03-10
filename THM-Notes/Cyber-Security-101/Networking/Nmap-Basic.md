@@ -20,6 +20,8 @@ Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan
 
 > **Common Mistake:** Menjalankan SYN scan (`-sS`) tanpa `sudo` akan otomatis fallback ke TCP Connect scan (`-sT`) yang lebih lambat dan lebih berisik. Selalu gunakan `sudo nmap` untuk mendapatkan hasil terbaik.
 
+(Setelah menemukan port terbuka, lanjut ke tahap eksploitasi: brute force login di [Hydra](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Hydra.md), mendapatkan shell via [Shells Overview](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md), atau eksploitasi langsung dengan [Metasploit](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Exploitation-Basics/Metasploit-Exploitation.md))
+
 ## Nmap Switches
 
 Agar Nmap tidak berjalan tanpa arah, kamu wajib menguasai *flag* dasar ini untuk mengendalikan prosesnya:

@@ -15,6 +15,8 @@
 
 OSI Model itu kerangka konseptual yang membuat sistem komunikasi di jaringan punya **bahasa yang sama**. Tujuannya memastikan perangkat dari berbagai produsen bisa saling berkomunikasi pakai protokol yang sudah disepakati secara global.
 
+(Ringkasan praktis OSI + TCP/IP ada di catatan [Networking Concepts](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Networking-Concept.md). Untuk memahami bagaimana data dibungkus per-layer, cek [Packet & Frames](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/Networking-fundamental/Packet&Frames.md))
+
 ---
 
 ### What is OSI Model?

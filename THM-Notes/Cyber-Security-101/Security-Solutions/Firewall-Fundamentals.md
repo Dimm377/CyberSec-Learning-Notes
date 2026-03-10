@@ -10,6 +10,8 @@ Pernahkah kamu memperhatikan satpam (*security guard*) yang berjaga di pintu mas
 
 Nah, sama seperti fungsi satpam tersebut, **Firewall** adalah sistem keamanan yang bertugas mengawasi ribuan lalu lintas data (*traffic*) yang masuk dan keluar dari sebuah jaringan digital kita.
 
+(Firewall hanya mengawasi "gerbang depan". Untuk mendeteksi penyusup yang sudah berhasil masuk, cek catatan [IDS Fundamentals](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Security-Solutions/IDS-Fundamentals.md). Konsep dasar firewall dalam konteks jaringan ada di [Extending Your Network](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/Networking-fundamental/Extending-Your-Network.md))
+
 Firewall bertindak sebagai **tembok pertahanan utama** yang memisahkan jaringan internal kita yang aman dari jaringan eksternal (Internet). Berbekal aturan khusus (*rules*), Firewall akan memutuskan apakah suatu data diizinkan masuk atau akan diblokir mentah-mentah.
 
 ```mermaid

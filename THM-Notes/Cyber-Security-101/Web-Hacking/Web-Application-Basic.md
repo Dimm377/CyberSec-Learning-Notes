@@ -10,6 +10,8 @@
 
 _Room_ ini memberikan dasar-dasar tentang cara kerja aplikasi web. Ini adalah pondasi penting sebelum kamu masuk ke materi pengujian keamanan web.
 
+(Penjelasan mendalam tentang protokol HTTP ada di catatan [HTTP In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/HTTP-In-details.md). Untuk memahami sisi database, cek [Sql Fundamental](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Web-Hacking/Sql-Fundamental.md))
+
 ### Learning Objective:
 - Memahami apa itu Aplikasi Web.
 - Membedah komponen-komponen URL.

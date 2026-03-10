@@ -21,6 +21,11 @@
 
 > **Common Mistake:** Menggunakan tanda kutip yang salah. Beberapa database menggunakan `'` (single quote) dan ada yang menggunakan `"` (double quote). Coba keduanya jika payload tidak bekerja.
 
+---
+
+(Eksploitasi ini membutuhkan pemahaman kuat tentang query database. Jika kamu merasa masih bingung, sebaiknya baca dulu catatan [Sql Fundamental](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Web-Hacking/Sql-Fundamental.md))
+
+
 ## What is a Database?
 
 **Database** itu kumpulan data yang terstruktur.

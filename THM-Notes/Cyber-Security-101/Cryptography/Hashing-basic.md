@@ -11,6 +11,8 @@
 
 ## Key Terms
 
+(Catatan ini adalah bagian dari seri Cryptography. Untuk fondasi kriptografi, cek [Cryptography Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Cryptography-Basic.md). Cara meng-crack hash yang kamu temukan ada di [John the Ripper](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/John-the-Ripper: The-Basics.md))
+
 **Konsep Dasar:**
 
 - **Plaintext:** Data asli yang belum diubah (text, gambar, dll).

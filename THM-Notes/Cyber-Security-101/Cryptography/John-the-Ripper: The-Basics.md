@@ -21,6 +21,8 @@ John the Ripper itu salah satu tool "password cracker" paling populer dan fleksi
 
 > **Common Mistake:** Langsung menjalankan JtR tanpa mengonversi format hash terlebih dahulu. Misalnya, untuk SSH key harus pakai `ssh2john` dulu, untuk ZIP pakai `zip2john`. Tanpa konversi, JtR tidak akan mengenali formatnya.
 
+(Untuk memahami dasar-dasar hashing dan jenis-jenis hash, baca catatan [Hashing Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Hashing-basic.md))
+
 - **Kecepatan Tinggi:** Mampu lakuin cracking super cepat.
 - **Fleksibilitas:** Support ratusan format hash (bukan cuma password user, tapi juga file ZIP terenkripsi, kunci SSH, dll).
 - **Open Source:** Gratis dan bisa dimodifikasi.

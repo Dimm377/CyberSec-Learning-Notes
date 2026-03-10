@@ -12,6 +12,8 @@ Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk
 
 **Learning Objectives:** Pondasi SOC, taktik Detection & Response, peran People/Processes/Technology, hands-on.
 
+(Ketika SOC mendeteksi ancaman, proses penanganannya dijelaskan di catatan [Incident Response Fundamentals](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Defensive-Security/Incident-Response-Fundamentals.md). Sumber data utama yang dianalisis SOC ada di [Logs Fundamentals](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Defensive-Security/Logs-Fundamentals.md))
+
 ## Purpose And Component
 
 <p align="center">

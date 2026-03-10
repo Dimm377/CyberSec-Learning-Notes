@@ -13,6 +13,8 @@
 
 Room HTTP in Detail ini fokus ke pemahaman mendalam tentang protokol komunikasi paling mendasar di internet: **Hypertext Transfer Protocol (HTTP)**. Di sini kita belajar bagaimana data ditransmisikan antara browser dan web server, serta mengerti anatomi di balik setiap permintaan yang kita buat di web.
 
+(Untuk memahami bagaimana browser menemukan alamat server, cek catatan [DNS In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/DNS-In-Details.md). Gambaran lengkap seluruh proses web ada di [Putting It All Together](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/Putting-It-All-Together.md))
+
 ### What is HTTP? (Hypertext Transfer Protocol)
 
 Bayangkan kamu lagi di **restoran**. Kamu (browser) mau pesan makanan, dan dapur (web server) yang menyiapkannya. Nah, **HTTP** itu ibarat **bahasa standar yang dipakai pelayan** untuk menyampaikan pesananmu ke dapur dan membawa hasilnya balik ke mejamu. Tanpa bahasa yang disepakati ini, komunikasi antara kamu dan dapur bakal kacau.

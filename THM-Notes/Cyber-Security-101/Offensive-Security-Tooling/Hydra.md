@@ -22,6 +22,8 @@ Tujuannya simpel: menemukan password yang benar.
 
 > **Common Mistake:** Menggunakan flag `-l` (huruf kecil, single username) padahal bermaksud `-L` (huruf besar, file daftar username) — atau sebaliknya. Salah satu huruf bisa membuat Hydra hanya mencoba 1 username alih-alih ribuan.
 
+(Sebelum menjalankan Hydra, kamu perlu tahu port dan service apa yang terbuka. Cek catatan [Nmap Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Nmap-Basic.md). Setelah berhasil login, lanjut dapatkan akses shell di [Shells Overview](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md))
+
 Menurut repositori resminya, Hydra support alias bisa nge-brute force BANYAK banget protokol, contohnya:
 "Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, TeamSpeak (TS2), Telnet, VMware-Auth, VNC, dan XMPP."
 
