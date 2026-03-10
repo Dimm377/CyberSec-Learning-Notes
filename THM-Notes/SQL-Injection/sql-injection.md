@@ -16,7 +16,7 @@
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan input field di web application yang berinteraksi dengan database.
-- **Prasyarat:** Menemukan parameter input (form login, search bar, URL parameter) yang tidak di-sanitasi dengan benar.
+- **Syaratnya:** Menemukan parameter input (form login, search bar, URL parameter) yang tidak di-sanitasi dengan benar.
 - **Tanda keberhasilan:** Query yang dimodifikasi mengembalikan data yang seharusnya tidak bisa diakses, atau bypass autentikasi berhasil.
 
 > **Common Mistake:** Menggunakan tanda kutip yang salah. Beberapa database menggunakan `'` (single quote) dan ada yang menggunakan `"` (double quote). Coba keduanya jika payload tidak bekerja.

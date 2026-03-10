@@ -16,7 +16,7 @@ John the Ripper itu salah satu tool "password cracker" paling populer dan fleksi
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Post-Exploitation / Credential Access** — setelah berhasil mendapatkan file hash (dari dump database, `/etc/shadow`, SAM, atau NTDS.dit).
-- **Prasyarat:** Memiliki file hash yang ingin di-crack dan wordlist (misalnya `rockyou.txt`). Harus tahu jenis hash-nya (MD5, SHA256, NTLM, dll).
+- **Syaratnya:** Memiliki file hash yang ingin di-crack dan wordlist (misalnya `rockyou.txt`). Harus tahu jenis hash-nya (MD5, SHA256, NTLM, dll).
 - **Tanda keberhasilan:** JtR menampilkan password plaintext di samping hash yang berhasil di-crack.
 
 > **Common Mistake:** Langsung menjalankan JtR tanpa mengonversi format hash terlebih dahulu. Misalnya, untuk SSH key harus pakai `ssh2john` dulu, untuk ZIP pakai `zip2john`. Tanpa konversi, JtR tidak akan mengenali formatnya.
@@ -25,7 +25,7 @@ John the Ripper itu salah satu tool "password cracker" paling populer dan fleksi
 - **Fleksibilitas:** Support ratusan format hash (bukan cuma password user, tapi juga file ZIP terenkripsi, kunci SSH, dll).
 - **Open Source:** Gratis dan bisa dimodifikasi.
 
-**Prasyarat:**
+**Syaratnya:**
 Buat pakai JtR dengan efektif, perlu paham dasar-dasar:
 
 1.  **Command Line (Linux/Unix):** Navigasi folder, jalanin command.

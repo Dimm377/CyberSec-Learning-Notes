@@ -16,7 +16,7 @@ memahami fundamental kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa meman
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan parameter input yang berpotensi rentan terhadap SQL Injection (dari hasil Gobuster/Burp Suite).
-- **Prasyarat:** URL target dengan parameter input (GET/POST). Jika halaman butuh login, kamu perlu cookie session (`--cookie`).
+- **Syaratnya:** URL target dengan parameter input (GET/POST). Jika halaman butuh login, kamu perlu cookie session (`--cookie`).
 - **Tanda keberhasilan:** SQLMap menampilkan `Parameter 'X' is vulnerable` dan tipe injection yang terdeteksi.
 
 Injeksi SQL (_SQL injection_) adalah kerentanan yang sangat umum dan menjadi topik hangat namun klasik di ranah Cyber Security. Untuk memahami kerentanan ini, kita harus memahami terlebih dahulu apa itu _database_ (basis data) dan bagaimana _website_ berinteraksi dengannya.

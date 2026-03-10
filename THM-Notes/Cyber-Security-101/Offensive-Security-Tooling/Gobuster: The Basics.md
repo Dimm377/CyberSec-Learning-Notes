@@ -18,7 +18,7 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — mencari directory, file, subdomain, dan vhost tersembunyi di target web.
-- **Prasyarat:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
+- **Syaratnya:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
 - **Tanda keberhasilan:** Gobuster menampilkan daftar path dengan status code `200`, `301`, `302`, atau `403` yang mengindikasikan resource yang ada.
 - Cara pakai Gobuster buat ngintip **virtual hosts**
 - caranya memilih dan memakai **wordlist** yang cocok untuk scanning

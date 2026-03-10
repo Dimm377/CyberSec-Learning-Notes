@@ -19,7 +19,7 @@ kita bakal bahas tujuan pembelajaran berikut:
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Initial Access / Post-Exploitation** — setelah menemukan celah (RCE, file upload, dll) untuk mendapatkan akses interaktif ke mesin target.
-- **Prasyarat:** Sudah menemukan vulnerability yang bisa dieksploitasi (RCE, command injection, file upload) atau memiliki kredensial valid.
+- **Syaratnya:** Sudah menemukan vulnerability yang bisa dieksploitasi (RCE, command injection, file upload) atau memiliki kredensial valid.
 - **Tanda keberhasilan:** Prompt shell muncul (`$` atau `#`) di terminal attacker, dan command `whoami`/`id` mengembalikan info user target.
 
 > **Common Mistake:** Lupa menjalankan listener (`nc -lvnp PORT`) **sebelum** mengirim payload reverse shell ke target. Akibatnya, payload terkirim tapi tidak ada yang menangkap koneksinya — serangan gagal total.

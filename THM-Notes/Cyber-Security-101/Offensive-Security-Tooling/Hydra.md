@@ -17,7 +17,7 @@ Tujuannya simpel: menemukan password yang benar.
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Initial Access** — setelah menemukan service terbuka (SSH, FTP, HTTP login) dari hasil Nmap.
-- **Prasyarat:** Mengetahui username (atau daftar username) dan memiliki wordlist password. Service target harus bisa diakses dari jaringan kita.
+- **Syaratnya:** Mengetahui username (atau daftar username) dan memiliki wordlist password. Service target harus bisa diakses dari jaringan kita.
 - **Tanda keberhasilan:** Hydra menampilkan `[PORT][SERVICE] host: TARGET login: USER password: PASS` berwarna hijau.
 
 > **Common Mistake:** Menggunakan flag `-l` (huruf kecil, single username) padahal bermaksud `-L` (huruf besar, file daftar username) — atau sebaliknya. Salah satu huruf bisa membuat Hydra hanya mencoba 1 username alih-alih ribuan.

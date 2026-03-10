@@ -15,7 +15,7 @@ Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-
 ### Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap **Reconnaissance / OSINT** — langkah paling awal untuk mengumpulkan informasi tentang target tanpa menyentuh infrastruktur mereka langsung.
-- **Prasyarat:** Hanya butuh browser dan akses ke Google. Tidak perlu tools khusus.
+- **Syaratnya:** Hanya butuh browser dan akses ke Google. Tidak perlu tools khusus.
 - **Tanda keberhasilan:** Menemukan informasi sensitif yang terekspos (file config, login page, directory listing, credential) lewat hasil pencarian Google.
 
 Cara kerjanya:
