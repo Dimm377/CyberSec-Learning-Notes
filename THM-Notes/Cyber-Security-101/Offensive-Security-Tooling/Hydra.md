@@ -10,7 +10,7 @@
 
 **Hydra** adalah tools password cracking yang menggunakan metode _brute force_. Singkatnya, ini adalah tools buat "maksa masuk" ke sistem dengan nebak password secara cepat.
 
-Hydra bisa jalanin _brute force_ attack ke berbagai layanan autentikasi. Bayangin kamu lagi nyoba nebak password seseorang secara manual di layanan seperti **SSH**, **Web Application Form**, **FTP**, atau **SNMP**. Nah, Hydra ini ngelakuin hal yang sama tapi jauh lebih cepat karena dia bakal nyoba login pakai daftar password (wordlist) yang sudah kita siapkan.
+Hydra bisa menjalankan _brute force_ attack ke berbagai layanan autentikasi. Bayangkan kamu sedang mencoba menebak password seseorang secara manual di layanan seperti **SSH**, **Web Application Form**, **FTP**, atau **SNMP**. Nah, Hydra ini melakukan hal yang sama tapi jauh lebih cepat karena dia akan mencoba login menggunakan daftar password (wordlist) yang sudah kita siapkan.
 
 Tujuannya simpel: Nemuin password yang bener.
 
@@ -29,7 +29,7 @@ Kalau passwordnya misal:
 - Tidak ada karakter spesialnya,
 - Atau kurang dari 8 karakter,
 
-Maka password itu bakal gampang banget ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pakai password pasaran, Hydra bakal nemuin itu dalam sekejap.
+Maka password itu akan sangat mudah ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pakai password pasaran, Hydra akan menemukan itu dalam sekejap.
 
 Seringkali, CCTV atau Web Frameworks pakai default credentials seperti `admin:password`. Ini jelas tidak aman sama sekali dan bakal jadi sasaran empuk buat tools seperti gini.
 
@@ -84,7 +84,7 @@ Artinya:
 
 - Hydra bakal pakai `root` sebagai username buat login **ssh**.
 - Dia bakal nyobain semua password yang ada di file `passwords.txt`.
-- Bakal ada 4 threads yang jalan bersamaan (paralel), ditandain sama flag `-t 4`. Agar lebih ngebut dikit tapi tidak membuat server down.
+- Akan ada 4 threads yang jalan bersamaan (paralel), ditandai oleh flag `-t 4`. Agar lebih cepat tapi tidak membuat server down.
 
 ### Post Web Form
 

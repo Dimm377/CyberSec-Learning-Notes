@@ -30,7 +30,7 @@ Fungsi hash beda sama enkripsi. **Tidak ada kunci**, dan dimaksudkan agar **must
 
 Fungsi hash mengambil input data berapa pun ukurannya dan membuat ringkasan (digest) dari data itu. Outputnya punya **ukuran tetap (fixed size)**.
 
-- Gampang ngitung output dari input.
+- Mudah menghitung output dari input.
 - Susah banget menentukan input dari output.
 - Perubahan kecil di input (bahkan 1 bit) nyebabin perubahan drastis di output.
 
@@ -51,7 +51,7 @@ Output asli hash itu raw bytes, yang kemudian di-encode (biasanya Base64 atau He
 **Why is Hashing Important?**
 Hashing bekerja di background buat melindungi integritas data & kerahasiaan password.
 
-- **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Waktu login, sistem ngitung hash password yang dimasukin dan ngebandinginnya sama hash yang tersimpan.
+- **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Waktu login, sistem menghitung hash password yang dimasukkan dan membandingkannya dengan hash yang tersimpan.
 
 **Hash Collision:**
 Collision terjadi waktu **dua input beda ngasilin output yang sama**.

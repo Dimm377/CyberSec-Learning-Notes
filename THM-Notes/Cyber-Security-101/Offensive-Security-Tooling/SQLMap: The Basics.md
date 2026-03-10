@@ -110,7 +110,7 @@ SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengot
 
 ### Menggunakan SQLMap
 
-Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` buat ngeliat deretan fungsi dan parameter yang bisa kamu sesuaikan. Tapi, buat pemula atau kalau kamu pengen panduan anti-ribet, ada _flag_ andalan:
+Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` untuk melihat deretan fungsi dan parameter yang bisa kamu sesuaikan. Tapi, untuk pemula atau kalau kamu ingin panduan anti-ribet, ada _flag_ andalan:
 
 **The Wizard Mode (`--wizard`)**
 Mode ini bakal memandu kamu secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
@@ -119,7 +119,7 @@ Mode ini bakal memandu kamu secara interaktif, nanya langkah demi langkah buat n
 sqlmap --wizard
 ```
 
-_Output_ di terminal kamu (seperti gambar) kurang lebih bakal menampilkan _banner_ SQLmap, ngejalanin _wizard interface_, dan pertama kali bakal minta URL target:
+_Output_ di terminal kamu (seperti gambar) kurang lebih akan menampilkan _banner_ SQLmap, menjalankan _wizard interface_, dan pertama kali akan meminta URL target:
 
 ```text
 user@arch:~$ sqlmap --wizard
@@ -146,7 +146,7 @@ Please enter full target URL (-u):
 Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang nampung _input_ data (parameter):
 
 1. **HTTP GET-Based Testing:**
-   URL yang pakai parameter GET biasanya gampang terlihat di _address bar_. Contoh: `http://sqlmaptesting.thm/search?cat=1`. Di sini SQLMap bakal ngehajar parameter `cat` dengan berbagai payload SQLi buat nguji seberapa kuat sanitasi _backend_-nya. Cukup lempar URL ini pakai _flag_ `-u`.
+   URL yang pakai parameter GET biasanya mudah terlihat di _address bar_. Contoh: `http://sqlmaptesting.thm/search?cat=1`. Di sini SQLMap akan menyerang parameter `cat` dengan berbagai payload SQLi untuk menguji seberapa kuat sanitasi _backend_-nya. Cukup lempar URL ini menggunakan _flag_ `-u`.
 
    ```bash
    sqlmap -u "http://sqlmaptesting.thm/search?cat=1"
@@ -178,7 +178,7 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang namp
 
 ### Membedah Output SQLMap (Terminal Autopsy)
 
-Ketika SQLMap ditembakkan ke _Injection Point_ dan celahnya terkonfirmasi (Vulnerable), terminal bakal ngeluarin banyak info krusial.
+Ketika SQLMap ditembakkan ke _Injection Point_ dan celahnya terkonfirmasi (Vulnerable), terminal akan mengeluarkan banyak info krusial.
 
 ```text
 user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1
@@ -360,7 +360,7 @@ _Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan je
 
 1. Dalam skenario nyata, kenapa kita memakai SQLMap daripada mengeksploitasi kerentanan SQLi secara manual murni?
 2. Urutkan _flag_ SQLMap yang benar (dari struktur tertinggi ke terendah) jika kita ingin panen isi data tabel secara spesifik!
-3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu sudah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil nembus layar autentikasi?
+3. Target kamu ternyata memiliki celah pencarian (search) yang rentan di halaman _Settings_. Masalahnya, halaman itu hanya bisa diakses kalau kamu sudah _login_. _Flag_ apa yang harus kamu bawa di SQLMap agar serangan ini berhasil menembus layar autentikasi?
 4. Saat SQLMap menemukan celah, ada bagian informasi _Fingerprinting_ (seperti OS, _Tech Stack_, DBMS version) yang ikut bocor. Buat seorang _Attacker/Red Team_, kenapa mendapatkan info OS _server target_ itu sangat berharga?
 
 ## Personal Practical

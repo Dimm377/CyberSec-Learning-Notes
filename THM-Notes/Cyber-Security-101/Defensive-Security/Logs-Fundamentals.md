@@ -6,42 +6,41 @@
 
 ---
 
-Room ini bakal membahas tuntas soal apa itu _Logs_, kenapa penting banget, dan gimana cara kita ngebaca jejak-jejak digital.
+Room ini membahas tuntas tentang apa itu _Logs_, kenapa sangat penting, dan bagaimana cara membaca jejak-jejak digital.
 
 ## Introduction to Logs
 
-Attacker pasti berusaha sebisa mungkin ngehapus jejak (meninggalkan _trace_ sesedikit mungkin) di sistem korban agar tidak ketahuan. Tapi kok tim Security tetep bisa mengetahui gimana serangannya terjadi, bahkan nemuin siapa dalangnya?
+Attacker pasti berusaha sebisa mungkin menghapus jejak (meninggalkan _trace_ sesedikit mungkin) di sistem korban agar tidak ketahuan. Tapi bagaimana tim Security tetap bisa mengetahui cara serangannya terjadi, bahkan menemukan siapa dalangnya?
 
 **Analoginya gini:**
 Bayangin ada polisi lagi investigasi kasus orang hilang di gubuk tengah hutan salju.
-Polisi nemuin petunjuk: pintu kayu hacur, atap jebol, jejak sepatu di salju, sama rekaman CCTV dari tetangga kejauhan. Dengan nyatuin kepingan-kepingan petunjuk (_traces_) ini, polisi akhirnya bisa tau kronologi dan siapa penjahatnya.
+Polisi menemukan petunjuk: pintu kayu hancur, atap jebol, jejak sepatu di salju, dan rekaman CCTV dari tetangga. Dengan menyatukan kepingan-kepingan petunjuk (_traces_) ini, polisi akhirnya bisa mengetahui kronologi dan siapa penjahatnya.
 
 Nah, **Logs** di dunia cyber itu ibarat kepingan-kepingan petunjuk yang ditinggalin sama maling tadi. Kumpulan _traces_ dari berbagai sumber bakal digabungin buat jadi petunjuk menuju si kriminal.
 
-Petunjuk (_traces_) ini punya peran super besar banget di dalam investigasi.
-Sekarang kalau kejadiannya ada di dalam perangkat digital, di mana kita bisa nemuin _traces_ ini buat ngebantu investigasi lebih lanjut?
+Petunjuk (_traces_) ini punya peran sangat besar dalam investigasi. Kalau kejadiannya ada di dalam perangkat digital, di mana kita bisa menemukan _traces_ ini untuk membantu investigasi?
 
-Jawabannya: **Logs**. Logs itu ibarat jejak kaki digital (_digital footprints_) yang ditinggalin setiap kali ada aktivitas apa pun (mau itu aktivitas wajar atau serangan jahat sekalipun). Dengan ngebaca logs ini, ngelacak sebuah aktivitas dan siapa dalang di baliknya bakal jadi jauh lebih gampang.
+Jawabannya: **Logs**. Logs itu ibarat jejak kaki digital (_digital footprints_) yang ditinggalkan setiap kali ada aktivitas apa pun (baik aktivitas wajar maupun serangan jahat). Dengan membaca logs ini, melacak sebuah aktivitas dan siapa dalang di baliknya menjadi jauh lebih mudah.
 
 ### Use Cases of Logs
 
-Secara garis besar, ini dia beberapa area utama yang sangat bergantung sama logs buat bisa jalan dengan bener:
+Secara garis besar, ini beberapa area utama yang sangat bergantung pada logs untuk bisa berjalan dengan benar:
 
 | Use Case | Description |
 | :--- | :--- |
-| **Security Events Monitoring** | Kalau dipantau secara langsung (_real-time_), logs ngebantu sistem buat ngedeteksi anomali (tingkah laku yang tidak wajar atau mencurigakan). |
-| **Incident Investigation and Forensics** | Karena logs itu rekam jejak setiap aktivitas, tim Security bakal dapet info sedetail-detailnya pas lagi mencari akar masalah penyebab suatu insiden (Root Cause Analysis). |
-| **Troubleshooting** | Sistem yang error atau aplikasi _crash_ juga kerasa banget kebantunya. Berdasarkan logs, masalah lebih gampang didiagnosa dan diperbaiki. |
-| **Performance Monitoring** | Selain keamanan, logs juga menyediakan _insight_ / wawasan berharga soal bagus nggaknya performa aplikasi waktu lagi jalan. |
-| **Auditing and Compliance** | Logs penting banget buat urusan kepatuhan peraturan (_compliance_). Punya jejak log mempermudah organisasi buktiin kalau mereka bersih dan legal dalam beraktivitas. |
+| **Security Events Monitoring** | Kalau dipantau secara langsung (_real-time_), logs membantu sistem mendeteksi anomali (tingkah laku yang tidak wajar atau mencurigakan). |
+| **Incident Investigation and Forensics** | Karena logs adalah rekam jejak setiap aktivitas, tim Security mendapatkan info sedetail-detailnya saat mencari akar masalah penyebab suatu insiden (Root Cause Analysis). |
+| **Troubleshooting** | Sistem yang _error_ atau aplikasi _crash_ juga sangat terbantu. Berdasarkan logs, masalah lebih mudah didiagnosa dan diperbaiki. |
+| **Performance Monitoring** | Selain keamanan, logs juga menyediakan _insight_ berharga tentang performa aplikasi saat sedang berjalan. |
+| **Auditing and Compliance** | Logs sangat penting untuk urusan kepatuhan peraturan (_compliance_). Punya jejak log mempermudah organisasi membuktikan bahwa mereka bersih dan legal dalam beraktivitas. |
 
 ### Learning Objectives
 
-Setelah nyelesaiin _room_ ini, kita bakal belajar soal:
+Setelah menyelesaikan _room_ ini, kita akan belajar tentang:
 - Apa saja tipe-tipe logs.
-- Gimana cara menganalisa logs.
-- Melakukan analisa pada Windows Event logs.
-- Melakukan analisa pada Web Access logs.
+- Bagaimana cara menganalisis logs.
+- Melakukan analisis pada Windows Event logs.
+- Melakukan analisis pada Web Access logs.
 
 ---
 
@@ -51,14 +50,16 @@ Setelah nyelesaiin _room_ ini, kita bakal belajar soal:
 
 ## Types of Logs
 
-Dari awal kita sudah tau betapa pentingnya _logs_. Tapi tunggu dulu, ada tantangan besar di sini. Bayangin kamu lagi menelusuri atau nginvestigasi _error_ (atau bahkan serangan dari _attacker_) di sebuah server. Kamu buka satu file _log_ utama server tersebut, lalu Kamu disuguhi puluhan ribu baris teks aneh yang isinya campur aduk dari berbagai macam _service_ sistem operasi tersebut. Pastinya kamu bakal _lost_ (kebingungan) mencari mana yang penting. Ini persis seperti disuruh mencari selembar struk ATM yang jatuh di tengah tumpukan gunungan sampah.
+Dari awal kita sudah tahu betapa pentingnya _logs_. Tapi ada tantangan besar di sini.
+
+Bayangkan kamu sedang menelusuri atau menginvestigasi _error_ (atau bahkan serangan dari _attacker_) di sebuah server. Kamu membuka satu file _log_ utama, lalu disuguhi puluhan ribu baris teks aneh yang isinya campur aduk dari berbagai _service_. Pasti kebingungan mencari mana yang penting — seperti mencari selembar struk ATM di tengah tumpukan sampah.
 
 **Solusinya: (Pengelompokan)**
 
-_Logs_ itu wajib banget dipecah dan dikelompokin ke dalam beberapa kategori terpisah berdasarkan "jenis informasi" yang mereka rekam. Dengan begitu, kamu cuma perlu mencari _log_ di "keranjang" log yang tepat sesuai sama insiden yang terjadi.
+_Logs_ wajib dipecah dan dikelompokkan ke dalam beberapa kategori terpisah berdasarkan "jenis informasi" yang mereka rekam. Dengan begitu, kamu cukup mencari _log_ di "keranjang" yang tepat sesuai insiden yang terjadi.
 
 **Sebagai contoh:**
-Kamu mau mencari _log_ rekaman kejadian orang nyoba _successful logins_ kemarin malem di OS Windows. Daripada kamu ngebaca ratusan ribu log yang isinya _random_ dari seluruh aktivitas OS secara keseluruhan, kamu cukup meluncur saja langsung ke bagian **Security Logs**. Informasi login-nya pasti nyangkut di situ. Simpel, presisi, dan hemat waktu investigasi secara efisien
+Kamu ingin mencari rekaman kejadian _successful logins_ kemarin malam di OS Windows. Daripada membaca ratusan ribu log _random_ dari seluruh aktivitas OS, kamu cukup langsung menuju bagian **Security Logs**. Informasi login pasti ada di situ. Simpel, presisi, dan hemat waktu.
 
 <img src="../../Assets/Images/logs.png" alt="Jenis-jenis Logs">
 
@@ -110,7 +111,7 @@ Cara aksesnya gampang banget. Kamu cukup buka **Start Menu**, terus ketikkan **E
 Berdasarkan *interface* dari Event Viewer tersebut, setiap _log_ kejadian di Windows punya informasi penting yang dibagi ke dalam beberapa kolom (*fields*) utama:
 
 - **Description:** Kolom ini isinya detail kronologi dari *event* tersebut.
-- **Log Name:** Kolom yang nandain apa nama _file log_ tempat kejadian ini dicatat (Misal: Security, System, dll).
+- **Log Name:** Kolom yang menandai nama _file log_ tempat kejadian ini dicatat (Misal: Security, System, dll).
 - **Logged:** Kolom ini mencatat "waktu kejadian" (kapan pastinya aktivitas tersebut terjadi).
 - **Event ID:** Ini adalah *nomor identitas unik* untuk setiap jenis kejadian.
 
@@ -134,33 +135,33 @@ Berikut ini adalah tabel daftar **Event ID** penting yang wajib diingat di Windo
 | **4725** | _A user account was disabled_ |
 | **4726** | _A user account was deleted_ |
 
-Sebenarnya masih banyak banget _Event ID_ lainnya di Windows selain yang ada di atas. Tidak perlu ngafalin semuanya, tapi setidaknya yang ada di tabel ini adalah Event ID yang paling sering muncul dan paling penting buat diingat saat investigasi.
+Sebenarnya masih banyak _Event ID_ lainnya di Windows selain yang ada di atas. Tidak perlu menghafal semuanya, tapi setidaknya yang ada di tabel ini adalah Event ID yang paling sering muncul dan paling penting untuk diingat saat investigasi.
 
 ## Web Server Access Logs Analysis
 
-Setiap hari kita pasti berinteraksi sama *website*. Entah itu cuma sekadar baca artikel, _login_ ke akun, atau _upload_ file. Semua aksi yang kita lakuin ini disebut sebagai **request**.
+Setiap hari kita pasti berinteraksi dengan _website_ — membaca artikel, _login_ ke akun, atau _upload_ file. Semua aksi ini disebut sebagai **request**.
 
-Sebagai penyedia layanan, _web server_ (seperti Nginx atau *Apache*) bertugas mencatat setiap _request_ yang masuk ke dalam file *log* mereka. Kalau di lingkungan Linux, log akses _Apache_ ini biasanya ngumpet di direktori sakral `/var/log/apache2/access.log`.
+Sebagai penyedia layanan, _web server_ (seperti Nginx atau _Apache_) bertugas mencatat setiap _request_ yang masuk ke dalam file _log_ mereka. Di lingkungan Linux, log akses _Apache_ biasanya berada di `/var/log/apache2/access.log`.
 
 Satu baris _log_ akses dari _web server_ ini menyimpan sekelumit data krusial tentang identitas si pengakses:
 
 - **IP Address:** Alamat IP milik pengunjung (_user_ yang mengirim _request_).
 - **Timestamp:** Stempel waktu kapan persisnya _request_ itu masuk ke server.
-- **Request:** Berisi detail tipe permintaan yang dikirim (misal: `GET` buat mengambil halaman, `POST` buat mengirim data _login_). Termasuk juga URL _resource_ yang lagi diincar (misal mengakses halaman `/admin-panel`).
-- **Status Code:** Kode angka balasan dari server. (Contoh: `200` berarti sukses masuk, `404` artinya halaman tidak ketemu, `500` berarti servernya _error_).
-- **User-Agent:** Informasi _device_ pengunjung. Rekam jejak dari OS apa, aplikasi apa, atau _browser_ jenis apa yang dipakai pas mengirim _request_ tersebut.
+- **Request:** Berisi detail tipe permintaan yang dikirim (misal: `GET` untuk mengambil halaman, `POST` untuk mengirim data _login_). Termasuk juga URL _resource_ yang diakses (misal `/admin-panel`).
+- **Status Code:** Kode angka balasan dari server. (Contoh: `200` berarti sukses, `404` artinya halaman tidak ditemukan, `500` berarti server _error_).
+- **User-Agent:** Informasi _device_ pengunjung — OS apa, aplikasi apa, atau _browser_ jenis apa yang digunakan saat mengirim _request_ tersebut.
 
-### Senjata Command Line Linux buat Analisis Manual
+### Linux CLI Tools for Log Analysis
 
-Walau zaman sekarang sudah ada aplikasi _SIEM_ yang canggih, sebagai analis keamanan, kamu wajib kuasai *command line interface* (CLI) di terminal Linux
+Meskipun sudah ada aplikasi _SIEM_ yang canggih, sebagai analis keamanan kamu wajib menguasai _command line interface_ (CLI) di terminal Linux.
 
-Berikut *tools* bawaan Linux yang bakal jadi teman harianmu buat ngebongkar _log file_ berbentuk *raw text*:
+Berikut _tools_ bawaan Linux yang menjadi teman harian untuk membedah _log file_ berbentuk _raw text_:
 
 | Perintah (_Command_) | Kegunaan Utama saat Investigasi | Contoh Penggunaan |
 | :--- | :--- | :--- |
-| `cat` | Buat menampilkan seluruh isi file teks langsung ke layar terminal. | `cat access.log`<br><br>(Atau buat gabungin dua log jadi satu: `cat log1 log2 > combined_log`) |
-| `grep` | Buat mencari kata kunci spesifik di dalam file. Kalau kamu cuma naruh IP _attacker_, baris log yang _nggak_ ada IP itu bakal diabaikan. | `grep "10.10.10.1" access.log` |
-| `less` | Kalau file _log_-nya bergiga-giga, pakai ini agar layarnya tidak penuh. File bakal dibaca halaman per halaman (_page by page_). Tekan _Spacebar_ buat lanjut ke bawah. | `less access.log` <br><br>(Pro Tip: pas di dalam `less`, pencet `/` terus memasukkan teks buat ngelakuin pencarian cepat). |
+| `cat` | Menampilkan seluruh isi file teks langsung ke layar terminal. | `cat access.log`<br><br>(Atau untuk menggabungkan dua log: `cat log1 log2 > combined_log`) |
+| `grep` | Mencari kata kunci spesifik di dalam file. Baris log yang tidak mengandung kata kunci tersebut akan diabaikan. | `grep "10.10.10.1" access.log` |
+| `less` | Kalau file _log_-nya bergiga-giga, gunakan ini agar layar tidak penuh. File dibaca halaman per halaman (_page by page_). Tekan _Spacebar_ untuk lanjut. | `less access.log` <br><br>(Pro Tip: di dalam `less`, tekan `/` lalu masukkan teks untuk melakukan pencarian cepat). |
 
 ---
 

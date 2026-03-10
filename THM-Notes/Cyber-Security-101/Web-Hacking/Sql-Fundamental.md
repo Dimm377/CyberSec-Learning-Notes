@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Di sisi offensive, database bisa bantuin kita mengerti kerentanan SQL pakai lebih baik, seperti SQL injection, dan membuat Query yang bantuin kita manipulasi atau mengambil data di dalam layanan yang sudah disusupi. Di sisi lain, sisi defensif, database bisa bantuin kita nelusurin basis data dan nemuin aktivitas mencurigakan atau informasi relevan; database juga bisa bantuin kita melindungi layanan pakai lebih baik dengan nerapin batasan waktu dibutuhin.
+Di sisi offensive, database bisa membantu kita mengerti kerentanan SQL dengan lebih baik, seperti SQL injection, dan membuat Query yang membantu kita manipulasi atau mengambil data di dalam layanan yang sudah disusupi. Di sisi lain, sisi defensif, database bisa membantu kita menelusuri basis data dan menemukan aktivitas mencurigakan atau informasi relevan; database juga bisa membantu kita melindungi layanan dengan lebih baik dengan menerapkan batasan saat dibutuhkan.
 
 Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal belajar dasar-dasar database, mencakup istilah-istilah penting, konsep, dan tipe-tipe yang beda sebelum masuk ke SQL.
 
@@ -16,7 +16,7 @@ Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal b
 - Mengerti berbagai jenis database
 - Paham apa itu SQL
 - Mengerti dan mampu pakai Operasi SQL CRUD **(Create, Read, Update, Delete)**
-- Paham cara pakai SQL Clauses **(perintah tambahan buat nyaring data)**
+- Paham cara menggunakan SQL Clauses **(perintah tambahan untuk menyaring data)**
 - Paham cara jalanin berbagai **Operations**, **Operators**, dan **Functions** di dalam SQL
 
 ## Databases 101
@@ -33,7 +33,7 @@ Ada cukup banyak jenis database yang bisa dibuat, tapi kita cuma fokus ke dua ti
 <img src="../../Assets/Images/database-type.png" alt="Database Type">
 </p>
 
-**Relational Databases:** Menyimpan data yang terstruktur, artinya setiap data yang masuk harus ngikutin pola atau aturan tertentu. Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, sama `password`. Relational databases paling cocok buat Menyimpan Data Terstruktur, ngehubungin Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses.
+**Relational Databases:** Menyimpan data yang terstruktur, artinya setiap data yang masuk harus mengikuti pola atau aturan tertentu. Contohnya data user itu isinya wajib ada `nama_depan`, `nama_belakang`, `email`, `username`, dan `password`. Relational databases paling cocok untuk menyimpan Data Terstruktur, menghubungkan Antar Data yang Kompleks, dan Sistem Autentikasi & Kontrol Akses.
 
 ```SQL
 -- Membuat tabel user pakai struktur yang tetap
@@ -45,7 +45,7 @@ CREATE TABLE users (
     occupation VARCHAR(100)
 );
 
--- Memasukkan data (entry) ke dalam tabel ngikutin struktur itu
+-- Memasukkan data (entry) ke dalam tabel mengikuti struktur itu
 INSERT INTO users (user_id, first_name, last_name, email_address, occupation)
 VALUES (1, 'Thomas', 'Anderson', 'neo@matrix.com', 'Cyber Security');
 
@@ -160,7 +160,7 @@ mysql> CREATE DATABASE bookstore_db;
 
 - **SHOW DATABASES**
 
-Kita bisa melihat database yang sebelumnya dibuat pakai statement `SHOW DATABASES`. Statement `SHOW DATABASES` bakal ngembaliin daftar database yang ada, caranya:
+Kita bisa melihat database yang sebelumnya dibuat menggunakan statement `SHOW DATABASES`. Statement `SHOW DATABASES` akan mengembalikan daftar database yang ada, caranya:
 
 ```SQL
 
@@ -168,7 +168,7 @@ mysql> SHOW DATABASES;
 
 ```
 
-Di daftar yang muncul, kita bakal nemuin database yang baru saja dibikin plus beberapa database default seperti `mysql`, `information_schema`, `performance_schema`, dan `sys`. Database bawaan ini penting buat MySQL agar bisa berfungsi.
+Di daftar yang muncul, kita akan menemukan database yang baru saja dibuat plus beberapa database default seperti `mysql`, `information_schema`, `performance_schema`, dan `sys`. Database bawaan ini penting agar MySQL bisa berfungsi.
 
 - **USE DATABASES**
 
@@ -192,7 +192,7 @@ mysql> DROP database bookstore_db;
 
 ### Table Statements
 
-Sekarang setelah kita paham cara ngelola database (mulai dari membuat, melihat daftar, pakai, sampai hapusnya), saatnya kita masuk ke bagian yang lebih seru: ngisi database itu pakai tabel dan belajar cara berinteraksi langsung sama data di dalamnya.
+Sekarang setelah kita paham cara mengelola database (mulai dari membuat, melihat daftar, menggunakan, sampai menghapus), saatnya kita masuk ke bagian yang lebih seru: mengisi database itu dengan tabel dan belajar cara berinteraksi langsung dengan data di dalamnya.
 
 - **CREATE TABLE**
 
@@ -234,7 +234,7 @@ mysql> SHOW TABLES;
 
 - **DESCRIBE**
 
-Kalau kita mau tau kolom apa saja yang ada di sebuah tabel (dan tipe datanya), kita bisa deskripsiin pakai perintah `DESCRIBE` (yang juga bisa disingkat `DESC`). Buat ngejelasin tabel yang baru saja dibuat pakai perintah berikut:
+Kalau kita mau tahu kolom apa saja yang ada di sebuah tabel (dan tipe datanya), kita bisa mendeskripsikan menggunakan perintah `DESCRIBE` (yang juga bisa disingkat `DESC`). Untuk menjelaskan tabel yang baru saja dibuat, gunakan perintah berikut:
 
 ```SQL
 mysql> DESCRIBE book_inventory;
@@ -279,7 +279,7 @@ mysql> DROP TABLE table_name;
 
 ### CRUD
 
-CRUD itu singkatan dari **C**reate, **R**ead, **U**pdate, dan **D**elete, yang dianggap sebagai operasi dasar dalam sistem apa pun yang ngelola data.
+CRUD itu singkatan dari **C**reate, **R**ead, **U**pdate, dan **D**elete, yang dianggap sebagai operasi dasar dalam sistem apa pun yang mengelola data.
 
 Kita bakal belajar gimana cara kerja berbagai operasi MySQL secara langsung. Kita bakal banyak berinteraksi sama tabel `book_inventory` di database `bookstore_db`. Langkah pertamanya simpel: jalanin pernyataan use `bookstore_db;` buat mengakses semua data di dalamnya.
 
@@ -433,7 +433,7 @@ Outputnya nunjukin bahwa cuma lima baris yang diambil, dan cuma satu contoh buku
 
 - **GROUP BY Clause**
 
-GROUP BY clause ini fungsinya buat ngelompokin data berdasarkan kolom tertentu, biasanya dipake bareng fungsi seperti `COUNT()`, `MAX()`, `MIN()`, `SUM()`, atau `AVG()`.
+GROUP BY clause ini fungsinya untuk mengelompokkan data berdasarkan kolom tertentu, biasanya digunakan bersama fungsi seperti `COUNT()`, `MAX()`, `MIN()`, `SUM()`, atau `AVG()`.
 
 Contohnya, kita mau tau ada berapa jumlah buku buat setiap judulnya? Kita bisa pakai query ini:
 
@@ -517,7 +517,7 @@ mysql> SELECT name, COUNT(*)
 2 rows in set (0.00 sec)
 ```
 
-Di contoh di atas, kita bisa melihat bahwa query ngembaliin buku-buku pakai nama yang ngandung kata **hack** beserta jumlahnya.
+Di contoh di atas, kita bisa melihat bahwa query mengembalikan buku-buku dengan nama yang mengandung kata **hack** beserta jumlahnya.
 
 ## Operators
 
@@ -525,7 +525,7 @@ Operator fungsinya buat filter dan manipulasi data secara efektif. Dengan mengua
 
 - **Logical Operators**
 
-Operator ini mengecek kebenaran suatu kondisi dan ngembaliin nilai boolean `TRUE` atau `FALSE`.
+Operator ini mengecek kebenaran suatu kondisi dan mengembalikan nilai boolean `TRUE` atau `FALSE`.
 
 - **LIKE Operator**
 
@@ -574,7 +574,7 @@ mysql> SELECT *
 
 - **OR Operator**
 
-Operator `OR` gabungin beberapa kondisi dalam query dan ngembaliin nilai `TRUE` kalau **setidaknya satu** dari kondisi itu bernilai bener.
+Operator `OR` menggabungkan beberapa kondisi dalam query dan mengembalikan nilai `TRUE` kalau **setidaknya satu** dari kondisi itu bernilai benar.
 
 ```SQL
 mysql> SELECT *
@@ -590,7 +590,7 @@ mysql> SELECT *
 
 - **NOT Operator**
 
-Operator `NOT` balikin nilai dari operator boolean, membuat kita bisa ngecualiin kondisi tertentu.
+Operator `NOT` membalikkan nilai dari operator boolean, membuat kita bisa mengecualikan kondisi tertentu.
 
 ```SQL
 mysql> SELECT *
@@ -606,7 +606,7 @@ mysql> SELECT *
 
 - **BETWEEN Operator**
 
-Operator `BETWEEN` membuat kita bisa ngetes apakah suatu nilai ada dalam rentang tertentu.
+Operator `BETWEEN` membuat kita bisa menguji apakah suatu nilai ada dalam rentang tertentu.
 
 ```SQL
 mysql> SELECT *
@@ -624,11 +624,11 @@ mysql> SELECT *
 
 - **Comparison Operators**
 
-Operator perbandingan dipake buat ngebandingin nilai dan mengecek apakah nilai itu memenuhi kriteria yang ditentuin.
+Operator perbandingan digunakan untuk membandingkan nilai dan mengecek apakah nilai itu memenuhi kriteria yang ditentukan.
 
 **Equal To Operator**
 
-Operator `=` (Sama Dengan) ngebandingin dua ekspresi dan menentukan apakah keduanya sama.
+Operator `=` (Sama Dengan) membandingkan dua ekspresi dan menentukan apakah keduanya sama.
 
 ```SQL
 mysql> SELECT *
@@ -644,7 +644,7 @@ mysql> SELECT *
 
 **Not Equal To Operator**
 
-Operator `!=` (Tidak Sama Dengan) ngebandingin ekspresi dan ngetes apakah keduanya tidak sama.
+Operator `!=` (Tidak Sama Dengan) membandingkan ekspresi dan menguji apakah keduanya tidak sama.
 
 ```SQL
 mysql> SELECT *
@@ -661,7 +661,7 @@ mysql> SELECT *
 
 **Less Than Operator**
 
-Operator `<` (Kurang Dari) ngebandingin apakah nilai dalam ekspresi lebih kecil dari nilai yang ditentuin.
+Operator `<` (Kurang Dari) membandingkan apakah nilai dalam ekspresi lebih kecil dari nilai yang ditentukan.
 
 ```SQL
 mysql> SELECT *
@@ -678,7 +678,7 @@ mysql> SELECT *
 
 **Greater Than Operator**
 
-Operator `>` (Lebih Besar Dari) ngebandingin apakah nilai dalam ekspresi lebih besar dari nilai yang ditentuin.
+Operator `>` (Lebih Besar Dari) membandingkan apakah nilai dalam ekspresi lebih besar dari nilai yang ditentukan.
 
 ```SQL
 mysql> SELECT *
@@ -696,7 +696,7 @@ mysql> SELECT *
 
 **Less Than or Equal To and Greater Than or Equal To Operators**
 
-Operator `<=` ngebandingin apakah nilai dalam ekspresi lebih kecil atau sama pakai nilai yang dikasih. Di sisi lain, operator `>=` ngebandingin apakah nilai dalam ekspresi lebih besar atau sama pakai nilai yang dikasih.
+Operator `<=` membandingkan apakah nilai dalam ekspresi lebih kecil atau sama dengan nilai yang diberikan. Di sisi lain, operator `>=` membandingkan apakah nilai dalam ekspresi lebih besar atau sama dengan nilai yang diberikan.
 
 ```SQL
 mysql> SELECT *
@@ -782,7 +782,7 @@ Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
 
 ### Aggregate Functions
 
-Fungsi ini dipake buat lakuin perhitungan di sekumpulan nilai dan ngembaliin satu nilai tunggal.
+Fungsi ini digunakan untuk melakukan perhitungan di sekumpulan nilai dan mengembalikan satu nilai tunggal.
 
 - **COUNT()**: Ngitung jumlah baris yang cocok sama kriteria.
 
@@ -821,16 +821,17 @@ mysql> SELECT USER(), DATABASE(), VERSION();
 ## Conclusion
 
 Modul ini diharapkan bisa kasih gambaran betapa pentingnya database dalam dunia komputasi. Mengingat hampir setiap aplikasi yang kita pakai sehari-hari bergantung sama data, paham fundamental database itu **wajib hukumnya** kalau mau serius terjun ke dunia Cyber Security.
+Modul ini diharapkan dapat memberikan gambaran betapa pentingnya database dalam dunia komputasi. Mengingat hampir setiap aplikasi yang kita pakai sehari-hari bergantung pada data, memahami fundamental database itu **wajib hukumnya** kalau mau serius terjun ke dunia Cyber Security.
 
 Poin-poin penting yang kita pelajari di sini:
 
-1.  **Database** itu kumpulan data yang terorganisir, gampang diakses, di-manage, dan dianalisis.
+1.  **Database** itu kumpulan data yang terorganisir, mudah diakses, dikelola, dan dianalisis.
 2.  Ada dua jenis utama database: **Relational Database** (data terstruktur dalam tabel) dan **Non-Relational Database** (format non-tabel).
-3.  Relational Database terdiri dari **Tabel, Kolom, dan Baris**. **Primary Key** memastikan setiap data unik, sedangkan **Foreign Key** ngehubungin antar tabel.
-4.  **SQL** itu bahasa yang powerful tapi gampang dipelajari buat berinteraksi sama relational database.
-5.  Statement **Database & Table** dipake buat membuat atau modifikasi struktur penyimpanan data.
-6.  **CRUD Operations** (INSERT, SELECT, UPDATE, DELETE) itu "jurus dasar" buat ngelola isi data dalam database.
-7.  **Clauses** (seperti WHERE, ORDER BY, GROUP BY) bantuin kita ngatur data mana yang mau diambil, difilter, atau diurutin.
-8.  Pakai **Operators** (AND, OR, LIKE, dll) dan **Functions** (CONCAT, COUNT, dll) yang tepat membuat manipulasi data jadi jauh lebih efisien dan spesifik.
+3.  Relational Database terdiri dari **Tabel, Kolom, dan Baris**. **Primary Key** memastikan setiap data unik, sedangkan **Foreign Key** menghubungkan antar tabel.
+4.  **SQL** itu bahasa yang powerful tapi mudah dipelajari untuk berinteraksi dengan relational database.
+5.  Statement **Database & Table** digunakan untuk membuat atau memodifikasi struktur penyimpanan data.
+6.  **CRUD Operations** (INSERT, SELECT, UPDATE, DELETE) itu "jurus dasar" untuk mengelola isi data dalam database.
+7.  **Clauses** (seperti WHERE, ORDER BY, GROUP BY) membantu kita mengatur data mana yang mau diambil, difilter, atau diurutkan.
+8.  Menggunakan **Operators** (AND, OR, LIKE, dll) dan **Functions** (CONCAT, COUNT, dll) yang tepat membuat manipulasi data jadi jauh lebih efisien dan spesifik.
 
 Happy hacking !

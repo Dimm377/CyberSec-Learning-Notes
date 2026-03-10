@@ -36,7 +36,7 @@ Tiga pilar SOC: **People** (manusia), **Processes** (prosedur), **Technology** (
 
 ## People
 
-Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _False Positives_ dari security solutions → manusia yang validasi mana ancaman beneran.
+Otomatisasi tetap membutuhkan manusia karena **Alert Fatigue** — terlalu banyak _False Positives_ dari security solutions, sehingga manusia yang memvalidasi mana ancaman yang benar-benar nyata.
 
 <p align="center">
 <img src="../../Assets/Images/People-SOC.png" alt="SOC Roles Diagram">
@@ -54,7 +54,7 @@ Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _Fal
 
 **Q&A:**
 - Fenomena "kebisingan" akibat tumpukan False Positives? → **?**
-- Kenapa butuh Human Intervention? → **?**
+- Kenapa tetap membutuhkan Human Intervention? → **?**
 - First responder yang lakuin alert triage? → **?**
 - Analis yang correlate log data? → **?**
 - Analis yang Threat Hunting & komando IR? → **?**
@@ -65,7 +65,7 @@ Otomatisasi tetep butuh manusia karena **Alert Fatigue** — terlalu banyak _Fal
 ## Processes
 
 ### Alert Triage
-Langkah pertama SOC — klasifikasi severity tiap alert pakai **5 Ws:**
+Langkah pertama SOC — mengklasifikasi severity tiap alert menggunakan **5 Ws:**
 
 <p align="center">
 <img src="../../Assets/Images/5WS.png" alt="5 Ws of Alert Triage">
@@ -82,17 +82,17 @@ Langkah pertama SOC — klasifikasi severity tiap alert pakai **5 Ws:**
 | **Why?** | Download software bajakan dari web ilegal |
 
 ### Reporting
-Alert yang valid → diubah jadi **tiket eskalasi** ke L2/L3 + sertakan 5Ws & screenshots.
+Alert yang valid → diubah menjadi **tiket eskalasi** ke L2/L3, disertakan 5Ws & screenshots.
 
 ### Incident Response and Forensics
-Kasus kritis → L3/Incident Responder jalanin tanggap darurat + forensics buat cari root cause.
+Kasus kritis → L3/Incident Responder menjalankan tanggap darurat + forensics untuk mencari root cause.
 
 ## Technology
 
 Security solutions utama di SOC:
 
-- **SIEM** (Security Information and Event Management) — Kumpulin logs dari semua perangkat → cocokkin sama detection rules → alert kalau match. Cuma **Detection**.
+- **SIEM** (Security Information and Event Management) — Mengumpulkan logs dari semua perangkat → mencocokkan dengan detection rules → memicu alert kalau match. Hanya **Detection**.
 - **EDR** (Endpoint Detection and Response) — Visibilitas real-time di setiap endpoint → bisa investigasi & respons langsung.
-- **Firewall** — Filter traffic masuk/keluar jaringan → blok traffic mencurigakan.
+- **Firewall** — Menyaring traffic masuk/keluar jaringan → memblokir traffic mencurigakan.
 
 > **Note:** SIEM = Detection only. EDR = Detection + Response. Firewall = Network security.

@@ -52,8 +52,8 @@ Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku cat
 
 Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya sudah di ruangan VIP (**OSI Layer 7**).
 Kelemahan *firewall* sebelumnya adalah mereka hanya mengecek "kulit/amplop"-nya saja, tidak berani buka isinya. *Proxy* memecahkan masalah itu:
-- Dia bertindak layaknya **Asisten Kurir Pribadi**. Pas kamu mau kunjungi server luar, si *Proxy* yang bakal repot-repot pergi nemuin server itu, mengambil datanya, lalu nganterin balik ke kamu.
-- Karena dia yang ngambilin barang, dia bakal ngebongkar isinya dulu. Kalau isinya *malware*, langsung dia buang.
+- Dia bertindak layaknya **Asisten Kurir Pribadi**. Saat kamu mau mengunjungi server luar, si _Proxy_ yang akan repot-repot pergi menemui server itu, mengambil datanya, lalu mengantarkan balik ke kamu.
+- Karena dia yang mengambilkan barang, dia akan membongkar isinya dulu. Kalau isinya _malware_, langsung dia buang.
 - Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
 
 ### 4. Next-Generation Firewall (NGFW) (Unit Pasukan Khusus)
@@ -77,7 +77,7 @@ Agar makin gampang buat *review* atau menentukan *firewall* mana yang pas buat d
 
 | Tipe Firewall | Karakteristik Utama |
 | :--- | :--- |
-| **Stateless Firewall** | - Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok buat jaringan yang butuh kecepatan tinggi karena kerjanya ngebut |
+| **Stateless Firewall** | - Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok untuk jaringan yang butuh kecepatan tinggi karena kerjanya cepat |
 | **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
 | **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
 | **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |

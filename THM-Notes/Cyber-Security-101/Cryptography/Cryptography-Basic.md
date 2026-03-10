@@ -19,7 +19,7 @@ Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kit
 
 ### Importance of Cryptography
 
-Cryptography itu praktik dan studi tentang teknik komunikasi yang aman di mana ada pihak ketiga (lawan). Cryptography jadi vital di era digital karena menjamin tiga hal utama:
+Cryptography adalah ilmu dan praktik tentang teknik komunikasi yang aman, terutama di hadapan pihak yang tidak dipercaya. Di era digital, cryptography menjadi vital karena menjamin tiga hal utama:
 
 | Pilar | Fungsi |
 | ----- | ------ |
@@ -61,7 +61,7 @@ Data berubah bentuk dari yang bisa dibaca manusia (plaintext) jadi kode rahasia 
 
 ### Historical Cipher
 
-Metode enkripsi kuno yang jadi dasar cryptography modern. Meskipun sekarang dianggap lemah, mengerti logikanya penting:
+Metode enkripsi kuno yang menjadi dasar cryptography modern. Meskipun sekarang dianggap lemah, memahami logikanya tetap penting:
 
 | Cipher | Cara Kerja | Kekuatan |
 | ------ | ---------- | -------- |
@@ -92,11 +92,11 @@ Metode enkripsi kuno yang jadi dasar cryptography modern. Meskipun sekarang dian
 
 ### Types of Encryption
 
-Dalam kriptografi modern, ada dua kategori utama:
+Dalam kriptografi modern, ada dua kategori utama enkripsi:
 
 #### 1. Symmetric Encryption
 
-Pakai **kunci yang sama** buat enkripsi dan dekripsi. Kelemahan utama: bagaimana mendistribusikan kunci secara aman ke penerima.
+Menggunakan **kunci yang sama** untuk enkripsi dan dekripsi. Kelemahan utamanya: bagaimana caranya mendistribusikan kunci secara aman ke penerima.
 
 | Algoritma | Tahun | Ukuran Kunci | Status |
 | --------- | :---: | ------------ | ------ |
@@ -110,7 +110,7 @@ Pakai **kunci yang sama** buat enkripsi dan dekripsi. Kelemahan utama: bagaimana
 
 #### 2. Asymmetric Encryption
 
-Pakai **sepasang kunci**: _Public Key_ (mengenkripsi) dan _Private Key_ (mendekripsi). Cuma pemilik Private Key yang bisa membuka data.
+Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi) dan _Private Key_ (untuk mendekripsi). Hanya pemilik Private Key yang bisa membuka data.
 
 *(Penjelasan lebih dalam ada di catatan [Public Key Cryptography](./Public-Key-Cryptography.md))*
 
@@ -147,9 +147,9 @@ Kriptografi modern dibangun di atas fondasi matematika. Task ini membahas dua op
 
 ### 1. XOR Operation (Exclusive OR)
 
-XOR itu operasi logika biner yang ngebandingin dua bit.
+XOR adalah operasi logika biner yang membandingkan dua bit.
 
-- **Aturan Main:** Ngasilin **1** kalau kedua bit beda, dan **0** kalau kedua bit sama.
+- **Aturan:** Menghasilkan **1** kalau kedua bit berbeda, dan **0** kalau kedua bit sama.
 - **Simbol:** $\oplus$ atau `^`.
 
 **Truth Table XOR:**
@@ -160,11 +160,11 @@ XOR itu operasi logika biner yang ngebandingin dua bit.
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
 
-- **Kegunaan di Kriptografi:** XOR sering dipake sebagai algoritma enkripsi simetris sederhana. Kalau kita punya Plaintext ($P$) dan Secret Key ($K$), maka Ciphertext ($C$) itu $P \oplus K = C$. Buat mendapatkan balik Plaintext, tinggal lakuin $C \oplus K = P$.
+- **Kegunaan di Kriptografi:** XOR sering dipakai sebagai algoritma enkripsi simetris sederhana. Kalau kamu punya Plaintext ($P$) dan Secret Key ($K$), maka Ciphertext ($C$) = $P \oplus K$. Untuk mendapatkan kembali Plaintext, tinggal hitung $C \oplus K = P$.
 
 ### 2. Modulo Operation (%)
 
-Modulo itu operasi buat mencari **sisa bagi** dari sebuah pembagian.
+Modulo adalah operasi untuk mencari **sisa bagi** dari sebuah pembagian.
 
 - **Contoh:** $23 \pmod 6 = 5$ (karena 23 dibagi 6 itu 3 dengan sisa 5).
 - **Sifat Penting:** Modulo tidak bisa dibalik (_not reversible_). Kalau $x \pmod 5 = 4$, nilai $x$ bisa berupa 4, 9, 14, dan seterusnya sampai tidak terhingga.

@@ -8,7 +8,7 @@
 
 Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *malware* berbasis Linux, sekarang saatnya kita kenalan sama saudara kandungnya di dunia Windows: **FlareVM**.
 
-**FlareVM** (singkatan dari *Forensics, Logic Analysis, and Reverse Engineering*) adalah seperangkat kotak perkakas khusus rakitan tim FLARE dari **FireEye**. Isinya sudah dipenuhi ratusan program spesialis yang murni diciptakan buat ngebantu *reverse engineers*, analis *malware*, dan investigator forensik. Ibaratnya, kalau kamu mau menguliti sistem Windows atau ngebongkar wujud asli (*reverse engineer*) dari sebuah virus `.exe`, ini VM andalan.
+**FlareVM** (singkatan dari *Forensics, Logic Analysis, and Reverse Engineering*) adalah seperangkat kotak perkakas khusus rakitan tim FLARE dari **FireEye**. Isinya sudah dipenuhi ratusan program spesialis yang murni diciptakan untuk membantu _reverse engineers_, analis _malware_, dan investigator forensik. Ibaratnya, kalau kamu mau menguliti sistem Windows atau membongkar wujud asli (_reverse engineer_) dari sebuah virus `.exe`, ini VM andalan.
 
 ### Learning Objectives
 
@@ -20,7 +20,7 @@ Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *mal
 
 ## Arsenal of Tools (Persenjataan FlareVM)
 
-Di dalam FlareVM, *tools*-nya dikelompokkan berdasarkan fungsinya biar kamu lebih gampang nyarinya saat lagi menangani kasus.
+Di dalam FlareVM, _tools_-nya dikelompokkan berdasarkan fungsinya agar kamu lebih mudah mencarinya saat menangani kasus.
 
 ### 1. Reverse Engineering & Debugging
 *Reverse engineering* itu ibarat kamu membongkar sebuah mesin atau barang elektronik (seperti jam mekanik atau radio) yang sudah jadi pabrikan. Tujuannya murni untuk mencari tahu komponen apa saja yang ada di dalamnya dan bagaimana cara alat itu bekerja. Sedangkan *debugging* adalah proses saat alat itu rusak, lalu kamu menganalisis bagian mana yang macet dan mencoba memperbaikinya.
@@ -84,17 +84,17 @@ Alat otomasi andalan:
 - **PowerShell Empire**: Kerangka kerja (*framework*) berbasis PowerShell yang biasa dipakai *hacker*/*tester* untuk aktivitas setelah penyusupan (mempertahankan akses ke komputer korban).
 
 ### 8. Sysinternals Suite
-Ini adalah kumpulan perkakas pisau beda khusus sistem operasi Windows. Alat-alat ini dirancang spesifik buat bantu tenaga profesional IT dan developer untuk mengelola, memperbaiki masalah (*troubleshoot*), dan mendiagnosa masalah di dalam Windows.
+Ini adalah kumpulan perkakas khusus sistem operasi Windows. Alat-alat ini dirancang spesifik untuk membantu tenaga profesional IT dan developer mengelola, memperbaiki masalah (_troubleshoot_), dan mendiagnosa masalah di dalam Windows.
 
 Tiga serangkai utamanya:
-- **Autoruns**: Alat intelijen buat nyari tahu program *executables* apa saja yang diam-diam *dijalankan* secara otomatis ketika komputer baru pertama kali nyala (*boot-up*). Sangat vital buat nyari *malware* yang berada di sistem.
-- **Process Explorer**: *Task Manager* yang super detail dan detail menyangkut proses-proses yang lagi hidup di komputer kamu.
-- **Process Monitor**: Kamera pengawas *real-time*. Dia mencatat setiap tarikan napas dan pergerakan dari seluruh proses dan *thread* yang aktif di sistem tanpa ada yang lolos.
+- **Autoruns**: Alat intelijen untuk mencari tahu program _executables_ apa saja yang diam-diam dijalankan secara otomatis ketika komputer pertama kali menyala (_boot-up_). Sangat vital untuk mencari _malware_ yang bersarang di sistem.
+- **Process Explorer**: _Task Manager_ yang super detail menyangkut proses-proses yang sedang berjalan di komputermu.
+- **Process Monitor**: Kamera pengawas _real-time_ — mencatat setiap pergerakan dari seluruh proses dan _thread_ yang aktif di sistem tanpa ada yang lolos.
 
 ---
 
-> **Bingung ngeliat daftarnya?**  
-> Santai aja Kamu **nggak perlu** menghafal dan menguasai semua alat ini dalam semalam (bisa makan waktu berbulan-bulan). Tujuannya di sini cuma buat mengenalkan bahwa: *"Ada lho satu kotak berisi lengkap perkakas ajaib, jadi kamu tahu alat mana yang pas saat butuh ngerjain tugas spesifik nanti."*
+> **Bingung melihat daftarnya?**  
+> Santai saja. Kamu **tidak perlu** menghafal dan menguasai semua alat ini dalam semalam. Tujuannya di sini hanya untuk mengenalkan bahwa: _"Ada satu kotak berisi lengkap perkakas, jadi kamu tahu alat mana yang pas saat membutuhkan tugas spesifik nanti."_
 
 ## Commonly Used Tools for Investigation: Overview
 
@@ -104,15 +104,15 @@ Berikut adalah daftar dan fungsinya:
 
 | Nama Tool | Nilai Investigasi (*Investigative Value*) |
 | :--- | :--- |
-| **Procmon** (*Process Monitor*) | Ahlinya melacak seluruh aktivitas sistem secara detail. Sangat handal untuk ngerjain riset *malware*, *troubleshooting* PC yang rusak, sampai nyari barang bukti digital (*forensic investigations*). |
+| **Procmon** (*Process Monitor*) | Ahlinya melacak seluruh aktivitas sistem secara detail. Sangat handal untuk riset _malware_, _troubleshooting_ PC yang rusak, sampai mencari barang bukti digital (_forensic investigations_). |
 | **Process Explorer** | Alat untuk melihat silsilah keluarga sebuah program (*Parent-child relationship*). Jadi ketahuan program mana yang melahirkan proses jahat tersebut, lengkap dengan lokasi *file library* (DLL) yang dimuat. |
 | **HxD** | *Hex editor* andalan untuk memeriksa sampai mengedit struktur dasar sebuah *file* dari balik layar (level bahasa biner/heksadesimal). |
-| **Wireshark** | Bertugas mirip pos pantau CCTV lalu lintas. Kerjanya mengobservasi pergerakan data di kabel jaringan buat nyari aktivitas komunikasi yang ganjil (*unusual activity*). |
-| **CFF Explorer** | Sering dipakai untuk mengekstrak sidik jari digital (*file hashes*) demi mengecek integritas file, serta memastikan apakah sebuah file bawaan sistem itu asli atau udah disusupi. |
+| **Wireshark** | Bertugas mengobservasi pergerakan data di kabel jaringan untuk mencari aktivitas komunikasi yang mencurigakan (_unusual activity_). |
+| **CFF Explorer** | Sering dipakai untuk mengekstrak sidik jari digital (*file hashes*) demi mengecek integritas file, serta memastikan apakah sebuah file bawaan sistem itu asli atau sudah disusupi. |
 | **PEStudio** | *Tool* spesialis untuk urusan *Static Analysis*. Kamu bisa menguliti properti dan sifat-sifat mencurigakan dari sebuah aplikasi **tanpa harus** menjalankannya sama sekali (main aman). |
 | **FLOSS** | Ahli pemeras teks. Dia bertugas mengekstrak dan memperjelas teks/kata-kata rahasia (*strings*) yang sengaja disamarkan (*obfuscated*) di dalam program jahat menggunakan teknik *static analysis* tingkat lanjut. |
 
-> Tips: Kamu bisa ikutan ngebuka *tools*-nya satu-satu di dalam **FlareVM** biar terbiasa sama <i>interface</i> aslinya pas kita bahas cara kerjanya lebih dalam nanti.
+> Tips: Kamu bisa membuka _tools_-nya satu-satu di dalam **FlareVM** agar terbiasa dengan _interface_ aslinya saat kita bahas cara kerjanya lebih dalam nanti.
 
 ### 1. Process Monitor (Procmon)
 

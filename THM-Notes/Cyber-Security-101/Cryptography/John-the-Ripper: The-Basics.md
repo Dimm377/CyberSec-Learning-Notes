@@ -36,11 +36,11 @@ Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 2.  **Dictionary Attack:**
     - Karena hash tidak bisa didekripsi, cara paling umum buat mecahinnya itu pakai **menebak**.
     - Kita punya daftar kata-kata yang mungkin jadi password (**Wordlist** / Dictionary), misal: `rockyou.txt`.
-    - JtR bakal mengambil setiap kata dari wordlist -> ngubahnya jadi hash -> ngebandingin sama hash target. Kalau cocok, berarti password ketemu!
+    - JtR akan mengambil setiap kata dari wordlist -> mengubahnya jadi hash -> membandingkan dengan hash target. Kalau cocok, berarti password ketemu!
 
 3.  **Hash Identifier:**
     - Sebelum nge-crack hash, kita HARUS tau dulu jenis algoritmanya (apakah MD5? SHA256? NTLM?).
-    - Tools seperti `hash-identifier` atau layanan online bisa bantuin ngenali jenis hash dari format/panjangnya.
+    - Tools seperti `hash-identifier` atau layanan online bisa membantu mengenali jenis hash dari format/panjangnya.
 
 ---
 
@@ -320,7 +320,7 @@ Sama seperti ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
   _(Note: Kalau command `ssh2john` tidak ditemuin, coba cari script python-nya pakai `locate ssh2john` atau `find / -name ssh2john_`)\*
 
   > [!TIP]
-  > **Agar tidak ribet ngetik path panjang, membuat alias saja di terminal:**
+  > **Agar tidak ribet mengetik path panjang, membuat alias saja di terminal:**
   > `echo "alias ssh2john='python ~/JohnTheRipper/run/ssh2john.py'" >> ~/.zshrc`
 
 - **Step 2: Cracking**

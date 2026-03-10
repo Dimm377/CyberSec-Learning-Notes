@@ -28,7 +28,7 @@ Keempat item tersebut adalah:
 
 * **Identity (Identitas):** Akun unik (misal: user ID/email) yang mewakili seseorang atau layanan. -> *Siapa kamu?*
 * **Authentication (Autentikasi):** Membuktikan identitas tersebut (misal: password, OTP, passkeys). -> *Buktikan kalau itu benar kamu*
-* **Authorisation (Autorisasi):** Apa yang boleh dilakukan oleh identitas tersebut. -> *Kamu boleh ngapain aja di sini?*
+* **Authorisation (Autorisasi):** Apa yang boleh dilakukan oleh identitas tersebut. -> *Kamu boleh melakukan apa saja di sini?*
 * **Accountability (Akuntabilitas):** Mencatat dan memberi peringatan tentang siapa melakukan apa, kapan, dan dari mana. -> *Siapa yang mencatat jejakmu?*
 
 Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan dengan kegagalan dalam penerapan IAAA. Kelemahan di sini bisa sangat fatal karena memungkinkan penyerang untuk mengakses data pengguna lain atau mendapatkan hak akses lebih (*privilege*) dari yang seharusnya mereka miliki.

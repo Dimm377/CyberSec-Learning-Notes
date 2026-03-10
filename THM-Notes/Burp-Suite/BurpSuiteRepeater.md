@@ -11,7 +11,7 @@
 
 ## Overview
 
-Burp Repeater itu bagian dari Burp Suite yang membuat kita bisa nangkep, modifikasi, dan mengirim ulang permintaan HTTP secara manual berkali-kali. Tool ini penting banget buat pengujian kerentanan web karena kita bisa melihat respons server secara real-time setelah lakuin perubahan kecil di payload.
+Burp Repeater itu bagian dari Burp Suite yang membuat kita bisa menangkap, memodifikasi, dan mengirim ulang permintaan HTTP secara manual berkali-kali. Tool ini sangat penting untuk pengujian kerentanan web karena kita bisa melihat respons server secara real-time setelah melakukan perubahan kecil di payload.
 
 ## What is Repeater?
 

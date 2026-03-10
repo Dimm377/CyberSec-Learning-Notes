@@ -10,108 +10,108 @@
 
 ## Introduction
 
-Nmap (Network Mapper) itu *tool open-source* paling primadona buat audit keamanan dan pemetaan jaringan. Ibarat radar, *tool* ini membantu kamu mengirim "gelombang" paket khusus ke target dan menganalisa pantulan responnya. Dari pantulan itu, kamu bisa menebak *host* mana aja yang lagi hidup, pintu (*port*) mana yang kebuka, sampai jenis OS apa yang lagi dipakai si korban.
+Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan dan pemetaan jaringan. Ibarat radar, *tool* ini membantu kamu mengirim paket khusus ke target dan menganalisis respons baliknya. Dari situ, kamu bisa mengetahui *host* mana saja yang aktif, *port* mana yang terbuka, sampai jenis OS apa yang dipakai target.
 
 ---
 
 ## Nmap Switches
 
-Biar nmap nggak jalan buta, kamu wajib menguasai *flag* dasar ini buat mengendalikan serangannya:
+Agar Nmap tidak berjalan tanpa arah, kamu wajib menguasai *flag* dasar ini untuk mengendalikan prosesnya:
 
-- **`-sT` (TCP Connect Scan):** Sopan banget, dia menyelesaikan proses *three-way handshake* secara utuh.
-- **`-sS` (SYN Scan):** Dikenal sbg "Half-open" *scan*. Jalannya cepet dan lebih susah tertangkap radar karena dia kabur sebelum *handshake* beres.
-- **`-sU` (UDP Scan):** Khusus dipakai buat mengintip layanan berbasis UDP (kayak DNS atau DHCP).
-- **`-O`:** Ahlinya menebak Sistem Operasi (OS).
-- **`-sV`:** Detektif buat mencari tau *versi* aplikasi/layanan apa yang bertengger di *port* tersebut.
-- **`-p-`:** Sikat semua, Tujuannya memindai seluruh 65.535 *port* tanpa terkecuali.
-- **`-A` (Aggressive):** Paket komplit barbar. Gabungan langsung dari tebak OS, versi, *script scanning*, dan jalurnya (*traceroute*).
+- **`-sT` (TCP Connect Scan):** Menyelesaikan proses *three-way handshake* secara utuh. Paling sopan, tapi juga paling mudah terdeteksi.
+- **`-sS` (SYN Scan):** Dikenal sebagai "Half-open" *scan*. Lebih cepat dan lebih sulit terdeteksi karena koneksi diputus sebelum *handshake* selesai.
+- **`-sU` (UDP Scan):** Khusus untuk mengintip layanan berbasis UDP (seperti DNS atau DHCP).
+- **`-O`:** Menebak Sistem Operasi (OS) target.
+- **`-sV`:** Mendeteksi *versi* aplikasi/layanan yang berjalan di *port* tersebut.
+- **`-p-`:** Memindai seluruh 65.535 *port* tanpa terkecuali.
+- **`-A` (Aggressive):** Paket komplit. Gabungan dari deteksi OS, versi, *script scanning*, dan *traceroute*.
 
 ---
 
 ## Scan Types (TCP, SYN, UDP)
 
-Penting banget buat mengerti mekanika di balik layar tiap jenis *scan*-nya:
+Penting untuk memahami mekanisme di balik setiap jenis *scan*:
 
-1. **TCP Connect Scan (`-sT`):** Nmap dengan jujur mencoba menyelesaikan koneksi (membawa SYN -> dibalas SYN/ACK -> mengirim balik ACK). Kalau mulus, berarti *port* itu terbuka lebar.
-2. **SYN Scan (`-sS`):** Nmap mengawalinya normal mengirim SYN. Nah, pas dibalas SYN/ACK sama server, Nmap langsung mengirim RST (Reset) buat memutus sambungan sebelum ACK terakhir dikirim. Makanya ini dijadikan *scan default* karena efisien dan licik.
-3. **UDP Scan (`-sU`):** UDP itu kan ga mengenal budaya *handshake*. Aturannya: Kalau portnya "ketutup", target biasanya memberikan pesan ICMP "Port Unreachable". Tapi kalau nggak ada respon balik sama sekali, Nmap bakal ragu dan ngasih status `open|filtered`.
+1. **TCP Connect Scan (`-sT`):** Nmap mencoba menyelesaikan koneksi secara penuh (SYN → SYN/ACK → ACK). Kalau berhasil, berarti *port* terbuka.
+2. **SYN Scan (`-sS`):** Nmap mengirim SYN, lalu saat dibalas SYN/ACK oleh server, Nmap langsung mengirim RST (Reset) untuk memutus koneksi sebelum ACK terakhir dikirim. Karena efisien dan sulit terdeteksi, ini menjadi *scan default*.
+3. **UDP Scan (`-sU`):** UDP tidak mengenal *handshake*. Aturannya: kalau port tertutup, target biasanya mengirim ICMP "Port Unreachable". Tapi kalau tidak ada respons sama sekali, Nmap akan memberikan status `open|filtered`.
 
 ---
 
 ## NULL, FIN, dan Xmas Scans
 
-Kalau kamu lagi buntu menghadapi *firewall* yang ketat, cobain deh teknik ini:
+Kalau kamu menghadapi *firewall* yang ketat, coba teknik-teknik ini:
 
-- **NULL Scan (`-sN`):** Murni mengirim paket kosongan tanpa *flag* aktif sama sekali.
-- **FIN Scan (`-sF`):** Cuma modal menyalakan *flag* FIN doang.
-- **Xmas Scan (`-sX`):** *Flag*-nya dihidupin rame-rame (PSH, URG, dan FIN).
-- **Note:** *Scan* aneh kek gini efeknya mematikan banget di sistem keluarga Unix/Linux lama, tapi biasanya bakal diketawain (gagal total) kalau dipakai menembus Windows.
+- **NULL Scan (`-sN`):** Mengirim paket kosong tanpa *flag* aktif sama sekali.
+- **FIN Scan (`-sF`):** Hanya menyalakan *flag* FIN.
+- **Xmas Scan (`-sX`):** Menyalakan beberapa *flag* sekaligus (PSH, URG, dan FIN).
+- **Catatan:** Teknik ini efektif di sistem Unix/Linux lama, tapi biasanya gagal total jika dipakai terhadap Windows.
 
 ---
 
 ## ICMP Network Scanning
 
-Teknik ini kepake banget buat memetakan *host* mana aja yang lagi aktif di dalem jaringan yang luas (*Ping Sweep*).
+Teknik ini berguna untuk memetakan *host* mana saja yang aktif di dalam jaringan yang luas (*Ping Sweep*).
 
 - Perintahnya: `nmap -sn 10.10.x.x/24`
-- Di sini Nmap nggak bakal peduli mengecek *port*. Dia murni cuma mengetuk pintu pakai ICMP Echo Request buat tanya, *"Bro, lo idup ga?"*
+- Di sini Nmap tidak akan memeriksa *port*. Dia hanya mengirim ICMP Echo Request untuk mencari tahu host mana yang aktif.
 
 ---
 
 ## NSE Scripts (The Powerhouse)
 
-Nmap Scripting Engine (NSE) ini yang bikin Nmap naik level dari sekadar *scanner* jadi alat peretas otomatis mini. Kamu bisa mengotomatisasi tugas-tugas *recon* yang kompleks.
+Nmap Scripting Engine (NSE) menjadikan Nmap lebih dari sekadar *scanner*. Kamu bisa mengotomatisasi tugas-tugas *recon* yang kompleks.
 
-- **Default (`-sC`):** Menjalankan skrip bawaan yang *safe* (ga bikin *server* target *crash*).
-- **Categories:** NSE ini punya banyak *genre* lho, kayak `auth`, `brute` (buat tebak *password* ringan), `discovery`, `dos`, `exploit`, `malware`, sampai `vuln`.
-- **Example:** `nmap --script=vuln <target>` (Mantra andalan buat mencari celah keamanan umum secara instan di *port* yang kebuka).
+- **Default (`-sC`):** Menjalankan skrip bawaan yang aman (tidak akan membuat target *crash*).
+- **Categories:** NSE punya banyak kategori, seperti `auth`, `brute` (menebak *password* ringan), `discovery`, `dos`, `exploit`, `malware`, sampai `vuln`.
+- **Contoh:** `nmap --script=vuln <target>` — untuk mencari celah keamanan umum secara cepat di *port* yang terbuka.
 
 ---
 
 ## Firewall Evasion
 
-Pas targetmu dilindungin *firewall* atau IDS/IPS yang cerewet, kamu harus main cantik pakai teknik *evasion* (menghindar):
+Saat target dilindungi *firewall* atau IDS/IPS, kamu perlu teknik *evasion* (menghindar):
 
-- **`-f`:** Melakukan fragmentasi paket (memotong-motong paket asli jadi kepingan kecil biar IDS pusing merakitnya).
+- **`-f`:** Melakukan fragmentasi paket (memotong paket menjadi kepingan kecil agar IDS kesulitan merakitnya).
 - **`--mtu <value>`:** Mengatur ukuran *Maximum Transmission Unit* (potongan paket) secara manual.
-- **`--scan-delay <time>`:** Menambahkan jeda waktu antar paket. IDS biasanya gampang kepancing kalau kamu menyepam terlalu cepet. Pelan-pelan asal tidak terdeteksi.
-- **`--badsum`:** Sengaja mengirim paket pakai *checksum* (itungan validasi) yang salah/cacat murni buat tes respon *firewall* doang.
+- **`--scan-delay <time>`:** Menambahkan jeda waktu antar paket. IDS biasanya mudah mendeteksi jika paket dikirim terlalu cepat.
+- **`--badsum`:** Sengaja mengirim paket dengan *checksum* yang salah, murni untuk menguji respons *firewall*.
 
 ---
 
 ## Conclusion
 
-Nmap itu ibarat pondasi dari setiap operasi *penetration testing*. Dengan menguasai berbagai racikan *scan* dan skrip NSE, kamu bisa dapetin denah peta musuh yang sangat detail dengan cara yang mematikan, cepat, dan tetap terkontrol.
+Nmap itu pondasi dari setiap operasi *penetration testing*. Dengan menguasai berbagai jenis *scan* dan skrip NSE, kamu bisa mendapatkan peta detail target secara cepat dan terkontrol.
 
 ---
 
 ## Attack Flow Awareness
 
-Nmap selalu jadi Orang Pertama yang Maju di hampir semua *engagement* cyber sungguhan:
+Nmap selalu menjadi langkah pertama di hampir semua *engagement* cyber:
 
-| Fase Serangan | Jatah Kerjanya Nmap |
+| Fase Serangan | Peran Nmap |
 | :--- | :--- |
-| **Reconnaissance** | Murni memecahkan teka-teki: menemukan *host* idup, *port* mana aja yang kebuka, versi layanannya apa, dan menebak OS target. |
-| **Vulnerability Assessment** | Mengandalkan NSE scripts (`--script=vuln`) buat mendeteksi kerentanan umum tanpa sampe meluncurkan *exploit* masuk ke sistem. |
-| **Firewall Evasion** | Main petak umpet pakai teknik fragmentasi dan mengatur *scan timing* buat melewati penjagaan IDS/IPS yang ketat di depan. |
+| **Reconnaissance** | Menemukan *host* aktif, *port* terbuka, versi layanan, dan menebak OS target. |
+| **Vulnerability Assessment** | Menggunakan NSE scripts (`--script=vuln`) untuk mendeteksi kerentanan umum tanpa meluncurkan *exploit*. |
+| **Firewall Evasion** | Memanfaatkan teknik fragmentasi dan pengaturan *scan timing* untuk melewati penjagaan IDS/IPS. |
 
-**Gimana Blue Team (Blue Team) Melihat Ini:**
-- **IDS/IPS Detection:** Mesin seperti *Snort* atau *Suricata* sudah hafal banget sama *signature* (pola khusus) Nmap. Terutama kalau kamu nekat menembak SYN *scan* massal atau mencoba *Xmas scan*.
-- **Honeypots:** Tim Blue sering memasang pintu jebakan (*honeypots*) di beberapa *port* palsu. Siapa aja yang nekat mengetok pintu itu (lewat *recon* Nmap), IP-nya langsung di-*ban*.
-- **Log Monitoring:** Lonjakan koneksi drastis dari satu IP ke puluhan port yang beda-beda di waktu sekejap itu ibarat menyalakan kembang api raksasa kalau lagi ada aktivitas *port scanning*.
+**Perspektif Blue Team:**
+- **IDS/IPS Detection:** Sistem seperti *Snort* atau *Suricata* sudah mengenali *signature* Nmap, terutama SYN *scan* massal atau *Xmas scan*.
+- **Honeypots:** Tim Blue sering memasang *honeypot* di beberapa *port* palsu. Siapa pun yang mengetuk pintu itu, IP-nya langsung di-*ban*.
+- **Log Monitoring:** Lonjakan koneksi dari satu IP ke puluhan port dalam waktu singkat adalah tanda jelas bahwa ada aktivitas *port scanning*.
 
 ---
 
 ## Real-World Relevance
 
-- **Pentest Fase Pertama:** Di setiap taruhan *pentest* profesional sungguhan, Nmap adalah peluru pertama yang ditembakkan. Laporan hasil *scan* ini 100% bakal menentukan jalur retas (*attack vector*) apa yang bakal dipilih tim buat menjebol ke dalam.
-- **Asset Discovery:** Nyatanya, tim IT internal dan *Security* malah jadikan Nmap sebagai sahabat setia buat mengabsen (*discovery*) perangkat aneh yang asik nempel menumpang ke *Wi-Fi* atau jaringan kantor tanpa izin resmi (*rogue devices*).
-- **Compliance Scanning:** Ada standar birokrasi elit macem PCI-DSS (buat lembaga pengelola kartu kredit) yang memaksa organisasi melakukan *network scanning* rutin. Tujuannya cuma satu: memergoki apakah admin sembrono membuka sembarang layanan di internet.
+- **Pentest Fase Pertama:** Di setiap *pentest* profesional, Nmap adalah langkah pertama. Hasil *scan* ini akan menentukan jalur serangan (*attack vector*) yang akan dipilih.
+- **Asset Discovery:** Tim IT internal sering menjadikan Nmap sebagai alat untuk mendeteksi perangkat asing yang terhubung ke jaringan kantor tanpa izin (*rogue devices*).
+- **Compliance Scanning:** Standar seperti PCI-DSS mewajibkan organisasi melakukan *network scanning* rutin untuk memastikan tidak ada layanan yang terbuka sembarangan.
 
 ---
 
-## Quick Check (Active Recall)
+## Questions
 
-1. Coba tebak, kenapa si **SYN Scan (`-sS`)** dinobatkan jadi pangeran *scan default* oleh Nmap dibandingin kakaknya si TCP Connect Scan (`-sT`)?
-2. Kalau kamu mengirim serbuan UDP Scan, terus dapet laporan balik dengan status aneh **`open|filtered`**, apa maksudnya dari sisi kelakuan si targetnya?
-3. Kenapa Nmap memberikan kamu opsi aneh `--scan-delay`? Pas kondisi perang nyata apa kamu bakal terpaksa kepikir pakai ginian?
+1. Kenapa **SYN Scan (`-sS`)** menjadi *scan default* di Nmap dibandingkan TCP Connect Scan (`-sT`)?
+2. Kalau kamu melakukan UDP Scan dan mendapat status **`open|filtered`**, apa artinya dari sisi perilaku target?
+3. Di kondisi apa kamu perlu menggunakan opsi `--scan-delay`?

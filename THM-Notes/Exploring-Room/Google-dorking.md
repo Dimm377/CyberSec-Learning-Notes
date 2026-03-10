@@ -15,7 +15,7 @@ Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-
 Cara kerjanya:
 1.  **Crawling:** Bot jalan-jalan mencari konten.
 2.  **Indexing:** Konten disimpen di database raksasa Google.
-3.  **Searching:** Pas kita ngetik di Google, dia mencari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
+3.  **Searching:** Saat kita mengetik di Google, dia mencari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
 
 ---
 
@@ -126,7 +126,7 @@ File teks biasa yang dipake webmaster buat memberi tau crawler (seperti Googlebo
 ## What is Google Dorking?
 
 Ini dia menu utamanya: **Google Dorking**.
-Teknik pakai operator pencarian Google buat nemuin hasil yang spesifik banget. Di dunia security, ini dipake buat **Reconnaissance** (mencari info target).
+Teknik menggunakan operator pencarian Google untuk menemukan hasil yang sangat spesifik. Di dunia security, ini digunakan untuk **Reconnaissance** (mencari info target).
 
 ### 1. Basic Operators (Operator Dasar)
 - **`site:`** -> Mencari di domain spesifik.

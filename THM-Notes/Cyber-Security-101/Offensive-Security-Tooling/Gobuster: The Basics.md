@@ -148,7 +148,7 @@ contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration 
 - `gobuster dir`: Ini memberi tau Gobuster kalau kita mau pakai mode enumerasi direktori dan file.
 - `-u "http://www.yourbrokenweb.thm/"`: Ini target URL yang mau kita scan.
 - `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal mengambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan mengirim request ke sana.
-- `-t 64`: Ini ngeset jumlah threads jadi 64. Membuat proses scan jadi jauh lebih ngebut dibanding default-nya.
+- `-t 64`: Ini mengeset jumlah threads jadi 64. Membuat proses scan jadi jauh lebih cepat dibanding default-nya.
 
 ## Use Case: Directory And File Enumeration
 
@@ -168,7 +168,7 @@ root@user:~# tree -L 3 -d
         └── wp-includes
 ```
 
-Gobuster itu _powerful_ karena dia tidak cuma mengecek ada/enggak-nya folder, tapi juga ngembaliin **Status Codes**. Dari kode ini, kita bisa langsung tau apakah directory itu bisa diakses sama kita (sebagai user luar) atau tidak.
+Gobuster itu _powerful_ karena dia tidak cuma mengecek ada/tidaknya folder, tapi juga mengembalikan **Status Codes**. Dari kode ini, kita bisa langsung tahu apakah directory itu bisa diakses oleh kita (sebagai user luar) atau tidak.
 
 ### Help
 
@@ -303,7 +303,7 @@ Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka kelia
 Bedanya mode `vhost` sama `dns` ada di cara kerjanya pas scanning:
 
 - Mode `vhost` bakal menuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
-- Mode `dns` bakal ngelakuin DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) sama isi wordlist.
+- Mode `dns` akan melakukan DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) dan isi wordlist.
 
 ### Help
 

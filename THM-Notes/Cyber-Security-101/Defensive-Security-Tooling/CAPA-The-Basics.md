@@ -57,7 +57,7 @@ CAPA bekerja dengan cara:
 Keindahan CAPA adalah dia **mengemas pengalaman bertahun-tahun reverse engineering** ke dalam satu tool otomatis. Artinya, kamu tidak perlu menjadi ahli reverse engineering untuk bisa memahami kemampuan sebuah malware. Ini sangat berguna untuk:
 - **Malware Analyst** yang butuh analisis cepat
 - **Threat Hunter** yang ingin memahami kapabilitas binary tanpa harus membongkar assembly-nya
-- **Incident Responder** yang butuh jawaban cepat: "File ini bisa ngapain aja?"
+- **Incident Responder** yang butuh jawaban cepat: "File ini bisa melakukan apa saja?"
 
 ---
 ## Dissecting CAPA Results Part 1: General Information, MITRE and MAEC

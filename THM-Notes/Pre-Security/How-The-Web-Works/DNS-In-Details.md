@@ -66,13 +66,13 @@ Server DNS tidak cuma menyimpan nama dan nomor. Mereka menggunakan berbagai form
 Proses nerjemahin nama domain ke IP Address itu lumayan panjang. Analogi sederhananya ibarat kamu lagi **nanya alamat rumah teman yang baru pindah**. Ini urutannya:
 
 1. **Local Cache Check (Nanya memori sendiri):** 
-   Sebelum repot nanya keluar, komputermu ngecek dulu di memori lokal (_cache_). Siapa tau alamatnya baru aja dicari kemaren dan masih diingat. Ini dilakukan buat menghemat waktu dan _bandwidth_.
+   Sebelum repot bertanya keluar, komputermu mengecek dulu di memori lokal (_cache_). Siapa tahu alamatnya baru saja dicari kemarin dan masih diingat. Ini dilakukan untuk menghemat waktu dan _bandwidth_.
 2. **Recursive Resolver (Nanya pak RT):** 
    Kalau di _cache_ lokal gak ada, alamat dicari lewat Recursive DNS (biasanya server milik provider internetmu atau server publik kayak `8.8.8.8`). Resolver inilah pelayan yang keliling internet nanyain alamat spesifik buat kamu.  
 3. **The Root Server (Nanya kantor pusat):** 
-   Resolver melempar nanya ke Root Server di puncak rantai DNS. Root ngerespons: *"Aku gak tau spesifik alamatnya, tapi karena belakangnya `.com`, coba deh kamu nanya server spesialis `.com`."*
+   Resolver melempar pertanyaan ke Root Server di puncak rantai DNS. Root merespons: *"Aku tidak tahu spesifik alamatnya, tapi karena belakangnya `.com`, coba kamu tanya server spesialis `.com`."*
 4. **TLD Server (Nanya kelurahan setempat):** 
-   Resolver kemudian bertanya ke TLD Server yang mengurus `.com`. Server ini ngerespons: *"Aku tau sistem siapa yang handle `tryhackme`, coba kamu tanya Authoritative Server mereka."*
+   Resolver kemudian bertanya ke TLD Server yang mengurus `.com`. Server ini merespons: *"Aku tahu sistem siapa yang handle `tryhackme`, coba kamu tanya Authoritative Server mereka."*
 5. **Authoritative Server (Ketemu yang punya rumah):** 
    Inilah server ujung dan sumber kebenaran tertinggi. Server ini menyimpan database asli dari _records_ miliknya. Dia akan kasih jawaban final ke Resolver: *"Aha! `tryhackme.com` mengarah ke A record dengan IP `104.26.x.x`."*
 
@@ -86,5 +86,5 @@ Begitu jawaban pastinya didapatkan, Resolver menyerahkan IP tersebut ke browser 
 
 **Bagaimana mekanisme kerjanya?**
 1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapet tanda berupa **TTL** (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
-2. **Penggunaan Instan:** Selama 1 jam itu, kalau ada orang lain nanya domain yang sama, Resolver ngasih tau dari _cache_ memori tanpa perlu keliling nanya TLD dkk lagi.
+2. **Penggunaan Instan:** Selama 1 jam itu, kalau ada orang lain bertanya domain yang sama, Resolver memberitahu dari _cache_ memori tanpa perlu berkeliling bertanya TLD dkk lagi.
 3. **Expire & Refresh (Kadaluarsa):** Begitu angkanya nyentuh 0, memori dihapus dan dianggap kadaluarsa. Kalau ada nanya lagi, Resolver wajib *Re-query* (mengulangi proses dari awal) mencari informasi _fresh_ (baru). Hal ini menjamin lalu lintas internet gak diarahkan ke _server_ yang udah usang andaikata admin website baru ganti IP.

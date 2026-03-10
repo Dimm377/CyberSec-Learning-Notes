@@ -8,7 +8,7 @@
 
 Selamat datang di dunia Cybersecurity!, Sebelum kita mempelajari teknisnya, kamu harus tahu kenapa bidang ini sangat menjanjikan dan kenapa banyak orang (termasuk kamu) tertarik untuk terjun ke sini.
 
-Cybersecurity bukan cuma soal "nge-hack" atau "nangkep penjahat". Ini adalah industri yang sangat luas, mulai dari sisi **Offensive** (seperti *Pentesting*—mencari celah dan melaporkannya) sampai sisi **Defensive** (menjaga sistem dan menginvestigasi serangan).
+Cybersecurity bukan cuma soal "meretas" atau "menangkap penjahat". Ini adalah industri yang sangat luas, mulai dari sisi **Offensive** (seperti *Pentesting*—mencari celah dan melaporkannya) sampai sisi **Defensive** (menjaga sistem dan menginvestigasi serangan).
 
 ### Kenapa Berkarir di Cybersecurity?
 

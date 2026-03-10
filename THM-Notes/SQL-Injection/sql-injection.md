@@ -18,7 +18,7 @@
 ## What is a Database?
 
 **Database** itu kumpulan data yang terstruktur.
-*   **DBMS (Database Management System):** Software yang dipake buat ngelola database (misal MySQL, PostgreSQL, Microsoft SQL Server).
+*   **DBMS (Database Management System):** Software yang digunakan untuk mengelola database (misal MySQL, PostgreSQL, Microsoft SQL Server).
 *   **Relational Database (RDBMS):** Menyimpan data dalam tabel pakai baris dan kolom. Pakai SQL.
     *   Contoh: MySQL, PostgreSQL, MSSQL, SQLite.
 *   **Non-Relational Database (NoSQL):** Menyimpan data dalam format lain (dokumen, key-value pair).
@@ -90,7 +90,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 **Authentication Bypass:**
 *   Nargetin formulir login buat masuk tanpa password.
 *   Payload: `' OR 1=1 --` atau `admin' --` atau `' OR 1=1 LIMIT 1 --`
-*   Tujuan: Membuat query ngembaliin setidaknya satu baris (user admin) jadi aplikasi ngira login berhasil.
+*   Tujuan: Membuat query mengembalikan setidaknya satu baris (user admin) jadi aplikasi mengira login berhasil.
 
 ---
 

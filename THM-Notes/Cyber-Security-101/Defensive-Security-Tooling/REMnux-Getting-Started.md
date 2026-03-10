@@ -14,12 +14,12 @@ Di sinilah **REMnux** berperan.
 
 **REMnux** adalah distro Linux khusus yang dirancang khusus untuk keperluan **Reverse Engineering Malware**.
 
-Analogi simpelnya: Kalau Kali Linux adalah toolkit untuk anak _Offensive Security_ (Red Team) buat ngebobol sistem, maka REMnux adalah **"meja operasi"** untuk anak _Defensive Security_ (Blue Team / Malware Analyst) buat membedah virus.
+Analogi simpelnya: Kalau Kali Linux adalah toolkit untuk anak _Offensive Security_ (Red Team) untuk membobol sistem, maka REMnux adalah **"meja operasi"** untuk anak _Defensive Security_ (Blue Team / Malware Analyst) untuk membedah virus.
 
 Apa keunggulannya?
 - Sudah ter-install ratusan _tools_ untuk analisis memori, jaringan, dan bedah file statis. (Contoh: Volatility, YARA, Wireshark, oledump, INetSim).
 - Dirancang seperti lingkungan _sandbox_ yang aman untuk mengeksekusi dan mengobservasi software berbahaya tanpa resiko menginfeksi komputer pribadimu.
-- Siap pakai (_ready to go_) — gak perlu pusing install tools satu per satu secara manual.
+- Siap pakai (_ready to go_) — tidak perlu pusing install tools satu per satu secara manual.
 
 ### Learning Objectives
 
@@ -33,14 +33,14 @@ Setelah menyelesaikan room ini, kamu akan menguasai cara:
 
 ## File Analysis Tools
 
-Saat sedang menghadapi insiden keamanan, sering banget musuhnya nyamar jadi *file* kantoran biasa (*Excel, Word, PDF*). Nah, di REMnux, kamu punya banyak pisau bedah khusus buat nanganin ginian.
+Saat sedang menghadapi insiden keamanan, sering kali musuhnya menyamar jadi _file_ kantoran biasa (_Excel, Word, PDF_). Di REMnux, kamu punya banyak alat bedah khusus untuk menangani hal ini.
 
 ### Membedah Dokumen Jahat dengan `oledump.py`
 
-Pernah dapet email berlampiran *Excel* yang tiba-tiba bikin komputer lemot? Kemungkinan besar *file* itu menyimpan *malware* berbasis *Macro*. Buat ngebongkarnya dengan aman secara statis (tanpa perlu membuka aplikasinya), kamu bisa pakai **`oledump.py`**.
+Pernah dapat email berlampiran _Excel_ yang tiba-tiba membuat komputer lemot? Kemungkinan besar _file_ itu menyimpan _malware_ berbasis _Macro_. Untuk membongkarnya dengan aman secara statis (tanpa perlu membuka aplikasinya), kamu bisa menggunakan **`oledump.py`**.
 
 **Apa itu OLE2?**
-Kalo kamu bingung, OLE2 (*Object Linking and Embedding*) itu teknologi jadul buatan Microsoft. Pada dasarnya, *file* OLE2 kayak sebuah *zip folder* transparan, dia bisa menyimpan banyak tipe data berbeda (teks, gambar, racun *script*) berdesakan di dalem satu *file* utuh. *Tool* ini jago banget buat mengekstrak dan menelanjangi isi kandungan OLE2 tadi.
+Kalau kamu bingung, OLE2 (_Object Linking and Embedding_) itu teknologi jadul buatan Microsoft. Pada dasarnya, _file_ OLE2 seperti sebuah _zip folder_ transparan — bisa menyimpan banyak tipe data berbeda (teks, gambar, _script_ racun) berdesakan di dalam satu _file_ utuh. _Tool_ ini sangat jago untuk mengekstrak dan menelanjangi isi kandungan OLE2 tersebut.
 
 **Cara Pakainya:**
 Misal kamu dapet *file* mencurigakan bernama `agenttesla.xlsm`. Cukup panggil *tool*-nya di terminal:
@@ -53,13 +53,13 @@ oledump.py agenttesla.xlsm
 **Membaca Hasil Output:**
 Hasilnya bakal keluar struktur direktori dari dalem *file* Excel itu.
 - Kolom pertama adalah nomor urut (*index*), sering juga disebut **data streams**.
-- Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah, huruf 'M' itu berarti ada *script* VBA Macro yang disisipkan di dalem partisi tersebut.
+- Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah — huruf 'M' berarti ada _script_ VBA Macro yang disisipkan di dalam partisi tersebut.
 - Kolom angka di sebelahnya menunjukkan ukuran *byte* dari partisi itu, disusul nama partisinya.
 
 Tugas kamu sebagai analis adalah membedah lebih dalem indeks nomor yang ada huruf 'M'-nya buat melihat isi nyatanya menulis *script* racun jenis apa.
 
 **Menyelam Lebih Dalam ke Data Stream Jahat:**
-Nah, anggap saja di *output* sebelumnya kita curiga sama baris nomor 4 (`A4: M ...`). Kita bisa menyuruh *oledump* buat nampilin isi mentahan dari *stream* nomor 4 itu aja pakai *flag* `-s` (*select*):
+Nah, anggap saja di _output_ sebelumnya kita curiga sama baris nomor 4 (`A4: M ...`). Kita bisa menyuruh _oledump_ untuk menampilkan isi mentahan dari _stream_ nomor 4 itu saja menggunakan _flag_ `-s` (_select_):
 
 ```bash
 oledump.py agenttesla.xlsm -s 4
@@ -68,7 +68,7 @@ oledump.py agenttesla.xlsm -s 4
 Masalahnya, hasil *output*-nya biasanya masih dalam wujud *hex dump* (kode campur aduk) yang bikin mata pusing. 
 
 **Membaca Script Asli (Decompress):**
-Biar *script* VBA yang ada di dalem situ bisa dibaca manusia dengan waras, kamu perlu nambahin *flag* ekstra spesifik: `--vbadecompress`.
+Agar _script_ VBA yang ada di dalamnya bisa dibaca manusia dengan waras, kamu perlu menambahkan _flag_ ekstra: `--vbadecompress`.
 
 ```bash
 oledump.py agenttesla.xlsm -s 4 --vbadecompress
@@ -81,14 +81,14 @@ Sebagai analis pemula, insting yang harus kamu tajamkan adalah mencari anomali k
 - Perintah *download* atau eksekusi *shell/CMD*.
 
 **Membersihkan Sampah Script (Deobfuscation) Pakai CyberChef**
-Ngomong-ngomong soal anomali, pas kamu *scroll* hasil *decompress* tadi, kamu gampang banget nemuin baris *script* panjang yang bentuknya penuh simbol aneh, misalnya:
+Berbicara soal anomali, saat kamu _scroll_ hasil _decompress_ tadi, kamu akan mudah menemukan baris _script_ panjang yang bentuknya penuh simbol aneh, misalnya:
 `"^p*o^*w*e*r*s^^h*e*l^*l* *^-w*i*n^*d*o*w^*s*t*y^*l*e*..."`
 
-Itu bukan *error*. Pembuat *malware*-nya sengaja menyisipkan karakter sampah (kayak `*` dan `^`) biar *tools* antivirus bingung membacanya. Teknik ngumpetin wujud asli ini namanya **Obfuscation**.
+Itu bukan _error_. Pembuat _malware_-nya sengaja menyisipkan karakter sampah (seperti `*` dan `^`) agar _tools_ antivirus bingung membacanya. Teknik menyembunyikan wujud asli ini disebut **Obfuscation**.
 
 Dilihat dari baris *script* (contoh variabel `Sqtnew`), ketahuan kalau ada perintah `Replace` buat membuang karakter `*` dan `^` sebelum *script*-nya dieksekusi diam-diam di komputer korban. 
 
-Tugas kamu sekarang adalah membuang sampah itu secara manual biar wujud aslinya kelihatan, tools yang paling pas buat kerjaan ginian adalah **CyberChef** (*swiss army knife*-nya anak *cybersec*).
+Tugas kamu sekarang adalah membuang sampah itu secara manual agar wujud aslinya terlihat. Tools yang paling tepat untuk pekerjaan ini adalah **CyberChef** (_swiss army knife_-nya anak _cybersec_).
 
 *Langkah praktek:*
 1. Buka **CyberChef** (bisa dari *browser* di dalam mesin REMnux atau _online_).
@@ -103,7 +103,7 @@ dan di kotak **Output** pojok kanan bawah, deretan sampah itu bakal terbaca jela
 
 ## Memory Investigation: Evidence Preprocessing
 
-Di ranah Digital Forensik, analis tidak hanya melihat *file* di dalam *harddisk*. Seringkali mereka harus membedah **Memory Image** (jejak rekaman RAM komputer korban pas lagi nyala). Kenapa? Karena *malware* modern biasanya tidak meninggalkan jejak di *harddisk* (*fileless*), tapi murni jalan dan bersembunyi di dalam *Memory* (RAM).
+Di ranah Digital Forensik, analis tidak hanya melihat _file_ di dalam _harddisk_. Seringkali mereka harus membedah **Memory Image** (jejak rekaman RAM komputer korban saat masih menyala). Kenapa? Karena _malware_ modern biasanya tidak meninggalkan jejak di _harddisk_ (_fileless_), tapi murni berjalan dan bersembunyi di dalam _Memory_ (RAM).
 
 ### Volatility 3: Membaca Isi RAM
 

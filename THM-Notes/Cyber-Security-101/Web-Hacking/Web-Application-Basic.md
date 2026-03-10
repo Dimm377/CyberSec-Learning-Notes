@@ -8,57 +8,57 @@
 
 ## Introduction
 
-_Room_ ini memberikan dasar-dasar mengenai mekanisme kerja aplikasi web, yang merupakan fondasi krusial bagi aktivitas pengujian keamanan web.
+_Room_ ini memberikan dasar-dasar tentang cara kerja aplikasi web. Ini adalah pondasi penting sebelum kamu masuk ke materi pengujian keamanan web.
 
 ### Learning Objective:
-- Memahami pengertian Aplikasi Web.
-- Membedah komponen-komponen yang terdapat pada URL.
-- Memahami cara kerja protokol HTTP (Permintaan & Tanggapan).
-- Mengenal Metode HTTP dan kode status tanggapan.
-- Memahami peran penting Header HTTP dan _Cookies_.
+- Memahami apa itu Aplikasi Web.
+- Membedah komponen-komponen URL.
+- Memahami cara kerja protokol HTTP (Request & Response).
+- Mengenal HTTP Methods dan Status Codes.
+- Memahami peran HTTP Headers dan _Cookies_.
 
 ---
 
 ## Web Application Overview
 
-Aplikasi web beroperasi menggunakan arsitektur **Client-Server**. Klien (seperti peramban web) mengirimkan permintaan, sementara peladen (_server_) memproses dan memberikan tanggapan.
+Aplikasi web bekerja dengan arsitektur **Client-Server**. Client (browser) mengirimkan permintaan, lalu Server memproses dan mengirimkan balasan.
 
 ### Komponen Utama:
 
-1.  **Front-End (Sisi Klien):**
-    - Bagian yang dapat dilihat dan berinteraksi langsung dengan pengguna.
-    - Beroperasi di dalam peramban web pengguna.
-    - Teknologi utama: **HTML** (Struktur), **CSS** (Presentasi), dan **JavaScript** (Logika Interaktif).
+1.  **Front-End (Sisi Client):**
+    - Bagian yang terlihat dan bisa diinteraksikan langsung oleh pengguna.
+    - Berjalan di dalam browser.
+    - Teknologi utama: **HTML** (Struktur), **CSS** (Tampilan), dan **JavaScript** (Logika Interaktif).
 
-2.  **Back-End (Sisi Peladen):**
-    - Bagian yang mengelola logika aplikasi dan pengolahan data di balik layar.
+2.  **Back-End (Sisi Server):**
+    - Bagian yang mengelola logika aplikasi dan pemrosesan data di balik layar.
     - Terdiri dari:
-      - **Web Server:** Mengirimkan konten web kepada klien (Contoh: Apache, Nginx).
+      - **Web Server:** Mengirimkan konten web ke client (Contoh: Apache, Nginx).
       - **Database:** Penyimpanan data terstruktur (Contoh: MySQL, PostgreSQL).
-      - **Web Application Firewall (WAF):** Lapisan keamanan untuk menyaring lalu lintas berbahaya ke peladen.
+      - **Web Application Firewall (WAF):** Lapisan keamanan untuk menyaring traffic berbahaya.
 
 ---
 
 ## Uniform Resource Locator (URL)
 
-URL itu sebenernya alamat lengkap buat mencari resource di internet/web server. Ibaratnya seperti alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
+URL itu pada dasarnya alamat lengkap untuk mencari resource di internet/web server. Ibaratnya seperti alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
 
 **Bedah Anatomi URL:**
 Misal ada URL: `https://www.tryhackme.com/room/network?join=true#task1`
 
 1.  **Scheme / Protocol (`https://`):**
     - Aturan main komunikasinya.
-    - **HTTP:** Biasa saja, tidak dienkripsi (bahaya buat kirim password).
-    - **HTTPS:** Aman, dienkripsi .
+    - **HTTP:** Biasa saja, tidak dienkripsi (berbahaya untuk mengirim password).
+    - **HTTPS:** Aman, dienkripsi.
 
 2.  **User (`user:password@`):**
-    - Jarang dipake sekarang. Dulu buat login langsung lewat URL (misal FTP).
+    - Jarang dipakai sekarang. Dulu untuk login langsung lewat URL (misal FTP).
 
 3.  **Host / Domain (`www.tryhackme.com`):**
     - Nama server yang kita tuju. Ini di-resolve jadi IP Address sama DNS.
 
 4.  **Port (`:443`):**
-    - Pintu masuk ke server. Defaultnya HTTP=80, HTTPS=443 (biasanya disembunyiin/otomatis).
+    - Pintu masuk ke server. Default-nya HTTP=80, HTTPS=443 (biasanya otomatis, tidak terlihat di URL).
 
 5.  **Path (`/room/network`):**
     - Lokasi file atau halaman yang kita minta di server itu.
@@ -69,8 +69,8 @@ Misal ada URL: `https://www.tryhackme.com/room/network?join=true#task1`
 7.  **Fragment (`#task1`):**
     - Penunjuk lokasi spesifik di dalam halaman itu sendiri (scroll otomatis ke bagian tertentu).
 
-**Hati-hati sama Typosquatting!**
-Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` bukan `google.com`) buat nipu orang. Jadi mata harus jeli untuk melihat url nya
+**Hati-hati dengan Typosquatting!**
+Ini teknik di mana penyerang membeli domain yang mirip dengan domain asli (misal `goggle.com` alih-alih `google.com`) untuk menipu pengguna. Jadi kamu harus jeli memperhatikan URL-nya.
 
 **Answer the questions below:**
 
@@ -87,17 +87,17 @@ Ini teknik hacker yang beli domain mirip-mirip domain asli (misal `goggle.com` b
 
 ## HTTP Messages
 
-HTTP itu bahasa yang dipake Client dan Server buat ngobrol. komunikasi mereka bentuknya pesan teks sederhana.
+HTTP itu bahasa yang dipakai Client dan Server untuk berkomunikasi. Bentuknya berupa pesan teks sederhana.
 
 Ada dua jenis pesan utama:
 
 1.  **HTTP Request (Permintaan):**
     - Pesan yang dikirim **Client (Browser)** ke Server.
-    - Isinya: "Eh server, minta halaman ini dong!" atau "Nih gw kirim data login".
+    - Contoh: "Server, minta halaman ini" atau "Ini data login yang saya kirim".
 
 2.  **HTTP Response (Jawaban):**
     - Pesan balasan dari **Server** ke Client.
-    - Isinya: "Oke, ini halamannya wir" atau "Waduh, file-nya tidak ketemu le (404)".
+    - Contoh: "Oke, ini halamannya" atau "File yang dicari tidak ada (404)".
 
 **Struktur Pesan HTTP:**
 
@@ -108,35 +108,27 @@ Sebuah pesan HTTP biasanya punya format seperti ini:
 3.  **Empty Line (Baris Kosong):** Ini PENTING! Pemisah antara Header dan Body.
 4.  **Body:** Isinya data benerannya (misal kode HTML halaman web, atau data form yang kita kirim).
 
-**Answer the questions below:**
-
-- **Question:** Which HTTP message is returned by the web server after processing a client's request?
-- **Answer:** ?
-
-- **Question:** What follows the headers in an HTTP message?
-- **Answer:** ?
-
 ---
 
 ## HTTP Request (Method & Request Line)
 
-membahas komponen paling atas dari HTTP Request, yaitu **Request Line**. Isinya ada 3 bagian penting:
+Komponen paling atas dari HTTP Request adalah **Request Line**. Isinya ada 3 bagian penting:
 
 `GET /room/webapplicationbasics HTTP/1.1`
 
-1.  **HTTP Method (`GET`):** Kata kerja yang nunjukin kita mau ngapain.
-    - **GET:** Minta data (buka website, download file).
-    - **POST:** Mengirim data baru (isi form, upload file).
-    - **PUT:** Update data yang sudah ada.
-    - **DELETE:** Hapus data.
-    - **HEAD:** Cuma minta header-nya saja (buat mengecek file ada/tidak tanpa download isinya).
-    - **OPTIONS:** Nanya ke server "eh, method apa saja sih yang boleh dipake di sini?".
+1.  **HTTP Method (`GET`):** Kata kerja yang menunjukkan tindakan yang diminta.
+    - **GET:** Meminta data (membuka website, download file).
+    - **POST:** Mengirim data baru (mengisi form, upload file).
+    - **PUT:** Memperbarui data yang sudah ada.
+    - **DELETE:** Menghapus data.
+    - **HEAD:** Hanya meminta header-nya saja (untuk mengecek file ada/tidak tanpa men-download isinya).
+    - **OPTIONS:** Menanyakan ke server method apa saja yang diizinkan.
 
 2.  **Path (`/room/webapplicationbasics`):**
-    - Halaman atau file spesifik yang kita minta di server itu.
+    - Halaman atau file spesifik yang diminta di server.
 
 3.  **HTTP Version (`HTTP/1.1`):**
-    - Versi protokol-nya. **HTTP/1.1** itu yang paling standar dan umum dipake sekarang.
+    - Versi protokol-nya. **HTTP/1.1** adalah yang paling standar dan umum dipakai saat ini.
 
 ---
 
@@ -146,50 +138,50 @@ Setelah baris pertama (Request Line), ada **Headers** dan **Body**.
 
 ### 1. HTTP Headers
 
-Ini seperti label paketan. Memberi tau info tambahan soal paketnya.
+Ini seperti label pada paket kiriman. Memberikan info tambahan tentang request-nya.
 Contoh header yang sering muncul:
 
-- **Host:** Domain tujuan permintaan (Wajib disertakan).
-- **User-Agent:** Menyediakan informasi mengenai jenis peramban atau perangkat klien.
-- **Referer:** Alamat asal tautan sebelum menuju ke halaman saat ini.
-- **Cookie:** Token identitas yang digunakan peladen untuk mengenali sesi pengguna.
+- **Host:** Domain tujuan permintaan (wajib disertakan).
+- **User-Agent:** Informasi tentang jenis browser atau perangkat client.
+- **Referer:** Alamat halaman sebelumnya yang mengarahkan kamu ke halaman saat ini.
+- **Cookie:** Token identitas yang digunakan server untuk mengenali sesi pengguna.
 
 ---
 
 ## HTTP Response (Status Line & Codes)
 
-Pas server ngebales request kita, dia kirim **HTTP Response**. Baris pertamanya namanya **Status Line**.
+Saat server membalas request, dia mengirimkan **HTTP Response**. Baris pertamanya disebut **Status Line**.
 
 Contoh Status Line:
 `HTTP/1.1 200 OK`
 
-Isinya ada 3 macem:
+Isinya ada 3 bagian:
 
-1.  **HTTP Version:** Protokol yang dipake (biasanya HTTP/1.1).
-2.  **Status Code:** Angka ajaib yang nunjukin hasil requestnya (sukses/gagal).
-3.  **Status Message:** Penjelasan singkat dari kodenya (misal "OK", "Not Found").
+1.  **HTTP Version:** Protokol yang dipakai (biasanya HTTP/1.1).
+2.  **Status Code:** Angka yang menunjukkan hasil request (sukses/gagal).
+3.  **Status Message:** Penjelasan singkat dari kode tersebut (misal "OK", "Not Found").
 
-**Kamus Status Code (Wajib Hapal dikit-dikit):**
+**Kamus Status Code (Penting untuk Diingat):**
 
-- **1xx (Informational):** "Bentar ya, lagi diproses."
-  - Jarang banget kita melihat langsung.
+- **1xx (Informational):** "Bentar ya Sedang diproses."
+  - Jarang sekali terlihat langsung.
 
-- **2xx (Success):** "Mantap, berhasil!"
-  - **200 OK:** Request sukses
+- **2xx (Success):** "Berhasil!"
+  - **200 OK:** Request sukses.
 
-- **3xx (Redirection):** "Pindah page ya."
-  - **301 Moved Permanently:** Halaman sudah pindah selamanya.
+- **3xx (Redirection):** "Dipindahkan."
+  - **301 Moved Permanently:** Halaman sudah pindah secara permanen.
   - **302 Found:** Pindah sementara.
 
-- **4xx (Client Error):** "Salah kamu wir." (Error dari sisi kita/browser)
-  - **400 Bad Request:** Request tidak jelas/ngaco.
-  - **401 Unauthorized:** Belum login atau tidak boleh masuk,
-  - **403 Forbidden:** Login sudah, tapi tetep dilarang masuk (kamu siapa mpruy).
-  - **404 Not Found:** Halaman yang dicari tidak ada (klasik nih).
+- **4xx (Client Error):** Error dari sisi client/browser.
+  - **400 Bad Request:** Request tidak valid.
+  - **401 Unauthorized:** Belum login atau tidak punya izin.
+  - **403 Forbidden:** Sudah login, tapi tetap tidak diizinkan mengakses.
+  - **404 Not Found:** Halaman yang dicari tidak ada.
 
-- **5xx (Server Error):** "Salah saya wir." (Error dari sisi server)
-  - **500 Internal Server Error:** Server-nya error, codingan backend-nya ngawur.
-  - **503 Service Unavailable:** Server lagi down atau keberatan beban (gara ga ada dana).
+- **5xx (Server Error):** Error dari sisi server.
+  - **500 Internal Server Error:** Server mengalami kesalahan internal.
+  - **503 Service Unavailable:** Server sedang down atau kelebihan beban.
 
 ---
 
@@ -199,13 +191,13 @@ Sama seperti Request, Response juga punya **Headers** dan **Body**.
 
 ### 1. HTTP Response Headers
 
-Buat memberi informasi tambahan dari server ke browser.
+Memberikan informasi tambahan dari server ke browser.
 Contoh penting:
 
-- **Server:** Memberi tau server pakai software apa (misal Apache/Nginx). _Bahaya kalo ketauan version-nya, bisa dicari celahnya!_
-- **Set-Cookie:** Server memerintah browser buat menyimpan tiket/cookie.
-  - **Secure:** Cookie cuma boleh dikirim lewat HTTPS (agar aman).
-  - **HttpOnly:** Cookie tidak boleh diakses sama JavaScript (agar tidak kena hack XSS).
+- **Server:** Menunjukkan software apa yang dipakai server (misal Apache/Nginx). _Berbahaya jika versinya terekspos, karena penyerang bisa mencari celahnya._
+- **Set-Cookie:** Server memerintahkan browser untuk menyimpan cookie.
+  - **Secure:** Cookie hanya boleh dikirim lewat HTTPS (agar aman).
+  - **HttpOnly:** Cookie tidak bisa diakses oleh JavaScript (mencegah serangan XSS).
 - **Content-Length:** Ukuran file/halaman yang dikirim.
 - **Content-Type:** Jenis file yang dikirim (misal `text/html` atau `application/json`).
 
@@ -221,32 +213,32 @@ Isi surat balesan dari server. Biasanya berupa:
 
 ## Security Headers
 
-Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tambahan buat website kita. Ini penting banget buat ngehalau serangan seperti XSS, Clickjacking, dll.
+Selain header biasa, ada juga **Security Headers** yang tugasnya menjadi tameng tambahan untuk website. Ini penting untuk mencegah serangan seperti XSS, Clickjacking, dan lainnya.
 
 **Beberapa Security Header Penting:**
 
 1.  **Strict-Transport-Security (HSTS):**
-    - Header ini maksa browser buat SELALU pakai HTTPS kalo mau mengakses website kita.
-    - Jadi kalo ada user iseng ngetik `http://`, browser bakal otomatis mengubah jadi `https://`.
-    - Agar aman total (termasuk subdomain), biasanya ditambahin opsi `includeSubDomains`.
+    - Header ini memaksa browser untuk SELALU menggunakan HTTPS saat mengakses website.
+    - Jika pengguna mengetik `http://`, browser akan otomatis mengubahnya jadi `https://`.
+    - Agar mencakup subdomain juga, biasanya ditambahkan opsi `includeSubDomains`.
 
 2.  **Content-Security-Policy (CSP):**
-    - Ini rajanya security header buat client-side.
-    - Dia ngontrol resource apa saja yang boleh diload sama browser.
-    - Misal: "Cuma boleh load gambar dari domain saya tsendiri, script dari google.com boleh, sisanya BLOKIR!".
-    - Berguna banget buat nyegah **XSS (Cross-Site Scripting)**.
+    - Ini adalah security header paling kuat untuk sisi client.
+    - Dia mengontrol resource apa saja yang boleh di-load oleh browser.
+    - Misal: "Hanya boleh memuat gambar dari domain sendiri, script dari google.com diizinkan, sisanya diblokir".
+    - Sangat berguna untuk mencegah **XSS (Cross-Site Scripting)**.
     - Directive penting:
-      - `script-src`: Ngatur sumber script (JavaScript) yang boleh jalan.
-      - `img-src`: Ngatur sumber gambar.
+      - `script-src`: Mengatur sumber script (JavaScript) yang boleh dijalankan.
+      - `img-src`: Mengatur sumber gambar.
 
 3.  **X-Content-Type-Options:**
-    - Kadang browser itu "sotoy". Kita kirim file text, dia malah nebak itu HTML trus dijalanin. Bahaya kan?
-    - Nah, header ini bilang ke browser: "Eh, jangan sotoy! Baca tipe file sesuai yang saya kasih tau saja (`Content-Type`). Jangan ditebak-tebak (sniffing)".
-    - Valuenya cuma satu: `nosniff`.
+    - Terkadang browser mencoba menebak tipe file yang dikirim server, padahal bisa berbahaya (misal file teks ditebak sebagai HTML lalu dieksekusi).
+    - Header ini memerintahkan browser untuk membaca tipe file sesuai `Content-Type` yang diberikan server, tanpa menebak-nebak (*sniffing*).
+    - Nilainya hanya satu: `nosniff`.
 
 4.  **X-Frame-Options:**
-    - Buat nyegah website kita di-embed di dalam `<iframe>` website orang lain.
-    - Ini buat nyegah serangan **Clickjacking** (orang membuat layer transparan di atas website kita buat nipu user suruh klik tombol).
+    - Mencegah website kamu di-embed di dalam `<iframe>` website lain.
+    - Ini untuk mencegah serangan **Clickjacking** (penyerang membuat layer transparan di atas website untuk menipu pengguna agar mengklik tombol tertentu).
 
 ---
 
@@ -261,6 +253,6 @@ Selain header biasa, ada juga **Security Headers** yang tugasnya jadi tameng tam
 5.  **Headers:** Info tambahan (Cookie, User-Agent, Security Headers).
 6.  **Status Codes:** 200 (OK), 404 (Not Found), 500 (Error).
 
-Pondasi ini bakal kepake banget buat materi selanjutnya seperti **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya. Jangan lupa santuy dan terus belajar!
+Pondasi ini akan sangat terpakai untuk materi selanjutnya seperti **OWASP Top 10**, **Burp Suite**, atau **Web Hacking** lainnya.
 
 ---

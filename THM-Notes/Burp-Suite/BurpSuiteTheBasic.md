@@ -10,94 +10,94 @@
 
 ## Overview
 
-*Room* ini ngasih pondasi ilmu soal cara kerja **Burp Suite**, alat yang wajib menyala tiap harinya di laptop seorang *Pentester* atau *Bug Hunter*. Di sini kamu bakal diajari gimana triknya "berdiri di tengah-tengah" jalan tol antara *browser* si korban dan *server* web, murni buat membajak, menyetop, dan memanipulasi *traffic* data sesuai niat liarmu.
+Room ini memberikan pondasi ilmu tentang cara kerja **Burp Suite**, alat yang wajib menyala setiap hari di laptop seorang _Pentester_ atau _Bug Hunter_. Di sini kamu akan belajar bagaimana caranya "berdiri di tengah-tengah" jalur antara _browser_ dan _web server_ — untuk menyadap, menghentikan, dan memanipulasi _traffic_ data sesuai kebutuhan pengujian.
 
 ---
 
-## Membedah Dashboard
+## Dashboard
 
-*Dashboard* itu pusat kendali (*command center*) di Burp Suite. Kalau kamu kebetulan lagi buka versi **Community 2026.1.1**, fitur ini bakal menonjolkan layar ringkasan bagian penting di sistem kamu:
+_Dashboard_ adalah pusat kendali (_command center_) di Burp Suite. Kalau kamu membuka versi **Community 2026.1.1**, fitur ini menampilkan ringkasan bagian penting:
 
-- **Task Log**: Ibarat buku absen. Menampilkan riwayat *log* dari *task/crawler* otomatis yang lagi (atau barusan kelar) jalan.
-- **Issue Activity**: Ini nih layar favorit, tempat nongolnya temuan kerentanan keamanan (pasnya sih buat versi Pro, kalau di versi Community cuma ngasih tau letak temuan minor aja).
-- **Shortcut sakti**: Pencet `Ctrl + Shift + D` buat langsung loncat balik ke tab *Dashboard* kapan pun lagi nyasar.
+- **Task Log**: Ibarat buku absen — menampilkan riwayat _log_ dari _task/crawler_ otomatis yang sedang (atau baru saja selesai) dijalankan.
+- **Issue Activity**: Tempat munculnya temuan kerentanan keamanan. Di versi Pro, fitur ini sangat detail; di versi Community, hanya menampilkan temuan minor.
+- **Shortcut**: Tekan `Ctrl + Shift + D` untuk langsung melompat ke tab _Dashboard_ kapan pun.
 
 ---
 
-## Kekuatan Utama: The Burp Proxy
+## The Burp Proxy
 
-Nah, fitur *Proxy* ini adalah nyawanya Burp Suite. Dia memerankan posisi penipu ulung alias *Man-in-the-Middle*:
+Fitur _Proxy_ adalah inti dari Burp Suite. Dia memerankan posisi _Man-in-the-Middle_:
 
-- **Interception**: Kekuatannya buat menghadang/menyita *request* HTTP di tengah wara-wiri, menahan alurnya *sebelum* sempet nembus nyampe ke *server*. Mau mengubah data tiket pesawat jadi gratis? Di sinilah tempat mengedit nominalnya.
-- **HTTP History**: Kalau kamu lagi males menahan, dia bertugas diem-diem sbg tukang catat *log* semua riwayat paket *request* yang berlalu-lalang buat bahan kamu menyusun analisis ntar malem.
-- **Intercept is on/off**: Berwujud toogle *switch/button* simpel buat mutusin nasib trafik—mau kamu tahan atau biarkan mengalir bebas (*off*).
+- **Interception**: Menghadang _request_ HTTP di tengah jalan, menahannya **sebelum** sampai ke _server_. Di sinilah kamu bisa mengedit parameter, header, atau isi _body_ request.
+- **HTTP History**: Mencatat semua riwayat paket _request_ yang berlalu-lalang — berguna untuk menyusun analisis.
+- **Intercept is on/off**: Toggle sederhana untuk memutuskan apakah _traffic_ ditahan atau dibiarkan menuju server.
 
 ---
 
 ## Target Scoping & Site Map
 
-Di belantara internet, kalau kamu ngelepas rante proxy, Burp bakal mencatat smua sampah trafik latar (kayak paket *telemetry* Google atau *update window*s). Biar fokus ga ambyar, kamu butuh The Scope.
+Kalau kamu melepas filter proxy, Burp akan mencatat semua _traffic_ latar belakang (seperti _telemetry_ Google atau _update_ Windows). Supaya fokus tidak terpecah, kamu membutuhkan _Scope_.
 
-- **Site Map**: Fitur visual keren membentuk jaring laba-laba. Dia ngasih gambaran peta struktur folder hirarki dan dahan file yang terintip terang dari web aplikasi targetmu.
-- **Scope**: Kekang pembatas lu lho! Bikin *traffic log* kamu disaring (di-*filter*) super bersih. Burp cuma bakal pasang mata dan telinga menangkap gerak-gerik trafik dari domain/URL yang emang udah disahkan jadi wilayah sasarannya doang.
-
----
-
-## Mengulik Manual pake Repeater
-
-Kalo *Proxy* tujuannya buat menghadang, *Repeater* itu adalah bengkel rahasia favorit buat analis yang hobi mengulik racikan parameter racun (*payload*) pelan-pelan:
-
-- **Function**: Daripada cape mondar-mandir mengeklik *reload/refresh* di muka Google Chrome, fitur ini membantu kamu menekan tombol "Gass Kirim (*Send*)" ke sebuah *request* secara berulang-ulang pakai sisa modifikasi parameter yang tiap bijinya lo ganti beda-beda.
-- **Shortcut Ninja**: Cukup tekan `Ctrl + R` (buat menendang lemparan *request* mentahannya dari *Proxy* biar pindah kamar ke *Repeater* secara kilat).
+- **Site Map**: Fitur visual yang menampilkan peta struktur folder dan hierarki file dari web aplikasi target.
+- **Scope**: Pembatas yang menyaring _traffic log_ — Burp hanya akan menangkap _traffic_ dari domain/URL yang sudah ditetapkan sebagai target.
 
 ---
 
-## Kenalan sama Sang Intruder
+## Repeater
 
-Kalau capek mengirim manual pakai *Repeater*, *Intruder* turun panggung menangani serbuan otomatisnya di level skala *brute-force* ringan:
+Kalau _Proxy_ tujuannya untuk menghadang, _Repeater_ adalah bengkel untuk menguji manipulasi parameter secara manual dan teliti:
 
-- **Gaya Jurus Payload (Types)**: Sniper (menembak brutal ke *satu titik* inceran lho doang), Battering Ram, Pitchfork (menyerang beberapa sela tapi barengan teratur), dan Cluster Bomb (Tipe paling edan mengetes semua kombinasi kombinatorik gila dari berbagai *payload* silang).
-- **Throttling (Aturan Cekik)**: Camkan baik-baik bro, kalau modal kamu cuma versi pak tani/gratisan (**Community Edition**), kecepatan tempur tembakan Intruder dibatasi secara sadis (*throttled* lemot abis) sama pemilik app.
+- **Function**: Mengirim ulang sebuah _request_ secara berulang-ulang dengan modifikasi parameter yang berbeda-beda, tanpa perlu kembali ke browser.
+- **Shortcut**: Tekan `Ctrl + R` untuk mengirim _request_ dari _Proxy_ ke _Repeater_ secara cepat.
+
+---
+
+## Intruder
+
+Kalau capek mengirim manual menggunakan _Repeater_, _Intruder_ menangani serangan otomatis di level _brute-force_:
+
+- **Payload Types**: Sniper (menyerang satu titik), Battering Ram, Pitchfork (menyerang beberapa posisi secara bersamaan), dan Cluster Bomb (menguji semua kombinasi dari berbagai _payload_).
+- **Throttling**: Di versi **Community Edition**, kecepatan _Intruder_ dibatasi secara drastis (_throttled_) oleh pembuat aplikasi. Versi Pro tidak memiliki batasan ini.
 
 ---
 
 ## Decoder, Comparer, & BApp Store
 
-*Skill set* perkakas reparasi sampingan tapi jasanya gede selangit bikin alat ini ga kekejar aplikasi tetangga:
+Tool pendukung yang jasanya sangat besar:
 
-- **Decoder**: Mesin giling andalan buat bongkar pasang (*encoding/decoding*) bongkahan rantai teks (kayak Base64, serpihan URL `%20`, sampe ASCII *Hex*) bolak-balik dalam hitungan detik tanpa lu harus mikir buka *tab* Google.
-- **Comparer**: Sesuai namanya, matanya jeli buat mencari letak perbedaan (*diffing* visual) dari jejeran dua *response* HTTP panjang. Mantap abis buat menemukan perbedaan satu huruf atau lamanya durasi respon server (kepake banget buat menganalisa *blind SQL injection*!).
-- **Extender (BApp Store)**: Semacem *Play Store*-nya alat *hacker*. Toko modding lho buat belanja dan menempelkan ekstensi *plugin* dewa macem **Logger++** atau **Turbo Intruder** buat mendongkrak otot Burp Suite biar berasa versi berbayar.
+- **Decoder**: Mengubah encoding/decoding teks (Base64, URL encoding, ASCII Hex) bolak-balik dalam hitungan detik.
+- **Comparer**: Mencari perbedaan (_diffing_ visual) dari dua _response_ HTTP. Sangat berguna untuk menganalisis _blind SQL injection_ — mendeteksi perbedaan satu huruf atau durasi respon server.
+- **Extender (BApp Store)**: Toko ekstensi untuk menambahkan _plugin_ seperti **Logger++** atau **Turbo Intruder** yang mendongkrak kemampuan Burp Suite.
 
 ---
 
 ## Attack Flow Awareness
 
-Burp Suite ini mutlak memegang peranan panggung utama pas kamu masuk di tahap pendaftaran target (**Reconnaissance**) dan jebolin pintu depan (**Initial Access**) pas menghadapi aplikasi web:
+Burp Suite memegang peranan utama saat masuk tahap **Reconnaissance** dan **Initial Access** pada aplikasi web:
 
-| Fase Retas | Jatah Kerjanya Burp Suite |
+| Fase | Peran Burp Suite |
 | :--- | :--- |
-| **Reconnaissance** | Mengandalkan *Site Map* buat meraba-raba dan memetakan rancang bangun seluruh pelosok kota aplikasi web, membantu menemukan ruang rahasia (*endpoint*) yang sengaja disembunyikan dari publik. |
-| **Initial Access** | Mengawinkan kekuatan *Proxy* + *Repeater* buat mengorak-ngarik parameter, menemukan, sampe sukses mengeksekusi kerentanan gawat (kayak menendang *SQLi*, menitip *XSS*, mengintip data *IDOR*, dll). |
-| **Post-Exploitation** | Kerjaan membongkar lencana otentikasi macem *session tokens* dan deretan *cookies* buat mencuri identitas Admin (*Privilege Escalation*). |
+| **Reconnaissance** | Mengandalkan _Site Map_ untuk memetakan seluruh struktur aplikasi web dan menemukan _endpoint_ tersembunyi |
+| **Initial Access** | Menggabungkan _Proxy_ + _Repeater_ untuk memanipulasi parameter, menemukan, dan mengeksploitasi kerentanan (SQLi, XSS, IDOR, dll) |
+| **Post-Exploitation** | Membedah _session tokens_ dan _cookies_ untuk mencuri identitas Admin (_Privilege Escalation_) |
 
-**Gimana Blue Team (Bek) Melihat Ini:**
-- **WAF (Web Application Firewall):** Satpam digital ini matanya awas. Dia bisa mengendus dan ngamuk kalau liat wujud pola rentetan *request* brutal nan ga wajar yang dimuntahkan dari *Burp Intruder* (kayak misal ribuan *request* aneh masuk ke satu alamat *login* cuma dalam sedetik).
-- **Rate Limiting:** Trik jitu musuh buat membatasi/mengerem leher jumlah laju akses *request* per alamat IP biar serangan otomatis lo (*brute-force*) jalan kayak siput.
-- **Logging:** Sadar diri! Segala macem pergerakan ga masuk akal yang lewat celah *server* itu pasti otomatis tercatat (*logged*) mati buat bahan bukti lab forensik penyidik kalau perusahaan tau-tau kena musibah.
+**Perspektif Blue Team:**
+- **WAF (Web Application Firewall):** Bisa mendeteksi pola _request_ brutal yang tidak wajar dari _Burp Intruder_ (misal: ribuan _request_ ke satu _endpoint login_ dalam hitungan detik).
+- **Rate Limiting:** Membatasi jumlah _request_ per IP untuk memperlambat serangan _brute-force_ otomatis.
+- **Logging:** Semua pergerakan mencurigakan yang melewati _server_ tercatat secara otomatis sebagai bahan bukti forensik.
 
 ---
 
 ## Real-World Relevance
 
-- **Bug Bounty:** Udah rahasia umum, Burp Suite itu ibarat pedang Excalibur buat para *Bug Hunter*. Kalau kamu mengintip *platform* tajir macem HackerOne atau Bugcrowd, dipastikan 90% laporan maut di sana itu hasil nemu pakai *combo Proxy* + *Repeater*.
-- **Web App Pentest:** Di taruhan karir profesional, seorang *pentester* jelas pakai Burp Suite Pro (berbayar sultan) buat menyalakan *active vulnerability scanning* secara masif bin otomatis, sebelom gilirannya dia turun gunung validasi temuan itu manual *exploit* pakai *Repeater*.
-- **OWASP Top 10:** Bisa dibilang ampir seluruh penyakit wajib yang nangkring di OWASP Top 10 (SQLi, XSS, Broken Access Control, dll) itu bisa banget dipancing keluar dari kandangnya sekaligus dibantai cuma pakai satu aplikasi ini lho.
+- **Bug Bounty:** Burp Suite adalah tool utama para _Bug Hunter_. Di platform seperti HackerOne atau Bugcrowd, sebagian besar laporan kerentanan dihasilkan dari kombinasi _Proxy_ + _Repeater_.
+- **Web App Pentest:** Secara profesional, _pentester_ menggunakan Burp Suite Pro untuk menjalankan _active vulnerability scanning_ secara otomatis, lalu memvalidasi temuan secara manual menggunakan _Repeater_.
+- **OWASP Top 10:** Hampir seluruh kerentanan di OWASP Top 10 (SQLi, XSS, Broken Access Control, dll) bisa ditemukan dan dieksploitasi menggunakan tool ini.
 
 ---
 
-## Quick Check (Active Recall)
+## Questions
 
-1. Kalau logikanya jalan, kenapa sih ilmu menangkap (*understanding*) bahasa dasar protokol HTTP itu jadi fondasi mutlak sebelum tangannya boleh lincah buka-buka Burp Suite?
-2. Emangnya seberapa membantu sih fitur nyeting ***Scope*** target di Burp Suite pas kamu lagi ditugasin merampok aplikasi web skala raksasa gajah keliling?
-3. Di kondisi nyebelin kek *Blind SQL Injection* (tempat *database*-nya buta dan cuma respon jeda waktu), kenapa lu wajib berterima kasih sama adanya fitur **Comparer**?
+1. Kenapa pemahaman dasar protokol HTTP menjadi fondasi mutlak sebelum bisa menggunakan Burp Suite secara efektif?
+2. Seberapa penting fitur **Scope** saat kamu ditugaskan menguji aplikasi web berskala besar?
+3. Dalam skenario _Blind SQL Injection_ (di mana database hanya merespon lewat jeda waktu), kenapa fitur **Comparer** sangat berguna?

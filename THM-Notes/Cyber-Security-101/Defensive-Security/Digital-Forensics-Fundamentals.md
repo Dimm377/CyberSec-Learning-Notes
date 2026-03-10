@@ -6,7 +6,7 @@
 
 ## Introduction to Digital Forensics
 
-**Digital Forensics** adalah cabang forensic yang khusus menyelidiki **cyber crime** menggunakan tools dan teknik buat nemuin, menganalisis, dan melaporkan bukti digital.
+**Digital Forensics** adalah cabang forensic yang khusus menyelidiki **cyber crime** menggunakan tools dan teknik untuk menemukan, menganalisis, dan melaporkan bukti digital.
 
 <p align="center">
 <img src="../../Assets/Images/Forensics-footage.png" alt="Forensics Footage">
