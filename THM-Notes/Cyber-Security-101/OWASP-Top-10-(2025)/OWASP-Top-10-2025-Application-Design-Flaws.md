@@ -29,7 +29,7 @@ Kamu akan mempelajari teori setiap kategori sekaligus mempraktikkannya lewat _ch
 
 ### Why It Matters
 
-Bahkan kesalahan konfigurasi kecil bisa membuat data sensitif terekspos, memungkinkan **privilege escalation** (naik hak akses), atau memberikan attacker pijakan awal ke dalam sistem. Aplikasi modern bergantung pada _stack_ yang kompleks — cloud services, third-party API, container, framework — dan **satu saja** panel admin yang terekspos, storage bucket yang terbuka, atau permission yang salah bisa mengompromikan seluruh sistem.
+Bahkan kesalahan konfigurasi kecil bisa membuat data sensitif terekspos, memungkinkan **privilege escalation** (naik hak akses), atau memberikan attacker pijakan awal ke dalam sistem. Aplikasi modern bergantung pada _stack_ yang kompleks — cloud services, third-party API, container, framework — dan **satu saja** panel admin yang terekspos, storage bucket yang terbuka, atau permission yang salah bisa **merusak seluruh sistem**.
 
 ### Real-World Example
 
@@ -116,4 +116,27 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 | **Runtime monitoring** | Pantau perilaku abnormal dari dependency atau komponen AI saat aplikasi berjalan |
 | **Integrasikan ke SDLC** | Masukkan threat modelling supply chain ke dalam **SDLC** (_Software Development Life Cycle_ — seluruh siklus pengembangan software dari perencanaan sampai maintenance) |
 
+### Challenge Breakdown
+
+Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang usang (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
+
+<p align="center">
+<img src="../../Assets/Images/supply-Chain.png" alt="Supply Chain Vulnerability - Source Code">
+</p>
+
+Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung membocorkan informasi sensitif — termasuk admin token, internal secret key, dan flag.
+
+<p align="center">
+<img src="../../Assets/Images/flags.png" alt="Debug Info Response - Flag Leaked">
+</p>
+
+| Masalah | Dampak |
+| :--- | :--- |
+| **Vulnerable Dependency** | Aplikasi mengandalkan library usang yang masih memiliki "fitur debug" tersembunyi |
+| **Information Disclosure** | Fungsi debug di library membocorkan admin token, internal secret, dan data sensitif lainnya |
+
+> **Common Mistake:** Saat mengirim data JSON lewat Burp Suite Repeater, pastikan header `Content-Type` diatur ke `application/json`. Jika labelnya salah (misal `application/x-www-form-urlencoded`), server akan menolak memproses request (error **415 Unsupported Media Type**).
+
 ---
+
+## AS04: Cryptographic Failures
