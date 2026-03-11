@@ -1,6 +1,6 @@
-# TryHackMe: OWASP Top 10 (2025)
+# TryHackMe: OWASP Top 10 2025: IAAA Failures
 
-- **Room Link:** [OWASP Top 10 (2025): IAAA Failures](https://tryhackme.com/room/owasptop102025iaaafailures)
+- **Room Link:** [OWASP Top 10 2025: IAAA Failures](https://tryhackme.com/room/owasptop102025iaaafailures)
 - **Category:** OWASP Top 10 (2025)
 - **Difficulty:** Easy
 
@@ -16,7 +16,7 @@ Kamu akan mempelajari teori dan langsung mempraktikkannya melalui tantangan (*ch
 2. **A07: Authentication Failures**
 3. **A09: Logging & Alerting Failures**
 
-Room ini dirancang untuk pemula dan tidak memerlukan pengetahuan keamanan sebelumnya.
+Room ini dibuat untuk pemula dan tidak memerlukan pengetahuan keamanan sebelumnya.
 
 (Room ini adalah bagian pertama dari seri OWASP Top 10 2025. Bagian kedua tentang kelemahan desain aplikasi ada di catatan [OWASP Top 10 2025: Application Design Flaws](OWASP-Top-10-2025-Application-Design-Flaws.md))
 
