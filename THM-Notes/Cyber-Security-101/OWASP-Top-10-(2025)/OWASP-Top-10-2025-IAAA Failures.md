@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Room ini akan membedah 3 kategori dari **OWASP Top 10 (2025)** yang berkaitan dengan kegagalan dalam penerapan **Identity, Authentication, Authorisation, dan Accountability (IAAA)** pada aplikasi.
+Room ini akan membedah 3 kategori dari **OWASP Top 10 (2025)** yang berkaitan dengan kegagalan dalam penerapan **Identity, Authentication, Authorisation, dan Accountability (IAAA)** pada aplikasi. **OWASP** (_Open Worldwide Application Security Project_) adalah organisasi global yang secara rutin merilis daftar 10 risiko keamanan aplikasi web paling kritis.
 
 Kamu akan mempelajari teori dan langsung mempraktikkannya melalui tantangan (*challenges*) yang tersedia. Kategori yang akan dibahas meliputi:
 
@@ -17,6 +17,8 @@ Kamu akan mempelajari teori dan langsung mempraktikkannya melalui tantangan (*ch
 3. **A09: Logging & Alerting Failures**
 
 Room ini dirancang untuk pemula dan tidak memerlukan pengetahuan keamanan sebelumnya.
+
+(Room ini adalah bagian pertama dari seri OWASP Top 10 2025. Bagian kedua tentang kelemahan desain aplikasi ada di catatan [OWASP Top 10 2025: Application Design Flaws](OWASP-Top-10-2025-Application-Design-Flaws.md))
 
 ---
 
@@ -27,9 +29,16 @@ Room ini dirancang untuk pemula dan tidak memerlukan pengetahuan keamanan sebelu
 Keempat item tersebut adalah:
 
 * **Identity (Identitas):** Akun unik (misal: user ID/email) yang mewakili seseorang atau layanan. -> *Siapa kamu?*
-* **Authentication (Autentikasi):** Membuktikan identitas tersebut (misal: password, OTP, passkeys). -> *Buktikan kalau itu benar kamu*
+* **Authentication (Autentikasi):** Membuktikan identitas tersebut (misal: password, **OTP** (_One-Time Password_ — kode sekali pakai yang dikirim via SMS/email), passkeys). -> *Buktikan kalau itu benar kamu*
 * **Authorisation (Autorisasi):** Apa yang boleh dilakukan oleh identitas tersebut. -> *Kamu boleh melakukan apa saja di sini?*
 * **Accountability (Akuntabilitas):** Mencatat dan memberi peringatan tentang siapa melakukan apa, kapan, dan dari mana. -> *Siapa yang mencatat jejakmu?*
+
+```mermaid
+flowchart LR
+    A["Identity\nSiapa kamu?"] --> B["Authentication\nBuktikan!"]
+    B --> C["Authorisation\nBoleh apa?"]
+    C --> D["Accountability\nSemua dicatat"]
+```
 
 Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan dengan kegagalan dalam penerapan IAAA. Kelemahan di sini bisa sangat fatal karena memungkinkan penyerang untuk mengakses data pengguna lain atau mendapatkan hak akses lebih (*privilege*) dari yang seharusnya mereka miliki.
 
@@ -41,10 +50,10 @@ Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan deng
 
 Celah yang paling umum di kategori ini adalah **IDOR (Insecure Direct Object Reference)**.
 
-### Apa itu IDOR?
+### What Is IDOR?
 Bayangkan kamu sedang melihat data akunmu dan muncul parameter di URL seperti `?accountID=7`. Jika kamu iseng mengganti angkanya menjadi `?accountID=6` dan tiba-tiba kamu bisa melihat atau bahkan mengedit data orang lain, itulah IDOR.
 
-### Tipe-Tipe Privilege Escalation
+### Types of Privilege Escalation
 Dalam praktiknya, kegagalan kontrol akses ini terbagi menjadi dua:
 
 1.  **Horizontal Privilege Escalation:**
@@ -56,24 +65,30 @@ Dalam praktiknya, kegagalan kontrol akses ini terbagi menjadi dua:
 
 **Ingat:** Jika kamu bisa memanipulasi ID di URL untuk melihat data sensitif (misalnya mencari user yang punya saldo lebih dari $1 juta), berarti sistem tersebut memiliki celah keamanan yang serius.
 
+> **Common Mistake:** Mengecek otorisasi hanya saat login. Padahal, pengecekan harus dilakukan di **setiap request** ke server. Attacker bisa saja sudah login secara sah, lalu langsung mengganti parameter ID untuk mengakses data orang lain.
+
+(Contoh praktis eksploitasi IDOR juga dibahas di challenge [OWASP Top 10 2025: Application Design Flaws - AS02](OWASP-Top-10-2025-Application-Design-Flaws.md))
+
 ---
 
 ## A07: Authentication Failures
 
 Jika *Access Control* (A01) bicara tentang apa yang boleh kamu lakukan, maka **Authentication** bicara tentang membuktikan siapa kamu. **Authentication Failures** terjadi ketika aplikasi tidak bisa memverifikasi identitas pengguna dengan andal.
 
-### Masalah Umum pada Autentikasi:
+### Common Authentication Issues
 *   **Username Enumeration:** Penyerang bisa menebak apakah sebuah username ada di database atau tidak (misal melalui pesan error yang berbeda).
 *   **Weak Passwords:** Penggunaan password yang gampang ditebak dan tidak adanya sistem penguncian (*account lockout*) setelah beberapa kali gagal login.
 *   **Logic Flaws:** Celah dalam alur login atau registrasi.
-*   **Insecure Session Handling:** Penanganan cookie atau sesi yang tidak aman, sehingga bisa dicuri atau dimanipulasi.
+*   **Insecure Session Handling:** Penanganan **cookie** (file kecil yang disimpan browser untuk mengingat sesi login kamu) atau sesi yang tidak aman, sehingga bisa dicuri atau dimanipulasi.
 
-### Contoh Kasus: Account Confusion
+### Example: Account Confusion
 Ini adalah cara licik untuk mengelabui aplikasi agar memberikan akses ke akun orang lain.
 *   **Skenario:** Kita tahu ada user bernama `admin`. Kita mencoba mendaftar akun baru dengan nama yang sangat mirip, misalnya `aDmiN`.
 *   **Kenapa ini berhasil?** Jika aplikasi tidak menstandarisasi penulisan username (misalnya mengubah semuanya jadi huruf kecil sebelum disimpan) atau tidak mengecek keunikan secara mendalam, aplikasi mungkin akan bingung dan menganggap kamu adalah admin asli saat kamu login.
 
 Ini adalah bentuk kegagalan serius dalam tahap **Authentication** pada model IAAA.
+
+> **Common Mistake:** Tidak menstandarisasi input username (case sensitivity). Selalu konversi username ke lowercase sebelum menyimpan dan membandingkan, agar `admin` dan `aDmiN` dianggap sama.
 
 ---
 
@@ -83,21 +98,25 @@ Pernah lihat gedung yang punya CCTV tapi tidak ada rekamannya atau tidak ada sat
 
 Dalam keamanan siber, **Logging** adalah pondasi dari **Accountability** (Akuntabilitas). Artinya, kita harus bisa membuktikan: *siapa melakukan apa, kapan, dan dari mana.*
 
-### Apa yang Terjadi Jika Logging Gagal?
+### What Happens When Logging Fails?
 Tanpa catatan yang baik, tim keamanan (*defenders*) tidak bisa mendeteksi atau menyelidiki serangan. Kegagalan ini biasanya terlihat seperti:
 *   **Missing Authentication Events:** Tidak mencatat kapan seseorang login atau logout.
 *   **Vague Error Logs:** Log yang terlalu umum sehingga tidak memberikan informasi berguna.
-*   **No Alerting on Brute-force:** Sistem diam saja saat ada ribuan kali kegagalan login atau perubahan hak akses yang mencurigakan.
+*   **No Alerting on Brute-force:** Sistem diam saja saat ada **brute-force** (serangan yang mencoba ribuan kombinasi password secara otomatis) atau perubahan hak akses yang mencurigakan.
 *   **Short Retention:** Catatan log dihapus terlalu cepat sebelum sempat diselidiki.
 *   **Tampering Risks:** Log disimpan di tempat yang bisa dijangkau dan diubah oleh penyerang untuk menghapus jejak mereka.
 
-### Kenapa Ini Bahaya?
+### Why Is This Dangerous?
 Bayangkan ada penyerang masuk ke sistem. Jika tidak ada log yang mencatat aktivitas mereka, kita tidak akan pernah tahu:
 1.  Dari mana asal serangan (IP address)?
-2.  Akun mana saja yang sudah dikompromi?
+2.  Akun mana saja yang sudah **disusupi**?
 3.  Data sensitif apa yang sudah diakses atau dicuri?
 
 Tanpa akuntabilitas yang kuat, sebuah aplikasi ibarat rumah tanpa pintu yang bisa dimasuki siapa saja tanpa meninggalkan jejak.
+
+> **Common Mistake:** Menyimpan log di lokasi yang bisa dijangkau attacker. Jika penyerang berhasil masuk dan bisa menghapus log, maka seluruh bukti serangan hilang. Simpan log di server terpisah atau gunakan layanan logging eksternal.
+
+(Penjelasan lebih mendalam tentang logging ada di catatan [Logs Fundamentals](../Defensive-Security/Logs-Fundamentals.md) dan [SOC Fundamentals](../Defensive-Security/SOC-Fundamentals.md))
 
 ---
 
