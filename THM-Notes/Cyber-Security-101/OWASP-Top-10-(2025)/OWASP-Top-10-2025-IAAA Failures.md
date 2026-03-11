@@ -35,9 +35,9 @@ Keempat item tersebut adalah:
 
 ```mermaid
 flowchart LR
-    A["Identity\nSiapa kamu?"] --> B["Authentication\nBuktikan!"]
-    B --> C["Authorisation\nBoleh apa?"]
-    C --> D["Accountability\nSemua dicatat"]
+    A["Identity = Siapa kamu?"] --> B["Authentication = Buktikan!"]
+    B --> C["Authorisation = Boleh apa?"]
+    C --> D["Accountability = Semua dicatat"]
 ```
 
 Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan dengan kegagalan dalam penerapan IAAA. Kelemahan di sini bisa sangat fatal karena memungkinkan penyerang untuk mengakses data pengguna lain atau mendapatkan hak akses lebih (*privilege*) dari yang seharusnya mereka miliki.
