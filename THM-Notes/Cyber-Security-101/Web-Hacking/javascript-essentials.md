@@ -1,8 +1,8 @@
 # TryHackMe: Javascript-Essentials
 
-- **Room Link:** [Javascript-essentials](https://tryhackme.com/room/javascriptessentials)
-- **Category:** Web Hacking
-- **Difficulty:** Easy
+* **Room Link:** [Javascript-essentials](https://tryhackme.com/room/javascriptessentials)
+* **Category:** Web Hacking
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -12,11 +12,11 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa membuat website itu
 
 **Learning Objectives:**
 
-- Memahami dasar-dasar javascript
-- Integrasi Javascript ke HTML
-- Menyalahgunakan dialogue function
-- Bypassing Control Flow Statements
-- Exploring Minified files
+* Memahami dasar-dasar javascript
+* Integrasi Javascript ke HTML
+* Menyalahgunakan dialogue function
+* Bypassing Control Flow Statements
+* Exploring Minified files
 
 ## Essentials Concept
 
@@ -26,9 +26,9 @@ Tanpa JS, website cuma jadi web statis. Dengan JS, kita bisa membuat website itu
 
 **3 cara mendeklarasikan variables di javascript:**
 
-- Gunakan **Let** ketika ingin nilai di dalam nya berubah
-- Pakai **Const** kalau ingin nilai nya tetap
-- Lupakan **Var** — sudah usang, yang penting 2 di atas itu sekarang
+* Gunakan **Let** ketika ingin nilai di dalam nya berubah
+* Pakai **Const** kalau ingin nilai nya tetap
+* Lupakan **Var** — sudah usang, yang penting 2 di atas itu sekarang
 
 ### Data Types
 
@@ -36,12 +36,12 @@ di JS, tipe data menentukan tipe nilai yang bisa ditampung oleh sebuah variable
 
 **Contoh Tipe Data:**
 
-- Number: Mewakili bilangan integer dan float (misalnya 42, 3.14)
-- String: Mewakili rangkaian karakter, ditandai dengan tanda kutip (misalnya, 'halo', "dunia")
-- Boolean: Tipe data yang hanya ada 2 value **True & False**, sering digunakan untuk memvalidasi sebuah kondisi
-- Object: objek adalah kumpulan properti, di mana setiap properti didefinisikan sebagai pasangan nilai kunci. Objek memungkinkan kita mengelompokkan data dan fungsi terkait menjadi satu, contoh `{ name: 'Alice', age: 25 }`
-- Array: array adalah tipe objek khusus yang digunakan untuk menyimpan daftar nilai dalam satu variabel, contoh `let numbers = [1, 2, 3, 4, 5];`
-- Undefined: Variabel yang sudah dideklarasikan namun belum diberi nilai, contoh `let x;`
+* Number: Mewakili bilangan integer dan float (misalnya 42, 3.14)
+* String: Mewakili rangkaian karakter, ditandai dengan tanda kutip (misalnya, 'halo', "dunia")
+* Boolean: Tipe data yang hanya ada 2 value **True & False**, sering digunakan untuk memvalidasi sebuah kondisi
+* Object: objek adalah kumpulan properti, di mana setiap properti didefinisikan sebagai pasangan nilai kunci. Objek memungkinkan kita mengelompokkan data dan fungsi terkait menjadi satu, contoh `{ name: 'Alice', age: 25 }`
+* Array: array adalah tipe objek khusus yang digunakan untuk menyimpan daftar nilai dalam satu variabel, contoh `let numbers = [1, 2, 3, 4, 5];`
+* Undefined: Variabel yang sudah dideklarasikan namun belum diberi nilai, contoh `let x;`
 
 ### Functions
 
@@ -58,11 +58,11 @@ sapaDunia();
 
 ### Why do you have to use functions?
 
-- Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan seperti prinsip **DRY (Don't Repeat yourself)**
+* Reusability: tidak perlu menulis kode yang sama sebanyak 10 kali. Cukup tulis satu kali di dalam fungsi, lalu panggil kapan pun dibutuhkan seperti prinsip **DRY (Don't Repeat yourself)**
 
-- Organized: Kode nya jadi lebih rapi dan lebih mudah dibaca nantinya
+* Organized: Kode nya jadi lebih rapi dan lebih mudah dibaca nantinya
 
-- Modular: memecah mecah masalah besar jadi tugas-tugas kecil yang lebih gampang di maintenance.
+* Modular: memecah mecah masalah besar jadi tugas-tugas kecil yang lebih gampang di maintenance.
 
 ### Loops
 

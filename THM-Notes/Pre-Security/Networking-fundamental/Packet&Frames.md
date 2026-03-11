@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [Packet&Frames](https://tryhackme.com/room/packetsframes)
-- **Category:** Networking / Fundamental
-- **Difficulty:** easy
+* **Room Link:** [Packet&Frames](https://tryhackme.com/room/packetsframes)
+* **Category:** Networking / Fundamental
+* **Difficulty:** easy
 
 ---
 
@@ -43,9 +43,9 @@ Data dibungkus lapis demi lapis saat bergerak **turun** dari lapisan atas ke baw
 | 5 | Physical | **Bits** | Diubah jadi sinyal listrik/cahaya (0 dan 1) |
 
 **Kenapa Encapsulation penting?**
-- **Standarisasi:** Miliaran perangkat di internet punya aturan yang sama
-- **Pencegahan Bottleneck:** Data dipecah jadi potongan kecil, mengurangi kemacetan dibanding kirim satu file besar sekaligus
-- **Integrity:** Setiap lapisan bisa mengecek apakah bungkusannya rusak tanpa membongkar seluruh isi
+* **Standarisasi:** Miliaran perangkat di internet punya aturan yang sama
+* **Pencegahan Bottleneck:** Data dipecah jadi potongan kecil, mengurangi kemacetan dibanding kirim satu file besar sekaligus
+* **Integrity:** Setiap lapisan bisa mengecek apakah bungkusannya rusak tanpa membongkar seluruh isi
 
 ---
 

@@ -1,15 +1,15 @@
 # TryHackMe: CAPA The Basics
 
-- **Room Link:** [CAPA The Basics](https://tryhackme.com/room/capathebasics)
-- **Category:** Defensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [CAPA The Basics](https://tryhackme.com/room/capathebasics)
+* **Category:** Defensive Security Tooling
+* **Difficulty:** Easy
 
 ### Learning Objectives
 
-- Memahami **apa itu CAPA** dan perannya dalam static analysis.
-- Mempelajari cara **menggunakan CAPA secara efektif** untuk membedah file.
-- Memahami **field dan hasil (results)** yang ditampilkan oleh tool ini.
-- Memanfaatkan CAPA untuk **mengidentifikasi potensi aktivitas** berbahaya dari sebuah program.
+* Memahami **apa itu CAPA** dan perannya dalam static analysis.
+* Mempelajari cara **menggunakan CAPA secara efektif** untuk membedah file.
+* Memahami **field dan hasil (results)** yang ditampilkan oleh tool ini.
+* Memanfaatkan CAPA untuk **mengidentifikasi potensi aktivitas** berbahaya dari sebuah program.
 
 
 ## Introduction
@@ -36,28 +36,28 @@ disini kita akan fokus pada **Static Analysis** menggunakan tool bernama **CAPA*
 Analoginya begini: bayangkan kamu menemukan kotak alat asing di jalan. Daripada membuka dan mencoba setiap alat satu per satu (yang bisa berbahaya), CAPA seperti _X-ray scanner_ yang bisa melihat isi kotak itu dari luar dan memberi tahu kamu: "Di dalam ada obeng, pisau, dan kunci inggris."
 
 CAPA bekerja dengan cara:
-- Menganalisis file (tanpa menjalankannya)
-- Mencocokkan pola di dalam file dengan **kumpulan rules** yang mendeskripsikan perilaku umum
-- Memberikan laporan tentang apa saja yang **mampu dilakukan** file tersebut
+* Menganalisis file (tanpa menjalankannya)
+* Mencocokkan pola di dalam file dengan **kumpulan rules** yang mendeskripsikan perilaku umum
+* Memberikan laporan tentang apa saja yang **mampu dilakukan** file tersebut
 
 **Jenis file yang bisa dianalisis:**
-- **PE** (Portable Executables) — file `.exe` dan `.dll` di Windows
-- **ELF** binaries — executable di Linux
-- **.NET modules**
-- **Shellcode**
-- Bahkan **laporan sandbox**
+* **PE** (Portable Executables) — file `.exe` dan `.dll` di Windows
+* **ELF** binaries — executable di Linux
+* **.NET modules**
+* **Shellcode**
+* Bahkan **laporan sandbox**
 
 **Contoh kemampuan yang bisa dideteksi:**
-- _Network communication_ (file ini bisa berkomunikasi ke internet)
-- _File manipulation_ (file ini bisa membuat/menghapus file lain)
-- _Process injection_ (file ini bisa menyuntikkan kode ke proses lain)
+* _Network communication_ (file ini bisa berkomunikasi ke internet)
+* _File manipulation_ (file ini bisa membuat/menghapus file lain)
+* _Process injection_ (file ini bisa menyuntikkan kode ke proses lain)
 
 ### Kenapa CAPA Penting?
 
 Keindahan CAPA adalah dia **mengemas pengalaman bertahun-tahun reverse engineering** ke dalam satu tool otomatis. Artinya, kamu tidak perlu menjadi ahli reverse engineering untuk bisa memahami kemampuan sebuah malware. Ini sangat berguna untuk:
-- **Malware Analyst** yang butuh analisis cepat
-- **Threat Hunter** yang ingin memahami kapabilitas binary tanpa harus membongkar assembly-nya
-- **Incident Responder** yang butuh jawaban cepat: "File ini bisa melakukan apa saja?"
+* **Malware Analyst** yang butuh analisis cepat
+* **Threat Hunter** yang ingin memahami kapabilitas binary tanpa harus membongkar assembly-nya
+* **Incident Responder** yang butuh jawaban cepat: "File ini bisa melakukan apa saja?"
 
 ---
 ## Dissecting CAPA Results Part 1: General Information, MITRE and MAEC
@@ -117,17 +117,17 @@ Dua nilai (values) MAEC yang paling sering ditemukan oleh CAPA adalah **Launcher
 
 #### Launcher
 Jika CAPA menandai sebuah file sebagai `launcher`, artinya file tersebut menunjukkan behavior seperti (tapi tidak terbatas pada):
-- **Dropping additional payloads:** Menjatuhkan/menyimpan file berbahaya lain ke dalam sistem.
-- **Activating persistence mechanisms:** Memasang _backdoor_ agar tetap bisa diakses meskipun sistem di-_restart_.
-- **Connecting to C2 servers:** Menghubungi _Command-and-Control server_ untuk menerima perintah dari penyerang.
-- **Executing specific functions:** Menjalankan fungsi atau perintah tertentu secara langsung.
+* **Dropping additional payloads:** Menjatuhkan/menyimpan file berbahaya lain ke dalam sistem.
+* **Activating persistence mechanisms:** Memasang _backdoor_ agar tetap bisa diakses meskipun sistem di-_restart_.
+* **Connecting to C2 servers:** Menghubungi _Command-and-Control server_ untuk menerima perintah dari penyerang.
+* **Executing specific functions:** Menjalankan fungsi atau perintah tertentu secara langsung.
 
 #### Downloader
 Jika CAPA memberikan tag `downloader`, artinya file tersebut menunjukkan behavior seperti:
-- **Fetching additional payloads:** Mengunduh file malware sekunder atau _resource_ tambahan langsung dari internet.
-- **Pulling in updates:** Mengambil kode atau instruksi terbaru dari server luar.
-- **Executing secondary stages:** Menjalankan tahapan infection berikutnya (stage 2).
-- **Retrieving configuration files:** Mengambil file konfigurasi yang akan mendikte bagaimana malware tersebut harus beroperasi.
+* **Fetching additional payloads:** Mengunduh file malware sekunder atau _resource_ tambahan langsung dari internet.
+* **Pulling in updates:** Mengambil kode atau instruksi terbaru dari server luar.
+* **Executing secondary stages:** Menjalankan tahapan infection berikutnya (stage 2).
+* **Retrieving configuration files:** Mengambil file konfigurasi yang akan mendikte bagaimana malware tersebut harus beroperasi.
 ---
 
 ## Dissecting CAPA Results Part 2: Malware Behavior and Catalogue

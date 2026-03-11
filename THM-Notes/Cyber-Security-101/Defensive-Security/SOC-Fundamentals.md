@@ -1,8 +1,8 @@
 # TryHackMe: SOC Fundamentals
 
-- **Room Link:** [SOC Fundamentals](https://tryhackme.com/room/socfundamentals)
-- **Kategori:** Defensive Security
-- **Difficulty:** easy
+* **Room Link:** [SOC Fundamentals](https://tryhackme.com/room/socfundamentals)
+* **Kategori:** Defensive Security
+* **Difficulty:** easy
 
 ## Introduction to SOC
 
@@ -21,12 +21,12 @@ Kenapa butuh SOC? Karena data organisasi sekarang serba digital → target empuk
 </p>
 
 ### Detection
-- **Detect vulnerabilities** — Temuin sistem yang belum di-patch / punya celah keamanan
-- **Detect unauthorized activity** — Deteksi login mencurigakan (IP/lokasi tidak wajar)
-- **Detect intrusions** — Akses ilegal yang berhasil masuk (exploit, malware)
+* **Detect vulnerabilities** — Temuin sistem yang belum di-patch / punya celah keamanan
+* **Detect unauthorized activity** — Deteksi login mencurigakan (IP/lokasi tidak wajar)
+* **Detect intrusions** — Akses ilegal yang berhasil masuk (exploit, malware)
 
 ### Response
-- **Incident Response** — Minimalisir kerusakan + lacak root cause
+* **Incident Response** — Minimalisir kerusakan + lacak root cause
 
 ### The Trinity of SOC
 
@@ -45,24 +45,24 @@ Otomatisasi tetap membutuhkan manusia karena **Alert Fatigue** — terlalu banya
 </p>
 
 ### SOC Team Roles:
-- **SOC Analyst L1** — First responder, alert triage, filter False Positives
-- **SOC Analyst L2** — Investigasi lebih dalam, correlate log data
-- **SOC Analyst L3** — Threat Hunting, komando Incident Response kritis
-- **Security Engineer** — Deploy & konfigurasi infrastruktur security
-- **Detection Engineer** — Membuat & pertajam Security Rules
-- **SOC Manager** — Atur Processes, lapor ke CISO
+* **SOC Analyst L1** — First responder, alert triage, filter False Positives
+* **SOC Analyst L2** — Investigasi lebih dalam, correlate log data
+* **SOC Analyst L3** — Threat Hunting, komando Incident Response kritis
+* **Security Engineer** — Deploy & konfigurasi infrastruktur security
+* **Detection Engineer** — Membuat & pertajam Security Rules
+* **SOC Manager** — Atur Processes, lapor ke CISO
 
 > **Note:** Struktur tim SOC fleksibel, tergantung skala organisasi.
 
 **Q&A:**
-- Fenomena "kebisingan" akibat tumpukan False Positives? → **?**
-- Kenapa tetap membutuhkan Human Intervention? → **?**
-- First responder yang lakuin alert triage? → **?**
-- Analis yang correlate log data? → **?**
-- Analis yang Threat Hunting & komando IR? → **?**
-- Yang deploy infrastruktur security? → **?**
-- Yang membuat Security Rules? → **?**
-- Yang atur Processes & lapor ke CISO? → **?**
+* Fenomena "kebisingan" akibat tumpukan False Positives? → **?**
+* Kenapa tetap membutuhkan Human Intervention? → **?**
+* First responder yang lakuin alert triage? → **?**
+* Analis yang correlate log data? → **?**
+* Analis yang Threat Hunting & komando IR? → **?**
+* Yang deploy infrastruktur security? → **?**
+* Yang membuat Security Rules? → **?**
+* Yang atur Processes & lapor ke CISO? → **?**
 
 ## Processes
 
@@ -93,8 +93,8 @@ Kasus kritis → L3/Incident Responder menjalankan tanggap darurat + forensics u
 
 Security solutions utama di SOC:
 
-- **SIEM** (Security Information and Event Management) — Mengumpulkan logs dari semua perangkat → mencocokkan dengan detection rules → memicu alert kalau match. Hanya **Detection**.
-- **EDR** (Endpoint Detection and Response) — Visibilitas real-time di setiap endpoint → bisa investigasi & respons langsung.
-- **Firewall** — Menyaring traffic masuk/keluar jaringan → memblokir traffic mencurigakan.
+* **SIEM** (Security Information and Event Management) — Mengumpulkan logs dari semua perangkat → mencocokkan dengan detection rules → memicu alert kalau match. Hanya **Detection**.
+* **EDR** (Endpoint Detection and Response) — Visibilitas real-time di setiap endpoint → bisa investigasi & respons langsung.
+* **Firewall** — Menyaring traffic masuk/keluar jaringan → memblokir traffic mencurigakan.
 
 > **Note:** SIEM = Detection only. EDR = Detection + Response. Firewall = Network security.

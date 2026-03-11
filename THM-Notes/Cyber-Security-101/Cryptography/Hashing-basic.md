@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [TryHackMe](https://tryhackme.com/room/hashingbasics)
-- **Category:** Cryptography
-- **Difficulty:** Easy
+* **Room Link:** [TryHackMe](https://tryhackme.com/room/hashingbasics)
+* **Category:** Cryptography
+* **Difficulty:** Easy
 
 ---
 
@@ -15,13 +15,13 @@
 
 **Konsep Dasar:**
 
-- **Plaintext:** Data asli yang belum diubah (text, gambar, dll).
-- **Encoding:** Mengubah format data (seperti Base64/Hex). **Bukan enkripsi**, bisa dibalik gampang banget.
-- **Hash:** Output acak pakai panjang tetap (digest) dari fungsi hashing.
+* **Plaintext:** Data asli yang belum diubah (text, gambar, dll).
+* **Encoding:** Mengubah format data (seperti Base64/Hex). **Bukan enkripsi**, bisa dibalik gampang banget.
+* **Hash:** Output acak pakai panjang tetap (digest) dari fungsi hashing.
 
 **Q&A:**
 
-- **Is Base64 encryption or encoding?** `Encoding`
+* **Is Base64 encryption or encoding?** `Encoding`
 
 ---
 
@@ -32,45 +32,45 @@ Fungsi hash beda sama enkripsi. **Tidak ada kunci**, dan dimaksudkan agar **must
 
 Fungsi hash mengambil input data berapa pun ukurannya dan membuat ringkasan (digest) dari data itu. Outputnya punya **ukuran tetap (fixed size)**.
 
-- Mudah menghitung output dari input.
-- Susah banget menentukan input dari output.
-- Perubahan kecil di input (bahkan 1 bit) nyebabin perubahan drastis di output.
+* Mudah menghitung output dari input.
+* Susah banget menentukan input dari output.
+* Perubahan kecil di input (bahkan 1 bit) nyebabin perubahan drastis di output.
 
 **Contoh Perubahan 1 Bit:**
 Di terminal, kita bisa melihat dua file `file1.txt` (isi "T") dan `file2.txt` (isi "U").
 
-- Huruf **T** (Hex 54) = Binary `01010100`
-- Huruf **U** (Hex 55) = Binary `01010101`
+* Huruf **T** (Hex 54) = Binary `01010100`
+* Huruf **U** (Hex 55) = Binary `01010101`
   Cuma beda **1 bit** terakhir, tapi hash-nya berubah total:
-- MD5 File 1: `b9ece18c950afbfa6b0fdbfa4ff731d3`
-- MD5 File 2: `4c614360da93c0a041b22e537de151eb`
+* MD5 File 1: `b9ece18c950afbfa6b0fdbfa4ff731d3`
+* MD5 File 2: `4c614360da93c0a041b22e537de151eb`
 
 **Output Encoding:**
 Output asli hash itu raw bytes, yang kemudian di-encode (biasanya Base64 atau Hexadecimal).
 
-- Contoh: `md5sum` ngasilin format Hexadecimal (setiap byte direpresentasiin pakai 2 digit hex).
+* Contoh: `md5sum` ngasilin format Hexadecimal (setiap byte direpresentasiin pakai 2 digit hex).
 
 **Why is Hashing Important?**
 Hashing bekerja di background buat melindungi integritas data & kerahasiaan password.
 
-- **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Waktu login, sistem menghitung hash password yang dimasukkan dan membandingkannya dengan hash yang tersimpan.
+* **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Waktu login, sistem menghitung hash password yang dimasukkan dan membandingkannya dengan hash yang tersimpan.
 
 **Hash Collision:**
 Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 
-- **Pigeonhole Effect (Efek Sarang Burung Merpati):** Karena jumlah input tidak terbatas tapi jumlah output terbatas (fixed size), pasti ada input yang "berbagi" output yang sama.
-- Contoh: Kalau hash cuma 4-bit (16 kemungkinan nilai) tapi ada 21 input, pasti ada collision.
+* **Pigeonhole Effect (Efek Sarang Burung Merpati):** Karena jumlah input tidak terbatas tapi jumlah output terbatas (fixed size), pasti ada input yang "berbagi" output yang sama.
+* Contoh: Kalau hash cuma 4-bit (16 kemungkinan nilai) tapi ada 21 input, pasti ada collision.
 
 **Insecure Algorithms:**
 
-- **MD5 & SHA1:** Sudah dianggap tidak aman karena collision bisa direkayasa (engineered collision).
-- Jangan pakai keduanya buat password atau data sensitif.
+* **MD5 & SHA1:** Sudah dianggap tidak aman karena collision bisa direkayasa (engineered collision).
+* Jangan pakai keduanya buat password atau data sensitif.
 
 **Q&A Room:**
 
-- **SHA256 Hash `passport.jpg`:** `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
-- **MD5 Output Size:** 128 bit = **16 bytes**.
-- **Possible values 8-bit:** 2^8 = **256**.
+* **SHA256 Hash `passport.jpg`:** `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
+* **MD5 Output Size:** 128 bit = **16 bytes**.
+* **Possible values 8-bit:** 2^8 = **256**.
 
 ---
 
@@ -81,8 +81,8 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 1.  **Plaintext:** Bahaya banget. Kalau database bocor, attacker langsung dapet password asli.
 2.  **Encrypted:** Lebih baik dari plaintext, tapi kalau kunci enkripsi (key) dicuri, semua password bisa didekripsi.
 3.  **Hashing Murahan (Tanpa Salt):**
-    - **Duplicate Passwords:** Kalau dua user punya password sama (misal "password123"), hash-nya bakal sama.
-    - **Rainbow Tables:** Attacker bisa pakai tabel hash yang sudah dihitung sebelumnya (rainbow table) buat memecahkan hash super cepat.
+* **Duplicate Passwords:** Kalau dua user punya password sama (misal "password123"), hash-nya bakal sama.
+* **Rainbow Tables:** Attacker bisa pakai tabel hash yang sudah dihitung sebelumnya (rainbow table) buat memecahkan hash super cepat.
 
 ---
 
@@ -93,8 +93,8 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 **Solusi: Salting**
 Salting itu proses nambahin string acak unik (**Salt**) ke password sebelum di-hash.
 
-- **Proses:** `Hash(Password + Salt) -> Hash Value`
-- **Penyimpanan:** Server menyimpan **Username**, **Salt**, dan **Hash Value**.
+* **Proses:** `Hash(Password + Salt) : Hash Value`
+* **Penyimpanan:** Server menyimpan **Username**, **Salt**, dan **Hash Value**.
 
 **Manfaat Salting:**
 
@@ -104,8 +104,8 @@ Salting itu proses nambahin string acak unik (**Salt**) ke password sebelum di-h
 **Analogi:**
 Bayangin dua orang masak "Sup Ayam" (Password sama).
 
-- Tanpa Salt: Rasanya persis sama.
-- Dengan Salt (Bumbu Rahasia): Orang A tambahin lada hitam, Orang B tambahin cabai. Hasil akhirnya (Hash) jadi sup pakai rasa yang beda banget.
+* Tanpa Salt: Rasanya persis sama.
+* Dengan Salt (Bumbu Rahasia): Orang A tambahin lada hitam, Orang B tambahin cabai. Hasil akhirnya (Hash) jadi sup pakai rasa yang beda banget.
 
 ---
 
@@ -124,20 +124,20 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 
 **Penjelasan:**
 
-- Delimiter `$` misahin identifier, parameter opsional (seperti rounds, salt), dan hash-nya.
-- `rounds` ngontrol biaya komputasi; makin tinggi rounds, makin tahan terhadap serangan brute-force.
+* Delimiter `$` misahin identifier, parameter opsional (seperti rounds, salt), dan hash-nya.
+* `rounds` ngontrol biaya komputasi; makin tinggi rounds, makin tahan terhadap serangan brute-force.
 
 ### Windows Hash Formats
 
-- **LM Hash** – Hash LAN Manager yang sudah jadul, 16-character hexadecimal string (uppercase). Lemah banget karena mecah password jadi dua bagian 7-karakter dan pakai DES. Contoh: `E52CAC67419A9A224A3B108F3FA6CB6D`.
-- **NTLM Hash** – MD4 dari password yang di-encode UTF-16LE, 32-character hexadecimal string. Contoh: `31D6CFE0D16AE931B73C59D7E0C089C0` (hash dari password kosong).
+* **LM Hash** – Hash LAN Manager yang sudah jadul, 16-character hexadecimal string (uppercase). Lemah banget karena mecah password jadi dua bagian 7-karakter dan pakai DES. Contoh: `E52CAC67419A9A224A3B108F3FA6CB6D`.
+* **NTLM Hash** – MD4 dari password yang di-encode UTF-16LE, 32-character hexadecimal string. Contoh: `31D6CFE0D16AE931B73C59D7E0C089C0` (hash dari password kosong).
 
 ### Common Tools & Pitfalls
 
-- **hashid** – Identifier cepat buat banyak tipe hash, tapi bisa salah deteksi kalau hash-nya custom atau terpotong.
-- **hashcat** – Tool cracking yang powerful; setiap format hash punya mode spesifik (misal mode 1000 buat NTLM, mode 1800 buat sha512crypt).
-- **John the Ripper** – Tool cracking lain pakai deteksi format bawaan.
-- **Pitfall:** Ngandelin prefix saja bisa misleading; beberapa aplikasi menyimpan raw SHA-256 atau MD5 tanpa prefix.
+* **hashid** – Identifier cepat buat banyak tipe hash, tapi bisa salah deteksi kalau hash-nya custom atau terpotong.
+* **hashcat** – Tool cracking yang powerful; setiap format hash punya mode spesifik (misal mode 1000 buat NTLM, mode 1800 buat sha512crypt).
+* **John the Ripper** – Tool cracking lain pakai deteksi format bawaan.
+* **Pitfall:** Ngandelin prefix saja bisa misleading; beberapa aplikasi menyimpan raw SHA-256 atau MD5 tanpa prefix.
 
 ### Example Questions (from the room)
 
@@ -153,18 +153,18 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 **Konsep:**
 Hashing itu fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 
-- **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), nge-hash satu per satu, terus ncocokin hasilnya sama hash target.
+* **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), nge-hash satu per satu, terus ncocokin hasilnya sama hash target.
 
 **Tools Populer:**
 
 1.  **Hashcat:** Tool cracking tercepet (berbasis GPU).
-    - Contoh Command (SHA256): `hashcat -m 1400 -a 0 hash.txt wordlist.txt`
+* Contoh Command (SHA256): `hashcat -m 1400 -a 0 hash.txt wordlist.txt`
 2.  **John the Ripper (JtR):** Tool klasik, fleksibel banget (berbasis CPU/GPU).
-    - Contoh Command: `john --format=raw-sha256 hash.txt --wordlist=rockyou.txt`
+* Contoh Command: `john --format=raw-sha256 hash.txt --wordlist=rockyou.txt`
 
 **Wordlists:**
 
-- **rockyou.txt:** Wordlist paling legendaris, berisi 14 juta password yang bocor dari situs RockYou (2009). Hampir semua CTF pemula pakai ini.
+* **rockyou.txt:** Wordlist paling legendaris, berisi 14 juta password yang bocor dari situs RockYou (2009). Hampir semua CTF pemula pakai ini.
 
 
 ---
@@ -176,20 +176,20 @@ Hashing itu fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 **Checksum:**
 Nilai hash dari sebuah file disebut **Checksum**.
 
-- Kalau download file `installer.exe` dari internet, website biasanya nyertain checksum (misal SHA256).
-- Setelah download, user nge-hash file lokal. Kalau hash-nya sama persis, berarti file **aman & tidak corrupt**.
-- Beda 1 bit saja di file = Hash berubah total.
+* Kalau download file `installer.exe` dari internet, website biasanya nyertain checksum (misal SHA256).
+* Setelah download, user nge-hash file lokal. Kalau hash-nya sama persis, berarti file **aman & tidak corrupt**.
+* Beda 1 bit saja di file = Hash berubah total.
 
 **HMAC (Keyed-Hash Message Authentication Code):**
 Hashing standar cuma jamin **Integritas** (file tidak berubah), tapi tidak jamin **Autentikasi** (siapa pengirimnya).
 
-- **HMAC = Hash + Secret Key.**
-- Cuma orang yang punya "Key" yang bisa membuat HMAC yang valid.
-- Jamin **Integrity** AND **Authenticity**.
+* **HMAC = Hash + Secret Key.**
+* Cuma orang yang punya "Key" yang bisa membuat HMAC yang valid.
+* Jamin **Integrity** AND **Authenticity**.
 
 **Example Question:**
 
-- **HMAC-SHA512 Mode (Hashcat):** `1750`
+* **HMAC-SHA512 Mode (Hashcat):** `1750`
 
 ---
 
@@ -206,9 +206,9 @@ Hashing standar cuma jamin **Integritas** (file tidak berubah), tapi tidak jamin
 
 **Contoh Kasus:**
 
-- **Hashing:** Verifikasi password di database, cek file corrupt.
-- **Encoding:** Mengirim binary file lewat email (Base64), URL encoding.
-- **Encryption:** Mengirim pesan rahasia (WA/Signal), HTTPS.
+* **Hashing:** Verifikasi password di database, cek file corrupt.
+* **Encoding:** Mengirim binary file lewat email (Base64), URL encoding.
+* **Encryption:** Mengirim pesan rahasia (WA/Signal), HTTPS.
 
 ---
 
@@ -224,16 +224,16 @@ Hashing muncul di banyak titik dalam _attack chain_, baik dari sisi attacker mau
 | **Defense (Integrity)** | Blue Team menggunakan hash checksum untuk mendeteksi file yang dimodifikasi oleh malware |
 
 **Teknik Attacker:**
-- **Pass-the-Hash (PtH):** Di Windows, attacker bisa menggunakan NTLM hash **tanpa perlu** meng-crack-nya jadi plaintext. Cukup hash-nya saja untuk melakukan autentikasi.
-- **Kerberoasting:** Meng-request service ticket dari Active Directory lalu meng-_crack_ hash-nya secara offline.
+* **Pass-the-Hash (PtH):** Di Windows, attacker bisa menggunakan NTLM hash **tanpa perlu** meng-crack-nya jadi plaintext. Cukup hash-nya saja untuk melakukan autentikasi.
+* **Kerberoasting:** Meng-request service ticket dari Active Directory lalu meng-_crack_ hash-nya secara offline.
 
 ---
 
 ## For Real World Relevance
 
-- **Data Breaches:** Hampir setiap data breach besar melibatkan hash cracking. Jika organisasi menggunakan hashing yang lemah (MD5 tanpa salt), jutaan password bisa di-crack dalam hitungan jam menggunakan GPU modern.
-- **Forensics:** Investigator menggunakan hash checksum untuk memverifikasi integritas barang bukti digital. Satu perubahan kecil di file bukti akan mengubah hash-nya dan membatalkan bukti di pengadilan.
-- **Password Policy:** Standar industri sekarang mengharuskan penggunaan **bcrypt** atau **Argon2** (bukan MD5/SHA1) karena keduanya sengaja dirancang lambat untuk mempersulit brute force.
+* **Data Breaches:** Hampir setiap data breach besar melibatkan hash cracking. Jika organisasi menggunakan hashing yang lemah (MD5 tanpa salt), jutaan password bisa di-crack dalam hitungan jam menggunakan GPU modern.
+* **Forensics:** Investigator menggunakan hash checksum untuk memverifikasi integritas barang bukti digital. Satu perubahan kecil di file bukti akan mengubah hash-nya dan membatalkan bukti di pengadilan.
+* **Password Policy:** Standar industri sekarang mengharuskan penggunaan **bcrypt** atau **Argon2** (bukan MD5/SHA1) karena keduanya sengaja dirancang lambat untuk mempersulit brute force.
 
 ---
 

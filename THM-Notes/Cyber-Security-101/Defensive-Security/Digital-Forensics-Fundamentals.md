@@ -1,8 +1,8 @@
 # TryHackMe: Digital Forensics Fundamentals
 
-- **Room Link:** [Digital Forensics Fundamentals](https://tryhackme.com/room/introtodforensics)
-- **Kategori:** Defensive Security
-- **Difficulty:** easy
+* **Room Link:** [Digital Forensics Fundamentals](https://tryhackme.com/room/introtodforensics)
+* **Kategori:** Defensive Security
+* **Difficulty:** easy
 
 ## Introduction to Digital Forensics
 
@@ -13,10 +13,10 @@
 </p>
 
 **Contoh Kasus:** Aparat nge-raid tempat perampok bank → ditemuin laptop, HP, hard drive, USB → diserahin ke tim digital forensics → bukti yang ditemuin:
-- Peta digital bank di laptop
-- Dokumen rute kabur & kontrol keamanan di hard drive
-- File media perampokan sebelumnya
-- Grup chat ilegal & catatan panggilan di HP
+* Peta digital bank di laptop
+* Dokumen rute kabur & kontrol keamanan di hard drive
+* File media perampokan sebelumnya
+* Grup chat ilegal & catatan panggilan di HP
 
 <p align="center">
 <img src="../../Assets/Images/bank-map.png" alt="Bank Map">
@@ -31,7 +31,7 @@
 **NIST** mendefinisikan proses digital forensics dalam **4 fase:**
 
 <p align="center">
-<img src="../../Assets/Images/CEAR.png" alt="CEAR - 4 Phases of Digital Forensics">
+<img src="../../Assets/Images/CEAR.png" alt="CEAR : 4 Phases of Digital Forensics">
 </p>
 
 1. **Collection** — Identifikasi & kumpulin semua perangkat (laptop, USB, kamera, dll.) tanpa mengubah data asli.
@@ -44,16 +44,16 @@
 </p>
 
 ### Jenis-jenis Digital Forensics:
-- **Computer forensics** — Investigasi komputer (paling umum)
-- **Mobile forensics** — Catatan panggilan, SMS, lokasi GPS
-- **Network forensics** — Analisis network traffic logs
-- **Database forensics** — Investigasi intrusi & modifikasi database
-- **Cloud forensics** — Investigasi data di cloud (tricky karena minimnya bukti)
-- **Email forensics** — Deteksi phishing & penipuan via email
+* **Computer forensics** — Investigasi komputer (paling umum)
+* **Mobile forensics** — Catatan panggilan, SMS, lokasi GPS
+* **Network forensics** — Analisis network traffic logs
+* **Database forensics** — Investigasi intrusi & modifikasi database
+* **Cloud forensics** — Investigasi data di cloud (tricky karena minimnya bukti)
+* **Email forensics** — Deteksi phishing & penipuan via email
 
 **Q&A:**
-- Jumlah fase digital forensics menurut NIST? → **?**
-- Forensik yang fokus ke network traffic logs? → **?**
+* Jumlah fase digital forensics menurut NIST? → **?**
+* Forensik yang fokus ke network traffic logs? → **?**
 
 ## Evidence Acquisition
 
@@ -68,10 +68,10 @@ Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa iz
 
 ### Chain of Custody
 Dokumen formal yang mencatat semua detail tentang bukti:
-- Deskripsi bukti (nama, jenis)
-- Siapa yang ngumpulin & kapan
-- Lokasi penyimpanan
-- Siapa saja yang akses & kapan
+* Deskripsi bukti (nama, jenis)
+* Siapa yang ngumpulin & kapan
+* Lokasi penyimpanan
+* Siapa saja yang akses & kapan
 
 Contoh form: [NIST Sample Chain of Custody Form](https://www.nist.gov/document/sample-chain-custody-form)
 
@@ -83,15 +83,15 @@ Alat yang memblokir semua aksi tulis ke bukti digital → menjaga data tetap ori
 </p>
 
 **Q&A:**
-- Dokumen yang berisi semua detail tentang bukti? → **?**
-- Tools buat mencegah perubahan data pada bukti digital? → **?**
+* Dokumen yang berisi semua detail tentang bukti? → **?**
+* Tools buat mencegah perubahan data pada bukti digital? → **?**
 
 ## Windows Forensics
 
 Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit) dari sistem. Ada 2 kategori:
 
-- **Disk image** — Data non-volatile (HDD/SSD): file, dokumen, browser history → tetep ada setelah restart
-- **Memory image** — Data volatile (RAM): proses aktif, koneksi jaringan → ilang setelah shutdown, jadi harus diambil duluan!
+* **Disk image** — Data non-volatile (HDD/SSD): file, dokumen, browser history → tetep ada setelah restart
+* **Memory image** — Data volatile (RAM): proses aktif, koneksi jaringan → ilang setelah shutdown, jadi harus diambil duluan!
 
 ### Tools Populer:
 
@@ -132,9 +132,9 @@ Pakai `pdfinfo` buat baca metadata PDF. Install: `sudo apt install poppler-utils
 </p>
 
 Temuan penting dari `pdfinfo ransom-letter.pdf`:
-- **Author:** Ann Gree Shepherd
-- **Creator:** Microsoft® Word 2016
-- **CreationDate:** Wed Feb 23 16:10:36 2022 WIB
+* **Author:** Ann Gree Shepherd
+* **Creator:** Microsoft® Word 2016
+* **CreationDate:** Wed Feb 23 16:10:36 2022 WIB
 
 ### Photo EXIF Data
 
@@ -147,7 +147,7 @@ Temuan penting dari `pdfinfo ransom-letter.pdf`:
 Dari `exiftool letter-image.jpg` → kamera: **Canon EOS R6**
 
 <p align="center">
-<img src="../../Assets/Images/camera-model.png" alt="Camera Model Name - Canon EOS R6">
+<img src="../../Assets/Images/camera-model.png" alt="Camera Model Name : Canon EOS R6">
 </p>
 
 GPS coordinates ditemukan: **51°30'51.90" N, 0°5'38.73" W**
@@ -159,10 +159,10 @@ GPS coordinates ditemukan: **51°30'51.90" N, 0°5'38.73" W**
 Lokasi di Google Maps → **Milk Street, London** (deket St. Paul's Cathedral)
 
 <p align="center">
-<img src="../../Assets/Images/kidnapper.png" alt="Google Maps - Kidnapper Location">
+<img src="../../Assets/Images/kidnapper.png" alt="Google Maps : Kidnapper Location">
 </p>
 
 **Q&A:**
-- Author file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
-- Nama jalan lokasi foto penculik? → **Milk Street**
-- Model kamera yang dipake? → **Canon EOS R6**
+* Author file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
+* Nama jalan lokasi foto penculik? → **Milk Street**
+* Model kamera yang dipake? → **Canon EOS R6**

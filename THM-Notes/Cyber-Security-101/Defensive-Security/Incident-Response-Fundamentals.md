@@ -1,8 +1,8 @@
 # TryHackMe: Incident Response Fundamentals
 
-- **Room Link:** [Incident Response Fundamentals](https://tryhackme.com/room/incidentresponsefundamentals)
-- **Kategori:** Defensive Security
-- **Difficulty:** easy
+* **Room Link:** [Incident Response Fundamentals](https://tryhackme.com/room/incidentresponsefundamentals)
+* **Kategori:** Defensive Security
+* **Difficulty:** easy
 
 ## Introduction to Incident Response
 
@@ -18,11 +18,11 @@ Room ini akan membantu kamu memahami konsep-konsep penting dari incident respons
 
 ### Learning Objectives
 
-- Overview tentang apa itu insiden dan severity level-nya
-- Jenis-jenis insiden yang umum terjadi
-- Fase fase Incident Response dari framework SANS dan NIST
-- Tools buat Incident Detection dan Response beserta peran PlayBooks
-- Incident Response Plan
+* Overview tentang apa itu insiden dan severity level-nya
+* Jenis-jenis insiden yang umum terjadi
+* Fase fase Incident Response dari framework SANS dan NIST
+* Tools buat Incident Detection dan Response beserta peran PlayBooks
+* Incident Response Plan
 
 ```mermaid
 flowchart LR
@@ -40,16 +40,16 @@ Berbagai proses (interaktif & background) berjalan di perangkat kita dan menghas
 
 Tim keamanan akan menganalisis _alerts_ ini:
 
-- **False Positive:** Alert yang terlihat bahaya, tapi ternyata aman. (Contoh: Alert transfer data besar → ternyata hanya proses backup ke cloud).
-- **True Positive:** Alert yang benar-benar berbahaya. (Contoh: Alert email masuk → ternyata email phishing untuk eksploitasi user).
+* **False Positive:** Alert yang terlihat bahaya, tapi ternyata aman. (Contoh: Alert transfer data besar → ternyata hanya proses backup ke cloud).
+* **True Positive:** Alert yang benar-benar berbahaya. (Contoh: Alert email masuk → ternyata email phishing untuk eksploitasi user).
 
 True Positive alerts inilah yang disebut sebagai **Incidents (Insiden)**.
 
 ### Incident Severity
 
 Kalau ada banyak insiden terjadi bersamaan, tim keamanan perlu memprioritaskan berdasarkan dampaknya (_severity level_):
-- **Low / Medium / High / Critical**
-- Skala **Critical** selalu jadi prioritas tertinggi buat ditangani duluan.
+* **Low / Medium / High / Critical**
+* Skala **Critical** selalu jadi prioritas tertinggi buat ditangani duluan.
 
 <p align="center">
 <img src="../../Assets/Images/Severity.png" alt="Incident Severity Levels">
@@ -61,11 +61,11 @@ Kalau ada banyak insiden terjadi bersamaan, tim keamanan perlu memprioritaskan b
 
 Insiden keamanan siber itu ada banyak jenisnya, bukan cuma sebatas hacking biasa. Berbagai jenis insiden ini bisa terjadi secara mandiri atau serentak pada satu korban.
 
-- **Malware Infections:** Malware adalah program jahat yang dirancang untuk merusak sistem, jaringan, atau aplikasi. Mayoritas insiden keamanan berhubungan dengan malware. Malware biasanya menyebar lewat file (teks, dokumen berlampiran jahat, file `.exe`, dll).
-- **Security Breaches:** Terjadi saat orang yang tidak punya izin berhasil mengakses data rahasia. Ini berbahaya karena banyak bisnis yang bergantung pada data penting tersebut.
-- **Data Leaks:** Kebocoran informasi rahasia ke pihak yang tidak berwenang. Penyerang biasanya memanfaatkan data bocor ini untuk **memeras korban** atau **merusak reputasi** target. Berbeda dengan Security Breaches (yang disengaja), Data Leaks kadang bisa terjadi karena **human error** atau **salah konfigurasi**.
-- **Insider Attacks:** Insiden yang berasal dari *dalam* organisasi itu sendiri. Contohnya: karyawan yang sedang kecewa memasang flashdisk berisi malware ke komputer pada hari terakhir bekerja. Serangan ini **sangat berbahaya** karena orang dalam pasti punya akses yang jauh lebih besar ke resource perusahaan.
-- **Denial of Service (DoS) Attacks:** *Availability* (Ketersediaan) adalah salah satu pilar utama CIA Triad. DoS attack terjadi ketika penyerang membanjiri sistem/jaringan dengan *request* palsu bertubi-tubi, sehingga resource server habis dan pengguna sah tidak bisa mengakses layanannya.
+* **Malware Infections:** Malware adalah program jahat yang dirancang untuk merusak sistem, jaringan, atau aplikasi. Mayoritas insiden keamanan berhubungan dengan malware. Malware biasanya menyebar lewat file (teks, dokumen berlampiran jahat, file `.exe`, dll).
+* **Security Breaches:** Terjadi saat orang yang tidak punya izin berhasil mengakses data rahasia. Ini berbahaya karena banyak bisnis yang bergantung pada data penting tersebut.
+* **Data Leaks:** Kebocoran informasi rahasia ke pihak yang tidak berwenang. Penyerang biasanya memanfaatkan data bocor ini untuk **memeras korban** atau **merusak reputasi** target. Berbeda dengan Security Breaches (yang disengaja), Data Leaks kadang bisa terjadi karena **human error** atau **salah konfigurasi**.
+* **Insider Attacks:** Insiden yang berasal dari *dalam* organisasi itu sendiri. Contohnya: karyawan yang sedang kecewa memasang flashdisk berisi malware ke komputer pada hari terakhir bekerja. Serangan ini **sangat berbahaya** karena orang dalam pasti punya akses yang jauh lebih besar ke resource perusahaan.
+* **Denial of Service (DoS) Attacks:** *Availability* (Ketersediaan) adalah salah satu pilar utama CIA Triad. DoS attack terjadi ketika penyerang membanjiri sistem/jaringan dengan *request* palsu bertubi-tubi, sehingga resource server habis dan pengguna sah tidak bisa mengakses layanannya.
 
 Dampak setiap insiden tidak bisa dipukul rata. Insiden yang kecil di satu perusahaan bisa jadi malapetaka di perusahaan lain. **Contoh:** Perusahaan A mungkin tidak terlalu terdampak jika terkena Data Leak (karena datanya tidak sensitif), tapi bisa rugi besar jika terkena **DoS Attack** karena bisnis utamanya bergantung pada layanan online.
 
@@ -73,9 +73,9 @@ Dampak setiap insiden tidak bisa dipukul rata. Insiden yang kecil di satu perusa
 
 ### Questions
 
-- Apa bedanya insiden Security Breaches dengan Data Leaks?
-- Kenapa Insider Attack dianggap lebih berbahaya dari pada serangan dari luar (pihak eksternal)?
-- Apa contoh paling umum dari insiden Denial of Service (DoS)?
+* Apa bedanya insiden Security Breaches dengan Data Leaks?
+* Kenapa Insider Attack dianggap lebih berbahaya dari pada serangan dari luar (pihak eksternal)?
+* Apa contoh paling umum dari insiden Denial of Service (DoS)?
 
 ## Incident Response Process
 
@@ -134,19 +134,19 @@ Komponen utama dari *Incident Response Plan* itu mencakup:
 
 ### Questions
 
-- Apa kepanjangan dari PICERL pada framework SANS?
-- Pada framework NIST, fase apa saja dari SANS yang digabung menjadi satu fase tunggal?
-- Memangnya buat apa sebuah organisasi membuat standar _Incident Response Plan_, dan siapa petinggi yang harus meleges/memvalidasi dokumen ini?
-- Kenapa _Communication plan_ dimasukin sebagai salah satu komponen penting pas nyusun _Incident Response Plan_?
+* Apa kepanjangan dari PICERL pada framework SANS?
+* Pada framework NIST, fase apa saja dari SANS yang digabung menjadi satu fase tunggal?
+* Memangnya buat apa sebuah organisasi membuat standar _Incident Response Plan_, dan siapa petinggi yang harus meleges/memvalidasi dokumen ini?
+* Kenapa _Communication plan_ dimasukin sebagai salah satu komponen penting pas nyusun _Incident Response Plan_?
 
 ## Incident Response Techniques
 
 Ingat bahwa fase **Identification** (SANS) atau **Detection and Analysis** (NIST) itu sulit dikerjakan secara manual. Maka dari itu, muncul berbagai *security solutions* untuk membantu mendeteksi insiden secara otomatis, bahkan sampai membantu merespons insiden secara langsung.
 
 Berikut tiga alat utama yang sering muncul di dunia Cyber Security:
-- **SIEM (Security Information and Event Management):** Pusat komando. SIEM memusatkan semua log kejadian ke satu wadah, lalu mengkorelasikan berbagai log tersebut secara otomatis untuk menemukan tanda-tanda insiden.
-- **AV (Antivirus):** Alat dasar yang wajib ada. Tugasnya mendeteksi *malicious programs* yang sudah **dikenal** (memiliki *signature*) sebelum program itu membahayakan sistem.
-- **EDR (Endpoint Detection and Response):** Versi canggih dari AV. Dipasang di masing-masing *endpoint* (laptop, desktop). EDR tidak hanya mendeteksi, tapi juga mampu secara otomatis mengurung ancaman (*contain and eradicate*) sebelum tim pusat merespons.
+* **SIEM (Security Information and Event Management):** Pusat komando. SIEM memusatkan semua log kejadian ke satu wadah, lalu mengkorelasikan berbagai log tersebut secara otomatis untuk menemukan tanda-tanda insiden.
+* **AV (Antivirus):** Alat dasar yang wajib ada. Tugasnya mendeteksi *malicious programs* yang sudah **dikenal** (memiliki *signature*) sebelum program itu membahayakan sistem.
+* **EDR (Endpoint Detection and Response):** Versi canggih dari AV. Dipasang di masing-masing *endpoint* (laptop, desktop). EDR tidak hanya mendeteksi, tapi juga mampu secara otomatis mengurung ancaman (*contain and eradicate*) sebelum tim pusat merespons.
 
 ### Playbooks vs Runbooks
 
@@ -167,6 +167,6 @@ Di sisi lain, ada yang namanya **Runbooks**. Bedanya, Runbooks berisi instruksi 
 
 ### Questions
 
-- Singkatnya, buat apa sih SOC butuh **SIEM** padahal sudah punya security analyst manusia?
-- Apa kelebihan **EDR** dibandingin **Antivirus (AV)** jaman dulu?
-- Dalam _incident response_, apa bedanya **Playbook** sama **Runbook**?
+* Singkatnya, buat apa sih SOC butuh **SIEM** padahal sudah punya security analyst manusia?
+* Apa kelebihan **EDR** dibandingin **Antivirus (AV)** jaman dulu?
+* Dalam _incident response_, apa bedanya **Playbook** sama **Runbook**?

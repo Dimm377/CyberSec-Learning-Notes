@@ -1,8 +1,8 @@
-# TryHackMe - Gobuster: The Basics
+# TryHackMe : Gobuster: The Basics
 
-- **Room Link:** [Gobuster: The Basics](https://tryhackme.com/room/gobusterthebasics)
-- **Category:** Offensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [Gobuster: The Basics](https://tryhackme.com/room/gobusterthebasics)
+* **Category:** Offensive Security Tooling
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -10,18 +10,18 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 
 **Learning Objective**
 
-- Memahami dasar dasar dari enumeration
-- Cara menggunakan Gobuster untuk mencari direktori dan file tersembunyi yang ada di web
-- Cara pakai Gobuster untuk menemukan **subdomain** yang tidak terekspos
-- Cara pakai Gobuster untuk menemukan **Virtual Hosts** (Vhost)
+* Memahami dasar dasar dari enumeration
+* Cara menggunakan Gobuster untuk mencari direktori dan file tersembunyi yang ada di web
+* Cara pakai Gobuster untuk menemukan **subdomain** yang tidak terekspos
+* Cara pakai Gobuster untuk menemukan **Virtual Hosts** (Vhost)
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — mencari directory, file, subdomain, dan vhost tersembunyi di target web.
-- **Syaratnya:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
-- **Tanda keberhasilan:** Gobuster menampilkan daftar path dengan status code `200`, `301`, `302`, atau `403` yang mengindikasikan resource yang ada.
-- Cara pakai Gobuster buat ngintip **virtual hosts**
-- caranya memilih dan memakai **wordlist** yang cocok untuk scanning
+* **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — mencari directory, file, subdomain, dan vhost tersembunyi di target web.
+* **Syaratnya:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
+* **Tanda keberhasilan:** Gobuster menampilkan daftar path dengan status code `200`, `301`, `302`, atau `403` yang mengindikasikan resource yang ada.
+* Cara pakai Gobuster buat ngintip **virtual hosts**
+* caranya memilih dan memakai **wordlist** yang cocok untuk scanning
 
 ## Environment & Setup
 
@@ -72,13 +72,13 @@ Banyak profesional keamanan memanfaatkannya untuk _penetration testing_, _bug bo
 
 Sebelum mendalami Gobuster, kita bahas secara singkat konsep **Enumeration** dan **Brute Force.**
 
-- **Enumeration**
+* **Enumeration**
 
   Singkatnya, **Enumeration** (enumerasi) adalah proses list semua resources yang ada di target, entah itu bisa diakses publik atau tersembunyi.
 
   Contoh gampangnya: Gobuster melakukan enumerasi direktori web untuk mencari tahu ada halaman apa saja di sebuah website (misal: `/admin`, `/login`, `/backup`, dll).
 
-- **Brute Force**
+* **Brute Force**
 
   Ini adalah teknik mencoba setiap kemungkinan yang ada sampai menemukan kecocokan. Ibarat punya 10 kunci tapi tidak tau mana yang pas, jadinya harus dicoba satu-satu sampai gemboknya kebuka.
 
@@ -117,7 +117,7 @@ Flags:
   -q, --quiet                 Don't print the banner and other noise
   -t, --threads int           Number of concurrent threads (default 10)
   -v, --verbose               Verbose output (errors)
-  -w, --wordlist string       Path to the wordlist. Set to - to use STDIN.
+  -w, --wordlist string       Path to the wordlist. Set to : to use STDIN.
       --wordlist-offset int   Resume from a given position in the wordlist (defaults to 0)
 
 Use "gobuster [command] --help" for more information about a command.
@@ -125,16 +125,16 @@ Use "gobuster [command] --help" for more information about a command.
 
 Isi dari help page nya yaitu:
 
-- **usage:** Menampilkan sintaks tentang cara menggunakan perintah yang ada di gobuster
+* **usage:** Menampilkan sintaks tentang cara menggunakan perintah yang ada di gobuster
 
-- **Available Commands:**
+* **Available Commands:**
 
   Ada banyak mode yang bisa dipake (seperti enumerasi S3 bucket, Google Cloud, dll), dan kita bakal fokus ke tiga command utama:
-  - `dir`: Mode enumeration direktori/file (paling sering dipakai).
-  - `dns`: Mode enumeration subdomain.
-  - `vhost`: Mode enumeration virtual host.
+* `dir`: Mode enumeration direktori/file (paling sering dipakai).
+* `dns`: Mode enumeration subdomain.
+* `vhost`: Mode enumeration virtual host.
 
-- **Flags:**
+* **Flags:**
 
   Ini adalah opsi tambahan yang bisa kita atur buat nyesuain cara kerja command-nya (misal: nambahin jumlah threads, nge-skip error, dll).
 
@@ -152,10 +152,10 @@ contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration 
 
 `gobuster dir -u "http://www.yourbrokenweb.thm/" -w /usr/share/wordlists/dirb/small.txt -t 64`
 
-- `gobuster dir`: Ini memberi tau Gobuster kalau kita mau pakai mode enumerasi direktori dan file.
-- `-u "http://www.yourbrokenweb.thm/"`: Ini target URL yang mau kita scan.
-- `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal mengambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan mengirim request ke sana.
-- `-t 64`: Ini mengeset jumlah threads jadi 64. Membuat proses scan jadi jauh lebih cepat dibanding default-nya.
+* `gobuster dir`: Ini memberi tau Gobuster kalau kita mau pakai mode enumerasi direktori dan file.
+* `-u "http://www.yourbrokenweb.thm/"`: Ini target URL yang mau kita scan.
+* `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal mengambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan mengirim request ke sana.
+* `-t 64`: Ini mengeset jumlah threads jadi 64. Membuat proses scan jadi jauh lebih cepat dibanding default-nya.
 
 ## Use Case: Directory And File Enumeration
 
@@ -208,14 +208,14 @@ Contoh:
 
 Penjelasannya:
 
-- `gobuster dir`: Mode enumeration folder/file.
-- `-u http://www.yourbrokenweb.thm`:
-  - Ini adalah _base path_ dimana Gobuster bakal mulai mencari. Kalau misal set URL-nya ke `/resources`, dia bakal mencari di dalem folder `resources` itu.
-  - **Penting**: Wajib tulis protokolnya (`http` atau `https`). Kalau salah, scan-nya bakal gagal.
-  - Bisa pakai IP atau Hostname. Tapi ingat, satu IP bisa nge-host banyak web (Virtual Hosting), jadi lebih aman pakai Hostname agar tidak salah alamat.
-  - Gobuster **tidak** melakukan scan secara rekursif secara default. Jadi kalau nemu folder `admin/`, dia tidak bakal otomatis mencari isi dalem `admin/` kecuali kita suruh.
-- `-w ...`: Path ke file wordlist yang isinya daftar kata buat ditebak.
-- `-r`: Ngikutin redirect. Kalau dapet status 301 (Pindah), dia bakal mengecek ke alamat barunya.
+* `gobuster dir`: Mode enumeration folder/file.
+* `-u http://www.yourbrokenweb.thm`:
+* Ini adalah _base path_ dimana Gobuster bakal mulai mencari. Kalau misal set URL-nya ke `/resources`, dia bakal mencari di dalem folder `resources` itu.
+* **Penting**: Wajib tulis protokolnya (`http` atau `https`). Kalau salah, scan-nya bakal gagal.
+* Bisa pakai IP atau Hostname. Tapi ingat, satu IP bisa nge-host banyak web (Virtual Hosting), jadi lebih aman pakai Hostname agar tidak salah alamat.
+* Gobuster **tidak** melakukan scan secara rekursif secara default. Jadi kalau nemu folder `admin/`, dia tidak bakal otomatis mencari isi dalem `admin/` kecuali kita suruh.
+* `-w ...`: Path ke file wordlist yang isinya daftar kata buat ditebak.
+* `-r`: Ngikutin redirect. Kalau dapet status 301 (Pindah), dia bakal mengecek ke alamat barunya.
 
 Contoh kedua, kalau mau mencari file spesifik (misal PHP atau JS), kita bisa pakai flag `-x`:
 
@@ -262,9 +262,9 @@ gobuster dns -d yourbrokenweb.thm -w /usr/share/wordlists/SecLists/Discovery/DNS
 
 Penjelasannya:
 
-- `gobuster dns`: Mode enumeration subdomain.
-- `-d yourbrokenweb.thm`: Target domain yang mau kita scan (tanpa http/https).
-- `-w ...`: Path ke wordlist. Di contoh ini pakai SecLists top 1 million subdomains (populer banget nih). Gobuster bakal nyobain satu-satu kata di list itu buat jadi subdomain (misal: `www.yourbrokenweb.thm`, `mail.yourbrokenweb.thm`, dll).
+* `gobuster dns`: Mode enumeration subdomain.
+* `-d yourbrokenweb.thm`: Target domain yang mau kita scan (tanpa http/https).
+* `-w ...`: Path ke wordlist. Di contoh ini pakai SecLists top 1 million subdomains (populer banget nih). Gobuster bakal nyobain satu-satu kata di list itu buat jadi subdomain (misal: `www.yourbrokenweb.thm`, `mail.yourbrokenweb.thm`, dll).
 
 Outputnya bakal seperti gini:
 
@@ -309,8 +309,8 @@ Virtual host itu beda website yang jalan di mesin yang sama. Kadang mereka kelia
 
 Bedanya mode `vhost` sama `dns` ada di cara kerjanya pas scanning:
 
-- Mode `vhost` bakal menuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
-- Mode `dns` akan melakukan DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) dan isi wordlist.
+* Mode `vhost` bakal menuju ke URL yang dibuat dari gabungan HOSTNAME (`-u`) sama isi wordlist.
+* Mode `dns` akan melakukan DNS lookup ke FQDN yang dibuat dari gabungan domain name (`-d`) dan isi wordlist.
 
 ### Help
 
@@ -342,10 +342,10 @@ gobuster vhost -u "http://10.10.10.10" --domain yourbrokenweb.thm -w /usr/share/
 
 Penjelasannya:
 
-- `-u "http://10.10.10.10"`: Kita nembak langsung ke IP servernya.
-- `--domain yourbrokenweb.thm`: Kita kasih tau Gobuster buat nempelin domain ini di Host Header.
-- `--append-domain`: Gabungin kata di wordlist sama domain. Jadi kalau wordlist isinya `admin`, bakal jadi `admin.yourbrokenweb.thm`.
-- `--exclude-length`: Ini penting! Biasanya kalau vhost tidak valid, server bakal balikin halaman default yang ukurannya sama. Kita filter ukuran itu agar tidak menuhin layar.
+* `-u "http://10.10.10.10"`: Kita nembak langsung ke IP servernya.
+* `--domain yourbrokenweb.thm`: Kita kasih tau Gobuster buat nempelin domain ini di Host Header.
+* `--append-domain`: Gabungin kata di wordlist sama domain. Jadi kalau wordlist isinya `admin`, bakal jadi `admin.yourbrokenweb.thm`.
+* `--exclude-length`: Ini penting! Biasanya kalau vhost tidak valid, server bakal balikin halaman default yang ukurannya sama. Kita filter ukuran itu agar tidak menuhin layar.
 
 Outputnya bakal seperti gini:
 

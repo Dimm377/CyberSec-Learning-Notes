@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [HTTP In Details](https://tryhackme.com/room/httpindetail)
-- **Category:** How The Web Works
-- **Difficulty:** easy
+* **Room Link:** [HTTP In Details](https://tryhackme.com/room/httpindetail)
+* **Category:** How The Web Works
+* **Difficulty:** easy
 
 ---
 
@@ -26,8 +26,8 @@ HTTP dikembangkan oleh Tim Berners-Lee dan timnya antara tahun 1989-1991. Protok
 HTTPS itu versi **aman** dari HTTP. Kalau HTTP biasa itu ibarat pesanan yang ditulis di kertas terbuka (siapa saja bisa baca), HTTPS itu pesanan yang **ditulis dalam amplop tersegel dan terenkripsi**. 
 
 Fungsinya:
-- **Mencegah penyadapan:** Data yang dikirim dan diterima dienkripsi, jadi orang yang mengintip di tengah jalan (man-in-the-middle) ga bisa baca isinya.
-- **Menjamin keaslian server:** Memberikan jaminan bahwa kamu sedang berkomunikasi dengan server yang benar, bukan server palsu yang menyamar.
+* **Mencegah penyadapan:** Data yang dikirim dan diterima dienkripsi, jadi orang yang mengintip di tengah jalan (man-in-the-middle) ga bisa baca isinya.
+* **Menjamin keaslian server:** Memberikan jaminan bahwa kamu sedang berkomunikasi dengan server yang benar, bukan server palsu yang menyamar.
 
 ---
 

@@ -1,8 +1,8 @@
 # TryHackMe: OWASP Top 10 2025: Application Design Flaws
 
-- **Room Link:** [OWASP Top 10 2025: Application Design Flaws](https://tryhackme.com/room/owasptop102025applicationdesignflaws)
-- **Category:** OWASP Top 10 (2025)
-- **Difficulty:** Easy
+* **Room Link:** [OWASP Top 10 2025: Application Design Flaws](https://tryhackme.com/room/owasptop102025applicationdesignflaws)
+* **Category:** OWASP Top 10 (2025)
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -23,7 +23,7 @@ Kamu akan mempelajari teori setiap kategori sekaligus mempraktikkannya lewat _ch
 
 ## AS02: Security Misconfigurations
 
-> **Referensi:** [OWASP - A02:2025 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)
+> **Referensi:** [OWASP : A02:2025 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)
 
 ### What It Is
 
@@ -41,13 +41,13 @@ Pada tahun 2017, **Uber** mengekspos backup **AWS S3 bucket** (layanan penyimpan
 
 Pola-pola misconfiguration yang paling sering ditemukan:
 
-- Credential default atau password lemah yang **tidak pernah diganti**
-- Service atau **endpoint** (alamat URL spesifik di server yang bisa diakses, misal: `/api/users`) yang tidak diperlukan tetap terekspos ke internet
-- Cloud storage yang salah konfigurasi (S3, Azure Blob, GCP Buckets) — **terbuka untuk publik**
-- API tanpa autentikasi atau otorisasi yang memadai
-- Pesan error yang terlalu _verbose_ (terlalu detail) — mengekspos **stack trace** (jejak lengkap dari error yang menampilkan nama file, nomor baris, dan variabel internal) atau detail sistem internal
-- Software, framework, atau container yang sudah **deprecated** (usang dan tidak didukung lagi) serta punya vulnerability yang sudah diketahui
-- Endpoint **AI/ML** yang terekspos tanpa kontrol akses yang tepat
+* Credential default atau password lemah yang **tidak pernah diganti**
+* Service atau **endpoint** (alamat URL spesifik di server yang bisa diakses, misal: `/api/users`) yang tidak diperlukan tetap terekspos ke internet
+* Cloud storage yang salah konfigurasi (S3, Azure Blob, GCP Buckets) — **terbuka untuk publik**
+* API tanpa autentikasi atau otorisasi yang memadai
+* Pesan error yang terlalu _verbose_ (terlalu detail) — mengekspos **stack trace** (jejak lengkap dari error yang menampilkan nama file, nomor baris, dan variabel internal) atau detail sistem internal
+* Software, framework, atau container yang sudah **deprecated** (usang dan tidak didukung lagi) serta punya vulnerability yang sudah diketahui
+* Endpoint **AI/ML** yang terekspos tanpa kontrol akses yang tepat
 
 ### How To Prevent It
 
@@ -79,7 +79,7 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 
 ## AS03: Software Supply Chain Failures
 
-> **Referensi:** [OWASP - A03:2025 Software Supply Chain Failures](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)
+> **Referensi:** [OWASP : A03:2025 Software Supply Chain Failures](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)
 
 ### What It Is
 
@@ -99,12 +99,12 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 
 ### Common Patterns
 
-- Menggunakan library atau dependency yang **tidak diverifikasi** atau sudah tidak di-_maintain_
-- Menginstal update secara otomatis **tanpa verifikasi** keasliannya
-- Terlalu bergantung pada model AI pihak ketiga tanpa monitoring atau audit
-- **CI/CD pipeline** (_Continuous Integration/Continuous Deployment_ — sistem otomatis untuk membangun, menguji, dan men-deploy kode) yang tidak diamankan, memungkinkan penyusupan
-- Tidak melacak **provenance** (asal-usul dan riwayat perubahan) serta lisensi komponen
-- Tidak memonitor vulnerability di dependency setelah aplikasi di-deploy
+* Menggunakan library atau dependency yang **tidak diverifikasi** atau sudah tidak di-_maintain_
+* Menginstal update secara otomatis **tanpa verifikasi** keasliannya
+* Terlalu bergantung pada model AI pihak ketiga tanpa monitoring atau audit
+* **CI/CD pipeline** (_Continuous Integration/Continuous Deployment_ — sistem otomatis untuk membangun, menguji, dan men-deploy kode) yang tidak diamankan, memungkinkan penyusupan
+* Tidak melacak **provenance** (asal-usul dan riwayat perubahan) serta lisensi komponen
+* Tidak memonitor vulnerability di dependency setelah aplikasi di-deploy
 
 ### How To Protect The Supply Chain
 
@@ -122,11 +122,11 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 
 Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang **deprecated** (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
 
-![Supply Chain Vulnerability - Source Code](../../Assets/Images/supply-Chain.png)
+![Supply Chain Vulnerability : Source Code](../../Assets/Images/supply-Chain.png)
 
 Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung membocorkan informasi sensitif — termasuk admin token, internal secret key, dan flag.
 
-![Debug Info Response - Flag Leaked](../../Assets/Images/flags.png)
+![Debug Info Response : Flag Leaked](../../Assets/Images/flags.png)
 
 | Masalah | Dampak |
 | :--- | :--- |

@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [TryHackMe](https://tryhackme.com/room/cryptographybasics)
-- **Category:** Cryptography / Security
-- **Difficulty:** Easy
+* **Room Link:** [TryHackMe](https://tryhackme.com/room/cryptographybasics)
+* **Category:** Cryptography / Security
+* **Difficulty:** Easy
 
 ---
 
@@ -31,8 +31,8 @@ Cryptography adalah ilmu dan praktik tentang teknik komunikasi yang aman, teruta
 
 **Answer the questions below:**
 
-- **Question:** What is the standard required for handling credit card information?
-- **Answer:** ?
+* **Question:** What is the standard required for handling credit card information?
+* **Answer:** ?
 
 ### Plaintext to Ciphertext
 
@@ -52,14 +52,14 @@ Data berubah bentuk dari yang bisa dibaca manusia (plaintext) jadi kode rahasia 
 
 **Answer the questions below:**
 
-- **Question:** What do you call the encrypted plaintext?
-- **Answer:** ?
+* **Question:** What do you call the encrypted plaintext?
+* **Answer:** ?
 
-- **Question:** What is the process of turning plaintext into ciphertext called?
-- **Answer:** ?
+* **Question:** What is the process of turning plaintext into ciphertext called?
+* **Answer:** ?
 
-- **Question:** What do you call the process that returns the plaintext?
-- **Answer:** ?
+* **Question:** What do you call the process that returns the plaintext?
+* **Answer:** ?
 
 ### Historical Cipher
 
@@ -79,17 +79,17 @@ Metode enkripsi kuno yang menjadi dasar cryptography modern. Meskipun sekarang d
 
 **Answer the questions below:**
 
-- **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
-- **Answer:** ?
+* **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
+* **Answer:** ?
 
-- **Question:** Which cipher uses a keyword to decide the alphabet shift?
-- **Answer:** ?
+* **Question:** Which cipher uses a keyword to decide the alphabet shift?
+* **Answer:** ?
 
-- **Question:** What was the name of the machine the Germans used in World War 2 to encrypt messages?
-- **Answer:** ?
+* **Question:** What was the name of the machine the Germans used in World War 2 to encrypt messages?
+* **Answer:** ?
 
-- **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
-- **Answer:** ?
+* **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
+* **Answer:** ?
   > (Penjelasan: Bisa pakai tool online seperti [Cryptii](https://cryptii.com/pipes/caesar-cipher). Memasukkan ciphertext `Xld Hzhz Apntyel dlhte` dan pakai **Shift 11** ke arah kanan buat mendapatkan teks aslinya)\_
 
 ### Types of Encryption
@@ -130,19 +130,19 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi) dan _Private K
 
 **Answer the questions below:**
 
-- **Question:** Should you trust DES? (Yea/Nay)
-- **Answer:** ?
+* **Question:** Should you trust DES? (Yea/Nay)
+* **Answer:** ?
 
   > (Penjelasan: Karena panjang kuncinya cuma 56-bit, DES sudah tidak aman lagi terhadap serangan brute force pakai komputasi modern.)\_
 
-- **Question:** When was AES adopted as an encryption standard?
-- **Answer:** ?
+* **Question:** When was AES adopted as an encryption standard?
+* **Answer:** ?
 
-- **Question:** What is the name of the cipher that uses 3 keys and 3 execution stages?
-- **Answer:** ?
+* **Question:** What is the name of the cipher that uses 3 keys and 3 execution stages?
+* **Answer:** ?
 
-- **Question:** Which encryption standard uses the same key to encrypt and decrypt?
-- **Answer:** ?
+* **Question:** Which encryption standard uses the same key to encrypt and decrypt?
+* **Answer:** ?
 ## Basic Math
 
 Kriptografi modern dibangun di atas fondasi matematika. Task ini membahas dua operasi logika dan aritmatika yang paling sering muncul dalam algoritma keamanan.
@@ -151,8 +151,8 @@ Kriptografi modern dibangun di atas fondasi matematika. Task ini membahas dua op
 
 XOR adalah operasi logika biner yang membandingkan dua bit.
 
-- **Aturan:** Menghasilkan **1** kalau kedua bit berbeda, dan **0** kalau kedua bit sama.
-- **Simbol:** $\oplus$ atau `^`.
+* **Aturan:** Menghasilkan **1** kalau kedua bit berbeda, dan **0** kalau kedua bit sama.
+* **Simbol:** $\oplus$ atau `^`.
 
 **Truth Table XOR:**
 | A | B | A $\oplus$ B |
@@ -162,27 +162,27 @@ XOR adalah operasi logika biner yang membandingkan dua bit.
 | 1 | 0 | 1 |
 | 1 | 1 | 0 |
 
-- **Kegunaan di Kriptografi:** XOR sering dipakai sebagai algoritma enkripsi simetris sederhana. Kalau kamu punya Plaintext ($P$) dan Secret Key ($K$), maka Ciphertext ($C$) = $P \oplus K$. Untuk mendapatkan kembali Plaintext, tinggal hitung $C \oplus K = P$.
+* **Kegunaan di Kriptografi:** XOR sering dipakai sebagai algoritma enkripsi simetris sederhana. Kalau kamu punya Plaintext ($P$) dan Secret Key ($K$), maka Ciphertext ($C$) = $P \oplus K$. Untuk mendapatkan kembali Plaintext, tinggal hitung $C \oplus K = P$.
 
 ### 2. Modulo Operation (%)
 
 Modulo adalah operasi untuk mencari **sisa bagi** dari sebuah pembagian.
 
-- **Contoh:** $23 \pmod 6 = 5$ (karena 23 dibagi 6 itu 3 dengan sisa 5).
-- **Sifat Penting:** Modulo tidak bisa dibalik (_not reversible_). Kalau $x \pmod 5 = 4$, nilai $x$ bisa berupa 4, 9, 14, dan seterusnya sampai tidak terhingga.
+* **Contoh:** $23 \pmod 6 = 5$ (karena 23 dibagi 6 itu 3 dengan sisa 5).
+* **Sifat Penting:** Modulo tidak bisa dibalik (_not reversible_). Kalau $x \pmod 5 = 4$, nilai $x$ bisa berupa 4, 9, 14, dan seterusnya sampai tidak terhingga.
 
 ---
 
 **Answer the questions below:**
 
-- **Question:** What's 1001 $\oplus$ 1010?
-- **Answer:** ?
+* **Question:** What's 1001 $\oplus$ 1010?
+* **Answer:** ?
   _(Cara Hitung: 1$\oplus$1=0, 0$\oplus$0=0, 0$\oplus$1=1, 1$\oplus$0=1)_
 
-- **Question:** What's 118613842 % 9091?
-- **Answer:** ?
+* **Question:** What's 118613842 % 9091?
+* **Answer:** ?
   _(Cara Hitung: Kamu bisa pakai Python di terminal Kitty kamu: `python3 -c "print(118613842 % 9091)"`)_
 
-- **Question:** What's 60 % 12?
-- **Answer:** ?
+* **Question:** What's 60 % 12?
+* **Answer:** ?
   _(Cara Hitung: 60 habis dibagi 12, jadi sisanya adalah 0)_

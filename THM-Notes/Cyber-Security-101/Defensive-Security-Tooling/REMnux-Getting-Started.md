@@ -1,8 +1,8 @@
 # TryHackMe: REMnux Getting Started
 
-- **Room Link:** [REMnux Getting Started](https://tryhackme.com/room/remnuxgettingstarted)
-- **Category:** Defensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [REMnux Getting Started](https://tryhackme.com/room/remnuxgettingstarted)
+* **Category:** Defensive Security Tooling
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -17,17 +17,17 @@ Di sinilah **REMnux** berperan.
 Analogi simpelnya: Kalau Kali Linux adalah toolkit untuk anak _Offensive Security_ (Red Team) untuk membobol sistem, maka REMnux adalah **"meja operasi"** untuk anak _Defensive Security_ (Blue Team / Malware Analyst) untuk membedah virus.
 
 Apa keunggulannya?
-- Sudah ter-install ratusan _tools_ untuk analisis memori, jaringan, dan bedah file statis. (Contoh: Volatility, YARA, Wireshark, oledump, INetSim).
-- Dirancang seperti lingkungan _sandbox_ yang aman untuk mengeksekusi dan mengobservasi software berbahaya tanpa resiko menginfeksi komputer pribadimu.
-- Siap pakai (_ready to go_) — tidak perlu pusing install tools satu per satu secara manual.
+* Sudah ter-install ratusan _tools_ untuk analisis memori, jaringan, dan bedah file statis. (Contoh: Volatility, YARA, Wireshark, oledump, INetSim).
+* Dirancang seperti lingkungan _sandbox_ yang aman untuk mengeksekusi dan mengobservasi software berbahaya tanpa resiko menginfeksi komputer pribadimu.
+* Siap pakai (_ready to go_) — tidak perlu pusing install tools satu per satu secara manual.
 
 ### Learning Objectives
 
 Setelah menyelesaikan room ini, kamu akan menguasai cara:
-- Eksplorasi _tools_ bawaan di dalam REMnux VM.
-- Menggunakan _tools_ untuk menganalisis dokumen berbahaya (_malicious documents_) secara efektif.
-- Mensimulasikan jaringan palsu (_fake network_) untuk mengelabui malware selama analisis.
-- Familiar dengan _tools_ yang digunakan untuk menganalisis _memory images_.
+* Eksplorasi _tools_ bawaan di dalam REMnux VM.
+* Menggunakan _tools_ untuk menganalisis dokumen berbahaya (_malicious documents_) secara efektif.
+* Mensimulasikan jaringan palsu (_fake network_) untuk mengelabui malware selama analisis.
+* Familiar dengan _tools_ yang digunakan untuk menganalisis _memory images_.
 
 ---
 
@@ -52,9 +52,9 @@ oledump.py agenttesla.xlsm
 
 **Membaca Hasil Output:**
 Hasilnya bakal keluar struktur direktori dari dalem *file* Excel itu.
-- Kolom pertama adalah nomor urut (*index*), sering juga disebut **data streams**.
-- Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah — huruf 'M' berarti ada _script_ VBA Macro yang disisipkan di dalam partisi tersebut.
-- Kolom angka di sebelahnya menunjukkan ukuran *byte* dari partisi itu, disusul nama partisinya.
+* Kolom pertama adalah nomor urut (*index*), sering juga disebut **data streams**.
+* Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah — huruf 'M' berarti ada _script_ VBA Macro yang disisipkan di dalam partisi tersebut.
+* Kolom angka di sebelahnya menunjukkan ukuran *byte* dari partisi itu, disusul nama partisinya.
 
 Tugas kamu sebagai analis adalah membedah lebih dalem indeks nomor yang ada huruf 'M'-nya buat melihat isi nyatanya menulis *script* racun jenis apa.
 
@@ -76,9 +76,9 @@ oledump.py agenttesla.xlsm -s 4 --vbadecompress
 
 Sekarang barisan *script* aslinya bakal kelihatan. Kamu nggak perlu pusing membaca dan mengerti seluruh baris *script*-nya sampai hafal. 
 Sebagai analis pemula, insting yang harus kamu tajamkan adalah mencari anomali kasat mata, misalnya:
-- Alamat *Public IP* aneh yang bukan mikik perusahaanmu.
-- Tulisan berakhiran `.exe` atau `.pdf`.
-- Perintah *download* atau eksekusi *shell/CMD*.
+* Alamat *Public IP* aneh yang bukan mikik perusahaanmu.
+* Tulisan berakhiran `.exe` atau `.pdf`.
+* Perintah *download* atau eksekusi *shell/CMD*.
 
 **Membersihkan Sampah Script (Deobfuscation) Pakai CyberChef**
 Berbicara soal anomali, saat kamu _scroll_ hasil _decompress_ tadi, kamu akan mudah menemukan baris _script_ panjang yang bentuknya penuh simbol aneh, misalnya:
@@ -114,10 +114,10 @@ Disini, fokus pembelajarannya menggunakan **Volatility 3** (versi terbaru). Kare
 **Plugin Windows Utama:**
 Jika target analisismu adalah mesin Windows, berikut deretan *parameter* (atau *plugins*) Volatility bawaan yang wajib kamu kenali fungsinya:
 
-- `windows.pstree.PsTree`: Menampilkan daftar *process* (aplikasi yang berjalan) dalam bentuk pohon hierarki. Dari sini terlihat jelas mana aplikasi induk yang memanggil/menjalankan aplikasi mencurigakan lainnya.
-- `windows.pslist.PsList`: Versi lebih dasar dari PsTree, sekadar menampilkan daftar lurus ke bawah untuk semua *process* yang sedang aktif.
-- `windows.cmdline.CmdLine`: Mengecek perintah lengkap (*command line arguments*) yang digunakan untuk menjalankan aplikasi tersebut (terkadang perintah eksekusi *malware* tertulis jelas di bagian akhir argumennya).
-- `windows.filescan.FileScan`: Mencari tahu *file* apa saja yang sempat tersentuh atau terbuka di dalam memori saat itu.
-- `windows.dlllist.DllList`: Mengintip daftar DLL (*library* pendukung bawaan Windows) yang sedang digunakan (*loaded*) oleh sebuah aplikasi.
-- `windows.malfind.Malfind`: *Plugin* andalan, otomatis mencari area *memory* aneh hasil injeksi tersembunyi yang berpotensi murni menyimpan kode *malware*.
-- `windows.psscan.PsScan`: Digunakan untuk mencari *process* yang sudah mati atau sengaja disembunyikan oleh trik *rootkit* (sehingga aplikasinya tidak terlihat lagi kalau cuma dicek pakai `PsList` biasa).
+* `windows.pstree.PsTree`: Menampilkan daftar *process* (aplikasi yang berjalan) dalam bentuk pohon hierarki. Dari sini terlihat jelas mana aplikasi induk yang memanggil/menjalankan aplikasi mencurigakan lainnya.
+* `windows.pslist.PsList`: Versi lebih dasar dari PsTree, sekadar menampilkan daftar lurus ke bawah untuk semua *process* yang sedang aktif.
+* `windows.cmdline.CmdLine`: Mengecek perintah lengkap (*command line arguments*) yang digunakan untuk menjalankan aplikasi tersebut (terkadang perintah eksekusi *malware* tertulis jelas di bagian akhir argumennya).
+* `windows.filescan.FileScan`: Mencari tahu *file* apa saja yang sempat tersentuh atau terbuka di dalam memori saat itu.
+* `windows.dlllist.DllList`: Mengintip daftar DLL (*library* pendukung bawaan Windows) yang sedang digunakan (*loaded*) oleh sebuah aplikasi.
+* `windows.malfind.Malfind`: *Plugin* andalan, otomatis mencari area *memory* aneh hasil injeksi tersembunyi yang berpotensi murni menyimpan kode *malware*.
+* `windows.psscan.PsScan`: Digunakan untuk mencari *process* yang sudah mati atau sengaja disembunyikan oleh trik *rootkit* (sehingga aplikasinya tidak terlihat lagi kalau cuma dicek pakai `PsList` biasa).

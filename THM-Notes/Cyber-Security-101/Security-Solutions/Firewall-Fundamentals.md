@@ -1,8 +1,8 @@
 # TryHackMe: Firewall Fundamentals
 
-- **Room Link:** [Firewall Fundamentals](https://tryhackme.com/room/firewallfundamentals)
-- **Category:** Security Solutions
-- **Difficulty:** easy
+* **Room Link:** [Firewall Fundamentals](https://tryhackme.com/room/firewallfundamentals)
+* **Category:** Security Solutions
+* **Difficulty:** easy
 
 ## What is Purpose of Firewall
 
@@ -27,10 +27,10 @@ flowchart LR
 
 ### Learning Objectives
 
-- Tipe-tipe firewall
-- Firewall rules dan komponennya
-- Windows Defender Firewall
-- Linux firewall (iptables)
+* Tipe-tipe firewall
+* Firewall rules dan komponennya
+* Windows Defender Firewall
+* Linux firewall (iptables)
 
 ## Type Of Firewall
 
@@ -48,30 +48,30 @@ Berikut adalah beberapa kategori Firewall yang wajib kita tahu:
 
 *Stateless Firewall* ini ibarat **satpam pemalas** yang jaga di gerbang depan (Beroperasi di **OSI Layer 3 & 4**).
 Dia kerja super cepat buat memeriksa *header* paket data (mengecek IP dari mana, mau ke mana, dan lewat Port berapa). TAPI kelemahannya: dia **TIDAK PUNYA INGATAN**.
-- Dia tidak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
-- Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu sudah diblokir.
+* Dia tidak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
+* Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu sudah diblokir.
 
 ### 2. Stateful Firewall (Satpam Rajin)
 
 Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku catatan (*State Table*) kemana-mana (Beroperasi di **OSI Layer 3 & 4** juga).
-- Kalau ada paket yang diizinin masuk, dia bakal catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia bakal otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
-- Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal catet cirinya buat nolak paket serupa di masa depan secara otomatis. Jauh lebih aman
+* Kalau ada paket yang diizinin masuk, dia bakal catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia bakal otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
+* Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal catet cirinya buat nolak paket serupa di masa depan secara otomatis. Jauh lebih aman
 
 ### 3. Proxy Firewall (Asisten Kurir)
 
 Nah ini beda kelas. *Proxy Firewall* (atau *Application-level Gateway*) ini kerjanya sudah di ruangan VIP (**OSI Layer 7**).
 Kelemahan *firewall* sebelumnya adalah mereka hanya mengecek "kulit/amplop"-nya saja, tidak berani buka isinya. *Proxy* memecahkan masalah itu:
-- Dia bertindak layaknya **Asisten Kurir Pribadi**. Saat kamu mau mengunjungi server luar, si _Proxy_ yang akan repot-repot pergi menemui server itu, mengambil datanya, lalu mengantarkan balik ke kamu.
-- Karena dia yang mengambilkan barang, dia akan membongkar isinya dulu. Kalau isinya _malware_, langsung dia buang.
-- Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
+* Dia bertindak layaknya **Asisten Kurir Pribadi**. Saat kamu mau mengunjungi server luar, si _Proxy_ yang akan repot-repot pergi menemui server itu, mengambil datanya, lalu mengantarkan balik ke kamu.
+* Karena dia yang mengambilkan barang, dia akan membongkar isinya dulu. Kalau isinya _malware_, langsung dia buang.
+* Nilai plusnya: IP asli kamu jadi anonim/tersembunyi karena yang maju berhadapan sama internet adalah si *Proxy*.
 
 ### 4. Next-Generation Firewall (NGFW) (Unit Pasukan Khusus)
 
 Ini adalah *Firewall Last Boss* sejuta umat zaman sekarang. NGFW beroperasi nyapu bersih dari **OSI Layer 3 sampai Layer 7**.
 Dia bukan cuma satpam, tapi sudah seperti **Sistem Pertahanan Militer Lengkap**:
-- Punya fitur *Deep Packet Inspection* (mengecek paket sampai ke dalem-dalemnya).
-- Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
-- Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
+* Punya fitur *Deep Packet Inspection* (mengecek paket sampai ke dalem-dalemnya).
+* Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
+* Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
 
 > **Note:**
 > BONUS:
@@ -86,11 +86,11 @@ Agar makin gampang buat *review* atau menentukan *firewall* mana yang pas buat d
 
 | Tipe Firewall | Karakteristik Utama |
 | :--- | :--- |
-| **Stateless Firewall** | - Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok untuk jaringan yang butuh kecepatan tinggi karena kerjanya cepat |
-| **Stateful Firewall** | - Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
-| **Proxy Firewall** | - Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
-| **Next-Generation Firewall**  | - Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
-| **Web Application Firewall (WAF)** | - Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik seperti *SQL Injection* & *Cross-Site Scripting (XSS)* |
+| **Stateless Firewall** | : Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok untuk jaringan yang butuh kecepatan tinggi karena kerjanya cepat |
+| **Stateful Firewall** | : Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
+| **Proxy Firewall** | : Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
+| **Next-Generation Firewall**  | : Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
+| **Web Application Firewall (WAF)** | : Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik seperti *SQL Injection* & *Cross-Site Scripting (XSS)* |
 
 ## Rules in Firewall
 
@@ -156,7 +156,7 @@ Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kat
 
 2. **Outbound Rules (Aturan Keluar):**
    Ini kebalikannya, yaitu aturan khusus buat "Orang Dalem" yang mau keluar rumah. *Rule* ini mengatur perangkat di jaringan kita sendiri yang mencoba mengakses internet/dunia luar.
-   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 - SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas agar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
+   *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 : SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas agar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
 
 3. **Forward Rules (Aturan Teruskan):**
    Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar agar langsung nyampe ke server tujuan di dalam jaringan kita.

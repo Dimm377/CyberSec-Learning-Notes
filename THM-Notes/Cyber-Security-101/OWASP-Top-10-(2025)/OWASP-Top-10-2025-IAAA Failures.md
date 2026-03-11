@@ -1,8 +1,8 @@
 # TryHackMe: OWASP Top 10 2025: IAAA Failures
 
-- **Room Link:** [OWASP Top 10 2025: IAAA Failures](https://tryhackme.com/room/owasptop102025iaaafailures)
-- **Category:** OWASP Top 10 (2025)
-- **Difficulty:** Easy
+* **Room Link:** [OWASP Top 10 2025: IAAA Failures](https://tryhackme.com/room/owasptop102025iaaafailures)
+* **Category:** OWASP Top 10 (2025)
+* **Difficulty:** Easy
 
 ---
 
@@ -28,10 +28,10 @@ Room ini dibuat untuk pemula dan tidak memerlukan pengetahuan keamanan sebelumny
 
 Keempat item tersebut adalah:
 
-* **Identity (Identitas):** Akun unik (misal: user ID/email) yang mewakili seseorang atau layanan. -> *Siapa kamu?*
-* **Authentication (Autentikasi):** Membuktikan identitas tersebut (misal: password, **OTP** (_One-Time Password_ — kode sekali pakai yang dikirim via SMS/email), passkeys). -> *Buktikan kalau itu benar kamu*
-* **Authorisation (Autorisasi):** Apa yang boleh dilakukan oleh identitas tersebut. -> *Kamu boleh melakukan apa saja di sini?*
-* **Accountability (Akuntabilitas):** Mencatat dan memberi peringatan tentang siapa melakukan apa, kapan, dan dari mana. -> *Siapa yang mencatat jejakmu?*
+* **Identity (Identitas):** Akun unik (misal: user ID/email) yang mewakili seseorang atau layanan. : *Siapa kamu?*
+* **Authentication (Autentikasi):** Membuktikan identitas tersebut (misal: password, **OTP** (_One-Time Password_ — kode sekali pakai yang dikirim via SMS/email), passkeys). : *Buktikan kalau itu benar kamu*
+* **Authorisation (Autorisasi):** Apa yang boleh dilakukan oleh identitas tersebut. : *Kamu boleh melakukan apa saja di sini?*
+* **Accountability (Akuntabilitas):** Mencatat dan memberi peringatan tentang siapa melakukan apa, kapan, dan dari mana. : *Siapa yang mencatat jejakmu?*
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ Tiga kategori dari **OWASP Top 10:2025** yang dibahas di room ini berkaitan deng
 
 ## A01: Broken Access Control
 
-> **Referensi:** [OWASP - A01:2025 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
+> **Referensi:** [OWASP : A01:2025 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
 
 **Broken Access Control** terjadi ketika server tidak memeriksa dengan benar **siapa yang boleh mengakses apa** di setiap permintaan. Masalah ini muncul karena aplikasi terlalu percaya pada input dari sisi pengguna (*client*).
 
@@ -67,17 +67,17 @@ Dalam praktiknya, kegagalan kontrol akses ini terbagi menjadi dua:
 
 **Ingat:** Jika kamu bisa memanipulasi ID di URL untuk melihat data sensitif (misalnya mencari user yang punya saldo lebih dari $1 juta), berarti sistem tersebut memiliki celah keamanan yang serius.
 
-![Broken Access Control - IDOR](../../Assets/Images/BAC-blur.png)
+![Broken Access Control : IDOR](../../Assets/Images/BAC-blur.png)
 
 > **Common Mistake:** Mengecek otorisasi hanya saat login. Padahal, pengecekan harus dilakukan di **setiap request** ke server. Attacker bisa saja sudah login secara sah, lalu langsung mengganti parameter ID untuk mengakses data orang lain.
 
-(Contoh praktis eksploitasi IDOR juga dibahas di challenge [OWASP Top 10 2025: Application Design Flaws - AS02](OWASP-Top-10-2025-Application-Design-Flaws.md))
+(Contoh praktis eksploitasi IDOR juga dibahas di challenge [OWASP Top 10 2025: Application Design Flaws : AS02](OWASP-Top-10-2025-Application-Design-Flaws.md))
 
 ---
 
 ## A07: Authentication Failures
 
-> **Referensi:** [OWASP - A07:2025 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+> **Referensi:** [OWASP : A07:2025 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
 
 Jika *Access Control* (A01) bicara tentang apa yang boleh kamu lakukan, maka **Authentication** bicara tentang membuktikan siapa kamu. **Authentication Failures** terjadi ketika aplikasi tidak bisa memverifikasi identitas pengguna dengan benar.
 
@@ -94,7 +94,7 @@ Ini adalah cara licik untuk mengelabui aplikasi agar memberikan akses ke akun or
 
 Ini adalah bentuk kegagalan serius dalam tahap **Authentication** pada model IAAA.
 
-![Authentication Failure - Account Confusion](../../Assets/Images/Failure-auth-blur.png)
+![Authentication Failure : Account Confusion](../../Assets/Images/Failure-auth-blur.png)
 
 > **Common Mistake:** Tidak menstandarisasi input username (case sensitivity). Selalu konversi username ke lowercase sebelum menyimpan dan membandingkan, agar `admin` dan `aDmiN` dianggap sama.
 
@@ -102,7 +102,7 @@ Ini adalah bentuk kegagalan serius dalam tahap **Authentication** pada model IAA
 
 ## A09: Logging & Alerting Failures
 
-> **Referensi:** [OWASP - A09:2025 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)
+> **Referensi:** [OWASP : A09:2025 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)
 
 Pernah lihat gedung yang punya CCTV tapi tidak ada rekamannya atau tidak ada satpam yang memantau? Itu adalah gambaran **Logging & Alerting Failures**.
 
@@ -124,7 +124,7 @@ Bayangkan ada penyerang masuk ke sistem. Jika tidak ada log yang mencatat aktivi
 
 Tanpa akuntabilitas yang kuat, sebuah aplikasi ibarat rumah tanpa pintu yang bisa dimasuki siapa saja tanpa meninggalkan jejak.
 
-![Logging & Alerting Failure - Forensic Gap](../../Assets/Images/Log-alert-Failure.png)
+![Logging & Alerting Failure : Forensic Gap](../../Assets/Images/Log-alert-Failure.png)
 
 > **Common Mistake:** Menyimpan log di lokasi yang bisa dijangkau attacker. Jika penyerang berhasil masuk dan bisa menghapus log, maka seluruh bukti serangan hilang. Simpan log di server terpisah atau gunakan layanan logging eksternal.
 

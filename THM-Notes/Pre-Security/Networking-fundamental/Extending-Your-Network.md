@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [ExtendingYourNetwork](https://tryhackme.com/room/extendingyournetwork)
-- **Category:** Networking / Fundamental
-- **Difficulty:** easy
+* **Room Link:** [ExtendingYourNetwork](https://tryhackme.com/room/extendingyournetwork)
+* **Category:** Networking / Fundamental
+* **Difficulty:** easy
 
 ---
 
@@ -28,10 +28,10 @@ Room ini membahas cara jaringan lokal bisa terhubung ke jaringan luar lewat Port
 Firewall itu perangkat yang menentukan traffic mana yang boleh masuk atau keluar. Ibarat **satpam di gerbang** — mengecek setiap orang yang mau masuk berdasarkan daftar aturan.
 
 **Firewall memutuskan berdasarkan:**
-- Dari mana traffic berasal? (sumber)
-- Ke mana arah traffic? (tujuan)
-- Untuk port apa? (layanan)
-- Protokol apa yang dipakai? (TCP/UDP)
+* Dari mana traffic berasal? (sumber)
+* Ke mana arah traffic? (tujuan)
+* Untuk port apa? (layanan)
+* Protokol apa yang dipakai? (TCP/UDP)
 
 | Tipe Firewall | Analogi | Cara Kerja | Kelebihan | Kekurangan |
 | ------------- | ------- | ---------- | --------- | ---------- |

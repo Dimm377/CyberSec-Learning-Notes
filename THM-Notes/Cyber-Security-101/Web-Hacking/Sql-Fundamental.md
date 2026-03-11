@@ -1,8 +1,8 @@
-# TryHackMe - Sql Fundamental
+# TryHackMe : Sql Fundamental
 
-- **Room Link:** [Sql Fundamental](https://tryhackme.com/room/sqlfundamentals)
-- **Category:** Web Hacking
-- **Difficulty:** Easy
+* **Room Link:** [Sql Fundamental](https://tryhackme.com/room/sqlfundamentals)
+* **Category:** Web Hacking
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -12,12 +12,12 @@ Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal b
 
 **Learning Objectives:**
 
-- Paham apa itu database, serta istilah dan konsep utama
-- Mengerti berbagai jenis database
-- Paham apa itu SQL
-- Mengerti dan mampu pakai Operasi SQL CRUD **(Create, Read, Update, Delete)**
-- Paham cara menggunakan SQL Clauses **(perintah tambahan untuk menyaring data)**
-- Paham cara jalanin berbagai **Operations**, **Operators**, dan **Functions** di dalam SQL
+* Paham apa itu database, serta istilah dan konsep utama
+* Mengerti berbagai jenis database
+* Paham apa itu SQL
+* Mengerti dan mampu pakai Operasi SQL CRUD **(Create, Read, Update, Delete)**
+* Paham cara menggunakan SQL Clauses **(perintah tambahan untuk menyaring data)**
+* Paham cara jalanin berbagai **Operations**, **Operators**, dan **Functions** di dalam SQL
 
 (Setelah paham dasar SQL, kamu bisa lanjut belajar cara mengeksploitasinya di catatan [SQL Injection](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/SQL-Injection/sql-injection.md) atau menggunakan tool otomatis [SQLMap](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/SQLMap: The Basics.md))
 
@@ -101,9 +101,9 @@ Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohny
 <img src="../../Assets/Images/PK-key.png" alt="PK Key">
 </p>
 
-- **Primary Key:** dipake buat jamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus punya satu nilai khusus yang jadi pengenal tetap dan tidak boleh sama sama data lainnya. Dalam setiap tabel, kita wajib milih satu kolom sebagai Primary Key, biasanya kolom `id` itu pilihan terbaik karena nilai ini dibuat khusus buat setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa saja punya kemiripan.
+* **Primary Key:** dipake buat jamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus punya satu nilai khusus yang jadi pengenal tetap dan tidak boleh sama sama data lainnya. Dalam setiap tabel, kita wajib milih satu kolom sebagai Primary Key, biasanya kolom `id` itu pilihan terbaik karena nilai ini dibuat khusus buat setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa saja punya kemiripan.
 
-- **Foreign Key:** itu kolom (atau kumpulan kolom) yang fungsinya jadi penghubung antara dua tabel dalam sebuah database. Contohnya, kita bisa tambahin kolom `id_penulis` di tabel Buku, kolom ini bertindak sebagai **Foreign Key** karena nilainya merujuk langsung ke kolom id di tabel Penulis. Foreign Key inilah yang membuat terciptanya hubungan antar tabel dalam relational database, dalam satu tabel kita boleh punya lebih dari satu Foreign Key.
+* **Foreign Key:** itu kolom (atau kumpulan kolom) yang fungsinya jadi penghubung antara dua tabel dalam sebuah database. Contohnya, kita bisa tambahin kolom `id_penulis` di tabel Buku, kolom ini bertindak sebagai **Foreign Key** karena nilainya merujuk langsung ke kolom id di tabel Penulis. Foreign Key inilah yang membuat terciptanya hubungan antar tabel dalam relational database, dalam satu tabel kita boleh punya lebih dari satu Foreign Key.
 
 ## SQL
 
@@ -115,11 +115,11 @@ Nah, di sinilah peran DBMS (Database Management System). Anggep saja DBMS sebaga
 
 **Contoh DBMS yang Sering Dipake:**
 
-- MySQL & MariaDB: Si paling populer buat relational database (SQL).
+* MySQL & MariaDB: Si paling populer buat relational database (SQL).
 
-- MongoDB: Andalan buat database non-relational (NoSQL) yang fleksibel.
+* MongoDB: Andalan buat database non-relational (NoSQL) yang fleksibel.
 
-- Oracle Database: Biasanya dipake sama perusahaan-perusahaan besar buat skala raksasa.
+* Oracle Database: Biasanya dipake sama perusahaan-perusahaan besar buat skala raksasa.
 
 Buat bisa 'ngobrol' atau berinteraksi sama database, kita pakai SQL (Structured Query Language). SQL itu bahasa komunikasi khusus buat database yang fungsinya buat manggil, ngatur, sampai ngolah data yang tersimpan di dalam relational database.
 
@@ -127,13 +127,13 @@ Buat bisa 'ngobrol' atau berinteraksi sama database, kita pakai SQL (Structured 
 
 Berikut beberapa manfaat yang didapet dengan belajar dan pakai SQL:
 
-- **SQL itu cepat:** relational database (yang pakai SQL) sanggup narik data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien banget (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
+* **SQL itu cepat:** relational database (yang pakai SQL) sanggup narik data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien banget (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
 
-- **Gampang dipelajari:** Beda sama banyak bahasa pemrograman lain, SQL ditulis pakai bahasa Inggris sederhana **(plain English)**, jadi jauh lebih gampang dipahami. Sifat bahasanya yang gampang dibaca membuat kita bisa lebih fokus buat belajar fungsi dan logikanya saja.
+* **Gampang dipelajari:** Beda sama banyak bahasa pemrograman lain, SQL ditulis pakai bahasa Inggris sederhana **(plain English)**, jadi jauh lebih gampang dipahami. Sifat bahasanya yang gampang dibaca membuat kita bisa lebih fokus buat belajar fungsi dan logikanya saja.
 
-- **Reliable:** Seperti yang sudah dibahas sebelumnya, relational database jamin tingkat akurasi data yang tinggi, ini karena adanya aturan struktur yang ketat, setiap kumpulan data wajib memenuhi kriteria struktur itu agar bisa masuk ke dalam sistem.
+* **Reliable:** Seperti yang sudah dibahas sebelumnya, relational database jamin tingkat akurasi data yang tinggi, ini karena adanya aturan struktur yang ketat, setiap kumpulan data wajib memenuhi kriteria struktur itu agar bisa masuk ke dalam sistem.
 
-- **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal querying database, ini membuat pengguna bisa jalanin tugas analisis data yang luas secara efisien banget.
+* **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal querying database, ini membuat pengguna bisa jalanin tugas analisis data yang luas secara efisien banget.
 
 ## Databases And Table Statement
 
@@ -143,7 +143,7 @@ Saatnya mulai belajar SQL dan cara pakenya buat berinteraksi sama database. Di t
 
 ### Database Statements
 
-- **CREATE DATABASE**
+* **CREATE DATABASE**
 
 Kalau mau membuat database baru, langkah pertama itu membuat dulu. Caranya di SQL pakai pernyataan CREATE DATABASE, Syntax-nya seperti gini:
 
@@ -161,7 +161,7 @@ mysql> CREATE DATABASE bookstore_db;
 
 ```
 
-- **SHOW DATABASES**
+* **SHOW DATABASES**
 
 Kita bisa melihat database yang sebelumnya dibuat menggunakan statement `SHOW DATABASES`. Statement `SHOW DATABASES` akan mengembalikan daftar database yang ada, caranya:
 
@@ -173,7 +173,7 @@ mysql> SHOW DATABASES;
 
 Di daftar yang muncul, kita akan menemukan database yang baru saja dibuat plus beberapa database default seperti `mysql`, `information_schema`, `performance_schema`, dan `sys`. Database bawaan ini penting agar MySQL bisa berfungsi.
 
-- **USE DATABASES**
+* **USE DATABASES**
 
 Setelah database dibuat, kita harus kasih tau MySQL database mana yang mau kita pakai agar perintah-perintah selanjutnya dieksekusi di tempat yang bener. Buat ngaktifin database yang baru kita buat, kita pakai perintah `USE` seperti gini:
 
@@ -183,7 +183,7 @@ mysql> USE bookstore_db;
 
 ```
 
-- **DROP DATABASES**
+* **DROP DATABASES**
 
 Kalau database sudah tidak kepake lagi, misal cuma buat coba-coba atau testing, kita bisa hapus pakai perintah `DROP`. Cara pakenya simpel:
 
@@ -197,7 +197,7 @@ mysql> DROP database bookstore_db;
 
 Sekarang setelah kita paham cara mengelola database (mulai dari membuat, melihat daftar, menggunakan, sampai menghapus), saatnya kita masuk ke bagian yang lebih seru: mengisi database itu dengan tabel dan belajar cara berinteraksi langsung dengan data di dalamnya.
 
-- **CREATE TABLE**
+* **CREATE TABLE**
 
 Sama seperti logika pembuatan database, buat membuat tabel kita juga pakai perintah `CREATE`. Setelah database diaktifin (pakai perintah `USE`), kita bisa langsung membuat tabel di dalamnya pakai sintaks berikut:
 
@@ -227,7 +227,7 @@ Statement ini bakal membuat tabel `book_inventory` pakai empat kolom: `id`, `nam
 
 `name` punya tipe data `VARCHAR(255)`, artinya bisa pakai karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi kalau seseorang nyoba memasukkan record ke tabel ini tapi `name` kosong maka bakal ditolak). `category` pakai tipe data `VARCHAR(100)` buat menyimpan kategori buku. `published_date` diatur sebagai tipe data `DATE`. `description` pakai tipe data `TEXT` buat menyimpan teks yang lebih panjang.
 
-- **SHOW TABLES**
+* **SHOW TABLES**
 
 Sama seperti kita bisa membuat daftar database pakai pernyataan `SHOW`, kita juga bisa membuat daftar tabel dalam database yang lagi aktif. Jalanin perintah berikut, kita bisa melihat tabel yang baru saja dibuat:
 
@@ -235,7 +235,7 @@ Sama seperti kita bisa membuat daftar database pakai pernyataan `SHOW`, kita jug
 mysql> SHOW TABLES;
 ```
 
-- **DESCRIBE**
+* **DESCRIBE**
 
 Kalau kita mau tahu kolom apa saja yang ada di sebuah tabel (dan tipe datanya), kita bisa mendeskripsikan menggunakan perintah `DESCRIBE` (yang juga bisa disingkat `DESC`). Untuk menjelaskan tabel yang baru saja dibuat, gunakan perintah berikut:
 
@@ -259,7 +259,7 @@ mysql> DESCRIBE book_inventory;
 5 rows in set (0.02 sec)
 ```
 
-- **ALTER**
+* **ALTER**
 
 Dalam pengembangan database, wajar banget kalau kebutuhan data kita berubah seiring waktu. Daripada tabelnya dihapus dan membuat ulang dari awal yang bakal buang waktu dan data, kita bisa pakai perintah `ALTER`.
 
@@ -270,7 +270,7 @@ ADD page_count INT;
 
 `ALTER` statement dipake buat lakuin perubahan di tabel, seperti ganti nama kolom, ubah tipe data di kolom, atau hapus kolom.
 
-- **DROP**
+* **DROP**
 
 Mirip sama hapus database, kita juga bisa hapus tabel pakai statement `DROP`. Sintaksnya seperti gini:
 
@@ -286,7 +286,7 @@ CRUD itu singkatan dari **C**reate, **R**ead, **U**pdate, dan **D**elete, yang d
 
 Kita bakal belajar gimana cara kerja berbagai operasi MySQL secara langsung. Kita bakal banyak berinteraksi sama tabel `book_inventory` di database `bookstore_db`. Langkah pertamanya simpel: jalanin pernyataan use `bookstore_db;` buat mengakses semua data di dalamnya.
 
-- **Create Operation (INSERT)**
+* **Create Operation (INSERT)**
 
 Operasi `CREATE` itu langkah fundamental buat nambahin data baru ke dalam sistem. Dalam ekosistem MySQL, proses ini dijalanin pakai pernyataan `INSERT INTO` yang membuat kita bisa memasukkan catatan atau record baru secara permanen ke dalam tabel.
 
@@ -299,17 +299,17 @@ Query OK, 1 row affected (0.01 sec)
 
 `INSERT INTO` operation fungsinya buat menentukan tabel target, dalam hal ini tabel `book_inventory` sebagai tempat nambahin data atau record baru. Kolom-kolom seperti `id`, `name`, `published_date`, dan `description` itu elemen yang bentuk catatan di dalam tabel itu.
 
-- **Read Operation (SELECT)**
+* **Read Operation (SELECT)**
 
 Read operation fungsinya sebagai metode utama buat mengambil atau menampilkan informasi yang tersimpan di dalam tabel. Lewat pernyataan `SELECT`, kita punya fleksibilitas buat manggil kolom tertentu secara spesifik atau menampilkan seluruh isi tabel.
 
-- `SELECT` spesifik: Dipake kalau kita cuma butuhin kolom tertentu, misalnya cuma judul buku.
-- `SELECT` all: Pakai tanda bintang (\*) buat narik data di semua kolom yang tersedia sekaligus.
+* `SELECT` spesifik: Dipake kalau kita cuma butuhin kolom tertentu, misalnya cuma judul buku.
+* `SELECT` all: Pakai tanda bintang (\*) buat narik data di semua kolom yang tersedia sekaligus.
 
 ```SQL
 -- Nambahin data baru ke tabel book_inventory
 mysql> INSERT INTO book_inventory (name, published_date, description, category)
-    -> VALUES ("Offensive Security", "2026-02-15", "The latest complete guide to learning Offensive Security", "Cyber Security");
+    : VALUES ("Offensive Security", "2026-02-15", "The latest complete guide to learning Offensive Security", "Cyber Security");
 Query OK, 1 row affected (0.01 sec)
 
 -- Baca seluruh kolom pakai wildcard (*)
@@ -341,15 +341,15 @@ mysql> SELECT name, description FROM book_inventory;
 3 rows in set (0.00 sec)
 ```
 
-- **Update Operation (UPDATE)**
+* **Update Operation (UPDATE)**
 
 Update operation itu bagian krusial dari siklus CRUD yang membuat modifikasi data secara real-time jadi mungkin. Pernyataan `UPDATE` bekerja pakai cara nimpa data lama sama informasi terbaru yang bakal kita kasih.
 
 ```SQL
 -- Update deskripsi buku pakai ID 2
 mysql> UPDATE book_inventory
-    -> SET description = "The latest complete guide to learning Offensive Security"
-    -> WHERE id = 2;
+    : SET description = "The latest complete guide to learning Offensive Security"
+    : WHERE id = 2;
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -365,7 +365,7 @@ mysql> SELECT name, description FROM book_inventory WHERE id = 2;
 
 Pernyataan UPDATE fungsinya buat menentukan tabel target—dalam skenario ini tabel `book_inventory` sebagai objek yang bakal dimodifikasi. Kita pakai kata kunci `SET` buat netapin nilai baru di kolom spesifik yang mau diupdate. Buat jaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan cuma terjadi di baris yang memenuhi kriteria, seperti baris pakai `id` 2.
 
-- **Delete Operation (DELETE)**
+* **Delete Operation (DELETE)**
 
 Operasi Delete fungsinya sebagai tahap akhir dalam siklus hidup data buat hapus catatan secara permanen dari tabel pakai pernyataan DELETE.
 
@@ -381,10 +381,10 @@ Pernyataan `DELETE` yang diikutin klausa `FROM` membuat kita bisa menentukan tar
 
 Singkatnya, hasil operasi CRUD penting banget buat operasi data dan waktu berinteraksi sama database. Pernyataan yang terkait sama mereka ada di bawah ini:
 
-- **Create (`INSERT` statement)** - Nambahin data baru ke dalam tabel.
-- **Read (`SELECT` statement)** - Mengambil data dari tabel.
-- **Update (`UPDATE` statement)** - Mengubah data yang sudah ada di dalam tabel.
-- **Delete (`DELETE` statement)** - Hapus data dari tabel.
+* **Create (`INSERT` statement)** : Nambahin data baru ke dalam tabel.
+* **Read (`SELECT` statement)** : Mengambil data dari tabel.
+* **Update (`UPDATE` statement)** : Mengubah data yang sudah ada di dalam tabel.
+* **Delete (`DELETE` statement)** : Hapus data dari tabel.
 
 ## Clauses
 
@@ -394,7 +394,7 @@ Fokus utama kita itu menguasai empat klausa penting: `DISTINCT`, `GROUP BY`, `OR
 
 Di sini kita bakal pakai tabel `book_inventory` dari database `bookstore_db;`
 
-- **DISTINCT Clause**
+* **DISTINCT Clause**
 
 DISTINCT clause dipake buat ngilangin data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
 
@@ -434,7 +434,7 @@ mysql> SELECT DISTINCT name FROM book_inventory;
 
 Outputnya nunjukin bahwa cuma lima baris yang diambil, dan cuma satu contoh buku Ethical Hacking yang ditampilin pakai id unik.
 
-- **GROUP BY Clause**
+* **GROUP BY Clause**
 
 GROUP BY clause ini fungsinya untuk mengelompokkan data berdasarkan kolom tertentu, biasanya digunakan bersama fungsi seperti `COUNT()`, `MAX()`, `MIN()`, `SUM()`, atau `AVG()`.
 
@@ -442,8 +442,8 @@ Contohnya, kita mau tau ada berapa jumlah buku buat setiap judulnya? Kita bisa p
 
 ```SQL
 mysql> SELECT name, COUNT(*)
-    -> FROM book_inventory
-    -> GROUP BY name;
+    : FROM book_inventory
+    : GROUP BY name;
 +----------------------------+----------+
 | name                       | COUNT(*) |
 +----------------------------+----------+
@@ -458,7 +458,7 @@ mysql> SELECT name, COUNT(*)
 
 Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
 
-- **ORDER BY Clause**
+* **ORDER BY Clause**
 
 `ORDER BY` Clause bisa dipake buat ngurutin hasil query, baik dari atas (ascending) maupun dari bawah (descending). Kita bisa pakai fungsi seperti `ASC` dan `DESC` buat lakuin itu, seperti yang ditunjukin di dua contoh di bawah ini.
 
@@ -466,8 +466,8 @@ Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> ORDER BY published_date ASC;
+    : FROM book_inventory
+    : ORDER BY published_date ASC;
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 | id | name                      | published_date | description                                              | category          |
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
@@ -485,8 +485,8 @@ mysql> SELECT *
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> ORDER BY published_date DESC;
+    : FROM book_inventory
+    : ORDER BY published_date DESC;
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 | id | name                      | published_date | description                                              | category          |
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
@@ -502,15 +502,15 @@ mysql> SELECT *
 
 Kita bisa melihat perbedaannya waktu ngurutin dari atas pakai `ASC` dan dari bawah pakai `DESC`, di mana keduanya pakai `published_date` sebagai contoh.
 
-- **HAVING Clause**
+* **HAVING Clause**
 
 `HAVING` Clause dipake bareng clause lain buat filter grup atau hasil record berdasarkan suatu kondisi. Dalam kasus `GROUP BY`, dia mengevaluasi kondisi jadi TRUE atau FALSE. Beda sama clause `WHERE`, `HAVING` filter hasil setelah agregasi dilakuin.
 
 ```SQL
 mysql> SELECT name, COUNT(*)
-    -> FROM book_inventory
-    -> GROUP BY name
-    -> HAVING name LIKE '%Hack%';
+    : FROM book_inventory
+    : GROUP BY name
+    : HAVING name LIKE '%Hack%';
 +-----------------------+----------+
 | name                  | COUNT(*) |
 +-----------------------+----------+
@@ -526,24 +526,24 @@ Di contoh di atas, kita bisa melihat bahwa query mengembalikan buku-buku dengan 
 
 Operator fungsinya buat filter dan manipulasi data secara efektif. Dengan menguasai operator, kita bisa bangun query yang jauh lebih akurat dan canggih daripada sekadar pengambilan data standar.
 
-- **Logical Operators**
+* **Logical Operators**
 
 Operator ini mengecek kebenaran suatu kondisi dan mengembalikan nilai boolean `TRUE` atau `FALSE`.
 
-- **LIKE Operator**
+* **LIKE Operator**
 
 Operator `LIKE` biasanya dipake bareng clause seperti `WHERE` buat filter pola tertentu dalam sebuah kolom.
 
 Contoh penggunaan:
 
-- `%A` = Berakhiran huruf **A**.
-- `A%` = Berawalan huruf **A**.
-- `%A%` = Ngandung huruf **A** di posisi mana saja.
+* `%A` = Berakhiran huruf **A**.
+* `A%` = Berawalan huruf **A**.
+* `%A%` = Ngandung huruf **A** di posisi mana saja.
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE description LIKE "%guide%";
+    : FROM book_inventory
+    : WHERE description LIKE "%guide%";
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
 | id | name                      | published_date | description                                              | category          |
 +----+---------------------------+----------------+----------------------------------------------------------+-------------------+
@@ -557,7 +557,7 @@ mysql> SELECT *
 
 Query di atas menampilkan daftar buku yang sudah difilter, yaitu cuma buku yang deskripsinya ngandung kata **guide** (pakai operator `LIKE`).
 
-- **AND Operator**
+* **AND Operator**
 
 Operator `AND` membuat kita bisa gabungin dua kondisi atau lebih dalam satu query. Hasilnya cuma bakal `TRUE` kalau **semua** kondisi terpenuhi.
 
@@ -565,8 +565,8 @@ Contoh berikut mencari buku pakai kategori **"Offensive Security"** DAN judul **
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE category = "Offensive Security" AND name = "Bug Bounty Bootcamp";
+    : FROM book_inventory
+    : WHERE category = "Offensive Security" AND name = "Bug Bounty Bootcamp";
 +----+---------------------+--------------------+----------------+--------------------------------------------------------+--------------------+
 | id | name                | published_date     | description                                            | category           |
 +----+---------------------+--------------------+----------------+--------------------------------------------------------+--------------------+
@@ -575,14 +575,14 @@ mysql> SELECT *
 1 row in set (0.00 sec)
 ```
 
-- **OR Operator**
+* **OR Operator**
 
 Operator `OR` menggabungkan beberapa kondisi dalam query dan mengembalikan nilai `TRUE` kalau **setidaknya satu** dari kondisi itu bernilai benar.
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE name LIKE "%Android%" OR name LIKE "%iOS%";
+    : FROM book_inventory
+    : WHERE name LIKE "%Android%" OR name LIKE "%iOS%";
 +----+----------------------------+----------------+----------------------------------------------------------+-------------------+
 | id | name                       | published_date | description                                              | category          |
 +----+----------------------------+----------------+----------------------------------------------------------+-------------------+
@@ -591,14 +591,14 @@ mysql> SELECT *
 1 row in set (0.00 sec)
 ```
 
-- **NOT Operator**
+* **NOT Operator**
 
 Operator `NOT` membalikkan nilai dari operator boolean, membuat kita bisa mengecualikan kondisi tertentu.
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE NOT description LIKE "%guide%";
+    : FROM book_inventory
+    : WHERE NOT description LIKE "%guide%";
 +----+-----------------+----------------+----------------------------------------+--------------------+
 | id | name            | published_date | description                            | category           |
 +----+-----------------+----------------+----------------------------------------+--------------------+
@@ -607,14 +607,14 @@ mysql> SELECT *
 1 row in set (0.00 sec)
 ```
 
-- **BETWEEN Operator**
+* **BETWEEN Operator**
 
 Operator `BETWEEN` membuat kita bisa menguji apakah suatu nilai ada dalam rentang tertentu.
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE id BETWEEN 2 AND 4;
+    : FROM book_inventory
+    : WHERE id BETWEEN 2 AND 4;
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
 | id | name                      | published_date | description                                            | category           |
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
@@ -625,7 +625,7 @@ mysql> SELECT *
 3 rows in set (0.00 sec)
 ```
 
-- **Comparison Operators**
+* **Comparison Operators**
 
 Operator perbandingan digunakan untuk membandingkan nilai dan mengecek apakah nilai itu memenuhi kriteria yang ditentukan.
 
@@ -635,8 +635,8 @@ Operator `=` (Sama Dengan) membandingkan dua ekspresi dan menentukan apakah kedu
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE name = "Designing Secure Software";
+    : FROM book_inventory
+    : WHERE name = "Designing Secure Software";
 +----+---------------------------+----------------+------------------------+--------------------+
 | id | name                      | published_date | description            | category           |
 +----+---------------------------+----------------+------------------------+--------------------+
@@ -651,8 +651,8 @@ Operator `!=` (Tidak Sama Dengan) membandingkan ekspresi dan menguji apakah kedu
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE category != "Offensive Security";
+    : FROM book_inventory
+    : WHERE category != "Offensive Security";
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
 | id | name                       | published_date | description                                          | category           |
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
@@ -668,8 +668,8 @@ Operator `<` (Kurang Dari) membandingkan apakah nilai dalam ekspresi lebih kecil
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE published_date < "2020-01-01";
+    : FROM book_inventory
+    : WHERE published_date < "2020-01-01";
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
 | id | name                       | published_date | description                                          | category           |
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
@@ -685,8 +685,8 @@ Operator `>` (Lebih Besar Dari) membandingkan apakah nilai dalam ekspresi lebih 
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE published_date > "2020-01-01";
+    : FROM book_inventory
+    : WHERE published_date > "2020-01-01";
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
 | id | name                      | published_date | description                                            | category           |
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
@@ -703,8 +703,8 @@ Operator `<=` membandingkan apakah nilai dalam ekspresi lebih kecil atau sama de
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE published_date <= "2021-11-15";
+    : FROM book_inventory
+    : WHERE published_date <= "2021-11-15";
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
 | id | name                       | published_date | description                                          | category           |
 +----+----------------------------+----------------+------------------------------------------------------+--------------------+
@@ -717,8 +717,8 @@ mysql> SELECT *
 
 ```SQL
 mysql> SELECT *
-    -> FROM book_inventory
-    -> WHERE published_date >= "2021-11-02";
+    : FROM book_inventory
+    : WHERE published_date >= "2021-11-02";
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
 | id | name                      | published_date | description                                            | category           |
 +----+---------------------------+----------------+--------------------------------------------------------+--------------------+
@@ -737,14 +737,14 @@ Waktu kerja sama data, fungsi bisa bantuin kita nyederhanaiin query, lakuin oper
 
 Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
 
-- **CONCAT()**
+* **CONCAT()**
   Fungsi ini dipake buat gabungin dua atau lebih string jadi satu.
 
   Contoh: Gabungin `name` dan `category` jadi satu kalimat.
 
   ```SQL
   mysql> SELECT CONCAT(name, ' is in category: ', category) AS Book_Info
-      -> FROM book_inventory;
+      : FROM book_inventory;
   +-----------------------------------------------------------------+
   | Book_Info                                                     |
   +-----------------------------------------------------------------+
@@ -754,13 +754,13 @@ Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
   +-----------------------------------------------------------------+
   ```
 
-- **GROUP_CONCAT()**
+* **GROUP_CONCAT()**
   Nah, ini fungsi sakti mandraguna! `GROUP_CONCAT()` bisa gabungin hasil dari banyak baris jadi satu baris string. Berguna banget kalau kita mau melihat semua item dalam satu kategori tanpa baris yang terpisah-pisah.
 
   ```SQL
   mysql> SELECT category, GROUP_CONCAT(name) AS Books
-      -> FROM book_inventory
-      -> GROUP BY category;
+      : FROM book_inventory
+      : GROUP BY category;
   +--------------------+------------------------------------------------------------------+
   | category           | Books                                                            |
   +--------------------+------------------------------------------------------------------+
@@ -770,44 +770,44 @@ Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
   +--------------------+------------------------------------------------------------------+
   ```
 
-- **SUBSTRING()**
+* **SUBSTRING()**
   Mengambil sebagian teks dari posisi tertentu.
 
   Contoh: Mengambil 10 karakter pertama dari `description`.
 
   ```SQL
   mysql> SELECT name, SUBSTRING(description, 1, 10) AS Short_Desc
-      -> FROM book_inventory;
+      : FROM book_inventory;
   ```
 
-- **LENGTH()**
+* **LENGTH()**
   Ngitung jumlah karakter dalam sebuah string. Berguna buat analisis panjang data.
 
 ### Aggregate Functions
 
 Fungsi ini digunakan untuk melakukan perhitungan di sekumpulan nilai dan mengembalikan satu nilai tunggal.
 
-- **COUNT()**: Ngitung jumlah baris yang cocok sama kriteria.
+* **COUNT()**: Ngitung jumlah baris yang cocok sama kriteria.
 
   ```SQL
   mysql> SELECT COUNT(*) FROM book_inventory; -- Ngitung total buku
   ```
 
-- **MIN()** & **MAX()**: Mencari nilai terkecil dan terbesar.
+* **MIN()** & **MAX()**: Mencari nilai terkecil dan terbesar.
 
   ```SQL
   mysql> SELECT MIN(published_date), MAX(published_date) FROM book_inventory;
   ```
 
-- **SUM()**: Njumlahin nilai numerik (Contoh: Total harga buku kalau ada kolom harga).
+* **SUM()**: Njumlahin nilai numerik (Contoh: Total harga buku kalau ada kolom harga).
 
 ### System Functions
 
 Nah, fungsi-fungsi ini populer banget di dunia **Hacking** (terutama waktu lakuin SQL Injection) karena bisa memberi informasi vital tentang sistem database target.
 
-- **USER()**: Menampilkan username yang lagi dipake buat koneksi database.
-- **DATABASE()**: Menampilkan nama database yang lagi aktif dipake.
-- **VERSION()**: Menampilkan versi dari software database (MySQL/MariaDB) yang jalan.
+* **USER()**: Menampilkan username yang lagi dipake buat koneksi database.
+* **DATABASE()**: Menampilkan nama database yang lagi aktif dipake.
+* **VERSION()**: Menampilkan versi dari software database (MySQL/MariaDB) yang jalan.
 
 Contoh penggunaan:
 

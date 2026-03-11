@@ -1,8 +1,8 @@
-# TryHackMe - Hydra
+# TryHackMe : Hydra
 
-- **Room Link:** [Hydra](https://tryhackme.com/room/hydra)
-- **Category:** Offensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [Hydra](https://tryhackme.com/room/hydra)
+* **Category:** Offensive Security Tooling
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -16,9 +16,9 @@ Tujuannya simpel: menemukan password yang benar.
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Initial Access** — setelah menemukan service terbuka (SSH, FTP, HTTP login) dari hasil Nmap.
-- **Syaratnya:** Mengetahui username (atau daftar username) dan memiliki wordlist password. Service target harus bisa diakses dari jaringan kita.
-- **Tanda keberhasilan:** Hydra menampilkan `[PORT][SERVICE] host: TARGET login: USER password: PASS` berwarna hijau.
+* **Kapan teknik ini dipakai?** Tahap **Initial Access** — setelah menemukan service terbuka (SSH, FTP, HTTP login) dari hasil Nmap.
+* **Syaratnya:** Mengetahui username (atau daftar username) dan memiliki wordlist password. Service target harus bisa diakses dari jaringan kita.
+* **Tanda keberhasilan:** Hydra menampilkan `[PORT][SERVICE] host: TARGET login: USER password: PASS` berwarna hijau.
 
 > **Common Mistake:** Menggunakan flag `-l` (huruf kecil, single username) padahal bermaksud `-L` (huruf besar, file daftar username) — atau sebaliknya. Salah satu huruf bisa membuat Hydra hanya mencoba 1 username alih-alih ribuan.
 
@@ -35,9 +35,9 @@ Tool seperti Hydra ini menunjukkan kenapa kita WAJIB banget pakai password yang 
 
 Kalau passwordnya misal:
 
-- password umum (seperti `password123`, `qwerty`, `admin123`),
-- Tidak ada karakter spesialnya,
-- Atau kurang dari 8 karakter,
+* password umum (seperti `password123`, `qwerty`, `admin123`),
+* Tidak ada karakter spesialnya,
+* Atau kurang dari 8 karakter,
 
 Maka password itu akan sangat mudah ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pakai password pasaran, Hydra akan menemukan itu dalam sekejap.
 
@@ -49,19 +49,19 @@ Jadi, ganti default password dan membuat kombinasi yang rumit agar susah di hack
 
 Sebenernya Hydra ini sudah masuk ke official repository banyak distro Linux, jadi install nya mudah.
 
-- **Ubuntu / Kali / Debian**:
+* **Ubuntu / Kali / Debian**:
 
   ```bash
   sudo apt install hydra
   ```
 
-- **Fedora**:
+* **Fedora**:
 
   ```bash
   sudo dnf install hydra
   ```
 
-- **Arch Linux / BlackArch**:
+* **Arch Linux / BlackArch**:
   ```bash
   sudo pacman -S hydra
   ```
@@ -92,9 +92,9 @@ Contoh real-nya: `hydra -l root -P passwords.txt 10.48.163.55 -t 4 ssh`
 
 Artinya:
 
-- Hydra bakal pakai `root` sebagai username buat login **ssh**.
-- Dia bakal nyobain semua password yang ada di file `passwords.txt`.
-- Akan ada 4 threads yang jalan bersamaan (paralel), ditandai oleh flag `-t 4`. Agar lebih cepat tapi tidak membuat server down.
+* Hydra bakal pakai `root` sebagai username buat login **ssh**.
+* Dia bakal nyobain semua password yang ada di file `passwords.txt`.
+* Akan ada 4 threads yang jalan bersamaan (paralel), ditandai oleh flag `-t 4`. Agar lebih cepat tapi tidak membuat server down.
 
 ### Post Web Form
 
@@ -118,11 +118,11 @@ Nah, bagian yang agak ribet itu string panjang di belakang `http-post-form`. Ini
 
 Penjelasannya:
 
-- `http-post-form`: Modul yang dipake buat POST request.
-- `"/`: Path login page-nya ada di root (`/`).
-- `:username=^USER^&password=^PASS^`: Ini body request-nya. `^USER^` bakal diganti `root`, dan `^PASS^` bakal diganti sama isi `passwords.txt` satu-satu.
-- `:F=incorrect"`: Kalau di response ada kata `incorrect`, berarti password SALAH. Hydra bakal lanjut ke password berikutnya.
-- `-V`: Verbose mode, agar keliatan prosesnya.
+* `http-post-form`: Modul yang dipake buat POST request.
+* `"/`: Path login page-nya ada di root (`/`).
+* `:username=^USER^&password=^PASS^`: Ini body request-nya. `^USER^` bakal diganti `root`, dan `^PASS^` bakal diganti sama isi `passwords.txt` satu-satu.
+* `:F=incorrect"`: Kalau di response ada kata `incorrect`, berarti password SALAH. Hydra bakal lanjut ke password berikutnya.
+* `-V`: Verbose mode, agar keliatan prosesnya.
 
 _Note: Kalau web servernya jalan di port yang tidak standar (bukan 80/443), tambahin flag `-s <port>`._
 
@@ -139,17 +139,17 @@ Hydra beroperasi di tahap **Initial Access** dalam _attack chain_:
 | **Lateral Movement** | Bisa digunakan lagi untuk brute force layanan internal setelah mendapatkan akses di satu mesin |
 
 **Perspektif Blue Team:**
-- **Deteksi:** Monitoring _failed login attempts_ yang massal dalam waktu singkat (log analysis via SIEM).
-- **Mitigasi:** Implementasi _rate limiting_, _account lockout policy_, dan _fail2ban_ untuk memblokir IP setelah sejumlah percobaan gagal.
-- **MFA:** Multi-Factor Authentication membuat brute force menjadi tidak berguna meskipun password ditemukan.
+* **Deteksi:** Monitoring _failed login attempts_ yang massal dalam waktu singkat (log analysis via SIEM).
+* **Mitigasi:** Implementasi _rate limiting_, _account lockout policy_, dan _fail2ban_ untuk memblokir IP setelah sejumlah percobaan gagal.
+* **MFA:** Multi-Factor Authentication membuat brute force menjadi tidak berguna meskipun password ditemukan.
 
 ---
 
 ## For Real World Relevance
 
-- **Pentest Engagement:** Hydra sering dipakai di fase awal pentest untuk menguji kekuatan password policy organisasi. Default credentials di router, CCTV, dan IoT devices adalah target paling umum.
-- **Credential Stuffing:** Di dunia nyata, attacker tidak hanya brute force random — mereka menggunakan database password yang bocor dari breach sebelumnya dan mencobanya di layanan lain (_credential stuffing_). Hydra bisa disimulasikan untuk skenario ini.
-- **Compliance Audit:** Banyak standar keamanan (seperti PCI-DSS) mengharuskan organisasi menguji ketahanan passwordnya. Hydra menjadi salah satu tool yang dipakai auditor.
+* **Pentest Engagement:** Hydra sering dipakai di fase awal pentest untuk menguji kekuatan password policy organisasi. Default credentials di router, CCTV, dan IoT devices adalah target paling umum.
+* **Credential Stuffing:** Di dunia nyata, attacker tidak hanya brute force random — mereka menggunakan database password yang bocor dari breach sebelumnya dan mencobanya di layanan lain (_credential stuffing_). Hydra bisa disimulasikan untuk skenario ini.
+* **Compliance Audit:** Banyak standar keamanan (seperti PCI-DSS) mengharuskan organisasi menguji ketahanan passwordnya. Hydra menjadi salah satu tool yang dipakai auditor.
 
 ---
 

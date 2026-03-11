@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
-- **Category:** Networking / Fundamental
-- **Difficulty:** easy
+* **Room Link:** [What Is Networking](https://tryhackme.com/room/whatisnetworking)
+* **Category:** Networking / Fundamental
+* **Difficulty:** easy
 
 ---
 
@@ -60,9 +60,9 @@ MAC Address itu ibarat **nomor seri akta kelahiran** — identitas fisik yang pe
 **Ping** itu salah satu tool jaringan paling dasar — ibarat **mengetuk pintu rumah seseorang** untuk mengecek apakah mereka ada di rumah.
 
 Ping menggunakan paket **ICMP** (Internet Control Message Protocol) untuk:
-- Mendiagnosis masalah konektivitas
-- Mengukur latensi jaringan (seberapa cepat respon)
-- Menentukan apakah perangkat bisa dijangkau
+* Mendiagnosis masalah konektivitas
+* Mengukur latensi jaringan (seberapa cepat respon)
+* Menentukan apakah perangkat bisa dijangkau
 
 ```bash
 ping google.com

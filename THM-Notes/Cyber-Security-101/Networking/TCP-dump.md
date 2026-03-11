@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [TryHackMe](https://tryhackme.com/room/tcpdump)
-- **Category:** Networking / Analysis
-- **Difficulty:** Easy
+* **Room Link:** [TryHackMe](https://tryhackme.com/room/tcpdump)
+* **Category:** Networking / Analysis
+* **Difficulty:** Easy
 
 ---
 
@@ -64,8 +64,8 @@ Menggabungkan beberapa filter pakai operator logika:
 
 Di bagian praktik, kita diminta mencari informasi spesifik di dalam file pcap atau traffic live:
 
-- **Analisis HTTP:** Pakai `-A` buat melihat request GET/POST dan mencari flag tersembunyi
-- **Cek Flag TCP:** Mencari paket dengan flag tertentu (seperti `SYN` atau `RST`) buat mendeteksi port scanning
+* **Analisis HTTP:** Pakai `-A` buat melihat request GET/POST dan mencari flag tersembunyi
+* **Cek Flag TCP:** Mencari paket dengan flag tertentu (seperti `SYN` atau `RST`) buat mendeteksi port scanning
 
 ---
 

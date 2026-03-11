@@ -1,8 +1,8 @@
 # TryHackMe: Logs Fundamentals
 
-- **Room Link:** [Logs Fundamentals](https://tryhackme.com/room/logsfundamentals)
-- **Kategori:** Defensive Security
-- **Difficulty:** easy
+* **Room Link:** [Logs Fundamentals](https://tryhackme.com/room/logsfundamentals)
+* **Kategori:** Defensive Security
+* **Difficulty:** easy
 
 ---
 
@@ -39,16 +39,16 @@ Secara garis besar, ini beberapa area utama yang sangat bergantung pada logs unt
 ### Learning Objectives
 
 Setelah menyelesaikan _room_ ini, kita akan belajar tentang:
-- Apa saja tipe-tipe logs.
-- Bagaimana cara menganalisis logs.
-- Melakukan analisis pada Windows Event logs.
-- Melakukan analisis pada Web Access logs.
+* Apa saja tipe-tipe logs.
+* Bagaimana cara menganalisis logs.
+* Melakukan analisis pada Windows Event logs.
+* Melakukan analisis pada Web Access logs.
 
 ---
 
 ### Question
 
-- Bisa kasih salah satu contoh kenapa _Auditing and Compliance_ sangat butuh campur tangan _Logs_?
+* Bisa kasih salah satu contoh kenapa _Auditing and Compliance_ sangat butuh campur tangan _Logs_?
 
 ## Types of Logs
 
@@ -69,19 +69,19 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 
 | Tipe Log (_Log Type_) | Kegunaan Utama (_Usage_) | Contoh _Events_ (_Traces_) |
 | :--- | :--- | :--- |
-| **System Logs** | Sangat krusial buat diagnosa masalah di _Operating System_ (OS). OS bakal merekam semua aktivitas intinya di sini. (Bagi _attacker_, log ini sering dihapus/dimatikan agar aktivitas tak wajarnya ga tertangkap). | - _System Startup/Shutdown events_<br>- _Driver Loading events_<br>- _System Error events_<br>- _Hardware events_ |
-| **Audit Logs** | Ibarat CCTV, fokus utamanya merakam pemenuhan aturan _compliance_ (kepatuhan laporan) seperti perubahan pada sistem oleh pengguna. Ini log *vital* bagi tim _Defensive_ untuk memantau aktivitas tak wajar dan menegakkan aturan (_Policy_). | - _Data Access events_<br>- _System Change events_<br>- _User Activity events_<br>- _Policy Enforcement events_ |
-| **Security Logs** | Merekam semua aktivitas yang berkaitan langsung dengan autentikasi, otorisasi, dan hal-hal yang bersinggungan langsung dengan proteksi sistem keamanan. | - _Authentication events_<br>- _Authorization events_<br>- _Security Policy changes_<br>- _User Account changes_<br>- _Abnormal Activity events_ |
-| **Network Logs** | Log buat nganalisa _traffic_ masuk/keluar di jaringan. Kalau ada anomali lalu-lintas data (seperti _beaconing malware_ atau *exfiltration* data yang ditranfser ke _Command and Control / C2 Server_ milik _attacker_), semuanya terekam di sini. | - _Incoming/Outgoing Network Traffic_<br>- _Network Connection Logs_<br>- _Network Firewall Logs_ |
-| **Access Logs** | Mencatat sumber rinci secara spesifik setiap kali ada sebuah entitas yang me-request akses ke berbagai _resource_ dari layanan (_services_) tertentu, seperti *web server* atau *database*. | - _Webserver Access Logs_<br>- _Database Access Logs_<br>- _Application Access Logs_<br>- _API Access Logs_ |
-| **Application Logs** | Merekam dinamika status yang terjadi spesifik di dalam sebuah aplikasi, entah itu interaksi yang dilakukan _user_ secara langsung maupun proses aplikasi yang berjalan di latar belakang tanpa disadari (_non-interactive_). | - _User Interaction events_<br>- _Application Changes events_<br>- _Application Update events_<br>- _Application Error events_ |
+| **System Logs** | Sangat krusial buat diagnosa masalah di _Operating System_ (OS). OS bakal merekam semua aktivitas intinya di sini. (Bagi _attacker_, log ini sering dihapus/dimatikan agar aktivitas tak wajarnya ga tertangkap). | : _System Startup/Shutdown events_<br>- _Driver Loading events_<br>- _System Error events_<br>- _Hardware events_ |
+| **Audit Logs** | Ibarat CCTV, fokus utamanya merakam pemenuhan aturan _compliance_ (kepatuhan laporan) seperti perubahan pada sistem oleh pengguna. Ini log *vital* bagi tim _Defensive_ untuk memantau aktivitas tak wajar dan menegakkan aturan (_Policy_). | : _Data Access events_<br>- _System Change events_<br>- _User Activity events_<br>- _Policy Enforcement events_ |
+| **Security Logs** | Merekam semua aktivitas yang berkaitan langsung dengan autentikasi, otorisasi, dan hal-hal yang bersinggungan langsung dengan proteksi sistem keamanan. | : _Authentication events_<br>- _Authorization events_<br>- _Security Policy changes_<br>- _User Account changes_<br>- _Abnormal Activity events_ |
+| **Network Logs** | Log buat nganalisa _traffic_ masuk/keluar di jaringan. Kalau ada anomali lalu-lintas data (seperti _beaconing malware_ atau *exfiltration* data yang ditranfser ke _Command and Control / C2 Server_ milik _attacker_), semuanya terekam di sini. | : _Incoming/Outgoing Network Traffic_<br>- _Network Connection Logs_<br>- _Network Firewall Logs_ |
+| **Access Logs** | Mencatat sumber rinci secara spesifik setiap kali ada sebuah entitas yang me-request akses ke berbagai _resource_ dari layanan (_services_) tertentu, seperti *web server* atau *database*. | : _Webserver Access Logs_<br>- _Database Access Logs_<br>- _Application Access Logs_<br>- _API Access Logs_ |
+| **Application Logs** | Merekam dinamika status yang terjadi spesifik di dalam sebuah aplikasi, entah itu interaksi yang dilakukan _user_ secara langsung maupun proses aplikasi yang berjalan di latar belakang tanpa disadari (_non-interactive_). | : _User Interaction events_<br>- _Application Changes events_<br>- _Application Update events_<br>- _Application Error events_ |
 
 ---
 
 ### Question
 
-- Coba sebutin alasan logis paling utama kenapa _logs_ itu wajib dipisah-pisah golongannya?
-- Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau mengecek riwayat siapa saja yang berhasil (atau gagal) nyoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu bakal kamu bedah duluan?
+* Coba sebutin alasan logis paling utama kenapa _logs_ itu wajib dipisah-pisah golongannya?
+* Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau mengecek riwayat siapa saja yang berhasil (atau gagal) nyoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu bakal kamu bedah duluan?
 
 ## Windows Event Logs
 
@@ -112,10 +112,10 @@ Cara aksesnya gampang banget. Kamu cukup buka **Start Menu**, terus ketikkan **E
 
 Berdasarkan *interface* dari Event Viewer tersebut, setiap _log_ kejadian di Windows punya informasi penting yang dibagi ke dalam beberapa kolom (*fields*) utama:
 
-- **Description:** Kolom ini isinya detail kronologi dari *event* tersebut.
-- **Log Name:** Kolom yang menandai nama _file log_ tempat kejadian ini dicatat (Misal: Security, System, dll).
-- **Logged:** Kolom ini mencatat "waktu kejadian" (kapan pastinya aktivitas tersebut terjadi).
-- **Event ID:** Ini adalah *nomor identitas unik* untuk setiap jenis kejadian.
+* **Description:** Kolom ini isinya detail kronologi dari *event* tersebut.
+* **Log Name:** Kolom yang menandai nama _file log_ tempat kejadian ini dicatat (Misal: Security, System, dll).
+* **Logged:** Kolom ini mencatat "waktu kejadian" (kapan pastinya aktivitas tersebut terjadi).
+* **Event ID:** Ini adalah *nomor identitas unik* untuk setiap jenis kejadian.
 
 **Kekuatan Event ID**
 Daripada kita baca deskripsi _log_ satu per satu yang panjang banget, OS Windows sudah mengategorikan setiap jenis aktivitas pakai angka spesial (Event ID). Ini sangat krusial buat proses investigasi!
@@ -147,11 +147,11 @@ Sebagai penyedia layanan, _web server_ (seperti Nginx atau _Apache_) bertugas me
 
 Satu baris _log_ akses dari _web server_ ini menyimpan sekelumit data krusial tentang identitas si pengakses:
 
-- **IP Address:** Alamat IP milik pengunjung (_user_ yang mengirim _request_).
-- **Timestamp:** Stempel waktu kapan persisnya _request_ itu masuk ke server.
-- **Request:** Berisi detail tipe permintaan yang dikirim (misal: `GET` untuk mengambil halaman, `POST` untuk mengirim data _login_). Termasuk juga URL _resource_ yang diakses (misal `/admin-panel`).
-- **Status Code:** Kode angka balasan dari server. (Contoh: `200` berarti sukses, `404` artinya halaman tidak ditemukan, `500` berarti server _error_).
-- **User-Agent:** Informasi _device_ pengunjung — OS apa, aplikasi apa, atau _browser_ jenis apa yang digunakan saat mengirim _request_ tersebut.
+* **IP Address:** Alamat IP milik pengunjung (_user_ yang mengirim _request_).
+* **Timestamp:** Stempel waktu kapan persisnya _request_ itu masuk ke server.
+* **Request:** Berisi detail tipe permintaan yang dikirim (misal: `GET` untuk mengambil halaman, `POST` untuk mengirim data _login_). Termasuk juga URL _resource_ yang diakses (misal `/admin-panel`).
+* **Status Code:** Kode angka balasan dari server. (Contoh: `200` berarti sukses, `404` artinya halaman tidak ditemukan, `500` berarti server _error_).
+* **User-Agent:** Informasi _device_ pengunjung — OS apa, aplikasi apa, atau _browser_ jenis apa yang digunakan saat mengirim _request_ tersebut.
 
 ### Linux CLI Tools for Log Analysis
 
@@ -169,5 +169,5 @@ Berikut _tools_ bawaan Linux yang menjadi teman harian untuk membedah _log file_
 
 ### Question
 
-- Anggaplah kamu menemukan rentetan baris _log_ Apache di mana ratusan _request_ `GET` dengan pola URL acak dan _Status Code_ `404` bermunculan dari satu buah IP unik dalam waktu 1 menit. Jika insting peretasanmu dipakai, indikasi serangan apakah ini?
-- Kamu ditugaskan untuk secepat mungkin merangkum kemunculan *IP Address* dari seorang penyusup (`192.168.1.100`) di dalam sebuah file log akses raksasa tanpa menggunakan _mouse_. *Command* Linux apa yang paling efektif kamu eksekusi di terminal?
+* Anggaplah kamu menemukan rentetan baris _log_ Apache di mana ratusan _request_ `GET` dengan pola URL acak dan _Status Code_ `404` bermunculan dari satu buah IP unik dalam waktu 1 menit. Jika insting peretasanmu dipakai, indikasi serangan apakah ini?
+* Kamu ditugaskan untuk secepat mungkin merangkum kemunculan *IP Address* dari seorang penyusup (`192.168.1.100`) di dalam sebuah file log akses raksasa tanpa menggunakan _mouse_. *Command* Linux apa yang paling efektif kamu eksekusi di terminal?

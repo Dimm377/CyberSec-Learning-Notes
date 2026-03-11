@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
-- **Category:** How The Web Works
-- **Difficulty:** easy
+* **Room Link:** [DNS In Details](https://tryhackme.com/room/dnsindetail)
+* **Category:** How The Web Works
+* **Difficulty:** easy
 
 ---
 
@@ -35,13 +35,13 @@ Contoh: Di URL `tryhackme.com.`, nah tanda `.` paling akhir yang tidak terlihat 
 Ini level persis di bawah root. TLD itu bagian paling kanan yang kelihatan jelas di nama domain (contohnya `.com` di `google.com`).
 
 TLD sendiri dibagi jadi dua kelompok utama:
-- **gTLD (Generic TLD):** Memberitahu bidang atau tujuan situs tersebut.
-  - `.com` (Komersial)
-  - `.org` (Organisasi)
-  - `.edu` (Edukasi/Pendidikan)
-- **ccTLD (Country Code TLD):** Menunjukan asal geografis atau negara dari situs tersebut.
-  - `.id` (Indonesia)
-  - `.co.uk` (Inggris Raya)
+* **gTLD (Generic TLD):** Memberitahu bidang atau tujuan situs tersebut.
+* `.com` (Komersial)
+* `.org` (Organisasi)
+* `.edu` (Edukasi/Pendidikan)
+* **ccTLD (Country Code TLD):** Menunjukan asal geografis atau negara dari situs tersebut.
+* `.id` (Indonesia)
+* `.co.uk` (Inggris Raya)
 
 *(Info tambahan: Di era modern sekarang juga banyak TLD baru yang lebih unik dan spesifik kayak `.online`, `.club`, atau `.biz`).*
 

@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [How The Web Works](https://tryhackme.com/room/howwebsiteswork)
-- **Category:** How The Web Works
-- **Difficulty:** easy
+* **Room Link:** [How The Web Works](https://tryhackme.com/room/howwebsiteswork)
+* **Category:** How The Web Works
+* **Difficulty:** easy
 
 ---
 
@@ -19,8 +19,8 @@ Belajar proses fundamental dalam pembuatan situs web, termasuk bagaimana browser
 
 Pada dasarnya, web bekerja pakai model **Client-Server**. Analogi paling gampang: bayangkan kamu lagi di **restoran** (lagi lagi restoran, karena emang mirip).
 
-- **Client** = Kamu (yang memesan makanan lewat browser)
-- **Server** = Dapur (yang menyiapkan dan mengirimkan makanan/data)
+* **Client** = Kamu (yang memesan makanan lewat browser)
+* **Server** = Dapur (yang menyiapkan dan mengirimkan makanan/data)
 
 #### Siklus Request & Response
 
@@ -150,8 +150,8 @@ HTML Injection itu kerentanan yang terjadi saat input pengguna ditampilkan di ha
 | **Execution** | Browser menerjemahkan input itu sebagai kode HTML asli dan me-render-nya |
 
 **Dampak dari HTML Injection:**
-- **Defacement:** Mengubah konten visual website
-- **Phishing:** Menyuntikkan formulir login palsu buat mencuri data pengguna
-- **Redirection:** Mengarahkan pengguna ke situs berbahaya pakai tag `<a>`
+* **Defacement:** Mengubah konten visual website
+* **Phishing:** Menyuntikkan formulir login palsu buat mencuri data pengguna
+* **Redirection:** Mengarahkan pengguna ke situs berbahaya pakai tag `<a>`
 
 > **Note:** **"All User Input is Evil."** Jangan pernah menampilkan input user secara langsung tanpa proses _encoding_ atau _filtering_ di sisi server.

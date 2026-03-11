@@ -3,9 +3,9 @@
 
 ---
 
-- **Room Link:** [SQL Injection](https://tryhackme.com/room/sqlinjectionlm)
-- **Category:** Web Security
-- **Difficulty:** Medium
+* **Room Link:** [SQL Injection](https://tryhackme.com/room/sqlinjectionlm)
+* **Category:** Web Security
+* **Difficulty:** Medium
 
 ---
 
@@ -15,9 +15,9 @@
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan input field di web application yang berinteraksi dengan database.
-- **Syaratnya:** Menemukan parameter input (form login, search bar, URL parameter) yang tidak di-sanitasi dengan benar.
-- **Tanda keberhasilan:** Query yang dimodifikasi mengembalikan data yang seharusnya tidak bisa diakses, atau bypass autentikasi berhasil.
+* **Kapan teknik ini dipakai?** Tahap **Exploitation** — setelah menemukan input field di web application yang berinteraksi dengan database.
+* **Syaratnya:** Menemukan parameter input (form login, search bar, URL parameter) yang tidak di-sanitasi dengan benar.
+* **Tanda keberhasilan:** Query yang dimodifikasi mengembalikan data yang seharusnya tidak bisa diakses, atau bypass autentikasi berhasil.
 
 > **Common Mistake:** Menggunakan tanda kutip yang salah. Beberapa database menggunakan `'` (single quote) dan ada yang menggunakan `"` (double quote). Coba keduanya jika payload tidak bekerja.
 
@@ -95,7 +95,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ---
 
-## Blind SQLi - Authentication Bypass
+## Blind SQLi : Authentication Bypass
 
 **Blind SQLi:** Aplikasi tidak nge-return hasil query SQL secara langsung.
 **Authentication Bypass:**
@@ -105,7 +105,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ---
 
-## Blind SQLi - Boolean Based
+## Blind SQLi : Boolean Based
 
 **Konsep:**
 *   Aplikasi memberi respons yang beda (konten halaman, kode status HTTP) tergantung apakah query bernilai TRUE atau FALSE.
@@ -114,8 +114,8 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 **Contoh:**
 Cek apakah username itu 'admin':
 ```sql
-admin' AND 1=1 -- (True - Halaman load normal)
-admin' AND 1=0 -- (False - Halaman ilang konten/404)
+admin' AND 1=1 -- (True : Halaman load normal)
+admin' AND 1=0 -- (False : Halaman ilang konten/404)
 ```
 Cek huruf pertama password:
 ```sql
@@ -124,7 +124,7 @@ admin' AND SUBSTRING((SELECT password FROM users WHERE username='admin'), 1, 1) 
 
 ---
 
-## Blind SQLi - Time Based
+## Blind SQLi : Time Based
 
 **Konsep:**
 *   Dipake waktu aplikasi TIDAK memberi perbedaan respons yang keliatan (tidak ada error, tidak ada perubahan konten).
@@ -171,5 +171,5 @@ Minta file dari server penyerang, bocorin data di subdomain:
         ```
 
 2.  **Input Validation:**
-    *   Deny-list (Blok karakter berbahaya seperti `'`, `--`) - **Lemah**.
-    *   Allow-list (Cuma izinin karakter tertentu, misal: alfanumerik) - **Kuat**.
+    *   Deny-list (Blok karakter berbahaya seperti `'`, `--`) : **Lemah**.
+    *   Allow-list (Cuma izinin karakter tertentu, misal: alfanumerik) : **Kuat**.

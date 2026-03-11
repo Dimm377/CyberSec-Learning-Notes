@@ -1,8 +1,8 @@
 # TryHackMe: Careers in Cyber
 
-- **Room Link:** [Careers in Cyber](https://tryhackme.com/room/careersincyber)
-- **Category:** Build Your Cyber Security Career
-- **Difficulty:** Easy
+* **Room Link:** [Careers in Cyber](https://tryhackme.com/room/careersincyber)
+* **Category:** Build Your Cyber Security Career
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -30,9 +30,9 @@ Bayangkan mereka sebagai **Detektif di dalam Jaringan**. Mereka tidak cuma menun
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Analisis Menyeluruh:** Bekerja sama dengan berbagai departemen untuk menganalisis kondisi keamanan di seluruh perusahaan.
-- **Reporting & Dokumentasi:** Menyusun laporan berkala tentang keamanan jaringan, mendokumentasikan isu yang ditemukan, serta langkah pertahanan yang sudah diambil sebagai respon.
-- **Security Planning:** Membuat rencana keamanan jangka panjang dengan meriset alat serangan terbaru (*attack tools*) dan tren ancaman masa kini agar tim tetap satu langkah di depan hacker.
+* **Analisis Menyeluruh:** Bekerja sama dengan berbagai departemen untuk menganalisis kondisi keamanan di seluruh perusahaan.
+* **Reporting & Dokumentasi:** Menyusun laporan berkala tentang keamanan jaringan, mendokumentasikan isu yang ditemukan, serta langkah pertahanan yang sudah diambil sebagai respon.
+* **Security Planning:** Membuat rencana keamanan jangka panjang dengan meriset alat serangan terbaru (*attack tools*) dan tren ancaman masa kini agar tim tetap satu langkah di depan hacker.
 
 ### Learning Paths
 
@@ -52,9 +52,9 @@ Fokus utama mereka adalah membangun solusi keamanan yang kokoh dengan cara memit
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Uji Coba & Screening:** Melakukan pengetesan dan pengecekan ketat terhadap langkah-hari keamanan di seluruh software atau aplikasi perusahaan.
-- **Monitoring & Patching:** Terus memantau jaringan dan laporan masuk untuk memperbarui sistem (*update/patch*) guna menutup celah kerentanan yang ada.
-- **Implementasi Sistem:** Mengidentifikasi dan memasang sistem keamanan terbaru yang dibutuhkan agar pertahanan organisasi selalu optimal.
+* **Uji Coba & Screening:** Melakukan pengetesan dan pengecekan ketat terhadap langkah-hari keamanan di seluruh software atau aplikasi perusahaan.
+* **Monitoring & Patching:** Terus memantau jaringan dan laporan masuk untuk memperbarui sistem (*update/patch*) guna menutup celah kerentanan yang ada.
+* **Implementasi Sistem:** Mengidentifikasi dan memasang sistem keamanan terbaru yang dibutuhkan agar pertahanan organisasi selalu optimal.
 
 ### Learning Paths
 
@@ -74,9 +74,9 @@ Ini adalah posisi yang penuh tekanan (*high pressure*) karena kamu harus mengamb
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Eksekusi Incident Response Plan:** Mengembangkan dan menjalankan rencana aksi yang detail saat terjadi insiden.
-- **Mitigasi & Pemulihan:** Berespon secara produktif untuk menghentikan kebocoran data dan memulihkan sistem secepat mungkin guna menjaga reputasi dan stabilitas finansial perusahaan.
-- **Post-Incident Reporting:** Setelah serangan berlalu, mereka menyusun laporan lengkap, menganalisis apa yang terjadi, dan menyiapkan strategi agar serangan serupa tidak terulang di masa depan.
+* **Eksekusi Incident Response Plan:** Mengembangkan dan menjalankan rencana aksi yang detail saat terjadi insiden.
+* **Mitigasi & Pemulihan:** Berespon secara produktif untuk menghentikan kebocoran data dan memulihkan sistem secepat mungkin guna menjaga reputasi dan stabilitas finansial perusahaan.
+* **Post-Incident Reporting:** Setelah serangan berlalu, mereka menyusun laporan lengkap, menganalisis apa yang terjadi, dan menyiapkan strategi agar serangan serupa tidak terulang di masa depan.
 
 ### Indikator Keberhasilan (Metrics)
 
@@ -103,9 +103,9 @@ Peran ini bisa bekerja di dua sisi:
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Pengumpulan Bukti Digital:** Mengambil data dari berbagai perangkat (*hard drive*, HP, server) dengan tetap mengikuti prosedur hukum yang ketat agar bukti tersebut sah di mata hukum.
-- **Analisis Data:** Membedah bukti digital untuk menemukan jawaban terkait kasus yang sedang ditangani (misalnya: siapa yang mengakses file ini, kapan serangan terjadi).
-- **Dokumentasi & Pelaporan:** Menyusun laporan teknis yang mendalam tentang temuan mereka untuk digunakan dalam proses hukum atau evaluasi internal.
+* **Pengumpulan Bukti Digital:** Mengambil data dari berbagai perangkat (*hard drive*, HP, server) dengan tetap mengikuti prosedur hukum yang ketat agar bukti tersebut sah di mata hukum.
+* **Analisis Data:** Membedah bukti digital untuk menemukan jawaban terkait kasus yang sedang ditangani (misalnya: siapa yang mengakses file ini, kapan serangan terjadi).
+* **Dokumentasi & Pelaporan:** Menyusun laporan teknis yang mendalam tentang temuan mereka untuk digunakan dalam proses hukum atau evaluasi internal.
 
 ---
 
@@ -117,9 +117,9 @@ Tugas inti mereka adalah mengubah program yang sudah jadi (bahasa mesin) kembali
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Static Analysis:** Membedah program tanpa menjalankannya (reverse-engineering) untuk melihat strukturnya.
-- **Dynamic Analysis:** Menjalankan malware di lingkungan yang aman dan terkendali (*sandbox*) untuk melihat apa yang sebenarnya dilakukan malware tersebut saat aktif.
-- **Reporting:** Menyusun laporan tentang aktivitas malware, cara mendeteksinya, dan dampaknya terhadap sistem.
+* **Static Analysis:** Membedah program tanpa menjalankannya (reverse-engineering) untuk melihat strukturnya.
+* **Dynamic Analysis:** Menjalankan malware di lingkungan yang aman dan terkendali (*sandbox*) untuk melihat apa yang sebenarnya dilakukan malware tersebut saat aktif.
+* **Reporting:** Menyusun laporan tentang aktivitas malware, cara mendeteksinya, dan dampaknya terhadap sistem.
 
 Tujuannya cuma satu: Paham cara kerja musuh agar bisa membuat pertahanan yang lebih baik.
 
@@ -133,9 +133,9 @@ Beda dengan hacker jahat, Pentester melakukan peretasan secara sistematis dan le
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Uji Penetrasi:** Melakukan simulasi serangan pada sistem komputer, jaringan, dan aplikasi berbasis web.
-- **Security Assessment:** Melakukan audit, penilaian keamanan, dan analisis kebijakan untuk melihat di mana letak kelemahannya.
-- **Reporting & Advokasi:** Mengevaluasi temuan, menyusun laporan insiden, dan memberikan rekomendasi langkah-langkah pencegahan serangan yang nyata.
+* **Uji Penetrasi:** Melakukan simulasi serangan pada sistem komputer, jaringan, dan aplikasi berbasis web.
+* **Security Assessment:** Melakukan audit, penilaian keamanan, dan analisis kebijakan untuk melihat di mana letak kelemahannya.
+* **Reporting & Advokasi:** Mengevaluasi temuan, menyusun laporan insiden, dan memberikan rekomendasi langkah-langkah pencegahan serangan yang nyata.
 
 ### Learning Paths
 
@@ -154,9 +154,9 @@ Mereka berperan sebagai musuh nyata (*Adversary*) yang mencoba masuk ke organisa
 
 ### Apa Saja Tanggung Jawabnya?
 
-- **Meniru Threat Actor:** Bertindak sebagai penyerang untuk menemukan celah yang bisa dieksploitasi, menjaga akses agar tidak ketahuan, dan menghindari deteksi.
-- **Evaluasi Kontrol Keamanan:** Menilai efektivitas alat keamanan, intelijen ancaman (*threat intelligence*), dan prosedur respon insiden perusahaan.
-- **Data-Driven Insights:** Memberikan data nyata tentang bagaimana serangan bisa terjadi di dunia asli agar perusahaan bisa melakukan mitigasi sebelum kejadian beneran.
+* **Meniru Threat Actor:** Bertindak sebagai penyerang untuk menemukan celah yang bisa dieksploitasi, menjaga akses agar tidak ketahuan, dan menghindari deteksi.
+* **Evaluasi Kontrol Keamanan:** Menilai efektivitas alat keamanan, intelijen ancaman (*threat intelligence*), dan prosedur respon insiden perusahaan.
+* **Data-Driven Insights:** Memberikan data nyata tentang bagaimana serangan bisa terjadi di dunia asli agar perusahaan bisa melakukan mitigasi sebelum kejadian beneran.
 
 ### Learning Paths
 
@@ -171,8 +171,8 @@ Jalur untuk menjadi Red Teamer profesional biasanya butuh pengalaman lebih luas:
 ## Real-World Relevance
 
 Memahami berbagai peran di Cybersecurity bukan cuma soal memilih pekerjaan, tapi soal memahami **ekosistem pertahanan**. Di dunia nyata:
-- Tanpa **Security Analyst**, perusahaan buta terhadap serangan yang sedang mengintai.
-- Tanpa **Security Engineer**, tidak ada sistem pertahanan yang dibangun.
-- Tanpa **Red Teamer**, perusahaan tidak tahu apakah sistem pertahanan mereka benar benar kuat saat diserang musuh sungguhan.
+* Tanpa **Security Analyst**, perusahaan buta terhadap serangan yang sedang mengintai.
+* Tanpa **Security Engineer**, tidak ada sistem pertahanan yang dibangun.
+* Tanpa **Red Teamer**, perusahaan tidak tahu apakah sistem pertahanan mereka benar benar kuat saat diserang musuh sungguhan.
 
 Kolaborasi antar peran inilah yang menjaga data sensitif jutaan orang tetap aman setiap harinya.

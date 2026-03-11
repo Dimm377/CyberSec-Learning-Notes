@@ -1,8 +1,8 @@
 # TryHackMe: FlareVM Arsenal of Tools
 
-- **Room Link:** [FlareVM Arsenal of Tools](https://tryhackme.com/room/flarevmarsenaloftools)
-- **Category:** Defensive Security Tooling
-- **Difficulty:** Easy
+* **Room Link:** [FlareVM Arsenal of Tools](https://tryhackme.com/room/flarevmarsenaloftools)
+* **Category:** Defensive Security Tooling
+* **Difficulty:** Easy
 
 ## Introduction
 
@@ -12,9 +12,9 @@ Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *mal
 
 ### Learning Objectives
 
-- Mengenal dan mengeksplorasi isi kotak perkakas di dalam FlareVM.
-- Praktik langsung pakai berbagai *tools* bawaannya untuk menganalisis proses/*process* mencurigakan di memori.
-- Familiar sama *tools* yang biasa dipakai buat investigasi statis (*static analysis*) dokumen jahat atau *file* biner (*binaries*).
+* Mengenal dan mengeksplorasi isi kotak perkakas di dalam FlareVM.
+* Praktik langsung pakai berbagai *tools* bawaannya untuk menganalisis proses/*process* mencurigakan di memori.
+* Familiar sama *tools* yang biasa dipakai buat investigasi statis (*static analysis*) dokumen jahat atau *file* biner (*binaries*).
 
 ---
 
@@ -26,70 +26,70 @@ Di dalam FlareVM, _tools_-nya dikelompokkan berdasarkan fungsinya agar kamu lebi
 *Reverse engineering* itu ibarat kamu membongkar sebuah mesin atau barang elektronik (seperti jam mekanik atau radio) yang sudah jadi pabrikan. Tujuannya murni untuk mencari tahu komponen apa saja yang ada di dalamnya dan bagaimana cara alat itu bekerja. Sedangkan *debugging* adalah proses saat alat itu rusak, lalu kamu menganalisis bagian mana yang macet dan mencoba memperbaikinya.
 
 Senjata andalan di kategori ini:
-- **Ghidra**: *Software reverse engineering* high class yang dirilis gratis oleh NSA (Badan Intelijen Amerika).
-- **x64dbg**: *Debugger* *open-source* favorit untuk membedah *file binaries* format 32-bit maupun 64-bit.
-- **OllyDbg**: *Debugger* klasik yang sangat handal membedah instruksi program sampai ke level bahasa *Assembly* (bahasa mesin tingkat rendah).
-- **Radare2**: *Platform reverse engineering open-source* berbasis teks yang sangat ringan dan bertenaga.
-- **Binary Ninja**: *Tool* visual yang rapi untuk membantu membedah (*disassembling*) dan menyusun ulang (*decompiling*) kode biner.
-- **PEiD**: Alat pendeteksi untuk mencari tahu apakah sebuah program itu dibungkus pakai pelindung kode (*packer*, *cryptor*) atau dicetak pakai perangkat lunak pembuat aplikasi (*compiler*) jenis apa.
+* **Ghidra**: *Software reverse engineering* high class yang dirilis gratis oleh NSA (Badan Intelijen Amerika).
+* **x64dbg**: *Debugger* *open-source* favorit untuk membedah *file binaries* format 32-bit maupun 64-bit.
+* **OllyDbg**: *Debugger* klasik yang sangat handal membedah instruksi program sampai ke level bahasa *Assembly* (bahasa mesin tingkat rendah).
+* **Radare2**: *Platform reverse engineering open-source* berbasis teks yang sangat ringan dan bertenaga.
+* **Binary Ninja**: *Tool* visual yang rapi untuk membantu membedah (*disassembling*) dan menyusun ulang (*decompiling*) kode biner.
+* **PEiD**: Alat pendeteksi untuk mencari tahu apakah sebuah program itu dibungkus pakai pelindung kode (*packer*, *cryptor*) atau dicetak pakai perangkat lunak pembuat aplikasi (*compiler*) jenis apa.
 
 ### 2. Disassemblers & Decompilers
 Dua jenis *tools* ini sangat penting dalam analisis *malware*. Tugas utamanya ibarat **Penerjemah Bahasa**, komputer berkomunikasi menggunakan angka dan bahasa mesin yang tidak bisa dibaca manusia biasa. Alat ini bertugas menerjemahkan surat rahasia tersebut ke dalam format logika (seperti kode *C++* atau *Assembly*) yang lebih mudah dipahami oleh analis.
 
 Alat yang sering dipakai:
-- **CFF Explorer**: Editor khusus (*PE editor*) untuk menganalisis dan membongkar struktur *file* berformat *Portable Executable* (khas Windows seperti `.exe` atau `.dll`).
-- **Hopper Disassembler**: Paket komplit yang bisa merangkap jadi *debugger*, *disassembler*, sekaligus *decompiler*.
-- **RetDec**: *Decompiler open-source* tangguh buat menerjemahkan kembali bahasa mesin agar lebih gampang dibaca.
+* **CFF Explorer**: Editor khusus (*PE editor*) untuk menganalisis dan membongkar struktur *file* berformat *Portable Executable* (khas Windows seperti `.exe` atau `.dll`).
+* **Hopper Disassembler**: Paket komplit yang bisa merangkap jadi *debugger*, *disassembler*, sekaligus *decompiler*.
+* **RetDec**: *Decompiler open-source* tangguh buat menerjemahkan kembali bahasa mesin agar lebih gampang dibaca.
 
 ### 3. Static & Dynamic Analysis
 Ada dua metode utama dalam menginvestigasi sebuah *malware*. Ibarat pos satpam yang sedang memeriksa paket kotak mencurigakan:
-> - **Static Analysis:** Membedah wujud fisik, tulisan pengirim, dan isi kotak tersebut menggunakan alat *X-Ray* **tanpa** membuka kotaknya secara langsung (metode aman).
-> - **Dynamic Analysis:** Mengambil paket tersebut, memasukkannya ke dalam ruangan isolasi tebal (*sandbox*), lalu sengaja **membuka dan memicunya** untuk melihat efek apa yang terjadi pada ruangan tersebut (metode tes langsung).
+> : **Static Analysis:** Membedah wujud fisik, tulisan pengirim, dan isi kotak tersebut menggunakan alat *X-Ray* **tanpa** membuka kotaknya secara langsung (metode aman).
+> : **Dynamic Analysis:** Mengambil paket tersebut, memasukkannya ke dalam ruangan isolasi tebal (*sandbox*), lalu sengaja **membuka dan memicunya** untuk melihat efek apa yang terjadi pada ruangan tersebut (metode tes langsung).
 
 Alat pemantau andalannya:
-- **Process Hacker**: Versi Task Manager yang super canggih. Sangat informatif untuk memantau program apa saja yang sedang berjalan (*process watcher*) dan melihat penggunaan memori sistem.
-- **PEview**: Alat ringan untuk mengintip isi dari komponen pembangun *file* `.exe` (berjenis PE).
-- **Dependency Walker**: Alat yang digunakan untuk melihat daftar *file library* pendukung (DLL bawaan Windows) apa saja yang diam-diam "dipanggil" dan dibutuhkan oleh suatu aplikasi.
-- **DIE (Detect It Easy)**: Alat serbaguna untuk mendeteksi apakah suatu *file* dilindungi oleh pengunci (*packer*, *cryptor*) dan alat pembuat (*compiler*) tertentu.
+* **Process Hacker**: Versi Task Manager yang super canggih. Sangat informatif untuk memantau program apa saja yang sedang berjalan (*process watcher*) dan melihat penggunaan memori sistem.
+* **PEview**: Alat ringan untuk mengintip isi dari komponen pembangun *file* `.exe` (berjenis PE).
+* **Dependency Walker**: Alat yang digunakan untuk melihat daftar *file library* pendukung (DLL bawaan Windows) apa saja yang diam-diam "dipanggil" dan dibutuhkan oleh suatu aplikasi.
+* **DIE (Detect It Easy)**: Alat serbaguna untuk mendeteksi apakah suatu *file* dilindungi oleh pengunci (*packer*, *cryptor*) dan alat pembuat (*compiler*) tertentu.
 
 ### 4. Forensics & Incident Response
 Kategori ini ibarat tim forensik polisi (*CSI*) yang turun ke tempat kejadian perkara (TKP). *Digital Forensics* bertugas mengumpulkan, menganalisis, dan mengamankan barang bukti (dari *harddisk*, jaringan, sampai rekaman RAM memori). Sementara *Incident Response* fokus pada pertolongan pertama: mendeteksi, mengisolasi, membasmi ancaman pencuri (*hacker/malware*), dan memulihkan sistem yang rusak.
 
 Alat spesialis forensik:
-- **Volatility**: *Framework* wajib untuk menganalisis dan membongkar barang bukti berupa rekaman memori (*RAM dump*).
-- **Rekall**: *Framework* alternatif untuk forensik memori, biasanya sangat berguna saat tim sedang melakukan respon insiden.
-- **FTK Imager**: Alat standar industri forensik untuk mengkloning (membuat *image*) isi *harddisk* mentah-mentah secara aman untuk dianalisis.
+* **Volatility**: *Framework* wajib untuk menganalisis dan membongkar barang bukti berupa rekaman memori (*RAM dump*).
+* **Rekall**: *Framework* alternatif untuk forensik memori, biasanya sangat berguna saat tim sedang melakukan respon insiden.
+* **FTK Imager**: Alat standar industri forensik untuk mengkloning (membuat *image*) isi *harddisk* mentah-mentah secara aman untuk dianalisis.
 
 ### 5. Network Analysis
 Ini dia alat penyadap jaringannya analis cyber. Ibarat memasang CCTV dan alat penyadap telepon di seluruh rumah, alat-alat ini membantu kamu memeriksa aliran pola data yang keluar-masuk di kabel jaringan.
 
 Alat pemantau jaringan:
-- **Wireshark**: Mikroskop jaringan paling populer di dunia. Bisa merekam dan membedah percakapan data (protokol) antar komputer secara *live*.
-- **Nmap**: Pemindai jaringan legendaris pemetaan komputer dan mencari tahu pintu (*port*) mana saja yang terbuka dan rentan diserang.
-- **Netcat**: Tool Swiss Army Knife dunia jaringan. Bisa dipakai untuk membaca dan menulis data kosong ke dalam koneksi jaringan, sangat berguna untuk tes sederhana.
+* **Wireshark**: Mikroskop jaringan paling populer di dunia. Bisa merekam dan membedah percakapan data (protokol) antar komputer secara *live*.
+* **Nmap**: Pemindai jaringan legendaris pemetaan komputer dan mencari tahu pintu (*port*) mana saja yang terbuka dan rentan diserang.
+* **Netcat**: Tool Swiss Army Knife dunia jaringan. Bisa dipakai untuk membaca dan menulis data kosong ke dalam koneksi jaringan, sangat berguna untuk tes sederhana.
 
 ### 6. File Analysis
 Ibarat meneliti sidik jari dan komposisi kimiawi darah di lab, teknik ini murni digunakan untuk meneliti susunan komponen sebuah *file* dari dasar untuk mencari bibit ancaman keamanan di dalamnya.
 
 Alat bedah *file*:
-- **FileInsight**: Program spesialis untuk membaca dan mengedit *file* biner (kumpulan angka bahasa komputer).
-- **Hex Fiend**: *Hex editor* (editor yang menampilkan angka dasar heksadesimal komputer) yang sangat ringan dan cepat.
-- **HxD**: *Hex editor* andalan sejuta umat untuk melihat dan mengedit bahasa mentah biner dari sebuah *file*.
+* **FileInsight**: Program spesialis untuk membaca dan mengedit *file* biner (kumpulan angka bahasa komputer).
+* **Hex Fiend**: *Hex editor* (editor yang menampilkan angka dasar heksadesimal komputer) yang sangat ringan dan cepat.
+* **HxD**: *Hex editor* andalan sejuta umat untuk melihat dan mengedit bahasa mentah biner dari sebuah *file*.
 
 ### 7. Scripting & Automation
 Analisis manual itu capek dan rentan salah (karena *human error*). Kategori ini ibarat kamu membuat lengan robot pabrik untuk menjalankan tugas-tugas receh dan berulang secara otomatis, sehingga kinerja analis jadi jauh lebih cepat.
 
 Alat otomasi andalan:
-- **Python**: Bahasa pemrograman favorit analis keamanan. Fokus utamanya dipakai untuk menjalankan modul dan tools otomatis.
-- **PowerShell Empire**: Kerangka kerja (*framework*) berbasis PowerShell yang biasa dipakai *hacker*/*tester* untuk aktivitas setelah penyusupan (mempertahankan akses ke komputer korban).
+* **Python**: Bahasa pemrograman favorit analis keamanan. Fokus utamanya dipakai untuk menjalankan modul dan tools otomatis.
+* **PowerShell Empire**: Kerangka kerja (*framework*) berbasis PowerShell yang biasa dipakai *hacker*/*tester* untuk aktivitas setelah penyusupan (mempertahankan akses ke komputer korban).
 
 ### 8. Sysinternals Suite
 Ini adalah kumpulan perkakas khusus sistem operasi Windows. Alat-alat ini dirancang spesifik untuk membantu tenaga profesional IT dan developer mengelola, memperbaiki masalah (_troubleshoot_), dan mendiagnosa masalah di dalam Windows.
 
 Tiga serangkai utamanya:
-- **Autoruns**: Alat intelijen untuk mencari tahu program _executables_ apa saja yang diam-diam dijalankan secara otomatis ketika komputer pertama kali menyala (_boot-up_). Sangat vital untuk mencari _malware_ yang bersarang di sistem.
-- **Process Explorer**: _Task Manager_ yang super detail menyangkut proses-proses yang sedang berjalan di komputermu.
-- **Process Monitor**: Kamera pengawas _real-time_ — mencatat setiap pergerakan dari seluruh proses dan _thread_ yang aktif di sistem tanpa ada yang lolos.
+* **Autoruns**: Alat intelijen untuk mencari tahu program _executables_ apa saja yang diam-diam dijalankan secara otomatis ketika komputer pertama kali menyala (_boot-up_). Sangat vital untuk mencari _malware_ yang bersarang di sistem.
+* **Process Explorer**: _Task Manager_ yang super detail menyangkut proses-proses yang sedang berjalan di komputermu.
+* **Process Monitor**: Kamera pengawas _real-time_ — mencatat setiap pergerakan dari seluruh proses dan _thread_ yang aktif di sistem tanpa ada yang lolos.
 
 ---
 
@@ -149,9 +149,9 @@ Jadi, saat kamu melihat layar Procmon, insting utamamu adalah mencari **anomali 
 **Process Explorer** adalah jenis alat yang memberikan analisis mendalam tentang semua program yang sedang aktif di komputermu. Kalau Procmon tadi adalah CCTV yang merekam aktivitas gerakan, maka **Process Explorer** adalah **Buku Induk Kependudukan** dan **Pohon Silsilah Keluarga** dari proses komputer.
 
 Alat ini memungkinkanmu untuk:
-- Melihat daftar lengkap program yang aktif beserta akun pengguna (*user accounts*) yang menjalankannya.
-- Mencari tahu program mana yang saat ini sedang mengakses, membuka, atau mengunci sebuah *file* atau folder tertentu.
-- Memeriksa asal-usul atau silsilah keluarga dari sebuah program (hubungan *parent-child*).
+* Melihat daftar lengkap program yang aktif beserta akun pengguna (*user accounts*) yang menjalankannya.
+* Mencari tahu program mana yang saat ini sedang mengakses, membuka, atau mengunci sebuah *file* atau folder tertentu.
+* Memeriksa asal-usul atau silsilah keluarga dari sebuah program (hubungan *parent-child*).
 
 **Contoh Investigasi Menggunakan Process Explorer:**
 
@@ -160,8 +160,8 @@ Perhatikan gambar di bawah ini saat kita membuka aplikasi CFF Explorer:
 ![Process Explorer showing parent-child relationship](../../Assets/Images/Procexp.png)
 
 Dari gambar di bawah ini, kamu bisa melihat **Silsilah Keluarga** (*Parent-child relationship*) dari prosesnya:
-- `explorer.exe` (Wujud antarmuka layar *desktop* Windows) bertindak sebagai aplikasi **Induk** (*Parent*).
-- Induk ini berada di tingkat atas, dan di bawahnya muncul sebuah cabang baru berisikan `CFF Explorer.exe` yang bertindak sebagai aplikasi **Anak** (*Child*).
+* `explorer.exe` (Wujud antarmuka layar *desktop* Windows) bertindak sebagai aplikasi **Induk** (*Parent*).
+* Induk ini berada di tingkat atas, dan di bawahnya muncul sebuah cabang baru berisikan `CFF Explorer.exe` yang bertindak sebagai aplikasi **Anak** (*Child*).
 
 Ini membuktikan bahwa aplikasi CFF Explorer tadi secara sah dibuka melalui layar *desktop* biasa oleh sang pengguna.
 
@@ -184,11 +184,11 @@ Anggap saja analis kita menemukan *file* teks mencurigakan bernama `possible_med
 ![HxD Hex Editor Inspection](../../Assets/Images/HxD.png)
 
 Cara membaca *interface* HxD di atas:
-- Ruangan sebelah **Kiri** menampilkan susunan kode DNA mentah dari *file* (kumpulan angka/huruf *Hexadecimal*).
-- Ruangan sebelah **Tengah** mencoba menerjemahkan angka-angka DNA tadi menjadi bentuk teks *ASCII* (tulisan manusia) sebisanya.
-- Ruangan sebelah **Kanan** adalah panel **Data Inspector**. Panel ini sangat krusial karena bertugas sebagai kalkulator pintar penyadur bahasa alien ke berbagai wujud tipe data manusia (apakah itu angka biasa, tanggal, atau nilai spesifik spesifik lainnya).
+* Ruangan sebelah **Kiri** menampilkan susunan kode DNA mentah dari *file* (kumpulan angka/huruf *Hexadecimal*).
+* Ruangan sebelah **Tengah** mencoba menerjemahkan angka-angka DNA tadi menjadi bentuk teks *ASCII* (tulisan manusia) sebisanya.
+* Ruangan sebelah **Kanan** adalah panel **Data Inspector**. Panel ini sangat krusial karena bertugas sebagai kalkulator pintar penyadur bahasa alien ke berbagai wujud tipe data manusia (apakah itu angka biasa, tanggal, atau nilai spesifik spesifik lainnya).
 
-**Mental Model Analis - Number "4D 5A":**
+**Mental Model Analis : Number "4D 5A":**
 Satu insting terpenting analis saat membuka sebuah *file* asing pakai Hex Editor adalah melihat dua pasang angka pertama di pojok kiri atas (*Header*). Pada gambar di atas, tertulis angka **`4D 5A`** (atau huruf "MZ" di sisi ASCII).
 
 Ini adalah **Bendera Merah**, Angka `4D 5A` adalah kode sandi universal bawaan Microsoft Windows untuk menandakan bahwa *file* ini adalah **Aplikasi yang Bisa Dijalankan (*Executable* / `.exe`)**, terlepas dari apapun nama dan ekstensinya  
@@ -200,9 +200,9 @@ Jadi, walaupun *hacker*-nya pintar menyamarkan nama *file* menjadi `possible_med
 Kalau *HxD* membelah struktur sampai ke tingkat DNA, **CFF Explorer** bekerja layaknya alat **Pengecek KTP Digital** dan **Pemindai Sidik Jari** di pos imigrasi.
 
 Aplikasi ini menyajikan informasi *file* yang sangat terperinci. Tugas utamanya adalah membongkar kartu identitas (*properties*) sebuah sistem untuk:
-- Menghasilkan dan memeriksa sidik jari digital (*file hashes*) demi verifikasi integritas.
-- Memastikan darimana asal muasal sebuah *file* (apakah asli dari Microsoft atau susupan).
-- Mencari kejanggalan atau modifikasi (*alterations*) aneh pada kolom informasi yang bisa jadi disembunyikan oleh *hacker*.
+* Menghasilkan dan memeriksa sidik jari digital (*file hashes*) demi verifikasi integritas.
+* Memastikan darimana asal muasal sebuah *file* (apakah asli dari Microsoft atau susupan).
+* Mencari kejanggalan atau modifikasi (*alterations*) aneh pada kolom informasi yang bisa jadi disembunyikan oleh *hacker*.
 
 **Contoh Investigasi Menggunakan CFF Explorer:**
 
@@ -278,9 +278,9 @@ INFO: floss: rendering results
 
 **Membaca Hasil Interogasi:**
 Pada pengetesan di atas, FLOSS berhasil mengekstrak dan memeras **189 kata statis (*static strings*)** dari dalam body virus tersebut. Rentetan 189 kata ini ibarat catatan saku si virus yang berisi:
-- **Alamat *Website* (URLs) / Alamat IP:** Kemungkinan besar ini adalah lokasi *server* tempat *hacker* mengontrol si virus (*Command and Control Server*).
-- **Lokasi Direktori (*Paths*):** Menunjukkan di mana si virus berencana menanamkan diri di dalam komputermu.
-- **Isi Kunci Enkripsi dan Nama *Registry*.**
+* **Alamat *Website* (URLs) / Alamat IP:** Kemungkinan besar ini adalah lokasi *server* tempat *hacker* mengontrol si virus (*Command and Control Server*).
+* **Lokasi Direktori (*Paths*):** Menunjukkan di mana si virus berencana menanamkan diri di dalam komputermu.
+* **Isi Kunci Enkripsi dan Nama *Registry*.**
 
 **Bendera Merah Tambahan:**
 Perhatikan bahwa dari interogasi di atas, FLOSS **tidak berhasil** menemukan data di kolom *decoded strings*. Ini malah menjadi petunjuk penting: Ini menandakan bahwa pembuat *malware* benar-benar sangat niat membuat kode penyamaran (*obfuscation*) yang jauh lebih rumit, atau virus ini membangkitkan senjatanya (*dynamically generated*) langsung saat ia dieksekusi, bukan disimpan sebagai teks mati di badannya. Menutupi diri dengan cara kompleks seperti ini adalah **ciri khas** dari *malware* berbahaya sejati.

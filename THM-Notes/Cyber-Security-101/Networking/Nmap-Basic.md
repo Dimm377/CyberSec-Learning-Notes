@@ -2,9 +2,9 @@
 
 ---
 
-- **Room Link:** [TryHackMe](https://tryhackme.com/room/nmap)
-- **Category:** Networking / Tools
-- **Difficulty:** Easy
+* **Room Link:** [TryHackMe](https://tryhackme.com/room/nmap)
+* **Category:** Networking / Tools
+* **Difficulty:** Easy
 
 ---
 
@@ -14,9 +14,9 @@ Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan
 
 ### Attack Context
 
-- **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — langkah paling awal dalam attack chain sebelum eksploitasi.
-- **Syaratnya:** Akses jaringan ke target (bisa langsung atau via VPN/tunnel).
-- **Tanda keberhasilan:** Daftar port terbuka, versi service, dan OS fingerprint muncul di output.
+* **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — langkah paling awal dalam attack chain sebelum eksploitasi.
+* **Syaratnya:** Akses jaringan ke target (bisa langsung atau via VPN/tunnel).
+* **Tanda keberhasilan:** Daftar port terbuka, versi service, dan OS fingerprint muncul di output.
 
 > **Common Mistake:** Menjalankan SYN scan (`-sS`) tanpa `sudo` akan otomatis fallback ke TCP Connect scan (`-sT`) yang lebih lambat dan lebih berisik. Selalu gunakan `sudo nmap` untuk mendapatkan hasil terbaik.
 
@@ -26,13 +26,13 @@ Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan
 
 Agar Nmap tidak berjalan tanpa arah, kamu wajib menguasai *flag* dasar ini untuk mengendalikan prosesnya:
 
-- **`-sT` (TCP Connect Scan):** Menyelesaikan proses *three-way handshake* secara utuh. Paling sopan, tapi juga paling mudah terdeteksi.
-- **`-sS` (SYN Scan):** Dikenal sebagai "Half-open" *scan*. Lebih cepat dan lebih sulit terdeteksi karena koneksi diputus sebelum *handshake* selesai.
-- **`-sU` (UDP Scan):** Khusus untuk mengintip layanan berbasis UDP (seperti DNS atau DHCP).
-- **`-O`:** Menebak Sistem Operasi (OS) target.
-- **`-sV`:** Mendeteksi *versi* aplikasi/layanan yang berjalan di *port* tersebut.
-- **`-p-`:** Memindai seluruh 65.535 *port* tanpa terkecuali.
-- **`-A` (Aggressive):** Paket komplit. Gabungan dari deteksi OS, versi, *script scanning*, dan *traceroute*.
+* **`-sT` (TCP Connect Scan):** Menyelesaikan proses *three-way handshake* secara utuh. Paling sopan, tapi juga paling mudah terdeteksi.
+* **`-sS` (SYN Scan):** Dikenal sebagai "Half-open" *scan*. Lebih cepat dan lebih sulit terdeteksi karena koneksi diputus sebelum *handshake* selesai.
+* **`-sU` (UDP Scan):** Khusus untuk mengintip layanan berbasis UDP (seperti DNS atau DHCP).
+* **`-O`:** Menebak Sistem Operasi (OS) target.
+* **`-sV`:** Mendeteksi *versi* aplikasi/layanan yang berjalan di *port* tersebut.
+* **`-p-`:** Memindai seluruh 65.535 *port* tanpa terkecuali.
+* **`-A` (Aggressive):** Paket komplit. Gabungan dari deteksi OS, versi, *script scanning*, dan *traceroute*.
 
 ---
 
@@ -50,10 +50,10 @@ Penting untuk memahami mekanisme di balik setiap jenis *scan*:
 
 Kalau kamu menghadapi *firewall* yang ketat, coba teknik-teknik ini:
 
-- **NULL Scan (`-sN`):** Mengirim paket kosong tanpa *flag* aktif sama sekali.
-- **FIN Scan (`-sF`):** Hanya menyalakan *flag* FIN.
-- **Xmas Scan (`-sX`):** Menyalakan beberapa *flag* sekaligus (PSH, URG, dan FIN).
-- **Catatan:** Teknik ini efektif di sistem Unix/Linux lama, tapi biasanya gagal total jika dipakai terhadap Windows.
+* **NULL Scan (`-sN`):** Mengirim paket kosong tanpa *flag* aktif sama sekali.
+* **FIN Scan (`-sF`):** Hanya menyalakan *flag* FIN.
+* **Xmas Scan (`-sX`):** Menyalakan beberapa *flag* sekaligus (PSH, URG, dan FIN).
+* **Catatan:** Teknik ini efektif di sistem Unix/Linux lama, tapi biasanya gagal total jika dipakai terhadap Windows.
 
 ---
 
@@ -61,8 +61,8 @@ Kalau kamu menghadapi *firewall* yang ketat, coba teknik-teknik ini:
 
 Teknik ini berguna untuk memetakan *host* mana saja yang aktif di dalam jaringan yang luas (*Ping Sweep*).
 
-- Perintahnya: `nmap -sn 10.10.x.x/24`
-- Di sini Nmap tidak akan memeriksa *port*. Dia hanya mengirim ICMP Echo Request untuk mencari tahu host mana yang aktif.
+* Perintahnya: `nmap -sn 10.10.x.x/24`
+* Di sini Nmap tidak akan memeriksa *port*. Dia hanya mengirim ICMP Echo Request untuk mencari tahu host mana yang aktif.
 
 ---
 
@@ -70,9 +70,9 @@ Teknik ini berguna untuk memetakan *host* mana saja yang aktif di dalam jaringan
 
 Nmap Scripting Engine (NSE) menjadikan Nmap lebih dari sekadar *scanner*. Kamu bisa mengotomatisasi tugas-tugas *recon* yang kompleks.
 
-- **Default (`-sC`):** Menjalankan skrip bawaan yang aman (tidak akan membuat target *crash*).
-- **Categories:** NSE punya banyak kategori, seperti `auth`, `brute` (menebak *password* ringan), `discovery`, `dos`, `exploit`, `malware`, sampai `vuln`.
-- **Contoh:** `nmap --script=vuln <target>` — untuk mencari celah keamanan umum secara cepat di *port* yang terbuka.
+* **Default (`-sC`):** Menjalankan skrip bawaan yang aman (tidak akan membuat target *crash*).
+* **Categories:** NSE punya banyak kategori, seperti `auth`, `brute` (menebak *password* ringan), `discovery`, `dos`, `exploit`, `malware`, sampai `vuln`.
+* **Contoh:** `nmap --script=vuln <target>` — untuk mencari celah keamanan umum secara cepat di *port* yang terbuka.
 
 ---
 
@@ -80,10 +80,10 @@ Nmap Scripting Engine (NSE) menjadikan Nmap lebih dari sekadar *scanner*. Kamu b
 
 Saat target dilindungi *firewall* atau IDS/IPS, kamu perlu teknik *evasion* (menghindar):
 
-- **`-f`:** Melakukan fragmentasi paket (memotong paket menjadi kepingan kecil agar IDS kesulitan merakitnya).
-- **`--mtu <value>`:** Mengatur ukuran *Maximum Transmission Unit* (potongan paket) secara manual.
-- **`--scan-delay <time>`:** Menambahkan jeda waktu antar paket. IDS biasanya mudah mendeteksi jika paket dikirim terlalu cepat.
-- **`--badsum`:** Sengaja mengirim paket dengan *checksum* yang salah, murni untuk menguji respons *firewall*.
+* **`-f`:** Melakukan fragmentasi paket (memotong paket menjadi kepingan kecil agar IDS kesulitan merakitnya).
+* **`--mtu <value>`:** Mengatur ukuran *Maximum Transmission Unit* (potongan paket) secara manual.
+* **`--scan-delay <time>`:** Menambahkan jeda waktu antar paket. IDS biasanya mudah mendeteksi jika paket dikirim terlalu cepat.
+* **`--badsum`:** Sengaja mengirim paket dengan *checksum* yang salah, murni untuk menguji respons *firewall*.
 
 ---
 
@@ -104,17 +104,17 @@ Nmap selalu menjadi langkah pertama di hampir semua *engagement* cyber:
 | **Firewall Evasion** | Memanfaatkan teknik fragmentasi dan pengaturan *scan timing* untuk melewati penjagaan IDS/IPS. |
 
 **Perspektif Blue Team:**
-- **IDS/IPS Detection:** Sistem seperti *Snort* atau *Suricata* sudah mengenali *signature* Nmap, terutama SYN *scan* massal atau *Xmas scan*.
-- **Honeypots:** Tim Blue sering memasang *honeypot* di beberapa *port* palsu. Siapa pun yang mengetuk pintu itu, IP-nya langsung di-*ban*.
-- **Log Monitoring:** Lonjakan koneksi dari satu IP ke puluhan port dalam waktu singkat adalah tanda jelas bahwa ada aktivitas *port scanning*.
+* **IDS/IPS Detection:** Sistem seperti *Snort* atau *Suricata* sudah mengenali *signature* Nmap, terutama SYN *scan* massal atau *Xmas scan*.
+* **Honeypots:** Tim Blue sering memasang *honeypot* di beberapa *port* palsu. Siapa pun yang mengetuk pintu itu, IP-nya langsung di-*ban*.
+* **Log Monitoring:** Lonjakan koneksi dari satu IP ke puluhan port dalam waktu singkat adalah tanda jelas bahwa ada aktivitas *port scanning*.
 
 ---
 
 ## Real-World Relevance
 
-- **Pentest Fase Pertama:** Di setiap *pentest* profesional, Nmap adalah langkah pertama. Hasil *scan* ini akan menentukan jalur serangan (*attack vector*) yang akan dipilih.
-- **Asset Discovery:** Tim IT internal sering menjadikan Nmap sebagai alat untuk mendeteksi perangkat asing yang terhubung ke jaringan kantor tanpa izin (*rogue devices*).
-- **Compliance Scanning:** Standar seperti PCI-DSS mewajibkan organisasi melakukan *network scanning* rutin untuk memastikan tidak ada layanan yang terbuka sembarangan.
+* **Pentest Fase Pertama:** Di setiap *pentest* profesional, Nmap adalah langkah pertama. Hasil *scan* ini akan menentukan jalur serangan (*attack vector*) yang akan dipilih.
+* **Asset Discovery:** Tim IT internal sering menjadikan Nmap sebagai alat untuk mendeteksi perangkat asing yang terhubung ke jaringan kantor tanpa izin (*rogue devices*).
+* **Compliance Scanning:** Standar seperti PCI-DSS mewajibkan organisasi melakukan *network scanning* rutin untuk memastikan tidak ada layanan yang terbuka sembarangan.
 
 ---
 
