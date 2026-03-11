@@ -71,9 +71,7 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 | **API tanpa autentikasi** | Endpoint User Management bisa diakses siapa pun tanpa login — data user bocor hanya dengan menebak ID-nya. Teknik ini disebut **IDOR** (_Insecure Direct Object Reference_), yaitu ketika aplikasi tidak mengecek apakah kamu berhak mengakses data tersebut |
 | **Debug mode aktif di produksi** | Saat input tidak valid dikirim ke API, server mengembalikan **full stack trace** beserta informasi sensitif yang seharusnya tidak terlihat |
 
-<p align="center">
-<img src="../../Assets/Images/Verbose-error.png" alt="Verbose Error Message">
-</p>
+![Verbose Error Message](../../Assets/Images/Verbose-error.png)
 
 > **Common Mistake:** Membiarkan **Debug Mode** atau **Verbose Error Messages** aktif di lingkungan produksi. Pesan error yang terlalu detail (stack trace, variabel internal) bisa membocorkan rahasia sistem kepada siapapun yang memicu error.
 
@@ -124,15 +122,11 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 
 Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang usang (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
 
-<p align="center">
-<img src="../../Assets/Images/supply-Chain.png" alt="Supply Chain Vulnerability - Source Code">
-</p>
+![Supply Chain Vulnerability - Source Code](../../Assets/Images/supply-Chain.png)
 
 Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung membocorkan informasi sensitif — termasuk admin token, internal secret key, dan flag.
 
-<p align="center">
-<img src="../../Assets/Images/flags.png" alt="Debug Info Response - Flag Leaked">
-</p>
+![Debug Info Response - Flag Leaked](../../Assets/Images/flags.png)
 
 | Masalah | Dampak |
 | :--- | :--- |
