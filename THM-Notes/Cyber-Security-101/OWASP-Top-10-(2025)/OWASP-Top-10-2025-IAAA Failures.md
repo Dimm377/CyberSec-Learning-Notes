@@ -79,7 +79,7 @@ Dalam praktiknya, kegagalan kontrol akses ini terbagi menjadi dua:
 
 > **Referensi:** [OWASP - A07:2025 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
 
-Jika *Access Control* (A01) bicara tentang apa yang boleh kamu lakukan, maka **Authentication** bicara tentang membuktikan siapa kamu. **Authentication Failures** terjadi ketika aplikasi tidak bisa memverifikasi identitas pengguna dengan andal.
+Jika *Access Control* (A01) bicara tentang apa yang boleh kamu lakukan, maka **Authentication** bicara tentang membuktikan siapa kamu. **Authentication Failures** terjadi ketika aplikasi tidak bisa memverifikasi identitas pengguna dengan benar.
 
 ### Common Authentication Issues
 *   **Username Enumeration:** Penyerang bisa menebak apakah sebuah username ada di database atau tidak (misal melalui pesan error yang berbeda).
