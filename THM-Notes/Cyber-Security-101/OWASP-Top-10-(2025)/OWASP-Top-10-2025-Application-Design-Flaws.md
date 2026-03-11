@@ -71,7 +71,7 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 | **API tanpa autentikasi** | Endpoint User Management bisa diakses siapa pun tanpa login — data user bocor hanya dengan menebak ID-nya. Teknik ini disebut **IDOR** (_Insecure Direct Object Reference_), yaitu ketika aplikasi tidak mengecek apakah kamu berhak mengakses data tersebut |
 | **Debug mode aktif di produksi** | Saat input tidak valid dikirim ke API, server mengembalikan **full stack trace** beserta informasi sensitif yang seharusnya tidak terlihat |
 
-![Verbose Error Message](../../Assets/Images/Verbose-error.png)
+![Verbose Error Message](../../Assets/Images/Verbose.png)
 
 > **Common Mistake:** Membiarkan **Debug Mode** atau **Verbose Error Messages** aktif di lingkungan produksi. Pesan error yang terlalu detail (stack trace, variabel internal) bisa membocorkan rahasia sistem kepada siapapun yang memicu error.
 
