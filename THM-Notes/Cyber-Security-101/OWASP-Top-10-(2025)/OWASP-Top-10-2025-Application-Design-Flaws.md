@@ -139,7 +139,7 @@ Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung mem
 | **Vulnerable Dependency** | Aplikasi mengandalkan library usang yang masih memiliki "fitur debug" tersembunyi |
 | **Information Disclosure** | Fungsi debug di library membocorkan admin token, internal secret, dan data sensitif lainnya |
 
-> **Common Mistake:** Saat mengirim data JSON lewat Burp Suite Repeater, pastikan header `Content-Type` diatur ke `application/json`. Jika labelnya salah (misal `application/x-www-form-urlencoded`), server akan menolak memproses request (error **415 Unsupported Media Type**).
+> **My Common Mistake:** Saat mengirim data JSON lewat Burp Suite Repeater, pastikan header `Content-Type` diatur ke `application/json`. Jika labelnya salah (misal `application/x-www-form-urlencoded`), server akan menolak memproses request (error **415 Unsupported Media Type**).
 
 ---
 
