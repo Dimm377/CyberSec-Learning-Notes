@@ -46,7 +46,7 @@ Pola-pola misconfiguration yang paling sering ditemukan:
 - Cloud storage yang salah konfigurasi (S3, Azure Blob, GCP Buckets) — **terbuka untuk publik**
 - API tanpa autentikasi atau otorisasi yang memadai
 - Pesan error yang terlalu _verbose_ (terlalu detail) — mengekspos **stack trace** (jejak lengkap dari error yang menampilkan nama file, nomor baris, dan variabel internal) atau detail sistem internal
-- Software, framework, atau container yang sudah usang dan punya vulnerability yang sudah diketahui
+- Software, framework, atau container yang sudah **deprecated** (usang dan tidak didukung lagi) serta punya vulnerability yang sudah diketahui
 - Endpoint **AI/ML** yang terekspos tanpa kontrol akses yang tepat
 
 ### How To Prevent It
@@ -83,7 +83,7 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 
 ### What It Is
 
-**Software Supply Chain Failure** terjadi ketika aplikasi bergantung pada komponen, library, service, atau model AI dari pihak ketiga yang ternyata sudah **disusupi attacker**, usang, atau tidak diverifikasi dengan benar. Intinya: kelemahannya **bukan di kode kamu sendiri**, tapi di software dan tools eksternal yang kamu gunakan sebagai pondasi. Attacker mengeksploitasi mata rantai terlemah ini untuk menyuntikkan kode berbahaya, melewati keamanan, atau mencuri data sensitif.
+**Software Supply Chain Failure** terjadi ketika aplikasi bergantung pada komponen, library, service, atau model AI dari pihak ketiga yang ternyata sudah **disusupi attacker**, **deprecated**, atau tidak diverifikasi dengan benar. Intinya: kelemahannya **bukan di kode kamu sendiri**, tapi di software dan tools eksternal yang kamu gunakan sebagai pondasi. Attacker mengeksploitasi mata rantai terlemah ini untuk menyuntikkan kode berbahaya, melewati keamanan, atau mencuri data sensitif.
 
 Bayangkan kamu membangun rumah, bahan bangunan (bata, semen, kabel) kamu beli dari supplier. Kalau salah satu supplier diam-diam mencampur bahan cacat atau bahkan beracun, rumahmu tetap terlihat bagus di luar, tapi sudah bermasalah dari dalam — padahal tukangnya tidak salah.
 
@@ -120,7 +120,7 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 
 ### Challenge Breakdown
 
-Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang usang (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
+Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang **deprecated** (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
 
 ![Supply Chain Vulnerability - Source Code](../../Assets/Images/supply-Chain.png)
 
@@ -130,7 +130,7 @@ Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung mem
 
 | Masalah | Dampak |
 | :--- | :--- |
-| **Vulnerable Dependency** | Aplikasi mengandalkan library usang yang masih memiliki "fitur debug" tersembunyi |
+| **Vulnerable Dependency** | Aplikasi mengandalkan library **deprecated** yang masih memiliki "fitur debug" tersembunyi |
 | **Information Disclosure** | Fungsi debug di library membocorkan admin token, internal secret, dan data sensitif lainnya |
 
 > **My Common Mistake:** Saat mengirim data JSON lewat Burp Suite Repeater, pastikan header `Content-Type` diatur ke `application/json`. Jika labelnya salah (misal `application/x-www-form-urlencoded`), server akan menolak memproses request (error **415 Unsupported Media Type**).
