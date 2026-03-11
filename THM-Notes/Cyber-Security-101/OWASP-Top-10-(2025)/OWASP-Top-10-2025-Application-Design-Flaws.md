@@ -23,6 +23,8 @@ Kamu akan mempelajari teori setiap kategori sekaligus mempraktikkannya lewat _ch
 
 ## AS02: Security Misconfigurations
 
+> **Referensi:** [OWASP - A02:2025 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)
+
 ### What It Is
 
 **Security Misconfiguration** terjadi ketika sistem, server, atau aplikasi di-_deploy_ (dipasang dan dijalankan di server produksi) dengan pengaturan default yang tidak aman, pengaturan yang tidak lengkap, atau service yang terekspos tanpa seharusnya. Ini **bukan bug di kode**, tapi kesalahan dalam *cara sistem dikonfigurasi* — mulai dari environment, software, sampai jaringannya. Hasilnya? Pintu masuk gratisan untuk attacker.
@@ -79,15 +81,17 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 
 ## AS03: Software Supply Chain Failures
 
+> **Referensi:** [OWASP - A03:2025 Software Supply Chain Failures](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)
+
 ### What It Is
 
-**Software Supply Chain Failure** terjadi ketika aplikasi bergantung pada komponen, library, service, atau model AI dari pihak ketiga yang ternyata sudah **disusupi attacker**, usang, atau tidak diverifikasi dengan benar. Intinya: kelemahannya **bukan di kode kamu sendiri**, tapi di software dan tools yang kamu pakai sebagai "bahan baku", Attacker mengeksploitasi mata rantai terlemah ini untuk menyuntikkan kode berbahaya, melewati keamanan, atau mencuri data sensitif.
+**Software Supply Chain Failure** terjadi ketika aplikasi bergantung pada komponen, library, service, atau model AI dari pihak ketiga yang ternyata sudah **disusupi attacker**, usang, atau tidak diverifikasi dengan benar. Intinya: kelemahannya **bukan di kode kamu sendiri**, tapi di software dan tools eksternal yang kamu gunakan sebagai pondasi. Attacker mengeksploitasi mata rantai terlemah ini untuk menyuntikkan kode berbahaya, melewati keamanan, atau mencuri data sensitif.
 
 Bayangkan kamu membangun rumah, bahan bangunan (bata, semen, kabel) kamu beli dari supplier. Kalau salah satu supplier diam-diam mencampur bahan cacat atau bahkan beracun, rumahmu tetap terlihat bagus di luar, tapi sudah bermasalah dari dalam — padahal tukangnya tidak salah.
 
 ### Why It Matters
 
-Aplikasi modern dibangun dari banyak **dependency** (komponen/library pihak ketiga yang menjadi "bahan baku" aplikasi) — seperti package dari npm, PyPI, third-party API, dan model AI. Satu saja dependency yang disusupi bisa memberi attacker akses ke seluruh sistem kamu, **tanpa pernah menyentuh kode aslimu**. Serangan supply chain bisa diotomatisasi dan didistribusikan secara massal, membuatnya sulit dideteksi dan sangat merusak.
+Aplikasi modern dibangun dari banyak **dependency** (komponen/library pihak ketiga yang menjadi pondasi aplikasi) — seperti package dari npm, PyPI, third-party API, dan model AI. Satu saja dependency yang disusupi bisa memberi attacker akses ke seluruh sistem kamu, **tanpa pernah menyentuh kode aslimu**. Serangan supply chain bisa diotomatisasi dan didistribusikan secara massal, membuatnya sulit dideteksi dan sangat merusak.
 
 ### Real-World Example
 
