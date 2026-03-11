@@ -118,6 +118,7 @@
 | 2.  | [JavaScript Essentials](THM-Notes/Cyber-Security-101/Web-Hacking/javascript-essentials.md)  | JS Basics for Hacking (Complete Room)    |
 | 3.  | [Sql Fundamental](THM-Notes/Cyber-Security-101/Web-Hacking/Sql-Fundamental.md)              | Introduction to Databases & SQL          |
 | 4.  | [OWASP Top 10 (2025)](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-IAAA%20Failures.md) | Learn about A01, A07, and A09 in how they related to failures in the applied IAAA model. |
+| 5.  | [OWASP Top 10 (2025) - Application Design Flaws](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-Application-Design-Flaws.md) | AS02, AS03, AS04, AS06 — Security Misconfigurations, Supply Chain, Crypto Failures, Insecure Design. |
 
 </details>
 
