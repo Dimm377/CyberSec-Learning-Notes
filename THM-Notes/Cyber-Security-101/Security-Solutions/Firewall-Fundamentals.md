@@ -42,7 +42,7 @@ nyatanya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing diran
 
 Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjanya. Mereka beroperasi di **lapisan (*layer*) OSI Model yang berbeda-beda**. Ibaratnya, ada satpam yang hanya memeriksa KTP di pagar depan, ada juga yang sampai memeriksa isi tas sampai ke dalam-dalamnya di ruang VIP
 
-Berikut adalah beberapa kategori Firewall yang wajib kita tahu:
+Supaya gampang membedakannya, mari kita bedah arsitektur dasar *firewall* ke dalam beberapa kategori utama:
 
 ### 1. Stateless Firewall (Satpam Pemalas)
 
@@ -78,7 +78,7 @@ Dia bukan cuma satpam, tapi sudah seperti **Sistem Pertahanan Militer Lengkap**:
 
 ### Web Application Firewall (WAF)
 
-Kalau *Firewall* biasa tugasnya mengamankan pintu server secara umum, WAF punya tugas spesifik: **Mengamankan Aplikasi Web/Website**. Dia berada di depan *web server* buat mencegah serangan-serangan peretas *web* tingkat tinggi seperti *SQL Injection* atau *Cross-Site Scripting (XSS)*.
+Kalau *Firewall* biasa tugasnya mengamankan titik masuk secara luas, WAF punya tugas yang sangat spesifik: **Mengamankan Aplikasi Web atau Website**. Dia bertugas sebagai tameng pelindung tepat di depan layar *web server* kamu untuk menangkis serangan-serangan brutal tingkat aplikasi seperti *SQL Injection* atau pencurian sesi (*Cross-Site Scripting / XSS*).
 
 ### Ringkasan Karakteristik Firewall
 
@@ -198,7 +198,7 @@ Kalau sebelumnya kita membahas firewall bawaannya Windows, sekarang gimana nasib
 
 *Netfilter* adalah mesin penggerak utama alias **pondasi dari semua fungsionalitas *firewall* di Linux** (mulai dari penyaringan paket data, *Network Address Translation/NAT*, sampai pelacakan jejak koneksi).
 
-Karena *Netfilter* ini cuma sekadar mesin di belakang layar, kita butuh alat (*utilities*/aplikasi) buat bisa komunikasi dan memberi perintah ke mesin ini. Nah, berikut adalah 3 alat paling populer yang bertugas menerjemahkan perintah kita ke *Netfilter*:
+Karena *Netfilter* ini cuma sekadar mesin penggerak di belakang layar komputer, kamu butuh program alat (*utilities*) yang bisa dipahami agar kamu bisa berkomunikasi dan memberikan perintah ke mesin inti ini. Coba perhatikan 3 alat pengendali yang paling populer ini:
 
 1. **iptables:**
    Ini adalah pelopor dan alat *firewall* **paling populer & paling banyak dipakai** di berbagai distro Linux. Dia berinteraksi langsung sama *Netfilter* buat menyediakan ratusan fitur super canggih untuk mengontrol lalu lintas jaringan.
@@ -213,7 +213,7 @@ Sesuai namanya (*Uncomplicated* = tidak membuat ribet), **UFW** adalah alat peny
 
 UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang bakal menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
 
-Berikut adalah beberapa command dasar UFW yang wajib diketahui (*Note: Butuh akses `sudo` atau root*):
+Biar kamu nggak kebingungan, ini deretan *command* dasar UFW yang wajib kamu kuasai (*Catatan: Kamu wajib pakai akses `sudo` atau punya izin setara akses root administrator*):
 
 1. **Mengecek Status Firewall:**
    Untuk cek Firewall lagi (*inactive*) atau lagi kerja (*active*).

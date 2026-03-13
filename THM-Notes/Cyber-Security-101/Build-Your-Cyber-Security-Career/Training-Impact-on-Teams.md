@@ -32,7 +32,7 @@ Setiap organisasi punya kebutuhan yang berbeda. Bayangkan seperti membeli baju: 
 
 ### Kapan Harus Menggunakan Custom Training?
 
-* **Tim Kecil:** Biasanya lebih logis menggunakan materi yang sudah tersedia secara umum (*off-the-shelf*). Praktis dan langsung bisa dipakai.
+* **Tim Kecil:** Untuk tim skala ini, solusi paling logis adalah memakai materi pelatihan yang sudah teruji dan tersedia bebas di pasaran (*off-the-shelf*). Praktis, tanpa membuang waktu dan bisa langsung mulai hari itu juga.
 * **Tim Besar (>20 orang):** Jika tim sudah melebihi ukuran tertentu atau punya kebutuhan yang sangat spesifik, materi standar mungkin tidak lagi efektif. Di sinilah **Custom Training** berperan.
 
 Dalam TryHackMe, ada fitur bernama **"Content Studio"**. Fitur ini memungkinkan organisasi untuk memodifikasi modul yang sudah ada atau bahkan membuat modul baru sesuai dengan prioritas dan kebutuhan spesifik mereka. Kustomisasi seperti ini bisa meningkatkan efektivitas belajar karyawan secara signifikan.
@@ -81,7 +81,7 @@ Jika kamu ingin meminta budget training ke atasan, jangan cuma bilang "saya ingi
 
 Setelah paham pentingnya *training*, langkah selanjutnya adalah memilih **Vendor** (penyedia layanan training) yang tepat. Memilih vendor itu seperti memilih sekolah: harus dicek kualitasnya supaya investasi perusahaan nggak sia-sia.
 
-Berikut adalah daftar pertanyaan kritis yang harus dijawab saat proses pemilihan vendor:
+Pegang daftar "pertanyaan sakti" ini dan pastikan semua terjawab tuntas saat mempertimbangkan kandidat vendor pelatihanmu:
 
 * **Target Audience:** Untuk siapa training ini dibeli? (Apakah untuk tim teknis, manajemen, atau seluruh karyawan?)
 * **Profil Karyawan:** Apa latar belakang, pengalaman, peran, dan topik yang relevan bagi karyawanmu?

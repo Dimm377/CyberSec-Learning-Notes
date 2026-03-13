@@ -74,7 +74,7 @@ Opsi yang kita pakai di Hydra itu tergantung banget sama servis (protokol) apa y
 
 `hydra -l user -P passlist.txt ftp://10.48.163.55`
 
-Nah, buat mesin yang lagi kita deploy ini, berikut adalah command buat pakai Hydra di **SSH** dan **Web Form** (POST method).
+Nah, untuk mesin target yang sedang kamu *deploy* sekarang, coba bedah perlahan tata cara pemakaian Hydra untuk dua skenario utama ini: **SSH** dan **Web Form** (melalui metode POST).
 
 #### SSH
 

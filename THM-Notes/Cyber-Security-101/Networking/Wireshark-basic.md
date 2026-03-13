@@ -217,7 +217,7 @@ Naik satu tingkat ke fungsi _routing_, ini merepresentasikan _Network Layer_ di 
 Di bagian _Internet Protocol Version 4/6_, kamu bisa mengekstrak banyak info penting:
 * Siapa IP sumbernya (Source) & siapa targetnya (Destination).
 * Panjang alamat _header_.
-* _Time to Live_ (TTL) — umur paket sebelum dibuang dari jaringan (informasi penting untuk menebak _Operating System_ mesin target).
+* _Time to Live_ (TTL) — sisa umur sebuah paket sebelum akhirnya dibuang dari jaringan (informasi ini adalah kunci rahasia untuk menebak _Operating System_ dari mesin target).
 * Protokol di atasnya menggunakan apa (misal TCP atau UDP).
 
 <p>
@@ -307,7 +307,7 @@ Cara mengakses fiturnya:
 
 ### Find Packets
 
-Selain lompat ke nomor tertentu, Wireshark punya fitur penelusuran (_Find_) untuk mencari paket berdasarkan isi datanya. Ini _skill_ penting untuk menangkap pola serangan (seperti _Intrusion_) atau jejak _error_ di tengah lautan _network traffic_.
+Selain melompat ke nomor tertentu bak mesin waktu, Wireshark punya fitur penelusuran (_Find_) untuk menggali paket berdasarkan isi datanya. Ini adalah _skill_ level dewa yang wajib kamu kuasai untuk menangkap pola serangan (seperti _Intrusion_) atau melacak jejak _error_ di tengah badai obrolan jaringan.
 
 Ada dua aturan penting saat mencari:
 1. **Pilih Tipe Input:** Wireshark hanya menerima 4 jenis input (_Display filter_, _Hex_, _String_, dan _Regex_). Pencarian menggunakan _String_ (teks biasa) dan _Regex_ (pola khusus) adalah yang paling sering digunakan analis.

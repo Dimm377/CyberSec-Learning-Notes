@@ -163,7 +163,7 @@ Isinya ada 3 bagian:
 2.  **Status Code:** Angka yang menunjukkan hasil request (sukses/gagal).
 3.  **Status Message:** Penjelasan singkat dari kode tersebut (misal "OK", "Not Found").
 
-**Kamus Status Code (Penting untuk Diingat):**
+**Kamus Status Code (Wajib Kamu Hafal):**
 
 * **1xx (Informational):** "Bentar ya Sedang diproses."
 * Jarang sekali terlihat langsung.
@@ -215,7 +215,7 @@ Isi surat balesan dari server. Biasanya berupa:
 
 ## Security Headers
 
-Selain header biasa, ada juga **Security Headers** yang tugasnya menjadi tameng tambahan untuk website. Ini penting untuk mencegah serangan seperti XSS, Clickjacking, dan lainnya.
+Selain header pasif biasa, ada juga sosok pelindung bernama **Security Headers**. Mereka bertugas menangkis gempuran serangan _web_ seperti XSS atau Clickjacking, pastikan kamu tidak meremehkan keberadaan mereka saat *pentesting*.
 
 **Beberapa Security Header Penting:**
 

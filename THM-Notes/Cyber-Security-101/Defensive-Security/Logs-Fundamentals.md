@@ -34,7 +34,7 @@ Secara garis besar, ini beberapa area utama yang sangat bergantung pada logs unt
 | **Incident Investigation and Forensics** | Karena logs adalah rekam jejak setiap aktivitas, tim Security mendapatkan info sedetail-detailnya saat mencari akar masalah penyebab suatu insiden (Root Cause Analysis). |
 | **Troubleshooting** | Sistem yang _error_ atau aplikasi _crash_ juga sangat terbantu. Berdasarkan logs, masalah lebih mudah didiagnosa dan diperbaiki. |
 | **Performance Monitoring** | Selain keamanan, logs juga menyediakan _insight_ berharga tentang performa aplikasi saat sedang berjalan. |
-| **Auditing and Compliance** | Logs sangat penting untuk urusan kepatuhan peraturan (_compliance_). Punya jejak log mempermudah organisasi membuktikan bahwa mereka bersih dan legal dalam beraktivitas. |
+| **Auditing and Compliance** | Catatan *log* merupakan nyawa utama untuk urusan kepatuhan peraturan (_compliance_). Memiliki rekam jejak yang rapi membuat sebuah organisasi lebih tenang karena mereka punya bukti legal atas segala aktivitas jaringan mereka. |
 
 ### Learning Objectives
 
@@ -87,7 +87,7 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 
 Sebagai sistem operasi paling populer, **Windows** juga dilengkapi dengan mekanisme _logging_ bawaan yang lengkap. Sama seperti konsep di Task 2, Windows memisahkan rekaman aktivitasnya ke dalam berbagai kategori.
 
-Secara umum, ada 3 kategori log utama di Windows yang sering dianalisa:
+Di dunia nyata, kita bakal sering membedah 3 kategori *log* utama di ekosistem Windows:
 
 1.  **Application**
     Merekam aktivitas yang berhubungan dengan aplikasi, baik bawaan Windows maupun aplikasi pihak ketiga (_third-party_). Kalau ada aplikasi yang _error_, memberi _warning_, atau misal ada masalah kompatibilitas, semuanya bakal dicatat di sini.
@@ -137,7 +137,7 @@ Berikut ini adalah tabel daftar **Event ID** penting yang wajib diingat di Windo
 | **4725** | _A user account was disabled_ |
 | **4726** | _A user account was deleted_ |
 
-Sebenarnya masih banyak _Event ID_ lainnya di Windows selain yang ada di atas. Tidak perlu menghafal semuanya, tapi setidaknya yang ada di tabel ini adalah Event ID yang paling sering muncul dan paling penting untuk diingat saat investigasi.
+Kenyataannya, lautan _Event ID_ di Windows itu jumlahnya bejibun. Kamu tidak perlu menghafal semuanya di luar kepala, tapi jadikan tabel sakti di atas sebagai pegangan utama saat kamu terjun melacak jejak penyusupan.
 
 ## Web Server Access Logs Analysis
 

@@ -20,7 +20,7 @@ Salah satu tantangan terbesar di dunia malware analysis adalah: **bagaimana cara
 
 Kalau kita langsung jalankan file tersebut, ada resiko mesin kita ikut terinfeksi — kecuali kita punya _sandbox_ atau lingkungan yang benar-benar terisolasi seperti menggunakan _virtual machine_.
 
-Secara umum, ada dua pendekatan analisis:
+Biasanya, para analis di luaran sana menganalisis *malware* lewat dua pendekatan berikut:
 
 | Metode | Cara Kerja | Risiko |
 | ------ | ---------- | ------ |

@@ -120,7 +120,7 @@ Melalui `snort.conf` inilah, seorang Administrator Keamanan memberikan instruksi
 
 Sedangkan, *file-file* yang memuat *database* ribuan rekam jejak ancaman (*Signatures*) akan disimpan secara terpisah dan diamankan di dalam sebuah sarang (*folder*) yang dinamakan **`rules`**.
 
-Berikut adalah contoh di Terminal ketika kita membedah isi dari direktori Snort:
+Biar kamu ada bayangan, begini penampakan di Terminal Linux waktu kita membongkar jeroan dari direktori instalasi Snort:
 
 ```bash
 user@arch:~$ ls /etc/snort
@@ -213,7 +213,7 @@ Namun di dunia nyata, adakalanya kita akan menemui skenario di mana Sistem Keama
 
 Bagaikan memutar kembali kaset rekaman CCTV lama untuk mencari wajah pelaku pencurian, Snort sangat mampu ditugaskan untuk membaca dan menganalisis *file* PCAP lama untuk keperluan investigasi Digital Forensics
 
-Berikut adalah perintah (*command*) dengan hak akses Penuh (*sudo privilege*) yang bisa digunakan untuk menjalankan skenario ini:
+Supaya skenario perburuan ini berjalan lancar, jalankan perintah (*command*) sakti ini dengan akses penuh alias *sudo privilege*:
 
 ```bash
 user@arch:~$ sudo snort -q -l /var/log/snort -r example.pcap -A console -c /etc/snort/snort.conf

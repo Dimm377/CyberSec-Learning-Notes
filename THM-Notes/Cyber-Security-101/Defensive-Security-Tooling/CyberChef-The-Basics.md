@@ -41,12 +41,12 @@ Cara paling mudah — cukup punya **browser** dan **koneksi internet**. Langsung
 
 ### Offline / Local Copy
 
-Jika kamu harus bekerja di lingkungan yang terisolasi (tanpa internet), kamu bisa mendownload file rilisnya langsung dari [GitHub repository CyberChef](https://github.com/gchq/CyberChef/releases). Ini penting untuk menjaga kerahasiaan data sensitif agar tidak keluar ke internet.
+Jika kamu terjebak menganalisis *malware* di lingkungan terisolasi yang sama sekali tak punya akses internet, jangan cemas. Kamu bisa menginstall CyberChef langsung dari [GitHub repository resmi CyberChef](https://github.com/gchq/CyberChef/releases). Trik operasi tertutup ini wajib kamu pegang demi menjamin kerahasiaan data *client* agar tidak bocor ke luar.
 
 | Metode | Kebutuhan | Kapan Dipakai |
 | ------ | --------- | ------------- |
 | **Online** | Browser + internet | Penggunaan cepat, belajar, atau data tidak sensitif |
-| **Offline** | Download file rilis | Analisis malware, data rahasia, atau lab terisolasi |
+| **Offline** | Install CyberChef | Analisis malware, data rahasia, atau lab terisolasi |
 
 ---
 
@@ -108,7 +108,7 @@ Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef 
 
 ## Practice, Practice, Practice
 
-Untuk bisa efektif menggunakan CyberChef, penting untuk mengenal **kategori operasi** yang paling sering dipakai. Semakin familiar kamu dengan kategorinya, semakin cepat kamu bisa menemukan operasi yang tepat saat dibutuhkan.
+Agar instingmu tajam layaknya chef bintang lima saat mengulik data, kamu sangat disarankan untuk mengenali dan menghafalkan **kategori operasi** yang jadi "menu harian". Percayalah, pemahaman ini bakal menyelamatkan kewarasanmu di tengah kompetisi CTF.
 
 ### Extractors
 

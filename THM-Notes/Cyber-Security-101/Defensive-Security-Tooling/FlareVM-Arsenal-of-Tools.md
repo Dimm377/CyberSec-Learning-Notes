@@ -100,7 +100,7 @@ Tiga serangkai utamanya:
 
 Dari sekian banyak *tools* yang dibahas sebelumnya, cuma segelintir saja yang akan sering banget kamu pakai untuk investigasi tahap awal. Anggap ini adalah paket "P3K Utama" atau *starter pack* seorang analis.
 
-Berikut adalah daftar dan fungsinya:
+Berikut beberapa tools yang sering digunakan untuk investigasi beserta fungsinya:
 
 | Nama Tool | Nilai Investigasi (*Investigative Value*) |
 | :--- | :--- |
@@ -221,7 +221,7 @@ Bicara soal lalu lintas jaringan, **Wireshark** adalah alat pantau terkuat yang 
 
 **Contoh Investigasi Menggunakan Wireshark:**
 
-Berikut adalah hasil gambaran jaringan komunikasi yang sedang terjadi.
+Coba amati hasil foto rontgen visual dari jaringan yang sedang diobservasi ini:
 
 ![Wireshark Packet Analysis](../../Assets/Images/Wireshark.png)
 

@@ -89,7 +89,7 @@ Semua data yang disimpen dalam relational database bakal disimpen di sebuah tabe
 <img src="../../Assets/Images/TRC.png" alt="TRC">
 </p>
 
-Waktu membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhin—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis bakal nolaknya buat jaga konsistensi data. Secara umum ada empat tipe data inti yang selalu dipake: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhin—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di *database*: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
 Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, buat buku `Android Security Internals` pakai ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukin, seluruh informasi ini bakal tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel itu.
 

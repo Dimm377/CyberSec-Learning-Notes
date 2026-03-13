@@ -79,7 +79,7 @@ Disinilah SIEM berperan sebagai solusi keamanan modern, Security Information and
 
 SIEM tidak hanya mengatasi kendala-kendala yang dihadapi analis keamanan, tetapi juga meningkatkan efisiensi tim SOC saat menganalisis log.
 
-Berikut adalah fitur-fitur utama dari SIEM:
+Berikut fitur-fitur utama SIEM:
 
 * **Centralized Log Collection:**
 
@@ -152,7 +152,7 @@ Feb 26 14:35:22 ubuntu-server kernel: [123648.123456] audit: type=1400 audit(170
 
 ### Web Server Log
 
-Penting untuk memantau semua Request dan Response yang masuk dan keluar dari web server, di linux lokasi umum untuk mencatat log web server adalah `/var/log/httpd/` dan `/var/log/apache/`
+Sebagai seorang spesialis pertahanan (*defender*), kamu wajib memantau semua permohonan (*Request*) dan balasan (*Response*) yang mondar-mandir di *web server*. Kalau di sistem Linux, lokasi standar rahasia untuk membaca riwayat catatan (*log*) *web server* biasanya ngumpet di `/var/log/httpd/` dan `/var/log/apache/`.
 
 Contoh log web server apache:
 

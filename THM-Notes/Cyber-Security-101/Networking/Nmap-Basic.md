@@ -38,7 +38,7 @@ Agar Nmap tidak berjalan tanpa arah, kamu wajib menguasai *flag* dasar ini untuk
 
 ## Scan Types (TCP, SYN, UDP)
 
-Penting untuk memahami mekanisme di balik setiap jenis *scan*:
+Sebagai calon *attacker* profesional, kamu wajib mengetahui bagaimana cara kerja dari setiap jenis *scan* ini:
 
 1. **TCP Connect Scan (`-sT`):** Nmap mencoba menyelesaikan koneksi secara penuh (SYN → SYN/ACK → ACK). Kalau berhasil, berarti *port* terbuka.
 2. **SYN Scan (`-sS`):** Nmap mengirim SYN, lalu saat dibalas SYN/ACK oleh server, Nmap langsung mengirim RST (Reset) untuk memutus koneksi sebelum ACK terakhir dikirim. Karena efisien dan sulit terdeteksi, ini menjadi *scan default*.
