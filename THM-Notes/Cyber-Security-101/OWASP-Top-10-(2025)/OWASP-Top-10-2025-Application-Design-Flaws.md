@@ -215,3 +215,67 @@ Setelah kunci rahasia tersebut digunakan ke dalam pendeskripsi (seperti CyberChe
 ## AS06: Insecure Design
 
 > **Referensi:** [OWASP : A06:2025 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/)
+
+### What It Is
+
+**Insecure Design** terjadi ketika sistem dibangun dengan logika atau arsitektur yang sudah cacat dari awal. Bayangkan kamu membangun rumah mewah dengan pintu baja berlapis dan satpam 24 jam (kodenya aman), tapi arsiteknya lupa menggambar atap (desainnya cacat). Sehebat apapun pintunya, maling tetap bisa masuk dari atas.
+
+Masalah ini muncul karena tim tidak melakukan atau skip bagian *threat modelling* (memetakan potensi ancaman sebelum coding) atau tidak ada *review* desain arsitektur. 
+
+**Kasus Clubhouse:** 
+Contoh paling terkenal adalah Clubhouse di awal rilisnya. Developer berasumsi pengguna hanya akan berinteraksi lewat aplikasi mobile resmi mereka. Hasilnya? API backend-nya tidak punya autentikasi. Seseorang bisa memanggil API tersebut secara langsung dari komputernya dan mengambil data pengguna, info room, hingga rekaman obrolan privat. Kodenya tidak bug, tapi asumsi desainnya (bahwa API cuma diakses dari App) sangat fatal.
+
+### Why It Matters
+
+Kamu tidak bisa mem-*patch* (memperbaiki) cacat desain semudah memperbaiki bug di kode. Karena cacatnya ada di alur kerja, logika bisnis, dan *trust boundaries* (batas kepercayaan sistem), memperbaikinya berarti harus merombak ulang bagaimana sistem itu bekerja dan mengambil keputusan.
+
+### Insecure Design In The AI Era (2025)
+
+Dengan populernya AI, masalah desain ini makin parah. Developer sering berasumsi naif bahwa AI itu selalu aman, benar, dan bisa ditebak. Ketika agen AI diizinkan menulis kode atau mengakses database tanpa batasan (Unchecked Authority), risiko langsung tertanam kuat di arsitektur sistem.
+
+*   **Prompt Injection:** Terjadi ketika input dari *user* (yang jahat) bercampur dengan *system prompt* instruksi asli AI, membuat AI membajak konteks atau membocorkan data tersembunyi.
+*   **Blind Trust:** Percaya buta pada output AI tanpa validasi manusia menciptakan sistem yang rapuh.
+*   **Poisoned Models:** Menggunakan model AI dari sumber yang tidak diverifikasi yang mungkin sudah ditanam *backdoor* atau perilaku berbahaya dari sananya.
+
+### Visual Model : Secure vs Insecure AI Architecture
+
+```mermaid
+graph TD
+    subgraph Insecure Design (Blind Trust)
+        A1[User Input] --> B1[AI Model]
+        B1 -- Execute --> C1[Database/System]
+    end
+
+    subgraph Secure Design (Human in the Loop)
+        A2[User Input] --> B2[Input Filter & Validation]
+        B2 --> C2[AI Model]
+        C2 --> D2[Output Filter]
+        D2 -- High Risk Action --> E2{Human Review}
+        E2 -- Approve --> F2[Database/System]
+        E2 -- Deny --> G2[Drop Request]
+        
+        style E2 fill:#f9d0c4,stroke:#333,stroke-width:2px
+    end
+```
+
+### Common Patterns vs. Prevention
+
+**Common Insecure Designs**
+*   Kontrol logika bisnis yang lemah, seperti alur pemulihan password atau approval yang berantakan.
+*   Asumsi yang cacat tentang bagaimana user atau model AI akan berperilaku.
+*   Komponen AI yang diberi otoritas atau akses tanpa pengawasan (Unchecked Authority).
+*   Tidak ada *guardrails* (pagar pengaman) untuk LLM (Large Language Model) dan agen otomatis.
+*   Tidak ada *threat modelling* yang konsisten, terutama yang spesifik untuk AI.
+
+> **Common Mistakes:** Membiarkan **Test/Debug Bypasses** tertinggal di versi production. Developer kadang membuat "jalan pintas" agar tidak perlu otentikasi saat fase testing, lalu lupa menghapusnya saat aplikasi dirilis ke publik.
+
+**How To Prevent It (Secure Design)**
+
+| Komponen | Strategi Keamanan |
+| :--- | :--- |
+| **Trust Model** | Terapkan **Zero Trust**: Anggap semua model AI tidak bisa dipercaya sampai terbukti sebaliknya. Terapkan prinsip *least privilege* lintas *user*, API, dan *services*. |
+| **Input & Output** | Validasi dan filter semua input serta output model untuk memastikan akurasi dan integritas data. |
+| **Prompt Security** | Pisahkan *system prompts* (instruksi inti) dari konten *user*. Jauhkan data sensitif dari prompt sebisa mungkin, atau lindungi dengan kontrol super ketat. |
+| **Execution** | Wajibkan **Human Review** (persetujuan manusia) untuk *AI actions* yang berisiko tinggi. Pastikan autentikasi dan otorisasi terpasang kokoh di seluruh sistem. |
+| **Supply Chain** | Pantau asal-usul (*provenance*) model, pastikan *dependency* diverifikasi dan selalu *up-to-date*. |
+| **Lifecycle** | Bangun *threat modelling* di setiap tahapan pengembangan (SDLC), tentukan syarat keamanan sebelum bikin fitur, dan lakukan monitoring terus-menerus untuk mencari *logic flaws*. |
