@@ -241,12 +241,12 @@ Dengan populernya AI, masalah desain ini makin parah. Developer sering berasumsi
 
 ```mermaid
 graph TD
-    subgraph Insecure Design (Blind Trust)
+    subgraph Insecure [Insecure Design: Blind Trust]
         A1[User Input] --> B1[AI Model]
         B1 -- Execute --> C1[Database/System]
     end
 
-    subgraph Secure Design (Human in the Loop)
+    subgraph Secure [Secure Design: Human in the Loop]
         A2[User Input] --> B2[Input Filter & Validation]
         B2 --> C2[AI Model]
         C2 --> D2[Output Filter]
