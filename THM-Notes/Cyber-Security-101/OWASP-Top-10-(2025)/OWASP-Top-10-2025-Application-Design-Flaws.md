@@ -138,3 +138,56 @@ Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung mem
 ---
 
 ## AS04: Cryptographic Failures
+
+> **Referensi:** [OWASP : A04:2025 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)
+
+### What It Is
+
+**Cryptographic Failures** terjadi ketika aplikasi atau sistem gagal menerapkan enkripsi dengan benar untuk melindungi data sensitif. Bayangkan kamu punya **kotak surat** yang berisi dokumen rahasia, tapi kamu menggunakan **gembok murah** yang kuncinya bisa dibeli di toko mainan mana saja, atau bahkan kuncinya sengaja kamu gantung di samping kotak surat itu.
+
+Intinya, enkripsi ada (atau seharusnya ada), tapi karena cara pakai yang salah, algoritma yang sudah kuno, atau manajemen kunci yang ceroboh, enkripsi tersebut jadi tidak berguna. Attacker tidak perlu repot-repot mengeksploitasi enkripsi yang mustahil, mereka cukup mencari jalan pintas atau mengeksploitasi kelemahannya.
+
+### Why It Matters
+
+Kriptografi adalah keamanan terakhir untuk menjaga **kerahasiaan** (*confidentiality*) dan **integritas** data. Jika keamanan ini gagal, dampaknya sangat fatal:
+*   **Data PII Bocor:** Informasi pribadi pengguna (nama, alamat, email) bisa dicuri.
+*   **Credentials Terungkap:** Password yang tidak di-*hash* dengan benar bisa dilihat langsung oleh attacker.
+*   **Account Takeover:** Token sesi atau API key yang tidak diamankan memungkinkan attacker menyamar menjadi pengguna sah.
+*   **Regulatory Penalties:** Pelanggaran hukum (seperti GDPR atau UU PDP di Indonesia) karena gagal melindungi data nasabah/pengguna.
+
+### Encryption Flow
+
+```mermaid
+graph LR
+    A["Data Asli (Plaintext)"] -- "Key + Algoritma" --> B["Data Terenkripsi (Ciphertext)"]
+    B -- "Key + Algoritma" --> C["Data Asli Kembali"]
+    
+    style B fill:#f96,stroke:#333,stroke-width:2px
+    note["Kunci harus dijaga!<br>Kalau kunci bocor, enkripsi sia-sia."]
+```
+
+### Key Concepts
+
+Agar kamu tidak bingung dengan singkatan-singkatan teknis yang sering muncul:
+*   **MD5 & SHA-1:** Algoritma *hashing* (pengacak data satu arah) yang sekarang sudah dianggap **broken** (rusak) karena mudah di-crack menggunakan bantuan GPU modern dan brute force attack. Sangat tidak disarankan untuk password.
+*   **ECB (Electronic Codebook):** Mode enkripsi yang paling dasar dan **paling tidak aman** karena pola data asli masih bisa terlihat di hasil enkripsi.
+*   **AES (Advanced Encryption Standard):** Standard enkripsi modern yang sangat kuat. Biasanya dipakai bersama mode **GCM** agar lebih aman.
+*   **Argon2id:** Algoritma *hashing* password paling modern dan direkomendasikan saat ini. Ia dirancang khusus untuk sangat berat dijalankan di GPU/ASIC, sehingga sangat sulit di-crack meskipun penyerang punya perangkat canggih.
+*   **TLS (Transport Layer Security):** Protokol yang mengamankan traffic internet (apa yang membuat **https** itu aman). Versi terbaru adalah **TLS 1.3**, yang telah membuang fitur kriptografi lama yang tidak aman sehingga menjadikannya standar keamanan modern yang jauh lebih tangguh.
+
+### Common Patterns vs. Prevention
+
+| Common Patterns | How To Prevent It |
+| :--- | :--- |
+| **Weak/Deprecated Algorithms:** Menggunakan algoritma lemah seperti MD5, SHA-1, atau mode ECB | **Strong & Modern Algorithms:** Gunakan algoritma kuat seperti AES-GCM, ChaCha20-Poly1305, atau paksa penggunaan TLS 1.3 dengan sertifikat valid |
+| **Hard-coded Secrets:** Menyimpan *secret key* atau password langsung di dalam kode atau file konfigurasi | **Secure Key Management:** Gunakan layanan manajemen kunci yang aman seperti Azure Key Vault, AWS KMS, atau HashiCorp Vault |
+| **Poor Key Management:** Rotasi kunci yang buruk atau praktek manajemen yang tidak standar | **Regular Rotation:** Lakukan rotasi *secret* dan kunci secara berkala sesuai dengan periode kripto yang ditentukan |
+| **Insecure Data Handling:** Kurangnya enkripsi untuk data sensitif saat disimpan (*at rest*) atau saat dikirim (*in transit*) | **Policy Enforcement:** Dokumentasikan dan terapkan standar prosedur operasional (SOP) untuk manajemen siklus hidup kunci |
+| **Invalid TLS Certificates:** Menggunakan sertifikat TLS yang *self-signed* atau sudah tidak valid | **Certificate Inventory:** Selalu pantau dan buat inventory lengkap untuk sertifikat, kunci, beserta pemiliknya |
+| **Insecure AI/ML Inputs:** Menggunakan sistem AI/ML tanpa penanganan rahasia yang tepat untuk parameter model atau input sensitif | **Secure AI Models:** Pastikan model AI dan agen otomatis tidak pernah mengekspos rahasia atau data sensitif yang tidak terenkripsi |
+
+> **Common Mistakes:** Jangan pernah menyimpan **Secret Key** (kunci enkripsi) langsung di dalam file `.py`, `.js`, atau file konfigurasi yang ikut ter push ke GitHub. Gunakan **Environment Variables** atau file `.env` yang sudah dimasukkan ke dalam `.gitignore`.
+
+---
+
+## AS06: Insecure Design
