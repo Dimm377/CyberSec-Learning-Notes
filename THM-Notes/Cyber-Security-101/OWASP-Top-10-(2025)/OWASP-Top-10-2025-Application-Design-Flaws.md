@@ -120,11 +120,11 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 
 ### Challenge
 
-Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang **deprecated** (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
+Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang **deprecated** (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada saat production.
 
 ![Supply Chain Vulnerability : Source Code](../../Assets/Images/supply-Chain.png)
 
-Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung membocorkan informasi sensitif — termasuk admin token, internal secret key, dan flag.
+Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung membocorkan informasi sensitif, termasuk admin token, internal secret key, dan flag.
 
 ![Debug Info Response : Flag Leaked](../../Assets/Images/flags.png)
 
@@ -143,7 +143,7 @@ Ketika fungsi debug tersebut dipanggil melalui endpoint API, server langsung mem
 
 ### What It Is
 
-**Cryptographic Failures** terjadi ketika aplikasi atau sistem gagal menerapkan enkripsi dengan benar untuk melindungi data sensitif. Bayangkan kamu punya **kotak surat** yang berisi dokumen rahasia, tapi kamu menggunakan **gembok murah** yang kuncinya bisa dibeli di toko mainan mana saja, atau bahkan kuncinya sengaja kamu gantung di samping kotak surat itu.
+**Cryptographic Failures** terjadi ketika aplikasi atau sistem gagal menerapkan enkripsi dengan benar untuk melindungi data sensitif. Bayangkan kamu punya **kotak surat** yang berisi dokumen rahasia, tapi kamu menggunakan **gembok murahan** yang kuncinya bisa dibeli di toko mainan mana saja, atau bahkan kuncinya sengaja kamu gantung di samping kotak surat itu.
 
 Intinya, enkripsi ada (atau seharusnya ada), tapi karena cara pakai yang salah, algoritma yang sudah kuno, atau manajemen kunci yang ceroboh, enkripsi tersebut jadi tidak berguna. Attacker tidak perlu repot-repot mengeksploitasi enkripsi yang mustahil, mereka cukup mencari jalan pintas atau mengeksploitasi kelemahannya.
 
@@ -152,8 +152,8 @@ Intinya, enkripsi ada (atau seharusnya ada), tapi karena cara pakai yang salah, 
 Kriptografi adalah keamanan terakhir untuk menjaga **kerahasiaan** (*confidentiality*) dan **integritas** data. Jika keamanan ini gagal, dampaknya sangat fatal:
 *   **Data PII Bocor:** Informasi pribadi pengguna (nama, alamat, email) bisa dicuri.
 *   **Credentials Terungkap:** Password yang tidak di-*hash* dengan benar bisa dilihat langsung oleh attacker.
-*   **Account Takeover:** Token sesi atau API key yang tidak diamankan memungkinkan attacker menyamar menjadi pengguna sah.
-*   **Regulatory Penalties:** Pelanggaran hukum (seperti GDPR atau UU PDP di Indonesia) karena gagal melindungi data nasabah/pengguna.
+*   **Account Takeover:** Session token atau API key yang tidak diamankan memungkinkan attacker menyamar menjadi pengguna sah.
+*   **Regulatory Penalties:** Pelanggaran hukum (seperti GDPR atau UU PDP di Indonesia) karena gagal melindungi keamanan data nasabah/pengguna.
 
 ### Encryption Flow
 

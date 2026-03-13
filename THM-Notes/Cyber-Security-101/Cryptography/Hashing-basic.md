@@ -66,12 +66,6 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 * **MD5 & SHA1:** Sudah dianggap tidak aman karena collision bisa direkayasa (engineered collision).
 * Jangan pakai keduanya buat password atau data sensitif.
 
-**Q&A Room:**
-
-* **SHA256 Hash `passport.jpg`:** `77148c6f605a8df855f2b764bcc3be749d7db814f5f79134d2aa539a64b61f02`
-* **MD5 Output Size:** 128 bit = **16 bytes**.
-* **Possible values 8-bit:** 2^8 = **256**.
-
 ---
 
 ## Insecure Password Storage for Authentication
@@ -88,21 +82,20 @@ Collision terjadi waktu **dua input beda ngasilin output yang sama**.
 
 ## Using Hashing for Secure Password Storage
 
-**Goal:** Ngamanin password dari serangan Rainbow Table dan Hash Collision.
+**Goal:** Mengamankan password dari serangan Rainbow Table dan Hash Collision.
 
 **Solusi: Salting**
-Salting itu proses nambahin string acak unik (**Salt**) ke password sebelum di-hash.
+Salting itu proses menambahkan string acak unik (**Salt**) ke password sebelum di hash.
 
 * **Proses:** `Hash(Password + Salt) : Hash Value`
 * **Penyimpanan:** Server menyimpan **Username**, **Salt**, dan **Hash Value**.
 
 **Manfaat Salting:**
 
-1.  **Nyegah Rainbow Tables:** Karena setiap password punya salt unik, hash akhirnya bakal beda-beda meskipun password aslinya sama. Attacker tidak bisa pakai tabel yang sudah ada.
+1.  **Mencegah Rainbow Tables:** Karena setiap password punya salt unik, hash akhirnya bakal beda-beda meskipun password aslinya sama. Attacker tidak bisa pakai tabel yang sudah ada.
 2.  **Mempersulit Brute Force:** Attacker harus memecahkan hash satu per satu buat setiap user (karena salt-nya beda), tidak bisa massal.
 
-**Analogi:**
-Bayangin dua orang masak "Sup Ayam" (Password sama).
+bayangkan dua orang sedang memasak Sup Ayam (Password sama).
 
 * Tanpa Salt: Rasanya persis sama.
 * Dengan Salt (Bumbu Rahasia): Orang A tambahin lada hitam, Orang B tambahin cabai. Hasil akhirnya (Hash) jadi sup pakai rasa yang beda banget.
@@ -111,7 +104,7 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 
 ## Recognising Password Hashes
 
-**Goal:** Identifikasi format hash password yang umum ditemuin di sistem Unix dan Windows.
+**Goal:** Identifikasi format hash password yang umum ditemukan pada sistem Unix dan Windows.
 
 ### Unix/Linux Hash Formats
 
@@ -124,27 +117,20 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 
 **Penjelasan:**
 
-* Delimiter `$` misahin identifier, parameter opsional (seperti rounds, salt), dan hash-nya.
-* `rounds` ngontrol biaya komputasi; makin tinggi rounds, makin tahan terhadap serangan brute-force.
+* Delimiter `$` memisahkan identifier, parameter opsional (seperti rounds, salt), dan hash nya.
+* `rounds` mengontrol biaya komputasi; makin tinggi rounds, makin tahan terhadap serangan brute force.
 
 ### Windows Hash Formats
 
-* **LM Hash** – Hash LAN Manager yang sudah jadul, 16-character hexadecimal string (uppercase). Lemah banget karena mecah password jadi dua bagian 7-karakter dan pakai DES. Contoh: `E52CAC67419A9A224A3B108F3FA6CB6D`.
-* **NTLM Hash** – MD4 dari password yang di-encode UTF-16LE, 32-character hexadecimal string. Contoh: `31D6CFE0D16AE931B73C59D7E0C089C0` (hash dari password kosong).
+* **LM Hash** – Hash LAN Manager yang sudah kuno, 16-character hexadecimal string (uppercase). Sangat lemah karena memecah password jadi dua bagian 7-karakter dan pakai DES. Contoh: `E52CAC67419A9A224A3B108F3FA6CB6D`.
+* **NTLM Hash** – MD4 dari password yang di encode UTF-16LE, 32-character hexadecimal string. Contoh: `31D6CFE0D16AE931B73C59D7E0C089C0` (hash dari password kosong).
 
 ### Common Tools & Pitfalls
 
-* **hashid** – Identifier cepat buat banyak tipe hash, tapi bisa salah deteksi kalau hash-nya custom atau terpotong.
-* **hashcat** – Tool cracking yang powerful; setiap format hash punya mode spesifik (misal mode 1000 buat NTLM, mode 1800 buat sha512crypt).
+* **hashid** – Identifier cepat buat banyak tipe hash, tapi bisa salah deteksi kalau hash nya custom atau terpotong.
+* **hashcat** – Tool cracking yang powerful, setiap format hash punya mode spesifik (misal mode 1000 buat NTLM, mode 1800 buat sha512crypt).
 * **John the Ripper** – Tool cracking lain pakai deteksi format bawaan.
-* **Pitfall:** Ngandelin prefix saja bisa misleading; beberapa aplikasi menyimpan raw SHA-256 atau MD5 tanpa prefix.
-
-### Example Questions (from the room)
-
-1. Berapa default number of rounds buat hash `$6$` (sha512crypt)?
-2. Identifikasi panjang Windows NTLM hash.
-3. Hashcat mode apa yang dipake buat Citrix Netscaler hashes?
-
+* **Pitfall:** Mengandalkan prefix saja bisa misleading, beberapa aplikasi menyimpan raw SHA-256 atau MD5 tanpa prefix.
 
 ---
 
@@ -153,19 +139,20 @@ Bayangin dua orang masak "Sup Ayam" (Password sama).
 **Konsep:**
 Hashing itu fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 
-* **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), nge-hash satu per satu, terus ncocokin hasilnya sama hash target.
+* **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), nge-hash satu per satu, terus membandingkan hasilnya dengan hash target.
 
 **Tools Populer:**
 
 1.  **Hashcat:** Tool cracking tercepet (berbasis GPU).
 * Contoh Command (SHA256): `hashcat -m 1400 -a 0 hash.txt wordlist.txt`
-2.  **John the Ripper (JtR):** Tool klasik, fleksibel banget (berbasis CPU/GPU).
+2.  **John the Ripper (JtR):** Tool klasik, fleksibel (berbasis CPU/GPU).
 * Contoh Command: `john --format=raw-sha256 hash.txt --wordlist=rockyou.txt`
 
 **Wordlists:**
 
 * **rockyou.txt:** Wordlist paling legendaris, berisi 14 juta password yang bocor dari situs RockYou (2009). Hampir semua CTF pemula pakai ini.
 
+* **SecLists:** Kumpulan wordlist terbesar dan terlengkap, berisi jutaan password, username, dan data sensitif lainnya yang bocor dari berbagai sumber.
 
 ---
 
@@ -176,20 +163,16 @@ Hashing itu fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 **Checksum:**
 Nilai hash dari sebuah file disebut **Checksum**.
 
-* Kalau download file `installer.exe` dari internet, website biasanya nyertain checksum (misal SHA256).
-* Setelah download, user nge-hash file lokal. Kalau hash-nya sama persis, berarti file **aman & tidak corrupt**.
+* Kalau download file `installer.exe` dari internet, website biasanya mencantumkan checksum (misal SHA256).
+* Setelah download, user menghash file lokal. Kalau hash-nya sama persis, berarti file **aman & tidak corrupt**.
 * Beda 1 bit saja di file = Hash berubah total.
 
 **HMAC (Keyed-Hash Message Authentication Code):**
-Hashing standar cuma jamin **Integritas** (file tidak berubah), tapi tidak jamin **Autentikasi** (siapa pengirimnya).
+Hashing standar cuma menjamin **Integritas** (file tidak berubah), tapi tidak menjamin **Autentikasi** (siapa pengirimnya).
 
 * **HMAC = Hash + Secret Key.**
-* Cuma orang yang punya "Key" yang bisa membuat HMAC yang valid.
-* Jamin **Integrity** AND **Authenticity**.
-
-**Example Question:**
-
-* **HMAC-SHA512 Mode (Hashcat):** `1750`
+* Cuma orang yang punya Key yang bisa membuat HMAC yang valid.
+* Menjamin **Integrity** DAN **Authenticity**.
 
 ---
 
@@ -237,9 +220,3 @@ Hashing muncul di banyak titik dalam _attack chain_, baik dari sisi attacker mau
 
 ---
 
-## Questions
-
-1. Kenapa MD5 dan SHA1 dianggap tidak aman untuk password storage meskipun keduanya masih _one-way functions_?
-2. Apa yang membuat teknik **Pass-the-Hash** berbahaya? Kenapa meng-_crack_ hash bahkan tidak diperlukan dalam skenario ini?
-3. Jika kamu menemukan hash `$6$` di file `/etc/shadow` target, tools dan wordlist apa yang akan kamu gunakan, dan berapa estimasi waktu cracking-nya?
-4. Dari perspektif Blue Team, bagaimana cara memastikan bahwa password storage di organisasimu tahan terhadap serangan cracking modern?
