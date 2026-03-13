@@ -302,11 +302,17 @@ Hasilnya, Gobuster menemukan endpoint `/users` (atau `/messages` tergantung sett
 
 ![Gobuster API Enumeration](../../Assets/Images/api-breach.png)
 
+> **My Mistake - Wasting Time on Wrong Endpoints:**
+> Kesalahan umum saat melakukan enumerasi di target yang punya API adalah: membuang waktu dengan menebak direktori *root* (akar) secara acak. Contohnya, memaksa *brute-force* ke `/users` padahal aplikasinya berjalan di atas layanan API. Hasilnya biasanya cuma kode *error* `404 Not Found`.
+> 
+> *Solusi:* Selalu pelajari *blueprint* atau arsitektur target kamu lebih dulu. Kalau kamu sudah tahu aplikasinya melayani API, arahkan alat pemindai (seperti Gobuster) ke *base path* API tersebut, misalnya langsung ke `/api/users`. Ini bakal bikin proses pencarian jauh lebih efisien, baik saat bermain CTF maupun melakukan *pentest* secara real.
+
 **3. API Bypassing & Data Leak**
-Tanpa perlu bersusah payah mencari kelemahan kode injeksi atau eksploit rumit, kita cukup memanggil endpoint yang ditemukan tadi ke browser atau via `curl`. Karena arsitektur API ini tidak dilengkapi oleh sistem Autentikasi/Otorisasi yang solid (mereka mengandalkan "sembunyi di balik aplikasi mobile"), server langsung mengembalikan data sensitif dalam format JSON. 
+Kita tidak perlu repot mencari kelemahan injection yang rumit. Cukup mengakses endpoint API yang barusan ditemukan tersebut, baik melalui browser biasa atau perintah `curl` dari terminal. 
 
-Data yang bocor berisi pesan sistem yang memuat kunci akses panel Admin
+Di sinilah letak cacat desainnya. Developer cuma berasumsi, *"Ah, API ini kan cuma dipakai secara internal oleh aplikasi mobile kita, jadi pasti aman."* Akibat kurangnya perlindungan Autentikasi dan Otorisasi yang mendasar, server dengan polosnya mengembalikan data milik pengguna secara mentah dalam format JSON kepada siapa saja yang meminta.
 
+Data yang bocor berisi pesan sistem yang memuat kunci akses panel Admin:
 ![Admin Key Leaked via API](../../Assets/Images/admin-key-blur.png)
 
 | Masalah Arsitektur | Dampak Eksploitasi |
