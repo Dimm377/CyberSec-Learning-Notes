@@ -279,3 +279,37 @@ graph TD
 | **Execution** | Wajibkan **Human Review** (persetujuan manusia) untuk *AI actions* yang berisiko tinggi. Pastikan autentikasi dan otorisasi terpasang kokoh di seluruh sistem. |
 | **Supply Chain** | Pantau asal-usul (*provenance*) model, pastikan *dependency* diverifikasi dan selalu *up-to-date*. |
 | **Lifecycle** | Bangun *threat modelling* di setiap tahapan pengembangan (SDLC), tentukan syarat keamanan sebelum bikin fitur, dan lakukan monitoring terus-menerus untuk mencari *logic flaws*. |
+
+### Challenge
+
+Challenge ini adalah simulasi dari **Insecure Design** yang terjadi di dunia nyata (mirip kasus Clubhouse). Aplikasi targetnya bernama **SecureChat**.
+
+**1. Asumsi Desain yang Cacat**
+Saat kita membuka web target, kita hanya melihat halaman *landing page* yang menyuruh kita men-download aplikasi mobile-nya. Developer berasumsi bahwa "karena websitenya tidak punya fitur login/chat, maka aman." Mereka lupa bahwa *backend API* tetap berjalan dan bisa dipanggil oleh siapa saja secara langsung.
+
+![SecureChat Web UI](../../Assets/Images/Secure-chat.png)
+
+**2. API Enumeration (Membongkar Jalur Belakang)**
+Karena kita tahu ini adalah arsitektur *client-server*, kita mengabaikan web UI-nya dan langsung mencari jalur API yang tersembunyi. Menggunakan tool seperti **Gobuster**, kita melakukan _directory bruteforcing_ ke direktori `/api`.
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `gobuster dir` | Mode enumerasi direktori untuk mencari endpoint web yang tersembunyi |
+| `-u http://TARGET:5005/api` | Target URL (diarahkan langsung ke direktori API) |
+| `-w /usr/share/.../medium.txt` | Wordlist berisi ribuan tebakan nama direktori umum |
+
+Hasilnya, Gobuster menemukan endpoint `/users` (atau `/messages` tergantung setting API) yang berstatus HTTP `200` (OK/Bisa diakses).
+
+![Gobuster API Enumeration](../../Assets/Images/api-breach.png)
+
+**3. API Bypassing & Data Leak**
+Tanpa perlu bersusah payah mencari kelemahan kode injeksi atau eksploit rumit, kita cukup memanggil endpoint yang ditemukan tadi ke browser atau via `curl`. Karena arsitektur API ini tidak dilengkapi oleh sistem Autentikasi/Otorisasi yang solid (mereka mengandalkan "sembunyi di balik aplikasi mobile"), server langsung mengembalikan data sensitif dalam format JSON. 
+
+Data yang bocor berisi pesan sistem yang memuat kunci akses panel Admin
+
+![Admin Key Leaked via API](../../Assets/Images/admin-key-blur.png)
+
+| Masalah Arsitektur | Dampak Eksploitasi |
+| :--- | :--- |
+| **Flawed Assumption** | Developer mengira API hanya bisa dipanggil oleh App resmi. |
+| **Missing Authentication** | Desain API tidak memvalidasi *siapa* yang me-request data sebelum merespon. Akibatnya, _Admin key_ yang bersifat rahasia bocor dengan mudah. |
