@@ -187,6 +187,31 @@ Agar kamu tidak bingung dengan singkatan-singkatan teknis yang sering muncul:
 
 > **Common Mistakes:** Jangan pernah menyimpan **Secret Key** (kunci enkripsi) langsung di dalam file `.py`, `.js`, atau file konfigurasi yang ikut ter push ke GitHub. Gunakan **Environment Variables** atau file `.env` yang sudah dimasukkan ke dalam `.gitignore`.
 
+### Challenge Breakdown
+
+Challenge ini menunjukkan betapa bahayanya jika logika enkripsi dan kunci rahasia diletakkan di sisi klien (browser). Attacker bisa dengan mudah mengintip kode JavaScript melalui fitur **Inspect Element** atau **Debugger**.
+
+![Cryptographic Failure : Hardcoded Key in JS](../../Assets/Images/Crypto-Failure.png)
+
+Dalam skenario ini, kita menemukan file `decrypt.js` yang berisi informasi sangat sensitif:
+*   **Hardcoded Secret Key:** Kunci enkripsi (`my-secret-key-16`) tertulis jelas di kode.
+*   **Weak Mode:** Menggunakan mode **ECB** yang tidak terjamin keamanannya di era modern.
+
+Dengan informasi ini, dokumen yang seharusnya terkunci bisa didekripsi dengan mudah oleh siapa saja yang tahu cara membaca kode.
+
+![Encrypted Document Found](../../Assets/Images/encrypt-Document.png)
+
+Setelah kunci rahasia tersebut digunakan ke dalam pendeskripsi (seperti CyberChef atau script manual), maka data asli akan terekspos sepenuhnya.
+
+![Decrypted Document : Flag Redacted](../../Assets/Images/Password-Docs-blur.png)
+
+| Masalah | Dampak |
+| :--- | :--- |
+| **Client-Side Secrets** | Kunci rahasia terekspos ke publik karena diletakkan di kode JavaScript yang dikirim ke browser |
+| **Weak Encryption Mode** | Menggunakan ECB membuat enkripsi lebih mudah dianalisis dan dipatahkan |
+
 ---
 
 ## AS06: Insecure Design
+
+> **Referensi:** [OWASP : A06:2025 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/)
