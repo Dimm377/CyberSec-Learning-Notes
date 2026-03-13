@@ -8,7 +8,7 @@
 
 Room ini memecah 4 dari 10 kategori **OWASP Top 10 2025** yang semuanya berkaitan dengan kelemahan di sisi _arsitektur dan desain sistem_. **OWASP** (_Open Worldwide Application Security Project_) adalah organisasi global yang secara rutin merilis daftar 10 risiko keamanan aplikasi web paling kritis. Bukan soal bug di kode, tapi soal **keputusan desain yang salah sejak awal** — yang membuat aplikasi rentan meskipun kode nya bersih.
 
-Kamu akan mempelajari teori setiap kategori sekaligus mempraktikkannya lewat _challenge_ langsung.
+Kamu akan mempelajari teori setiap kategori sekaligus melihat contoh nyata lewat _challenge_ yang disediakan di room nya.
 
 **Kategori yang dibahas di room ini:**
 
