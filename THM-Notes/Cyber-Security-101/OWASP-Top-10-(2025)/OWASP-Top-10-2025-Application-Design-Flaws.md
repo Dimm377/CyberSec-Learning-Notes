@@ -162,8 +162,7 @@ graph LR
     A["Data Asli (Plaintext)"] -- "Key + Algoritma" --> B["Data Terenkripsi (Ciphertext)"]
     B -- "Key + Algoritma" --> C["Data Asli Kembali"]
     
-    style B fill:#f96,stroke:#333,stroke-width:2px
-    note["Kunci harus dijaga!<br>Kalau kunci bocor, enkripsi sia-sia."]
+    note["Kunci harus dijaga<br>Kalau kunci bocor, enkripsi akan sia-sia"]
 ```
 
 ### Key Concepts
