@@ -8,7 +8,7 @@
 
 Room ini memecah 4 dari 10 kategori **OWASP Top 10 2025** yang semuanya berkaitan dengan kelemahan di sisi _arsitektur dan desain sistem_. **OWASP** (_Open Worldwide Application Security Project_) adalah organisasi global yang secara rutin merilis daftar 10 risiko keamanan aplikasi web paling kritis. Bukan soal bug di kode, tapi soal **keputusan desain yang salah sejak awal** — yang membuat aplikasi rentan meskipun kode nya bersih.
 
-Kamu akan mempelajari teori setiap kategori sekaligus melihat contoh nyata lewat _challenge_ yang disediakan di room nya.
+Kamu akan mempelajari teori setiap kategori sekaligus melihat contoh nyata lewat _challenge_ yang sudah ku selesaikan yang ada di room nya.
 
 **Kategori yang dibahas di room ini:**
 
@@ -35,7 +35,7 @@ Bahkan kesalahan konfigurasi kecil bisa membuat data sensitif terekspos, memungk
 
 ### Real-World Example
 
-Pada tahun 2017, **Uber** mengekspos backup **AWS S3 bucket** (layanan penyimpanan file di cloud milik Amazon) berisi data sensitif pengguna (termasuk informasi driver dan penumpang). Bucket tersebut bisa diakses publik tanpa credential apapun. Ini menunjukkan bagaimana satu kesalahan deployment bisa berujung pada kebocoran data masif.
+Pada tahun 2017, **Uber** mengekspos backup **AWS S3 bucket** (layanan penyimpanan file di cloud milik Amazon) berisi data sensitif pengguna (termasuk informasi driver dan penumpang). Bucket tersebut bisa diakses publik tanpa credential apapun. Ini menunjukkan bagaimana satu kesalahan deployment bisa berujung pada kebocoran data yang masif.
 
 ### Common Patterns
 
@@ -62,7 +62,7 @@ Pola-pola misconfiguration yang paling sering ditemukan:
 | **Secure AI endpoints** | Lindungi endpoint AI/ML dengan kontrol akses dan monitoring yang tepat |
 | **Automate security checks** | Integrasikan review konfigurasi dan pengecekan keamanan otomatis ke dalam deployment pipeline |
 
-### Challenge Breakdown
+### Challenge
 
 Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di satu aplikasi:
 
@@ -118,7 +118,7 @@ Di era AI, risiko serupa muncul ketika menggunakan model pihak ketiga atau datas
 | **Runtime monitoring** | Pantau perilaku abnormal dari dependency atau komponen AI saat aplikasi berjalan |
 | **Integrasikan ke SDLC** | Masukkan threat modelling supply chain ke dalam **SDLC** (_Software Development Life Cycle_ — seluruh siklus pengembangan software dari perencanaan sampai maintenance) |
 
-### Challenge Breakdown
+### Challenge
 
 Challenge ini mensimulasikan skenario nyata: aplikasi utama mengimpor library pihak ketiga yang **deprecated** (`lib/vulnerable_utils.py`). Di dalam library tersebut tersembunyi fungsi debug yang seharusnya tidak ada di versi produksi.
 
