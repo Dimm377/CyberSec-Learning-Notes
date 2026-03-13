@@ -239,23 +239,33 @@ Dengan populernya AI, masalah desain ini makin parah. Developer sering berasumsi
 
 ### Secure vs Insecure AI Architecture
 
-```mermaid
-graph LR
-    subgraph Insecure ["Insecure Design (Blind Trust)"]
-        A1[User Input] --> B1[AI Model]
-        B1 -- Execute --> C1[Database/System]
-    end
+```text
+[ ARSITEKTUR YANG AMAN: Human in the Loop ]
 
-    subgraph Secure ["Secure Design (Human in the Loop)"]
-        A2[User Input] --> B2[Input Filter & Validation]
-        B2 --> C2[AI Model]
-        C2 --> D2[Output Filter]
-        D2 -- High Risk Action --> E2{Human Review}
-        E2 -- Approve --> F2[Database/System]
-        E2 -- Deny --> G2[Drop Request]
-        
-        style E2 fill:#f9d0c4,stroke:#333,stroke-width:2px
-    end
+  +-------------+                 +--------------+
+  |  User Input |---------------->|  Filter Text |
+  +-------------+                 +--------------+
+                                         |
+                                         v
+  +--------------+                +--------------+
+  |   Model AI   |<---------------|  Prompt Asli |
+  +--------------+                +--------------+
+         |
+         v
+  +--------------+
+  | Output Filter|
+  +--------------+
+         |
+         | (Aksi Berisiko)
+         v
+  +--------------+      (Ditolak)      [ x ]
+  | Human Review |------------------> Drop Request
+  +--------------+
+         | (Disetujui)
+         v
+  +--------------+
+  | Eksekusi DB  |
+  +--------------+
 ```
 
 ### Common Patterns vs. Prevention
