@@ -237,16 +237,16 @@ Dengan populernya AI, masalah desain ini makin parah. Developer sering berasumsi
 *   **Blind Trust:** Percaya buta pada output AI tanpa validasi manusia menciptakan sistem yang rapuh.
 *   **Poisoned Models:** Menggunakan model AI dari sumber yang tidak diverifikasi yang mungkin sudah ditanam *backdoor* atau perilaku berbahaya dari sananya.
 
-### Visual Model : Secure vs Insecure AI Architecture
+### Secure vs Insecure AI Architecture
 
 ```mermaid
-graph TD
-    subgraph Insecure [Insecure Design: Blind Trust]
+graph LR
+    subgraph Insecure ["Insecure Design (Blind Trust)"]
         A1[User Input] --> B1[AI Model]
         B1 -- Execute --> C1[Database/System]
     end
 
-    subgraph Secure [Secure Design: Human in the Loop]
+    subgraph Secure ["Secure Design (Human in the Loop)"]
         A2[User Input] --> B2[Input Filter & Validation]
         B2 --> C2[AI Model]
         C2 --> D2[Output Filter]
