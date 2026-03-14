@@ -11,7 +11,7 @@
 
 ## Overview
 
-Room HTTP in Detail ini fokus ke pemahaman mendalam tentang protokol komunikasi paling mendasar di internet: **Hypertext Transfer Protocol (HTTP)**. Di sini kita belajar bagaimana data ditransmisikan antara browser dan web server, serta mengerti anatomi di balik setiap permintaan yang kita buat di web.
+Room HTTP in Detail ini fokus ke pemahaman mendalam tentang protokol komunikasi paling dasar di internet: **Hypertext Transfer Protocol (HTTP)**. Di sini kita belajar bagaimana data ditransmisikan antara browser dan web server, serta mengerti cara kerja di balik setiap permintaan yang kita buat di web.
 
 (Untuk memahami bagaimana browser menemukan alamat server, cek catatan [DNS In Details](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/DNS-In-Details.md). Gambaran lengkap seluruh proses web ada di [Putting It All Together](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Pre-Security/How-The-Web-Works/Putting-It-All-Together.md))
 
@@ -26,14 +26,14 @@ HTTP dikembangkan oleh Tim Berners-Lee dan timnya antara tahun 1989-1991. Protok
 HTTPS itu versi **aman** dari HTTP. Kalau HTTP biasa itu ibarat pesanan yang ditulis di kertas terbuka (siapa saja bisa baca), HTTPS itu pesanan yang **ditulis dalam amplop tersegel dan terenkripsi**. 
 
 Fungsinya:
-* **Mencegah penyadapan:** Data yang dikirim dan diterima dienkripsi, jadi orang yang mengintip di tengah jalan (man-in-the-middle) ga bisa baca isinya.
+* **Mencegah penyadapan:** Data yang dikirim dan diterima dienkripsi, jadi orang yang mengintip di tengah jalan (man-in-the-middle) tidak bisa membaca isinya.
 * **Menjamin keaslian server:** Memberikan jaminan bahwa kamu sedang berkomunikasi dengan server yang benar, bukan server palsu yang menyamar.
 
 ---
 
 ### What is A URL? (Uniform Resource Locator)
 
-Sebelum browser bisa memesan sesuatu ke server, dia butuh **alamat lengkap** untuk menemukan apa yang dicari. URL itu ibarat **alamat surat lengkap** — ada nama jalan, nomor rumah, sampai kode pos.
+Sebelum browser bisa memesan sesuatu ke server, dia butuh **alamat lengkap** untuk menemukan apa yang dicari. URL itu ibarat **alamat surat lengkap** ada nama jalan, nomor rumah, sampai kode pos.
 
 <p align="center">
 <img src="../../Assets/Images/URL.png" alt="URL">
@@ -101,7 +101,7 @@ Cache-Control: public, max-age=3600
     <title>Dimm HTTP Response</title>
 </head>
 <body>
-    <h1>Welcome to Dimm Server !</h1>
+    <h1>Welcome to Dimm Server</h1>
     <p>Status: Online</p>
 </body>
 </html>
@@ -112,7 +112,7 @@ Cache-Control: public, max-age=3600
 | Line 1 | `HTTP/1.1 200 OK` | Status: permintaan berhasil diproses |
 | Line 2 | `Date: Wed, 28 Jan 2026...` | Timestamp kapan respons dibuat |
 | Line 3 | `Server: Dimm-Arch-Server/2.4` | Jenis dan versi web server |
-| Line 4 | `Content-Type: text/html` | Format data yang dikirim — browser harus me-render sebagai halaman web |
+| Line 4 | `Content-Type: text/html` | Format data yang dikirim — browser harus me render sebagai halaman web |
 | Line 5 | `Content-Length: 173` | Ukuran payload (body) dalam byte |
 | Line 6 | `Connection: keep-alive` | Koneksi tetap terbuka buat request selanjutnya (efisiensi) |
 | Line 7 | `Cache-Control: public, max-age=3600` | Konten boleh di-cache selama 1 jam |
@@ -162,7 +162,7 @@ Status code itu ibarat **reaksi pelayan** setelah kamu menyampaikan pesanan. Kod
 
 ### HTTP Headers
 
-Headers itu **metadata** — informasi tambahan yang dikirim bareng request atau response. Ibarat **catatan tambahan** yang disertakan bersama surat pesanan maupun surat balasan.
+Headers itu **metadata** — informasi tambahan yang dikirim bersama request atau response. Ibarat **catatan tambahan** yang disertakan bersama surat pesanan maupun surat balasan.
 
 #### Request Headers (Catatan dari Client)
 
@@ -172,7 +172,7 @@ Headers itu **metadata** — informasi tambahan yang dikirim bareng request atau
 | **User-Agent** | Identitas perangkat, OS, dan browser yang dipakai client |
 | **Content-Length** | Ukuran data yang dikirim client (misal saat submit form) |
 | **Accept-Encoding** | Jenis kompresi yang didukung browser (misal `gzip`) agar transfer lebih cepat |
-| **Cookie** | Data kecil yang dikirim balik ke server untuk bantu server "mengingat" client |
+| **Cookie** | Data kecil yang dikirim balik ke server untuk bantu server mengingat client |
 
 #### Response Headers (Catatan dari Server)
 
@@ -187,15 +187,15 @@ Headers itu **metadata** — informasi tambahan yang dikirim bareng request atau
 
 ### Cookies
 
-HTTP itu protokol **stateless** — artinya server **tidak mengingat** permintaan sebelumnya dari client yang sama. Setiap request dianggap baru. Masalah ini diatasi dengan **Cookies**: potongan data kecil yang disimpan di sisi browser.
+HTTP itu protokol **stateless**, artinya server **tidak mengingat** permintaan sebelumnya dari client yang sama. Setiap request dianggap baru. Masalah ini diatasi dengan **Cookies**: potongan data kecil yang disimpan di sisi browser.
 
-Analogi: Cookies itu **kartu member/loyalty card** di restoran favoritmu. Tiap kali datang, kamu tunjukkan kartu itu dan pelayan langsung tau Oh, ini pelanggan kita yang suka duduk di pojok dan pesen ice americano.
+Analogi: Cookies itu **kartu member/loyalty card** di restoran favoritmu. Tiap kali datang, kamu menunjukkan kartu itu dan pelayan langsung tau Oh, ini pelanggan kita yang suka duduk di pojok dan pesen ice americano.
 
 **Cara Kerja Cookies:**
 
-1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` berisi ID unik (session token) — ibarat restoran memberikan kartu member ke kamu.
-2. **Storage:** Browser menyimpan token itu di memori lokal — kamu simpan kartu member di dompet.
-3. **Cookie (Request):** Setiap kali buka halaman baru di situs yang sama, browser otomatis menyertakan header `Cookie` berisi token tadi — sama kayak menunjukkan kartu member tiap kali masuk restoran.
+1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` berisi ID unik (session token), ibarat restoran memberikan kartu member ke kamu.
+2. **Storage:** Browser menyimpan token itu di memori lokal, kamu simpan kartu member di dompet.
+3. **Cookie (Request):** Setiap kali buka halaman baru di situs yang sama, browser otomatis menyertakan header `Cookie` berisi token tadi, sama kayak menunjukkan kartu member tiap kali masuk restoran.
 
 **Kegunaan Utama Cookies:**
 

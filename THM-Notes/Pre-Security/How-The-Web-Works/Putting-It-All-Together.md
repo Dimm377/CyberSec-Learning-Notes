@@ -11,30 +11,30 @@
 
 ## Putting It All Together
 
-Room ini merangkum seluruh proses komunikasi web, dari permintaan pengguna sampai pengiriman konten dari server. Ini ibarat melihat **peta lengkap perjalanan pesananmu** dari awal sampai akhir.
+Room ini merangkum seluruh proses komunikasi web, dari permintaan pengguna sampai pengiriman konten dari server. Ini ibarat melihat **bagaimana pesananmu dibuat dan dikirim** dari awal sampai akhir.
 
 ---
 
 ### Komponen Infrastruktur Tambahan
 
-Selain Client dan Server, ada pekerja di balik layar yang bikin semuanya berjalan lancar, bayangkan sebuah **gudang distribusi besar** yang mengirimkan paket ke seluruh dunia:
+Selain Client dan Server, ada pekerja di balik layar yang membuat semuanya berjalan lancar, bayangkan sebuah **gudang distribusi besar** yang mengirimkan paket ke seluruh dunia:
 
 | Komponen | Analogi | Fungsi |
 | -------- | ------- | ------ |
 | **Load Balancer** | Manajer gudang yang membagi tugas ke pekerja | Mendistribusikan traffic ke beberapa server secara merata + melakukan **Health Check** (cek server mana yang sehat) |
 | **CDN** (Content Delivery Network) | Gudang cabang di setiap kota | Mempercepat akses dengan mengirim file statis dari lokasi server terdekat dengan pengguna |
-| **WAF** (Web Application Firewall) | Satpam di pintu masuk gudang | Melindungi web server dari serangan cyber (Hacking/DoS) — memfilter traffic berbahaya sebelum masuk |
+| **WAF** (Web Application Firewall) | Satpam di pintu masuk gudang | Melindungi web server dari serangan cyber (Hacking/DoS) dan memfilter traffic berbahaya sebelum masuk |
 | **Database** | Arsip/gudang penyimpanan data | Menyimpan data dinamis yang diproses oleh aplikasi backend |
 
 ---
 
 ### Mekanisme Web Server
 
-Web server pakai **Virtual Hosts** buat menjalankan beberapa situs web di satu server fisik yang sama — ibarat satu gedung perkantoran yang bisa ditempati banyak perusahaan berbeda, dibedakan berdasarkan **nama domain**.
+Web server menggunakan **Virtual Hosts** untuk menjalankan beberapa situs web di satu server fisik yang sama, ibarat satu gedung perkantoran yang bisa ditempati banyak perusahaan berbeda, dibedakan berdasarkan **nama domain**.
 
 | Tipe Konten | Analogi | Penjelasan |
 | ----------- | ------- | ---------- |
-| **Static Content** | Brosur yang sudah dicetak — dikirim apa adanya | File yang dikirim langsung tanpa perubahan (HTML, CSS, Gambar) |
+| **Static Content** | Brosur yang sudah dicetak, dikirim apa adanya | File yang dikirim langsung tanpa perubahan (HTML, CSS, Gambar) |
 | **Dynamic Content** | Pesanan custom yang dibuat saat dipesan | Konten yang berubah-ubah tergantung permintaan user (hasil pencarian, profil user), diproses oleh backend |
 
 ---
