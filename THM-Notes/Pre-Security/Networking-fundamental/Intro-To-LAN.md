@@ -17,7 +17,7 @@ Room ini membahas dasar-dasar jaringan lokal — apa itu LAN, jenis-jenis topolo
 
 ### What is a LAN? (Local Area Network)
 
-**LAN** itu jaringan yang menghubungkan perangkat-perangkat dalam **jarak dekat** — seperti di rumah, kantor, atau sekolah. Analogi: LAN itu ibarat **interkom di gedung** — semua orang di gedung yang sama bisa berkomunikasi langsung dengan cepat dan murah, tapi ga bisa menelepon ke gedung lain tanpa jalur keluar (router/internet).
+**LAN** itu jaringan yang menghubungkan perangkat-perangkat dalam **jarak dekat**, seperti di rumah, kantor, atau sekolah. Analogi: LAN itu ibarat **interkom di gedung** — semua orang di gedung yang sama bisa berkomunikasi langsung dengan cepat dan murah, tapi tidak bisa menelepon ke gedung lain tanpa jalur keluar (router/internet).
 
 **Keunggulan LAN:** Kecepatan tinggi, biaya murah, bisa saling berbagi file dan sumber daya.
 

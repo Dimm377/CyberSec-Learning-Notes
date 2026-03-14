@@ -56,6 +56,6 @@ VPN membuat koneksi jadi **aman dan terenkripsi** antara perangkat dan jaringan.
 
 | Teknologi | Cara Kerja | Kelebihan | Kekurangan |
 | --------- | ---------- | --------- | ---------- |
-| **PPP** (Point-to-Point Protocol) | Otentikasi + enkripsi pakai private key & public certificate (mirip SSH) | Dasar dari PPTP | Non-routable — ga bisa keluar jaringan sendiri |
+| **PPP** (Point-to-Point Protocol) | Otentikasi + enkripsi pakai private key & public certificate (mirip SSH) | Dasar dari PPTP | Non-routable, tidak bisa keluar jaringan sendiri |
 | **PPTP** (Point-to-Point Tunneling Protocol) | Membuat data PPP bisa berpindah antar jaringan | Mudah di-setup, didukung banyak perangkat | Enkripsi lemah |
 | **IPSec** (Internet Protocol Security) | Enkripsi data pakai framework IP yang sudah ada | Enkripsi kuat, didukung banyak perangkat | Lebih susah di-setup |
