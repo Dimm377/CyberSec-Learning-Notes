@@ -127,7 +127,7 @@
 | :-: | ----- | ----------- |
 | 1.  | [OWASP Top 10 : IAAA Failures](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-IAAA%20Failures.md) | A01, A07, A09 — Failures in the applied IAAA model. |
 | 2.  | [OWASP Top 10 : Application Design Flaws](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-Application-Design-Flaws.md) | AS02, AS03, AS04, AS06 — Misconfigurations, Supply Chain, Crypto, Insecure Design. |
-| 3.  | [OWASP Top 10 : Insecure Data Handling](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-nsecure-Data-Handling.md) | A05, A08 — Failures related to Insecure Data Handling. |
+| 3.  | [OWASP Top 10 : Insecure Data Handling](THM-Notes/Cyber-Security-101/OWASP-Top-10-(2025)/OWASP-Top-10-2025-insecure-Data-Handling.md) | A05, A08 — Failures related to Insecure Data Handling. |
 
 </details>
 
