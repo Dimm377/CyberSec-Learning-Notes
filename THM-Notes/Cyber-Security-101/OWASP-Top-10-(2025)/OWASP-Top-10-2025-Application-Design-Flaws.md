@@ -85,7 +85,7 @@ Challenge ini mendemonstrasikan dua misconfiguration yang terjadi bersamaan di s
 
 **Software Supply Chain Failure** terjadi ketika aplikasi bergantung pada komponen, library, service, atau model AI dari pihak ketiga yang ternyata sudah **disusupi attacker**, **deprecated**, atau tidak diverifikasi dengan benar. Intinya: kelemahannya **bukan di kode kamu sendiri**, tapi di software dan tools eksternal yang kamu gunakan sebagai pondasi. Attacker mengeksploitasi mata rantai terlemah ini untuk menyuntikkan kode berbahaya, melewati keamanan, atau mencuri data sensitif.
 
-Bayangkan kamu membangun rumah, bahan bangunan (bata, semen, kabel) kamu beli dari supplier. Kalau salah satu supplier diam-diam mencampur bahan cacat atau bahkan beracun, rumahmu tetap terlihat bagus di luar, tapi sudah bermasalah dari dalam — padahal tukangnya tidak salah.
+Bayangkan kamu membangun rumah, bahan bangunan (bata, semen, kabel) kamu beli dari supplier. Kalau salah satu supplier diam-diam mencampur bahan cacat atau bahkan memuat komponen berbahaya (_malicious components_), rumahmu tetap terlihat bagus di luar, tapi sudah bermasalah dari dalam — padahal tukangnya tidak salah.
 
 ### Why It Matters
 

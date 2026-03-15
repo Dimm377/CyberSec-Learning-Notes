@@ -40,7 +40,7 @@ Saat sedang menghadapi insiden keamanan, sering kali musuhnya menyamar jadi _fil
 Pernah dapat email berlampiran _Excel_ yang tiba-tiba membuat komputer lemot? Kemungkinan besar _file_ itu menyimpan _malware_ berbasis _Macro_. Untuk membongkarnya dengan aman secara statis (tanpa perlu membuka aplikasinya), kamu bisa menggunakan **`oledump.py`**.
 
 **Apa itu OLE2?**
-Kalau kamu bingung, OLE2 (_Object Linking and Embedding_) itu teknologi jadul buatan Microsoft. Pada dasarnya, _file_ OLE2 seperti sebuah _zip folder_ transparan — bisa menyimpan banyak tipe data berbeda (teks, gambar, _script_ racun) berdesakan di dalam satu _file_ utuh. _Tool_ ini sangat jago untuk mengekstrak dan menelanjangi isi kandungan OLE2 tersebut.
+OIT (_Object Linking and Embedding_) itu teknologi jadul buatan Microsoft. Pada dasarnya, _file_ OLE2 seperti sebuah _zip folder_ transparan — bisa menyimpan banyak tipe data berbeda (teks, gambar, _payload_ berbahaya) berdesakan di dalam satu _file_ utuh. _Tool_ ini sangat jago untuk mengekstrak dan menelanjangi isi kandungan OLE2 tersebut.
 
 **Cara Pakainya:**
 Misal kamu dapet *file* mencurigakan bernama `agenttesla.xlsm`. Cukup panggil *tool*-nya di terminal:
@@ -56,7 +56,7 @@ Hasilnya bakal keluar struktur direktori dari dalem *file* Excel itu.
 * Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah — huruf 'M' berarti ada _script_ VBA Macro yang disisipkan di dalam partisi tersebut.
 * Kolom angka di sebelahnya menunjukkan ukuran *byte* dari partisi itu, disusul nama partisinya.
 
-Tugas kamu sebagai analis adalah membedah lebih dalem indeks nomor yang ada huruf 'M'-nya buat melihat isi nyatanya menulis *script* racun jenis apa.
+Tugas kamu sebagai analis adalah membedah lebih dalam indeks nomor yang ada huruf 'M'-nya buat melihat isi nyatanya memuat _malicious script_ jenis apa.
 
 **Menyelam Lebih Dalam ke Data Stream Jahat:**
 Nah, anggap saja di _output_ sebelumnya kita curiga sama baris nomor 4 (`A4: M ...`). Kita bisa menyuruh _oledump_ untuk menampilkan isi mentahan dari _stream_ nomor 4 itu saja menggunakan _flag_ `-s` (_select_):

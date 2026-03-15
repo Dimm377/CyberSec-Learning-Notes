@@ -70,7 +70,7 @@ Ini adalah daftar lengkap semua kemampuan CyberChef. Gunakan fitur **search** ji
 
 ### Recipe Area
 
-Ini adalah **jantung dari CyberChef**. Di sini kamu menentukan urutan kerja. Operasi akan dijalankan dari **atas ke bawah**.
+Ini adalah **pusat operasi dari CyberChef**. Di sini kamu menentukan urutan kerja. Operasi akan dijalankan dari **atas ke bawah**.
 
 Fitur penting:
 * **`BAKE!`**: Tombol eksekusi.

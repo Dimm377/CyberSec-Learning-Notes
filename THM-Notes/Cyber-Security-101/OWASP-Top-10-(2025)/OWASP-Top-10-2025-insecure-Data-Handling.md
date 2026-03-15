@@ -23,7 +23,7 @@ Ada 4 titik kelemahan utama yang paling sering dieksploitasi:
 3. **Deprecated Algorithms:** Komputer modern bisa dengan mudah membobol standar sandi kuno yang masih dipakai *developer*, misalnya standar MD5, SHA1, atau DES.
 4. **Rolling Their Own Crypto:** Pengembang egois yang menolak memakai standar keamanan industri dan mencoba menciptakan rumus matematikanya sendiri untuk mengamankan data tanpa pengujian global.
 
-#### Advanced Details
+#### More Details about Cryptographic Failures
 
 Untuk mematikan potensi *Cryptographic Failures* secara arsitektur, organisasi sangat diwajibkan untuk mengadopsi mekanisme proteksi standar:
 
@@ -120,7 +120,7 @@ Prinsip utamanya adalah **Jangan pernah percaya satupun input yang diketik dari 
 
 
 [ SECURE: Parameterized Queries (Safe from SQLi) ]
-  Mekanisme parameter mengunci input menjadi variabel tipe teks murni
+  Mekanisme parameter memproses input murni sebagai data literal (bukan bagian dari perintah instruksi).
 
   Query  : SELECT * FROM users WHERE nama = ?
   Params : ? = "dimm' OR 1=1 --"
@@ -154,5 +154,50 @@ Dalam tantangan ini, kita menghadapi **SSTI Playground** yang menggunakan mesin 
 **Hasil Akhir:**
 Server mengeksekusi perintah tersebut dan membocorkan isi file `flag.txt`.
 
-**Takeaway (Pelajaran Penting):**
 SSTI bukan sekadar masalah teks yang berubah, tapi pintu masuk bagi penyerang untuk menguasai server melalui eksekusi kode, penggunaan fungsi yang mengevaluasi string secara dinamis tanpa validasi ketat adalah kesalahan fatal dalam desain keamanan data.
+
+### A08: Software and Data Integrity Failures
+
+> **Referensi:** [OWASP : A08:2025 Software and Data Integrity Failures](https://owasp.org/Top10/2025/A08_2025-Software_and_Data_Integrity_Failures/)
+
+*Software and Data Integrity Failures* terjadi ketika sebuah aplikasi memercayai kode, pembaruan (*updates*), atau data dari luar tanpa melakukan verifikasi terlebih dahulu. Masalah utama di sini bukanlah tentang data itu benar atau salah, melainkan apakah data tersebut **asli** dan **belum dimodifikasi** oleh pihak ketiga yang jahat.
+
+Bayangkan kamu membeli obat di apotek. Di leher botolnya terdapat segel plastik pelindung dan stiker yang menuliskan: *"Jangan terima jika segel rusak"*. Segel itu adalah jaminan integritas. Jika kamu mengonsumsi obat dari botol yang segelnya sudah terbuka, kamu mempertaruhkan nyawamu karena tidak ada jaminan isinya masih asli atau sudah diganti racun. Dalam dunia digital, aplikasi yang melakukan *update* tanpa mengecek tanda tangan digital (*digital signature*) sama saja dengan meminum obat dari botol yang segelnya sudah rusak.
+
+Masalah integritas ini biasanya muncul pada:
+*   **Software Updates:** Aplikasi mengunduh pembaruan dari internet tanpa memverifikasi tanda tangan digital paket tersebut.
+*   **Insecure Deserialization:** Mengubah objek data (seperti JSON/XML) kembali menjadi objek kode aktif tanpa memvalidasi apakah struktur datanya sudah dimanipulasi untuk menyisipkan perintah jahat.
+*   **Third-Party Libraries:** Mengambil script (JavaScript) atau library kode dari sumber luar secara langsung (seperti CDN) tanpa memastikan file tersebut belum disusupi *malware*.
+
+#### More Details about Integrity
+
+Untuk menjamin integritas secara sistematis, pengembang wajib menerapkan mekanisme validasi di setiap titik transit data:
+
+- **Code Signing:** Semua paket kode atau pembaruan wajib ditandatangani secara digital menggunakan kunci privat pengembang. Aplikasi klien kemudian memverifikasi tanda tangan tersebut menggunakan kunci publik untuk memastikan kode murni berasal dari sumber yang sah.
+- **Checksum Verification:** Penggunaan algoritma *hash* (seperti SHA-256) untuk menghasilkan sidik jari unik dari sebuah file. Sebelum memproses data, sistem harus menghitung ulang *hash* file tersebut dan membandingkannya dengan nilai *hash* asli yang disediakan oleh penyedia data. Jika ada perbedaan satu karakter saja, data dianggap tidak sah.
+- **Secure Pipelines (CI/CD):** Memastikan proses pembuatan aplikasi dari awal hingga rilis (*Continuous Integration / Continuous Deployment*) dilakukan di dalam infrastruktur yang terisolasi dan hanya bisa diakses oleh personel resmi.
+
+> **for your information:**
+> *   **Checksum:** Sebuah angka/karakter unik yang dihasilkan dari isi file. Jika isi file berubah sedikit saja, angka ini akan berubah total (berfungsi sebagai sidik jari digital).
+> *   **CI/CD:** Alur otomatis dalam pengembangan aplikasi, mulai dari pengujian kode hingga peluncuran otomatis ke server.
+
+**Trusted vs Untrusted Data Flow**
+
+```text
+[ SCENARIO: Software Update Integrity ]
+
+UNTRUSTED (No Verification)
+User App <---------- [ Insecure Server / Man-in-the-Middle ]
+(App langsung mengeksekusi file .exe yang diterima tanpa cek segel)
+Dampak: Potensi instalasi Malware/Ransomware.
+
+TRUSTED (With Integrity Check)
+User App <---------- [ Update Server ]
+    |
+    +--> [ Mekanisme Verifikasi ]
+         1. Hitung Hash File (SHA-256)
+         2. Verifikasi Tanda Tangan Digital
+         3. Compare dengan Metadata Resmi
+    |
+(EKSEKUSI HANYA JIKA LOLOS VERIFIKASI)
+```

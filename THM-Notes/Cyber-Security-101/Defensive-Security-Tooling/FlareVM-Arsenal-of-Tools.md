@@ -116,7 +116,7 @@ Berikut beberapa tools yang sering digunakan untuk investigasi beserta fungsinya
 
 ### 1. Process Monitor (Procmon)
 
-**Procmon** adalah alat super canggih bawaan Windows, Bayangkan **Procmon** sebagai **Dashcam Kamera Pelacak** beresolusi tinggi yang terpasang di jantung sistem operasi komputer kamu.
+**Procmon** adalah alat super canggih bawaan Windows. Bayangkan **Procmon** sebagai **Dashcam Kamera Pelacak** beresolusi tinggi yang terpasang langsung pada sistem operasi komputer kamu.
 
 Tugas utamanya adalah membiarkan kamu **melihat, merekam, dan melacak** semua aktivitas *file* Windows secara *real-time*. Dia terus-menerus memantau dan mencatat tiga area vital:
 1. Pergerakan *File System* (buka/tutup/edit *file*).
@@ -234,7 +234,7 @@ Protokol TLS (*Transport Layer Security*) sejatinya adalah terowongan baja pelin
 
 ### 6. PEstudio
 
-Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static Analysis**. Kalau di dunia nyata, PEstudio ibarat **Mesin X-Ray di Pemeriksaan Keamanan Bandara**. Kamu bertugas memeriksa isi koper penumpang yang mencurigakan sedetail mungkin **tanpa harus** membukanya sama sekali. Cara ini sangat krusial dan aman agar bom atau racun di dalam *file* aplikasinya tidak meledak mengenai komputermu.
+Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static Analysis**. Kalau di dunia nyata, PEstudio ibarat **Mesin X-Ray di Pemeriksaan Keamanan Bandara**. Kamu bertugas memeriksa isi koper penumpang yang mencurigakan sedetail mungkin **tanpa harus** membukanya sama sekali. Cara ini sangat krusial dan aman agar _payload_ berbahaya di dalam *file* aplikasinya tidak mengeksekusi serangan mengenai komputermu.
 
 **Contoh Investigasi Menggunakan PEstudio:**
 
