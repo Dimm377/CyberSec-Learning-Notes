@@ -20,12 +20,12 @@ Gobuster adalah tools _offensive security_ yang sering dipakai untuk reconnaissa
 * **Kapan teknik ini dipakai?** Tahap **Reconnaissance / Enumeration** — mencari directory, file, subdomain, dan vhost tersembunyi di target web.
 * **Syaratnya:** URL target yang bisa diakses, dan wordlist yang sesuai (misalnya `/usr/share/wordlists/dirb/common.txt`).
 * **Tanda keberhasilan:** Gobuster menampilkan daftar path dengan status code `200`, `301`, `302`, atau `403` yang mengindikasikan resource yang ada.
-* Cara pakai Gobuster buat ngintip **virtual hosts**
+* Cara pakai Gobuster untuk melihat **virtual hosts**
 * caranya memilih dan memakai **wordlist** yang cocok untuk scanning
 
 ## Environment & Setup
 
-Karena Gobuster ini dibuat pakai bahasa **Go**, dia cukup fleksibel dan bisa jalan di berbagai OS (Linux, macOS, bahkan Windows). Berikut cara install-nya agar kita bisa langsung praktek.
+Karena Gobuster ini dibuat pakai bahasa **Go**, dia cukup fleksibel dan bisa jalan di berbagai OS (Linux, macOS, bahkan Windows). Berikut cara install-nya agar kita bisa langsung praktik.
 
 ### 1. Kali Linux (Debian-based)
 
@@ -129,22 +129,22 @@ Isi dari help page nya yaitu:
 
 * **Available Commands:**
 
-  Ada banyak mode yang bisa dipake (seperti enumerasi S3 bucket, Google Cloud, dll), dan kita bakal fokus ke tiga command utama:
+  Ada banyak mode yang bisa digunakan (seperti enumerasi S3 bucket, Google Cloud, dll), dan kita bakal fokus ke tiga command utama:
 * `dir`: Mode enumeration direktori/file (paling sering dipakai).
 * `dns`: Mode enumeration subdomain.
 * `vhost`: Mode enumeration virtual host.
 
 * **Flags:**
 
-  Ini adalah opsi tambahan yang bisa kita atur buat nyesuain cara kerja command-nya (misal: nambahin jumlah threads, nge-skip error, dll).
+  Ini adalah opsi tambahan yang bisa kita atur buat menyesuaikan cara kerja command-nya (misal: menambahkan jumlah threads, mengabaikan error, dll).
 
 | Flag |  Long Flag   | Keterangan                                                                                                                                                                          |
 | :--: | :----------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-t` | `--threads`  | Jumlah _concurrent threads_ yang dipake buat scanning. Default-nya 10. Bisa dinaikin agar lebih kencang, tapi hati-hati ini akan memakan resource PC atau membuat server target down. |
-| `-w` | `--wordlist` | Path ke file wordlist yang mau dipakai. Ini wajib diisi agar Gobuster tau "kamus" apa yang harus dicoba.                                                                            |
-|      |  `--delay`   | Jeda waktu antar request. Berguna agar tidak terlalu agresif dan tidak kedetect firewall/WAF. Agar dikira traffic normal gitu lah.                                                      |
-|      |  `--debug`   | Mode _troubleshooting_. Berguna banget kalau kamu nemu error aneh dan pengen tau detail apa yang salah.                                                                               |
-| `-o` |  `--output`  | Opsi buat menyimpan hasil scan ke file. Wajib banget dipake pas CTF atau pentest beneran agar tidak ilang datanya.                                                                      |
+| `-t` | `--threads`  | Jumlah _concurrent threads_ yang digunakan buat scanning. Default-nya 10. Bisa dinaikin agar lebih kencang, tapi hati-hati ini akan memakan resource PC atau membuat server target down. |
+| `-w` | `--wordlist` | Path ke file wordlist yang mau dipakai. Ini wajib diisi agar Gobuster tahu "kamus" apa yang harus dicoba.                                                                            |
+|      |  `--delay`   | Jeda waktu antar request. Berguna agar tidak terlalu agresif dan tidak terdeteksi firewall/WAF. Agar dikira traffic normal gitu lah.                                                      |
+|      |  `--debug`   | Mode _troubleshooting_. Berguna banget kalau kamu nemu error aneh dan ingin tahu detail apa yang salah.                                                                               |
+| `-o` |  `--output`  | Opsi buat menyimpan hasil scan ke file. Wajib banget dipake pas CTF atau pentest beneran agar tidak hilang datanya.                                                                      |
 
 ### Example
 
@@ -152,16 +152,16 @@ contoh bagaimana kita menggunakan perintah dan flag untuk melakukan enumeration 
 
 `gobuster dir -u "http://www.yourbrokenweb.thm/" -w /usr/share/wordlists/dirb/small.txt -t 64`
 
-* `gobuster dir`: Ini memberi tau Gobuster kalau kita mau pakai mode enumerasi direktori dan file.
+* `gobuster dir`: Ini memberi tahu Gobuster kalau kita mau pakai mode enumerasi direktori dan file.
 * `-u "http://www.yourbrokenweb.thm/"`: Ini target URL yang mau kita scan.
-* `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat nebak nama-nama directory. Gobuster bakal mengambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan mengirim request ke sana.
+* `-w /usr/share/wordlists/dirb/small.txt`:lokasi file wordlist yang bakal dipakai Gobuster buat menebak nama-nama directory. Gobuster bakal mengambil setiap kata di list ini, terus ditempel ke URL target (misal: `http://target.com/admin`, `http://target.com/login`, dst) dan mengirim request ke sana.
 * `-t 64`: Ini mengeset jumlah threads jadi 64. Membuat proses scan jadi jauh lebih cepat dibanding default-nya.
 
 ## Use Case: Directory And File Enumeration
 
-Gobuster punya mode `dir` yang berguna untuk enumerate directory dan file di sebuah website. Ini terpakai pas lagi pentest buat mencari tau struktur direktori target.
+Gobuster punya mode `dir` yang berguna untuk enumerate directory dan file di sebuah website. Ini terpakai pas lagi pentest buat mencari tahu struktur direktori target.
 
-Biasanya, struktur direktori website itu ikut standar tertentu (seperti CMS), jadi gampang ditebak pakai teknik _Brute Force_ pakai wordlist.
+Biasanya, struktur direktori website itu ikut standar tertentu (seperti CMS), jadi gampang ditebak pakai teknik _Brute Force_ menggunakan wordlist.
 
 Contohnya, struktur direktori WordPress biasanya seperti ini:
 
@@ -225,9 +225,9 @@ Contoh kedua, kalau mau mencari file spesifik (misal PHP atau JS), kita bisa pak
 
 Mode selanjutnya yang bakal kita bahas adalah mode `dns`. Mode ini memungkinkan Gobuster buat nge-bruteforce subdomain.
 
-saat sedang pentest, mengecheck subdomain dari domain utama target itu hukumnya **wajib**. Kenapa? Karena bisa jadi domain utamanya aman (sudah dipatch), tapi subdomainnya broken
+saat sedang pentest, mengecek subdomain dari domain utama target itu hukumnya **wajib**. Kenapa? Karena bisa jadi domain utamanya aman (sudah dipatch), tapi subdomainnya rusak (vulnerable).
 
-Celah keamanan di subdomain bisa jadi pintu masuk buat nge-hack sistem yang ada di web secara keseluruhan.
+Celah keamanan di subdomain bisa jadi pintu masuk buat meretas sistem yang ada di web secara keseluruhan.
 
 Contoh simpelnya:
 Misal `yourbrokenweb` punya domain `yourbrokenweb.thm` dan `mobile.yourbrokenweb.thm`.
@@ -322,7 +322,7 @@ Berikut adalah beberapa flag yang sering dipake di mode `vhost`:
 |            | `--append-domain`  | Nambahin domain utama ke setiap kata di wordlist (misal: `word.yourbrokenweb.thm`).                                             |
 |    `-m`    |     `--method`     | Menentukan HTTP method request-nya (misal: `GET`, `POST`). Default-nya `GET`.                                                   |
 |            |     `--domain`     | Menambahkan domain ke entry wordlist buat membuat hostname yang valid (berguna kalau tidak disediain secara eksplisit).             |
-|            | `--exclude-length` | Filter hasil berdasarkan panjang response body. Berguna banget buat nge-filter halaman error default yang ukurannya sama semua. |
+|            | `--exclude-length` | Filter hasil berdasarkan panjang response body. Berguna banget buat memfilter halaman error default yang ukurannya sama semua. |
 
 ### How To Use vhost Mode
 

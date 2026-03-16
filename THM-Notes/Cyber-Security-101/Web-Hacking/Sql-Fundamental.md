@@ -89,7 +89,7 @@ Semua data yang disimpen dalam relational database bakal disimpen di sebuah tabe
 <img src="../../Assets/Images/TRC.png" alt="TRC">
 </p>
 
-Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhin—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di *database*: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhin—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di dalam database: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
 Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, buat buku `Android Security Internals` pakai ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukin, seluruh informasi ini bakal tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel itu.
 
@@ -111,7 +111,7 @@ Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohny
 
 Semua teori tadi emang kedengeran bagus, tapi dalam praktek, gimana sih cara database itu beneran bekerja? Gimana cara kita membuat tabel pertama dan ngisinya pakai data? Alat apa yang sebenernya kita pakai?
 
-Nah, di sinilah peran DBMS (Database Management System). Anggep saja DBMS sebagai pusat kendali atau jembatan antara kita (pengguna) sama database yang ada. DBMS itu software yang membuat kita bisa narik, ganti, dan ngatur data yang tersimpan pakai gampang.
+Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebagai pusat kendali atau jembatan antara kita (pengguna) sama database yang ada. DBMS itu software yang membuat kita bisa mengambil, mengganti, dan mengatur data yang tersimpan pakai gampang.
 
 **Contoh DBMS yang Sering Dipake:**
 
@@ -127,7 +127,7 @@ Buat bisa 'ngobrol' atau berinteraksi sama database, kita pakai SQL (Structured 
 
 Berikut beberapa manfaat yang didapet dengan belajar dan pakai SQL:
 
-* **SQL itu cepat:** relational database (yang pakai SQL) sanggup narik data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien banget (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
+* **SQL itu cepat:** relational database (yang pakai SQL) sanggup mengambil data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien banget (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
 
 * **Gampang dipelajari:** Beda sama banyak bahasa pemrograman lain, SQL ditulis pakai bahasa Inggris sederhana **(plain English)**, jadi jauh lebih gampang dipahami. Sifat bahasanya yang gampang dibaca membuat kita bisa lebih fokus buat belajar fungsi dan logikanya saja.
 
@@ -304,7 +304,7 @@ Query OK, 1 row affected (0.01 sec)
 Read operation fungsinya sebagai metode utama buat mengambil atau menampilkan informasi yang tersimpan di dalam tabel. Lewat pernyataan `SELECT`, kita punya fleksibilitas buat manggil kolom tertentu secara spesifik atau menampilkan seluruh isi tabel.
 
 * `SELECT` spesifik: Dipake kalau kita cuma butuhin kolom tertentu, misalnya cuma judul buku.
-* `SELECT` all: Pakai tanda bintang (\*) buat narik data di semua kolom yang tersedia sekaligus.
+* `SELECT` all: Pakai tanda bintang (\*) buat mengambil data di semua kolom yang tersedia sekaligus.
 
 ```SQL
 -- Nambahin data baru ke tabel book_inventory
@@ -343,7 +343,7 @@ mysql> SELECT name, description FROM book_inventory;
 
 * **Update Operation (UPDATE)**
 
-Update operation itu bagian krusial dari siklus CRUD yang membuat modifikasi data secara real-time jadi mungkin. Pernyataan `UPDATE` bekerja pakai cara nimpa data lama sama informasi terbaru yang bakal kita kasih.
+Update operation itu bagian krusial dari siklus CRUD yang membuat modifikasi data secara real-time jadi mungkin. Pernyataan `UPDATE` bekerja pakai cara menimpa data lama sama informasi terbaru yang bakal kita kasih.
 
 ```SQL
 -- Update deskripsi buku pakai ID 2
@@ -396,7 +396,7 @@ Di sini kita bakal pakai tabel `book_inventory` dari database `bookstore_db;`
 
 * **DISTINCT Clause**
 
-DISTINCT clause dipake buat ngilangin data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
+DISTINCT clause dipake buat menghilangkan data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
 
 Kita pakai query `SELECT * FROM book_inventory` buat melihat isi tabel (asumsiin kita sudah ngisi kembali tabel pakai data sampel berikut):
 
@@ -731,7 +731,7 @@ mysql> SELECT *
 
 ## Functions
 
-Waktu kerja sama data, fungsi bisa bantuin kita nyederhanaiin query, lakuin operasi, serta manipulasi data pakai lebih efisien. Ayo kita jelajahin beberapa fungsi yang sering dipake agar pemahaman kita makin luwes!
+Waktu kerja sama data, fungsi bisa bantuin kita menyederhanakan query, lakuin operasi, serta manipulasi data pakai lebih efisien. Ayo kita jelajahin beberapa fungsi yang sering dipake agar pemahaman kita makin luwes!
 
 ### String Functions
 
@@ -781,16 +781,16 @@ Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
   ```
 
 * **LENGTH()**
-  Ngitung jumlah karakter dalam sebuah string. Berguna buat analisis panjang data.
+  Menghitung jumlah karakter dalam sebuah string. Berguna buat analisis panjang data.
 
 ### Aggregate Functions
 
 Fungsi ini digunakan untuk melakukan perhitungan di sekumpulan nilai dan mengembalikan satu nilai tunggal.
 
-* **COUNT()**: Ngitung jumlah baris yang cocok sama kriteria.
+* **COUNT()**: Menghitung jumlah baris yang cocok sama kriteria.
 
   ```SQL
-  mysql> SELECT COUNT(*) FROM book_inventory; -- Ngitung total buku
+  mysql> SELECT COUNT(*) FROM book_inventory; -- Menghitung total buku
   ```
 
 * **MIN()** & **MAX()**: Mencari nilai terkecil dan terbesar.

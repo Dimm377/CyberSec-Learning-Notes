@@ -38,7 +38,7 @@ flowchart LR
 <img src="../../Assets/Images/Firewall-type.png" alt="Type of Firewall" width="800px"/>
 </p>
 
-nyatanya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing dirancang dengan tujuannya sendiri
+kenyataannya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing dirancang dengan tujuannya sendiri
 
 Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjanya. Mereka beroperasi di **lapisan (*layer*) OSI Model yang berbeda-beda**. Ibaratnya, ada satpam yang hanya memeriksa KTP di pagar depan, ada juga yang sampai memeriksa isi tas sampai ke dalam-dalamnya di ruang VIP
 
@@ -55,7 +55,7 @@ Dia kerja super cepat buat memeriksa *header* paket data (mengecek IP dari mana,
 
 Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku catatan (*State Table*) kemana-mana (Beroperasi di **OSI Layer 3 & 4** juga).
 * Kalau ada paket yang diizinin masuk, dia bakal catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia bakal otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
-* Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal catet cirinya buat nolak paket serupa di masa depan secara otomatis. Jauh lebih aman
+* Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal mencatat cirinya buat menolak paket serupa di masa depan secara otomatis. Jauh lebih aman
 
 ### 3. Proxy Firewall (Asisten Kurir)
 
@@ -71,7 +71,7 @@ Ini adalah *Firewall Last Boss* sejuta umat zaman sekarang. NGFW beroperasi nyap
 Dia bukan cuma satpam, tapi sudah seperti **Sistem Pertahanan Militer Lengkap**:
 * Punya fitur *Deep Packet Inspection* (mengecek paket sampai ke dalem-dalemnya).
 * Punya sistem IPS (*Intrusion Prevention System*) buat mencegah ancaman/serangan secara *Real-Time*.
-* Bisa nebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
+* Bisa menebak pola serangan dan mendeskripsi lalu lintas yang disamarkan (*SSL/TLS decryption*). Singkatnya: NGFW itu *All-in-One Security*
 
 > **Note:**
 > BONUS:
@@ -101,8 +101,8 @@ Meski dari *Firewall* sudah dibekali aturan keamanan standar, bagian paling seru
 **Contoh Kasus (Skenario Akses SSH):**
 Normalnya, buat menjaga server dari *hacker* , kita bakal pasang aturan: *"Firewall Tolak mentah-mentah (*Deny*) semua orang asing dari luar yang mencoba masuk ke server kita lewat jalur SSH (Port 22)."*
 
-Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* dari *cafe* dan butuh akses SSH ke server itu. Di sinilah saksinya *Custom Rules* bekerja. Kita tinggal tambahin instruksi pengecualian:
-*"Tolak semua akses SSH **KECUALI** kalau orang itu datang dari alamat IP `192.168.100.55` (Ini IP WiFi *cafe* tempat kita nongkrong). Kalau si IP itu yang minta masuk, bukain pintunya (*Allow*)"*
+Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* dari *kafe* dan butuh akses SSH ke server itu. Di sinilah saksinya *Custom Rules* bekerja. Kita tinggal tambahin instruksi pengecualian:
+*"Tolak semua akses SSH **KECUALI** kalau orang itu datang dari alamat IP `192.168.100.55` (Ini IP WiFi *kafe* tempat kita bersantai). Kalau si IP itu yang minta masuk, bukain pintunya (*Allow*)"*
 
 Intinya: **Aturan Firewall (*Firewall Rules*) itu adalah hukum mutlak buatan sendiri.** Kita yang menentukan siapa yang harus ditolak, dan siapa pengecualian yang boleh masuk.
 

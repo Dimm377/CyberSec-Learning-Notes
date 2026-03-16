@@ -27,10 +27,10 @@ Sebelum kita masuk ke teori-teori prinsip keamanan yang kompleks, hal pertama ya
 
 Bayangkan kamu sedang menjaga sebuah laptop, strategi keamanan yang kamu berikan akan sangat bergantung pada siapa lawan yang sedang kamu hadapi:
 
-1. **Kasus A (Lawan Balita):** Kamu cuma mau mencegah seorang balita (anak kecil) supaya nggak asal pencet *keyboard* dan menghapus tugas sekolahmu. 
+1. **Kasus A (Lawan Balita):** Kamu cuma mau mencegah seorang balita (anak kecil) supaya tidak asal pencet *keyboard* dan menghapus tugas sekolahmu. 
 * *Solusi:* Cukup ditaruh di tempat tinggi atau pakai *password* sederhana saja sudah sangat aman.
 2. **Kasus B (Lawan Mata-mata):** Laptop kamu berisi desain rahasia teknologi senilai miliaran rupiah, dan targetnya adalah **Mata-mata Industri** yang profesional.
-* *Solusi:* Memakai cara yang sama seperti kasus A tentu sudah masuk kategori konyol/nggak cukup, di sini kamu butuh **Appropriate Security Controls** (kontrol keamanan yang sesuai porsinya), seperti:
+* *Solusi:* Memakai cara yang sama seperti kasus A tentu sudah masuk kategori konyol/tidak cukup, di sini kamu butuh **Appropriate Security Controls** (kontrol keamanan yang sesuai porsinya), seperti:
 * Enkripsi data tingkat tinggi (biar datanya nggak bisa dibaca kalau dicuri).
 * Authentikasi berlapis (*Multi-Factor Authentication*) menggunakan biometric atau kunci fisik.
 * Tim **Security Operations Center (SOC):** Seperti memiliki tim detektif yang memantau laptopmu 24 jam sehari dari kejauhan, mereka akan langsung bereaksi jika ada pergerakan atau akses yang tidak wajar.
@@ -172,7 +172,7 @@ Prinsip utamanya ada tiga:
 | Subject 2 | Read/Write | Read |
 
 * **Ringkasan:** **"Write Up, Read Down"**. Kamu boleh berbagi info ke level atas, tapi cuma boleh baca info dari level bawah/setara.
-* **Kelemahan:** Model ini tidak dirancang untuk urusan bagi-bagi file (*file sharing*) yang fleksibel.
+* **Kelemahan:** Model ini tidak dirancang untuk urusan berbagi file (*file sharing*) yang fleksibel.
 
 ---
 

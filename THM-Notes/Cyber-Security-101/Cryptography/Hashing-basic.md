@@ -48,7 +48,7 @@ Di terminal, kita bisa melihat dua file `file1.txt` (isi "T") dan `file2.txt` (i
 **Output Encoding:**
 Output asli hash itu raw bytes, yang kemudian di-encode (biasanya Base64 atau Hexadecimal).
 
-* Contoh: `md5sum` ngasilin format Hexadecimal (setiap byte direpresentasiin pakai 2 digit hex).
+* Contoh: `md5sum` menghasilkan format Hexadecimal (setiap byte direpresentasiin pakai 2 digit hex).
 
 **Why is Hashing Important?**
 Hashing bekerja di background buat melindungi integritas data & kerahasiaan password.
@@ -56,7 +56,7 @@ Hashing bekerja di background buat melindungi integritas data & kerahasiaan pass
 * **Password:** Server tidak menyimpan password asli, tapi menyimpan **hash value**-nya. Waktu login, sistem menghitung hash password yang dimasukkan dan membandingkannya dengan hash yang tersimpan.
 
 **Hash Collision:**
-Collision terjadi waktu **dua input beda ngasilin output yang sama**.
+Collision terjadi waktu **dua input beda menghasilkan output yang sama**.
 
 * **Pigeonhole Effect (Efek Sarang Burung Merpati):** Karena jumlah input tidak terbatas tapi jumlah output terbatas (fixed size), pasti ada input yang "berbagi" output yang sama.
 * Contoh: Kalau hash cuma 4-bit (16 kemungkinan nilai) tapi ada 21 input, pasti ada collision.
@@ -139,7 +139,7 @@ bayangkan dua orang sedang memasak Sup Ayam (Password sama).
 **Konsep:**
 Hashing itu fungsi satu arah (one-way). Kita tidak bisa "mendekripsi" hash.
 
-* **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), nge-hash satu per satu, terus membandingkan hasilnya dengan hash target.
+* **Cracking = Guessing:** Attacker mengambil daftar kemungkinan password (wordlist), menghitung hash satu per satu, terus membandingkan hasilnya dengan hash target.
 
 **Tools Populer:**
 
@@ -219,4 +219,10 @@ Hashing muncul di banyak titik dalam _attack chain_, baik dari sisi attacker mau
 * **Password Policy:** Standar industri sekarang mengharuskan penggunaan **bcrypt** atau **Argon2** (bukan MD5/SHA1) karena keduanya sengaja dirancang lambat untuk mempersulit brute force.
 
 ---
+---
 
+## Questions
+
+1. Apa perbedaan utama antara **Hashing** dan **Encoding** dalam hal arah prosesnya (reversible)?
+2. Kenapa penggunaan **Salt** sangat krusial untuk melindungi password di database?
+3. Di tahap mana (*attack chain*) seorang penyerang biasanya melakukan *hash cracking*?

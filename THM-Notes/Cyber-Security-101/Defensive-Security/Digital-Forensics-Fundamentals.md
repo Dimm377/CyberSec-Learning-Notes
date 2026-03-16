@@ -12,7 +12,7 @@
 <img src="../../Assets/Images/Forensics-footage.png" alt="Forensics Footage">
 </p>
 
-**Contoh Kasus:** Aparat nge-raid tempat perampok bank → ditemuin laptop, HP, hard drive, USB → diserahin ke tim digital forensics → bukti yang ditemuin:
+**Contoh Kasus:** Aparat melakukan raid (penggerebekan) tempat perampok bank → ditemukan laptop, HP, hard drive, USB → diserahkan ke tim digital forensics → bukti yang ditemukan:
 * Peta digital bank di laptop
 * Dokumen rute kabur & kontrol keamanan di hard drive
 * File media perampokan sebelumnya
@@ -24,7 +24,7 @@
 
 **Learning Objectives:** Fase digital forensics, jenis-jenis forensics, prosedur pengambilan bukti, Windows forensics, memecahkan kasus forensik.
 
-**Q&A:** Cabang forensic yang khusus nyelidikin cyber crime? → **?**
+**Q&A:** Cabang forensic yang khusus menyelidiki cyber crime? → **?**
 
 ## Digital Forensics Methodology
 
@@ -52,15 +52,15 @@
 * **Email forensics** — Deteksi phishing & penipuan via email
 
 **Q&A:**
-* Jumlah fase digital forensics menurut NIST? → **?**
-* Forensik yang fokus ke network traffic logs? → **?**
+* Jumlah fase digital forensics menurut NIST? → **4**
+* Forensik yang fokus ke network traffic logs? → **Network Forensics**
 
 ## Evidence Acquisition
 
 Pengambilan bukti harus dilakukan dengan aman tanpa mengubah data asli. Beberapa praktik penting:
 
 ### Proper Authorization
-Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa izin → tidak sah di pengadilan.
+Tim forensics harus punya otorisasi resmi sebelum mengumpulkan data. Bukti tanpa izin → tidak sah di pengadilan.
 
 <p align="center">
 <img src="../../Assets/Images/Search-Warranty.png" alt="Search Warranty">
@@ -69,7 +69,7 @@ Tim forensics harus punya otorisasi resmi sebelum ngumpulin data. Bukti tanpa iz
 ### Chain of Custody
 Dokumen formal yang mencatat semua detail tentang bukti:
 * Deskripsi bukti (nama, jenis)
-* Siapa yang ngumpulin & kapan
+* Siapa yang mengumpulkan & kapan
 * Lokasi penyimpanan
 * Siapa saja yang akses & kapan
 
@@ -83,8 +83,8 @@ Alat yang memblokir semua aksi tulis ke bukti digital → menjaga data tetap ori
 </p>
 
 **Q&A:**
-* Dokumen yang berisi semua detail tentang bukti? → **?**
-* Tools buat mencegah perubahan data pada bukti digital? → **?**
+* Dokumen yang berisi semua detail tentang bukti? → **Chain of Custody**
+* Tools buat mencegah perubahan data pada bukti digital? → **Write Blockers**
 
 ## Windows Forensics
 
@@ -93,7 +93,7 @@ Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit
 * **Disk image** — Data non-volatile (HDD/SSD): file, dokumen, browser history → tetep ada setelah restart
 * **Memory image** — Data volatile (RAM): proses aktif, koneksi jaringan → ilang setelah shutdown, jadi harus diambil duluan!
 
-### Tools Populer:
+### Popular Tools:
 
 **FTK Imager** — Akuisisi & analisis disk image, GUI-based.
 
@@ -115,7 +115,7 @@ Windows forensics melibatkan pengambilan **forensic images** (salinan bit-by-bit
 <img src="../../Assets/Images/Volatility.png" alt="Volatility" width="400">
 </p>
 
-**Q&A:** Jenis forensic image buat ngumpulin data volatile? → **?**
+**Q&A:** Jenis forensic image buat mengumpulkan data volatile? → **Memory image**
 
 ## Practical Example of Digital Forensics
 
@@ -123,7 +123,7 @@ Skenario: Kucing bernama **Gato** diculik → penculik kirim surat tebusan dalam
 
 Download file kasus: [Download Task Files](../../Assets/Images/ransom-lettter-2-1645608985174-1719473069554.zip)
 
-### Analisis Metadata PDF
+### PDF Metadata Analysis
 
 Pakai `pdfinfo` buat baca metadata PDF. Install: `sudo apt install poppler-utils` atau `sudo pacman -S poppler`.
 

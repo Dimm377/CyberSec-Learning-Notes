@@ -24,7 +24,7 @@ Tujuannya simpel: menemukan password yang benar.
 
 (Sebelum menjalankan Hydra, kamu perlu tahu port dan service apa yang terbuka. Cek catatan [Nmap Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Nmap-Basic.md). Setelah berhasil login, lanjut dapatkan akses shell di [Shells Overview](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md))
 
-Menurut repositori resminya, Hydra support alias bisa nge-brute force BANYAK banget protokol, contohnya:
+Menurut repositori resminya, Hydra support alias bisa melakukan brute force BANYAK banget protokol, contohnya:
 "Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, TeamSpeak (TS2), Telnet, VMware-Auth, VNC, dan XMPP."
 
 Buat info lebih lengkap soal opsi tiap protokol, bisa cek di [Kali Hydra tool page](https://www.kali.org/tools/hydra/).
@@ -70,7 +70,7 @@ Kalau mau compile sendiri atau cari versi paling baru, bisa langsung cek di repo
 
 ### Hydra Commands
 
-Opsi yang kita pakai di Hydra itu tergantung banget sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau nge-brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya bakal seperti gini:
+Opsi yang kita pakai di Hydra itu tergantung banget sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau melakukan brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya bakal seperti gini:
 
 `hydra -l user -P passlist.txt ftp://10.48.163.55`
 

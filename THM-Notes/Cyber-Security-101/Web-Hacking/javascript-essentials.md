@@ -66,11 +66,11 @@ sapaDunia();
 
 ### Loops
 
-Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali selama kondisi tertentu terpenuhi. Ini sangat berguna buat ngurangin redundansi kode.
+Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali selama kondisi tertentu terpenuhi. Ini sangat berguna untuk mengurangi redundansi kode.
 
 **Jenis-jenis Loops di JavaScript:**
 
-1.  **For Loop:** Paling umum dipake, kita tau berapa kali loop harus jalan.
+1.  **For Loop:** Paling umum digunakan, kita tahu berapa kali loop harus berjalan.
     ```javascript
     // Struktur: for (inisialisasi; kondisi; increment)
     for (let i = 0; i < 5; i++) {
@@ -140,7 +140,7 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pakai 
 *   **Skenario Room:**
     *   Kita punya file HTML: `external_test.html`.
     *   Kita punya file JS: `thm_external.js`.
-    *   Cara nge-link-nya:
+    *   Cara menautkannya:
         ```html
         <!-- Di dalam external_test.html -->
         <script src="thm_external.js"></script>
@@ -153,12 +153,12 @@ Kode JS dipisah ke file sendiri (ekstensi `.js`), terus dipanggil di HTML pakai 
 
 ## Abusing Dialogue Functions
 
-JavaScript punya 3 fungsi bawaan buat menampilkan pop-up (dialogue box) ke user. Ini sering dipake buat interaksi, tapi bisa juga disalahgunain buat nge-prank (atau serangan XSS).
+JavaScript punya 3 fungsi bawaan buat menampilkan pop-up (dialogue box) ke user. Ini sering digunakan buat interaksi, tapi bisa juga disalahgunakan buat melakukan prank (atau serangan XSS).
 
 **3 Fungsi Utama:**
 1.  **`alert("Pesan")`**
     *   Cuma menampilkan pesan + tombol OK.
-    *   *Abuse:* Kalo ditaruh di loop tanpa henti (`while(true)`), browser bakal hang/crash karena pop-up muncul terus.
+    *   *Penyalahgunaan:* Jika diletakkan di loop tanpa henti (`while(true)`), browser bakal hang/crash karena pop-up muncul terus.
 2.  **`prompt("Input Sesuatu")`**
     *   Minta input teks dari user.
     *   Nilai yang diinput bisa disimpen di variabel.
@@ -168,13 +168,13 @@ JavaScript punya 3 fungsi bawaan buat menampilkan pop-up (dialogue box) ke user.
 
 **Skenario di Room:**
 Kita dikasih file `invoice.html` yang isinya ada script nakal.
-Pas dibuka, dia bakal nge-loop menampilkan alert "Hacked" berkali-kali.
+Pas dibuka, dia bakal melakukan looping menampilkan alert "Hacked" berkali-kali.
 
 ---
 
 ## Bypassing Control Flow Statements
 
-Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma ngandelin JS saja itu **TIDAK AMAN**.
+Di Client-Side (Browser), kita punya kontrol penuh atas kode JavaScript yang berjalan. Artinya, validasi yang cuma mengandalkan JS saja itu **TIDAK AMAN**.
 
 **Konsep:**
 *   Website pakai `if-else` buat mengecek sesuatu (misal: Umur > 18, Password bener/salah).
@@ -208,7 +208,7 @@ Agar kode JavaScript kita aman dan tidak gampang dihack, ada beberapa aturan mai
 
 1.  **Don't rely solely on Client-Side Validation**
     *   Jangan cuma ngandelin JS buat validasi (seperti cek umur atau password tadi).
-    *   *Alasannya:* JS berjalan di browser user, jadi user bisa matiin atau manipulasi kodenya. Validasi WAJIB lakuin lagi di **Server-Side**.
+    *   *Alasannya:* JS berjalan di browser user, jadi user bisa mematikan atau manipulasi kodenya. Validasi WAJIB dilakukan lagi di **Server-Side**.
 
 2.  **Don't Include Untrusted Libraries**
     *   Hati-hati kalau mengambil script dari internet (CDN atau library asing).

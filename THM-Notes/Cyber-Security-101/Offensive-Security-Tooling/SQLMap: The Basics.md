@@ -118,8 +118,8 @@ SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengot
 
 Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` untuk melihat deretan fungsi dan parameter yang bisa kamu sesuaikan. Tapi, untuk pemula atau kalau kamu ingin panduan anti-ribet, ada _flag_ andalan:
 
-**The Wizard Mode (`--wizard`)**
-Mode ini bakal memandu kamu secara interaktif, nanya langkah demi langkah buat nyelesaiin konfigurasi serangannya, cocok banget buat _beginners_.
+**Mode Wizard (`--wizard`)**
+Mode ini bakal memandu kamu secara interaktif, menanyakan langkah demi langkah buat menyelesaikan konfigurasi serangannya, cocok banget buat _beginners_.
 
 ```bash
 sqlmap --wizard
@@ -149,7 +149,7 @@ Please enter full target URL (-u):
 
 ### Titik Injeksi (Injection Points)
 
-Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang nampung _input_ data (parameter):
+Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang menampung _input_ data (parameter):
 
 1. **HTTP GET-Based Testing:**
    URL yang pakai parameter GET biasanya mudah terlihat di _address bar_. Contoh: `http://sqlmaptesting.thm/search?cat=1`. Di sini SQLMap akan menyerang parameter `cat` dengan berbagai payload SQLi untuk menguji seberapa kuat sanitasi _backend_-nya. Cukup lempar URL ini menggunakan _flag_ `-u`.
@@ -236,7 +236,7 @@ back-end DBMS: MySQL >= 5.1
 Perhatikan baris-baris penting dari output di atas:
 
 1. **WAF/IPS/IDS Check (`checking if the target is protected...`)**
-   SQLMap secara otomatis bakal mencari tau dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
+   SQLMap secara otomatis bakal mencari tahu dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
 2. **Injection Point Confirmation (`GET parameter 'cat' is vulnerable...`)**
    Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi yang artinya bisa diinjeksi.
 3. **Payload Autopsy (Tipe Serangan yang Berhasil)**
@@ -358,7 +358,7 @@ Table: thomas
 [text removed]
 ```
 
-_Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan jelas ada field `Date`, `name`, dan `pass`. Kalau parameter hash-nya sulit seperti MD5/Bcrypt, SQLMap bahkan nawarin opsi otomatis buat nge-crack hash tersebut pakai dictionary attack secara instan._
+_Username dan Password si `thomas` berhasil di-dump (Pojok Bawah!). Kelihatan jelas ada field `Date`, `name`, dan `pass`. Kalau parameter hash-nya sulit seperti MD5/Bcrypt, SQLMap bahkan menawarkan opsi otomatis buat menge-crack hash tersebut pakai dictionary attack secara instan._
 
 ---
 

@@ -40,7 +40,7 @@ Banyak hal nakal yang bisa dilakuin kalau sudah dapet shell:
 * **Remote System Control**: Attacker bisa ngontrol sistem target dari jauh.
 * **Privilege Escalation**: Kalau akses awal masih terbatas (user biasa), attacker bakal cari cara buat naik pangkat jadi admin/root.
 * **Data Exfiltration**: Bisa baca dan copy data-data sensitif keluar dari sistem.
-* **Persistence**: Membuat "pintu belakang" (backdoor) atau user baru agar nanti bisa masuk lagi kapan saja tanpa harus nge-hack dari ulang.
+* **Persistence**: Membuat "pintu belakang" (backdoor) atau user baru agar nanti bisa masuk lagi kapan saja tanpa harus meretas ulang dari nol.
 * **Post-Exploitation**: Aktivitas lanjutan seperti sebar malware, membuat akun tersembunyi, atau hapus jejak (logs).
 * **Pivoting**: Pakai sistem yang sudah dijebol buat nyerang sistem lain di jaringan yang sama. Jadi batu loncatan gitu.
 

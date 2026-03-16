@@ -32,7 +32,7 @@ Cryptography adalah ilmu dan praktik tentang teknik komunikasi yang aman, teruta
 **Answer the questions below:**
 
 * **Question:** What is the standard required for handling credit card information?
-* **Answer:** ?
+* **Answer:** **PCI-DSS** (_Payment Card Industry Data Security Standard_)
 
 ### Plaintext to Ciphertext
 
@@ -53,13 +53,13 @@ Data berubah bentuk dari yang bisa dibaca manusia (plaintext) jadi kode rahasia 
 **Answer the questions below:**
 
 * **Question:** What do you call the encrypted plaintext?
-* **Answer:** ?
+* **Answer:** **Ciphertext**
 
 * **Question:** What is the process of turning plaintext into ciphertext called?
-* **Answer:** ?
+* **Answer:** **Encryption**
 
 * **Question:** What do you call the process that returns the plaintext?
-* **Answer:** ?
+* **Answer:** **Decryption**
 
 ### Historical Cipher
 
@@ -80,16 +80,16 @@ Metode enkripsi kuno yang menjadi dasar cryptography modern. Meskipun sekarang d
 **Answer the questions below:**
 
 * **Question:** What is the name of the popular Caesar cipher variant used for obscuring text online?
-* **Answer:** ?
+* **Answer:** **ROT13**
 
 * **Question:** Which cipher uses a keyword to decide the alphabet shift?
-* **Answer:** ?
+* **Answer:** **Vigenère Cipher**
 
 * **Question:** What was the name of the machine the Germans used in World War 2 to encrypt messages?
-* **Answer:** ?
+* **Answer:** **Enigma Machine**
 
 * **Question:** Knowing that `Xld Hzhz Apntyel dlhte` was encrypted using Caesar Cipher, what is the original plaintext?
-* **Answer:** ?
+* **Answer:** **Met Busy October ahead**
   > (Penjelasan: Bisa pakai tool online seperti [Cryptii](https://cryptii.com/pipes/caesar-cipher). Memasukkan ciphertext `Xld Hzhz Apntyel dlhte` dan pakai **Shift 11** ke arah kanan buat mendapatkan teks aslinya)\_
 
 ### Types of Encryption
@@ -131,18 +131,18 @@ Menggunakan **sepasang kunci**: _Public Key_ (untuk mengenkripsi) dan _Private K
 **Answer the questions below:**
 
 * **Question:** Should you trust DES? (Yea/Nay)
-* **Answer:** ?
+* **Answer:** **Nay**
 
   > (Penjelasan: Karena panjang kuncinya cuma 56-bit, DES sudah tidak aman lagi terhadap serangan brute force pakai komputasi modern.)\_
 
 * **Question:** When was AES adopted as an encryption standard?
-* **Answer:** ?
+* **Answer:** **2001**
 
 * **Question:** What is the name of the cipher that uses 3 keys and 3 execution stages?
-* **Answer:** ?
+* **Answer:** **3DES** (_Triple DES_)
 
 * **Question:** Which encryption standard uses the same key to encrypt and decrypt?
-* **Answer:** ?
+* **Answer:** **Symmetric Encryption**
 ## Basic Math
 
 Kriptografi modern dibangun di atas fondasi matematika. Task ini membahas dua operasi logika dan aritmatika yang paling sering muncul dalam algoritma keamanan.
@@ -176,13 +176,13 @@ Modulo adalah operasi untuk mencari **sisa bagi** dari sebuah pembagian.
 **Answer the questions below:**
 
 * **Question:** What's 1001 $\oplus$ 1010?
-* **Answer:** ?
+* **Answer:** **0011**
   _(Cara Hitung: 1$\oplus$1=0, 0$\oplus$0=0, 0$\oplus$1=1, 1$\oplus$0=1)_
 
 * **Question:** What's 118613842 % 9091?
-* **Answer:** ?
+* **Answer:** **3565**
   _(Cara Hitung: Kamu bisa pakai Python di terminal Kitty kamu: `python3 -c "print(118613842 % 9091)"`)_
 
 * **Question:** What's 60 % 12?
-* **Answer:** ?
+* **Answer:** **0**
   _(Cara Hitung: 60 habis dibagi 12, jadi sisanya adalah 0)_

@@ -11,7 +11,7 @@
 ## Introduction
 
 **Apa itu John the Ripper (JtR)?**
-John the Ripper itu salah satu tool "password cracker" paling populer dan fleksibel. Tool ini dirancang buat mendeteksi password yang lemah (weak password) dengan cara lakuin proses cracking hash penggunanya.
+John the Ripper itu salah satu tool "password cracker" paling populer dan fleksibel. Tool ini dirancang buat mendeteksi password yang lemah (weak password) dengan cara melakukan proses cracking hash penggunanya.
 
 ### Attack Context
 
@@ -23,14 +23,14 @@ John the Ripper itu salah satu tool "password cracker" paling populer dan fleksi
 
 (Untuk memahami dasar-dasar hashing dan jenis-jenis hash, baca catatan [Hashing Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Hashing-basic.md))
 
-* **Kecepatan Tinggi:** Mampu lakuin cracking super cepat.
+* **Kecepatan Tinggi:** Mampu melakukan cracking super cepat.
 * **Fleksibilitas:** Support ratusan format hash (bukan cuma password user, tapi juga file ZIP terenkripsi, kunci SSH, dll).
 * **Open Source:** Gratis dan bisa dimodifikasi.
 
 **Syaratnya:**
 Buat pakai JtR dengan efektif, perlu paham dasar-dasar:
 
-1.  **Command Line (Linux/Unix):** Navigasi folder, jalanin command.
+1.  **Command Line (Linux/Unix):** Navigasi folder, menjalankan command.
 2.  **Hashing Basics:** Paham bedanya hashing vs enkripsi.
 
 ---
@@ -49,7 +49,7 @@ Sebelum mulai cracking, kita harus paham dulu istilah-istilah dasarnya:
 * JtR akan mengambil setiap kata dari wordlist : mengubahnya jadi hash : membandingkan dengan hash target. Kalau cocok, berarti password ketemu!
 
 3.  **Hash Identifier:**
-* Sebelum nge-crack hash, kita HARUS tau dulu jenis algoritmanya (apakah MD5? SHA256? NTLM?).
+* Sebelum memecahkan hash, kita HARUS tahu dulu jenis algoritmanya (apakah MD5? SHA256? NTLM?).
 * Tools seperti `hash-identifier` atau layanan online bisa membantu mengenali jenis hash dari format/panjangnya.
 
 ---
@@ -77,7 +77,7 @@ Wordlist yang paling umum dipake buat CTF dan belajar itu `rockyou.txt`.
 **Pertanyaan:**
 
 * **Which website's breach was the rockyou.txt wordlist created from?**
-* Jawaban: `?`
+* Jawaban: **RockYou.com**
 
 ---
 
@@ -99,19 +99,19 @@ Pakai command: `john --format=[format] --wordlist=[path_wordlist] [file_hash]`
 Berikut jawaban buat latihan hash yang dikasih:
 
 * **Hash 1 (MD5):**
-* Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **?**.
+* Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **MD5**.
 * Command: `john --format=raw-md5 --wordlist=/home/dimm/wordlists/rockyou.txt hash1.txt`
 
 * **Hash 2 (SHA1):**
-* Identifikasi: Hash terdeteksi sebagai **?**.
+* Identifikasi: Hash terdeteksi sebagai **SHA1**.
 * Command: `john --format=raw-sha1 --wordlist=/home/dimm/wordlists/rockyou.txt hash2.txt`
 
 * **Hash 3 (SHA256):**
-* Identifikasi: Hash terdeteksi sebagai **?**.
+* Identifikasi: Hash terdeteksi sebagai **SHA256**.
 * Command: `john --format=raw-sha256 --wordlist=/home/dimm/wordlists/rockyou.txt hash3.txt`
 
 * **Hash 4 (Whirlpool):**
-* Identifikasi: Hash terdeteksi sebagai **?**.
+* Identifikasi: Hash terdeteksi sebagai **Whirlpool**.
 * Command: `john --format=whirlpool --wordlist=/home/dimm/wordlists/rockyou.txt hash4.txt`
 
 ---
@@ -129,7 +129,7 @@ NTLM (New Technology LAN Manager) itu protokol otentikasi lama yang dipake Windo
 * Format John the Ripper buat NTLM itu `NT`.
 
 **3. Cracking Process:**
-Buat latihan ini, kita diminta nge-crack file `ntlm.txt`.
+Buat latihan ini, kita diminta memecahkan file `ntlm.txt`.
 
 * **Command:**
 
@@ -146,7 +146,7 @@ Buat latihan ini, kita diminta nge-crack file `ntlm.txt`.
 
 ## Cracking /etc/shadow
 
-Task ini ngajarin cara crack password user di Linux pakai gabungan file `/etc/passwd` dan `/etc/shadow`.
+Task ini mengajarkan cara crack password user di Linux pakai gabungan file `/etc/passwd` dan `/etc/shadow`.
 
 **1. Konsep Dasar:**
 
@@ -179,7 +179,7 @@ Task ini ngajarin cara crack password user di Linux pakai gabungan file `/etc/pa
 
 ## Single Crack Mode
 
-Task ini membahas **Single Crack Mode**, fitur JtR buat nge-crack password yang mirip sama username-nya.
+Task ini membahas **Single Crack Mode**, fitur JtR buat memecahkan password yang mirip sama username-nya.
 
 **1. Konsep:**
 
@@ -210,7 +210,7 @@ Task ini membahas **Single Crack Mode**, fitur JtR buat nge-crack password yang 
 
 ## Custom Rules
 
-Task ini ngajarin cara membuat aturan (rules) sendiri buat modifikasi wordlist. Ini berguna kalau kita tau pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
+Task ini mengajarkan cara membuat aturan (rules) sendiri buat modifikasi wordlist. Ini berguna kalau kita tahu pola password target (misal: "Selalu diawali huruf besar dan diakhiri angka").
 
 **1. Lokasi Config:**
 Rules didefinisiin di file konfigurasi John, biasanya di `/etc/john/john.conf`.
