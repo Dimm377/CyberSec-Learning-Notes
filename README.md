@@ -1,6 +1,6 @@
 # TryHackMe Notes
 
-<details open>
+<details>
 <summary><b>Pre-Security</b></summary>
 
 <br>
