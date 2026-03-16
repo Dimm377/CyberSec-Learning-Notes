@@ -197,6 +197,31 @@
 </details>
 
 <details>
+<summary><b>Jr Penetration Tester</b></summary>
+
+<br>
+
+<details>
+<summary>Introduction to Pentesting</summary>
+
+| No. | Notes                                                                                                 | Description                    |
+| :-: | ----------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 1.  | [Pentesting Fundamentals](THM-Notes/Jr-Penetration-Tester/Introduction-to-Pentesting/Pentesting-Fundamentals.md) | The core of penetration testing |
+
+</details>
+
+<details>
+<summary>Introduction to Web Hacking</summary>
+
+| No. | Notes                                                                                                 | Description                    |
+| :-: | ----------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 1.  | [Walking An Application](THM-Notes/Jr-Penetration-Tester/Introduction-to-Web-Hacking/Walking-An-Application.md) | Navigating web applications  |
+
+</details>
+
+</details>
+
+<details>
 <summary><b>Exploring Room</b></summary>
 
 <br>
@@ -227,30 +252,5 @@
 | No. | Writeup                                                   | Description          |
 | :-: | --------------------------------------------------------- | -------------------- |
 | 1.  | [SQL Injection](THM-Notes/SQL-Injection/sql-injection.md) | SQL injection basics |
-
-</details>
-
-<details>
-<summary><b>Jr Penetration Tester</b></summary>
-
-<br>
-
-<details>
-<summary>Introduction to Pentesting</summary>
-
-| No. | Notes                                                                                                 | Description                    |
-| :-: | ----------------------------------------------------------------------------------------------------- | ------------------------------ |
-| 1.  | [Pentesting Fundamentals](THM-Notes/Jr-Penetration-Tester/Introduction-to-Pentesting/Pentesting-Fundamentals.md) | The core of penetration testing |
-
-</details>
-
-<details>
-<summary>Introduction to Web Hacking</summary>
-
-| No. | Notes                                                                                                 | Description                    |
-| :-: | ----------------------------------------------------------------------------------------------------- | ------------------------------ |
-| 1.  | [Walking An Application](THM-Notes/Jr-Penetration-Tester/Introduction-to-Web-Hacking/Walking-An-Application.md) | Navigating web applications  |
-
-</details>
 
 </details>
