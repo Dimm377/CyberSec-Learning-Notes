@@ -174,3 +174,69 @@ Sama seperti kita punya **panca indera** untuk menerima informasi dan **anggota 
 *   Dalam analogi tubuh manusia, komponen mana yang bertindak sebagai **sistem saraf** yang menghubungkan semua bagian?
 
 ## What Happens When You Press the Start Button?
+
+Sekarang semua komponen sudah terpasang di dalam komputer. Lalu, apa yang terjadi saat kamu menekan tombol power? Prosesnya mirip dengan bangun tidur di pagi hari. Kamu membuka mata, mengecek apakah semua badan terasa baik-baik saja, baru kemudian mulai beraktivitas. Komputer melakukan hal yang persis sama.
+
+Berikut urutan lengkap proses boot:
+
+```
+Press Power ──► Firmware ──► POST ──► Select Boot ──► Start
+  Button         Starts                  Device       Bootloader
+```
+
+---
+
+### Step 1: Press the Power Button
+
+Saat kamu menekan tombol power, sinyal dikirim ke **PSU** untuk mulai mengalirkan listrik. Bayangkan tubuhmu yang sedang tidur tiba-tiba terbangun — begitu menerima oksigen, darah mulai dipompa ke seluruh organ. Di komputer, PSU mulai mendistribusikan daya ke motherboard dan semua komponen yang terhubung.
+
+---
+
+### Step 2: Firmware Starts
+
+Setelah daya mengalir, semua komponen inti sudah hidup, tapi sistemnya belum sadar (belum punya kesadaran). Seperti tubuh kita yang butuh otak untuk menyala sebelum kita benar-benar sadar, komputer membutuhkan **firmware** untuk memulai semua komponennya.
+
+Sistem pusat yang mengelola proses ini disebut **UEFI** (_Unified Extensible Firmware Interface_). UEFI adalah firmware modern yang bertugas menginisialisasi hardware dan menyiapkan lingkungan agar OS bisa dimuat.
+
+> **for your information:**
+> Kamu mungkin sering mendengar istilah **BIOS** (_Basic Input/Output System_). BIOS melakukan fungsi yang sama dengan UEFI, tapi merupakan teknologi lama yang sebagian besar sudah **digantikan oleh UEFI** di komputer modern. Jadi kalau ada yang menyebut masuk BIOS, kemungkinan besar yang dimaksud sekarang adalah UEFI.
+
+---
+
+### Step 3: Power-On Self Test (POST)
+
+Setelah firmware aktif, saatnya melakukan cek kesehatan. Sama seperti kamu bangun tidur lalu mengecek apakah badan terasa baik-baik saja — kalau ada yang sakit, kamu langsung tahu ada masalah.
+
+Komputer menjalankan **POST** (_Power-On Self Test_), sebuah rutinitas yang menguji apakah setiap komponen penting:
+*   **Ada** (terpasang).
+*   **Terkonfigurasi dengan benar.**
+*   **Berfungsi normal.**
+
+Kalau ada yang gagal (misalnya RAM tidak terdeteksi), komputer akan memberikan **sinyal alarm** berupa bunyi beep atau kode error di layar.
+
+> **Common Mistake:** Jika komputer berbunyi beep berulang saat dinyalakan dan tidak mau booting, jangan panik. Bunyi beep itu adalah kode dari POST yang memberitahu komponen mana yang bermasalah. Cek manual motherboard untuk memahami pola beep nya.
+
+---
+
+### Step 4: Select Boot Device
+
+Semua komponen sudah diperiksa dan berfungsi normal. Sekarang sistem mencari lokasi **boot routine**, yaitu tempat di mana OS tersimpan untuk dimuat.
+
+Di dalam UEFI, ada **daftar prioritas** (*boot order*) yang menentukan perangkat mana yang dicek duluan. Contoh urutan umum:
+
+1.  **SSD/HDD** — tempat OS utama tersimpan (paling umum).
+2.  **USB Drive** — sering dipakai untuk instalasi OS baru atau booting live environment.
+3.  **Network (PXE Boot)** — booting lewat jaringan, biasa dipakai di lingkungan enterprise.
+
+---
+
+### Step 5: Initiate Bootloader
+
+Setelah perangkat boot ditemukan, **bootloader** dijalankan. Bootloader adalah program kecil yang bertugas mentransfer **OS dari storage (SSD/HDD) ke RAM**.
+
+Kenapa harus ke RAM? Karena CPU butuh akses yang sangat cepat ke instruksi OS, dan RAM jauh lebih cepat dibanding SSD/HDD. Begitu OS berhasil dimuat ke RAM, UEFI menyerahkan kendali penuh ke OS — dan komputer siap digunakan.
+
+> **for your information:**
+> Contoh bootloader yang umum:
+> - **GRUB** (_GRand Unified Bootloader_) — dipakai di kebanyakan sistem Linux.
+> - **Windows Boot Manager** — dipakai di sistem Windows.
