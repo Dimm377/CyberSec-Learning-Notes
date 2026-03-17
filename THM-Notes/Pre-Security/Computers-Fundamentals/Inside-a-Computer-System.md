@@ -240,3 +240,31 @@ Kenapa harus ke RAM? Karena CPU butuh akses yang sangat cepat ke instruksi OS, d
 > Contoh bootloader yang umum:
 > - **GRUB** (_GRand Unified Bootloader_) — dipakai di kebanyakan sistem Linux.
 > - **Windows Boot Manager** — dipakai di sistem Windows.
+
+---
+
+## Conclusion
+
+Kita sudah membedah komponen inti sebuah komputer dan bagaimana proses booting bekerja dari awal sampai OS siap dipakai. Mungkin sekarang terasa seperti materi dasar biasa, tapi percaya — semakin dalam kamu masuk ke dunia cyber security, kamu akan **terus-menerus** mengacu kembali ke pengetahuan ini.
+
+Contoh nyatanya:
+*   Memahami **RAM vs Storage** sangat krusial di **Digital Forensics** — salah langkah sedikit, bukti digital bisa hilang.
+*   Proses **boot** sering jadi target serangan. Attacker bisa menyisipkan malware di level **bootloader** atau **firmware** (disebut **bootkit/rootkit**) sehingga malware berjalan *sebelum* OS bahkan sempat dimuat — membuat antivirus biasa tidak bisa mendeteksinya.
+*   Mengetahui **network adapter** dan jenis koneksinya membantu kamu memahami bagaimana data mengalir masuk dan keluar dari sistem.
+
+### Real-World Relevance
+
+| Konsep | Relevansi di Cyber Security |
+| :--- | :--- |
+| **RAM (Volatile Memory)** | _Memory forensics_ — menganalisis isi RAM untuk menemukan malware yang hanya berjalan di memori. |
+| **Boot Process** | _Bootkits/Rootkits_ — malware yang menginfeksi firmware atau bootloader agar berjalan sebelum OS. |
+| **Storage (SSD/HDD)** | _Disk forensics_ — menggali bukti digital dari storage, termasuk file yang sudah dihapus. |
+| **Network Adapter** | _Network monitoring_ — memantau lalu lintas data masuk/keluar untuk mendeteksi aktivitas mencurigakan. |
+
+---
+
+### Pertanyaan Singkat
+
+*   Kenapa proses boot bisa menjadi target serangan hacker?
+*   Apa yang dimaksud dengan **volatile memory** dan kenapa penting dalam forensik digital?
+*   Sebutkan urutan 5 langkah proses boot dari menekan tombol power sampai OS siap digunakan.
