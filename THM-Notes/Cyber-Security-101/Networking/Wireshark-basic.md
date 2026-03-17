@@ -307,7 +307,7 @@ Cara mengakses fiturnya:
 
 ### Find Packets
 
-Selain melompat ke nomor tertentu bak mesin waktu, Wireshark punya fitur penelusuran (_Find_) untuk menggali paket berdasarkan isi datanya. Ini adalah _skill_ level dewa yang wajib kamu kuasai untuk menangkap pola serangan (seperti _Intrusion_) atau melacak jejak _error_ di tengah badai obrolan jaringan.
+Selain melompat ke nomor tertentu, Wireshark punya fitur penelusuran (_Find_) untuk menggali paket berdasarkan isi datanya. Ini adalah _skill_ penting yang wajib kamu kuasai untuk menangkap pola serangan (seperti _Intrusion_) atau melacak jejak _error_ di tengah badai obrolan jaringan.
 
 Ada dua aturan penting saat mencari:
 1. **Pilih Tipe Input:** Wireshark hanya menerima 4 jenis input (_Display filter_, _Hex_, _String_, dan _Regex_). Pencarian menggunakan _String_ (teks biasa) dan _Regex_ (pola khusus) adalah yang paling sering digunakan analis.

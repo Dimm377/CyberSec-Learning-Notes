@@ -251,7 +251,7 @@ Selain header pasif biasa, ada juga sosok pelindung bernama **Security Headers**
 1.  **Web App:** Interaksi Client-Server (Planet Analogy).
 2.  **HTTP:** Bahasa komunikasinya (Request & Response).
 3.  **URL:** Alamat lengkap resource.
-4.  **Methods:** GET, POST, PUT, DELETE (Cara kita ngomong).
+4.  **Methods:** GET, POST, PUT, DELETE (Cara kita berkomunikasi).
 5.  **Headers:** Info tambahan (Cookie, User-Agent, Security Headers).
 6.  **Status Codes:** 200 (OK), 404 (Not Found), 500 (Error).
 

@@ -179,14 +179,14 @@ Dengan HxD, kamu bisa membaca, mencari, memulihkan, hingga memodifikasi data men
 
 **Contoh Investigasi Menggunakan HxD:**
 
-Anggap saja analis kita menemukan *file* teks mencurigakan bernama `possible_medusa.txt`. Pas dibuka pakai *Notepad* biasa, bentuknya pasti cuma huruf acak-acakan kayak bahasa alien. Nah, lewat HxD, wujud aslinya akan ketahuan.
+Anggap saja analis kita menemukan *file* teks mencurigakan bernama `possible_medusa.txt`. Pas dibuka pakai *Notepad* biasa, bentuknya pasti cuma deretan huruf acak yang tidak bisa dibaca. Nah, lewat HxD, wujud aslinya akan ketahuan.
 
 ![HxD Hex Editor Inspection](../../Assets/Images/HxD.png)
 
 Cara membaca *interface* HxD di atas:
 * Ruangan sebelah **Kiri** menampilkan susunan kode DNA mentah dari *file* (kumpulan angka/huruf *Hexadecimal*).
 * Ruangan sebelah **Tengah** mencoba menerjemahkan angka-angka DNA tadi menjadi bentuk teks *ASCII* (tulisan manusia) sebisanya.
-* Ruangan sebelah **Kanan** adalah panel **Data Inspector**. Panel ini sangat krusial karena bertugas sebagai kalkulator pintar penyadur bahasa alien ke berbagai wujud tipe data manusia (apakah itu angka biasa, tanggal, atau nilai spesifik spesifik lainnya).
+* Ruangan sebelah **Kanan** adalah panel **Data Inspector**. Panel ini sangat krusial karena bertugas sebagai penerjemah data biner ke berbagai wujud tipe data yang bisa dibaca manusia (apakah itu angka biasa, tanggal, atau nilai spesifik lainnya).
 
 **Mental Model Analis : Number "4D 5A":**
 Satu insting terpenting analis saat membuka sebuah *file* asing pakai Hex Editor adalah melihat dua pasang angka pertama di pojok kiri atas (*Header*). Pada gambar di atas, tertulis angka **`4D 5A`** (atau huruf "MZ" di sisi ASCII).

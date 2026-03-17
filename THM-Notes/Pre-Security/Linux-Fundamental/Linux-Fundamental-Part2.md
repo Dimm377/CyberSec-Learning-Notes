@@ -19,7 +19,7 @@ Di bagian kedua ini, fokusnya pindah dari perintah navigasi dasar ke **manajemen
 
 **SSH (Secure Shell)** itu protokol standar buat mengakses dan mengelola mesin Linux dari jarak jauh lewat jalur yang terenkripsi.
 
-Analogi: Kalau Telnet itu ibarat ngobrol lewat **jalan terbuka** (siapa saja bisa nguping), SSH itu ngobrol lewat **terowongan bawah tanah yang terkunci** — hanya kamu dan server yang bisa dengar.
+Analogi: Kalau Telnet itu ibarat berkomunikasi lewat **jalan terbuka** (siapa saja bisa menyadap), SSH itu berkomunikasi lewat **terowongan bawah tanah yang terkunci** — hanya kamu dan server yang bisa dengar.
 
 ```bash
 ssh username@10.10.10.10

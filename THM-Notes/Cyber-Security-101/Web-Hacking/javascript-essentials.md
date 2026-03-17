@@ -97,7 +97,7 @@ Loops (Perulangan) digunakan untuk menjalankan blok kode yang sama berulang kali
     } while (i < 5);
     ```
 
-4.  **For...Of Loop (Array):** Enak banget buat nge-loop isi array.
+4.  **For...Of Loop (Array):** Praktis untuk melakukan loop isi array.
     ```javascript
     const buah = ["Apel", "Jeruk", "Mangga"];
     for (const item of buah) {
@@ -207,7 +207,7 @@ Kita dikasih file `hello.html` dan script yang sudah di-obfuscate. Kita harus ba
 Agar kode JavaScript kita aman dan tidak gampang dihack, ada beberapa aturan main (Best Practices):
 
 1.  **Don't rely solely on Client-Side Validation**
-    *   Jangan cuma ngandelin JS buat validasi (seperti cek umur atau password tadi).
+    *   Jangan cuma mengandalkan JS untuk validasi (seperti cek umur atau password tadi).
     *   *Alasannya:* JS berjalan di browser user, jadi user bisa mematikan atau manipulasi kodenya. Validasi WAJIB dilakukan lagi di **Server-Side**.
 
 2.  **Don't Include Untrusted Libraries**

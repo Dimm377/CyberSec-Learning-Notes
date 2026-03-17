@@ -31,13 +31,13 @@ kita bakal bahas tujuan pembelajaran berikut:
 
 ### What is a Shell?
 
-Shell itu ibarat jembatan alias software yang membuat kita bisa ngobrol sama Sistem Operasi (OS). Bisa bentuknya grafis (GUI), tapi biasanya Command-Line Interface (CLI), tergantung OS targetnya.
+Shell itu ibarat jembatan alias software yang membuat kita bisa berkomunikasi dengan Sistem Operasi (OS). Bisa bentuknya grafis (GUI), tapi biasanya Command-Line Interface (CLI), tergantung OS targetnya.
 
-Di dunia cyber security, shell ini merujuk ke sesi khusus yang dipake attacker pas berhasil jebol sistem. Lewat shell ini, mereka bisa jalanin perintah atau software sesuka hati.
+Di dunia cyber security, shell ini merujuk ke sesi khusus yang dipakai attacker saat berhasil membobol sistem. Lewat shell ini, mereka bisa menjalankan perintah atau software sesuka hati.
 
 Banyak hal nakal yang bisa dilakuin kalau sudah dapet shell:
 
-* **Remote System Control**: Attacker bisa ngontrol sistem target dari jauh.
+* **Remote System Control**: Attacker bisa mengontrol sistem target dari jauh.
 * **Privilege Escalation**: Kalau akses awal masih terbatas (user biasa), attacker bakal cari cara buat naik pangkat jadi admin/root.
 * **Data Exfiltration**: Bisa baca dan copy data-data sensitif keluar dari sistem.
 * **Persistence**: Membuat "pintu belakang" (backdoor) atau user baru agar nanti bisa masuk lagi kapan saja tanpa harus meretas ulang dari nol.
@@ -506,7 +506,7 @@ Kalau script ini disimpan dengan nama `shell.php` di web server, attacker tingga
 http://target.com/shell.php?cmd=whoami
 ```
 
-Browser bakal menampilkan hasil command `whoami` (misal: `www-data`). Cuma modal browser bisa ngontrol server
+Browser bakal menampilkan hasil command `whoami` (misal: `www-data`). Cuma modal browser bisa mengontrol server
 
 ### Existing Web Shells Available Online
 

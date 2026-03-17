@@ -82,11 +82,11 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ## In-Band SQLi
 
-**In-Band SQLi** itu waktu penyerang pakai saluran komunikasi yang sama buat nge-launch serangan dan ngumpulin hasilnya.
+**In-Band SQLi** itu waktu penyerang pakai saluran komunikasi yang sama untuk meluncurkan serangan dan mengumpulkan hasilnya.
 
 1.  **Error-Based SQLi:**
     *   Ngandelin pesan error yang dikeluarin server database buat mendapatkan informasi tentang struktur database.
-    *   Contoh: Nambahin `'` nyebabin syntax error, yang bisa nge-reveal tipe DB di backend.
+    *   Contoh: Menambahkan `'` menyebabkan syntax error, yang bisa mengungkap tipe DB di backend.
 
 2.  **Union-Based SQLi:**
     *   Pakai operator `UNION` buat gabungin hasil dari dua atau lebih statement SELECT jadi satu hasil.
@@ -97,7 +97,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 ## Blind SQLi : Authentication Bypass
 
-**Blind SQLi:** Aplikasi tidak nge-return hasil query SQL secara langsung.
+**Blind SQLi:** Aplikasi tidak mengembalikan hasil query SQL secara langsung.
 **Authentication Bypass:**
 *   Nargetin formulir login buat masuk tanpa password.
 *   Payload: `' OR 1=1 --` atau `admin' --` atau `' OR 1=1 LIMIT 1 --`
@@ -109,7 +109,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --'
 
 **Konsep:**
 *   Aplikasi memberi respons yang beda (konten halaman, kode status HTTP) tergantung apakah query bernilai TRUE atau FALSE.
-*   Kita bisa ngajuin pertanyaan Ya/Tidak ke database buat ekstrak data karakter per karakter.
+*   Kita bisa mengajukan pertanyaan Ya/Tidak ke database untuk mengekstrak data karakter per karakter.
 
 **Contoh:**
 Cek apakah username itu 'admin':

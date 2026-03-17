@@ -152,7 +152,7 @@ Feb 26 14:35:22 ubuntu-server kernel: [123648.123456] audit: type=1400 audit(170
 
 ### Web Server Log
 
-Sebagai seorang spesialis pertahanan (*defender*), kamu wajib memantau semua permohonan (*Request*) dan balasan (*Response*) yang mondar-mandir di *web server*. Kalau di sistem Linux, lokasi standar rahasia untuk membaca riwayat catatan (*log*) *web server* biasanya ngumpet di `/var/log/httpd/` dan `/var/log/apache/`.
+Sebagai seorang spesialis pertahanan (*defender*), kamu wajib memantau semua permohonan (*Request*) dan balasan (*Response*) yang mondar-mandir di *web server*. Kalau di sistem Linux, lokasi standar rahasia untuk membaca riwayat catatan (*log*) *web server* biasanya tersembunyi di `/var/log/httpd/` dan `/var/log/apache/`.
 
 Contoh log web server apache:
 

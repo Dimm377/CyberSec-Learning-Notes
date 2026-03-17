@@ -34,7 +34,7 @@ Fungsi hash mengambil input data berapa pun ukurannya dan membuat ringkasan (dig
 
 * Mudah menghitung output dari input.
 * Susah banget menentukan input dari output.
-* Perubahan kecil di input (bahkan 1 bit) nyebabin perubahan drastis di output.
+* Perubahan kecil di input (bahkan 1 bit) menyebabkan perubahan drastis di output.
 
 **Contoh Perubahan 1 Bit:**
 Di terminal, kita bisa melihat dua file `file1.txt` (isi "T") dan `file2.txt` (isi "U").

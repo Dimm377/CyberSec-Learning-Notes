@@ -78,6 +78,4 @@ Operator bikin kamu bisa mengarahkan output atau menggabungkan beberapa perintah
 
 ### Conclusions & Summaries
 
-Menguasai dasar-dasar ini itu **syarat wajib** sebelum belajar sysadmin (administrasi sistem) atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya bakal dipakai buat nge-exploit sistem atau melakukan _privilege escalation_.
-
-
+Menguasai dasar-dasar ini itu **syarat wajib** sebelum belajar sysadmin (administrasi sistem) atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya bakal dipakai untuk mengeksploitasi sistem atau melakukan _privilege escalation_.

@@ -66,7 +66,7 @@ Proses nerjemahin nama domain ke IP Address itu lumayan panjang, sederhananya ib
 1. **Local Cache Check (Nanya memori sendiri):** 
    Sebelum repot bertanya keluar, komputermu mengecek dulu di memori lokal (_cache_). Siapa tahu alamatnya baru saja dicari kemarin dan masih diingat. Ini dilakukan untuk menghemat waktu dan _bandwidth_.
 2. **Recursive Resolver (Nanya pak RT):** 
-   Kalau di _cache_ lokal gak ada, alamat dicari lewat Recursive DNS (biasanya server milik provider internetmu atau server publik kayak `8.8.8.8`). Resolver inilah pelayan yang keliling internet menanyakan alamat spesifik buat kamu.  
+   Kalau di _cache_ lokal tidak ada, alamat dicari lewat Recursive DNS (biasanya server milik provider internetmu atau server publik kayak `8.8.8.8`). Resolver inilah pelayan yang keliling internet menanyakan alamat spesifik untuk kamu.  
 3. **The Root Server (Nanya kantor pusat):**
    Resolver melempar pertanyaan ke Root Server di puncak rantai DNS. Root merespons: *"Aku tidak tahu spesifik alamatnya, tapi karena belakangnya `.com`, coba kamu tanya server spesialis `.com`."*
 4. **TLD Server (Nanya kelurahan setempat):** 

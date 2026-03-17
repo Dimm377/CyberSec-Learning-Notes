@@ -27,7 +27,7 @@ Cara kerjanya:
 
 ## Let's Learn About Crawlers
 
-Crawler itu seperti agen rahasia yang tugasnya ngumpulin informasi.
+Crawler itu seperti agen rahasia yang tugasnya mengumpulkan informasi.
 
 **Istilah Penting:**
 *   **Crawler / Spider:** Program yang otomatis jelajahin internet.
@@ -149,7 +149,7 @@ Teknik menggunakan operator pencarian Google untuk menemukan hasil yang sangat s
 * Contoh: `intext:"password"` (Mencari kata password di halaman).
 
 ### 2. Advanced Combinations (Combo Sakti)
-Gabungin operator di atas buat hasil yang ngeri.
+Gabungkan operator di atas untuk hasil yang lebih tajam.
 
 **a. Mencari Halaman Login / Admin Panel:**
 * `site:target.com intitle:"login"` : Halaman login di target.

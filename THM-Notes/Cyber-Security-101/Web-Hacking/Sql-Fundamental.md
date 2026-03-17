@@ -26,7 +26,7 @@ Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal b
 
 ### Introducing Databases
 
-Seperti yang sudah dijelasin di task 1, Database itu ada di hampir setiap sistem, jadi besar kemungkinan kita sering berinteraksi sama layanan yang pakai ini sehari-hari. Database itu kumpulan informasi atau data terstruktur terorganisir yang gampang diakses dan bisa dimanipulasi atau dianalisis. Data itu bisa dalam berbagai bentuk, misal authentication user (nama pengguna dan password) yang disimpen dan dicek waktu login ke dalam aplikasi atau situs (seperti TryHackMe, dll), data yang dibuat pengguna di media sosial (seperti Instagram dan Facebook) tempat data seperti postingan pengguna, komentar, suka, dll dikumpulin dan disimpen, serta informasi riwayat tontonan yang disimpen sama layanan streaming seperti Netflix dan dipake buat ngasilin rekomendasi.
+Seperti yang sudah dijelaskan di task 1, Database itu ada di hampir setiap sistem, jadi besar kemungkinan kita sering berinteraksi sama layanan yang memakainya sehari-hari. Database itu kumpulan informasi atau data terstruktur terorganisir yang mudah diakses dan bisa dimanipulasi atau dianalisis. Data itu bisa dalam berbagai bentuk, misal authentication user (nama pengguna dan password) yang disimpan dan dicek waktu login ke dalam aplikasi atau situs (seperti TryHackMe, dll), data yang dibuat pengguna di media sosial (seperti Instagram dan Facebook) tempat data seperti postingan pengguna, komentar, suka, dll dikumpulkan dan disimpan, serta informasi riwayat tontonan yang disimpan sama layanan streaming seperti Netflix dan dipakai untuk menghasilkan rekomendasi.
 
 ### Different Types of Databases
 
@@ -83,13 +83,13 @@ CREATE TABLE login_attempts (
 
 ### Tables, Rows and Columns
 
-Semua data yang disimpen dalam relational database bakal disimpen di sebuah tabel, misalnya kumpulan buku yang ada di toko buku disimpen dalam tabel bernama "Buku".
+Semua data yang disimpan dalam relational database bakal disimpan di sebuah tabel, misalnya kumpulan buku yang ada di toko buku disimpan dalam tabel bernama "Buku".
 
 <p align="center">
 <img src="../../Assets/Images/TRC.png" alt="TRC">
 </p>
 
-Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhin—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di dalam database: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di dalam database: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
 Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, buat buku `Android Security Internals` pakai ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukin, seluruh informasi ini bakal tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel itu.
 
@@ -109,7 +109,7 @@ Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohny
 
 ### What is SQL?
 
-Semua teori tadi emang kedengeran bagus, tapi dalam praktek, gimana sih cara database itu beneran bekerja? Gimana cara kita membuat tabel pertama dan ngisinya pakai data? Alat apa yang sebenernya kita pakai?
+Semua teori tadi memang terdengar bagus, tapi dalam praktek, bagaimana cara database itu benar-benar bekerja? Bagaimana cara kita membuat tabel pertama dan mengisinya pakai data? Alat apa yang sebenarnya kita pakai?
 
 Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebagai pusat kendali atau jembatan antara kita (pengguna) sama database yang ada. DBMS itu software yang membuat kita bisa mengambil, mengganti, dan mengatur data yang tersimpan pakai gampang.
 
@@ -121,7 +121,7 @@ Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebaga
 
 * Oracle Database: Biasanya dipake sama perusahaan-perusahaan besar buat skala raksasa.
 
-Buat bisa 'ngobrol' atau berinteraksi sama database, kita pakai SQL (Structured Query Language). SQL itu bahasa komunikasi khusus buat database yang fungsinya buat manggil, ngatur, sampai ngolah data yang tersimpan di dalam relational database.
+Untuk bisa 'berkomunikasi' atau berinteraksi sama database, kita pakai SQL (Structured Query Language). SQL itu bahasa komunikasi khusus untuk database yang fungsinya untuk memanggil, mengatur, sampai mengolah data yang tersimpan di dalam relational database.
 
 ### The Benefits of SQL and Relational Databases
 
@@ -139,7 +139,7 @@ Berikut beberapa manfaat yang didapet dengan belajar dan pakai SQL:
 
 ### Time to Learn
 
-Saatnya mulai belajar SQL dan cara pakenya buat berinteraksi sama database. Di task ini, kita bakal mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
+Saatnya mulai belajar SQL dan bagaimana cara memakainya buat berinteraksi sama database. Di task ini, kita bakal mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
 
 ### Database Statements
 
@@ -175,7 +175,7 @@ Di daftar yang muncul, kita akan menemukan database yang baru saja dibuat plus b
 
 * **USE DATABASES**
 
-Setelah database dibuat, kita harus kasih tau MySQL database mana yang mau kita pakai agar perintah-perintah selanjutnya dieksekusi di tempat yang bener. Buat ngaktifin database yang baru kita buat, kita pakai perintah `USE` seperti gini:
+Setelah database dibuat, kita harus memberitahu MySQL database mana yang mau kita pakai agar perintah-perintah selanjutnya dieksekusi di tempat yang benar. Untuk mengaktifkan database yang baru kita buat, kita pakai perintah `USE` seperti ini:
 
 ```SQL
 
@@ -398,7 +398,7 @@ Di sini kita bakal pakai tabel `book_inventory` dari database `bookstore_db;`
 
 DISTINCT clause dipake buat menghilangkan data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
 
-Kita pakai query `SELECT * FROM book_inventory` buat melihat isi tabel (asumsiin kita sudah ngisi kembali tabel pakai data sampel berikut):
+Kita pakai query `SELECT * FROM book_inventory` untuk melihat isi tabel (asumsikan kita sudah mengisi kembali tabel pakai data sampel berikut):
 
 ```SQL
 mysql> SELECT * FROM book_inventory;
@@ -460,7 +460,7 @@ Nah, buku "Ethical Hacking" ada 2 jumlahnya, sementara yang lain cuma 1.
 
 * **ORDER BY Clause**
 
-`ORDER BY` Clause bisa dipake buat ngurutin hasil query, baik dari atas (ascending) maupun dari bawah (descending). Kita bisa pakai fungsi seperti `ASC` dan `DESC` buat lakuin itu, seperti yang ditunjukin di dua contoh di bawah ini.
+`ORDER BY` Clause bisa dipakai untuk mengurutkan hasil query, baik dari atas (ascending) maupun dari bawah (descending). Kita bisa pakai fungsi seperti `ASC` dan `DESC` untuk melakukan itu, seperti yang ditunjukkan di dua contoh di bawah ini.
 
 **ASCENDING ORDER**
 
@@ -500,7 +500,7 @@ mysql> SELECT *
 6 rows in set (0.00 sec)
 ```
 
-Kita bisa melihat perbedaannya waktu ngurutin dari atas pakai `ASC` dan dari bawah pakai `DESC`, di mana keduanya pakai `published_date` sebagai contoh.
+Kita bisa melihat perbedaannya waktu mengurutkan dari atas pakai `ASC` dan dari bawah pakai `DESC`, di mana keduanya pakai `published_date` sebagai contoh.
 
 * **HAVING Clause**
 
@@ -555,7 +555,7 @@ mysql> SELECT *
 4 rows in set (0.00 sec)
 ```
 
-Query di atas menampilkan daftar buku yang sudah difilter, yaitu cuma buku yang deskripsinya ngandung kata **guide** (pakai operator `LIKE`).
+Query di atas menampilkan daftar buku yang sudah difilter, yaitu cuma buku yang deskripsinya mengandung kata **guide** (pakai operator `LIKE`).
 
 * **AND Operator**
 

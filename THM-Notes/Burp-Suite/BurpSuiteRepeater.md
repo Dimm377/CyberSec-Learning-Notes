@@ -18,7 +18,7 @@ Burp Repeater itu bagian dari Burp Suite yang membuat kita bisa menangkap, memod
 Repeater membuat kita bisa lakuin manipulasi request secara manual.
 
 * **Manual Testing:** Beda sama Intruder yang otomatis, Repeater dipake buat pengujian manual yang lebih teliti.
-* **Efficiency:** Kita bisa menyimpan riwayat request dan modifikasi parameter tertentu tanpa harus ngulang proses intercept di browser.
+* **Efficiency:** Kita bisa menyimpan riwayat request dan modifikasi parameter tertentu tanpa harus mengulang proses intercept di browser.
 
 ## Basic Usage
 
