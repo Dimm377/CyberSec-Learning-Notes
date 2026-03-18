@@ -151,9 +151,24 @@ Untuk melihat bagaimana aslinya sebuah **GET Request** bekerja, kamu bisa mencob
 
 Kamu akan melihat daftar file yang diminta oleh browser ke server (seperti `index.html`, `style.css`, dan `script.js`). Semuanya menggunakan metode **GET**.
 
-![Demo GET Request di DevTools](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/GET-Demo.png)
+Jika kamu mengklik salah satu entri tersebut (misal `index.html`), kamu akan melihat informasi lebih detail di panel sebelah kanan:
 
-> **Common Mistake:** Pemula sering lupa membuka tab **Network** *sebelum* mereload halaman. Jika tab Network kosong, cukup tekan reload agar browser mengirim ulang permintaannya dan datanya muncul di daftar.
+![Detail HTTP Request di DevTools](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/Request-demo.png)
+
+#### HTTP Request Information
+
+Meskipun terlihat banyak bagian informasi yang rumit, ada beberapa hal penting yang wajib kamu pahami:
+*   **Scheme**: Menunjukkan protokol yang digunakan (**HTTP** atau **HTTPS**).
+*   **Host**: Nama server tujuan tempat kita meminta sumber daya.
+*   **Filename**: Menunjukkan file spesifik yang diminta. Dalam contoh kita, `/` berarti `index.html`.
+*   **Address**: Alamat IP server tujuan. Jika muncul `127.0.0.1`, artinya website tersebut di-host di komputermu sendiri (*localhost*).
+*   **Status**: Menunjukkan apakah permintaan berhasil (misal: `200 OK`).
+
+#### Response Structure
+
+Saat server merespons, pesan tersebut dibagi menjadi dua bagian utama:
+1.  **Response Header**: Berisi **metadata** tentang respons tersebut (seperti tipe file, tanggal, dan informasi server).
+2.  **Response Body**: Berisi **konten asli** yang kamu minta (seperti kode HTML yang kemudian dirender oleh browser menjadi tampilan web).
 
 > **for your information:**
-> **Status Code** — Kode standar dari server (seperti `200 OK`, `404 Not Found`, atau `500 Internal Server Error`) yang memberi tahu client apa yang terjadi dengan permintaannya.
+> **Localhost** (`127.0.0.1`) — Alamat IP standar yang digunakan untuk merujuk ke komputer yang sedang kamu gunakan saat ini. Berguna untuk testing aplikasi sebelum di-online-kan.
