@@ -168,7 +168,9 @@ Meskipun terlihat banyak bagian informasi yang rumit, ada beberapa hal penting y
 
 Saat server merespons, pesan tersebut dibagi menjadi dua bagian utama:
 1.  **Response Header**: Berisi **metadata** tentang respons tersebut (seperti tipe file, tanggal, dan informasi server).
-2.  **Response Body**: Berisi **konten asli** yang kamu minta (seperti kode HTML yang kemudian dirender oleh browser menjadi tampilan web).
+2.  **Response Body**: Berisi **konten asli** yang kamu minta (seperti kode HTML yang kemudian dirender oleh browser menjadi tampilan web). Kamu bisa melihat isi body ini dengan mengklik tab **"Response"** di panel detail.
+
+![Isi Response Body (HTML)](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/Response-demo.png)
 
 > **for your information:**
 > **Localhost** (`127.0.0.1`) — Alamat IP standar yang digunakan untuk merujuk ke komputer yang sedang kamu gunakan saat ini. Berguna untuk testing aplikasi sebelum di-online-kan.
