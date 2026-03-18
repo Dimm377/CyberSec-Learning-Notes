@@ -60,6 +60,7 @@
 | 1.  | [Inside a Computer System](THM-Notes/Pre-Security/Computers-Fundamentals/Inside-a-Computer-System.md)          | Understanding how PCs work   |
 | 2.  | [Computer Types](THM-Notes/Pre-Security/Computers-Fundamentals/Computer-Types.md)                      | Understanding different computer categories |
 | 3.  | [Client-Server Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Client-Server-Basics.md)          | Basics of client-server interaction |
+| 4.  | [Virtualisation Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Virtualisation-Basics.md)        | Introduction to Virtual Machines & Hypervisors |
 
 </details>
 
