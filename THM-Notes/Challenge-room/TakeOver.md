@@ -72,6 +72,10 @@ Setelah mengakses domain rahasia tersebut, saya menemukan sebuah halaman yang be
 
 Di sinilah flag terakhir ditemukan setelah berhasil mengeksploitasi subdomain tersebut.
 
+![Final Flag](Documentation-assets/Flag-TakeOver-Blur.png)
+
+Flag nya bisa ditemukan juga di bagian URL browser
+ 
 ---
 
 ## Lessons Learned
