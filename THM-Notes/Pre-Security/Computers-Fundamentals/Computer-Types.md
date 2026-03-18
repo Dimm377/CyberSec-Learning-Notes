@@ -16,10 +16,10 @@ Di dunia cyber security, memahami jenis-jenis komputer ini sangat krusial karena
 
 ### Learning Objectives
 
-Setelah menyelesaikan room ini, kamu akan mampu:
-*   Mengenali dan membedakan berbagai jenis komputer yang kamu gunakan secara langsung (seperti laptop dan smartphone).
-*   Memahami komputer yang kamu gunakan secara tidak langsung (seperti server, perangkat IoT, dan *embedded systems*).
-*   Memahami apa yang membuat setiap jenis komputer cocok untuk tujuannya masing-masing.
+Setelah menyelesaikan room ini, kamu akan paham:
+*   Jenis-jenis komputer yang kamu pakai langsung setiap hari (seperti laptop dan smartphone).
+*   Komputer-komputer yang bekerja di balik layar tanpa kamu sadari (server, perangkat IoT, *embedded systems*).
+*   Kenapa setiap jenis komputer dirancang berbeda dan cocok untuk tugas yang berbeda pula.
 
 > **for your information:**
 > **IoT** (_Internet of Things_) — Jaringan benda-benda fisik (seperti kulkas, lampu, atau termostat) yang ditanami sensor, software, dan teknologi lainnya dengan tujuan untuk saling bertukar data dengan perangkat lain melalui internet.
@@ -34,7 +34,7 @@ Sophia dikenalkan dengan empat jenis komputer yang sekilas terlihat mirip, tapi 
 
 ### The Computers You Sit in Front Of
 
-Ada komputer yang memang dirancang untuk interaksi manusia secara langsung (punya layar dan keyboard), dan ada yang bekerja di balik layar. Berikut perbandingannya:
+Ada komputer yang dirancang untuk kamu duduki dan operasikan langsung (punya layar dan keyboard), dan ada yang bekerja diam-diam di balik layar. Berikut perbandingannya:
 
 | Jenis Komputer | Layar & Keyboard? | Tujuan Utama |
 | :--- | :--- | :--- |
@@ -50,8 +50,8 @@ Ada komputer yang memang dirancang untuk interaksi manusia secara langsung (puny
 Biar kamu tidak bingung, mari kita bedah bedanya berdasarkan beban kerja mereka:
 
 #### 1. Laptop & Desktop (Personal Computers)
-Ini adalah komputer yang paling sering kita sentuh. Bedanya cuma di **mobilitas**:
-*   **Laptop**: Didesain untuk portabel. Cocok buat email dan dokumen, tapi kalau dipaksa kerja berat terus-menerus, dia bakal melambat karena **pendinginan** di ruang kecil itu sulit.
+Ini komputer yang paling sering kita sentuh setiap hari. Perbedaan utamanya ada di **mobilitas**:
+*   **Laptop**: Dirancang untuk dibawa kemana-mana. Cocok untuk email dan dokumen, tapi kalau dipaksa kerja berat terus-menerus, performanya akan menurun karena **pendinginan** di ruang sekecil itu memang sulit.
 *   **Desktop**: Menang di **upgradability** dan **cooling** yang jauh lebih baik. Karena pakai daya langsung dari tembok (bukan baterai), desktop bisa lari kencang lebih lama dengan stabil.
 
 #### 2. Workstation
@@ -80,7 +80,7 @@ Pada bulan keduanya, Sophia mulai menyadari keberadaan komputer yang selama ini 
 
 ### Hidden Computers in Everyday Objects
 
-Berikut adalah jenis-jenis komputer yang sering kita temui tapi jarang kita anggap sebagai komputer:
+Ini dia jenis-jenis komputer yang sering ada di sekitar kita, tapi jarang kita anggap sebagai "komputer":
 
 | Jenis | Apa Itu? | Contoh |
 | :--- | :--- | :--- |
@@ -115,15 +115,15 @@ Jangan remehkan perangkat kecil ini. Di perspektif seorang *attacker*:
 
 ## Why Computers Come in Different Flavors
 
-Mungkin kamu bertanya-tanya hal yang sama dengan Sophia kelihatannya: "Kenapa kita tidak buat satu komputer saja yang bisa melakukan semuanya?"
+Mungkin kamu bertanya-tanya hal yang sama dengan Sophia: "Kenapa tidak buat satu komputer saja yang bisa melakukan semuanya?"
 
-Jawabannya adalah: **Karena setiap desain adalah sebuah *trade-off*.**
+Jawabannya sederhana: **karena setiap desain adalah sebuah *trade-off*.**
 
-Tidak ada komputer yang terbaik secara mutlak. Yang ada hanyalah **alat yang tepat untuk tugas yang tepat.** 
+Tidak ada komputer yang terbaik secara mutlak. Yang ada hanya **alat yang tepat untuk tugas yang tepat.** 
 
 ### Core Concept: The Trade-offs
 
-Dalam merancang komputer, ada beberapa hal yang harus dikorbankan demi mendapatkan fitur unggulan lainnya:
+Saat merancang komputer, selalu ada sesuatu yang harus dikorbankan untuk mendapatkan fitur yang lain:
 
 1.  **Mobilitas vs Performa**: Komputer yang kecil dan bisa dibawa kemana-mana (seperti laptop atau smartphone) harus mengorbankan performa maksimal. Mereka tidak bisa bekerja terlalu berat dalam waktu lama karena baterainya terbatas dan sulit untuk didinginkan.
 2.  **Reliabilitas vs Biaya**: Membuat sistem yang sangat handal (seperti server atau workstation) itu mahal. Mereka butuh komponen cadangan (*redundancy*), seperti PSU cadangan atau disk ekstra, agar jika satu bagian rusak, sistem tetap menyala.

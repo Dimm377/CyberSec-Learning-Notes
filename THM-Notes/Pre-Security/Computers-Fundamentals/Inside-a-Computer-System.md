@@ -16,12 +16,12 @@ Sama halnya dengan keamanan komputer. Mencoba menjaga sistem yang tidak kamu pah
 
 ### Learning Objectives
 
-Setelah menyelesaikan materi ini, kamu akan mampu:
-*   Mengenali berbagai komponen penyusun komputer.
-*   Memahami fungsi masing-masing komponen tersebut.
-*   Mengetahui bagaimana komponen-komponen ini saling berinteraksi untuk memberikan layanan kepada penggunanya.
+Setelah menyelesaikan room ini, kamu akan paham:
+*   Apa saja komponen yang ada di dalam komputer dan apa tugas masing-masing.
+*   Bagaimana komponen-komponen ini bekerja sama untuk menghidupkan sistem.
+*   Kenapa semua ini penting untuk kamu yang mau terjun ke cyber security.
 
-Tenang saja, kita akan membahasnya pelan-pelan tanpa terlalu banyak bahasa teknis yang membingungkan. Fokus kita adalah membangun dasar yang kuat.
+Tenang, kita akan bahas pelan-pelan tanpa kebanyakan istilah teknis. Fokusnya adalah membangun fondasi yang kuat dulu.
 
 > **for your information:** 
 > **End-to-end security** (Keamanan dari ujung ke ujung) dimulai dengan memahami setiap titik dalam sebuah sistem, termasuk perangkat kerasnya.
@@ -43,7 +43,7 @@ graph TD
     MB -->|USB / HDMI| IO["I/O Devices"]
 ```
 
-Supaya lebih mudah dipahami, kita akan menggunakan analogi **Tubuh Manusia**. Berikut ringkasan cepat sebelum kita bedah satu per satu:
+Untuk memudahkan pemahaman, kita akan pakai analogi **Tubuh Manusia**. Ini ringkasan cepatnya sebelum kita bedah satu per satu:
 
 | Komponen | Analogi Tubuh | Fungsi Utama |
 | :--- | :--- | :--- |
@@ -60,7 +60,7 @@ Supaya lebih mudah dipahami, kita akan menggunakan analogi **Tubuh Manusia**. Be
 
 ### Motherboard — Kerangka & Sistem Saraf
 
-Motherboard itu ibarat **kerangka tulang dan sistem saraf** tubuh kita. Dia menjadi tempat semua komponen menempel dan sekaligus menjadi jalur komunikasi antar bagian.
+Motherboard itu seperti **kerangka tulang dan sistem saraf** tubuh kita. Semua komponen menempel di sini, dan sekaligus menjadi jalur komunikasi antar bagian.
 
 Pada motherboard desktop yang umum, kamu akan menemukan berbagai tempat (socket & slots) tempat komponen lain berkumpul:
 
@@ -83,7 +83,7 @@ Setiap komponen lain **menempel atau terhubung melalui** motherboard. Tanpa moth
 
 ### CPU — Otak Komputer
 
-**CPU** (_Central Processing Unit_), sering disebut **prosesor**, adalah otak dari komputer. Sama seperti otak kita yang terus-menerus mengeksekusi instruksi (menambah angka, menuangkan susu ke mangkuk, dan sebagainya), CPU melakukan hal yang sama untuk komputer.
+**CPU** (_Central Processing Unit_), atau yang sering disebut **prosesor**, adalah otak dari komputer. Sama seperti otak kita yang terus-menerus memproses instruksi (menghitung angka, menggerakkan tangan, dan sebagainya), CPU melakukan hal yang persis sama untuk komputer.
 
 Beberapa hal penting tentang CPU:
 *   **Multi-Core:** CPU modern punya beberapa *core* (inti prosesor) yang bisa menangani instruksi secara **paralel** (bersamaan). Semakin banyak core, semakin banyak tugas yang bisa dikerjakan sekaligus.
@@ -95,11 +95,11 @@ Beberapa hal penting tentang CPU:
 
 ### RAM — Memori Jangka Pendek
 
-**RAM** (_Random Access Memory_) itu ibarat **memori kerja jangka pendek** otak kita. Saat kamu mengerjakan sebuah tugas, otak menyimpan informasi yang relevan secara sementara. RAM melakukan hal yang sama — menyimpan data yang sedang dibutuhkan CPU agar bisa diakses dengan sangat cepat.
+**RAM** (_Random Access Memory_) itu seperti **memori kerja jangka pendek** otak kita. Saat kamu mengerjakan sebuah tugas, otak menyimpan informasi yang relevan untuk sementara waktu. RAM bekerja dengan cara yang sama — dia menyimpan data yang sedang dibutuhkan CPU agar bisa diakses dengan sangat cepat.
 
-Karakteristik penting RAM:
-*   **Volatile (Mudah hilang):** Begitu komputer dimatikan atau kehilangan daya, semua isi RAM **langsung hilang**. Ini berbeda dengan penyimpanan permanen seperti SSD.
-*   **Teknologi modern:** Modul RAM saat ini menggunakan teknologi seperti **DDR5** atau **DDR6** untuk kecepatan dan performa yang lebih tinggi.
+Yang perlu kamu tahu tentang RAM:
+*   **Volatile (Mudah hilang):** Begitu komputer dimatikan atau kehilangan daya, semua isi RAM **langsung hilang**. Beda dengan SSD yang menyimpan data secara permanen.
+*   **Teknologi modern:** RAM saat ini pakai teknologi seperti **DDR5** atau **DDR6** untuk kecepatan dan performa yang lebih tinggi.
 
 > **Common Mistake:** Banyak pemula bingung membedakan RAM dan Storage. Ingat rumus sederhana ini:
 > - **RAM** = meja kerja (semakin lebar, semakin banyak yang bisa dikerjakan sekaligus, tapi bersih saat kamu pulang).
@@ -109,7 +109,7 @@ Karakteristik penting RAM:
 
 ### Storage — Memori Jangka Panjang (SSD & HDD)
 
-SSD dan HDD adalah perangkat penyimpanan yang ibarat **memori jangka panjang** kita. Sama seperti kenangan yang tersimpan secara permanen di otak, data disimpan secara jangka panjang di perangkat ini.
+SSD dan HDD adalah perangkat penyimpanan yang berfungsi seperti **memori jangka panjang** kita. Kalau RAM itu meja kerja yang bersih setiap pulang, Storage ini adalah lemari arsip tempat kamu menyimpan file secara permanen.
 
 | Fitur | HDD (*Hard Disk Drive*) | SSD (*Solid State Drive*) |
 | :--- | :--- | :--- |
@@ -256,7 +256,7 @@ Kenapa harus ke RAM? Karena CPU butuh akses yang sangat cepat ke instruksi OS, d
 
 ## Conclusion
 
-Kita sudah membedah komponen inti sebuah komputer dan bagaimana proses booting bekerja dari awal sampai OS siap dipakai. Mungkin sekarang terasa seperti materi dasar biasa, tapi percaya — semakin dalam kamu masuk ke dunia cyber security, kamu akan **terus-menerus** mengacu kembali ke pengetahuan ini.
+Sampai di sini, kita sudah membedah komponen inti sebuah komputer dan bagaimana proses booting bekerja dari tombol power sampai OS siap dipakai. Mungkin sekarang terasa seperti materi dasar biasa, tapi percayalah — semakin dalam kamu masuk ke dunia cyber security, kamu akan **terus-menerus** kembali ke pengetahuan ini.
 
 Contoh nyatanya:
 *   Memahami **RAM vs Storage** sangat krusial di **Digital Forensics** — salah langkah sedikit, bukti digital bisa hilang.

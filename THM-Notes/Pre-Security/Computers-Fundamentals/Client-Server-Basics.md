@@ -16,9 +16,9 @@ Di room ini, kamu akan mempelajari bagaimana client-server bekerja.
 
 ### Learning Objectives
 
-Setelah menyelesaikan room ini, kamu akan memahami:
-*   Model **Client-Server** (dasar dari hampir semua interaksi di internet).
-*   Konsep-konsep dasar seperti **DNS**, **Client**, **Server**, **Port**, **Protocol**, dan **Network**.
+Setelah menyelesaikan room ini, kamu akan paham:
+*   Bagaimana model **Client-Server** bekerja — ini dasar dari hampir semua interaksi di internet.
+*   Konsep-konsep penting seperti **DNS**, **Client**, **Server**, **Port**, **Protocol**, dan **Network**.
 
 > **for your information:**
 > **ARPANET** (_Advanced Research Projects Agency Network_) — Jaringan komputer pertama di dunia yang menggunakan protokol paket data, dikembangkan oleh Departemen Pertahanan AS sebagai fondasi internet yang kita kenal sekarang.
@@ -27,7 +27,7 @@ Setelah menyelesaikan room ini, kamu akan memahami:
 
 ## Pizza Delivery
 
-Cara termudah untuk memahami bagaimana sistem komputer memberikan layanan (*service*) ke sistem lain adalah dengan menggunakan analogi dunia nyata. Mari kita bayangkan proses memesan **Pizza Luigi**.
+Cara paling gampang untuk memahami bagaimana sistem komputer saling memberikan layanan (*service*) adalah lewat analogi dunia nyata. Mari kita bayangkan proses memesan **Pizza Luigi**.
 
 Malam Sabtu tiba, Alice dan Bob ingin makan pizza.
 1.  **Menu**: Alice melihat menu Pizza Luigi dan memilih pizza yang dia mau.
@@ -36,7 +36,7 @@ Malam Sabtu tiba, Alice dan Bob ingin makan pizza.
 4.  **Acknowledge**: Karyawan toko mencatat pesanan dan mulai membuat pizzanya.
 5.  **Enjoy**: Setelah pesanan siap, Bob pulang dan menikmati malam pizza yang indah bersama Alice.
 
-Proses ini terlihat sangat sederhana dan otomatis bagi kita. Tapi jangan khawatir, karena kita sudah terbiasa memesan makanan, kita sering tidak menyadari langkah-langkah detail di baliknya. Mari kita bedah setiap langkah tersebut dan hubungkan dengan bagaimana sistem komputer berinteraksi.
+Proses ini terlihat sederhana karena kita sudah terbiasa melakukannya. Tapi kalau dipikir lebih dalam, ada banyak langkah detail di baliknya yang mirip dengan cara komputer berinteraksi. Mari kita bedah satu per satu.
 
 ---
 
@@ -57,26 +57,26 @@ Dalam dunia *Cyber Security* dan *Networking*, setiap langkah di atas punya penj
 
 ---
 
-Setelah memahami analoginya, mari kita masuk ke mekanisme teknis bagaimana komponen-komputer ini bekerja secara nyata.
+Sekarang, setelah analoginya jelas, mari kita lihat bagaimana komponen-komponen ini bekerja secara teknis.
 
 #### 1. Client & Server
-Dua peran utama dalam komunikasi jaringan:
+Ini dua peran utama dalam komunikasi jaringan:
 *   **Client**: Perangkat atau software yang **menginisiasi** permintaan (misal: Browser di laptopmu).
 *   **Server**: Sistem yang **mendengarkan** (*listening*) dan melayani permintaan tersebut (misal: Web Server THM). Perbedaan detail antara Client dan Server secara hardware dibahas di catatan [Computer Types](Computer-Types.md).
 
 #### 2. Request & Response
-Mekanisme pertukaran data yang harus terstruktur:
+Ini cara Client dan Server bertukar data — dan formatnya harus terstruktur:
 *   **Request**: Harus diformat dengan benar agar Server paham sumber daya mana yang diminta.
 *   **Response**: Jawaban dari Server yang bisa berupa data produk (Sukses) atau pesan kesalahan (Error) jika sumber daya tidak ditemukan atau permintaan salah format.
 
 #### 3. Protocol: Rules of Communication
-Kumpulan aturan yang mendefinisikan bagaimana Client dan Server berbicara. **Protocol** menentukan:
+Protocol adalah kumpulan aturan yang menentukan bagaimana Client dan Server berbicara satu sama lain. Secara spesifik, **Protocol** mengatur:
 *   Sintaks dan perintah yang dimengerti (misal: `GET`, `POST`).
 *   Bagaimana pesan harus disusun (urutan data).
 *   Bagaimana menangani kesalahan jika komunikasi terputus.
 
 #### 4. Port: Identifying Services
-Sebuah angka identitas unik (0-65535) yang digunakan untuk menentukan layanan mana yang ingin diakses pada sebuah server. 
+Port adalah angka unik (0-65535) yang berfungsi sebagai "nomor pintu" untuk menentukan layanan mana yang ingin kamu akses di sebuah server.
 *   Satu Server bisa menjalankan banyak layanan sekaligus (Web di port 80/443, Email di port 25, dll).
 *   Client harus menghubungkan ke **Port** yang benar agar sampai ke layanan yang tepat.
 
@@ -90,7 +90,7 @@ Sistem yang memetakan nama domain yang mudah diingat manusia menjadi **IP Addres
 
 ### Role in Cyber Security (Real-World Relevance)
 
-Memahami model ini sangat penting karena setiap komponen adalah titik serangan potensial:
+Kenapa kamu perlu paham model ini? Karena setiap komponen di atas adalah titik yang bisa diserang:
 *   **DNS Spoofing**: Penyerang memanipulasi DNS agar mengarahkan user ke server palsu (seperti mengarahkan Bob ke toko pizza palsu).
 *   **DoS (Denial of Service)**: Membanjiri server dengan jutaan *Request* palsu hingga server tidak sanggup merespons pengguna asli.
 *   **Port Scanning**: Hacker mencoba mengetuk semua "pintu" (Port) di server untuk mencari layanan yang punya celah keamanan terbuka.
@@ -98,7 +98,7 @@ Memahami model ini sangat penting karena setiap komponen adalah titik serangan p
 
 ## Web Communication in Practice
 
-Setelah memahami konsep dasar, mari kita lihat bagaimana komunikasi ini terjadi di dunia nyata, khususnya pada **Web Communication**. Protokol yang paling sering digunakan adalah **HTTP** (_Hypertext Transfer Protocol_) atau versi amannya, **HTTPS**.
+Sekarang konsep dasarnya sudah jelas. Mari kita lihat bagaimana komunikasi ini terjadi di dunia nyata, khususnya saat kamu buka website. Protokol yang paling sering dipakai adalah **HTTP** (_Hypertext Transfer Protocol_) atau versi amannya, **HTTPS**.
 
 ### Stateless Protocol
 
