@@ -43,7 +43,7 @@ Pernah dapat email berlampiran _Excel_ yang tiba-tiba membuat komputer lemot? Ke
 OIT (_Object Linking and Embedding_) itu teknologi jadul buatan Microsoft. Pada dasarnya, _file_ OLE2 seperti sebuah _zip folder_ transparan — bisa menyimpan banyak tipe data berbeda (teks, gambar, _payload_ berbahaya) berdesakan di dalam satu _file_ utuh. _Tool_ ini sangat jago untuk mengekstrak dan menelanjangi isi kandungan OLE2 tersebut.
 
 **Cara Pakainya:**
-Misal kamu dapet *file* mencurigakan bernama `agenttesla.xlsm`. Cukup panggil *tool*-nya di terminal:
+Misal kamu dapat *file* mencurigakan bernama `agenttesla.xlsm`. Cukup panggil *tool*-nya di terminal:
 
 ![oledump agenttesla output](../../Assets/Images/agentesla.png)
 ```bash
@@ -51,7 +51,7 @@ oledump.py agenttesla.xlsm
 ```
 
 **Membaca Hasil Output:**
-Hasilnya bakal keluar struktur direktori dari dalem *file* Excel itu.
+Hasilnya akan keluar struktur direktori dari dalem *file* Excel itu.
 * Kolom pertama adalah nomor urut (*index*), sering juga disebut **data streams**.
 * Kalau ada huruf **`M`** atau **`m`** besar/kecil di samping nomornya (misal: `A4: M 688 'VBA/ThisWorkbook'`), itu tanda bahaya merah — huruf 'M' berarti ada _script_ VBA Macro yang disisipkan di dalam partisi tersebut.
 * Kolom angka di sebelahnya menunjukkan ukuran *byte* dari partisi itu, disusul nama partisinya.
@@ -74,7 +74,7 @@ Agar _script_ VBA yang ada di dalamnya bisa dibaca manusia dengan waras, kamu pe
 oledump.py agenttesla.xlsm -s 4 --vbadecompress
 ```
 
-Sekarang barisan *script* aslinya bakal kelihatan. Kamu nggak perlu pusing membaca dan mengerti seluruh baris *script*-nya sampai hafal. 
+Sekarang barisan *script* aslinya akan kelihatan. Kamu tidak perlu pusing membaca dan mengerti seluruh baris *script*-nya sampai hafal. 
 Sebagai analis pemula, insting yang harus kamu tajamkan adalah mencari anomali kasat mata, misalnya:
 * Alamat *Public IP* aneh yang bukan mikik perusahaanmu.
 * Tulisan berakhiran `.exe` atau `.pdf`.
@@ -97,7 +97,7 @@ Tugas kamu sekarang adalah membuang sampah itu secara manual agar wujud aslinya 
 4. Di Find/Replace pertama: Isi kolom *Find* dengan tanda bintang `*`, biarkan kotak *Replace* **kosong melompong** (alias dihapus).
 5. Di Find/Replace kedua: Isi kolom *Find* dengan tanda caping `^`, dan biarkan kotak *Replace* kosong juga.
 
-dan di kotak **Output** pojok kanan bawah, deretan sampah itu bakal terbaca jelas sebagai perintah jahat (*Powershell* tersembunyi).
+dan di kotak **Output** pojok kanan bawah, deretan sampah itu akan terbaca jelas sebagai perintah jahat (*Powershell* tersembunyi).
 
 ---
 

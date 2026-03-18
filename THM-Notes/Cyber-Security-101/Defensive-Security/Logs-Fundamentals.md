@@ -18,11 +18,11 @@ Attacker pasti berusaha sebisa mungkin menghapus jejak (meninggalkan _trace_ ses
 Bayangin ada polisi lagi investigasi kasus orang hilang di gubuk tengah hutan salju.
 Polisi menemukan petunjuk: pintu kayu hancur, atap jebol, jejak sepatu di salju, dan rekaman CCTV dari tetangga. Dengan menyatukan kepingan-kepingan petunjuk (_traces_) ini, polisi akhirnya bisa mengetahui kronologi dan siapa penjahatnya.
 
-Nah, **Logs** di dunia cyber itu ibarat kepingan-kepingan petunjuk yang ditinggalkan oleh pencuri tadi. Kumpulan _traces_ dari berbagai sumber bakal digabungin buat jadi petunjuk menuju si kriminal.
+Nah, **Logs** di dunia cyber itu seperti kepingan-kepingan petunjuk yang ditinggalkan oleh pencuri tadi. Kumpulan _traces_ dari berbagai sumber akan digabungkan buat jadi petunjuk menuju si kriminal.
 
 Petunjuk (_traces_) ini punya peran sangat besar dalam investigasi. Kalau kejadiannya ada di dalam perangkat digital, di mana kita bisa menemukan _traces_ ini untuk membantu investigasi?
 
-Jawabannya: **Logs**. Logs itu ibarat jejak kaki digital (_digital footprints_) yang ditinggalkan setiap kali ada aktivitas apa pun (baik aktivitas wajar maupun serangan jahat). Dengan membaca logs ini, melacak sebuah aktivitas dan siapa dalang di baliknya menjadi jauh lebih mudah.
+Jawabannya: **Logs**. Logs itu seperti jejak kaki digital (_digital footprints_) yang ditinggalkan setiap kali ada aktivitas apa pun (baik aktivitas wajar maupun serangan jahat). Dengan membaca logs ini, melacak sebuah aktivitas dan siapa dalang di baliknya menjadi jauh lebih mudah.
 
 ### Use Cases of Logs
 
@@ -69,7 +69,7 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 
 | Tipe Log (_Log Type_) | Kegunaan Utama (_Usage_) | Contoh _Events_ (_Traces_) |
 | :--- | :--- | :--- |
-| **System Logs** | Sangat krusial buat diagnosa masalah di _Operating System_ (OS). OS bakal merekam semua aktivitas intinya di sini. (Bagi _attacker_, log ini sering dihapus/dimatikan agar aktivitas tak wajarnya ga tertangkap). | : _System Startup/Shutdown events_<br>- _Driver Loading events_<br>- _System Error events_<br>- _Hardware events_ |
+| **System Logs** | Sangat krusial buat diagnosa masalah di _Operating System_ (OS). OS akan merekam semua aktivitas intinya di sini. (Bagi _attacker_, log ini sering dihapus/dimatikan agar aktivitas tak wajarnya tidak tertangkap). | : _System Startup/Shutdown events_<br>- _Driver Loading events_<br>- _System Error events_<br>- _Hardware events_ |
 | **Audit Logs** | Ibarat CCTV, fokus utamanya merakam pemenuhan aturan _compliance_ (kepatuhan laporan) seperti perubahan pada sistem oleh pengguna. Ini log *vital* bagi tim _Defensive_ untuk memantau aktivitas tak wajar dan menegakkan aturan (_Policy_). | : _Data Access events_<br>- _System Change events_<br>- _User Activity events_<br>- _Policy Enforcement events_ |
 | **Security Logs** | Merekam semua aktivitas yang berkaitan langsung dengan autentikasi, otorisasi, dan hal-hal yang bersinggungan langsung dengan proteksi sistem keamanan. | : _Authentication events_<br>- _Authorization events_<br>- _Security Policy changes_<br>- _User Account changes_<br>- _Abnormal Activity events_ |
 | **Network Logs** | Log buat menganalisis _traffic_ masuk/keluar di jaringan. Kalau ada anomali lalu-lintas data (seperti _beaconing malware_ atau *exfiltration* data yang ditranfser ke _Command and Control / C2 Server_ milik _attacker_), semuanya terekam di sini. | : _Incoming/Outgoing Network Traffic_<br>- _Network Connection Logs_<br>- _Network Firewall Logs_ |
@@ -81,16 +81,16 @@ Berdasarkan klasifikasi umumnya, ada beberapa tipe _logs_ utama yang biasa kita 
 ### Question
 
 * Coba sebutin alasan logis paling utama kenapa _logs_ itu wajib dipisah-pisah golongannya?
-* Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau mengecek riwayat siapa saja yang berhasil (atau gagal) mencoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu bakal kamu bedah duluan?
+* Kalau insting _OffSec/Forensic_ kamu jalan, kalau kita mau mengecek riwayat siapa saja yang berhasil (atau gagal) mencoba otentikasi login ke _remote server_ kita, kategori _log_ apa yang menurutmu akan kamu bedah duluan?
 
 ## Windows Event Logs
 
 Sebagai sistem operasi paling populer, **Windows** juga dilengkapi dengan mekanisme _logging_ bawaan yang lengkap. Sama seperti konsep di Task 2, Windows memisahkan rekaman aktivitasnya ke dalam berbagai kategori.
 
-Di dunia nyata, kita bakal sering membedah 3 kategori *log* utama di ekosistem Windows:
+Di dunia nyata, kita akan sering membedah 3 kategori *log* utama di ekosistem Windows:
 
 1.  **Application**
-    Merekam aktivitas yang berhubungan dengan aplikasi, baik bawaan Windows maupun aplikasi pihak ketiga (_third-party_). Kalau ada aplikasi yang _error_, memberi _warning_, atau misal ada masalah kompatibilitas, semuanya bakal dicatat di sini.
+    Merekam aktivitas yang berhubungan dengan aplikasi, baik bawaan Windows maupun aplikasi pihak ketiga (_third-party_). Kalau ada aplikasi yang _error_, memberi _warning_, atau misal ada masalah kompatibilitas, semuanya akan dicatat di sini.
 
 2.  **System**
     Merekam aktivitas yang berhubungan langsung dengan komponen inti sistem operasi Windows itu sendiri. Ini mencakup informasi proses komputer saat menyala atau mati (_startup/shutdown_), _driver_, masalah _hardware_, hingga lalu-lintas _services_ Windows yang berjalan di *background*.
@@ -100,11 +100,11 @@ Di dunia nyata, kita bakal sering membedah 3 kategori *log* utama di ekosistem W
 
 ### Event Viewer
 
-Membaca _log_ yang formatnya cuma teks (_raw text_) biasa pastinya bakal membuat pusing karena isinya ribuan baris. Tapi untungnya Windows sudah memberi kemudahan.
+Membaca _log_ yang formatnya cuma teks (_raw text_) biasa pastinya akan membuat pusing karena isinya ribuan baris. Tapi untungnya Windows sudah memberi kemudahan.
 
 Windows punya fitur bawaan bernama **Event Viewer** yang tampilannya menggunakan GUI (_Graphical User Interface_). Fitur ini sangat gampang dipakai untuk memfilter, mencari (_search_), dan menganalisa ribuan jejak aktivitas sistem tanpa perlu alat tambahan.
 
-Cara aksesnya gampang banget. Kamu cukup buka **Start Menu**, terus ketikkan **Event Viewer**. Nantinya, semua jejak aktivitas yang terekam bakal disajikan di sana dengan rapi.
+Cara aksesnya gampang sekali. Kamu cukup buka **Start Menu**, terus ketikkan **Event Viewer**. Nantinya, semua jejak aktivitas yang terekam akan disajikan di sana dengan rapi.
 
 <img src="../../Assets/Images/event-viewer.png" alt="Windows Event Viewer">
 
@@ -118,7 +118,7 @@ Berdasarkan *interface* dari Event Viewer tersebut, setiap _log_ kejadian di Win
 * **Event ID:** Ini adalah *nomor identitas unik* untuk setiap jenis kejadian.
 
 **Kekuatan Event ID**
-Daripada kita baca deskripsi _log_ satu per satu yang panjang banget, OS Windows sudah mengategorikan setiap jenis aktivitas pakai angka spesial (Event ID). Ini sangat krusial buat proses investigasi!
+Daripada kita baca deskripsi _log_ satu per satu yang panjang sekali, OS Windows sudah mengategorikan setiap jenis aktivitas pakai angka spesial (Event ID). Ini sangat krusial buat proses investigasi!
 
 Contoh _real case_: Kalau kamu sebagai *Blue Team* mau investigasi siapa saja yang baru-baru ini berhasil *login*, kamu tidak perlu baca ribuan teks campur aduk. Kamu cukup memfilter angka **Event ID 4624** (identitas angka spesifik untuk aktivitas *successful login* di Windows). Beres!
 

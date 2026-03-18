@@ -10,7 +10,7 @@ Mengapa kita butuh *training*? Jawabannya sederhana: tidak ada orang yang lahir 
 
 ### Kenapa Harus Berlatih di Lab?
 
-Bayangkan kamu sedang belajar memadamkan api. Kamu nggak mungkin belajar langsung di gudang bensin yang sedang kebakaran, kan? Pasti belajarnya di tempat latihan yang aman.
+Bayangkan kamu sedang belajar memadamkan api. Kamu tidak mungkin belajar langsung di gudang bensin yang sedang kebakaran, kan? Pasti belajarnya di tempat latihan yang aman.
 
 Di cybersecurity, kita menggunakan **Lab Environment**. Tujuannya supaya kita bisa mencoba berbagai teknik serangan atau pertahanan tanpa merusak sistem asli (*production*) milik perusahaan. Ingat pepatah: *"Satu ons pencegahan lebih berharga daripada satu pon pengobatan."* Lebih baik belajar di lab daripada panik belajar saat sistem sedang diserang beneran.
 
@@ -42,7 +42,7 @@ Dalam TryHackMe, ada fitur bernama **"Content Studio"**. Fitur ini memungkinkan 
 Perusahaan besar atau korporasi biasanya tidak ingin solusi yang berdiri sendiri (*standalone*). Mereka ingin platform training tersebut bisa dengan sistem software yang sudah mereka miliki.
 
 Beberapa fitur kunci yang biasanya dicari oleh korporasi besar adalah:
-* **SSO (Single Sign-On):** Supaya karyawan nggak perlu hafal banyak password. Cukup login sekali pakai akun kantor, sudah bisa akses platform training.
+* **SSO (Single Sign-On):** Supaya karyawan tidak perlu hafal banyak password. Cukup login sekali pakai akun kantor, sudah bisa akses platform training.
 * **API yang Terdokumentasi Baik:** Memungkinkan perusahaan untuk menghubungkan data training ke dalam sistem manajemen internal mereka secara otomatis.
 
 Dengan adanya fungsi-fungsi ini, proses training bisa berjalan mulus (*seamless*) di dalam ekosistem teknologi perusahaan.
@@ -79,7 +79,7 @@ Jika kamu ingin meminta budget training ke atasan, jangan cuma bilang "saya ingi
 
 ## Vendor Selection
 
-Setelah paham pentingnya *training*, langkah selanjutnya adalah memilih **Vendor** (penyedia layanan training) yang tepat. Memilih vendor itu seperti memilih sekolah: harus dicek kualitasnya supaya investasi perusahaan nggak sia-sia.
+Setelah paham pentingnya *training*, langkah selanjutnya adalah memilih **Vendor** (penyedia layanan training) yang tepat. Memilih vendor itu seperti memilih sekolah: harus dicek kualitasnya supaya investasi perusahaan tidak sia-sia.
 
 Pegang daftar "pertanyaan sakti" ini dan pastikan semua terjawab tuntas saat mempertimbangkan kandidat vendor pelatihanmu:
 

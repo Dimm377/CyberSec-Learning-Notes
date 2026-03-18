@@ -165,4 +165,4 @@ Lokasi di Google Maps → **Milk Street, London** (deket St. Paul's Cathedral)
 **Q&A:**
 * Author file PDF `ransom-letter.pdf`? → **Ann Gree Shepherd**
 * Nama jalan lokasi foto penculik? → **Milk Street**
-* Model kamera yang dipake? → **Canon EOS R6**
+* Model kamera yang dipakai? → **Canon EOS R6**

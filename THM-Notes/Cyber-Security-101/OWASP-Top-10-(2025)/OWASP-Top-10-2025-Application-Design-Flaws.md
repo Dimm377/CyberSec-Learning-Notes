@@ -315,7 +315,7 @@ Hasilnya, Gobuster menemukan endpoint `/users` (atau `/messages` tergantung sett
 > **My Mistake - Wasting Time on Wrong Endpoints:**
 > Kesalahan umum saat melakukan enumerasi di target yang punya API adalah: membuang waktu dengan menebak direktori *root* (akar) secara acak. Contohnya, memaksa *brute-force* ke `/users` padahal aplikasinya berjalan di atas layanan API. Hasilnya biasanya cuma kode *error* `404 Not Found`.
 > 
-> *Solusi:* Selalu pelajari *blueprint* atau arsitektur target kamu lebih dulu. Kalau kamu sudah tahu aplikasinya melayani API, arahkan alat pemindai (seperti Gobuster) ke *base path* API tersebut, misalnya langsung ke `/api/users`. Ini bakal bikin proses pencarian jauh lebih efisien, baik saat bermain CTF maupun melakukan *pentest* secara real.
+> *Solusi:* Selalu pelajari *blueprint* atau arsitektur target kamu lebih dulu. Kalau kamu sudah tahu aplikasinya melayani API, arahkan alat pemindai (seperti Gobuster) ke *base path* API tersebut, misalnya langsung ke `/api/users`. Ini akan bikin proses pencarian jauh lebih efisien, baik saat bermain CTF maupun melakukan *pentest* secara real.
 
 **3. API Bypassing & Data Leak**
 Kita tidak perlu repot mencari kelemahan injection yang rumit. Cukup mengakses endpoint API yang barusan ditemukan tersebut, baik melalui browser biasa atau perintah `curl` dari terminal. 

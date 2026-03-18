@@ -8,7 +8,7 @@
 
 Di sisi offensive, database bisa membantu kita mengerti kerentanan SQL dengan lebih baik, seperti SQL injection, dan membuat Query yang membantu kita manipulasi atau mengambil data di dalam layanan yang sudah disusupi. Di sisi lain, sisi defensif, database bisa membantu kita menelusuri basis data dan menemukan aktivitas mencurigakan atau informasi relevan; database juga bisa membantu kita melindungi layanan dengan lebih baik dengan menerapkan batasan saat dibutuhkan.
 
-Karena database ada di mana-mana, penting banget buat mengerti ini. Kita bakal belajar dasar-dasar database, mencakup istilah-istilah penting, konsep, dan tipe-tipe yang beda sebelum masuk ke SQL.
+Karena database ada di mana-mana, penting sekali buat mengerti ini. Kita akan belajar dasar-dasar database, mencakup istilah-istilah penting, konsep, dan tipe-tipe yang beda sebelum masuk ke SQL.
 
 **Learning Objectives:**
 
@@ -64,7 +64,7 @@ CREATE TABLE login_attempts (
 );
 ```
 
-**Non-Relational Databases:** Kalau SQL tadi ibarat tabel Excel yang kaku, NoSQL ini lebih ke arah folder berisi dokumen-dokumen yang isinya bisa beda-beda formatnya. Cocok banget kalau kita punya data yang isinya bervariasi. Contohnya, hasil scan dokumen yang tipe dan jumlah datanya beda-beda setiap lembar, jadi butuh database yang tidak maksa data harus masuk ke kolom tertentu.
+**Non-Relational Databases:** Kalau SQL tadi seperti tabel Excel yang kaku, NoSQL ini lebih ke arah folder berisi dokumen-dokumen yang isinya bisa beda-beda formatnya. Cocok sekali kalau kita punya data yang isinya bervariasi. Contohnya, hasil scan dokumen yang tipe dan jumlah datanya beda-beda setiap lembar, jadi butuh database yang tidak maksa data harus masuk ke kolom tertentu.
 
 ```JSON
 {
@@ -83,15 +83,15 @@ CREATE TABLE login_attempts (
 
 ### Tables, Rows and Columns
 
-Semua data yang disimpan dalam relational database bakal disimpan di sebuah tabel, misalnya kumpulan buku yang ada di toko buku disimpan dalam tabel bernama "Buku".
+Semua data yang disimpan dalam relational database akan disimpan di sebuah tabel, misalnya kumpulan buku yang ada di toko buku disimpan dalam tabel bernama "Buku".
 
 <p align="center">
 <img src="../../Assets/Images/TRC.png" alt="TRC">
 </p>
 
-Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya bakal jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di dalam database: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
+Saat membuat tabel, kita perlu menentukan informasi apa saja yang dibutuhkan—seperti `id`, `Nama`, dan `tanggal_terbit` yang nantinya akan jadi kolom. Setiap kolom ini wajib punya tipe data tertentu. Kalau ada data yang masuk pakai tipe yang tidak sesuai, sistem otomatis akan menolaknya buat menjaga konsistensi data. Di lapangan, kamu akan sering bertemu empat tipe data ini di dalam database: **String (teks dan karakter)**, **Integer (angka bulat)**, **Float/Desimal (angka pecahan)**, serta **Date/Time** (waktu dan tanggal).
 
-Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, buat buku `Android Security Internals` pakai ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukin, seluruh informasi ini bakal tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel itu.
+Setelah tabel dan kolomnya selesai dibuat, kita bisa mulai memasukkan data pertama ke database. Misalnya, buat buku `Android Security Internals` pakai ID `1` dan tanggal terbit `14-10-2014`. Setelah berhasil dimasukin, seluruh informasi ini akan tersimpan dan muncul sebagai satu baris **(row)** utuh dalam tabel itu.
 
 ### Primary and Foreign Keys
 
@@ -101,7 +101,7 @@ Waktu data makin banyak, kita bisa misahin informasi ke berbagai tabel, contohny
 <img src="../../Assets/Images/PK-key.png" alt="PK Key">
 </p>
 
-* **Primary Key:** dipake buat jamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus punya satu nilai khusus yang jadi pengenal tetap dan tidak boleh sama sama data lainnya. Dalam setiap tabel, kita wajib milih satu kolom sebagai Primary Key, biasanya kolom `id` itu pilihan terbaik karena nilai ini dibuat khusus buat setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa saja punya kemiripan.
+* **Primary Key:** dipakai buat jamin bahwa data dalam kolom tertentu bersifat unik. Artinya, setiap baris dalam tabel harus punya satu nilai khusus yang jadi pengenal tetap dan tidak boleh sama sama data lainnya. Dalam setiap tabel, kita wajib milih satu kolom sebagai Primary Key, biasanya kolom `id` itu pilihan terbaik karena nilai ini dibuat khusus buat setiap entry (satu baris di dalam tabel), sementara judul atau tanggal bisa saja punya kemiripan.
 
 * **Foreign Key:** itu kolom (atau kumpulan kolom) yang fungsinya jadi penghubung antara dua tabel dalam sebuah database. Contohnya, kita bisa tambahin kolom `id_penulis` di tabel Buku, kolom ini bertindak sebagai **Foreign Key** karena nilainya merujuk langsung ke kolom id di tabel Penulis. Foreign Key inilah yang membuat terciptanya hubungan antar tabel dalam relational database, dalam satu tabel kita boleh punya lebih dari satu Foreign Key.
 
@@ -119,7 +119,7 @@ Nah, di sinilah peran DBMS (Database Management System). Anggap saja DBMS sebaga
 
 * MongoDB: Andalan buat database non-relational (NoSQL) yang fleksibel.
 
-* Oracle Database: Biasanya dipake sama perusahaan-perusahaan besar buat skala raksasa.
+* Oracle Database: Biasanya dipakai sama perusahaan-perusahaan besar buat skala raksasa.
 
 Untuk bisa 'berkomunikasi' atau berinteraksi sama database, kita pakai SQL (Structured Query Language). SQL itu bahasa komunikasi khusus untuk database yang fungsinya untuk memanggil, mengatur, sampai mengolah data yang tersimpan di dalam relational database.
 
@@ -127,19 +127,19 @@ Untuk bisa 'berkomunikasi' atau berinteraksi sama database, kita pakai SQL (Stru
 
 Berikut beberapa manfaat yang didapet dengan belajar dan pakai SQL:
 
-* **SQL itu cepat:** relational database (yang pakai SQL) sanggup mengambil data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien banget (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
+* **SQL itu cepat:** relational database (yang pakai SQL) sanggup mengambil data dalam jumlah besar hampir seketika. Ini bisa terjadi karena format penyimpanannya yang efisien sekali (tidak makan banyak tempat) serta kecepatan pemrosesannya yang tinggi.
 
 * **Gampang dipelajari:** Beda sama banyak bahasa pemrograman lain, SQL ditulis pakai bahasa Inggris sederhana **(plain English)**, jadi jauh lebih gampang dipahami. Sifat bahasanya yang gampang dibaca membuat kita bisa lebih fokus buat belajar fungsi dan logikanya saja.
 
 * **Reliable:** Seperti yang sudah dibahas sebelumnya, relational database jamin tingkat akurasi data yang tinggi, ini karena adanya aturan struktur yang ketat, setiap kumpulan data wajib memenuhi kriteria struktur itu agar bisa masuk ke dalam sistem.
 
-* **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal querying database, ini membuat pengguna bisa jalanin tugas analisis data yang luas secara efisien banget.
+* **Flexible:** SQL menyediakan berbagai macam kapabilitas dalam hal querying database, ini membuat pengguna bisa jalanin tugas analisis data yang luas secara efisien sekali.
 
 ## Databases And Table Statement
 
 ### Time to Learn
 
-Saatnya mulai belajar SQL dan bagaimana cara memakainya buat berinteraksi sama database. Di task ini, kita bakal mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
+Saatnya mulai belajar SQL dan bagaimana cara memakainya buat berinteraksi sama database. Di task ini, kita akan mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
 
 ### Database Statements
 
@@ -153,7 +153,7 @@ mysql> CREATE DATABASE database_name;
 
 ```
 
-Di sini contoh aku bakal membuat database bernama `bookstore_db`
+Di sini contoh aku akan membuat database bernama `bookstore_db`
 
 ```SQL
 
@@ -223,9 +223,9 @@ CREATE TABLE book_inventory (
 
 ```
 
-Statement ini bakal membuat tabel `book_inventory` pakai empat kolom: `id`, `name`, `published_date`, dan `description`. `id` tipenya **INT** (Integer) karena seharusnya cuma berupa angka, `AUTO_INCREMENT` ada artinya buku pertama yang disipin bakal dikasih `id 1`, buku kedua dikasih `id 2`, dan seterusnya. Terakhir, `id` ditetapin sebagai `PRIMARY KEY` karena ini jadi cara kita secara unik mengidentifikasi catatan buku di tabel kita (dan catatan utama harus ada di tabel).
+Statement ini akan membuat tabel `book_inventory` pakai empat kolom: `id`, `name`, `published_date`, dan `description`. `id` tipenya **INT** (Integer) karena seharusnya cuma berupa angka, `AUTO_INCREMENT` ada artinya buku pertama yang disipin akan diberikan `id 1`, buku kedua diberikan `id 2`, dan seterusnya. Terakhir, `id` ditetapin sebagai `PRIMARY KEY` karena ini jadi cara kita secara unik mengidentifikasi catatan buku di tabel kita (dan catatan utama harus ada di tabel).
 
-`name` punya tipe data `VARCHAR(255)`, artinya bisa pakai karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi kalau seseorang nyoba memasukkan record ke tabel ini tapi `name` kosong maka bakal ditolak). `category` pakai tipe data `VARCHAR(100)` buat menyimpan kategori buku. `published_date` diatur sebagai tipe data `DATE`. `description` pakai tipe data `TEXT` buat menyimpan teks yang lebih panjang.
+`name` punya tipe data `VARCHAR(255)`, artinya bisa pakai karakter variabel (teks/angka/tanda baca) dan dibatasi 255 karakter dan `NOT NULL`, artinya tidak boleh kosong (jadi kalau seseorang nyoba memasukkan record ke tabel ini tapi `name` kosong maka akan ditolak). `category` pakai tipe data `VARCHAR(100)` buat menyimpan kategori buku. `published_date` diatur sebagai tipe data `DATE`. `description` pakai tipe data `TEXT` buat menyimpan teks yang lebih panjang.
 
 * **SHOW TABLES**
 
@@ -243,7 +243,7 @@ Kalau kita mau tahu kolom apa saja yang ada di sebuah tabel (dan tipe datanya), 
 mysql> DESCRIBE book_inventory;
 ```
 
-Ini bakal menampilkan detail tabel seperti gini:
+Ini akan menampilkan detail tabel seperti gini:
 
 ```SQL
 mysql> DESCRIBE book_inventory;
@@ -261,14 +261,14 @@ mysql> DESCRIBE book_inventory;
 
 * **ALTER**
 
-Dalam pengembangan database, wajar banget kalau kebutuhan data kita berubah seiring waktu. Daripada tabelnya dihapus dan membuat ulang dari awal yang bakal buang waktu dan data, kita bisa pakai perintah `ALTER`.
+Dalam pengembangan database, wajar sekali kalau kebutuhan data kita berubah seiring waktu. Daripada tabelnya dihapus dan membuat ulang dari awal yang akan buang waktu dan data, kita bisa pakai perintah `ALTER`.
 
 ```SQL
 ALTER TABLE book_inventory
 ADD page_count INT;
 ```
 
-`ALTER` statement dipake buat lakuin perubahan di tabel, seperti ganti nama kolom, ubah tipe data di kolom, atau hapus kolom.
+`ALTER` statement dipakai buat lakuin perubahan di tabel, seperti ganti nama kolom, ubah tipe data di kolom, atau hapus kolom.
 
 * **DROP**
 
@@ -284,7 +284,7 @@ mysql> DROP TABLE table_name;
 
 CRUD itu singkatan dari **C**reate, **R**ead, **U**pdate, dan **D**elete, yang dianggap sebagai operasi dasar dalam sistem apa pun yang mengelola data.
 
-Kita bakal belajar gimana cara kerja berbagai operasi MySQL secara langsung. Kita bakal banyak berinteraksi sama tabel `book_inventory` di database `bookstore_db`. Langkah pertamanya simpel: jalanin pernyataan use `bookstore_db;` buat mengakses semua data di dalamnya.
+Kita akan belajar gimana cara kerja berbagai operasi MySQL secara langsung. Kita akan banyak berinteraksi sama tabel `book_inventory` di database `bookstore_db`. Langkah pertamanya simpel: jalanin pernyataan use `bookstore_db;` buat mengakses semua data di dalamnya.
 
 * **Create Operation (INSERT)**
 
@@ -343,7 +343,7 @@ mysql> SELECT name, description FROM book_inventory;
 
 * **Update Operation (UPDATE)**
 
-Update operation itu bagian krusial dari siklus CRUD yang membuat modifikasi data secara real-time jadi mungkin. Pernyataan `UPDATE` bekerja pakai cara menimpa data lama sama informasi terbaru yang bakal kita kasih.
+Update operation itu bagian krusial dari siklus CRUD yang membuat modifikasi data secara real-time jadi mungkin. Pernyataan `UPDATE` bekerja pakai cara menimpa data lama sama informasi terbaru yang akan kita kasih.
 
 ```SQL
 -- Update deskripsi buku pakai ID 2
@@ -363,7 +363,7 @@ mysql> SELECT name, description FROM book_inventory WHERE id = 2;
 1 row in set (0.00 sec)
 ```
 
-Pernyataan UPDATE fungsinya buat menentukan tabel target—dalam skenario ini tabel `book_inventory` sebagai objek yang bakal dimodifikasi. Kita pakai kata kunci `SET` buat netapin nilai baru di kolom spesifik yang mau diupdate. Buat jaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan cuma terjadi di baris yang memenuhi kriteria, seperti baris pakai `id` 2.
+Pernyataan UPDATE fungsinya buat menentukan tabel target—dalam skenario ini tabel `book_inventory` sebagai objek yang akan dimodifikasi. Kita pakai kata kunci `SET` buat netapin nilai baru di kolom spesifik yang mau diupdate. Buat jaga akurasi, klausa `WHERE` bertindak sebagai filter yang memastikan perubahan cuma terjadi di baris yang memenuhi kriteria, seperti baris pakai `id` 2.
 
 * **Delete Operation (DELETE)**
 
@@ -379,7 +379,7 @@ Pernyataan `DELETE` yang diikutin klausa `FROM` membuat kita bisa menentukan tar
 
 ### Summary
 
-Singkatnya, hasil operasi CRUD penting banget buat operasi data dan waktu berinteraksi sama database. Pernyataan yang terkait sama mereka ada di bawah ini:
+Singkatnya, hasil operasi CRUD penting sekali buat operasi data dan waktu berinteraksi sama database. Pernyataan yang terkait sama mereka ada di bawah ini:
 
 * **Create (`INSERT` statement)** : Nambahin data baru ke dalam tabel.
 * **Read (`SELECT` statement)** : Mengambil data dari tabel.
@@ -388,15 +388,15 @@ Singkatnya, hasil operasi CRUD penting banget buat operasi data dan waktu berint
 
 ## Clauses
 
-Klausa itu komponen tambahan dari sebuah pernyataan yang fungsinya buat netapin kriteria spesifik di data yang bakal kita manipulasi. Kalau pernyataan dasar seperti `SELECT` atau `UPDATE` itu perintah utamanya, maka klausa seperti `WHERE` atau `FROM` itu pemberi instruksi detail soal data mana yang harus diambil atau gimana urutannya ditampilin.
+Klausa itu komponen tambahan dari sebuah pernyataan yang fungsinya buat netapin kriteria spesifik di data yang akan kita manipulasi. Kalau pernyataan dasar seperti `SELECT` atau `UPDATE` itu perintah utamanya, maka klausa seperti `WHERE` atau `FROM` itu pemberi instruksi detail soal data mana yang harus diambil atau gimana urutannya ditampilin.
 
 Fokus utama kita itu menguasai empat klausa penting: `DISTINCT`, `GROUP BY`, `ORDER BY`, dan `HAVING`.
 
-Di sini kita bakal pakai tabel `book_inventory` dari database `bookstore_db;`
+Di sini kita akan pakai tabel `book_inventory` dari database `bookstore_db;`
 
 * **DISTINCT Clause**
 
-DISTINCT clause dipake buat menghilangkan data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
+DISTINCT clause dipakai buat menghilangkan data ganda dalam hasil query, jadi yang muncul cuma nilai-nilai yang unik (beda) saja.
 
 Kita pakai query `SELECT * FROM book_inventory` untuk melihat isi tabel (asumsikan kita sudah mengisi kembali tabel pakai data sampel berikut):
 
@@ -504,7 +504,7 @@ Kita bisa melihat perbedaannya waktu mengurutkan dari atas pakai `ASC` dan dari 
 
 * **HAVING Clause**
 
-`HAVING` Clause dipake bareng clause lain buat filter grup atau hasil record berdasarkan suatu kondisi. Dalam kasus `GROUP BY`, dia mengevaluasi kondisi jadi TRUE atau FALSE. Beda sama clause `WHERE`, `HAVING` filter hasil setelah agregasi dilakuin.
+`HAVING` Clause dipakai bareng clause lain buat filter grup atau hasil record berdasarkan suatu kondisi. Dalam kasus `GROUP BY`, dia mengevaluasi kondisi jadi TRUE atau FALSE. Beda sama clause `WHERE`, `HAVING` filter hasil setelah agregasi dilakuin.
 
 ```SQL
 mysql> SELECT name, COUNT(*)
@@ -532,7 +532,7 @@ Operator ini mengecek kebenaran suatu kondisi dan mengembalikan nilai boolean `T
 
 * **LIKE Operator**
 
-Operator `LIKE` biasanya dipake bareng clause seperti `WHERE` buat filter pola tertentu dalam sebuah kolom.
+Operator `LIKE` biasanya dipakai bareng clause seperti `WHERE` buat filter pola tertentu dalam sebuah kolom.
 
 Contoh penggunaan:
 
@@ -559,7 +559,7 @@ Query di atas menampilkan daftar buku yang sudah difilter, yaitu cuma buku yang 
 
 * **AND Operator**
 
-Operator `AND` membuat kita bisa gabungin dua kondisi atau lebih dalam satu query. Hasilnya cuma bakal `TRUE` kalau **semua** kondisi terpenuhi.
+Operator `AND` membuat kita bisa gabungin dua kondisi atau lebih dalam satu query. Hasilnya cuma akan `TRUE` kalau **semua** kondisi terpenuhi.
 
 Contoh berikut mencari buku pakai kategori **"Offensive Security"** DAN judul **"Bug Bounty Bootcamp"**:
 
@@ -731,14 +731,14 @@ mysql> SELECT *
 
 ## Functions
 
-Waktu kerja sama data, fungsi bisa bantuin kita menyederhanakan query, lakuin operasi, serta manipulasi data pakai lebih efisien. Ayo kita jelajahin beberapa fungsi yang sering dipake agar pemahaman kita makin luwes!
+Waktu kerja sama data, fungsi bisa bantuin kita menyederhanakan query, lakuin operasi, serta manipulasi data pakai lebih efisien. Ayo kita jelajahin beberapa fungsi yang sering dipakai agar pemahaman kita makin luwes!
 
 ### String Functions
 
-Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
+Fungsi string berguna sekali waktu kita mau manipulasi teks dalam kolom.
 
 * **CONCAT()**
-  Fungsi ini dipake buat gabungin dua atau lebih string jadi satu.
+  Fungsi ini dipakai buat gabungin dua atau lebih string jadi satu.
 
   Contoh: Gabungin `name` dan `category` jadi satu kalimat.
 
@@ -755,7 +755,7 @@ Fungsi string berguna banget waktu kita mau manipulasi teks dalam kolom.
   ```
 
 * **GROUP_CONCAT()**
-  Nah, ini fungsi sakti mandraguna! `GROUP_CONCAT()` bisa gabungin hasil dari banyak baris jadi satu baris string. Berguna banget kalau kita mau melihat semua item dalam satu kategori tanpa baris yang terpisah-pisah.
+  Nah, ini fungsi sakti mandraguna! `GROUP_CONCAT()` bisa gabungin hasil dari banyak baris jadi satu baris string. Berguna sekali kalau kita mau melihat semua item dalam satu kategori tanpa baris yang terpisah-pisah.
 
   ```SQL
   mysql> SELECT category, GROUP_CONCAT(name) AS Books
@@ -803,10 +803,10 @@ Fungsi ini digunakan untuk melakukan perhitungan di sekumpulan nilai dan mengemb
 
 ### System Functions
 
-Nah, fungsi-fungsi ini populer banget di dunia **Hacking** (terutama waktu lakuin SQL Injection) karena bisa memberi informasi vital tentang sistem database target.
+Nah, fungsi-fungsi ini populer sekali di dunia **Hacking** (terutama waktu lakuin SQL Injection) karena bisa memberi informasi vital tentang sistem database target.
 
-* **USER()**: Menampilkan username yang lagi dipake buat koneksi database.
-* **DATABASE()**: Menampilkan nama database yang lagi aktif dipake.
+* **USER()**: Menampilkan username yang lagi dipakai buat koneksi database.
+* **DATABASE()**: Menampilkan nama database yang lagi aktif dipakai.
 * **VERSION()**: Menampilkan versi dari software database (MySQL/MariaDB) yang jalan.
 
 Contoh penggunaan:

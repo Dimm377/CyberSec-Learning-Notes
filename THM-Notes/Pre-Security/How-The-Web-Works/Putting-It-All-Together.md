@@ -11,7 +11,7 @@
 
 ## Putting It All Together
 
-Room ini merangkum seluruh proses komunikasi web, dari permintaan pengguna sampai pengiriman konten dari server. Ini ibarat melihat **bagaimana pesananmu dibuat dan dikirim** dari awal sampai akhir.
+Room ini merangkum seluruh proses komunikasi web, dari permintaan pengguna sampai pengiriman konten dari server. Ini seperti melihat **bagaimana pesananmu dibuat dan dikirim** dari awal sampai akhir.
 
 ---
 
@@ -30,7 +30,7 @@ Selain Client dan Server, ada pekerja di balik layar yang membuat semuanya berja
 
 ### Mekanisme Web Server
 
-Web server menggunakan **Virtual Hosts** untuk menjalankan beberapa situs web di satu server fisik yang sama, ibarat satu gedung perkantoran yang bisa ditempati banyak perusahaan berbeda, dibedakan berdasarkan **nama domain**.
+Web server menggunakan **Virtual Hosts** untuk menjalankan beberapa situs web di satu server fisik yang sama, seperti satu gedung perkantoran yang bisa ditempati banyak perusahaan berbeda, dibedakan berdasarkan **nama domain**.
 
 | Tipe Konten | Analogi | Penjelasan |
 | ----------- | ------- | ---------- |

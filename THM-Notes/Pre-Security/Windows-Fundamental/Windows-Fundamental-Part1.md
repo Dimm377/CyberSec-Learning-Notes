@@ -30,7 +30,7 @@ Windows hadir dalam berbagai edisi yang disesuaikan dengan kebutuhan:
 
 ### The Desktop GUI
 
-Antarmuka visual Windows — ibarat **dashboard mobil** yang menampilkan semua informasi penting:
+Antarmuka visual Windows — seperti **dashboard mobil** yang menampilkan semua informasi penting:
 
 | Elemen | Fungsi |
 | ------ | ------ |
@@ -70,7 +70,7 @@ Pilar keamanan yang membatasi hak istimewa pengguna di dalam sistem:
 | Konsep | Analogi | Fungsi |
 | ------ | ------- | ------ |
 | **Administrator** | Pemilik gedung — akses ke semua ruangan | Hak penuh atas sistem |
-| **Standard User** | Penyewa biasa — akses terbatas | Hak terbatas, ga bisa install/uninstall bebas |
+| **Standard User** | Penyewa biasa — akses terbatas | Hak terbatas, tidak bisa install/uninstall bebas |
 | **UAC** (User Account Control) | Satpam yang minta konfirmasi sebelum buka pintu | Mencegah eksekusi program berbahaya secara diam-diam |
 
 **Settings vs Control Panel:** Dua antarmuka buat konfigurasi. Control Panel lebih banyak dipakai buat pengaturan teknis yang bersifat _legacy_.
@@ -79,7 +79,7 @@ Pilar keamanan yang membatasi hak istimewa pengguna di dalam sistem:
 
 ### Task Manager
 
-Utility utama buat memantau kesehatan sistem — ibarat **monitor kesehatan** yang mendeteksi keanehan:
+Utility utama buat memantau kesehatan sistem — seperti **monitor kesehatan** yang mendeteksi keanehan:
 
 | Tab | Fungsi | Relevansi Keamanan |
 | --- | ------ | ------------------ |

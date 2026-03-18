@@ -108,7 +108,7 @@ Hasil akhirnya? Pemilik aslinya menangis, dan kita (Red Team) masuk (Login) seba
 
 ## Automated SQL Injection
 
-Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual bakal menghabiskan banyak tenaga dan waktu. Di situlah kita gunakan tool **SQLMap**.
+Eksploitasi SQL Injection secara manual (terutama jenis _blind_) memang sangat penting untuk memahami fondasinya. Tapi di lapangan, mengekstrak _database_ yang berukuran enterprise secara manual akan menghabiskan banyak tenaga dan waktu. Di situlah kita gunakan tool **SQLMap**.
 
 ### Apa itu SQLMap?
 
@@ -119,7 +119,7 @@ SQLMap adalah _tool command-line open-source_ yang dirancang khusus untuk mengot
 Karena ini murni _command-line tool_, kamu harus buka terminal OS Linux kamu. Kamu bisa pakai _flag_ `--help` untuk melihat deretan fungsi dan parameter yang bisa kamu sesuaikan. Tapi, untuk pemula atau kalau kamu ingin panduan anti-ribet, ada _flag_ andalan:
 
 **Mode Wizard (`--wizard`)**
-Mode ini bakal memandu kamu secara interaktif, menanyakan langkah demi langkah buat menyelesaikan konfigurasi serangannya, cocok banget buat _beginners_.
+Mode ini akan memandu kamu secara interaktif, menanyakan langkah demi langkah buat menyelesaikan konfigurasi serangannya, cocok sekali buat _beginners_.
 
 ```bash
 sqlmap --wizard
@@ -159,16 +159,16 @@ Secara umum, _hunting_ kerentanan ini dimulai dengan mencari celah URL yang mena
    ```
 
 2. **Authenticated Scanning (Cookie-Based Testing):**
-   Di dunia nyata, jalur fatal yang rentan SQLi seringkali _di belakang pintu masuk_ (contoh: dashboard admin, profile user), yang artinya kamu harus **_login_** dulu. Kalau kamu langsung pakai sqlmap biasa, _request_ aneh bakal nyangkut di halaman login (unauthenticated).
+   Di dunia nyata, jalur fatal yang rentan SQLi seringkali _di belakang pintu masuk_ (contoh: dashboard admin, profile user), yang artinya kamu harus **_login_** dulu. Kalau kamu langsung pakai sqlmap biasa, _request_ aneh akan nyangkut di halaman login (unauthenticated).
 
-   **Solusi:** Kamu harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap bakal "menyamar" jadi diri user yang sudah _login_.
+   **Solusi:** Kamu harus tangkep (capture) dan injek _Session Cookie_ (seperti `PHPSESSID`, `JSESSIONID`, dll) yang valid ke dalam SQLMap pakai _flag_ `--cookie`. Jadi, SQLMap akan "menyamar" jadi diri user yang sudah _login_.
 
    ```bash
    sqlmap -u "http://target.com/admin/search?id=1" --cookie="SESSIONID=abcdef123456"
    ```
 
 3. **POST-Based Testing (Intercepted Requests):**
-   Gimana kalau _input_ datanya tersembunyi, contohnya di _form login_ atau register yang pakai metode `POST`? URL-nya bakal keliatan bersih (misal cuma `http://target.com/login`), karena datanya dikirim lewat _request body_.
+   Gimana kalau _input_ datanya tersembunyi, contohnya di _form login_ atau register yang pakai metode `POST`? URL-nya akan keliatan bersih (misal cuma `http://target.com/login`), karena datanya dikirim lewat _request body_.
 
    **Solusi:** Menjadi _Hacker_ sejati berarti kamu harus _intercept_ (tangkap) _request raw_ tersebut (biasanya pakai alat _Proxy_ seperti Burp Suite), lalu _save_ hasil _request_ mentahnya ke dalam file `.txt`. Setelah itu, serahkan file tersebut ke SQLMap menggunakan _flag_ `-r` (Request file).
 
@@ -236,9 +236,9 @@ back-end DBMS: MySQL >= 5.1
 Perhatikan baris-baris penting dari output di atas:
 
 1. **WAF/IPS/IDS Check (`checking if the target is protected...`)**
-   SQLMap secara otomatis bakal mencari tahu dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
+   SQLMap secara otomatis akan mencari tahu dulu apakah ada Firewall/IPS yang menjaga website itu sebelum ia masuk dan _bruteforce_ _payloads_.
 2. **Injection Point Confirmation (`GET parameter 'cat' is vulnerable...`)**
-   Kalau dapet pesan ini, Celah (Injection Point) berhasil dikonfirmasi yang artinya bisa diinjeksi.
+   Kalau dapat pesan ini, Celah (Injection Point) berhasil dikonfirmasi yang artinya bisa diinjeksi.
 3. **Payload Autopsy (Tipe Serangan yang Berhasil)**
    SQLMap membongkar _exact payload_ apa yang sukses merobohkan _backend_. Misalnya di atas: _boolean-based_, _error-based_, dan _UNION_. Di dunia _pentest_, _payload_ ini akan kamu salin untuk dimasukkan ke laporan buktinya (Proof of Concept).
 4. **Fingerprinting**

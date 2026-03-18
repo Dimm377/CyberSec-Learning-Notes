@@ -36,7 +36,7 @@ Agar data sampai ke tujuan yang tepat, setiap perangkat butuh **identitas**. Ada
 
 #### IP Address (Internet Protocol Address)
 
-IP Address itu ibarat **alamat rumah** — deretan angka yang dipakai buat mengidentifikasi perangkat di jaringan.
+IP Address itu seperti **alamat rumah** — deretan angka yang dipakai buat mengidentifikasi perangkat di jaringan.
 
 | Versi | Format | Kapasitas | Contoh |
 | ----- | ------ | --------- | ------ |
@@ -45,7 +45,7 @@ IP Address itu ibarat **alamat rumah** — deretan angka yang dipakai buat mengi
 
 #### MAC Address (Media Access Control Address)
 
-MAC Address itu ibarat **nomor seri akta kelahiran** — identitas fisik yang permanen dan unik, sudah ditentukan oleh pabrik sejak perangkat diproduksi.
+MAC Address itu seperti **nomor seri akta kelahiran** — identitas fisik yang permanen dan unik, sudah ditentukan oleh pabrik sejak perangkat diproduksi.
 
 | Aspek | Detail |
 | ----- | ------ |
@@ -57,7 +57,7 @@ MAC Address itu ibarat **nomor seri akta kelahiran** — identitas fisik yang pe
 
 ### Ping (ICMP)
 
-**Ping** itu salah satu tool jaringan paling dasar — ibarat **mengetuk pintu rumah seseorang** untuk mengecek apakah mereka ada di rumah.
+**Ping** itu salah satu tool jaringan paling dasar — seperti **mengetuk pintu rumah seseorang** untuk mengecek apakah mereka ada di rumah.
 
 Ping menggunakan paket **ICMP** (Internet Control Message Protocol) untuk:
 * Mendiagnosis masalah konektivitas

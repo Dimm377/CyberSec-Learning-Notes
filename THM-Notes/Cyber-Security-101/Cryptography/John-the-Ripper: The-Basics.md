@@ -66,7 +66,7 @@ sudo apt install john
 ```
 
 **2. Wordlist RockYou:**
-Wordlist yang paling umum dipake buat CTF dan belajar itu `rockyou.txt`.
+Wordlist yang paling umum dipakai buat CTF dan belajar itu `rockyou.txt`.
 
 * **Lokasi:** `/usr/share/wordlists/`
 * **Decompress:** Kalau masih bentuk `.gz`, perlu diekstrak dulu:
@@ -96,7 +96,7 @@ hash-identifier
 **2. Cracking Process:**
 Pakai command: `john --format=[format] --wordlist=[path_wordlist] [file_hash]`
 
-Berikut jawaban buat latihan hash yang dikasih:
+Berikut jawaban buat latihan hash yang diberikan:
 
 * **Hash 1 (MD5):**
 * Identifikasi: Hash `1A1DC91C907325C69271DDF0C944BC72` terdeteksi sebagai **MD5**.
@@ -121,7 +121,7 @@ Berikut jawaban buat latihan hash yang dikasih:
 Task ini membahas cara crack hash otentikasi Windows, atau sering disebut **NTLM**.
 
 **1. Apa itu NTLM?**
-NTLM (New Technology LAN Manager) itu protokol otentikasi lama yang dipake Windows. Meski sudah ada Kerberos, NTLM masih sering ditemuin.
+NTLM (New Technology LAN Manager) itu protokol otentikasi lama yang dipakai Windows. Meski sudah ada Kerberos, NTLM masih sering ditemuin.
 
 **2. Identifikasi & Format:**
 
@@ -140,7 +140,7 @@ Buat latihan ini, kita diminta memecahkan file `ntlm.txt`.
   _(Ganti path wordlist sesuai lokasi rockyou.txt di komputer kamu)_
 
 * **Hasil:**
-  Setelah command jalan, password bakal muncul di terminal.
+  Setelah command jalan, password akan muncul di terminal.
 
 ---
 
@@ -173,7 +173,7 @@ Task ini mengajarkan cara crack password user di Linux pakai gabungan file `/etc
   ```
 
 * **Step 3: Hasil**
-  Password user yang berhasil dicrack bakal muncul.
+  Password user yang berhasil dicrack akan muncul.
 
 ---
 
@@ -184,7 +184,7 @@ Task ini membahas **Single Crack Mode**, fitur JtR buat memecahkan password yang
 **1. Konsep:**
 
 * Berguna kalau password user itu variasi dari nama pengguna (misal: user `admin` punya password `Admin123`).
-* Tidak butuh wordlist eksternal, JtR bakal manipulasi (mangle) username buat nebak password.
+* Tidak butuh wordlist eksternal, JtR akan manipulasi (mangle) username buat nebak password.
 
 **2. Langkah-langkah:**
 
@@ -204,7 +204,7 @@ Task ini membahas **Single Crack Mode**, fitur JtR buat memecahkan password yang
   ```
 
 * **Step 3: Hasil**
-  JtR bakal nyoba variasi "Joker" (seperti "Joker1", "joker", dll) sampai ketemu passwordnya.
+  JtR akan nyoba variasi "Joker" (seperti "Joker1", "joker", dll) sampai ketemu passwordnya.
 
 ---
 
@@ -267,7 +267,7 @@ Kita pakai tool bernama `zip2john` buat mengubah file ZIP jadi format hash yang 
   ```
 
 * **Step 3: Hasil**
-  Password file ZIP bakal muncul. Pakai password itu buat ekstrak file aslinya (`unzip secure.zip`).
+  Password file ZIP akan muncul. Pakai password itu buat ekstrak file aslinya (`unzip secure.zip`).
 
 ---
 
@@ -301,7 +301,7 @@ Mengubah file RAR jadi format hash buat John.
   ```
 
 * **Step 3: Hasil**
-  Password file RAR bakal muncul. Pakai buat ekstrak (`unrar x secure.rar`).
+  Password file RAR akan muncul. Pakai buat ekstrak (`unrar x secure.rar`).
 
 ---
 
@@ -341,4 +341,4 @@ Sama seperti ZIP dan RAR, kita butuh tool converter bernama `ssh2john`.
   ```
 
 * **Step 3: Hasil**
-  Passphrase buat key SSH itu bakal muncul.
+  Passphrase buat key SSH itu akan muncul.

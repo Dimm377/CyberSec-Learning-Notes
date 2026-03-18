@@ -23,7 +23,7 @@ Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *mal
 Di dalam FlareVM, _tools_-nya dikelompokkan berdasarkan fungsinya agar kamu lebih mudah mencarinya saat menangani kasus.
 
 ### 1. Reverse Engineering & Debugging
-*Reverse engineering* itu ibarat kamu membongkar sebuah mesin atau barang elektronik (seperti jam mekanik atau radio) yang sudah jadi pabrikan. Tujuannya murni untuk mencari tahu komponen apa saja yang ada di dalamnya dan bagaimana cara alat itu bekerja. Sedangkan *debugging* adalah proses saat alat itu rusak, lalu kamu menganalisis bagian mana yang macet dan mencoba memperbaikinya.
+*Reverse engineering* itu seperti kamu membongkar sebuah mesin atau barang elektronik (seperti jam mekanik atau radio) yang sudah jadi pabrikan. Tujuannya murni untuk mencari tahu komponen apa saja yang ada di dalamnya dan bagaimana cara alat itu bekerja. Sedangkan *debugging* adalah proses saat alat itu rusak, lalu kamu menganalisis bagian mana yang macet dan mencoba memperbaikinya.
 
 Senjata andalan di kategori ini:
 * **Ghidra**: *Software reverse engineering* high class yang dirilis gratis oleh NSA (Badan Intelijen Amerika).
@@ -34,7 +34,7 @@ Senjata andalan di kategori ini:
 * **PEiD**: Alat pendeteksi untuk mencari tahu apakah sebuah program itu dibungkus pakai pelindung kode (*packer*, *cryptor*) atau dicetak pakai perangkat lunak pembuat aplikasi (*compiler*) jenis apa.
 
 ### 2. Disassemblers & Decompilers
-Dua jenis *tools* ini sangat penting dalam analisis *malware*. Tugas utamanya ibarat **Penerjemah Bahasa**, komputer berkomunikasi menggunakan angka dan bahasa mesin yang tidak bisa dibaca manusia biasa. Alat ini bertugas menerjemahkan surat rahasia tersebut ke dalam format logika (seperti kode *C++* atau *Assembly*) yang lebih mudah dipahami oleh analis.
+Dua jenis *tools* ini sangat penting dalam analisis *malware*. Tugas utamanya seperti **Penerjemah Bahasa**, komputer berkomunikasi menggunakan angka dan bahasa mesin yang tidak bisa dibaca manusia biasa. Alat ini bertugas menerjemahkan surat rahasia tersebut ke dalam format logika (seperti kode *C++* atau *Assembly*) yang lebih mudah dipahami oleh analis.
 
 Alat yang sering dipakai:
 * **CFF Explorer**: Editor khusus (*PE editor*) untuk menganalisis dan membongkar struktur *file* berformat *Portable Executable* (khas Windows seperti `.exe` atau `.dll`).
@@ -53,7 +53,7 @@ Alat pemantau andalannya:
 * **DIE (Detect It Easy)**: Alat serbaguna untuk mendeteksi apakah suatu *file* dilindungi oleh pengunci (*packer*, *cryptor*) dan alat pembuat (*compiler*) tertentu.
 
 ### 4. Forensics & Incident Response
-Kategori ini ibarat tim forensik polisi (*CSI*) yang turun ke tempat kejadian perkara (TKP). *Digital Forensics* bertugas mengumpulkan, menganalisis, dan mengamankan barang bukti (dari *harddisk*, jaringan, sampai rekaman RAM memori). Sementara *Incident Response* fokus pada pertolongan pertama: mendeteksi, mengisolasi, membasmi ancaman pencuri (*hacker/malware*), dan memulihkan sistem yang rusak.
+Kategori ini seperti tim forensik polisi (*CSI*) yang turun ke tempat kejadian perkara (TKP). *Digital Forensics* bertugas mengumpulkan, menganalisis, dan mengamankan barang bukti (dari *harddisk*, jaringan, sampai rekaman RAM memori). Sementara *Incident Response* fokus pada pertolongan pertama: mendeteksi, mengisolasi, membasmi ancaman pencuri (*hacker/malware*), dan memulihkan sistem yang rusak.
 
 Alat spesialis forensik:
 * **Volatility**: *Framework* wajib untuk menganalisis dan membongkar barang bukti berupa rekaman memori (*RAM dump*).
@@ -77,7 +77,7 @@ Alat bedah *file*:
 * **HxD**: *Hex editor* andalan sejuta umat untuk melihat dan mengedit bahasa mentah biner dari sebuah *file*.
 
 ### 7. Scripting & Automation
-Analisis manual itu capek dan rentan salah (karena *human error*). Kategori ini ibarat kamu membuat lengan robot pabrik untuk menjalankan tugas-tugas receh dan berulang secara otomatis, sehingga kinerja analis jadi jauh lebih cepat.
+Analisis manual itu capek dan rentan salah (karena *human error*). Kategori ini seperti kamu membuat lengan robot pabrik untuk menjalankan tugas-tugas receh dan berulang secara otomatis, sehingga kinerja analis jadi jauh lebih cepat.
 
 Alat otomasi andalan:
 * **Python**: Bahasa pemrograman favorit analis keamanan. Fokus utamanya dipakai untuk menjalankan modul dan tools otomatis.
@@ -98,7 +98,7 @@ Tiga serangkai utamanya:
 
 ## Commonly Used Tools for Investigation: Overview
 
-Dari sekian banyak *tools* yang dibahas sebelumnya, cuma segelintir saja yang akan sering banget kamu pakai untuk investigasi tahap awal. Anggap ini adalah paket "P3K Utama" atau *starter pack* seorang analis.
+Dari sekian banyak *tools* yang dibahas sebelumnya, cuma segelintir saja yang akan sering sekali kamu pakai untuk investigasi tahap awal. Anggap ini adalah paket "P3K Utama" atau *starter pack* seorang analis.
 
 Berikut beberapa tools yang sering digunakan untuk investigasi beserta fungsinya:
 
@@ -173,7 +173,7 @@ Ketika kamu curiga, lihat *parent process*-nya Sebagai contoh, sangatlah wajar j
 
 ### 3. HxD (Hex Editor)
 
-Kalau *Process Explorer* tadi mengurus program yang lagi hidup, **HxD** adalah spesialis operasi bedah untuk *file* yang mati. Alat ini disebut *Hex Editor*, yang fungsinya ibarat **Mikroskop DNA**. Ia sanggup membedah struktur paling dasar penyusun sebuah *file* hingga ke level bongkahan angka primitif (*hexadecimal*). 
+Kalau *Process Explorer* tadi mengurus program yang lagi hidup, **HxD** adalah spesialis operasi bedah untuk *file* yang mati. Alat ini disebut *Hex Editor*, yang fungsinya seperti **Mikroskop DNA**. Ia sanggup membedah struktur paling dasar penyusun sebuah *file* hingga ke level bongkahan angka primitif (*hexadecimal*). 
 
 Dengan HxD, kamu bisa membaca, mencari, memulihkan, hingga memodifikasi data mentah biner secara sangat presisi.
 
@@ -212,7 +212,7 @@ Dalam gambar di bawah, analis sedang memeriksa *file* mencurigakan bernama `cryp
 
 Lewat panel antarmukanya, CFF Explorer langsung menelanjangi semua profil *file* tersebut:
 1. **Informasi Dasar:** Kelihatan kalau `cryptominer.bin` ini sebenarnya adalah aplikasi biner berformat *Portable Executable 64 .NET Assembly* yang ukurannya `1.91 MB`. Tersaji juga secara runtut tanggal *file* ini dibuat, dimodifikasi, dan terakhir kali diakses.
-2. **Sidik Jari Digital:** CFF Explorer otomatis menghitung **MD5** dan **SHA-1** *hashes* dari *file* tersebut. *Hash* inilah sidik jari mati yang nantinya dimasukkan analis ke perpustakaan virus *online* (seperti *VirusTotal*) untuk menanyakan *"Kira-kira ada analis dunia lain yang mengenali sidik jari virus ini nggak?"*
+2. **Sidik Jari Digital:** CFF Explorer otomatis menghitung **MD5** dan **SHA-1** *hashes* dari *file* tersebut. *Hash* inilah sidik jari mati yang nantinya dimasukkan analis ke perpustakaan virus *online* (seperti *VirusTotal*) untuk menanyakan *"Kira-kira ada analis dunia lain yang mengenali sidik jari virus ini tidak?"*
 3. **Anomali KTP Palsu:** Di tabel bawah, perhatikan detail kolom `FileDescription` dan `OriginalFilename`. *Hacker* diam-diam mencoba memalsukan KTP *file* ini dengan mendeskripsikannya sebagai `REGEDIT` (aplikasi registry bawaan Windows), padahal nama *file* nya adalah *cryptominer.bin*. Aplikasi resmi Microsoft tidak mungkin memiliki perbedaan mencolok seperti ini.
 
 ### 5. Wireshark
@@ -234,7 +234,7 @@ Protokol TLS (*Transport Layer Security*) sejatinya adalah terowongan baja pelin
 
 ### 6. PEstudio
 
-Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static Analysis**. Kalau di dunia nyata, PEstudio ibarat **Mesin X-Ray di Pemeriksaan Keamanan Bandara**. Kamu bertugas memeriksa isi koper penumpang yang mencurigakan sedetail mungkin **tanpa harus** membukanya sama sekali. Cara ini sangat krusial dan aman agar _payload_ berbahaya di dalam *file* aplikasinya tidak mengeksekusi serangan mengenai komputermu.
+Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static Analysis**. Kalau di dunia nyata, PEstudio seperti **Mesin X-Ray di Pemeriksaan Keamanan Bandara**. Kamu bertugas memeriksa isi koper penumpang yang mencurigakan sedetail mungkin **tanpa harus** membukanya sama sekali. Cara ini sangat krusial dan aman agar _payload_ berbahaya di dalam *file* aplikasinya tidak mengeksekusi serangan mengenai komputermu.
 
 **Contoh Investigasi Menggunakan PEstudio:**
 
@@ -277,7 +277,7 @@ INFO: floss: rendering results
 ```
 
 **Membaca Hasil Interogasi:**
-Pada pengetesan di atas, FLOSS berhasil mengekstrak dan memeras **189 kata statis (*static strings*)** dari dalam body virus tersebut. Rentetan 189 kata ini ibarat catatan saku si virus yang berisi:
+Pada pengetesan di atas, FLOSS berhasil mengekstrak dan memeras **189 kata statis (*static strings*)** dari dalam body virus tersebut. Rentetan 189 kata ini seperti catatan saku si virus yang berisi:
 * **Alamat *Website* (URLs) / Alamat IP:** Kemungkinan besar ini adalah lokasi *server* tempat *hacker* mengontrol si virus (*Command and Control Server*).
 * **Lokasi Direktori (*Paths*):** Menunjukkan di mana si virus berencana menanamkan diri di dalam komputermu.
 * **Isi Kunci Enkripsi dan Nama *Registry*.**

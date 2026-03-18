@@ -19,7 +19,7 @@ Di bagian kedua ini, fokusnya pindah dari perintah navigasi dasar ke **manajemen
 
 **SSH (Secure Shell)** itu protokol standar buat mengakses dan mengelola mesin Linux dari jarak jauh lewat jalur yang terenkripsi.
 
-Analogi: Kalau Telnet itu ibarat berkomunikasi lewat **jalan terbuka** (siapa saja bisa menyadap), SSH itu berkomunikasi lewat **terowongan bawah tanah yang terkunci** — hanya kamu dan server yang bisa dengar.
+Analogi: Kalau Telnet itu seperti berkomunikasi lewat **jalan terbuka** (siapa saja bisa menyadap), SSH itu berkomunikasi lewat **terowongan bawah tanah yang terkunci** — hanya kamu dan server yang bisa dengar.
 
 ```bash
 ssh username@10.10.10.10
@@ -35,7 +35,7 @@ ssh username@10.10.10.10
 
 ### Introduction to Flags and Switches
 
-Perintah Linux jarang dipakai sendirian. Sebagian besar perintah punya **Flags** atau **Switches** buat memodifikasi perilakunya — ibarat **tombol pengaturan** di remote AC (bisa di dinginkan, bisa di hangatkan, bisa diatur timer).
+Perintah Linux jarang dipakai sendirian. Sebagian besar perintah punya **Flags** atau **Switches** buat memodifikasi perilakunya — seperti **tombol pengaturan** di remote AC (bisa di dinginkan, bisa di hangatkan, bisa diatur timer).
 
 | Tool/Flag | Fungsi |
 | --------- | ------ |
@@ -48,7 +48,7 @@ Perintah Linux jarang dipakai sendirian. Sebagian besar perintah punya **Flags**
 
 ### Filesystem Management
 
-Manajemen file itu kemampuan dasar buat mengorganisir data di dalam sistem. Ibarat **penataan barang di rumah** — kamu harus bisa membuat lemari baru, memindahkan barang, menyalin dokumen, dan membuang yang ga perlu.
+Manajemen file itu kemampuan dasar buat mengorganisir data di dalam sistem. Ibarat **penataan barang di rumah** — kamu harus bisa membuat lemari baru, memindahkan barang, menyalin dokumen, dan membuang yang tidak perlu.
 
 | Command | Fungsi | Catatan Penting |
 | ------- | ------ | --------------- |

@@ -11,7 +11,7 @@
 
 ## Overview
 
-Room ini fokus ke alat-alat utility yang bakal sering dipakai sehari-hari, cara mengelola proses sistem, sampai mengotomatisasi tugas agar sistem tetap berjalan optimal.
+Room ini fokus ke alat-alat utility yang akan sering dipakai sehari-hari, cara mengelola proses sistem, sampai mengotomatisasi tugas agar sistem tetap berjalan optimal.
 
 ---
 
@@ -40,7 +40,7 @@ Linux menyediakan banyak tools kecil yang sangat berguna buat transfer data dan 
 
 ### Processes 101
 
-Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan — ibarat **task manager** di Windows, tapi lebih powerful.
+Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan — seperti **task manager** di Windows, tapi lebih powerful.
 
 | Command | Fungsi |
 | ------- | ------ |
@@ -60,7 +60,7 @@ Belajar cara melihat dan mengendalikan aplikasi yang sedang berjalan — ibarat 
 
 ### Maintaining Your System: Automation
 
-Agar tidak perlu mengerjakan tugas yang sama berulang-ulang, Linux punya **cron** — ibarat **alarm/pengingat otomatis** yang menjalankan perintah di waktu yang sudah ditentukan.
+Agar tidak perlu mengerjakan tugas yang sama berulang-ulang, Linux punya **cron** — seperti **alarm/pengingat otomatis** yang menjalankan perintah di waktu yang sudah ditentukan.
 
 | Command | Fungsi |
 | ------- | ------ |

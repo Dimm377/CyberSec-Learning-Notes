@@ -108,7 +108,7 @@ Di dunia nyata, analis SOC (*Security Operations Center*) menggunakan CyberChef 
 
 ## Practice, Practice, Practice
 
-Agar instingmu tajam layaknya chef bintang lima saat mengulik data, kamu sangat disarankan untuk mengenali dan menghafalkan **kategori operasi** yang jadi "menu harian". Percayalah, pemahaman ini bakal menyelamatkan kewarasanmu di tengah kompetisi CTF.
+Agar instingmu tajam layaknya chef bintang lima saat mengulik data, kamu sangat disarankan untuk mengenali dan menghafalkan **kategori operasi** yang jadi "menu harian". Percayalah, pemahaman ini akan menyelamatkan kewarasanmu di tengah kompetisi CTF.
 
 ### Extractors
 

@@ -447,7 +447,7 @@ Cara menggunakan:
 
 ### Prepare as Filter
 
-Kalau _Apply as Filter_ langsung mengeksekusi filter sekali klik, _Prepare as Filter_ lebih santai — ibarat "menyiapkan draf dulu, eksekusinya nanti".
+Kalau _Apply as Filter_ langsung mengeksekusi filter sekali klik, _Prepare as Filter_ lebih santai — seperti "menyiapkan draf dulu, eksekusinya nanti".
 
 Opsi ini sangat berguna saat kamu ingin meracik _Display Filter_ yang kompleks (butuh logika **AND** / **OR**). Wireshark hanya membantu **menuliskan** sintaksnya di kolom pencarian, tapi menunggu kamu menekan `Enter` secara manual untuk mengeksekusinya.
 

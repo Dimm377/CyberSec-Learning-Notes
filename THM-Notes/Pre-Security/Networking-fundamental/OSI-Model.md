@@ -21,7 +21,7 @@ OSI Model itu kerangka konseptual yang membuat sistem komunikasi di jaringan pun
 
 ### What is OSI Model?
 
-**OSI Model** (Open System Interconnection Model) membagi proses komunikasi jaringan jadi **7 lapisan**. Setiap lapisan punya tugas spesifik — ibarat **jalur produksi di pabrik** di mana setiap stasiun mengerjakan satu bagian sampai produk (data) siap dikirim.
+**OSI Model** (Open System Interconnection Model) membagi proses komunikasi jaringan jadi **7 lapisan**. Setiap lapisan punya tugas spesifik — seperti **jalur produksi di pabrik** di mana setiap stasiun mengerjakan satu bagian sampai produk (data) siap dikirim.
 
 <p align="center">
 <img src="../../Assets/Images/OSI.png" alt="OSI Model">

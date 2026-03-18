@@ -35,7 +35,7 @@ IDS dapat dikategorikan berdasarkan fungsinya. Klasifikasi utamanya terbagi atas
 Berdasarkan letak di mana sistem ini di install, IDS terbagi menjadi dua kelompok:
 
 * **Host Intrusion Detection System (HIDS):**
-  Jika NIDS adalah CCTV bangunan, maka HIDS ini ibarat **Pengawal Pribadi (Bodyguard) VIP**.
+  Jika NIDS adalah CCTV bangunan, maka HIDS ini seperti **Pengawal Pribadi (Bodyguard) VIP**.
   Solusi HIDS diinstal secara individu langsung ke dalam satu perangkat spesifik (seperti Server Database atau laptop Direktur). Tugasnya eksklusif hanya mengawasi ancaman yang berpotensi menyerang perangkat *host* tersebut.
   *Keunggulan:* Mampu memberikan pengawasan aktivitas lokal dengan visibilitas yang sangat detail.
   *Kelemahan:* Sangat merepotkan untuk dikelola pada jaringan perusahaan yang masif, karena Administratif harus menginstal dan merawat sistem pengawal ini pada setiap perangkat individu (*resource-intensive*).

@@ -31,7 +31,7 @@ Bayangkan kamu sedang menjaga sebuah laptop, strategi keamanan yang kamu berikan
 * *Solusi:* Cukup ditaruh di tempat tinggi atau pakai *password* sederhana saja sudah sangat aman.
 2. **Kasus B (Lawan Mata-mata):** Laptop kamu berisi desain rahasia teknologi senilai miliaran rupiah, dan targetnya adalah **Mata-mata Industri** yang profesional.
 * *Solusi:* Memakai cara yang sama seperti kasus A tentu sudah masuk kategori konyol/tidak cukup, di sini kamu butuh **Appropriate Security Controls** (kontrol keamanan yang sesuai porsinya), seperti:
-* Enkripsi data tingkat tinggi (biar datanya nggak bisa dibaca kalau dicuri).
+* Enkripsi data tingkat tinggi (biar datanya tidak bisa dibaca kalau dicuri).
 * Authentikasi berlapis (*Multi-Factor Authentication*) menggunakan biometric atau kunci fisik.
 * Tim **Security Operations Center (SOC):** Seperti memiliki tim detektif yang memantau laptopmu 24 jam sehari dari kejauhan, mereka akan langsung bereaksi jika ada pergerakan atau akses yang tidak wajar.
      
@@ -99,7 +99,7 @@ Memastikan bahwa data atau transaksi benar-benar berasal dari sumber yang asli, 
 ### 2. Non-repudiation (Anti penyangkalan)
 Memastikan bahwa pengirim data atau pelaku transaksi tidak bisa menyangkal perbuatannya di kemudian hari.
 
-* **Contoh:** Masih di kasus pesanan 1000 mobil tadi. Setelah mobil dikirim, jangan sampai si pembeli bisa bilang, "Eh, saya nggak pernah pesan mobil itu kok". Sistem harus punya bukti kuat (seperti tanda tangan digital) yang membuat mereka tidak bisa mengelak.
+* **Contoh:** Masih di kasus pesanan 1000 mobil tadi. Setelah mobil dikirim, jangan sampai si pembeli bisa bilang, "Eh, saya tidak pernah pesan mobil itu kok". Sistem harus punya bukti kuat (seperti tanda tangan digital) yang membuat mereka tidak bisa mengelak.
 
 ---
 
@@ -162,7 +162,7 @@ Model ini tujuannya cuma satu: Menjaga **Confidentiality** (Kerahasiaan). Model 
 
 Prinsip utamanya ada tiga:
 
-1. **Simple Security Property:** Dikenal dengan istilah **"No Read Up"**. Artinya, subjek dengan level keamanan rendah dilarang membaca data yang level keamanannya lebih tinggi. (Anak magang nggak boleh baca dokumen rahasia Direktur).
+1. **Simple Security Property:** Dikenal dengan istilah **"No Read Up"**. Artinya, subjek dengan level keamanan rendah dilarang membaca data yang level keamanannya lebih tinggi. (Anak magang tidak boleh baca dokumen rahasia Direktur).
 2. **Star Security Property ($\star$):** Dikenal dengan istilah **"No Write Down"**. Artinya, subjek dengan level keamanan tinggi dilarang menulis/membocorkan informasi ke level yang lebih rendah. (Direktur dilarang menulis rahasia perusahaan di grup chat karyawan umum).
 3. **Discretionary-Security Property:** Menggunakan *Access Matrix* untuk menentukan siapa boleh baca/tulis apa.
 
@@ -178,14 +178,14 @@ Prinsip utamanya ada tiga:
 
 ### 2. Biba Model
 
-Kalau Bell-LaPadula fokus ke kerahasiaan, **Biba Model** fokus ke **Integrity** (Integritas). Tujuannya biar data nggak dikotori atau dimanipulasi oleh pihak yang nggak punya otoritas.
+Kalau Bell-LaPadula fokus ke kerahasiaan, **Biba Model** fokus ke **Integrity** (Integritas). Tujuannya biar data tidak dikotori atau dimanipulasi oleh pihak yang tidak punya otoritas.
 
 Prinsip utamanya adalah kebalikan dari Bell-LaPadula:
 
 1. **Simple Integrity Property:** Dikenal dengan istilah **"No Read Down"**. Subjek dengan integritas tinggi dilarang membaca data dari level bawah agar pikirannya tidak termakan oleh info yang hoax.
 2. **Star Integrity Property ($\star$):** Dikenal dengan istilah **"No Write Up"**. Subjek dengan integritas rendah dilarang menulis/mengubah data di level yang lebih tinggi agar data di atas tetep bersih.
 
-* **Ringkasan:** **"Read Up, Write Down"**. Ini kontras banget sama Bell-LaPadula. Logikanya: Info dari atas pasti valid, jadi boleh dibaca. Tapi orang bawah nggak boleh nulis ke atas biar integritas data di atas terjaga.
+* **Ringkasan:** **"Read Up, Write Down"**. Ini kontras sekali sama Bell-LaPadula. Logikanya: Info dari atas pasti valid, jadi boleh dibaca. Tapi orang bawah tidak boleh nulis ke atas biar integritas data di atas terjaga.
 * **Kelemahan:** Model ini lemah terhadap ancaman dari dalam (*insider threat*).
 
 ---
@@ -196,7 +196,7 @@ Sama seperti Biba, model ini juga mengejar **Integrity** (Integritas), tapi deng
 
 * **Constrained Data Item (CDI):** Ini adalah tipe data yang integritasnya sangat penting dan ingin kita jaga (misal: saldo bank).
 * **Unconstrained Data Item (UDI):** Ini adalah data yang belum divalidasi, seperti input dari user atau sistem lain yang bisa saja "kotor".
-* **Transformation Procedures (TPs):** Ini adalah prosedur atau operasi terprogram (seperti baca/tulis) yang berfungsi menjaga integritas CDI. Jadi, akses ke data nggak langsung, tapi harus lewat prosedur ini.
+* **Transformation Procedures (TPs):** Ini adalah prosedur atau operasi terprogram (seperti baca/tulis) yang berfungsi menjaga integritas CDI. Jadi, akses ke data tidak langsung, tapi harus lewat prosedur ini.
 * **Integrity Verification Procedures (IVPs):** Prosedur yang bertugas mengecek dan memastikan bahwa data (CDI) tetap valid dan benar.
 
 Selain tiga model di atas (Bell-LaPadula, Biba, Clark-Wilson), masih banyak model lain yang bisa dipelajari, contohnya:
@@ -253,7 +253,7 @@ Membagi sistem menjadi berbagai level atau lapisan abstrak. Ini memudahkan kita 
 Menyembunyikan detail implementasi di level rendah dan mencegah manipulasi data secara langsung. Kita hanya memberikan akses melalui metode tertentu yang sudah ditentukan
 
 * **Analogi:** Bayangkan sebuah **Remote TV**. Kamu cuma perlu tahu cara pencet tombol Volume Up, kamu tidak perlu tahu bagaimana sirkuit di dalamnya bekerja mengubah tegangan listrik untuk mengeraskan suara
-* **Contoh Teknis:** Dalam pemrograman (OOP), kita pakai metode `increment()` untuk menambah angka, daripada membiarkan user mengubah variabel `seconds` secara langsung. Ini mencegah user memasukkan data yang nggak valid (misal: detik diisi angka negatif)
+* **Contoh Teknis:** Dalam pemrograman (OOP), kita pakai metode `increment()` untuk menambah angka, daripada membiarkan user mengubah variabel `seconds` secara langsung. Ini mencegah user memasukkan data yang tidak valid (misal: detik diisi angka negatif)
 
 ### 4. Redundancy (Redundansi)
 Menyediakan komponen cadangan untuk menjamin ketersediaan (*Availability*) dan integritas data jika terjadi kegagalan.
@@ -303,7 +303,7 @@ Sistem harus dirancang untuk tetap aman bahkan saat terjadi error (*fail-safe*).
 
 ## Zero Trust VS Trust but Verify
 
-Kepercayaan (*Trust*) adalah topik yang sangat kompleks. Di dunia nyata, kita nggak bisa hidup tanpa rasa percaya misalnya, kita harus percaya bahwa vendor laptop tidak menanam *spyware* di perangkat kita, Tapi di dunia keamanan, kita butuh prinsip yang lebih ketat.
+Kepercayaan (*Trust*) adalah topik yang sangat kompleks. Di dunia nyata, kita tidak bisa hidup tanpa rasa percaya misalnya, kita harus percaya bahwa vendor laptop tidak menanam *spyware* di perangkat kita, Tapi di dunia keamanan, kita butuh prinsip yang lebih ketat.
 
 Ada dua prinsip utama mengenai kepercayaan ini:
 

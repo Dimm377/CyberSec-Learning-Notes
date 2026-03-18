@@ -171,7 +171,7 @@ Semua sumber log memberikan banyak informasi, tapi setiap security solution sepe
 
 1. **Agent / Forwarder (Program Agen):** Ibarat mengirim intel berukuran sangat kecil (program agen) untuk diinstal di komputer/server target (*Endpoint*). Tugas aplikasi mungil ini murni cuma buat menangkap semua aktivitas penting dan nyebrangin data *log*-nya langsung ke server pusat SIEM (Contoh terkenal: *Splunk Forwarder*).
 2. **Syslog (Bahasa Standar Industri):** Ini adalah protokol sejuta umat. Mayoritas sistem di dunia (mulai dari *web server* sampai *database*) sudah menyediakan fitur bawaan ini buat mengirim *log* secara langsung & *real-time* ke server yang dituju (SIEM).
-3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (seperti Splunk atau ELK). setelah diunggah, data acak itu bakal diolah (*normalized*) agar gampang dibaca.
+3. **Manual Upload (Unggahan Offline):** tidak semua alat selalu *online*. Kadang analis *cybersec* bawa file *log* mentah hasil temuan luring, lalu mereka tinggal unggah manual ke SIEM (seperti Splunk atau ELK). setelah diunggah, data acak itu akan diolah (*normalized*) agar gampang dibaca.
 4. **Port-Forwarding (Buka Jalur Pintu):** Analis bisa *setting* server SIEM buat selalu standby pada satu nomor pintu/saluran (*port*) spesifik. Jadi, semua komputer jajaran direksi sampai divisi *marketing* tinggal diperintah untuk nge-*forward* tumpukan *log* harian mereka ke saluran komunikasi itu.
 
 ## Alerting Process and Analysis
@@ -218,12 +218,12 @@ Dengan merangkai 3 petunjuk di atas, kita bisa pasang rule deteksi seperti ini:
 
 #### Why is Log Normalization Important?
 
-Pernah baca kalimat *"Aturan deteksi mengawasi nilai bidang tertentu agar dapat dipicu"*? Maksud aslinya (dari bahasa Inggris: *Field-Value Pairs*) adalah: **SIEM itu bodoh kalau cuma dikasih teks mentah panjang.**
+Pernah baca kalimat *"Aturan deteksi mengawasi nilai bidang tertentu agar dapat dipicu"*? Maksud aslinya (dari bahasa Inggris: *Field-Value Pairs*) adalah: **SIEM itu bodoh kalau cuma diberikan teks mentah panjang.**
 
 Contoh log mentah:
 `"Pada jam 12:00, Wowok login pakai IP 192.168.1.5 dari Windows."`
 
-Kalau kita masukkan teks di atas, *Detection Rule* kita bakal gagal mendeteksi ancaman, karena mesin tidak bisa baca format paragraf. Di sinilah proses **Normalisasi (Normalization)** bekerja. Log mentah tadi bakal dipotong dan dirapikan jadi format **Bidang/Kunci (Field) dan Nilai (Value)**:
+Kalau kita masukkan teks di atas, *Detection Rule* kita akan gagal mendeteksi ancaman, karena mesin tidak bisa baca format paragraf. Di sinilah proses **Normalisasi (Normalization)** bekerja. Log mentah tadi akan dipotong dan dirapikan jadi format **Bidang/Kunci (Field) dan Nilai (Value)**:
 * `Time`: `12:00`
 * `User`: `Wowok`
 * `Source_IP`: `192.168.1.5`

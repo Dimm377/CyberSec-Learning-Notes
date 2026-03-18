@@ -63,7 +63,7 @@
 
 ## What is SQL Injection?
 
-SQL Injection terjadi waktu input pengguna yang tidak dipercaya digabungin secara dinamis langsung ke dalam query database tanpa sanitasi yang bener.
+SQL Injection terjadi waktu input pengguna yang tidak dipercaya digabungkan secara dinamis langsung ke dalam query database tanpa sanitasi yang bener.
 
 **Contoh Kerentanan:**
 ```php
@@ -128,7 +128,7 @@ admin' AND SUBSTRING((SELECT password FROM users WHERE username='admin'), 1, 1) 
 
 **Konsep:**
 *   Dipake waktu aplikasi TIDAK memberi perbedaan respons yang keliatan (tidak ada error, tidak ada perubahan konten).
-*   Kita nyuntikin perintah **Time Delay** (tidur). Kalau query dieksekusi berhasil (TRUE), server bakal nunggu selama X detik.
+*   Kita nyuntikin perintah **Time Delay** (tidur). Kalau query dieksekusi berhasil (TRUE), server akan nunggu selama X detik.
 
 **Payloads:**
 *   **MySQL:** `SLEEP(5)`

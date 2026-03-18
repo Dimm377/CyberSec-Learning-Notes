@@ -17,13 +17,13 @@ Room HTTP in Detail ini fokus ke pemahaman mendalam tentang protokol komunikasi 
 
 ### What is HTTP? (Hypertext Transfer Protocol)
 
-Bayangkan kamu lagi di **restoran**. Kamu (browser) mau pesan makanan, dan dapur (web server) yang menyiapkannya. Nah, **HTTP** itu ibarat **bahasa standar yang dipakai pelayan** untuk menyampaikan pesananmu ke dapur dan membawa hasilnya balik ke mejamu. Tanpa bahasa yang disepakati ini, komunikasi antara kamu dan dapur bakal kacau.
+Bayangkan kamu lagi di **restoran**. Kamu (browser) mau pesan makanan, dan dapur (web server) yang menyiapkannya. Nah, **HTTP** itu seperti **bahasa standar yang dipakai pelayan** untuk menyampaikan pesananmu ke dapur dan membawa hasilnya balik ke mejamu. Tanpa bahasa yang disepakati ini, komunikasi antara kamu dan dapur akan kacau.
 
 HTTP dikembangkan oleh Tim Berners-Lee dan timnya antara tahun 1989-1991. Protokol ini jadi aturan standar buat mengirim dan menerima data web — entah itu HTML, gambar, video, dan lainnya.
 
 ### What is HTTPS? (HyperText Transfer Protocol Secure)
 
-HTTPS itu versi **aman** dari HTTP. Kalau HTTP biasa itu ibarat pesanan yang ditulis di kertas terbuka (siapa saja bisa baca), HTTPS itu pesanan yang **ditulis dalam amplop tersegel dan terenkripsi**. 
+HTTPS itu versi **aman** dari HTTP. Kalau HTTP biasa itu seperti pesanan yang ditulis di kertas terbuka (siapa saja bisa baca), HTTPS itu pesanan yang **ditulis dalam amplop tersegel dan terenkripsi**. 
 
 Fungsinya:
 * **Mencegah penyadapan:** Data yang dikirim dan diterima dienkripsi, jadi orang yang mengintip di tengah jalan (man-in-the-middle) tidak bisa membaca isinya.
@@ -33,7 +33,7 @@ Fungsinya:
 
 ### What is A URL? (Uniform Resource Locator)
 
-Sebelum browser bisa memesan sesuatu ke server, dia butuh **alamat lengkap** untuk menemukan apa yang dicari. URL itu ibarat **alamat surat lengkap** ada nama jalan, nomor rumah, sampai kode pos.
+Sebelum browser bisa memesan sesuatu ke server, dia butuh **alamat lengkap** untuk menemukan apa yang dicari. URL itu seperti **alamat surat lengkap** ada nama jalan, nomor rumah, sampai kode pos.
 
 <p align="center">
 <img src="../../Assets/Images/URL.png" alt="URL">
@@ -122,7 +122,7 @@ Cache-Control: public, max-age=3600
 
 ### HTTP Methods
 
-HTTP methods itu ibarat **jenis aksi yang kamu minta ke pelayan restoran**. Mau lihat menu? Mau pesan baru? Mau ganti pesanan? Atau mau batalkan?
+HTTP methods itu seperti **jenis aksi yang kamu minta ke pelayan restoran**. Mau lihat menu? Mau pesan baru? Mau ganti pesanan? Atau mau batalkan?
 
 | Method | Analogi Restoran | Fungsi |
 | ------ | ---------------- | ------ |
@@ -135,14 +135,14 @@ HTTP methods itu ibarat **jenis aksi yang kamu minta ke pelayan restoran**. Mau 
 
 ### HTTP Status Code
 
-Status code itu ibarat **reaksi pelayan** setelah kamu menyampaikan pesanan. Kode angka 3 digit ini dikelompokkan berdasarkan angka pertamanya:
+Status code itu seperti **reaksi pelayan** setelah kamu menyampaikan pesanan. Kode angka 3 digit ini dikelompokkan berdasarkan angka pertamanya:
 
 | Rentang | Kategori | Analogi |
 | :------ | :------- | :------ |
 | **100-199** | **Information Response** | Oke, pesanan diterima, tunggu sebentar ya... (jarang ditemukan) |
 | **200-299** | **Success** | Pesanan berhasil, ini makanannya. |
 | **300-399** | **Redirection** | Maaf, menu itu dipindah ke restoran cabang sebelah. |
-| **400-499** | **Client Errors** | Maaf, pesanan kamu salah / kamu ga punya akses. |
+| **400-499** | **Client Errors** | Maaf, pesanan kamu salah / kamu tidak punya akses. |
 | **500-599** | **Server Errors** | Maaf, dapur kami lagi bermasalah... |
 
 **Status code yang wajib dihafalkan:**
@@ -193,7 +193,7 @@ Analogi: Cookies itu **kartu member/loyalty card** di restoran favoritmu. Tiap k
 
 **Cara Kerja Cookies:**
 
-1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` berisi ID unik (session token), ibarat restoran memberikan kartu member ke kamu.
+1. **Set-Cookie (Response):** Saat login, server mengirim header `Set-Cookie` berisi ID unik (session token), seperti restoran memberikan kartu member ke kamu.
 2. **Storage:** Browser menyimpan token itu di memori lokal, kamu simpan kartu member di dompet.
 3. **Cookie (Request):** Setiap kali buka halaman baru di situs yang sama, browser otomatis menyertakan header `Cookie` berisi token tadi, sama kayak menunjukkan kartu member tiap kali masuk restoran.
 

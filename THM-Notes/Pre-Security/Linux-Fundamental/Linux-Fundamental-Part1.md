@@ -65,7 +65,7 @@ Mencari data secara efisien itu skill kunci buat pentester. Dua tool utamanya:
 
 ### An Introduction to Shell Operators
 
-Operator bikin kamu bisa mengarahkan output atau menggabungkan beberapa perintah sekaligus — ibarat **sambungan pipa** yang menghubungkan aliran air ke arah yang diinginkan.
+Operator bikin kamu bisa mengarahkan output atau menggabungkan beberapa perintah sekaligus — seperti **sambungan pipa** yang menghubungkan aliran air ke arah yang diinginkan.
 
 | Operator | Fungsi | Contoh |
 | -------- | ------ | ------ |
@@ -78,4 +78,4 @@ Operator bikin kamu bisa mengarahkan output atau menggabungkan beberapa perintah
 
 ### Conclusions & Summaries
 
-Menguasai dasar-dasar ini itu **syarat wajib** sebelum belajar sysadmin (administrasi sistem) atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya bakal dipakai untuk mengeksploitasi sistem atau melakukan _privilege escalation_.
+Menguasai dasar-dasar ini itu **syarat wajib** sebelum belajar sysadmin (administrasi sistem) atau keamanan tingkat lanjut. Perintah-perintah simpel inilah yang nantinya akan dipakai untuk mengeksploitasi sistem atau melakukan _privilege escalation_.

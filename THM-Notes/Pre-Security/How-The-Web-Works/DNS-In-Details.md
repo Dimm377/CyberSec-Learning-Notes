@@ -61,7 +61,7 @@ Server DNS tidak cuma menyimpan nama dan nomor. Mereka menggunakan berbagai form
 
 ### Making A Request (Gimana Cara DNS Mencari Alamat?)
 
-Proses nerjemahin nama domain ke IP Address itu lumayan panjang, sederhananya ibarat kamu lagi **menanyakan alamat rumah teman yang baru pindah**. Ini urutannya:
+Proses menerjemahkan nama domain ke IP Address itu lumayan panjang, sederhananya seperti kamu lagi **menanyakan alamat rumah teman yang baru pindah**. Ini urutannya:
 
 1. **Local Cache Check (Nanya memori sendiri):** 
    Sebelum repot bertanya keluar, komputermu mengecek dulu di memori lokal (_cache_). Siapa tahu alamatnya baru saja dicari kemarin dan masih diingat. Ini dilakukan untuk menghemat waktu dan _bandwidth_.
@@ -104,6 +104,6 @@ sequenceDiagram
 **TTL** itu sama kayak **tanggal kadaluwarsa** (_expiration date_) pada makanan, tapi khusus buat data _cache_ DNS. TTL menentukan berapa lama (dalam hitungan detik) komputer atau Resolver bisa mengingat IP Address dari sebuah domain.
 
 **Bagaimana mekanisme kerjanya?**
-1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapet tanda berupa **TTL** (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
+1. **Caching (Mengingat):** Saat Resolver (langkah 2 di atas) dapat jawaban, jawaban itu dapat tanda berupa **TTL** (misal `3600` yang artinya 1 jam). Resolver menyimpan IP-nya dan proses _countdown_ mundur langsung jalan.
 2. **Penggunaan Instan:** Selama 1 jam itu, kalau ada orang lain bertanya domain yang sama, Resolver memberitahu dari _cache_ memori tanpa perlu berkeliling bertanya TLD dkk lagi.
 3. **Expire & Refresh (Kadaluarsa):** Begitu angkanya mencapai 0, memori dihapus dan dianggap kadaluarsa. Kalau ada yang bertanya lagi, Resolver wajib *Re-query* (mengulangi proses dari awal) mencari informasi _fresh_ (baru). Hal ini menjamin lalu lintas internet tidak diarahkan ke _server_ yang sudah usang andaikata admin website baru ganti IP.

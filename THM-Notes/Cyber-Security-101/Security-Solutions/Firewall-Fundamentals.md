@@ -46,16 +46,16 @@ Supaya gampang membedakannya, mari kita bedah arsitektur dasar *firewall* ke dal
 
 ### 1. Stateless Firewall (Satpam Pemalas)
 
-*Stateless Firewall* ini ibarat **satpam pemalas** yang jaga di gerbang depan (Beroperasi di **OSI Layer 3 & 4**).
+*Stateless Firewall* ini seperti **satpam pemalas** yang jaga di gerbang depan (Beroperasi di **OSI Layer 3 & 4**).
 Dia kerja super cepat buat memeriksa *header* paket data (mengecek IP dari mana, mau ke mana, dan lewat Port berapa). TAPI kelemahannya: dia **TIDAK PUNYA INGATAN**.
 * Dia tidak peduli paket ini kelanjutan dari koneksi yang wajar atau bukan.
-* Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini bakal nanya dari awal lagi karena lupa kalau kemarin paket itu sudah diblokir.
+* Kalau ada paket aneh diblokir hari ini, pas paket itu datang lagi besok, si firewall ini akan nanya dari awal lagi karena lupa kalau kemarin paket itu sudah diblokir.
 
 ### 2. Stateful Firewall (Satpam Rajin)
 
 Beda dari yang *Stateless*, si **Stateful Firewall** ini satpamnya bawa buku catatan (*State Table*) kemana-mana (Beroperasi di **OSI Layer 3 & 4** juga).
-* Kalau ada paket yang diizinin masuk, dia bakal catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia bakal otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
-* Begitu juga kalau ada paket berbahaya yang dia usir, dia bakal mencatat cirinya buat menolak paket serupa di masa depan secara otomatis. Jauh lebih aman
+* Kalau ada paket yang diizinin masuk, dia akan catat koneksi itu. Jadi pas ada paket balasan dari saluran yang sama, dia akan otomatis izinin masuk **tanpa perlu diinterogasi dari nol lagi**.
+* Begitu juga kalau ada paket berbahaya yang dia usir, dia akan mencatat cirinya buat menolak paket serupa di masa depan secara otomatis. Jauh lebih aman
 
 ### 3. Proxy Firewall (Asisten Kurir)
 
@@ -87,7 +87,7 @@ Agar makin gampang buat *review* atau menentukan *firewall* mana yang pas buat d
 | Tipe Firewall | Karakteristik Utama |
 | :--- | :--- |
 | **Stateless Firewall** | : Hanya bisa penyaringan dasar (*Basic filtering*)<br>- Tidak punya rekaman koneksi sebelumnya (*No track*)<br>- Cocok untuk jaringan yang butuh kecepatan tinggi karena kerjanya cepat |
-| **Stateful Firewall** | : Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa dikasih aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
+| **Stateful Firewall** | : Bisa mengenali lalu lintas data lewat pola (*Recognize traffic by patterns*)<br>- Bisa diberikan aturan yang lumayan rumit (*Complex rules*)<br>- Benar-benar memantau jaringan dan mencatat koneksi yang sedang jalan |
 | **Proxy Firewall** | : Berani membongkar dan inspeksi isi paket datanya<br>- Punya fitur penyaringan konten (*Content filtering*)<br>- Pegang kendali penuh atas aplikasi keamanan<br>- Bisa mendekripsi dan inspeksi paket data yang disandikan pakai SSL/TLS |
 | **Next-Generation Firewall**  | : Perlindungan paling mutakhir (*Advanced threat protection*)<br>- Sudah bawaan punya sistem IPS (*Intrusion Prevention System*)<br>- Bisa menganalisa hal-hal aneh secara heuristik (berdasarkan kecerdasan buatan)<br>- Sama seperti Proxy, jago dekripsi dan inspeksi paket data SSL/TLS |
 | **Web Application Firewall (WAF)** | : Khusus dipasang di depan Web Server buat melindungi Aplikasi Web / Website<br>- Fokus mencegah serangan *hacker* web spesifik seperti *SQL Injection* & *Cross-Site Scripting (XSS)* |
@@ -99,7 +99,7 @@ Firewall memberikan kita **kekuasaan penuh (*control*)** untuk mengatur *traffic
 Meski dari *Firewall* sudah dibekali aturan keamanan standar, bagian paling seru untuk seorang Analis/Admin adalah kita bisa membuat **Aturan Sendiri (*Custom Rules*)** yang spesifik.
 
 **Contoh Kasus (Skenario Akses SSH):**
-Normalnya, buat menjaga server dari *hacker* , kita bakal pasang aturan: *"Firewall Tolak mentah-mentah (*Deny*) semua orang asing dari luar yang mencoba masuk ke server kita lewat jalur SSH (Port 22)."*
+Normalnya, buat menjaga server dari *hacker* , kita akan pasang aturan: *"Firewall Tolak mentah-mentah (*Deny*) semua orang asing dari luar yang mencoba masuk ke server kita lewat jalur SSH (Port 22)."*
 
 Tapi, masalah muncul kalau kebetulan kita (sebagai admin) sedang kerja *remote* dari *kafe* dan butuh akses SSH ke server itu. Di sinilah saksinya *Custom Rules* bekerja. Kita tinggal tambahin instruksi pengecualian:
 *"Tolak semua akses SSH **KECUALI** kalau orang itu datang dari alamat IP `192.168.100.55` (Ini IP WiFi *kafe* tempat kita bersantai). Kalau si IP itu yang minta masuk, bukain pintunya (*Allow*)"*
@@ -111,7 +111,7 @@ Setiap kali kita membuat satu hukum/aturan buat si Firewall, ada **6 komponen da
 1. **Source Address (IP Asal):** Siapa tamunya? Ini adalah alamat IP perangkat si pengirim data.
 2. **Destination Address (IP Tujuan):** Mau ketemu siapa di dalam? Ini adalah alamat IP perangkat target yang mau dituju.
 3. **Port (Pintu Jalur):** Mau lewat pintu nomor berapa? (Misal: Port 80 buat HTTP, Port 22 buat SSH).
-4. **Protocol (Bahasa Komunikasi):** Mereka bakal komunikasi pakai bahasa apa? (TCP, UDP, ICMP, dll).
+4. **Protocol (Bahasa Komunikasi):** Mereka akan komunikasi pakai bahasa apa? (TCP, UDP, ICMP, dll).
 5. **Action (Status Eksekusi):** Perintah terakhir buat si firewall. Kalau semua ciri-ciri di atas terpenuhi, mau diapakan paketnya? Diizinkan masuk, atau ditendang keluar
 6. **Direction (Arah Lalu Lintas):** Aturan ini diatur untuk orang luar yang mau **masuk** (*Inbound / Ingress*) atau orang dalem yang mau **keluar** dari jaringan kita (*Outbound / Egress*)?
 
@@ -120,7 +120,7 @@ Setiap kali kita membuat satu hukum/aturan buat si Firewall, ada **6 komponen da
 Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan paket data dengan daftar aturan. Ada 3 jenis keputusan utama yang bisa kita tentukan:
 
 1. **Allow (Silahkan Lewat):**
-   Ini adalah lampu hijau. Kalau paket datanya di-*Allow*, *firewall* bakal membukakan pintu dan membiarkan paket itu masuk dengan aman.
+   Ini adalah lampu hijau. Kalau paket datanya di-*Allow*, *firewall* akan membukakan pintu dan membiarkan paket itu masuk dengan aman.
    *Contoh Implementasi:* Mengizinkan semua karyawan di jaringan kita agar bisa *browsing* *website* (HTTP) ke Internet.
    | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
    | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -138,7 +138,7 @@ Komponen *Action* adalah Keputusan yang diambil *firewall* setelah mencocokkan p
    *(Cara Bacanya: "Firewall, tolong **Blokir (Deny)** dari **Siapapun (Any)** yang mau **Masuk (Inbound)** ke jaringan kita (`192.168.1.0/24`) lewat jalur **Port 22 (TCP/SSH)**.")*
 
 3. **Forward (Teruskan):**
-   Nah, *Action* satu ini beda. Dia bukan cuma jaga pintu, tapi bertindak sebagai *Gateway/Router*. Kalau paket diberi label *Forward*, *firewall* bakal capture paket itu dan langsung **meneruskan paket** ke segmen jaringan lain di dalam.
+   Nah, *Action* satu ini beda. Dia bukan cuma jaga pintu, tapi bertindak sebagai *Gateway/Router*. Kalau paket diberi label *Forward*, *firewall* akan capture paket itu dan langsung **meneruskan paket** ke segmen jaringan lain di dalam.
    *Contoh Implementasi:* Meneruskan semua *traffic* pengunjung internet yang mau buka *port* web (80) langsung ke *Web Server* internal kita.
    | Action | Source (Asal) | Destination (Tujuan) | Protocol | Port | Direction (Arah) |
    | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -159,8 +159,8 @@ Berdasarkan kemana data itu pergi, aturan *firewall* bisa dibagi lagi jadi 3 kat
    *Contoh:* Memblokir semua komputer di kantor agar tidak bisa sembarangan keluar mengirim email (*Outbound Port 25 : SMTP*), **KECUALI** mesin *Mail Server* resmi kita. (Ini taktik cerdas agar kalau ada komputer karyawan yang terkena virus, virusnya tidak bisa menyebar mengirim *spam email* ke luar).
 
 3. **Forward Rules (Aturan Teruskan):**
-   Aturan ini ibarat jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar agar langsung nyampe ke server tujuan di dalam jaringan kita.
-   *Contoh:* Kalau ada *traffic* HTTP (Port 80) yang datang bermaksud mau buka website, si Firewall bakal menangkap tu paket, terus langsung **meneruskan jalurnya** ke alamat IP *Web Server* internal kita.
+   Aturan ini seperti jalur *bypass*/transit. Dibuat khusus buat mem- *forward* (meneruskan) *traffic* dari luar agar langsung sampai ke server tujuan di dalam jaringan kita.
+   *Contoh:* Kalau ada *traffic* HTTP (Port 80) yang datang bermaksud mau buka website, si Firewall akan menangkap tu paket, terus langsung **meneruskan jalurnya** ke alamat IP *Web Server* internal kita.
 
 ## Windows Defender Firewall
 
@@ -188,7 +188,7 @@ Secara *default*, ada dua profil yang dipakai si Firewall Windows:
 
 2. **Guest or Public Networks (Jaringan Publik / Rawan):**
    Ini profil restricted. Otomatis aktif waktu kita numpang WiFi gratisan di kafe, restoran, atau bandara. Di tempat ini, kita dikelilingi ribuan perangkat asing yang berpotensi jadi *hacker*.
-   *Skenario:* Saat profil Publik ini aktif, *firewall* bisa kita atur untuk **Menutup Pintu Rapat-Rapat (Blokir total semua Inbound Connection)** ke perangkat kita, dan cuma mengizinkan kita buat akses internet (*Outbound*). Kerennya, saat kita pulang dan tersambung lagi ke WiFi rumah, aturan ketat ini bakal dicabut otomatis tanpa harus kita atur manual.
+   *Skenario:* Saat profil Publik ini aktif, *firewall* bisa kita atur untuk **Menutup Pintu Rapat-Rapat (Blokir total semua Inbound Connection)** ke perangkat kita, dan cuma mengizinkan kita buat akses internet (*Outbound*). Kerennya, saat kita pulang dan tersambung lagi ke WiFi rumah, aturan ketat ini akan dicabut otomatis tanpa harus kita atur manual.
 
 ## Linux Firewall (Netfilter & iptables)
 
@@ -211,9 +211,9 @@ Karena *Netfilter* ini cuma sekadar mesin penggerak di belakang layar komputer, 
 
 Sesuai namanya (*Uncomplicated* = tidak membuat ribet), **UFW** adalah alat penyelamat buat pemula atau admin yang malas berurusan sama *syntax* `iptables` yang panjang dan rumit.
 
-UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang bakal menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
+UFW pada dasarnya bertindak sebagai perantara (*frontend*) yang ramah pengguna. Apapun perintah simpel yang diketik di UFW, dia yang akan menerjemahkan perintah itu jadi aturan `iptables` di belakang layar.
 
-Biar kamu nggak kebingungan, ini deretan *command* dasar UFW yang wajib kamu kuasai (*Catatan: Kamu wajib pakai akses `sudo` atau punya izin setara akses root administrator*):
+Biar kamu tidak kebingungan, ini deretan *command* dasar UFW yang wajib kamu kuasai (*Catatan: Kamu wajib pakai akses `sudo` atau punya izin setara akses root administrator*):
 
 1. **Mengecek Status Firewall:**
    Untuk cek Firewall lagi (*inactive*) atau lagi kerja (*active*).
@@ -237,7 +237,7 @@ Biar kamu nggak kebingungan, ini deretan *command* dasar UFW yang wajib kamu kua
    ```
 
 4. **Mengatur Kebijakan Utama (*Default Policy*):**
-   Ini ibarat instruksi dasar buat firewall kalau ada paket yang tidak ada aturannya. Kebijakan standar keamanan biasanya adalah **"Tolak Semuanya" (*Default Deny*)**.
+   Ini seperti instruksi dasar buat firewall kalau ada paket yang tidak ada aturannya. Kebijakan standar keamanan biasanya adalah **"Tolak Semuanya" (*Default Deny*)**.
    Contoh command kalau kita mau memblokir secara *default* semua orang dari dalam yang mau keluar (*outgoing*):
    ```bash
    user@arch:~$ sudo ufw default deny outgoing
@@ -253,13 +253,13 @@ Biar kamu nggak kebingungan, ini deretan *command* dasar UFW yang wajib kamu kua
    ```
 
 6. **Melihat Daftar Aturan dengan Nomor Urut:**
-   Semakin lama, buku catatan *firewall* bakal kepanjangan. Agar gampang mengaturnya, suruh UFW menampilkan semua daftarnya lengkap dengan "Nomor Urut" (*Numbered*):
+   Semakin lama, buku catatan *firewall* akan kepanjangan. Agar gampang mengaturnya, suruh UFW menampilkan semua daftarnya lengkap dengan "Nomor Urut" (*Numbered*):
    ```bash
    user@arch:~$ sudo ufw status numbered
    ```
 
 7. **Menghapus Aturan (*Delete Rule*):**
-   Punya nomor urut dari `status numbered` itu krusial banget buat menghapus aturan yang salah atau sudah tidak terpakai. Tinggal panggil perintah *delete* dan masukkan nomor aturannya (misal mencabut aturan di urutan ke-2):
+   Punya nomor urut dari `status numbered` itu krusial sekali buat menghapus aturan yang salah atau sudah tidak terpakai. Tinggal panggil perintah *delete* dan masukkan nomor aturannya (misal mencabut aturan di urutan ke-2):
    ```bash
    user@arch:~$ sudo ufw delete 2
    Deleting:

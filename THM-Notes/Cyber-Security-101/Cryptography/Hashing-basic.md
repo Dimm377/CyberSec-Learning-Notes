@@ -16,7 +16,7 @@
 **Konsep Dasar:**
 
 * **Plaintext:** Data asli yang belum diubah (text, gambar, dll).
-* **Encoding:** Mengubah format data (seperti Base64/Hex). **Bukan enkripsi**, bisa dibalik gampang banget.
+* **Encoding:** Mengubah format data (seperti Base64/Hex). **Bukan enkripsi**, bisa dibalik gampang sekali.
 * **Hash:** Output acak pakai panjang tetap (digest) dari fungsi hashing.
 
 **Q&A:**
@@ -33,7 +33,7 @@ Fungsi hash beda sama enkripsi. **Tidak ada kunci**, dan dimaksudkan agar **must
 Fungsi hash mengambil input data berapa pun ukurannya dan membuat ringkasan (digest) dari data itu. Outputnya punya **ukuran tetap (fixed size)**.
 
 * Mudah menghitung output dari input.
-* Susah banget menentukan input dari output.
+* Susah sekali menentukan input dari output.
 * Perubahan kecil di input (bahkan 1 bit) menyebabkan perubahan drastis di output.
 
 **Contoh Perubahan 1 Bit:**
@@ -72,10 +72,10 @@ Collision terjadi waktu **dua input beda menghasilkan output yang sama**.
 
 **Risiko Penyimpanan Password:**
 
-1.  **Plaintext:** Bahaya banget. Kalau database bocor, attacker langsung dapet password asli.
+1.  **Plaintext:** Bahaya sekali. Kalau database bocor, attacker langsung dapat password asli.
 2.  **Encrypted:** Lebih baik dari plaintext, tapi kalau kunci enkripsi (key) dicuri, semua password bisa didekripsi.
 3.  **Hashing Murahan (Tanpa Salt):**
-* **Duplicate Passwords:** Kalau dua user punya password sama (misal "password123"), hash-nya bakal sama.
+* **Duplicate Passwords:** Kalau dua user punya password sama (misal "password123"), hash-nya akan sama.
 * **Rainbow Tables:** Attacker bisa pakai tabel hash yang sudah dihitung sebelumnya (rainbow table) buat memecahkan hash super cepat.
 
 ---
@@ -92,13 +92,13 @@ Salting itu proses menambahkan string acak unik (**Salt**) ke password sebelum d
 
 **Manfaat Salting:**
 
-1.  **Mencegah Rainbow Tables:** Karena setiap password punya salt unik, hash akhirnya bakal beda-beda meskipun password aslinya sama. Attacker tidak bisa pakai tabel yang sudah ada.
+1.  **Mencegah Rainbow Tables:** Karena setiap password punya salt unik, hash akhirnya akan beda-beda meskipun password aslinya sama. Attacker tidak bisa pakai tabel yang sudah ada.
 2.  **Mempersulit Brute Force:** Attacker harus memecahkan hash satu per satu buat setiap user (karena salt-nya beda), tidak bisa massal.
 
 bayangkan dua orang sedang memasak Sup Ayam (Password sama).
 
 * Tanpa Salt: Rasanya persis sama.
-* Dengan Salt (Bumbu Rahasia): Orang A tambahin lada hitam, Orang B tambahin cabai. Hasil akhirnya (Hash) jadi sup pakai rasa yang beda banget.
+* Dengan Salt (Bumbu Rahasia): Orang A tambahin lada hitam, Orang B tambahin cabai. Hasil akhirnya (Hash) jadi sup pakai rasa yang beda sekali.
 
 ---
 

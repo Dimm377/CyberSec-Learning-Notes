@@ -11,7 +11,7 @@
 
 ## Overview
 
-**Active Directory (AD)** itu tulang punggung jaringan korporat yang memungkinkan manajemen terpusat buat seluruh sumber daya di jaringan. Analogi: AD itu ibarat **sistem administrasi gedung perkantoran besar** — mengatur siapa boleh masuk ruangan mana, siapa punya kunci apa, dan aturan apa yang berlaku di setiap lantai.
+**Active Directory (AD)** itu tulang punggung jaringan korporat yang memungkinkan manajemen terpusat buat seluruh sumber daya di jaringan. Analogi: AD itu seperti **sistem administrasi gedung perkantoran besar** — mengatur siapa boleh masuk ruangan mana, siapa punya kunci apa, dan aturan apa yang berlaku di setiap lantai.
 
 ---
 
@@ -72,5 +72,5 @@ Trust relationship memungkinkan pengguna dari satu domain mengakses sumber daya 
 | Tipe Trust | Cara Kerja |
 | ---------- | ---------- |
 | **Transitive** | A percaya B, B percaya C → A otomatis percaya C |
-| **One-way** | Hanya satu arah (A percaya B, tapi B ga percaya A) |
+| **One-way** | Hanya satu arah (A percaya B, tapi B tidak percaya A) |
 | **Two-way** | Dua arah (A dan B saling percaya) |

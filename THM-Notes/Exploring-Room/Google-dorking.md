@@ -81,7 +81,7 @@ Task ini sebenernya memerintah kita pakai tool seperti "SEO Site Checkup" buat m
 Task ini membahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
 
 **Apa itu robots.txt?**
-File teks biasa yang dipake webmaster buat memberi tau crawler (seperti Googlebot, Bingbot, dll) halaman mana yang boleh diambil (index) dan mana yang enggak.
+File teks biasa yang dipakai webmaster buat memberi tau crawler (seperti Googlebot, Bingbot, dll) halaman mana yang boleh diambil (index) dan mana yang enggak.
 
 **Poin Penting:**
 

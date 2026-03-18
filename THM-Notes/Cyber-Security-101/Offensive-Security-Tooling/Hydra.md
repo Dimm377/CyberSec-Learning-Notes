@@ -24,14 +24,14 @@ Tujuannya simpel: menemukan password yang benar.
 
 (Sebelum menjalankan Hydra, kamu perlu tahu port dan service apa yang terbuka. Cek catatan [Nmap Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Networking/Nmap-Basic.md). Setelah berhasil login, lanjut dapatkan akses shell di [Shells Overview](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Offensive-Security-Tooling/Shells-Overview.md))
 
-Menurut repositori resminya, Hydra support alias bisa melakukan brute force BANYAK banget protokol, contohnya:
+Menurut repositori resminya, Hydra support alias bisa melakukan brute force BANYAK sekali protokol, contohnya:
 "Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, TeamSpeak (TS2), Telnet, VMware-Auth, VNC, dan XMPP."
 
 Buat info lebih lengkap soal opsi tiap protokol, bisa cek di [Kali Hydra tool page](https://www.kali.org/tools/hydra/).
 
 ### Kenapa Password Kuat Itu Penting?
 
-Tool seperti Hydra ini menunjukkan kenapa kita WAJIB banget pakai password yang kuat.
+Tool seperti Hydra ini menunjukkan kenapa kita WAJIB sekali pakai password yang kuat.
 
 Kalau passwordnya misal:
 
@@ -41,7 +41,7 @@ Kalau passwordnya misal:
 
 Maka password itu akan sangat mudah ditebak. Sebuah wordlist (daftar kata) bisa berisi seratus juta password umum. Jadi kalau kita pakai password pasaran, Hydra akan menemukan itu dalam sekejap.
 
-Seringkali, CCTV atau Web Frameworks pakai default credentials seperti `admin:password`. Ini jelas tidak aman sama sekali dan bakal jadi sasaran empuk buat tools seperti gini.
+Seringkali, CCTV atau Web Frameworks pakai default credentials seperti `admin:password`. Ini jelas tidak aman sama sekali dan akan jadi sasaran empuk buat tools seperti gini.
 
 Jadi, ganti default password dan membuat kombinasi yang rumit agar susah di hack
 
@@ -70,7 +70,7 @@ Kalau mau compile sendiri atau cari versi paling baru, bisa langsung cek di repo
 
 ### Hydra Commands
 
-Opsi yang kita pakai di Hydra itu tergantung banget sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau melakukan brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya bakal seperti gini:
+Opsi yang kita pakai di Hydra itu tergantung sekali sama servis (protokol) apa yang mau kita serang. Contohnya, kalau kita mau melakukan brute force **FTP** dengan username `user` dan password list `passlist.txt`, command-nya akan seperti gini:
 
 `hydra -l user -P passlist.txt ftp://10.48.163.55`
 
@@ -92,15 +92,15 @@ Contoh real-nya: `hydra -l root -P passwords.txt 10.48.163.55 -t 4 ssh`
 
 Artinya:
 
-* Hydra bakal pakai `root` sebagai username buat login **ssh**.
-* Dia bakal nyobain semua password yang ada di file `passwords.txt`.
+* Hydra akan pakai `root` sebagai username buat login **ssh**.
+* Dia akan nyobain semua password yang ada di file `passwords.txt`.
 * Akan ada 4 threads yang jalan bersamaan (paralel), ditandai oleh flag `-t 4`. Agar lebih cepat tapi tidak membuat server down.
 
 ### Post Web Form
 
-Kita juga bisa pakai Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipake (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus melihat request nya / pakai tools yang namanya **Burp Suite**
+Kita juga bisa pakai Hydra buat brute force form login di sebuah website. Tapi sebelumnya, kita harus tau dulu request apa yang dipakai (GET atau POST). Cara paling gampang ya buka **Developer Tools** (Network Tab) di browser pas lagi coba login, terus melihat request nya / pakai tools yang namanya **Burp Suite**
 
-Kalau ternyata pakai **POST**, command-nya kira-kira bakal seperti ini:
+Kalau ternyata pakai **POST**, command-nya kira-kira akan seperti ini:
 
 `hydra -l <username> -P <passlist> 10.48.163.55 http-post-form "<path>:<login_credentials>:<invalid_response>"`
 
@@ -118,10 +118,10 @@ Nah, bagian yang agak ribet itu string panjang di belakang `http-post-form`. Ini
 
 Penjelasannya:
 
-* `http-post-form`: Modul yang dipake buat POST request.
+* `http-post-form`: Modul yang dipakai buat POST request.
 * `"/`: Path login page-nya ada di root (`/`).
-* `:username=^USER^&password=^PASS^`: Ini body request-nya. `^USER^` bakal diganti `root`, dan `^PASS^` bakal diganti sama isi `passwords.txt` satu-satu.
-* `:F=incorrect"`: Kalau di response ada kata `incorrect`, berarti password SALAH. Hydra bakal lanjut ke password berikutnya.
+* `:username=^USER^&password=^PASS^`: Ini body request-nya. `^USER^` akan diganti `root`, dan `^PASS^` akan diganti sama isi `passwords.txt` satu-satu.
+* `:F=incorrect"`: Kalau di response ada kata `incorrect`, berarti password SALAH. Hydra akan lanjut ke password berikutnya.
 * `-V`: Verbose mode, agar keliatan prosesnya.
 
 _Note: Kalau web servernya jalan di port yang tidak standar (bukan 80/443), tambahin flag `-s <port>`._

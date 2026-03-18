@@ -12,7 +12,7 @@ Sebelum kamu terjun lebih jauh ke dunia cyber security, ada satu hal fundamental
 
 Bayangkan kamu adalah seorang kepala keamanan sebuah kerajaan mewah. Sebelum kamu memasang penjaga di pintu depan atau mengunci jendela, kamu harus tahu dulu seluk-beluk kerajaan tersebut. Di mana letak ruang harta karunnya? Di mana gudang makanannya? Siapa saja yang boleh masuk ke kamar sang komandan? Kalau kamu tidak tahu apa yang ada di kerajaanmu, mustahil kamu bisa melindunginya dengan efektif.
 
-Sama halnya dengan keamanan komputer. Mencoba menjaga sistem yang tidak kamu pahami itu ibarat menjaga kerajaan yang belum pernah kamu lihat. Di room ini, kita akan membedah kerajaan digital kita, yaitu komputer.
+Sama halnya dengan keamanan komputer. Mencoba menjaga sistem yang tidak kamu pahami itu seperti menjaga kerajaan yang belum pernah kamu lihat. Di room ini, kita akan membedah kerajaan digital kita, yaitu komputer.
 
 ### Learning Objectives
 
@@ -152,7 +152,7 @@ PSU mengambil daya dari stopkontak (listrik AC) dan mengubahnya menjadi daya DC 
 
 ### GPU — Korteks Visual
 
-**GPU** (_Graphics Processing Unit_) ibarat **korteks visual** otak kita. Mata menangkap informasi visual, lalu korteks visual memproses informasi tersebut menjadi gambar yang kita "lihat". GPU bekerja dengan cara serupa — menerima data dari sistem operasi dan program, lalu mengolahnya menjadi output visual yang ditampilkan ke monitor.
+**GPU** (_Graphics Processing Unit_) seperti **korteks visual** otak kita. Mata menangkap informasi visual, lalu korteks visual memproses informasi tersebut menjadi gambar yang kita "lihat". GPU bekerja dengan cara serupa — menerima data dari sistem operasi dan program, lalu mengolahnya menjadi output visual yang ditampilkan ke monitor.
 
 GPU terhubung ke motherboard melalui **PCI Express slot**. Untuk kebutuhan gaming, rendering 3D, atau bahkan *password cracking* di dunia cyber security, GPU yang powerful sangat dibutuhkan.
 

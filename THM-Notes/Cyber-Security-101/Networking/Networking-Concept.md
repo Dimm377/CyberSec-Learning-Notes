@@ -43,13 +43,13 @@ Beda sama OSI Model yang sifatnya konseptual (teori), **TCP/IP** itu model yang 
 | **Internet** | Network | IP, ICMP |
 | **Network Access** | Data Link + Physical | Ethernet, Wi-Fi |
 
-**Encapsulation:** Setiap layer menambahkan header ke data dari layer di atasnya sebelum dikirim ke layer bawah — ibarat surat yang dimasukkan amplop, lalu amplop dimasukkan ke dalam paket, lalu paket dimasukkan ke dalam kontainer.
+**Encapsulation:** Setiap layer menambahkan header ke data dari layer di atasnya sebelum dikirim ke layer bawah — seperti surat yang dimasukkan amplop, lalu amplop dimasukkan ke dalam paket, lalu paket dimasukkan ke dalam kontainer.
 
 ---
 
 ### IP Addresses & Subnets
 
-Setiap perangkat di jaringan butuh **identitas unik** — ibarat alamat rumah. Tanpa alamat, data ga tau harus dikirim kemana.
+Setiap perangkat di jaringan butuh **identitas unik** — seperti alamat rumah. Tanpa alamat, data tidak tau harus dikirim kemana.
 
 | Tipe | Penjelasan |
 | ---- | ---------- |
@@ -74,12 +74,12 @@ Dua protokol transport utama yang menentukan **bagaimana data dikirim**:
 | ----- | ------- | ------- |
 | **Analogi** | Telepon (harus tersambung dulu baru bicara) | Walkie-talkie (langsung bicara tanpa peduli didengar atau ga) |
 | **Orientasi** | Connection-oriented (wajib handshake) | Connectionless (langsung kirim) |
-| **Reliabilitas** | Reliable — dijamin sampai | Unreliable — ga dijamin sampai |
+| **Reliabilitas** | Reliable — dijamin sampai | Unreliable — tidak dijamin sampai |
 | **Handshake** | Three-way: SYN → SYN-ACK → ACK | Tidak ada |
 | **Data Unit** | **Segment** | **Datagram** |
 | **Use Case** | Web browsing, email, file transfer | Streaming video, gaming, DNS query |
 
-**Ports** — ibarat **nomor kamar di apartemen**. Satu gedung (IP Address) bisa punya banyak kamar (port) yang masing-masing menampung layanan berbeda. Total port tersedia: **65.535**.
+**Ports** — seperti **nomor kamar di apartemen**. Satu gedung (IP Address) bisa punya banyak kamar (port) yang masing-masing menampung layanan berbeda. Total port tersedia: **65.535**.
 
 ---
 

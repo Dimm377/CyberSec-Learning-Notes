@@ -17,19 +17,19 @@ Setelah paham navigasi dasar, fokusnya pindah ke **alat-alat administratif** (Sy
 
 ### System Configuration (msconfig)
 
-`msconfig` itu utility utama buat mengelola proses startup dan opsi boot — ibarat **panel kontrol mesin** yang menentukan bagaimana sistem menyala.
+`msconfig` itu utility utama buat mengelola proses startup dan opsi boot — seperti **panel kontrol mesin** yang menentukan bagaimana sistem menyala.
 
 | Fitur | Fungsi |
 | ----- | ------ |
 | **Startup Selection** | Pilih antara Normal, Diagnostic, atau Selective startup buat troubleshooting |
 | **Boot Options** | Atur opsi booting seperti _Safe Mode_ — berguna saat sistem error atau terinfeksi malware |
-| **Services Management** | Nonaktifkan background process yang ga diperlukan — bisa buat isolasi proses mencurigakan |
+| **Services Management** | Nonaktifkan background process yang tidak diperlukan — bisa buat isolasi proses mencurigakan |
 
 ---
 
 ### User Account Control (UAC)
 
-**UAC** itu lapisan keamanan yang mencegah perubahan tingkat sistem secara sembarangan — ibarat **satpam yang minta konfirmasi** sebelum siapapun boleh masuk ke ruangan penting.
+**UAC** itu lapisan keamanan yang mencegah perubahan tingkat sistem secara sembarangan — seperti **satpam yang minta konfirmasi** sebelum siapapun boleh masuk ke ruangan penting.
 
 | Aspek | Detail |
 | ----- | ------ |

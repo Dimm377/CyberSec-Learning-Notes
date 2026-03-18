@@ -70,7 +70,7 @@ Metode enkripsi kuno yang menjadi dasar cryptography modern. Meskipun sekarang d
 | **Caesar Cipher** | Geser setiap huruf sejumlah posisi tetap (contoh: Shift 3 → A jadi D) | Sangat lemah — cuma 25 kemungkinan |
 | **ROT13** | Varian Caesar dengan shift 13 — jalankan dua kali kembali ke teks asli | Sama lemahnya, tapi populer buat obscuring |
 | **Vigenère Cipher** | Polyalphabetic substitution — setiap huruf digeser berbeda berdasarkan keyword | Lebih kuat — frekuensi huruf tidak berpola tetap |
-| **Enigma Machine** | Rotor berputar setiap kali tombol ditekan — satu huruf bisa jadi huruf berbeda | Dipecahkan Alan Turing → cikal bakal komputer modern |
+| **Enigma Machine** | Rotor berputar setiap kali tombol ditekan — satu huruf bisa jadi huruf berbeda | Dipecahkan Alan Turing → cikal akan komputer modern |
 
 <p align="center">
 <img src="../../Assets/Images/Encryption.png" alt="Encryption">

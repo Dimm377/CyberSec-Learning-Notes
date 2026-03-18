@@ -122,7 +122,7 @@ Bayangkan ada penyerang masuk ke sistem. Jika tidak ada log yang mencatat aktivi
 2.  Akun mana saja yang sudah **disusupi**?
 3.  Data sensitif apa yang sudah diakses atau dicuri?
 
-Tanpa akuntabilitas yang kuat, sebuah aplikasi ibarat rumah tanpa pintu yang bisa dimasuki siapa saja tanpa meninggalkan jejak.
+Tanpa akuntabilitas yang kuat, sebuah aplikasi seperti rumah tanpa pintu yang bisa dimasuki siapa saja tanpa meninggalkan jejak.
 
 ![Logging & Alerting Failure : Forensic Gap](../../Assets/Images/Log-alert-Failure.png)
 

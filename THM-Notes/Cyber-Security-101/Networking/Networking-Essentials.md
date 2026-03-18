@@ -17,7 +17,7 @@ Setelah paham konsep dasar, room ini membawa kita lebih dalam ke perangkat keras
 
 ### Network Hardware
 
-Memahami perbedaan antar perangkat yang menghubungkan jaringan — ibarat memahami perbedaan **alat komunikasi** di sebuah gedung kantor:
+Memahami perbedaan antar perangkat yang menghubungkan jaringan — seperti memahami perbedaan **alat komunikasi** di sebuah gedung kantor:
 
 | Perangkat | Analogi | Cara Kerja |
 | --------- | ------- | ---------- |
@@ -42,7 +42,7 @@ Memahami perbedaan antar perangkat yang menghubungkan jaringan — ibarat memaha
 
 ### Address Resolution Protocol (ARP)
 
-ARP itu protokol yang jadi **jembatan** antara Layer 2 (MAC) dan Layer 3 (IP). Analogi: Bayangkan kamu sebuah **pesta** dan tau nama seseorang (IP) tapi ga tau dia duduk di meja mana (MAC). ARP itu proses teriak ke seluruh ruangan menanyakan orangnya.
+ARP itu protokol yang jadi **jembatan** antara Layer 2 (MAC) dan Layer 3 (IP). Analogi: Bayangkan kamu sebuah **pesta** dan tau nama seseorang (IP) tapi tidak tau dia duduk di meja mana (MAC). ARP itu proses teriak ke seluruh ruangan menanyakan orangnya.
 
 | Tahap | Analogi | Yang Terjadi |
 | ----- | ------- | ------------ |
@@ -55,7 +55,7 @@ ARP itu protokol yang jadi **jembatan** antara Layer 2 (MAC) dan Layer 3 (IP). A
 
 ### Dynamic Host Configuration Protocol (DHCP)
 
-DHCP itu protokol yang **otomatis memberi IP Address** ke perangkat di jaringan, Ibarat proses **sewa kamar apartemen** — kamu datang, minta kamar, dikasih nomor kamar untuk jangka waktu tertentu.
+DHCP itu protokol yang **otomatis memberi IP Address** ke perangkat di jaringan, Ibarat proses **sewa kamar apartemen** — kamu datang, minta kamar, diberikan nomor kamar untuk jangka waktu tertentu.
 
 **DORA Process (wajib diingat):**
 

@@ -42,7 +42,7 @@ Firewall itu perangkat yang menentukan traffic mana yang boleh masuk atau keluar
 
 ### VPN (Virtual Private Network)
 
-VPN membuat koneksi jadi **aman dan terenkripsi** antara perangkat dan jaringan. Analogi: Ibarat **terowongan bawah tanah pribadi** — data kamu lewat jalur tersembunyi yang ga bisa dilihat orang lain di jalan raya (internet publik).
+VPN membuat koneksi jadi **aman dan terenkripsi** antara perangkat dan jaringan. Analogi: Ibarat **terowongan bawah tanah pribadi** — data kamu lewat jalur tersembunyi yang tidak bisa dilihat orang lain di jalan raya (internet publik).
 
 **Manfaat VPN:**
 

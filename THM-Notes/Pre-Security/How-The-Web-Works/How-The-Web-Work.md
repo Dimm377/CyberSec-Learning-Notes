@@ -67,7 +67,7 @@ HTML pakai elemen atau **tags** buat memberi tau browser cara menampilkan konten
 
 #### Mengenal Attributes
 
-Setiap tag bisa punya **atribut** — ibarat label nama atau stiker identitas yang ditempel di elemen:
+Setiap tag bisa punya **atribut** — seperti label nama atau stiker identitas yang ditempel di elemen:
 
 | Atribut | Analogi | Fungsi |
 | ------- | ------- | ------ |
@@ -81,7 +81,7 @@ Setiap tag bisa punya **atribut** — ibarat label nama atau stiker identitas ya
 
 ### JavaScript (Functionality & Interactivity)
 
-JavaScript membuat halaman web menjadi hidup. Tanpa JavaScript, halaman web itu ibarat **poster statis** — cuma bisa dilihat, ga bisa diajak interaksi.
+JavaScript membuat halaman web menjadi hidup. Tanpa JavaScript, halaman web itu seperti **poster statis** — cuma bisa dilihat, tidak bisa diajak interaksi.
 
 #### Cara Menambahkan JavaScript
 
