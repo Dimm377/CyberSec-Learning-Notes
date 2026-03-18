@@ -99,3 +99,113 @@ Setiap komputer virtual, yang disebut **Virtual Machine (VM)**, **berperilaku se
 
 > **for your information:**
 > **Hypervisor** — Software khusus yang bertugas membuat dan mengelola Virtual Machines. Dia "wasit" yang memastikan setiap VM mendapat jatah sumber daya yang adil dan tetap terisolasi satu sama lain.
+
+## Virtualisation Components
+
+Sekarang kamu sudah paham *kenapa* virtualisasi dibutuhkan. Di bagian ini, kita akan bedah **tiga komponen utamanya**: Hypervisor, Virtual Machine, dan Container.
+
+---
+
+### Hypervisor (The Building Manager)
+
+**Hypervisor** adalah teknologi inti di balik virtualisasi. Dia software yang bertugas **membuat dan mengelola** Virtual Machines. Kalau di analogi gedung tadi, hypervisor itu pengelola gedung yang mengatur pembagian apartment.
+
+Secara spesifik, hypervisor melakukan:
+*   Membagi satu komputer fisik menjadi **beberapa komputer virtual**.
+*   Memberikan setiap VM jatah **CPU, RAM, dan storage** masing-masing.
+*   Menjaga **isolasi** antar VM agar tidak saling mengganggu.
+*   Mengelola *lifecycle* VM: **start, stop, pause, clone, delete**.
+
+#### Type 1 vs Type 2
+
+Hypervisor punya dua jenis implementasi, dan masing-masing cocok untuk skenario yang berbeda:
+
+```mermaid
+graph TD
+    subgraph Type_1 ["Type 1 (Bare-Metal)"]
+        HW1["Hardware"] --> H1["Hypervisor"]
+        H1 --> V1["VM 1"]
+        H1 --> V2["VM 2"]
+    end
+    subgraph Type_2 ["Type 2 (Hosted)"]
+        HW2["Hardware"] --> OS2["Host OS (Windows/Linux)"]
+        OS2 --> H2["Hypervisor"]
+        H2 --> V3["VM 1"]
+        H2 --> V4["VM 2"]
+    end
+```
+
+*   **Type 1 (Bare-Metal)**: Berjalan **langsung di atas hardware**, tanpa perlu OS perantara. Hasilnya cepat, efisien, dan stabil — ideal untuk server produksi dan data center. Contoh: **VMware ESXi**, **Microsoft Hyper-V**, **Proxmox**.
+*   **Type 2 (Hosted)**: Berjalan **di dalam OS yang sudah ada** (Windows, Linux, macOS). Lebih mudah diinstall, cocok untuk belajar, testing, atau setup kecil. Contoh: **Oracle VirtualBox**, **VMware Workstation**.
+
+#### Use Case per Type
+
+Kedua tipe sebenarnya bisa menjalankan use case yang sama, tapi ada pendekatan yang lebih tepat berdasarkan tujuannya:
+
+| Use Case | Type 1 | Type 2 |
+| :--- | :---: | :---: |
+| Test Malicious Files | | X |
+| Production Server | X | |
+| Database Server | X | |
+| Software Testing | | X |
+| Kali Linux (Lab) | | X |
+| Data Center | X | |
+
+> **Common Mistake:** Saat menggunakan virtualisasi untuk menguji file berbahaya (malware), pastikan **host machine tidak terinfeksi** oleh malware yang sedang diuji di guest machine. Salah satu strateginya: gunakan **OS yang berbeda** antara host dan guest (misal: host Windows, guest Linux), atau **isolasi jaringan VM** agar guest tidak bisa berkomunikasi keluar.
+
+---
+
+### Virtual Machines (The Apartments)
+
+**Virtual Machine (VM)** adalah komputer virtual yang dibuat oleh hypervisor. Meskipun sifatnya virtual, VM berperilaku persis seperti mesin fisik sungguhan:
+
+*   Punya **virtual CPU, RAM, storage, dan network adapter** sendiri.
+*   Bisa menjalankan **OS apa saja** (Windows, Linux, dll).
+*   **Terisolasi penuh** dari VM lain — kalau satu VM rusak, VM yang lain tetap jalan normal.
+
+Kamu bisa mendeploy VM di komputermu sendiri menggunakan tools seperti **Oracle VirtualBox** atau **VMware Workstation**. Software ini berfungsi sebagai Type 2 hypervisor dan memungkinkan kamu menjalankan beberapa OS sekaligus di atas satu mesin.
+
+**Kapan kamu butuh VM?** Contoh skenario nyata:
+*   Kamu mau belajar **Kali Linux** tapi tidak mau beli laptop baru — cukup pasang hypervisor dan jalankan Kali sebagai VM.
+*   Kamu ingin menguji apakah sebuah file itu **malware** — jalankan di VM yang terisolasi agar komputer utamamu tetap aman.
+
+---
+
+### Containers (The Rooms Inside the Apartment)
+
+Kalau VM itu "apartemen lengkap" dengan OS sendiri, maka **Container** itu "kamar di dalam apartemen" — lebih ringan, lebih cepat, tapi berbagi infrastruktur dasar yang sama.
+
+**Container** adalah lingkungan terisolasi yang ringan, dirancang untuk menjalankan **satu aplikasi beserta semua dependensinya** (library, tools, versi tertentu). Bedanya dengan VM: container tidak membawa OS lengkap sendiri. Dia meminjam **kernel** dari host OS — yaitu bagian inti OS yang berkomunikasi langsung dengan hardware dan mengelola resource seperti memori dan proses.
+
+Karena berbagi kernel, container punya karakteristik unik:
+*   **Start hampir instan** — tidak perlu booting OS.
+*   **Menggunakan resource jauh lebih sedikit** dibanding VM.
+*   **Terisolasi satu sama lain** — container yang bermasalah tidak memengaruhi container lain.
+*   **Konsisten di mana saja** — bisa berjalan di laptop, server, atau cloud tanpa perubahan konfigurasi.
+*   **Keterbatasan**: Container harus cocok dengan tipe host OS-nya. Kamu **tidak bisa** menjalankan container Windows di mesin Linux, atau sebaliknya.
+
+Cara paling mudah untuk mendeploy container adalah menggunakan **Docker**, platform open-source yang menyederhanakan proses membangun, mendeploy, dan menjalankan aplikasi dalam container.
+
+> **for your information:**
+> **Kernel** — Inti dari sebuah sistem operasi. Kernel bertugas menjadi perantara antara software dan hardware: mengelola memori, mengatur proses, dan mengendalikan akses ke perangkat keras.
+> **Docker** — Platform open-source untuk mengemas aplikasi beserta seluruh dependensinya ke dalam container yang portabel dan konsisten.
+
+---
+
+### VM vs Container: The Big Picture
+
+```mermaid
+graph TD
+    subgraph Physical_Server ["Physical Server"]
+        HW["Hardware (CPU / RAM / Disk)"]
+        HW --> Hyp["Hypervisor"]
+        Hyp --> VMA["VM A (Full OS)"]
+        Hyp --> VMB["VM B (Full OS)"]
+        VMB --> CA["Container A"]
+        VMB --> CB["Container B"]
+    end
+```
+
+Secara ringkas:
+*   **VM** memberikan "apartemen lengkap" — isolasi maksimal dan fleksibilitas penuh (bisa jalankan OS berbeda). Cocok untuk workload yang butuh keamanan tinggi atau OS yang berbeda dari host.
+*   **Container** menawarkan "kamar ringan" — start instan dan hemat resource. Ideal untuk development, testing, dan deployment aplikasi yang scalable.
