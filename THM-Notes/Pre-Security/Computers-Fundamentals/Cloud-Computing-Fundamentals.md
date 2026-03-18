@@ -4,5 +4,4 @@
 - **Category:** Pre-Security
 - **Difficulty:** Easy
 
-## Type of Topic
-
+## 
