@@ -125,3 +125,21 @@ Dalam bahasa teknis HTTP, perintah yang diberikan Client ke Server disebut sebag
 > **RFC** (_Request for Comments_) — Dokumen teknis resmi yang berisi standar dan protokol internet yang dikembangkan oleh IETF (_Internet Engineering Task Force_).
 
 Di bagian selanjutnya, kita akan fokus membedah **GET** secara praktis melalui apa yang dilakukan browsermu saat membuka website.
+
+### The GET Method: Retrieving Resources
+
+Metode **GET** sebenarnya sangat sederhana. Kita menggunakan metode ini untuk **mengambil** sumber daya dari web server. 
+*   **Contoh**: `GET https://tryhackme.com/index.php`. Permintaan ini akan mengambil halaman utama website TryHackMe.
+
+Kamu tidak perlu mengetikkan perintah ini secara manual. Saat kamu membuka browser (ini adalah **Client**) dan mengetikkan `https://tryhackme.com`, browsermu akan bekerja di bagian back-end untuk mengirimkan pesan HTTP berdasarkan informasi yang kamu berikan dan standar spesifikasi HTTP lainnya.
+
+#### Interaction
+
+Saat web server menerima permintaan tersebut, ia akan mengirimkan jawaban (Response) yang berisi dua hal penting:
+1.  **Status Code**: Angka yang menunjukkan jenis respons (misal: `200 OK` jika berhasil).
+2.  **Information**: Isi dari sumber daya yang diminta (misal: kode HTML halaman web).
+
+![Alur GET Request](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/GET.png)
+
+> **for your information:**
+> **Status Code** — Kode standar dari server (seperti `404 Not Found` atau `500 Internal Server Error`) yang memberi tahu client apa yang terjadi dengan permintaannya.
