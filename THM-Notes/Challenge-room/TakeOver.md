@@ -19,10 +19,10 @@
 Langkah pertama tentu saja melakukan pemindaian port untuk melihat pintu mana saja yang terbuka di server target.
 
 ```bash
-nmap -sV -sC -T4 10.10.x.x
+nmap 
 ```
 
-![Nmap Port Scan Target](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Challenge-room/Documentation-assets/nmap-Scanning-takeOver.png)
+![Nmap Port Scan Target](Documentation-assets/nmap-Scanning-takeOver.png)
 
 | Komponen | Fungsi |
 | :--- | :--- |
@@ -48,11 +48,11 @@ ffuf -u http://takeover.thm -H "Host: FUZZ.takeover.thm" -w /usr/share/wordlists
 
 Berdasarkan hasil fuzzing, sempat ditemukan subdomain yang terlihat valid, tapi ternyata itu adalah *dead end*. Saat diakses, halaman tersebut tidak memberikan hasil apa pun atau menunjukkan konfigurasi yang salah (seperti "NoSuchBucket"):
 
-![TakeOver Mistake - No Result](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Challenge-room/Documentation-assets/takeOver-mistake.png)
+![TakeOver Mistake - No Result](Documentation-assets/takeOver-mistake.png)
 
 Setelah di cek lebih lanjut lewat **Zen browser**, akhirnya ditemukan domain rahasia yang mengarah ke informasi sensitif:
 
-![Secret Domain](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Challenge-room/Documentation-assets/Secret-domain.png)
+![Secret Domain](Documentation-assets/Secret-domain.png)
 
 ---
 
@@ -64,7 +64,7 @@ Celah utamanya adalah **Subdomain Takeover**. Developer membiarkan DNS record me
 ### Gaining Access
 Setelah mengakses domain rahasia tersebut, saya menemukan sebuah halaman yang berisi sertifikat atau kunci rahasia:
 
-![Secret Found](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Challenge-room/Documentation-assets/secret.png)
+![Secret Found](Documentation-assets/secret.png)
 
 ---
 
