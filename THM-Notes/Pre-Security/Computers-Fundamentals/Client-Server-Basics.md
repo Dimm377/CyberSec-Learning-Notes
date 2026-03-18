@@ -62,7 +62,7 @@ Setelah memahami analoginya, mari kita masuk ke mekanisme teknis bagaimana kompo
 #### 1. Client & Server
 Dua peran utama dalam komunikasi jaringan:
 *   **Client**: Perangkat atau software yang **menginisiasi** permintaan (misal: Browser di laptopmu).
-*   **Server**: Sistem yang **mendengarkan** (*listening*) dan melayani permintaan tersebut (misal: Web Server THM).
+*   **Server**: Sistem yang **mendengarkan** (*listening*) dan melayani permintaan tersebut (misal: Web Server THM). Perbedaan detail antara Client dan Server secara hardware dibahas di catatan [Computer Types](Computer-Types.md).
 
 #### 2. Request & Response
 Mekanisme pertukaran data yang harus terstruktur:
@@ -178,3 +178,11 @@ Saat server merespons, pesan tersebut dibagi menjadi dua bagian utama:
 
 > **for your information:**
 > **Localhost** (`127.0.0.1`) — Alamat IP standar yang digunakan untuk merujuk ke komputer yang sedang kamu gunakan saat ini. Berguna untuk testing aplikasi sebelum di-online-kan.
+
+---
+
+### Pertanyaan Singkat
+
+*   Apa yang dimaksud dengan **stateless** pada protokol HTTP, dan bagaimana website mengatasi keterbatasan ini?
+*   Sebutkan dua komponen dalam model Client-Server yang sering menjadi target serangan!
+*   Apa perbedaan fungsi **Response Header** dan **Response Body**?

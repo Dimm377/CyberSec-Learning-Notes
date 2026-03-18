@@ -47,7 +47,7 @@ Ada komputer yang memang dirancang untuk interaksi manusia secara langsung (puny
 
 ### Differences: PC, Workstation, and Server
 
-Biar kamu nggak bingung, mari kita bedah bedanya berdasarkan beban kerja mereka:
+Biar kamu tidak bingung, mari kita bedah bedanya berdasarkan beban kerja mereka:
 
 #### 1. Laptop & Desktop (Personal Computers)
 Ini adalah komputer yang paling sering kita sentuh. Bedanya cuma di **mobilitas**:
@@ -55,10 +55,10 @@ Ini adalah komputer yang paling sering kita sentuh. Bedanya cuma di **mobilitas*
 *   **Desktop**: Menang di **upgradability** dan **cooling** yang jauh lebih baik. Karena pakai daya langsung dari tembok (bukan baterai), desktop bisa lari kencang lebih lama dengan stabil.
 
 #### 2. Workstation
-Pikirkan ini sebagai Desktop versi flagship. Secara bentuk mirip desktop, tapi komponennya jauh lebih kuat. Workstation memprioritaskan **akurasi dan reliabilitas**. Biasanya pakai komponen khusus (seperti memori ECC) untuk mengurangi error saat melakukan perhitungan rumit seperti simulasi 3D atau *reverse engineering* malware.
+Pikirkan ini sebagai Desktop versi flagship. Secara bentuk mirip desktop, tapi komponennya jauh lebih kuat (penjelasan tentang komponen ada di catatan [Inside a Computer System](Inside-a-Computer-System.md)). Workstation memprioritaskan **akurasi dan reliabilitas**. Biasanya pakai komponen khusus (seperti memori ECC) untuk mengurangi error saat melakukan perhitungan rumit seperti simulasi 3D atau *reverse engineering* malware.
 
 #### 3. Server
-Berbeda dengan tiga di atas, Server seringkali tidak punya monitor atau keyboard yang terpasang. Mereka dirancang untuk **menyala 24/7 tanpa henti**, melayani ribuan permintaan pengguna secara bersamaan. Kamu mungkin tidak pernah menyentuh server secara fisik, tapi dialah yang menjalankan semua *tools* dan web yang kamu pakai setiap hari.
+Berbeda dengan tiga di atas, Server seringkali tidak punya monitor atau keyboard yang terpasang. Mereka dirancang untuk **menyala 24/7 tanpa henti**, melayani ribuan permintaan pengguna secara bersamaan. Kamu mungkin tidak pernah menyentuh server secara fisik, tapi dialah yang menjalankan semua *tools* dan web yang kamu pakai setiap hari. (Penjelasan lebih lengkap tentang bagaimana server melayani permintaan ada di catatan [Client-Server Basics](Client-Server-Basics.md))
 
 > **Common Mistake:** Mengira server itu harus selalu berupa mesin raksasa di ruangan dingin. Secara software, komputer apapun bisa jadi server, tapi secara hardware, Server dirancang untuk menyala **24/7 tanpa henti** dan punya komponen yang sangat handal.
 
@@ -68,7 +68,7 @@ Berbeda dengan tiga di atas, Server seringkali tidak punya monitor atau keyboard
 
 Kenapa kita harus peduli bedanya?
 *   **Physical Security**: Laptop lebih rentan hilang/dicuri dibanding desktop. Maka, enkripsi disk (**BitLocker/FileVault**) jadi harga mati di laptop.
-*   **Target Serangan**: Server adalah target utama (*high-value target*) karena menyimpan data banyak orang. Menyerang 1 laptop user mungkin cuma dapet 1 akun, tapi menjebol 1 server bisa dapet ribuan data user.
+*   **Target Serangan**: Server adalah target utama (*high-value target*) karena menyimpan data banyak orang. Menyerang 1 laptop user mungkin cuma dapat 1 akun, tapi menjebol 1 server bisa dapat ribuan data user.
 *   **Resource Exhaustion**: Workstation punya resource besar. Jika attacker berhasil masuk, mereka bisa menggunakan kekuatan prosesornya untuk melakukan *cryptojacking* (menambang crypto secara ilegal).
 
 > **for your information:**

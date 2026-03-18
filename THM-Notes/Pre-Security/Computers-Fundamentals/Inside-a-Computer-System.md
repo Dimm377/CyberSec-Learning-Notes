@@ -30,7 +30,18 @@ Tenang saja, kita akan membahasnya pelan-pelan tanpa terlalu banyak bahasa tekni
 
 ## Inside a Computer System
 
-Hampir semua komputer yang kamu temui, mulai dari laptop, HP, sampai server canggih, dibangun menggunakan blok penyusun yang sama. Setiap bagian punya tugas spesifik, dan ketika bekerja sama, mereka membuat komputer itu hidup.
+Hampir semua komputer yang kamu temui, mulai dari laptop, HP, sampai server canggih (variasi jenis komputer dibahas di catatan [Computer Types](Computer-Types.md)), dibangun menggunakan blok penyusun yang sama. Setiap bagian punya tugas spesifik, dan ketika bekerja sama, mereka membuat komputer itu hidup.
+
+```mermaid
+graph TD
+    PSU["PSU (Daya)"] -->|Listrik| MB["Motherboard"]
+    MB -->|Socket| CPU["CPU (Otak)"]
+    MB -->|DIMM Slots| RAM["RAM (Memori Sementara)"]
+    MB -->|SATA / PCIe| Storage["Storage (SSD/HDD)"]
+    MB -->|PCIe x16| GPU["GPU (Visual)"]
+    MB -->|PCIe / Onboard| NET["Network Adapter"]
+    MB -->|USB / HDMI| IO["I/O Devices"]
+```
 
 Supaya lebih mudah dipahami, kita akan menggunakan analogi **Tubuh Manusia**. Berikut ringkasan cepat sebelum kita bedah satu per satu:
 
