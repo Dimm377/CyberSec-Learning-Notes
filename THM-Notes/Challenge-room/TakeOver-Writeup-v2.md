@@ -106,13 +106,13 @@ Akses `https://support.futurevera.thm` di browser, lalu:
 2. Pilih **Show Certificate** / **Certificate is valid**
 3. Cari bagian **Subject Alternative Names (SAN)**
 
-Dan di sinilah momen yang tidak saya duga sama sekali, ternyata tersembunyi di dalam certificate yang bersifat publik dan bisa dibaca siapa saja, ada sebuah subdomain yang tidak terdaftar di DNS publik manapun:
+Dan di sinilah momen yang tidak saya duga sama sekali — tersembunyi di dalam certificate yang bersifat publik dan bisa dibaca siapa saja, ada sebuah subdomain yang tidak terdaftar di DNS publik manapun:
 
 ```
 secretxxxxxxx.support.futurevera.thm
 ```
 
-Selama ini saya sibuk brute force subdomain dengan wordlist yang berbeda-beda, padahal jawabannya sudah ada di SSL certificate sejak awal. Ini adalah pelajaran yang tidak akan saya lupakan.
+Selama ini saya sibuk brute force ratusan ribu subdomain, padahal jawabannya sudah "dipajang" di SSL certificate sejak awal. Ini adalah pelajaran yang tidak akan mudah saya lupakan.
 
 > **Kenapa bisa ada di sini?** SAN (Subject Alternative Names) adalah field dalam SSL certificate yang mencantumkan semua domain/subdomain yang dicakup oleh certificate tersebut. Developer sering lupa bahwa informasi ini bersifat publik dan bisa dibaca siapa saja.
 
@@ -158,10 +158,10 @@ Browser akan diredirect ke URL AWS S3 — **flag terlihat langsung di URL redire
 
 ## Lessons Learned
 
-- **Baca deskripsi target dengan teliti** — petunjuk sering tersembunyi di deskripsi room atau scope pentest. Brute force bukan selalu solusi pertama.
+- **Baca deskripsi target dengan teliti** — hint sering tersembunyi di deskripsi room atau scope pentest. Brute force bukan selalu solusi pertama.
 - **SSL Certificate SAN bisa membocorkan subdomain tersembunyi** — selalu cek bagian Subject Alternative Names saat melakukan pentest terhadap HTTPS service.
-- **Brute force bukan satu-satunya cara** — kombinasi manual enumeration dan tool jauh lebih efektif daripada bergantung pada wordlist saja.
-- **Abandoned subdomains** — DNS record yang tidak diurus tapi masih aktif merupakan target mudah untuk subdomain takeover di dunia nyata.
+- **Brute force bukan satu-satunya cara enumerasi** — kombinasi manual enumeration dan tool jauh lebih efektif daripada bergantung pada wordlist saja.
+- **Abandoned subdomains adalah celah nyata** — DNS record yang tidak diurus tapi masih aktif merupakan target mudah untuk subdomain takeover di dunia nyata.
 
 ---
 
