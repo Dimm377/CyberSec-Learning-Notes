@@ -265,6 +265,6 @@
 
 | No. | Notes                                                        | Description                   |
 | :-: | ------------------------------------------------------------ | ----------------------------- |
-| 1.  | [TakeOver](THM-Notes/Challenge-room/TakeOver.md)             | Subdomain Enumeration Challenge |
+| 1.  | [TakeOver](THM-Notes/Challenge-room/TakeOver-Writeup.md)             | Subdomain Enumeration Challenge |
 
 </details>
