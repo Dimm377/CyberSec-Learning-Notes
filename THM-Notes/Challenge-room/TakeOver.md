@@ -16,20 +16,15 @@
 ## Reconnaissance
 
 ### Port Scanning
-Langkah pertama tentu saja melakukan pemindaian port untuk melihat pintu mana saja yang terbuka di server target.
+Langkah pertama tentu saja melakukan pemindaian domain `futurevera.thm` untuk melihat pintu mana saja yang terbuka di server target.
 
 ```bash
-nmap 
+nmap futurevera.thm
 ```
 
 ![Nmap Port Scan Target](Documentation-assets/nmap-Scanning-takeOver.png)
 
-| Komponen | Fungsi |
-| :--- | :--- |
-| `nmap` | Tool scanner utama |
-| `-sV` | Mendeteksi versi service |
-| `-sC` | Menjalankan script nmap default |
-| `-T4` | Mengatur kecepatan scan (lebih cepat) |
+tidak perlu menggunakan flag tamabahan seperti -sC, -T4 dan sebagainya, cukup `nmap futurevera.thm` saja.
 
 ### Enumeration
 Karena ini tantangan **subdomain enumeration**, saya menggunakan **FFuF** untuk mencari subdomain yang tersembunyi dengan teknik *VHost Fuzzing*.
@@ -37,7 +32,8 @@ Karena ini tantangan **subdomain enumeration**, saya menggunakan **FFuF** untuk 
 ```bash
 ffuf -u http://takeover.thm -H "Host: FUZZ.takeover.thm" -w /usr/share/wordlists/amass/subdomains-top1mil-5000.txt -fs 0
 ```
-
+ untuk informasi saja:
+ 
 | Komponen | Fungsi |
 | :--- | :--- |
 | `ffuf` | Tool fuzzing cepat |
@@ -75,7 +71,7 @@ Di sinilah flag terakhir ditemukan setelah berhasil mengeksploitasi subdomain te
 ![Final Flag](Documentation-assets/Flag-TakeOver-Blur.png)
 
 Flag nya bisa ditemukan juga di bagian URL browser
- 
+
 ---
 
 ## Lessons Learned
