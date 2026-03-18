@@ -141,5 +141,19 @@ Saat web server menerima permintaan tersebut, ia akan mengirimkan jawaban (Respo
 
 ![Alur GET Request](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/GET.png)
 
+### GET Request Demo
+
+Untuk melihat bagaimana aslinya sebuah **GET Request** bekerja, kamu bisa mencobanya langsung di browser menggunakan fitur **Developer Tools** (tekan `F12` atau klik kanan -> `Inspect`).
+
+1.  Buka browser dan akses alamat: `http://httpdemo.local:8080`.
+2.  Buka tab **Network**. Tab ini berfungsi untuk membedah, menganalisis, dan memantau semua lalu lintas data yang lewat di browsermu.
+3.  Klik tombol **Reload** di browser.
+
+Kamu akan melihat daftar file yang diminta oleh browser ke server (seperti `index.html`, `style.css`, dan `script.js`). Semuanya menggunakan metode **GET**.
+
+![Demo GET Request di DevTools](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Assets/Images/GET-Demo.png)
+
+> **Common Mistake:** Pemula sering lupa membuka tab **Network** *sebelum* mereload halaman. Jika tab Network kosong, cukup tekan reload agar browser mengirim ulang permintaannya dan datanya muncul di daftar.
+
 > **for your information:**
-> **Status Code** — Kode standar dari server (seperti `404 Not Found` atau `500 Internal Server Error`) yang memberi tahu client apa yang terjadi dengan permintaannya.
+> **Status Code** — Kode standar dari server (seperti `200 OK`, `404 Not Found`, atau `500 Internal Server Error`) yang memberi tahu client apa yang terjadi dengan permintaannya.
