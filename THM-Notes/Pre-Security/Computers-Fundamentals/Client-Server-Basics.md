@@ -90,8 +90,38 @@ Sistem yang memetakan nama domain yang mudah diingat manusia menjadi **IP Addres
 
 ### Role in Cyber Security (Real-World Relevance)
 
-Memahami model ini sangat krusial karena setiap komponen adalah titik serangan potensial:
+Memahami model ini sangat penting karena setiap komponen adalah titik serangan potensial:
 *   **DNS Spoofing**: Penyerang memanipulasi DNS agar mengarahkan user ke server palsu (seperti mengarahkan Bob ke toko pizza palsu).
 *   **DoS (Denial of Service)**: Membanjiri server dengan jutaan *Request* palsu hingga server tidak sanggup merespons pengguna asli.
 *   **Port Scanning**: Hacker mencoba mengetuk semua "pintu" (Port) di server untuk mencari layanan yang punya celah keamanan terbuka.
 *   **MitM (Man-in-the-Middle)**: Penyerang mencegat komunikasi antara Client dan Server untuk mencuri data sensitif di tengah jalan.
+
+## Web Communication in Practice
+
+Setelah memahami konsep dasar, mari kita lihat bagaimana komunikasi ini terjadi di dunia nyata, khususnya pada **Web Communication**. Protokol yang paling sering digunakan adalah **HTTP** (_Hypertext Transfer Protocol_) atau versi amannya, **HTTPS**.
+
+### Stateless Protocol
+
+HTTP dikenal sebagai protokol yang bersifat **stateless**.
+*   **Artinya**: Setiap permintaan (*Request*) diproses secara mandiri. Server tidak "mengingat" apa yang kamu lakukan sebelumnya.
+* Seperti memesan kopi di kasir yang pelupa. Setiap kali kamu datang (walaupun baru 5 detik yang lalu), kasir itu akan bertanya lagi siapa kamu dan mau pesan apa, karena dia tidak punya memori tentang kunjunganmu sebelumnya.
+
+**Bagaimana website modern mengingat kita (Login)?**
+Karena HTTP aslinya pelupa, pengembang web menambahkan mekanisme di level aplikasi menggunakan **Cookie** atau **Token**. Begitu kamu login, server memberimu "kartu identitas" kecil yang akan dikirimkan kembali oleh browsermu di setiap permintaan berikutnya. Tanpa ini, kamu harus login ulang setiap kali klik tombol di website.
+
+### HTTP Methods (Commands)
+
+Dalam bahasa teknis HTTP, perintah yang diberikan Client ke Server disebut sebagai **Method**. Berdasarkan dokumen **RFC** (_Request for Comments_), ada 9 metode inti, tapi beberapa yang paling sering kamu temui adalah:
+
+| Method | Fungsi Utama | Konteks Attacker |
+| :--- | :--- | :--- |
+| **GET** | Mengambil data dari server (seperti membaca artikel). | Digunakan untuk mencari file/direktori tersembunyi. |
+| **POST** | Mengirim data ke server (seperti mengisi form login). | Target utama untuk serangan injeksi atau pencurian kredensial. |
+| **PUT** | Mengunggah atau mengganti file yang sudah ada. | Berbahaya jika salah konfigurasi (bisa upload file jahat). |
+| **DELETE** | Menghapus sumber daya di server. | Bisa merusak data jika tidak dibatasi aksesnya. |
+| **HEAD** | Mirip GET, tapi cuma minta *header*-nya saja (tanpa isi). | Untuk mengecek apakah sebuah file ada tanpa harus mendownloadnya. |
+
+> **for your information:**
+> **RFC** (_Request for Comments_) — Dokumen teknis resmi yang berisi standar dan protokol internet yang dikembangkan oleh IETF (_Internet Engineering Task Force_).
+
+Di bagian selanjutnya, kita akan fokus membedah **GET** secara praktis melalui apa yang dilakukan browsermu saat membuka website.
