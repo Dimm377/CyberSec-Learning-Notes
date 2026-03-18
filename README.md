@@ -58,6 +58,8 @@
 | No. | Notes                                                                                                          | Description                   |
 | :-: | -------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | 1.  | [Inside a Computer System](THM-Notes/Pre-Security/Computers-Fundamentals/Inside-a-Computer-System.md)          | Understanding how PCs work   |
+| 2.  | [Computer Types](THM-Notes/Pre-Security/Computers-Fundamentals/Computer-Types.md)                      | Understanding different computer categories |
+| 3.  | [Client-Server Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Client-Server-Basics.md)          | Basics of client-server interaction |
 
 </details>
 
@@ -252,5 +254,16 @@
 | No. | Writeup                                                   | Description          |
 | :-: | --------------------------------------------------------- | -------------------- |
 | 1.  | [SQL Injection](THM-Notes/SQL-Injection/sql-injection.md) | SQL injection basics |
+
+</details>
+
+<details>
+<summary><b>Challenge Room</b></summary>
+
+<br>
+
+| No. | Notes                                                        | Description                   |
+| :-: | ------------------------------------------------------------ | ----------------------------- |
+| 1.  | [TakeOver](THM-Notes/Challenge-room/TakeOver.md)             | Subdomain Enumeration Challenge |
 
 </details>
