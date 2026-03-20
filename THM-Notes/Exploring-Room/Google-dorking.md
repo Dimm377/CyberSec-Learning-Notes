@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Google bukan sekadar alat pencari biasa. Di balik kotak pencarian yang sederhana, ada sistem yang secara terus-menerus menjelajahi, mengindeks, dan menyimpan informasi dari miliaran halaman web di seluruh internet.
+Google bukan sekadar alat pencari biasa. Di balik search engine yang sederhana, ada sistem yang secara terus-menerus menjelajahi, mengindeks, dan menyimpan informasi dari miliaran halaman web di seluruh internet.
 
 Bagi seorang praktisi cyber security, memahami cara kerja mesin pencari membuka satu kemampuan yang sangat berguna: **menemukan informasi sensitif yang tidak sengaja terekspos ke publik** — tanpa menyentuh infrastruktur target secara langsung.
 
@@ -134,11 +134,11 @@ graph TD
 
 **Google Dorking** adalah teknik menggunakan operator pencarian khusus (_search operators_) yang didukung Google untuk menyaring hasil pencarian secara sangat spesifik. Dalam konteks keamanan, teknik ini digunakan untuk menemukan informasi sensitif yang tidak sengaja terekspos ke publik melalui indexing mesin pencari.
 
-> **for your information:** **GHDB** (_Google Hacking Database_) adalah database publik yang dikurasi oleh **Exploit-DB** berisi ribuan Google Dork yang sudah terbukti menemukan informasi sensitif — mulai dari panel CCTV yang terbuka, printer yang terekspos ke internet, hingga file yang berisi kredensial.
+> **for your information:** **GHDB** (_Google Hacking Database_) adalah database publik yang dikumpulkan oleh **Exploit-DB** berisi ribuan Google Dork yang sudah terbukti menemukan informasi sensitif — mulai dari panel CCTV yang terbuka, printer yang terekspos ke internet, hingga file yang berisi credentials.
 
 ---
 
-### Core Operators
+### Google Dorking Operators
 
 #### `site:` — Membatasi Pencarian ke Domain Tertentu
 
