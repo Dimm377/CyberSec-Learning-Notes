@@ -4,185 +4,253 @@
 - **Category:** Pre-Security
 - **Difficulty:** Easy
 
+---
+
 ## Introduction
 
-Bayangkan sebuah dunia di mana setiap orang hidup sendirian di pulau terpencil. Mereka punya makanan sendiri, alat sendiri, dan tidak pernah berbicara dengan siapa pun. Itulah gambaran komputer di masa awal: mereka bekerja sendiri, menyimpan file sendiri, dan tidak bisa berkomunikasi dengan mesin lain.
+Sebelum internet ada, komputer bekerja secara mandiri — menyimpan dan memproses data sendiri tanpa bisa berkomunikasi dengan mesin lain. Ketika organisasi mulai menghubungkan komputer-komputer tersebut ke dalam jaringan, muncul kebutuhan baru: bagaimana satu komputer bisa meminta layanan dari komputer lain secara terstruktur?
 
-Namun, dunia berubah saat organisasi-organisasi mulai berpikir: *"Bagaimana kalau kita sambungkan pulau-pulau ini supaya kita bisa tukar makanan dan alat tanpa peduli jarak?"* Dari sinilah cikal akan **Internet** lahir melalui jaringan legendaris seperti **ARPANET**, **CYCLADES**, dan **NSFNET**.
+Jawabannya adalah **model Client-Server** — arsitektur yang menjadi fondasi dari hampir semua komunikasi di internet hingga hari ini. Setiap kali kamu membuka website, mengirim email, atau streaming video, model ini yang bekerja di baliknya.
 
-Sama seperti masyarakat manusia di mana setiap orang punya keahlian khusus dan menawarkan jasa (seperti dokter, koki, atau montir), sistem komputer yang saling terhubung juga mulai **berespesialisasi**. Ada yang jago menyimpan data, ada yang jago melayani permintaan kita. 
-
-Di room ini, kamu akan mempelajari bagaimana client-server bekerja.
-
-### Learning Objectives
+> **for your information:** **ARPANET** (_Advanced Research Projects Agency Network_) adalah jaringan komputer pertama yang menggunakan protokol paket data, dikembangkan oleh Departemen Pertahanan AS sebagai fondasi awal internet. **CYCLADES** adalah jaringan riset Prancis tahun 1970-an yang menjadi pelopor dalam membebankan tanggung jawab pengiriman data pada pengirim dan penerima, bukan pada jaringan itu sendiri. **NSFNET** (_National Science Foundation Network_) adalah jaringan tulang punggung AS yang dibangun pertengahan 1980-an dan menjadi pondasi infrastruktur internet modern.
 
 Setelah menyelesaikan room ini, kamu akan paham:
-*   Bagaimana model **Client-Server** bekerja — ini dasar dari hampir semua interaksi di internet.
-*   Konsep-konsep penting seperti **DNS**, **Client**, **Server**, **Port**, **Protocol**, dan **Network**.
 
-> **for your information:**
-> **ARPANET** (_Advanced Research Projects Agency Network_) — Jaringan komputer pertama di dunia yang menggunakan protokol paket data, dikembangkan oleh Departemen Pertahanan AS sebagai fondasi internet yang kita kenal sekarang.
-> **CYCLADES** — Jaringan riset Prancis tahun 1970-an yang menjadi pelopor dalam membebankan tanggung jawab pengiriman data pada pengirim/penerima (host), bukan pada jaringan itu sendiri.
-> **NSFNET** (_National Science Foundation Network_) — Jaringan tulang punggung (*backbone*) di AS yang dibuat pada pertengahan 1980-an untuk menghubungkan pusat-pusat superkomputer dan menjadi pondasi infrastruktur internet modern.
-
-## Pizza Delivery
-
-Cara paling gampang untuk memahami bagaimana sistem komputer saling memberikan layanan (*service*) adalah lewat analogi dunia nyata. Mari kita bayangkan proses memesan **Pizza Luigi**.
-
-Malam Sabtu tiba, Alice dan Bob ingin makan pizza.
-1.  **Menu**: Alice melihat menu Pizza Luigi dan memilih pizza yang dia mau.
-2.  **GPS**: Bob masuk ke mobil, memasukkan alamat Luigi ke GPS, dan mulai menyetir.
-3.  **Order**: Begitu sampai, Bob masuk ke toko dan memesan: *"Satu pepperoni pizza ukuran besar dan satu cola."*
-4.  **Acknowledge**: Karyawan toko mencatat pesanan dan mulai membuat pizzanya.
-5.  **Enjoy**: Setelah pesanan siap, Bob pulang dan menikmati malam pizza yang indah bersama Alice.
-
-Proses ini terlihat sederhana karena kita sudah terbiasa melakukannya. Tapi kalau dipikir lebih dalam, ada banyak langkah detail di baliknya yang mirip dengan cara komputer berinteraksi. Mari kita bedah satu per satu.
+- Bagaimana model Client-Server bekerja — cara kerja dasarnya menjadi fondasi hampir semua interaksi di internet.
+- Apa fungsi DNS, port, dan protocol dalam proses komunikasi jaringan.
+- Bagaimana HTTP bekerja secara teknis saat kamu membuka sebuah website.
 
 ---
 
-### Mapping Pizza to Computers
+## The Client-Server Model
 
-Dalam dunia *Cyber Security* dan *Networking*, setiap langkah di atas punya penjelasan teknisnya:
+### Core Concept
 
-![Model Client-Server](../../Assets/Images/Client-server.png)
+Model Client-Server membagi peran dalam komunikasi jaringan menjadi dua:
 
-| Langkah memesan Pizza | Istilah Komputer | Penjelasan |
+- **Client** — perangkat atau software yang menginisiasi permintaan. Contoh: browser di laptopmu saat kamu membuka website.
+- **Server** — sistem yang mendengarkan permintaan masuk (_listening_) dan memberikan respons. Contoh: web server yang menyimpan dan menyajikan halaman website.
+
+Proses dasarnya selalu mengikuti pola yang sama:
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C->>S: Request (permintaan sumber daya)
+    S-->>C: Response (data atau pesan error)
+```
+
+Client tidak bisa mendapat respons tanpa mengirim request terlebih dahulu. Server tidak akan mengirim data kecuali ada request yang masuk. Semua komunikasi diinisiasi oleh Client.
+
+---
+
+### Key Components
+
+#### IP Address
+
+Setiap perangkat dalam jaringan membutuhkan identitas unik agar data bisa dikirim ke tujuan yang benar. Identitas ini disebut **IP Address** (_Internet Protocol Address_) — label numerik yang diberikan ke setiap perangkat di jaringan.
+
+Contoh format IPv4: `104.26.11.210`
+
+#### DNS
+
+Manusia lebih mudah mengingat nama dibanding angka. **DNS** (_Domain Name System_) adalah sistem yang menerjemahkan nama domain yang mudah dibaca manusia — seperti `tryhackme.com` — menjadi IP address yang dimengerti oleh mesin.
+
+Tanpa DNS, kamu harus menghafal IP address setiap website yang ingin dikunjungi.
+
+```mermaid
+sequenceDiagram
+    participant C as Browser
+    participant D as DNS Server
+    participant S as Web Server
+    C->>D: "tryhackme.com" itu IP berapa?
+    D-->>C: 104.26.11.210
+    C->>S: Request ke 104.26.11.210
+    S-->>C: Response (halaman web)
+```
+
+#### Port
+
+Satu server bisa menjalankan banyak layanan secara bersamaan. **Port** adalah angka unik (rentang 0–65535) yang berfungsi sebagai identifier untuk menentukan layanan mana yang ingin diakses di sebuah server.
+
+Beberapa port standar yang wajib diingat:
+
+| Port | Layanan | Keterangan |
 | :--- | :--- | :--- |
-| **Alamat Luigi** | **IP Address** | Lokasi unik di jaringan agar paket data tahu harus ke mana. |
-| **GPS** | **DNS** | Mengubah nama yang manusia mengerti (Pizza Luigi) menjadi alamat yang komputer mengerti (IP). |
-| **Menu** | **Service/Content** | Apa yang tersedia untuk diminta oleh user. |
-| **Pemesanan** | **Request** | Pesan yang dikirim oleh Client untuk mendapatkan layanan tertentu. |
-| **Konfirmasi** | **Response** | Jawaban dari Server yang menyatakan permintaan diterima atau ditolak. |
-| **Makan Pizza** | **Data Transfer** | Hasil akhir yang diterima oleh user (halaman web, file, dll). |
+| **80** | HTTP | Komunikasi web tidak terenkripsi |
+| **443** | HTTPS | Komunikasi web terenkripsi |
+| **22** | SSH | Remote access terenkripsi |
+| **25** | SMTP | Pengiriman email |
+| **53** | DNS | Resolusi nama domain |
+
+Client harus menghubungkan ke port yang benar agar permintaannya diterima oleh layanan yang tepat.
+
+#### Protocol
+
+**Protocol** adalah kumpulan aturan yang menentukan bagaimana Client dan Server berkomunikasi — format pesan, urutan pengiriman, cara menangani error, dan perintah yang dikenali kedua pihak.
+
+Tanpa protocol yang disepakati, Client dan Server tidak akan bisa saling memahami meskipun terhubung secara fisik.
 
 ---
 
-Sekarang, setelah analoginya jelas, mari kita lihat bagaimana komponen-komponen ini bekerja secara teknis.
+### Mapping to Real World
 
-#### 1. Client & Server
-Ini dua peran utama dalam komunikasi jaringan:
-*   **Client**: Perangkat atau software yang **menginisiasi** permintaan (misal: Browser di laptopmu).
-*   **Server**: Sistem yang **mendengarkan** (*listening*) dan melayani permintaan tersebut (misal: Web Server THM). Perbedaan detail antara Client dan Server secara hardware dibahas di catatan [Computer Types](Computer-Types.md).
+Untuk memperjelas hubungan antar komponen, berikut pemetaan ke skenario sehari-hari:
 
-#### 2. Request & Response
-Ini cara Client dan Server bertukar data — dan formatnya harus terstruktur:
-*   **Request**: Harus diformat dengan benar agar Server paham sumber daya mana yang diminta.
-*   **Response**: Jawaban dari Server yang bisa berupa data produk (Sukses) atau pesan kesalahan (Error) jika sumber daya tidak ditemukan atau permintaan salah format.
-
-#### 3. Protocol: Rules of Communication
-Protocol adalah kumpulan aturan yang menentukan bagaimana Client dan Server berbicara satu sama lain. Secara spesifik, **Protocol** mengatur:
-*   Sintaks dan perintah yang dimengerti (misal: `GET`, `POST`).
-*   Bagaimana pesan harus disusun (urutan data).
-*   Bagaimana menangani kesalahan jika komunikasi terputus.
-
-#### 4. Port: Identifying Services
-Port adalah angka unik (0-65535) yang berfungsi sebagai "nomor pintu" untuk menentukan layanan mana yang ingin kamu akses di sebuah server.
-*   Satu Server bisa menjalankan banyak layanan sekaligus (Web di port 80/443, Email di port 25, dll).
-*   Client harus menghubungkan ke **Port** yang benar agar sampai ke layanan yang tepat.
-
-#### 5. DNS: Domain Name System
-Sistem yang memetakan nama domain yang mudah diingat manusia menjadi **IP Address** yang dimengerti mesin. Tanpa DNS, kamu harus menghafal angka seperti `104.26.11.210` untuk membuka sebuah website.
-
-> **for your information:**
-> **IP Address** (_Internet Protocol Address_) — Label numerik unik yang diberikan kepada setiap perangkat di jaringan untuk identifikasi dan lokasi komunikasi.
+| Skenario Nyata | Komponen Jaringan | Fungsi |
+| :--- | :--- | :--- |
+| Alamat toko | **IP Address** | Lokasi unik di jaringan sebagai tujuan pengiriman data |
+| Aplikasi navigasi | **DNS** | Menerjemahkan nama lokasi menjadi koordinat yang bisa diproses |
+| Nomor antrian layanan | **Port** | Menentukan layanan spesifik mana yang ingin diakses |
+| Bahasa yang disepakati | **Protocol** | Aturan komunikasi yang dipahami kedua pihak |
+| Permintaan ke kasir | **Request** | Pesan terstruktur dari Client ke Server |
+| Jawaban dari kasir | **Response** | Balasan Server berisi data atau pesan error |
 
 ---
 
-### Role in Cyber Security (Real-World Relevance)
+## HTTP — How the Web Communicates
 
-Kenapa kamu perlu paham model ini? Karena setiap komponen di atas adalah titik yang bisa diserang:
-*   **DNS Spoofing**: Penyerang memanipulasi DNS agar mengarahkan user ke server palsu (seperti mengarahkan Bob ke toko pizza palsu).
-*   **DoS (Denial of Service)**: Membanjiri server dengan jutaan *Request* palsu hingga server tidak sanggup merespons pengguna asli.
-*   **Port Scanning**: Hacker mencoba mengetuk semua "pintu" (Port) di server untuk mencari layanan yang punya celah keamanan terbuka.
-*   **MitM (Man-in-the-Middle)**: Penyerang mencegat komunikasi antara Client dan Server untuk mencuri data sensitif di tengah jalan.
+**HTTP** (_Hypertext Transfer Protocol_) adalah protocol yang digunakan browser dan web server untuk berkomunikasi. Versi amannya — **HTTPS** (_HTTP Secure_) — mengenkripsi seluruh komunikasi menggunakan **TLS** (_Transport Layer Security_) sehingga data tidak bisa dibaca pihak ketiga yang mencegat koneksi.
 
-## Web Communication in Practice
-
-Sekarang konsep dasarnya sudah jelas. Mari kita lihat bagaimana komunikasi ini terjadi di dunia nyata, khususnya saat kamu buka website. Protokol yang paling sering dipakai adalah **HTTP** (_Hypertext Transfer Protocol_) atau versi amannya, **HTTPS**.
+> **for your information:** **TLS** (_Transport Layer Security_) adalah protocol kriptografi yang mengenkripsi data yang dikirim antara Client dan Server. Ketika kamu melihat ikon gembok di browser, itu menandakan koneksi sudah diproteksi oleh TLS. **Enkripsi** adalah proses mengubah data menjadi format yang tidak bisa dibaca tanpa kunci dekripsi yang benar.
 
 ### Stateless Protocol
 
-HTTP dikenal sebagai protokol yang bersifat **stateless**.
-*   **Artinya**: Setiap permintaan (*Request*) diproses secara mandiri. Server tidak "mengingat" apa yang kamu lakukan sebelumnya.
-* Seperti memesan kopi di kasir yang pelupa. Setiap kali kamu datang (walaupun baru 5 detik yang lalu), kasir itu akan bertanya lagi siapa kamu dan mau pesan apa, karena dia tidak punya memori tentang kunjunganmu sebelumnya.
+HTTP bersifat **stateless** — setiap request diproses secara independen. Server tidak menyimpan informasi tentang request sebelumnya. Setiap kali browser mengirim request baru, server memperlakukannya seolah ini adalah interaksi pertama.
 
-**Bagaimana website modern mengingat kita (Login)?**
-Karena HTTP aslinya pelupa, pengembang web menambahkan mekanisme di level aplikasi menggunakan **Cookie** atau **Token**. Begitu kamu login, server memberimu "kartu identitas" kecil yang akan dikirimkan kembali oleh browsermu di setiap permintaan berikutnya. Tanpa ini, kamu harus login ulang setiap kali klik tombol di website.
+Konsekuensinya: HTTP murni tidak bisa "mengingat" bahwa kamu sudah login. Setiap klik ke halaman baru akan memaksamu login ulang.
 
-### HTTP Methods (Commands)
+Untuk mengatasi keterbatasan ini, aplikasi web menggunakan mekanisme tambahan di level aplikasi:
 
-Dalam bahasa teknis HTTP, perintah yang diberikan Client ke Server disebut sebagai **Method**. Berdasarkan dokumen **RFC** (_Request for Comments_), ada 9 metode inti, tapi beberapa yang paling sering kamu temui adalah:
+- **Cookie** — file kecil yang disimpan browser dan dikirim kembali ke server di setiap request berikutnya sebagai identifikasi sesi.
+- **Token** — string terenkripsi yang berfungsi sebagai bukti autentikasi, disisipkan di header setiap request.
 
-| Method | Fungsi Utama | Konteks Attacker |
-| :--- | :--- | :--- |
-| **GET** | Mengambil data dari server (seperti membaca artikel). | Digunakan untuk mencari file/direktori tersembunyi. |
-| **POST** | Mengirim data ke server (seperti mengisi form login). | Target utama untuk serangan injeksi atau pencurian kredensial. |
-| **PUT** | Mengunggah atau mengganti file yang sudah ada. | Berbahaya jika salah konfigurasi (bisa upload file jahat). |
-| **DELETE** | Menghapus sumber daya di server. | Bisa merusak data jika tidak dibatasi aksesnya. |
-| **HEAD** | Mirip GET, tapi cuma minta *header*-nya saja (tanpa isi). | Untuk mengecek apakah sebuah file ada tanpa harus mendownloadnya. |
-
-> **for your information:**
-> **RFC** (_Request for Comments_) — Dokumen teknis resmi yang berisi standar dan protokol internet yang dikembangkan oleh IETF (_Internet Engineering Task Force_).
-
-Di bagian selanjutnya, kita akan fokus membedah **GET** secara praktis melalui apa yang dilakukan browsermu saat membuka website.
-
-### The GET Method: Retrieving Resources
-
-Metode **GET** sebenarnya sangat sederhana. Kita menggunakan metode ini untuk **mengambil** sumber daya dari web server. 
-*   **Contoh**: `GET https://tryhackme.com/index.php`. Permintaan ini akan mengambil halaman utama website TryHackMe.
-
-Kamu tidak perlu mengetikkan perintah ini secara manual. Saat kamu membuka browser (ini adalah **Client**) dan mengetikkan `https://tryhackme.com`, browsermu akan bekerja di bagian back-end untuk mengirimkan pesan HTTP berdasarkan informasi yang kamu berikan dan standar spesifikasi HTTP lainnya.
-
-#### Interaction
-
-Saat web server menerima permintaan tersebut, ia akan mengirimkan jawaban (Response) yang berisi dua hal penting:
-1.  **Status Code**: Angka yang menunjukkan jenis respons (misal: `200 OK` jika berhasil).
-2.  **Information**: Isi dari sumber daya yang diminta (misal: kode HTML halaman web).
-
-![Alur GET Request](../../Assets/Images/GET.png)
-
-### GET Request Demo
-
-Untuk melihat bagaimana aslinya sebuah **GET Request** bekerja, kamu bisa mencobanya langsung di browser menggunakan fitur **Developer Tools** (tekan `F12` atau klik kanan -> `Inspect`).
-
-1.  Buka browser dan akses alamat: `http://httpdemo.local:8080`.
-2.  Buka tab **Network**. Tab ini berfungsi untuk membedah, menganalisis, dan memantau semua lalu lintas data yang lewat di browsermu.
-3.  Klik tombol **Reload** di browser.
-
-Kamu akan melihat daftar file yang diminta oleh browser ke server (seperti `index.html`, `style.css`, dan `script.js`). Semuanya menggunakan metode **GET**.
-
-![Demo GET Request di DevTools](../../Assets/Images/GET-Demo.png)
-
-> **Common Mistake:** Pemula sering lupa membuka tab **Network** *sebelum* mereload halaman. Jika tab Network kosong, cukup tekan reload agar browser mengirim ulang permintaannya dan datanya muncul di daftar.
-
-Jika kamu mengklik salah satu entri tersebut (misal `index.html`), kamu akan melihat informasi lebih detail di panel sebelah kanan:
-
-![Detail HTTP Request di DevTools](../../Assets/Images/Request-demo.png)
-
-#### HTTP Request Information
-
-Meskipun terlihat banyak bagian informasi yang rumit, ada beberapa hal penting yang wajib kamu pahami:
-*   **Scheme**: Menunjukkan protokol yang digunakan (**HTTP** atau **HTTPS**).
-*   **Host**: Nama server tujuan tempat kita meminta sumber daya.
-*   **Filename**: Menunjukkan file spesifik yang diminta. Dalam contoh kita, `/` berarti `index.html`.
-*   **Address**: Alamat IP server tujuan. Jika muncul `127.0.0.1`, artinya website tersebut di-host di komputermu sendiri (*localhost*).
-*   **Status**: Menunjukkan apakah permintaan berhasil (misal: `200 OK`).
-
-#### Response Structure
-
-Saat server merespons, pesan tersebut dibagi menjadi dua bagian utama:
-1.  **Response Header**: Berisi **metadata** tentang respons tersebut (seperti tipe file, tanggal, dan informasi server).
-2.  **Response Body**: Berisi **konten asli** yang kamu minta (seperti kode HTML yang kemudian dirender oleh browser menjadi tampilan web). Kamu bisa melihat isi body ini dengan mengklik tab **"Response"** di panel detail.
-
-![Isi Response Body (HTML)](../../Assets/Images/Response-demo.png)
-
-> **for your information:**
-> **Localhost** (`127.0.0.1`) — Alamat IP standar yang digunakan untuk merujuk ke komputer yang sedang kamu gunakan saat ini. Berguna untuk testing aplikasi sebelum di-online-kan.
+> **for your information:** **Cookie** adalah data kecil yang disimpan browser dan dikirim kembali ke server secara otomatis di setiap request, memungkinkan server mengenali pengguna yang sama lintas request. **Token** dalam konteks autentikasi adalah string terenkripsi — umumnya berformat **JWT** (_JSON Web Token_) — yang membuktikan identitas pengguna tanpa server perlu menyimpan state sesi.
 
 ---
 
-### Pertanyaan Singkat
+### HTTP Methods
 
-*   Apa yang dimaksud dengan **stateless** pada protokol HTTP, dan bagaimana website mengatasi keterbatasan ini?
-*   Sebutkan dua komponen dalam model Client-Server yang sering menjadi target serangan!
-*   Apa perbedaan fungsi **Response Header** dan **Response Body**?
+HTTP mendefinisikan sejumlah **method** — perintah yang dikirim Client untuk memberitahu server tindakan apa yang diminta. Berdasarkan spesifikasi **RFC** (_Request for Comments_), ada sembilan method inti, tapi berikut yang paling sering ditemui:
+
+> **for your information:** **RFC** (_Request for Comments_) adalah dokumen teknis resmi yang mendefinisikan standar dan protocol internet, dikembangkan dan dipublikasikan oleh **IETF** (_Internet Engineering Task Force_).
+
+| Method | Fungsi | Relevansi Keamanan |
+| :--- | :--- | :--- |
+| **GET** | Mengambil sumber daya dari server | Digunakan untuk memindai file dan direktori tersembunyi |
+| **POST** | Mengirim data ke server untuk diproses | Target umum untuk serangan injeksi dan pencurian kredensial |
+| **PUT** | Mengunggah atau mengganti sumber daya di server | Berbahaya jika tidak dikonfigurasi dengan benar — bisa digunakan untuk mengunggah file berbahaya |
+| **DELETE** | Menghapus sumber daya di server | Berpotensi merusak data jika kontrol akses tidak diterapkan dengan ketat |
+| **HEAD** | Sama seperti GET tapi hanya mengembalikan header, tanpa body | Digunakan untuk memverifikasi keberadaan file tanpa mengunduh isinya |
+
+---
+
+### GET Request in Detail
+
+Method **GET** adalah yang paling sering digunakan — setiap kali browser memuat halaman web, ia mengirim GET request untuk setiap sumber daya yang dibutuhkan: HTML, CSS, JavaScript, gambar, dan sebagainya.
+
+Alur lengkap saat browser membuka sebuah halaman:
+
+```mermaid
+sequenceDiagram
+    participant B as Browser (Client)
+    participant D as DNS Server
+    participant W as Web Server
+
+    B->>D: Resolusi DNS: tryhackme.com
+    D-->>B: IP Address: 104.26.11.210
+    B->>W: GET /index.html HTTP/1.1
+    W-->>B: 200 OK + HTML content
+    B->>W: GET /style.css HTTP/1.1
+    W-->>B: 200 OK + CSS content
+    B->>W: GET /script.js HTTP/1.1
+    W-->>B: 200 OK + JS content
+```
+
+Setiap file dimuat dengan GET request terpisah. Browser menunggu respons dari setiap request sebelum merender halaman secara penuh.
+
+---
+
+### HTTP Request Structure
+
+Sebuah HTTP request terdiri dari beberapa komponen yang dikirim bersama ke server:
+
+```
+GET /index.html HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+```
+
+| Komponen | Penjelasan |
+| :--- | :--- |
+| **Method** | Perintah yang diminta — GET, POST, dll |
+| **Path** | Lokasi sumber daya di server — `/index.html` |
+| **HTTP Version** | Versi protocol yang digunakan — `HTTP/1.1` |
+| **Host** | Nama server tujuan |
+| **User-Agent** | Identitas software pengirim request (browser, script, dll) |
+| **Accept** | Tipe konten yang bisa diterima Client |
+
+---
+
+### HTTP Response Structure
+
+Server merespons setiap request dengan dua bagian utama:
+
+**1. Response Header** — metadata tentang respons:
+
+```
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 1234
+Server: nginx
+```
+
+**2. Response Body** — konten aktual yang diminta (kode HTML, data JSON, file, dll).
+
+#### HTTP Status Codes
+
+Status code adalah angka tiga digit yang dikirim server untuk memberitahu Client hasil dari request-nya:
+
+| Kode | Kategori | Contoh |
+| :--- | :--- | :--- |
+| **2xx** | Sukses | `200 OK` — request berhasil diproses |
+| **3xx** | Redirect | `301 Moved Permanently` — sumber daya pindah ke URL baru |
+| **4xx** | Error dari Client | `404 Not Found` — sumber daya tidak ditemukan; `403 Forbidden` — akses ditolak |
+| **5xx** | Error dari Server | `500 Internal Server Error` — server mengalami kegagalan internal |
+
+> **Common Mistake:** Status code `403 Forbidden` dan `404 Not Found` sering tertukar. `404` berarti sumber daya tidak ada. `403` berarti sumber daya ada, tapi kamu tidak punya izin untuk mengaksesnya — informasi ini berguna saat melakukan enumeration karena `403` mengonfirmasi keberadaan path tersebut.
+
+---
+
+### Observing HTTP in Practice
+
+Kamu bisa melihat HTTP request dan response secara langsung menggunakan **Developer Tools** di browser.
+
+1. Buka browser, tekan `F12` untuk membuka Developer Tools.
+2. Pindah ke tab **Network** — tab ini merekam semua lalu lintas HTTP yang dilakukan browser.
+3. Reload halaman yang ingin diamati.
+4. Klik salah satu entry di daftar untuk melihat detail request dan response-nya.
+
+> **Common Mistake:** Tab Network harus sudah terbuka sebelum halaman di-reload. Jika tab Network baru dibuka setelah halaman dimuat, daftar request akan kosong karena Developer Tools tidak merekam request yang terjadi sebelum tab aktif.
+
+Informasi yang bisa dibaca dari setiap entry:
+
+| Field | Penjelasan |
+| :--- | :--- |
+| **Scheme** | Protocol yang digunakan — HTTP atau HTTPS |
+| **Host** | Nama server tujuan |
+| **Path** | File atau endpoint yang diminta |
+| **Status** | Hasil request — `200 OK`, `404 Not Found`, dll |
+| **Address** | IP address aktual server yang merespons |
+
+> **for your information:** **Localhost** (`127.0.0.1`) adalah IP address standar yang merujuk ke komputer yang sedang kamu gunakan. Jika address yang muncul di Developer Tools adalah `127.0.0.1`, berarti website tersebut berjalan di komputermu sendiri — bukan di server eksternal.
+
+---
+
+## Quick Review
+
+- Apa yang dimaksud dengan stateless pada HTTP, dan mekanisme apa yang digunakan aplikasi web untuk mengatasi keterbatasan ini?
+- Kenapa status code `403 Forbidden` lebih informatif dibanding `404 Not Found` dari perspektif attacker yang sedang melakukan enumeration?
+- Jelaskan peran DNS dalam proses komunikasi Client-Server — apa yang terjadi jika DNS server tidak bisa dihubungi?
