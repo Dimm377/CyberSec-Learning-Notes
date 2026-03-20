@@ -45,7 +45,7 @@ Setelah menyelesaikan room ini, kamu akan paham:
 
 ## Virtualisation Overview
 
-### The Problem: One Server, One Application
+### Problem: One Server, One Application
 
 Sebelum virtualisasi ada, aturan main di dunia IT itu sederhana: **satu server, satu aplikasi.** Setiap layanan digital berjalan di mesin fisik masing-masing. Saat bisnis berkembang dan membutuhkan lebih banyak layanan, solusinya selalu sama — beli lebih banyak server.
 
@@ -60,13 +60,13 @@ Singkatnya: perusahaan membayar sangat mahal untuk hardware yang sebagian besar 
 
 ---
 
-### The Solution: Sharing Hardware Safely
+### Solution: Sharing Hardware Safely
 
 Virtualisasi hadir dengan satu ide sederhana yang mengubah segalanya:
 
 > _Bagaimana kalau beberapa aplikasi bisa berbagi satu server fisik yang sama, tapi tetap aman dan terisolasi?_
 
-Untuk mewujudkan ini, diperkenalkan sebuah lapisan software bernama **hypervisor** — software yang membagi sumber daya server fisik ke beberapa komputer virtual, dan memastikan setiap komputer virtual tersebut berperilaku seperti mesin mandiri meskipun semua berbagi hardware yang sama.
+Untuk mewujudkan ini, diperkenalkan sebuah lapisan software bernama **hypervisor**, yaitu software yang membagi sumber daya server fisik ke beberapa komputer virtual, dan memastikan setiap komputer virtual tersebut berperilaku seperti mesin mandiri meskipun semua berbagi hardware yang sama.
 
 Analoginya seperti gedung apartemen. Bayangkan satu orang tinggal sendirian di gedung 10 lantai: dia hanya memakai satu lantai, tapi menanggung biaya perawatan seluruh gedung. Mahal dan tidak efisien. Sekarang bayangkan gedung itu dibagi menjadi apartemen-apartemen terpisah — setiap penghuni punya pintu, dapur, dan privasi sendiri, tapi semuanya berbagi infrastruktur utama gedung: listrik, air, dan lift.
 

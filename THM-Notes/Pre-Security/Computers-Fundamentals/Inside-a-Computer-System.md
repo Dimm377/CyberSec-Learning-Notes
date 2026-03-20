@@ -1,281 +1,252 @@
-# TryHackMe: Inside a Computer System
+# Inside a Computer System
 
-- **Room Link:** [Inside a Computer System](https://tryhackme.com/room/insideacomputersystem)
-- **Category:** Pre-Security
-- **Difficulty:** Easy
+_Catatan dari TryHackMe | Pre-Security Path — Easy_
+_Room: [Inside a Computer System](https://tryhackme.com/room/insideacomputersystem)_
 
 ---
 
 ## Introduction
 
-Sebelum kamu terjun lebih jauh ke dunia cyber security, ada satu hal fundamental yang wajib kamu pahami: **apa yang sebenarnya sedang kamu lindungi?**
+Sebelum kamu terjun lebih jauh ke dunia cyber security, ada satu pertanyaan fundamental yang harus dijawab dulu: **apa yang sebenarnya sedang kamu lindungi?**
 
-Bayangkan kamu adalah seorang kepala keamanan sebuah kerajaan mewah. Sebelum kamu memasang penjaga di pintu depan atau mengunci jendela, kamu harus tahu dulu seluk-beluk kerajaan tersebut. Di mana letak ruang harta karunnya? Di mana gudang makanannya? Siapa saja yang boleh masuk ke kamar sang komandan? Kalau kamu tidak tahu apa yang ada di kerajaanmu, mustahil kamu bisa melindunginya dengan efektif.
+Seorang teknisi keamanan yang tidak memahami sistem yang dijaganya akan kesulitan menentukan di mana titik lemahnya, apa yang perlu diprioritaskan, dan bagaimana sebuah serangan bisa masuk. Pemahaman tentang hardware bukan sekadar pengetahuan dasar — ini adalah fondasi yang akan terus kamu butuhkan saat mempelajari forensik digital, malware analysis, hingga eksploitasi sistem.
 
-Sama halnya dengan keamanan komputer. Mencoba menjaga sistem yang tidak kamu pahami itu seperti menjaga kerajaan yang belum pernah kamu lihat. Di room ini, kita akan membedah kerajaan digital kita, yaitu komputer.
-
-### Learning Objectives
+Di room ini, kita akan membedah komponen-komponen penyusun komputer: apa fungsinya, bagaimana mereka saling terhubung, dan kenapa masing-masing relevan untuk cyber security.
 
 Setelah menyelesaikan room ini, kamu akan paham:
-*   Apa saja komponen yang ada di dalam komputer dan apa tugas masing-masing.
-*   Bagaimana komponen-komponen ini bekerja sama untuk menghidupkan sistem.
-*   Kenapa semua ini penting untuk kamu yang mau terjun ke cyber security.
 
-Tenang, kita akan bahas pelan-pelan tanpa kebanyakan istilah teknis. Fokusnya adalah membangun fondasi yang kuat dulu.
-
-> **for your information:** 
-> **End-to-end security** (Keamanan dari ujung ke ujung) dimulai dengan memahami setiap titik dalam sebuah sistem, termasuk perangkat kerasnya.
+- Apa saja komponen di dalam komputer dan apa tugas masing-masing.
+- Bagaimana komponen-komponen ini bekerja sama untuk menghidupkan sistem.
+- Kenapa pemahaman hardware penting untuk siapa saja yang ingin serius di cyber security.
 
 ---
 
 ## Inside a Computer System
 
-Hampir semua komputer yang kamu temui, mulai dari laptop, HP, sampai server canggih (variasi jenis komputer dibahas di catatan [Computer Types](Computer-Types.md)), dibangun menggunakan blok penyusun yang sama. Setiap bagian punya tugas spesifik, dan ketika bekerja sama, mereka membuat komputer itu hidup.
+Hampir semua komputer yang kamu temui — laptop, desktop, hingga server — dibangun menggunakan blok penyusun yang sama. Setiap komponen punya tugas spesifik, dan ketika bekerja bersama, mereka membentuk sistem yang fungsional.
 
 ```mermaid
 graph TD
-    PSU["PSU (Daya)"] -->|Listrik| MB["Motherboard"]
-    MB -->|Socket| CPU["CPU (Otak)"]
+    PSU["PSU (Sumber Daya)"] -->|Listrik| MB["Motherboard"]
+    MB -->|Socket| CPU["CPU (Prosesor)"]
     MB -->|DIMM Slots| RAM["RAM (Memori Sementara)"]
     MB -->|SATA / PCIe| Storage["Storage (SSD/HDD)"]
-    MB -->|PCIe x16| GPU["GPU (Visual)"]
+    MB -->|PCIe x16| GPU["GPU (Pemroses Visual)"]
     MB -->|PCIe / Onboard| NET["Network Adapter"]
     MB -->|USB / HDMI| IO["I/O Devices"]
 ```
 
-Untuk memudahkan pemahaman, kita akan pakai analogi **Tubuh Manusia**. Ini ringkasan cepatnya sebelum kita bedah satu per satu:
+Ringkasan komponen sebelum kita bedah satu per satu:
 
-| Komponen | Analogi Tubuh | Fungsi Utama |
+| Komponen | Fungsi Utama |
+| :--- | :--- |
+| **Motherboard** | Menghubungkan semua komponen dan menjadi jalur komunikasi antar bagian. |
+| **CPU** | Memproses semua instruksi yang diberikan oleh sistem dan aplikasi. |
+| **RAM** | Menyimpan data yang sedang aktif digunakan agar bisa diakses CPU dengan cepat. |
+| **Storage (SSD/HDD)** | Menyimpan data secara permanen — OS, aplikasi, dan file pengguna. |
+| **Network Adapter** | Menghubungkan komputer ke jaringan lokal maupun internet. |
+| **PSU** | Mengubah listrik AC dari stopkontak menjadi daya DC yang dibutuhkan komponen. |
+| **GPU** | Memproses dan merender output visual yang ditampilkan ke monitor. |
+| **I/O Devices** | Menerima input dari pengguna dan menyampaikan output kembali ke pengguna. |
+
+---
+
+### Motherboard
+
+**Motherboard** adalah papan sirkuit utama yang menjadi tempat semua komponen terpasang dan saling berkomunikasi. Tanpa motherboard, setiap komponen hanyalah unit terpisah yang tidak bisa berkoordinasi.
+
+> **for your information:** **PCB** (_Printed Circuit Board_) adalah papan berlapis tembaga yang menjadi dasar motherboard. Jalur-jalur tembaga kecil di permukaannya disebut **bus**, yang berfungsi mengantarkan data dan sinyal listrik antar komponen.
+
+Pada motherboard desktop yang umum, kamu akan menemukan berbagai slot dan konektor berikut:
+
+| Slot / Konektor | Nama Teknis | Fungsi |
 | :--- | :--- | :--- |
-| **Motherboard** | **Kerangka & Saraf** | Menghubungkan semua komponen. |
-| **CPU** | **Otak** | Memproses semua instruksi. |
-| **RAM** | **Memori Jangka Pendek** | Menyimpan data sementara agar cepat diakses. |
-| **Storage (SSD/HDD)** | **Memori Jangka Panjang** | Menyimpan data secara permanen. |
-| **Network Adapter** | **Pita Suara** | Berkomunikasi dengan sistem lain. |
-| **PSU** | **Jantung & Paru-paru** | Menyuplai energi ke seluruh komponen. |
-| **GPU** | **Korteks Visual** | Memproses dan menampilkan gambar. |
-| **I/O Devices** | **Panca Indera & Anggota Tubuh** | Menerima input dan mengeluarkan output. |
+| Tempat prosesor | **CPU Socket** | Tempat CPU dipasang. Dilengkapi mekanisme pengunci agar chip tidak bergeser. |
+| Tempat RAM | **DIMM Slots** | Tempat modul RAM dipasang. Biasanya butuh pasangan slot yang sesuai untuk performa optimal. |
+| Slot kartu grafis | **PCIe x16** | Slot panjang dengan bandwidth tinggi, khusus untuk GPU. |
+| Slot ekspansi lain | **PCIe x1 / x4** | Slot lebih pendek untuk network card, capture card, atau kartu ekspansi lainnya. |
+| Konektor storage | **SATA Connectors** | Menghubungkan SSD 2.5" atau HDD via kabel SATA. |
+| Konektor daya utama | **24-pin ATX** | Konektor daya utama dari PSU ke motherboard. |
+| Port belakang | **Back Panel I/O** | Kumpulan port di panel belakang untuk keyboard, mouse, monitor, dan perangkat USB. |
 
 ---
 
-### Motherboard — Kerangka & Sistem Saraf
+### CPU
 
-Motherboard itu seperti **kerangka tulang dan sistem saraf** tubuh kita. Semua komponen menempel di sini, dan sekaligus menjadi jalur komunikasi antar bagian.
+**CPU** (_Central Processing Unit_) adalah komponen yang menjalankan semua instruksi dalam sebuah program — menghitung nilai, memindahkan data, membuat keputusan logis, dan seterusnya. Setiap kali kamu menjalankan aplikasi, CPU yang mengeksekusi instruksi-instruksinya satu per satu.
 
-Pada motherboard desktop yang umum, kamu akan menemukan berbagai tempat (socket & slots) tempat komponen lain berkumpul:
+Beberapa karakteristik penting CPU:
 
-| Komponen | Nama Teknis | Fungsi & Detail |
+- **Multi-core** — CPU modern memiliki beberapa core yang bisa memproses instruksi secara paralel. Semakin banyak core, semakin banyak tugas yang bisa dieksekusi bersamaan.
+- **Clock speed** — diukur dalam GHz, menunjukkan berapa banyak siklus instruksi yang bisa diproses per detik.
+- **CPU Socket** — CPU terpasang ke motherboard melalui socket khusus yang dirancang sesuai arsitektur prosesornya.
+
+> **Common Mistake:** Saat memasang CPU, perhatikan tanda segitiga kecil di sudut chip dan socket. Tanda ini menunjukkan orientasi yang benar. Jika dipaksakan dengan orientasi yang salah, pin CPU bisa bengkok dan rusak secara permanen.
+
+---
+
+### RAM
+
+**RAM** (_Random Access Memory_) adalah memori kerja komputer — tempat data yang sedang aktif diproses disimpan sementara agar bisa diakses CPU dengan sangat cepat.
+
+Cara kerjanya sederhana: saat kamu membuka aplikasi, data aplikasi tersebut dimuat dari storage ke RAM. CPU kemudian membaca dan memodifikasi data di RAM secara langsung, jauh lebih cepat dibanding harus membaca dari storage setiap saat.
+
+Dua sifat krusial RAM yang wajib kamu ingat:
+
+- **Volatile** — seluruh isi RAM langsung hilang saat komputer dimatikan atau kehilangan daya. Tidak ada yang tersisa.
+- **Kecepatan tinggi** — akses data di RAM bisa ratusan kali lebih cepat dibanding SSD.
+
+> **for your information:** **DDR** (_Double Data Rate_) adalah standar teknologi RAM. Versi terbaru saat ini adalah **DDR5** dan **DDR6**, yang menawarkan bandwidth dan efisiensi daya lebih tinggi dibanding generasi sebelumnya.
+
+> **Common Mistake:** RAM dan storage sering tertukar oleh pemula. Perbedaannya jelas: **RAM** menyimpan data yang sedang diproses — sifatnya sementara dan hilang saat komputer mati. **Storage** menyimpan data secara permanen — tetap ada meskipun komputer dimatikan.
+
+---
+
+### Storage — SSD dan HDD
+
+Storage adalah perangkat yang menyimpan data secara permanen: sistem operasi, aplikasi, dan semua file pengguna. Data di storage tetap utuh meskipun komputer dimatikan.
+
+Ada dua teknologi utama yang dipakai saat ini:
+
+| Fitur | HDD (_Hard Disk Drive_) | SSD (_Solid State Drive_) |
 | :--- | :--- | :--- |
-| **CPU Socket** | **CPU Socket** | Tempat Otak (prosesor) duduk. Dilengkapi tuas kecil untuk mengunci chip agar tidak goyang. |
-| **RAM Slots** | **DIMM Slots** | Tempat Memori Jangka Pendek dipasang. Biasanya butuh **matching pairs** (pasangan yang sama) agar performa maksimal. |
-| **Expansion Slots** | **PCI Express x16** | Slot panjang yang diperkuat (reinforced) untuk kartu dengan bandwidth tinggi seperti **GPU**. |
-| **Expansion Slots** | **PCI Express x1 / x4** | Slot PCIe yang lebih pendek, biasanya digunakan untuk **Network Card**, capture card, atau kartu ekspansi lainnya. |
-| **SATA Ports** | **SATA Connectors** | Konektor data tipis berbentuk huruf L untuk menghubungkan SSD 2.5" atau HDD melalui kabel SATA. |
-| **Power Connector** | **24-pin ATX** | Konektor daya utama dari PSU yang menyuplai listrik ke seluruh motherboard dan komponennya. |
-| **Rear I/O Ports** | **Back Panel** | Kumpulan pintu di bagian belakang untuk menghubungkan Keyboard, Mouse, Monitor, dan perangkat USB lainnya. |
-
-Setiap komponen lain **menempel atau terhubung melalui** motherboard. Tanpa motherboard, komponen-komponen ini hanyalah suku cadang yang tidak bisa bekerja sama.
-
-> **for your information:**
-> **PCB** (_Printed Circuit Board_) — Motherboard pada dasarnya adalah papan sirkuit cetak raksasa. Jalur-jalur tembaga kecil di permukaannya yang disebut **bus** bertugas mengantarkan data dan listrik antar komponen.
-
----
-
-### CPU — Otak Komputer
-
-**CPU** (_Central Processing Unit_), atau yang sering disebut **prosesor**, adalah otak dari komputer. Sama seperti otak kita yang terus-menerus memproses instruksi (menghitung angka, menggerakkan tangan, dan sebagainya), CPU melakukan hal yang persis sama untuk komputer.
-
-Beberapa hal penting tentang CPU:
-*   **Multi-Core:** CPU modern punya beberapa *core* (inti prosesor) yang bisa menangani instruksi secara **paralel** (bersamaan). Semakin banyak core, semakin banyak tugas yang bisa dikerjakan sekaligus.
-*   **Koneksi:** CPU terpasang di motherboard melalui **CPU Socket**, sebuah konektor khusus yang dirancang agar CPU bisa terhubung dengan aman.
-
-> **Common Mistake:** Saat memasang CPU, perhatikan tanda segitiga kecil di sudut CPU dan socket-nya. Kalau salah posisi, pin CPU bisa bengkok dan rusak permanen.
-
----
-
-### RAM — Memori Jangka Pendek
-
-**RAM** (_Random Access Memory_) itu seperti **memori kerja jangka pendek** otak kita. Saat kamu mengerjakan sebuah tugas, otak menyimpan informasi yang relevan untuk sementara waktu. RAM bekerja dengan cara yang sama — dia menyimpan data yang sedang dibutuhkan CPU agar bisa diakses dengan sangat cepat.
-
-Yang perlu kamu tahu tentang RAM:
-*   **Volatile (Mudah hilang):** Begitu komputer dimatikan atau kehilangan daya, semua isi RAM **langsung hilang**. Beda dengan SSD yang menyimpan data secara permanen.
-*   **Teknologi modern:** RAM saat ini pakai teknologi seperti **DDR5** atau **DDR6** untuk kecepatan dan performa yang lebih tinggi.
-
-> **Common Mistake:** Banyak pemula bingung membedakan RAM dan Storage. Ingat rumus sederhana ini:
-> - **RAM** = meja kerja (semakin lebar, semakin banyak yang bisa dikerjakan sekaligus, tapi bersih saat kamu pulang).
-> - **Storage** = lemari arsip (tempat menyimpan file secara permanen).
-
----
-
-### Storage — Memori Jangka Panjang (SSD & HDD)
-
-SSD dan HDD adalah perangkat penyimpanan yang berfungsi seperti **memori jangka panjang** kita. Kalau RAM itu meja kerja yang bersih setiap pulang, Storage ini adalah lemari arsip tempat kamu menyimpan file secara permanen.
-
-| Fitur | HDD (*Hard Disk Drive*) | SSD (*Solid State Drive*) |
-| :--- | :--- | :--- |
-| **Teknologi** | Piringan magnetik berputar (*moving parts*) | Chip memori flash (*no moving parts*) |
+| **Teknologi** | Piringan magnetik berputar dengan komponen bergerak | Chip memori flash tanpa komponen bergerak |
 | **Kecepatan** | Lebih lambat | Jauh lebih cepat |
-| **Ketahanan** | Rentan guncangan (karena ada bagian bergerak) | Tahan banting |
-| **Harga** | Murah per GB | Lebih mahal per GB |
-| **Kapasitas Populer** | 1TB - 4TB | 256GB - 2TB |
-| **Koneksi** | **SATA cable** | **SATA cable** atau **PCI Express slot** |
+| **Ketahanan fisik** | Rentan terhadap guncangan | Tahan guncangan |
+| **Harga per GB** | Lebih murah | Lebih mahal |
+| **Kapasitas populer** | 1TB – 4TB | 256GB – 2TB |
+| **Koneksi** | SATA | SATA atau PCIe (NVMe) |
 
-HDD masih populer untuk menyimpan data besar yang jarang diakses (arsip, backup), sedangkan SSD jadi pilihan utama untuk OS dan aplikasi karena kecepatannya.
+HDD masih relevan untuk menyimpan data dalam jumlah besar yang jarang diakses — arsip, backup, media. SSD menjadi pilihan utama untuk sistem operasi dan aplikasi karena kecepatannya yang signifikan lebih tinggi.
 
 ---
 
-### Network Adapter — Pita Suara
+### Network Adapter
 
-Sama seperti kita menggunakan **pita suara** untuk berkomunikasi dengan lingkungan sekitar, **Network Adapter** (kartu jaringan) membuat komputer bisa berkomunikasi dengan sistem lain.
+**Network Adapter** (kartu jaringan) adalah komponen yang memungkinkan komputer berkomunikasi dengan perangkat lain di jaringan lokal maupun internet. Komponen ini menangani proses pengiriman dan penerimaan data melalui protokol jaringan.
 
 Dua varian utama:
-*   **Wired (Kabel):** Menggunakan kabel Ethernet (RJ-45). Lebih stabil dan cepat.
-*   **Wireless (Nirkabel):** Menggunakan sinyal Wi-Fi. Lebih fleksibel tapi bisa terganggu interferensi.
 
-Seringkali network adapter sudah **tertanam langsung** di motherboard (*onboard*). Tapi kalau butuh performa lebih atau fitur khusus, kamu bisa menambahkan kartu jaringan terpisah lewat **PCI Express slot**.
+- **Wired (Ethernet)** — menggunakan kabel dengan konektor **RJ-45**. Koneksi lebih stabil, latensi lebih rendah, dan tidak rentan terhadap interferensi sinyal.
+- **Wireless (Wi-Fi)** — menggunakan sinyal radio. Lebih fleksibel dari sisi mobilitas, tapi performa bisa menurun jika ada interferensi atau jarak terlalu jauh dari access point.
 
----
-
-### PSU — Jantung & Paru-paru
-
-Setiap sistem butuh energi. Seperti **jantung** yang memompa darah ke seluruh organ, **PSU** (_Power Supply Unit_) menyuplai listrik ke semua komponen komputer.
-
-PSU mengambil daya dari stopkontak (listrik AC) dan mengubahnya menjadi daya DC yang dibutuhkan komponen. Distribusinya lewat berbagai konektor:
-*   **Main Motherboard Connector** (24-pin) — menyuplai daya ke motherboard.
-*   **CPU Power Connector** (4/8-pin) — daya khusus untuk prosesor.
-*   **Molex / SATA Power** — daya untuk storage dan perangkat lainnya.
-*   **PCIe Power** (6/8-pin) — daya tambahan untuk GPU.
-
-> **Common Mistake:** Memilih PSU yang watt-nya terlalu kecil untuk kebutuhan komponen adalah kesalahan fatal. Kalau komponen butuh daya lebih besar dari kapasitas PSU, sistem akan gagal menyala atau mati mendadak (*crash*). Selalu hitung kebutuhan daya total sebelum memilih PSU.
+Network adapter sering sudah tertanam langsung di motherboard (_onboard_). Untuk kebutuhan performa lebih tinggi atau fitur khusus, adapter tambahan bisa dipasang melalui slot PCIe.
 
 ---
 
-### GPU — Korteks Visual
+### PSU
 
-**GPU** (_Graphics Processing Unit_) seperti **korteks visual** otak kita. Mata menangkap informasi visual, lalu korteks visual memproses informasi tersebut menjadi gambar yang kita "lihat". GPU bekerja dengan cara serupa — menerima data dari sistem operasi dan program, lalu mengolahnya menjadi output visual yang ditampilkan ke monitor.
+**PSU** (_Power Supply Unit_) mengambil listrik **AC** (_Alternating Current_) dari stopkontak dan mengubahnya menjadi listrik **DC** (_Direct Current_) dengan tegangan yang sesuai untuk setiap komponen.
 
-GPU terhubung ke motherboard melalui **PCI Express slot**. Untuk kebutuhan gaming, rendering 3D, atau bahkan *password cracking* di dunia cyber security, GPU yang powerful sangat dibutuhkan.
+Distribusi daya dari PSU ke komponen dilakukan melalui konektor-konektor berikut:
 
-> **for your information:**
-> Di dunia cyber security, GPU dipakai untuk **cracking password** menggunakan tool seperti **Hashcat**. GPU bisa memproses miliaran kombinasi hash per detik karena arsitekturnya yang dirancang untuk komputasi paralel masif.
+- **24-pin ATX** — konektor utama ke motherboard.
+- **4/8-pin CPU** — daya khusus untuk prosesor.
+- **SATA Power** — daya untuk storage.
+- **6/8-pin PCIe** — daya tambahan untuk GPU yang membutuhkan daya besar.
 
----
-
-### Input/Output (I/O) — Panca Indera & Anggota Tubuh
-
-Sama seperti kita punya **panca indera** untuk menerima informasi dan **anggota tubuh** untuk bertindak, komputer punya perangkat **Input** dan **Output**.
-
-**Input Devices** (menerima data dari pengguna):
-*   Keyboard, Mouse, Microphone, Scanner
-
-**Output Devices** (menampilkan hasil ke pengguna):
-*   Monitor, Printer, Speaker
-
-**Konektor umum** untuk perangkat I/O:
-*   **USB** — konektor paling universal untuk hampir semua perangkat.
-*   **HDMI** — untuk menghubungkan monitor atau TV (audio + video).
-*   **DisplayPort** — alternatif HDMI, sering dipakai monitor gaming.
+> **Common Mistake:** Memilih PSU dengan kapasitas watt yang terlalu kecil adalah kesalahan umum. Jika total konsumsi daya komponen melebihi kapasitas PSU, sistem akan gagal menyala atau mati mendadak saat beban tinggi. Hitung kebutuhan daya total semua komponen sebelum memilih PSU.
 
 ---
 
-### Pertanyaan Singkat
+### GPU
 
-*   Apa perbedaan utama antara **RAM** dan **Storage (SSD/HDD)** dalam hal ketahanan data saat listrik mati?
-*   Mengapa kita harus berhati-hati saat memilih daya (**watt**) pada **PSU**?
-*   Dalam analogi tubuh manusia, komponen mana yang bertindak sebagai **sistem saraf** yang menghubungkan semua bagian?
+**GPU** (_Graphics Processing Unit_) adalah prosesor yang dirancang khusus untuk komputasi paralel skala besar — terutama untuk merender gambar dan menampilkan output visual ke monitor.
 
-## What Happens When You Press the Start Button?
+GPU terhubung ke motherboard melalui slot **PCIe x16** dan berkomunikasi dengan monitor melalui port seperti **HDMI** atau **DisplayPort**.
 
-Sekarang semua komponen sudah terpasang di dalam komputer. Lalu, apa yang terjadi saat kamu menekan tombol power? Prosesnya mirip dengan bangun tidur di pagi hari. Kamu membuka mata, mengecek apakah semua badan terasa baik-baik saja, baru kemudian mulai beraktivitas. Komputer melakukan hal yang persis sama.
-
-Berikut urutan lengkap proses boot:
-
-```
-Press Power ──► Firmware ──► POST ──► Select Boot ──► Start
-  Button         Starts                  Device       Bootloader
-```
+> **for your information:** Di dunia cyber security, GPU dimanfaatkan untuk **password cracking** menggunakan tool seperti **Hashcat** — tool berbasis GPU untuk memecahkan hash password. GPU bisa memproses miliaran kombinasi hash per detik karena arsitekturnya yang dioptimalkan untuk komputasi paralel masif, jauh melampaui kemampuan CPU untuk tugas ini.
 
 ---
 
-### Step 1: Press the Power Button
+### Input/Output (I/O) Devices
 
-Saat kamu menekan tombol power, sinyal dikirim ke **PSU** untuk mulai mengalirkan listrik. Bayangkan tubuhmu yang sedang tidur tiba-tiba terbangun — begitu menerima oksigen, darah mulai dipompa ke seluruh organ. Di komputer, PSU mulai mendistribusikan daya ke motherboard dan semua komponen yang terhubung.
+**I/O Devices** adalah perangkat yang menangani komunikasi antara pengguna dan sistem komputer.
 
----
+**Input devices** — menerima data dari pengguna dan mengirimnya ke sistem:
+- Keyboard, mouse, mikrofon, scanner
 
-### Step 2: Firmware Starts
+**Output devices** — menyampaikan hasil pemrosesan sistem kembali ke pengguna:
+- Monitor, printer, speaker
 
-Setelah daya mengalir, semua komponen inti sudah hidup, tapi sistemnya belum sadar (belum punya kesadaran). Seperti tubuh kita yang butuh otak untuk menyala sebelum kita benar-benar sadar, komputer membutuhkan **firmware** untuk memulai semua komponennya.
+Konektor umum yang menghubungkan perangkat I/O ke komputer:
 
-Sistem pusat yang mengelola proses ini disebut **UEFI** (_Unified Extensible Firmware Interface_). UEFI adalah firmware modern yang bertugas menginisialisasi hardware dan menyiapkan lingkungan agar OS bisa dimuat.
-
-> **for your information:**
-> Kamu mungkin sering mendengar istilah **BIOS** (_Basic Input/Output System_). BIOS melakukan fungsi yang sama dengan UEFI, tapi merupakan teknologi lama yang sebagian besar sudah **digantikan oleh UEFI** di komputer modern. Jadi kalau ada yang menyebut masuk BIOS, kemungkinan besar yang dimaksud sekarang adalah UEFI.
-
----
-
-### Step 3: Power-On Self Test (POST)
-
-Setelah firmware aktif, saatnya melakukan cek kesehatan. Sama seperti kamu bangun tidur lalu mengecek apakah badan terasa baik-baik saja — kalau ada yang sakit, kamu langsung tahu ada masalah.
-
-Komputer menjalankan **POST** (_Power-On Self Test_), sebuah rutinitas yang menguji apakah setiap komponen penting:
-*   **Ada** (terpasang).
-*   **Terkonfigurasi dengan benar.**
-*   **Berfungsi normal.**
-
-Kalau ada yang gagal (misalnya RAM tidak terdeteksi), komputer akan memberikan **sinyal alarm** berupa bunyi beep atau kode error di layar.
-
-> **Common Mistake:** Jika komputer berbunyi beep berulang saat dinyalakan dan tidak mau booting, jangan panik. Bunyi beep itu adalah kode dari POST yang memberitahu komponen mana yang bermasalah. Cek manual motherboard untuk memahami pola beep nya.
-
----
-
-### Step 4: Select Boot Device
-
-Semua komponen sudah diperiksa dan berfungsi normal. Sekarang sistem mencari lokasi **boot routine**, yaitu tempat di mana OS tersimpan untuk dimuat.
-
-Di dalam UEFI, ada **daftar prioritas** (*boot order*) yang menentukan perangkat mana yang dicek duluan. Contoh urutan umum:
-
-1.  **SSD/HDD** — tempat OS utama tersimpan (paling umum).
-2.  **USB Drive** — sering dipakai untuk instalasi OS baru atau booting live environment.
-3.  **Network (PXE Boot)** — booting lewat jaringan, biasa dipakai di lingkungan enterprise.
-
----
-
-### Step 5: Initiate Bootloader
-
-Setelah perangkat boot ditemukan, **bootloader** dijalankan. Bootloader adalah program kecil yang bertugas mentransfer **OS dari storage (SSD/HDD) ke RAM**.
-
-Kenapa harus ke RAM? Karena CPU butuh akses yang sangat cepat ke instruksi OS, dan RAM jauh lebih cepat dibanding SSD/HDD. Begitu OS berhasil dimuat ke RAM, UEFI menyerahkan kendali penuh ke OS — dan komputer siap digunakan.
-
-> **for your information:**
-> Contoh bootloader yang umum:
-> - **GRUB** (_GRand Unified Bootloader_) — dipakai di kebanyakan sistem Linux.
-> - **Windows Boot Manager** — dipakai di sistem Windows.
-
----
-
-## Conclusion
-
-Sampai di sini, kita sudah membedah komponen inti sebuah komputer dan bagaimana proses booting bekerja dari tombol power sampai OS siap dipakai. Mungkin sekarang terasa seperti materi dasar biasa, tapi percayalah — semakin dalam kamu masuk ke dunia cyber security, kamu akan **terus-menerus** kembali ke pengetahuan ini.
-
-Contoh nyatanya:
-*   Memahami **RAM vs Storage** sangat krusial di **Digital Forensics** — salah langkah sedikit, bukti digital bisa hilang.
-*   Proses **boot** sering jadi target serangan. Attacker bisa menyisipkan malware di level **bootloader** atau **firmware** (disebut **bootkit/rootkit**) sehingga malware berjalan *sebelum* OS bahkan sempat dimuat — membuat antivirus biasa tidak bisa mendeteksinya.
-*   Mengetahui **network adapter** dan jenis koneksinya membantu kamu memahami bagaimana data mengalir masuk dan keluar dari sistem.
-
-### Real-World Relevance
-
-| Konsep | Relevansi di Cyber Security |
+| Konektor | Fungsi |
 | :--- | :--- |
-| **RAM (Volatile Memory)** | _Memory forensics_ — menganalisis isi RAM untuk menemukan malware yang hanya berjalan di memori. |
-| **Boot Process** | _Bootkits/Rootkits_ — malware yang menginfeksi firmware atau bootloader agar berjalan sebelum OS. |
-| **Storage (SSD/HDD)** | _Disk forensics_ — menggali bukti digital dari storage, termasuk file yang sudah dihapus. |
-| **Network Adapter** | _Network monitoring_ — memantau lalu lintas data masuk/keluar untuk mendeteksi aktivitas mencurigakan. |
+| **USB** | Konektor universal untuk hampir semua perangkat I/O. |
+| **HDMI** | Mengirimkan sinyal audio dan video ke monitor atau TV. |
+| **DisplayPort** | Alternatif HDMI dengan bandwidth lebih tinggi, umum di monitor gaming. |
 
 ---
 
-### Pertanyaan Singkat
+## What Happens When You Press the Power Button?
 
-*   Kenapa proses boot bisa menjadi target serangan hacker?
-*   Apa yang dimaksud dengan **volatile memory** dan kenapa penting dalam forensik digital?
-*   Sebutkan urutan 5 langkah proses boot dari menekan tombol power sampai OS siap digunakan.
+Semua komponen sudah terpasang. Saat kamu menekan tombol power, ada serangkaian proses terurut yang terjadi sebelum OS siap digunakan. Proses ini disebut **booting**.
+
+```mermaid
+graph LR
+    A["Tombol Power\nDitekan"] --> B["PSU Aktif\nDistribusi Daya"]
+    B --> C["Firmware\n(UEFI) Mulai"]
+    C --> D["POST\nCek Komponen"]
+    D --> E["Pilih\nBoot Device"]
+    E --> F["Bootloader\nMuat OS ke RAM"]
+    F --> G["OS Siap\nDigunakan"]
+```
+
+---
+
+### Step 1 — Power Button
+
+Saat tombol power ditekan, sinyal dikirim ke PSU untuk mulai mengalirkan daya ke motherboard dan semua komponen yang terhubung. Komponen-komponen mulai aktif secara bersamaan.
+
+---
+
+### Step 2 — Firmware Starts
+
+Setelah daya tersedia, komponen sudah aktif secara elektrikal — tapi sistem belum tahu harus melakukan apa. Di sinilah **firmware** mengambil kendali.
+
+**UEFI** (_Unified Extensible Firmware Interface_) adalah firmware modern yang berjalan pertama kali saat komputer dinyalakan. Tugasnya adalah menginisialisasi hardware dan menyiapkan lingkungan agar OS bisa dimuat.
+
+> **for your information:** **BIOS** (_Basic Input/Output System_) adalah pendahulu UEFI yang sudah sebagian besar digantikan di komputer modern. Fungsinya sama — menginisialisasi hardware saat booting — tapi UEFI menawarkan lebih banyak fitur, antarmuka grafis, dan dukungan untuk storage berkapasitas besar.
+
+---
+
+### Step 3 — POST
+
+Sebelum melanjutkan proses boot, firmware menjalankan **POST** (_Power-On Self Test_) — serangkaian pengujian otomatis untuk memverifikasi bahwa setiap komponen penting terpasang dengan benar dan berfungsi normal.
+
+Komponen yang diuji meliputi CPU, RAM, storage, dan perangkat I/O dasar. Jika ada komponen yang gagal dideteksi atau tidak merespons, sistem akan menghentikan proses boot dan memberikan sinyal error — biasanya berupa bunyi beep dengan pola tertentu atau kode error di layar.
+
+> **Common Mistake:** Jika komputer berbunyi beep berulang saat dinyalakan dan tidak mau melanjutkan booting, itu adalah sinyal dari POST bahwa ada komponen yang bermasalah. Setiap pola beep memiliki arti berbeda — cek dokumentasi motherboard untuk menerjemahkan kode beep tersebut.
+
+---
+
+### Step 4 — Select Boot Device
+
+Setelah POST selesai dan semua komponen dinyatakan normal, firmware mencari perangkat yang berisi OS untuk dimuat. Di dalam UEFI terdapat daftar prioritas yang disebut **boot order** — daftar perangkat yang dicek secara berurutan.
+
+Contoh urutan boot yang umum:
+
+1. **SSD/HDD** — tempat OS utama tersimpan.
+2. **USB Drive** — dipakai untuk instalasi OS baru atau booting ke live environment.
+3. **Network (PXE Boot)** — booting lewat jaringan, umum di lingkungan enterprise.
+
+> **for your information:** **PXE** (_Preboot Execution Environment_) adalah protokol yang memungkinkan komputer melakukan booting langsung dari server melalui jaringan, tanpa memerlukan storage lokal. Ini umum dipakai di data center untuk men-deploy OS ke banyak mesin sekaligus.
+
+---
+
+### Step 5 — Bootloader
+
+Setelah perangkat boot ditemukan, **bootloader** dijalankan. Bootloader adalah program kecil yang bertugas memuat OS dari storage ke RAM, lalu menyerahkan kendali eksekusi ke OS tersebut.
+
+Kenapa OS harus dimuat ke RAM terlebih dahulu? Karena CPU membutuhkan akses yang sangat cepat ke instruksi OS selama sistem berjalan, dan kecepatan baca RAM jauh melampaui kecepatan baca storage.
+
+> **for your information:** Contoh bootloader yang umum: **GRUB** (_GRand Unified Bootloader_) dipakai di sebagian besar distribusi Linux, sementara **Windows Boot Manager** dipakai di sistem Windows.
+
+---
+
+## Quick Review
+
+- Apa perbedaan mendasar antara RAM dan storage dalam hal persistensi data saat komputer dimatikan?
+- Kenapa proses boot bisa menjadi target serangan — di tahap mana attacker paling mungkin menyisipkan malware?
+- Jelaskan fungsi POST dan apa yang terjadi jika salah satu komponen gagal dalam pengujiannya.
