@@ -8,9 +8,9 @@
 
 ## Introduction
 
-Sebelum kamu terjun lebih jauh ke dunia cyber security, ada satu pertanyaan fundamental yang harus dijawab dulu: **apa yang sebenarnya sedang kamu lindungi?**
+Sebelum kamu belajar lebih jauh ke dunia cyber security, ada satu pertanyaan fundamental yang harus dijawab dulu: **apa yang sebenarnya sedang kamu lindungi?**
 
-Seorang teknisi keamanan yang tidak memahami sistem yang dijaganya akan kesulitan menentukan di mana titik lemahnya, apa yang perlu diprioritaskan, dan bagaimana sebuah serangan bisa masuk. Pemahaman tentang hardware bukan sekadar pengetahuan dasar — ini adalah fondasi yang akan terus kamu butuhkan saat mempelajari forensik digital, malware analysis, hingga eksploitasi sistem.
+Seorang teknisi keamanan yang tidak memahami sistem yang dijaganya akan kesulitan menentukan di mana titik lemahnya, apa yang perlu diprioritaskan, dan bagaimana sebuah serangan bisa masuk. Pemahaman tentang hardware bukan sekadar pengetahuan dasar, ini adalah pondasi yang akan terus kamu butuhkan saat mempelajari forensik digital, malware analysis, hingga eksploitation.
 
 Di room ini, kita akan membedah komponen-komponen penyusun komputer: apa fungsinya, bagaimana mereka saling terhubung, dan kenapa masing-masing relevan untuk cyber security.
 
@@ -24,7 +24,7 @@ Setelah menyelesaikan room ini, kamu akan paham:
 
 ## Inside a Computer System
 
-Hampir semua komputer yang kamu temui — laptop, desktop, hingga server — dibangun menggunakan blok penyusun yang sama. Setiap komponen punya tugas spesifik, dan ketika bekerja bersama, mereka membentuk sistem yang fungsional.
+Hampir semua komputer yang kamu temui, laptop, desktop, hingga server dibangun menggunakan blok penyusun yang sama. Setiap komponen punya tugas spesifik, dan ketika bekerja bersama, mereka membentuk sistem yang fungsional.
 
 ```mermaid
 graph TD
@@ -54,13 +54,13 @@ Ringkasan komponen sebelum kita bedah satu per satu:
 
 ### Motherboard
 
-**Motherboard** adalah papan sirkuit utama yang menjadi tempat semua komponen terpasang dan saling berkomunikasi. Tanpa motherboard, setiap komponen hanyalah unit terpisah yang tidak bisa berkoordinasi.
+**Motherboard** adalah papan sirkuit utama yang menjadi tempat semua komponen terpasang dan saling berkomunikasi. Tanpa motherboard, setiap komponen hanyalah unit terpisah yang tidak bisa berfungsi.
 
 > **for your information:** **PCB** (_Printed Circuit Board_) adalah papan berlapis tembaga yang menjadi dasar motherboard. Jalur-jalur tembaga kecil di permukaannya disebut **bus**, yang berfungsi mengantarkan data dan sinyal listrik antar komponen.
 
-Pada motherboard desktop yang umum, kamu akan menemukan berbagai slot dan konektor berikut:
+Pada motherboard desktop yang umum, kamu akan menemukan berbagai slot dan connector berikut:
 
-| Slot / Konektor | Nama Teknis | Fungsi |
+| Slot / Connector | Nama Teknis | Fungsi |
 | :--- | :--- | :--- |
 | Tempat prosesor | **CPU Socket** | Tempat CPU dipasang. Dilengkapi mekanisme pengunci agar chip tidak bergeser. |
 | Tempat RAM | **DIMM Slots** | Tempat modul RAM dipasang. Biasanya butuh pasangan slot yang sesuai untuk performa optimal. |
@@ -74,7 +74,7 @@ Pada motherboard desktop yang umum, kamu akan menemukan berbagai slot dan konekt
 
 ### CPU
 
-**CPU** (_Central Processing Unit_) adalah komponen yang menjalankan semua instruksi dalam sebuah program — menghitung nilai, memindahkan data, membuat keputusan logis, dan seterusnya. Setiap kali kamu menjalankan aplikasi, CPU yang mengeksekusi instruksi-instruksinya satu per satu.
+**CPU** (_Central Processing Unit_) adalah komponen yang menjalankan semua instruksi dalam sebuah program, menghitung nilai, memindahkan data, membuat keputusan logis, dan seterusnya. Setiap kali kamu menjalankan aplikasi, CPU yang mengeksekusi instruksi-instruksinya satu per satu.
 
 Beberapa karakteristik penting CPU:
 

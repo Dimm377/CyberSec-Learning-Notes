@@ -3,152 +3,150 @@
 - **Room Link:** [Computer Types](https://tryhackme.com/room/computertypes)
 - **Category:** Pre-Security
 - **Difficulty:** Easy
+---
 
 ## Introduction
 
-Pernahkah kamu membayangkan kalau **kulkas** di rumahmu bisa jadi celah keamanan?
+Ketika sebagian besar orang mendengar kata "komputer", yang terbayang adalah laptop atau desktop. Kenyataannya, komputer ada dalam bentuk yang jauh lebih beragam — mulai dari server yang melayani jutaan pengguna secara bersamaan, hingga chip kecil yang tertanam di dalam mesin cuci atau sistem kendali lift.
 
-Cerita dimulai saat Sophia mencoba menyambungkan perangkat baru ke WiFi rumahnya dan menemukan sinyal aneh bernama "NexusCool Fridge X17". Awalnya dia tertawa, membayangkan apa bisa mendownload makanan dingin lewat WiFi. Tapi kemudian dia sadar: tetangganya baru saja membeli kulkas pintar, sebuah kulkas yang di dalamnya punya komputer dan bisa terhubung ke internet.
+Untuk seorang praktisi cyber security, memahami jenis-jenis komputer ini bukan sekadar pengetahuan umum. Setiap jenis punya arsitektur, keterbatasan, dan permukaan serangan (_attack surface_) yang berbeda. Strategi pertahanan yang tepat untuk sebuah laptop tidak akan sama dengan strategi untuk server atau perangkat IoT.
 
-Ini membuat Sophia berpikir. Komputer bukan lagi sekadar laptop atau HP yang sering kita pegang. Mereka sudah ada di benda-benda di sekitar kita, mulai dari peralatan dapur sampai bel pintu. Sophia sering membaca berita tentang perangkat pintar yang bertingkah aneh atau diretas, tapi dia baru benar-benar merenungkan apa sebenarnya mesin-mesin ini.
-
-Di dunia cyber security, memahami jenis-jenis komputer ini sangat krusial karena **setiap jenis punya cara kerja dan risiko yang berbeda.**
-
-### Learning Objectives
+> **for your information:** **Attack surface** adalah keseluruhan titik dalam sebuah sistem yang berpotensi bisa dieksploitasi oleh penyerang — semakin kompleks sistemnya, semakin luas attack surface-nya.
 
 Setelah menyelesaikan room ini, kamu akan paham:
-*   Jenis-jenis komputer yang kamu pakai langsung setiap hari (seperti laptop dan smartphone).
-*   Komputer-komputer yang bekerja di balik layar tanpa kamu sadari (server, perangkat IoT, *embedded systems*).
-*   Kenapa setiap jenis komputer dirancang berbeda dan cocok untuk tugas yang berbeda pula.
 
-> **for your information:**
-> **IoT** (_Internet of Things_) — Jaringan benda-benda fisik (seperti kulkas, lampu, atau termostat) yang ditanami sensor, software, dan teknologi lainnya dengan tujuan untuk saling bertukar data dengan perangkat lain melalui internet.
-
-## Sophia's Summer of Hidden Computers - Month 1
-
-Selama bulan pertamanya magang di Nova Labs, Sophia belajar sebuah pelajaran penting:
-1.  **Tidak semua komputer dibuat untuk berpindah tempat.**
-2.  **Tidak semua komputer dibuat untuk diduduki di depannya oleh manusia secara langsung.**
-
-Sophia dikenalkan dengan empat jenis komputer yang sekilas terlihat mirip, tapi punya tujuan yang sangat berbeda.
-
-### The Computers You Sit in Front Of
-
-Ada komputer yang dirancang untuk kamu duduki dan operasikan langsung (punya layar dan keyboard), dan ada yang bekerja diam-diam di balik layar. Berikut perbandingannya:
-
-| Jenis Komputer | Layar & Keyboard? | Tujuan Utama |
-| :--- | :--- | :--- |
-| **Laptop** | Ya | Komputasi harian yang bisa dibawa kemana-mana (*portable*). |
-| **Desktop** | Ya | Performa stabil di satu lokasi tetap. |
-| **Workstation** | Ya | Tugas profesional yang butuh presisi dan reliabilitas tinggi. |
-| **Server** | Tidak (Biasanya) | Menyediakan layanan ke banyak pengguna melalui jaringan. |
+- Jenis-jenis komputer yang digunakan langsung setiap hari — laptop, desktop, workstation.
+- Komputer yang bekerja di balik layar tanpa interaksi langsung — server, perangkat IoT, embedded systems.
+- Kenapa setiap jenis dirancang berbeda dan apa implikasinya dari sisi keamanan.
 
 ---
 
-### Differences: PC, Workstation, and Server
+## Personal Computers — Laptop, Desktop, and Workstation
 
-Biar kamu tidak bingung, mari kita bedah bedanya berdasarkan beban kerja mereka:
+Tiga jenis ini adalah komputer yang paling sering berinteraksi langsung dengan pengguna. Ketiganya punya layar dan keyboard, tapi dirancang untuk kebutuhan yang berbeda.
 
-#### 1. Laptop & Desktop (Personal Computers)
-Ini komputer yang paling sering kita sentuh setiap hari. Perbedaan utamanya ada di **mobilitas**:
-*   **Laptop**: Dirancang untuk dibawa kemana-mana. Cocok untuk email dan dokumen, tapi kalau dipaksa kerja berat terus-menerus, performanya akan menurun karena **pendinginan** di ruang sekecil itu memang sulit.
-*   **Desktop**: Menang di **upgradability** dan **cooling** yang jauh lebih baik. Karena pakai daya langsung dari tembok (bukan baterai), desktop bisa lari kencang lebih lama dengan stabil.
+### Laptop
 
-#### 2. Workstation
-Pikirkan ini sebagai Desktop versi flagship. Secara bentuk mirip desktop, tapi komponennya jauh lebih kuat (penjelasan tentang komponen ada di catatan [Inside a Computer System](Inside-a-Computer-System.md)). Workstation memprioritaskan **akurasi dan reliabilitas**. Biasanya pakai komponen khusus (seperti memori ECC) untuk mengurangi error saat melakukan perhitungan rumit seperti simulasi 3D atau *reverse engineering* malware.
+Laptop dirancang untuk mobilitas — seluruh komponennya dikemas dalam satu unit yang bisa dibawa kemana saja. Konsekuensinya ada di dua hal:
 
-#### 3. Server
-Berbeda dengan tiga di atas, Server seringkali tidak punya monitor atau keyboard yang terpasang. Mereka dirancang untuk **menyala 24/7 tanpa henti**, melayani ribuan permintaan pengguna secara bersamaan. Kamu mungkin tidak pernah menyentuh server secara fisik, tapi dialah yang menjalankan semua *tools* dan web yang kamu pakai setiap hari. (Penjelasan lebih lengkap tentang bagaimana server melayani permintaan ada di catatan [Client-Server Basics](Client-Server-Basics.md))
+- **Performa terbatas** — komponen laptop harus hemat daya karena bergantung pada baterai. CPU dan GPU laptop umumnya tidak sekuat versi desktop dengan harga yang sama.
+- **Pendinginan terbatas** — ruang yang sempit membuat sistem pendingin tidak bisa bekerja seoptimal desktop. Jika dipaksa menjalankan beban kerja berat secara terus-menerus, suhu akan naik dan performa akan turun secara otomatis (_thermal throttling_).
 
-> **Common Mistake:** Mengira server itu harus selalu berupa mesin raksasa di ruangan dingin. Secara software, komputer apapun bisa jadi server, tapi secara hardware, Server dirancang untuk menyala **24/7 tanpa henti** dan punya komponen yang sangat handal.
+Dari sisi keamanan, laptop punya risiko fisik yang tidak dimiliki desktop: **mudah hilang atau dicuri**. Ini membuat enkripsi disk menjadi kebutuhan utama, bukan opsional.
 
----
+> **for your information:** **BitLocker** adalah fitur enkripsi disk bawaan Windows yang mengenkripsi seluruh isi drive sehingga data tidak bisa dibaca tanpa kunci dekripsi yang benar. **FileVault** adalah padanannya di macOS. **Thermal throttling** adalah mekanisme otomatis di mana prosesor menurunkan kecepatannya sendiri untuk mencegah kerusakan akibat panas berlebih.
 
-### Real-World Relevance
+### Desktop
 
-Kenapa kita harus peduli bedanya?
-*   **Physical Security**: Laptop lebih rentan hilang/dicuri dibanding desktop. Maka, enkripsi disk (**BitLocker/FileVault**) jadi harga mati di laptop.
-*   **Target Serangan**: Server adalah target utama (*high-value target*) karena menyimpan data banyak orang. Menyerang 1 laptop user mungkin cuma dapat 1 akun, tapi menjebol 1 server bisa dapat ribuan data user.
-*   **Resource Exhaustion**: Workstation punya resource besar. Jika attacker berhasil masuk, mereka bisa menggunakan kekuatan prosesornya untuk melakukan *cryptojacking* (menambang crypto secara ilegal).
+Desktop beroperasi dari satu lokasi tetap dan mendapat daya langsung dari stopkontak — tidak bergantung pada baterai. Ini memberi dua keunggulan utama dibanding laptop:
 
-> **for your information:**
-> **Uptime** — Durasi waktu sebuah sistem terus beroperasi tanpa gangguan atau *restart*. Server sangat mengejar angka *uptime* 99.9% atau lebih.
+- **Performa lebih konsisten** — tidak ada keterbatasan daya baterai yang mempengaruhi kecepatan prosesor.
+- **Pendinginan lebih efektif** — ruang yang lebih besar memungkinkan sistem pendingin bekerja lebih baik, sehingga komponen bisa berjalan di kecepatan penuh lebih lama.
 
-## Sophia's Summer of Hidden Computers - Month 2
+Desktop juga lebih mudah di-upgrade — RAM, storage, dan GPU bisa diganti atau ditambah kapasitasnya tanpa mengganti seluruh unit.
 
-Pada bulan keduanya, Sophia mulai menyadari keberadaan komputer yang selama ini tidak pernah dia sentuh secara langsung. Komputer paling kuat yang dimiliki kebanyakan orang saat ini muat di dalam saku, tapi jutaan komputer lainnya bersembunyi di balik benda sehari-hari: pintu, lampu, hingga mesin pembuat kopi.
+### Workstation
 
-### Hidden Computers in Everyday Objects
+Workstation adalah komputer yang dirancang untuk beban kerja profesional yang membutuhkan presisi tinggi dan keandalan konsisten — seperti simulasi 3D, rendering video, analisis data besar, atau reverse engineering malware.
 
-Ini dia jenis-jenis komputer yang sering ada di sekitar kita, tapi jarang kita anggap sebagai "komputer":
+Secara fisik mirip desktop, tapi menggunakan komponen dengan spesifikasi lebih ketat:
 
-| Jenis | Apa Itu? | Contoh |
-| :--- | :--- | :--- |
-| **Smartphone** | Komputer seukuran saku yang dioptimalkan untuk daya tahan baterai dan konektivitas. | iPhone, Android phone |
-| **Tablet** | Komputer berbasis layar sentuh dengan layar lebih lebar. | iPad, drawing tablet |
-| **IoT Device** | Perangkat yang terhubung ke jaringan dengan satu tujuan spesifik. | Termostat pintar, bel pintu pintar (*smart doorbell*). |
-| **Embedded Computer** | Komputer yang ditanamkan/dibangun di dalam perangkat lain. | Kontroler mesin kopi, sensor pintu otomatis. |
+- **ECC Memory** (_Error-Correcting Code Memory_) — jenis RAM khusus yang secara otomatis mendeteksi dan memperbaiki error data selama pemrosesan. Krusial untuk kalkulasi yang tidak boleh ada kesalahan sekecil apapun.
+- **Prosesor kelas server** — seperti Intel Xeon atau AMD EPYC, yang dioptimalkan untuk stabilitas jangka panjang di bawah beban kerja berat.
+
+> **for your information:** **Reverse engineering** dalam konteks malware analysis adalah proses membongkar dan menganalisis kode program berbahaya untuk memahami cara kerjanya, tanpa memiliki akses ke source code aslinya.
 
 ---
 
-### IoT vs Embedded System
+## Server
 
-Banyak yang bingung membedakan keduanya karena sama-sama kecil dan punya tugas tunggal. Kunci perbedaannya ada pada **Konektivitas**:
+Server adalah komputer yang dirancang khusus untuk **melayani permintaan dari komputer lain melalui jaringan** — bukan untuk dioperasikan secara langsung oleh satu pengguna. Server menjalankan layanan seperti website, database, email, atau file storage yang bisa diakses oleh banyak pengguna secara bersamaan.
 
-*   **IoT** (_Internet of Things_): Terhubung ke jaringan (internet/lokal) untuk mengirim data atau menerima perintah. Contoh: Lampu pintar yang bisa kamu matikan lewat HP.
-*   **Embedded System**: Biasanya tidak terhubung ke apa pun. Mereka melakukan tugasnya di dalam mesin, seringkali selama bertahun-tahun tanpa ada yang tahu mereka ada di sana.
+Beberapa karakteristik yang membedakan server dari PC biasa:
 
-### Real-Life Examples
-Sophia melewati pintu otomatis setiap hari di laboratorium. Dia baru sadar ada chip kecil di dalam bingkai pintu yang bertugas mendeteksi gerakannya dan memberi sinyal ke motor untuk membuka pintu. Itulah *embedded computing* — tidak terlihat, handal, dan ada di mana-mana.
+- **Tidak selalu punya monitor atau keyboard** — server dikelola dari jarak jauh melalui jaringan, bukan dengan duduk di depannya.
+- **Dirancang untuk uptime tinggi** — server diharapkan berjalan terus-menerus tanpa gangguan. Komponen server dipilih berdasarkan keandalan, bukan sekadar performa puncak.
+- **Redundansi komponen** — server enterprise sering punya dua PSU, beberapa disk yang dikonfigurasi dalam **RAID**, dan koneksi jaringan ganda. Jika satu komponen gagal, komponen cadangan langsung mengambil alih.
 
----
+> **for your information:** **Uptime** adalah durasi waktu sebuah sistem beroperasi tanpa gangguan atau restart. Server kelas enterprise menargetkan uptime 99.9% atau lebih — artinya downtime yang diizinkan kurang dari 9 jam per tahun. **RAID** (_Redundant Array of Independent Disks_) adalah konfigurasi beberapa disk yang bekerja bersama untuk meningkatkan performa atau keandalan data.
 
-### Role in Cyber Security
+> **Common Mistake:** Server tidak harus berupa mesin raksasa di ruangan khusus. Secara software, komputer manapun bisa dikonfigurasi sebagai server. Yang membedakan server kelas enterprise adalah komponen dan arsitekturnya yang dirancang khusus untuk keandalan dan beban kerja tinggi secara terus-menerus.
 
-Jangan remehkan perangkat kecil ini. Di perspektif seorang *attacker*:
-1.  **IoT sebagai Pintu Masuk**: Perangkat IoT sering kali punya keamanan yang lemah (misal: password default yang tidak diganti). Hacker bisa meretas lampu pintar untuk masuk ke jaringan WiFi utama rumah atau kantor.
-2.  **Spying & Data Leak**: *Smart doorbell* atau *fitness tracker* menyimpan data privasi. Jika bocor, lokasi dan kebiasaan korban bisa terlacak.
-3.  **Botnet**: Ribuan perangkat IoT yang terinfeksi bisa digabungkan menjadi "pasukan" (**botnet**) untuk melakukan serangan **DDoS** raksasa yang bisa merubuhkan website besar.
-
-> **for your information:**
-> **Botnet** — Kumpulan perangkat yang terhubung ke internet dan telah terinfeksi malware, sehingga bisa dikendalikan oleh penyerang dari jarak jauh tanpa sepengetahuan pemiliknya.
-
-## Why Computers Come in Different Flavors
-
-Mungkin kamu bertanya-tanya hal yang sama dengan Sophia: "Kenapa tidak buat satu komputer saja yang bisa melakukan semuanya?"
-
-Jawabannya sederhana: **karena setiap desain adalah sebuah *trade-off*.**
-
-Tidak ada komputer yang terbaik secara mutlak. Yang ada hanya **alat yang tepat untuk tugas yang tepat.** 
-
-### Core Concept: The Trade-offs
-
-Saat merancang komputer, selalu ada sesuatu yang harus dikorbankan untuk mendapatkan fitur yang lain:
-
-1.  **Mobilitas vs Performa**: Komputer yang kecil dan bisa dibawa kemana-mana (seperti laptop atau smartphone) harus mengorbankan performa maksimal. Mereka tidak bisa bekerja terlalu berat dalam waktu lama karena baterainya terbatas dan sulit untuk didinginkan.
-2.  **Reliabilitas vs Biaya**: Membuat sistem yang sangat handal (seperti server atau workstation) itu mahal. Mereka butuh komponen cadangan (*redundancy*), seperti PSU cadangan atau disk ekstra, agar jika satu bagian rusak, sistem tetap menyala.
-3.  **Tujuan vs Fleksibilitas**: Perangkat IoT bekerja dalam diam tanpa butuh perhatianmu karena mereka fokus pada satu tugas. Laptopmu lebih fleksibel, tapi lebih rumit untuk dikelola.
+Dari sisi keamanan, server adalah target bernilai tinggi. Kompromi pada satu server bisa berarti akses ke data ribuan atau jutaan pengguna sekaligus — jauh lebih menguntungkan bagi penyerang dibanding menargetkan satu laptop.
 
 ---
 
-### Real-World Relevance
+## Smartphones and Tablets
 
-Memahami *trade-off* ini membantu kita dalam memilih strategi pertahanan:
-*   **Redundancy**: Di sistem kritis, kita harus memastikan tidak ada *Single Point of Failure* (satu titik kegagalan yang merubuhkan seluruh sistem).
-*   **Specialization**: Saat melakukan *cracking* data dalam jumlah besar, jangan pakai laptop harianmu. Pakailah workstation atau server khusus yang didesain untuk beban kerja tersebut agar tidak merusak perangkatmu sendiri.
+Smartphone adalah komputer seukuran saku yang dioptimalkan untuk dua hal: **efisiensi daya** dan **konektivitas**. Di dalamnya ada prosesor, RAM, storage, GPS, kamera, dan berbagai sensor lain — semua dikemas dalam form factor yang muat di saku.
 
----
+Tablet pada dasarnya adalah smartphone dengan layar lebih besar, umumnya dioptimalkan untuk konsumsi konten dan produktivitas ringan.
 
-## Summary
-
-Laporan akhir Sophia dimulai dengan kalimat: "Saya datang dengan pemikiran bahwa komputer itu harus punya layar dan keyboard. Saya pergi dengan kesadaran bahwa mereka ada di mana-mana, terutama di tempat-tempat yang tidak saya lihat."
-
-Di room ini, kita telah membahas delapan jenis komputer dan mempelajari bagaimana keputusan dibuat saat memilih satu jenis di atas yang lain. Komputer yang paling bagus tidak selalu yang tercepat atau yang paling keren tampilannya. Kadang-kadang, mereka adalah chip-chip yang menjaga pintu tetap terbuka, pesawat tetap terbang, dan mesin kopi tetap menyeduh.
+Dari perspektif keamanan, smartphone menyimpan data yang sangat sensitif: lokasi real-time, riwayat komunikasi, kredensial aplikasi perbankan, hingga data biometrik. Ini menjadikannya target yang sangat menarik.
 
 ---
 
-### Questions
+## IoT Devices
 
-*   Mengapa laptop tidak bisa memiliki performa yang sama kuatnya dengan server raksasa secara terus-menerus?
-*   Apa yang dimaksud dengan **redundancy** pada sistem server?
-*   Sebutkan satu contoh perangkat yang termasuk dalam kategori **embedded system** yang sering kamu temui!
+**IoT** (_Internet of Things_) merujuk pada perangkat fisik yang ditanamkan kemampuan komputasi dan konektivitas jaringan untuk mengirim atau menerima data — bukan untuk dioperasikan secara interaktif oleh pengguna.
+
+Contoh konkret: termostat pintar, kamera keamanan, lampu yang bisa dikontrol lewat aplikasi, smart doorbell, hingga peralatan medis yang terhubung ke jaringan rumah sakit.
+
+Karakteristik utama perangkat IoT:
+
+- **Terhubung ke jaringan** — inilah yang membedakannya dari embedded system biasa.
+- **Tujuan spesifik** — tidak dirancang untuk menjalankan aplikasi sembarangan.
+- **Sumber daya terbatas** — prosesor dan memorinya kecil, sehingga tidak bisa menjalankan mekanisme keamanan yang kompleks.
+
+Kombinasi ketiga karakteristik ini menciptakan masalah keamanan yang serius. Perangkat IoT sering kali:
+
+- Menggunakan **kredensial default** (username dan password bawaan pabrik) yang tidak pernah diganti oleh pengguna.
+- Tidak mendapat update firmware secara rutin.
+- Tidak dimonitor aktivitas jaringannya.
+
+Ini menjadikan IoT sebagai titik masuk yang sering dieksploitasi penyerang untuk menembus jaringan yang lebih besar.
+
+> **for your information:** **Firmware** adalah software tingkat rendah yang tertanam di dalam perangkat keras dan mengendalikan operasi dasarnya. Berbeda dengan aplikasi biasa, firmware tidak bisa diupdate semudah menginstall ulang program.
+
+**IoT sebagai vektor serangan** — penyerang yang berhasil mengkompromis satu perangkat IoT di jaringan rumah atau kantor bisa menggunakannya sebagai titik pivot untuk bergerak ke perangkat lain di jaringan yang sama. Perangkat IoT yang terinfeksi juga bisa dikumpulkan dalam jumlah besar dan dikendalikan sebagai **botnet** untuk melancarkan serangan **DDoS**.
+
+> **for your information:** **Botnet** adalah kumpulan perangkat yang terinfeksi malware dan dikendalikan dari jarak jauh oleh penyerang tanpa sepengetahuan pemiliknya. **DDoS** (_Distributed Denial of Service_) adalah serangan yang membanjiri server atau jaringan target dengan traffic dalam jumlah besar secara bersamaan hingga sistem target tidak bisa merespons permintaan normal.
+
+---
+
+## Embedded Systems
+
+**Embedded system** adalah komputer yang ditanamkan di dalam perangkat lain sebagai bagian dari fungsinya — bukan sebagai perangkat komputasi mandiri yang bisa diprogram ulang secara bebas.
+
+Berbeda dengan IoT, embedded system umumnya **tidak terhubung ke jaringan**. Mereka menjalankan satu fungsi spesifik secara terus-menerus: kontroler di dalam mesin cuci, sistem manajemen bahan bakar di kendaraan, sensor di lift, atau antarmuka di mesin ATM.
+
+Karakteristik embedded system:
+
+- **Sumber daya sangat terbatas** — prosesor dan memori diminimalkan sesuai kebutuhan tugas.
+- **Real-time operation** — banyak embedded system harus merespons input dalam batas waktu yang sangat ketat.
+- **Masa pakai panjang** — embedded system sering berjalan bertahun-tahun tanpa pernah di-update atau di-restart.
+
+Masa pakai yang panjang tanpa update inilah yang menciptakan risiko keamanan. Kerentanan yang ditemukan bertahun-tahun setelah perangkat di-deploy sering tidak bisa ditambal karena tidak ada mekanisme update, atau karena menghentikan perangkat untuk update bukan pilihan yang praktis.
+
+---
+
+## Why Computers Come in Different Designs
+
+Tidak ada satu desain komputer yang bisa optimal untuk semua kebutuhan. Setiap desain adalah hasil dari serangkaian **trade-off** — keputusan untuk memprioritaskan satu aspek dengan mengorbankan aspek lain.
+
+| Trade-off | Penjelasan |
+| :--- | :--- |
+| **Mobilitas vs Performa** | Komputer yang portable harus menggunakan komponen hemat daya, yang berarti performa lebih rendah dibanding komputer desktop dengan harga setara. |
+| **Reliabilitas vs Biaya** | Sistem yang sangat andal seperti server enterprise membutuhkan komponen redundan dan pengujian ketat — semua ini menambah biaya secara signifikan. |
+| **Spesialisasi vs Fleksibilitas** | Perangkat yang fokus pada satu tugas (IoT, embedded) bisa sangat efisien dan hemat daya, tapi tidak bisa dipakai untuk tugas lain di luar fungsinya. |
+| **Keamanan vs Kemudahan** | Sistem yang sangat aman cenderung lebih sulit digunakan — lebih banyak autentikasi, lebih banyak pembatasan. Sistem yang mudah digunakan biasanya punya permukaan serangan lebih luas. |
+
+Memahami trade-off ini penting karena keputusan desain yang dibuat oleh produsen secara langsung menentukan **di mana titik lemah sebuah sistem** dan **strategi pertahanan apa yang paling relevan**.
+
+---
+
+## Quick Review
+
+- Apa yang membuat server menjadi target bernilai tinggi dibanding laptop biasa dari perspektif penyerang?
+- Kenapa perangkat IoT sering menjadi titik masuk yang dieksploitasi dalam serangan jaringan?
+- Jelaskan perbedaan mendasar antara IoT device dan embedded system dari sisi konektivitas dan fungsinya.
