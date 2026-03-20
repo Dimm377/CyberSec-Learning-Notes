@@ -84,7 +84,7 @@ Penjelasan flag yang digunakan:
 
 Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` dan `subdomains-top1million-110000.txt`) dengan hasil yang sama. Setelah 110.000 subdomain dicoba dan semuanya kosong, saya mulai sadar — mungkin jawabannya bukan di tools. Saya kembali membaca deskripsi room dari awal, dan di situlah saya menemukan kata yang seharusnya sudah saya perhatikan sejak tadi: **"support"**.
 
-### Manual Enumeration — Membaca Hint dari Deskripsi Room
+### Manual Enumeration: Membaca petunjuk dari Deskripsi Room
 
 Dari deskripsi room disebutkan bahwa perusahaan sedang *"rebuilding their **support**"* — ini adalah petunjuk bahwa kemungkinan ada subdomain bernama `support`.
 
