@@ -1,8 +1,5 @@
 # TryHackMe: Networking Secure Protocol
 
-
----
-
 * **Room Link:** [TryHackMe](https://tryhackme.com/room/networkingsecureprotocols)
 * **Category:** Cyber Security 101
 * **Difficulty:** Easy

@@ -1,11 +1,8 @@
 # TryHackMe: Intro To LAN
 
-
----
-
-* **Room Link:** [Intro To LAN](https://tryhackme.com/room/introtolan)
+* **Room Link:** [TryHackMe](https://tryhackme.com/room/introtolan)
 * **Category:** Networking / Fundamental
-* **Difficulty:** easy
+* **Difficulty:** Easy
 
 ---
 
