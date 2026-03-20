@@ -82,7 +82,7 @@ Penjelasan flag yang digunakan:
 
 ![FFuF Mistake](Documentation-assets/takeOver-mistake.png)
 
-Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` dan `subdomains-top1million-110000.txt`) dengan hasil yang sama. Setelah 110.000 subdomain dicoba dan semuanya kosong, saya mulai sadar, mungkin jawabannya bukan di tools yang seperti ini.
+Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` dan `subdomains-top1million-110000.txt`) dengan hasil yang sama. Setelah beberapa subdomain dicoba dan semuanya kosong, saya mulai sadar, mungkin petunjuknya bukan di tools ini.
 
 ### Manual Enumeration: Membaca petunjuk dari Deskripsi Room
 
