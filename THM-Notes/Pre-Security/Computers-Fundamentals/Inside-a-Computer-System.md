@@ -1,7 +1,8 @@
-# Inside a Computer System
+# TryHackMe: Inside a Computer System
 
-_Catatan dari TryHackMe | Pre-Security Path — Easy_
-_Room: [Inside a Computer System](https://tryhackme.com/room/insideacomputersystem)_
+- **Room Link:** [Inside a Computer System](https://tryhackme.com/room/insideacomputersystem)
+- **Category:** Pre-Security
+- **Difficulty:** Easy
 
 ---
 

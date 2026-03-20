@@ -1,7 +1,8 @@
-# Virtualisation Basics
+# TryHackMe: Virtualisation Basics
 
-_Catatan dari TryHackMe | Pre-Security Path — Easy_
-_Room: [Virtualisation Basics](https://tryhackme.com/room/virtualisationbasics)_
+- **Room Link:** [Virtualisation Basics](https://tryhackme.com/room/virtualisationbasics)
+- **Category:** Pre-Security
+- **Difficulty:** Easy
 
 ---
 
