@@ -86,7 +86,7 @@ Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` 
 
 ### Manual Enumeration: Membaca petunjuk dari Deskripsi Room
 
-Dari deskripsi room disebutkan bahwa perusahaan sedang *"rebuilding their **support**"* — ini adalah petunjuk bahwa kemungkinan ada subdomain bernama `support`.
+Dari deskripsi room disebutkan bahwa perusahaan sedang *"rebuilding their **support**"*, ini adalah petunjuk bahwa kemungkinan ada subdomain bernama `support`.
 
 Tambahkan subdomain tersebut ke `/etc/hosts` agar bisa diakses secara lokal:
 
