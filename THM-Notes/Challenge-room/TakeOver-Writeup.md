@@ -10,7 +10,7 @@
 
 ## Overview
 
-Room ini melatih kemampuan subdomain enumeration dan pemahaman tentang bagaimana SSL/TLS certificate bisa membocorkan informasi subdomain tersembunyi. Selain itu, room ini juga mengajarkan konsep **Subdomain Takeover** — kondisi di mana DNS record sebuah subdomain masih aktif tapi mengarah ke layanan pihak ketiga yang sudah tidak dikonfigurasi, sehingga berpotensi diambil alih oleh penyerang.
+Room ini melatih kemampuan subdomain enumeration dan pemahaman tentang bagaimana SSL/TLS certificate bisa membocorkan informasi subdomain tersembunyi. Selain itu, room ini juga mengajarkan konsep **Subdomain Takeover**, kondisi di mana DNS record sebuah subdomain masih aktif tapi mengarah ke layanan pihak ketiga yang sudah tidak dikonfigurasi, sehingga berpotensi diambil alih oleh penyerang.
 
 ---
 
@@ -82,7 +82,7 @@ Penjelasan flag yang digunakan:
 
 ![FFuF Mistake](Documentation-assets/takeOver-mistake.png)
 
-Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` dan `subdomains-top1million-110000.txt`) dengan hasil yang sama. Setelah 110.000 subdomain dicoba dan semuanya kosong, saya mulai sadar — mungkin jawabannya bukan di tools. Saya kembali membaca deskripsi room dari awal, dan di situlah saya menemukan kata yang seharusnya sudah saya perhatikan sejak tadi: **"support"**.
+Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` dan `subdomains-top1million-110000.txt`) dengan hasil yang sama. Setelah 110.000 subdomain dicoba dan semuanya kosong, saya mulai sadar, mungkin jawabannya bukan di tools yang seperti ini.
 
 ### Manual Enumeration: Membaca petunjuk dari Deskripsi Room
 
@@ -98,7 +98,7 @@ Atau edit manual:
 
 ![Initial Target Website](Documentation-assets/image.png)
 
-### Inspeksi SSL Certificate — Menemukan Subdomain Tersembunyi
+### Inspeksi SSL Certificate: Menemukan Subdomain Tersembunyi
 
 Akses `https://support.futurevera.thm` di browser, lalu:
 
@@ -142,7 +142,7 @@ http://secretxxxxxxx.support.futurevera.thm
 
 ![AWS S3 Redirect](Documentation-assets/secret-blur.png)
 
-Browser akan diredirect ke URL AWS S3 — **flag terlihat langsung di URL redirect tersebut** dalam format `flag{...}.s3-website-us-west-3.amazonaws.com`.
+Browser akan diredirect ke URL AWS S3, **flag terlihat langsung di URL redirect tersebut** dalam format `flag{...}.s3-website-us-west-3.amazonaws.com`.
 
 ---
 
@@ -158,10 +158,10 @@ Browser akan diredirect ke URL AWS S3 — **flag terlihat langsung di URL redire
 
 ## Lessons Learned
 
-- **Baca deskripsi target dengan teliti** — petunjuk sering tersembunyi di deskripsi room atau scope pentest. Brute force bukan selalu solusi pertama.
-- **SSL Certificate SAN bisa membocorkan subdomain tersembunyi** — selalu cek bagian Subject Alternative Names saat melakukan pentest terhadap HTTPS service.
-- **Brute force bukan satu-satunya cara** — kombinasi manual enumeration dan tool jauh lebih efektif daripada bergantung pada wordlist saja.
-- **Abandoned subdomains** — DNS record yang tidak diurus tapi masih aktif merupakan target mudah untuk subdomain takeover di dunia nyata.
+- **Baca deskripsi target dengan teliti**, petunjuk sering tersembunyi di deskripsi room atau scope pentest. Brute force bukan selalu solusi pertama.
+- **SSL Certificate SAN bisa membocorkan subdomain tersembunyi**, selalu cek bagian Subject Alternative Names saat melakukan pentest terhadap HTTPS service.
+- **Brute force bukan satu-satunya cara**, kombinasi manual enumeration dan tool jauh lebih efektif daripada bergantung pada wordlist saja.
+- **Abandoned subdomains**, DNS record yang tidak diurus tapi masih aktif merupakan target mudah untuk subdomain takeover di dunia nyata.
 
 ---
 
