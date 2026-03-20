@@ -3,93 +3,159 @@
 - **Room Link:** [Cloud Computing Fundamentals](https://tryhackme.com/room/cloudcomputingfundamentals)
 - **Category:** Pre-Security
 - **Difficulty:** Easy
+ 
+---
+
+## What is Cloud Computing?
+
+Bayangkan kamu sudah selesai membuat aplikasi latihan *cyber security*. Aplikasinya berjalan di laptopmu sendiri, dan semuanya berjalan lancar, sampai temanmu dari negara lain mencoba mengaksesnya dan mengeluh *lemot*. Atau tiba-tiba seratus orang masuk bersamaan, dan aplikasinya langsung *down*. Atau lebih parahnya, laptopmu mati dan aplikasinya ikut tidak bisa diakses.
+
+Masalah ini bukan karena kodemu jelek. Masalahnya adalah **infrastruktur**, kamu mengandalkan satu mesin fisik yang punya keterbatasan kapasitas, lokasi, dan ketersediaan.
+
+**Cloud computing** hadir untuk menyelesaikan ketiga masalah itu sekaligus. Secara sederhana, cloud computing adalah model komputasi di mana kamu menggunakan sumber daya komputasi server, storage, jaringan milik penyedia layanan, yang bisa diakses lewat internet kapan saja, dari mana saja, dan bisa disesuaikan kapasitasnya sesuai kebutuhan.
+
+> **for your information:** **Infrastruktur** dalam konteks ini merujuk pada komponen fisik dan virtual yang menjalankan sebuah sistem, server, storage, jaringan, dan sistem operasi yang mendasarinya.
+
+Secara teknis, cloud dibangun di atas dua teknologi utama:
+
+- **Virtualisation** — memungkinkan satu mesin fisik menjalankan banyak mesin virtual secara bersamaan, sehingga resource tidak terbuang sia-sia.
+- **Containers** — unit software ringan yang membungkus aplikasi beserta semua dependensinya, sehingga bisa dibuat dan dihapus dengan sangat cepat.
+
+Keduanya menjadi fondasi yang membuat cloud bisa bersifat fleksibel dan efisien.
 
 ---
 
-## Introduction
+## How Servers Evolved to Cloud
 
-Bayangkan kamu punya ide brilian: yaitu membuat aplikasi latihan *cyber security* buat teman seangkatan. Awalnya lancar saat hanya 2-3 orang yang mengakses lewat laptop pribadimu. Tapi, apa jadinya saat aplikasi itu mulai viral?
+Cloud tidak muncul tiba-tiba. Ini adalah hasil dari bertahun-tahun evolusi cara bisnis mengelola server mereka. Setiap tahap muncul karena ada masalah nyata yang perlu dipecahkan.
 
-Di sinilah hambatannya mulai terasa. Temanmu yang lagi di luar negeri pasti mengeluh *lag* parah karena data harus bolak-balik ke laptopmu yang jauh di sana. Belum lagi kalau 100 orang masuk secara bersamaan, laptopmu yang kentang itu pasti bakal panas, *hang*, terus *crash* gara-gara nggak kuat menampung beban sebanyak itu. Dan masalah paling simpel: kalau laptopmu mati atau internet rumahmu putus, ya aplikasinya ikutan mati.
-
-Inilah kenapa ide brilian seringkali terhambat oleh hardware fisik yang terbatas. **Cloud Computing** hadir buat memecahkan masalah ini.
-
-Gampangnya, *Cloud Computing* itu kita kayak menyewa tenaga komputer (CPU, RAM, storage) lewat internet. Jadi, alih-alih pusing mengurusi hardware di kamar, kamu tinggal memakai infrastruktur raksasa milik penyedia layanan cloud.
-
-### What is Cloud Computing?
-
-Cloud itu sebenarnya **hasil pengembangan lanjut** dari teknologi virtualisasi dan kontainer yang sudah kita bahas di [Virtualisation Basics](Virtualisation-Basics.md). Berkat teknologi itu, ribuan aplikasi bisa berjalan bersamaan di hardware yang sama tanpa saling mengganggu. Kita pun bisa menambah atau mengganti kapasitas server cuma dalam hitungan detik.
-
-Dunia IT sudah melewati evolusi panjang sampai ke titik ini:
-1.  **Physical Server**: Satu server fisik cuma buat satu aplikasi. Boros, mahal, dan kalau mati ya aplikasinya tamat.
-2.  **Virtualisation**: Satu server fisik bisa menampung banyak server virtual. Lebih efisien, tapi kamu masih harus mengelola semuanya sendiri.
-3.  **Cloud Computing**: Resource dibagi secara fleksibel lewat internet. Kamu bayar sesuai pemakaian dan bisa menambah kapasitas (*scale*) sesuka hati.
+| Era | Cara Kerja | Masalah Utama |
+| :--- | :--- | :--- |
+| **Physical Server** | Satu server fisik menjalankan satu aplikasi | Mahal, sering tidak terpakai penuh; jika server mati maka aplikasi ikut mati |
+| **Virtualisation** | Satu server fisik menjalankan banyak server virtual | Lebih efisien, tapi pengelolaan infrastruktur masih menjadi tanggung jawab sendiri |
+| **Cloud Computing** | Resource dibagi antar banyak pengguna, diakses lewat internet | Solusi dari semua masalah di atas — bayar sesuai pemakaian, scale sesuai kebutuhan |
 
 ---
 
-## Benefits of Cloud Computing
+## Cloud Benefits and Characteristics
 
-Pindah ke cloud bukan cuma soal mengikuti tren, tapi soal efisiensi nyata. Ada beberapa karakteristik utama yang bikin cloud jadi pilihan nomor satu perusahaan saat ini:
+Setelah memahami kenapa cloud muncul, mudah untuk melihat kenapa adopsinya begitu masif. Cloud dirancang langsung untuk menjawab keterbatasan infrastruktur tradisional.
 
-*   **Scalability**: Kalau websitemu tiba-tiba ramai (misal saat promo Black Friday), kamu bisa menambah server dengan gampang. Kalau sudah sepi, tinggal dikurangi lagi agar hemat biaya.
-*   **On-demand**: Kamu bisa membuat atau menghapus server kapan saja tanpa perlu menunggu berminggu-minggu sampai hardware fisik datang.
-*   **Pay as you go**: Tidak ada biaya besar di awal untuk beli hardware. Kamu cukup membayar apa yang kamu gunakan saja.
-*   **High Availability**: Aplikasi tetap berjalan walaupun ada sebagian sistem yang gagal, karena datamu tersebar di berbagai infrastruktur yang tangguh.
-*   **Global Access**: User dari belahan dunia mana pun bisa mengakses aplikasimu dengan cepat melalui server terdekat dari lokasi mereka.
+| Karakteristik | Penjelasan |
+| :--- | :--- |
+| **Scalability** | Kapasitas bisa dinaikkan atau diturunkan sesuai beban — tanpa perlu membeli hardware baru. |
+| **On-demand self-service** | Server dan storage bisa dibuat atau dihapus secara instan, tanpa menunggu proses pengadaan fisik. |
+| **Pay only for what you use** | Biaya dihitung berdasarkan pemakaian aktual, bukan biaya tetap di muka. |
+| **Security** | Penyedia cloud mengelola keamanan infrastruktur fisik dengan standar enterprise. |
+| **High availability** | Sistem dirancang redundan — jika satu komponen gagal, komponen lain mengambil alih secara otomatis. |
+| **Global access** | Aplikasi bisa diakses dari seluruh dunia dengan latensi rendah karena data center tersebar secara geografis. |
 
----
-
-## Deployment Models & Service Models
-
-Cara perusahaan menggunakan cloud itu tidak semuanya sama. Ada yang mau berbagi, ada yang mau eksklusif. Ini yang disebut **Deployment Types**:
-
-1.  **Public Cloud**: Infrastruktur yang dipakai bersama banyak orang/perusahaan lewat internet. Murah dan skalanya besar. Contoh: **AWS**, **Google Cloud**, **Azure**.
-2.  **Private Cloud**: Infrastruktur yang dikhususkan hanya untuk satu organisasi saja. Kontrolnya lebih ketat dan lebih aman, biasanya dipakai oleh bank atau pemerintah.
-3.  **Hybrid Cloud**: Gabungan keduanya. Data sensitif disimpan di Private Cloud, sementara traffic yang besar dan umum dilempar ke Public Cloud.
-
-### Service Models: IaaS, PaaS, SaaS
-
-Biasanya pemula bingung bedanya ketiga ini. Cara paling gampang memahaminya adalah dengan analogi **sewa tempat tinggal**:
-
-*   **IaaS (Infrastructure as a Service)**: Seperti sewa **tanah kosong**. Kamu dapat server, storage, dan jaringan, tapi Sistem Operasi (Windows/Linux) dan aplikasinya harus kamu instal dan urus sendiri.
-    *   *Contoh*: **AWS EC2**, Google Compute Engine.
-*   **PaaS (Platform as a Service)**: Seperti sewa **rumah siap huni**. Infrastruktur dan OS sudah diurus pihak penyedia. Kamu tinggal fokus membangun dan menjalankan kodemu saja tanpa pusing urusan server.
-    *   *Contoh*: **Heroku**, Google App Engine.
-*   **SaaS (Software as a Service)**: Seperti tinggal di **hotel**. Semuanya sudah disediakan, kamu tinggal pakai lewat browser. Tidak perlu mengelola apa-apa.
-    *   *Contoh*: **Gmail**, **Zoom**, **Spotify**.
+> **for your information:** **Redundan** berarti ada duplikasi komponen penting di dalam sistem, sehingga jika satu bagian gagal, bagian lain sudah siap mengambil alih tanpa mengganggu layanan.
 
 ---
 
-## The Cloud Ecosystem
+## Types of Cloud
 
-Di dunia nyata, hampir semua raksasa digital yang kamu pakai itu menggunakan layanan cloud.
+### Deployment Types
 
-*   **Netflix**: Menghosting seluruh platformnya di AWS agar bisa melayani jutaan penonton tanpa *down*.
-*   **Spotify**: Menggunakan layanan cloud untuk menyimpan jutaan lagu dan melakukan analisis data user secara cepat.
-*   **Instagram**: Menyimpan miliaran foto dan video agar bisa diakses cepat dari seluruh dunia.
+Cara kamu melakukan deploy cloud environment bergantung pada kebutuhan kontrol, keamanan, dan biaya.
 
-Kenapa mereka mau bayar mahal ke cloud provider? Supaya mereka bisa fokus **mengembangkan produk**, bukan sibuk memperbaiki server yang rusak.
+#### Public Cloud
 
-> **for your information:**
-> **AWS (Amazon Web Services)** — Pemimpin pasar cloud saat ini karena jangkauan globalnya paling luas.
-> **Scalability** — Kemampuan sistem untuk menambah atau mengurangi sumber daya sesuai kebutuhan beban kerja.
-> **EC2 (Elastic Compute Cloud)** — Layanan server virtual dari AWS, salah satu contoh nyata dari model IaaS.
+Infrastruktur dimiliki dan dikelola oleh penyedia layanan, lalu digunakan bersama oleh banyak organisasi berbeda. Kamu tidak perlu mengelola hardware sama sekali.
+
+- Biaya paling rendah karena resource dipakai bersama (shared)
+- Cocok untuk: startup, aplikasi web publik, workload yang butuh scale cepat
+- Contoh penyedia: **AWS** (*Amazon Web Services*), **GCP** (*Google Cloud Platform*), **Azure**
+
+#### Private Cloud
+
+Infrastruktur dibangun dan dioperasikan khusus untuk satu organisasi. Bisa di-host secara internal atau oleh pihak ketiga, tapi tidak dibagi ke siapapun di luar organisasi tersebut.
+
+- Kontrol dan keamanan lebih tinggi
+- Cocok untuk: perbankan, pemerintahan, healthcare — industri yang menangani data sensitif dan punya regulasi ketat
+
+#### Hybrid Cloud
+
+Gabungan dari public dan private cloud yang saling terhubung. Organisasi bisa menyimpan data sensitif di private cloud, sementara memanfaatkan public cloud untuk menangani lonjakan traffic.
+
+- Fleksibilitas tinggi
+- Cocok untuk: platform e-commerce yang butuh keamanan data transaksi sekaligus kapasitas elastic saat traffic melonjak
 
 ---
 
-### Real-World Relevance
+### Service Models
 
-*   **Apakah teknik ini umum di pentest nyata?**
-    Sangat umum. Hampir semua target pentest saat ini (kecuali internal network yang sangat jadul) ada di cloud. Misal, kamu harus tahu cara menemukan *misconfigured S3 Bucket* atau mencari celah di *serverless functions*.
-*   **Variasi teknik ini di dunia nyata?**
-    Sekarang ada tren **Multi-cloud**, di mana satu perusahaan pakai AWS dan Azure sekaligus untuk menghindari ketergantungan pada satu provider.
-*   **Resiko jika sistem cloud tidak aman?**
-    Kalau konfigurasinya salah, data jutaan user bisa bocor ke publik hanya karena satu "checkbox" keamanan yang lupa dicentang di dashboard cloud.
+Selain cara deploy, kamu juga bisa memilih seberapa besar tanggung jawab yang ingin kamu pegang. Ini disebut **service model** — dan ada tiga tingkatan utama.
+
+Cara paling mudah untuk membedakan ketiganya adalah dengan analogi sewa properti.
+
+#### IaaS — Infrastructure as a Service
+
+Seperti menyewa lahan kosong. Kamu mendapat server virtual, storage, dan jaringan — tapi sistem operasi, middleware, dan aplikasinya kamu yang pasang dan kelola sendiri. Kontrol paling besar, tanggung jawab paling besar.
+
+- Cocok untuk: tim yang butuh kontrol penuh atas environment mereka
+- Contoh: **AWS EC2** (*Elastic Compute Cloud — layanan virtual server dari AWS*), Google Compute Engine
+
+#### PaaS — Platform as a Service
+
+Seperti menyewa rumah yang sudah lengkap dengan listrik dan air. Infrastruktur dan sistem operasi sudah dikelola oleh penyedia. Kamu hanya fokus membangun, men-deploy, dan menjalankan aplikasi.
+
+- Cocok untuk: developer yang ingin fokus ke kode tanpa urusan server
+- Contoh: **Heroku**, Google App Engine
+
+#### SaaS — Software as a Service
+
+Seperti tinggal di hotel. Semuanya sudah tersedia — kamu tinggal masuk dan pakai. Tidak ada yang perlu diinstal atau dikelola. Kamu mengakses software langsung lewat browser atau aplikasi.
+
+- Cocok untuk: pengguna akhir yang butuh software siap pakai
+- Contoh: **Gmail**, **Zoom**, **Google Docs**
+
+**Tabel perbandingan tanggung jawab:**
+
+| Yang Dikelola | IaaS | PaaS | SaaS |
+| :--- | :---: | :---: | :---: |
+| Hardware fisik | Penyedia | Penyedia | Penyedia |
+| Jaringan & storage | Penyedia | Penyedia | Penyedia |
+| Sistem operasi | **Kamu** | Penyedia | Penyedia |
+| Runtime & middleware | **Kamu** | Penyedia | Penyedia |
+| Aplikasi | **Kamu** | **Kamu** | Penyedia |
+| Data | **Kamu** | **Kamu** | **Kamu** |
 
 ---
 
-### Pertanyaan Singkat
+## Major Cloud Vendors
 
-1. Apa bedanya **High Availability** dengan **Scalability**?
-2. Kalau kamu cuma mau pakai software lewat web tanpa mau pusing urusan server, model layanan apa yang kamu pilih?
-3. Di antara AWS, Azure, dan GCP, mana yang saat ini menjadi pemimpin pasar global?
+Ada banyak penyedia layanan cloud, tapi beberapa nama mendominasi pasar global.
+
+| Provider | Keunggulan Utama |
+| :--- | :--- |
+| **AWS** (Amazon Web Services) | Pemimpin pasar dengan layanan paling lengkap dan jangkauan data center terluas di dunia. |
+| **Microsoft Azure** | Kompetitor kuat di segmen enterprise dan hybrid cloud; terintegrasi erat dengan ekosistem Microsoft. |
+| **GCP** (Google Cloud Platform) | Unggul di data analytics, machine learning, dan infrastruktur container. |
+| **Alibaba Cloud** | Pemain dominan di Asia dengan harga yang kompetitif. |
+| **IBM Cloud** | Fokus pada solusi hybrid cloud dan AI untuk kebutuhan enterprise. |
+| **Oracle Cloud** | Spesialis untuk aplikasi dan database enterprise. |
+
+AWS tetap menjadi pilihan paling umum karena skala infrastrukturnya dan dukungan untuk semua ukuran bisnis — dari startup hingga perusahaan Fortune 500.
+
+---
+
+## How Companies Are Using the Cloud
+
+Untuk memahami dampak nyata cloud, lihat bagaimana perusahaan besar menggunakannya:
+
+- **Netflix**: Menjalankan seluruh platform streaming-nya di AWS, sehingga mampu melayani jutaan pengguna secara bersamaan dan melakukan scale otomatis saat jam tayang sibuk.
+- **Spotify**: Menggunakan cloud untuk mengelola jutaan lagu dan pengguna, serta melakukan deploy fitur baru dengan cepat tanpa gangguan layanan.
+- **Instagram**: Mengandalkan cloud untuk menyimpan miliaran foto dan video, sekaligus mengantarkan konten tersebut ke pengguna di seluruh dunia dengan latensi rendah.
+- **Platform e-commerce**: Memanfaatkan cloud untuk menghadapi lonjakan traffic ekstrem seperti saat Black Friday, tanpa harus membeli infrastruktur permanen yang mahal.
+
+Pola yang sama berulang di semua kasus: cloud memungkinkan perusahaan fokus pada produk dan inovasi, bukan pada pengelolaan hardware.
+
+---
+
+## Pertanyaan Singkat
+
+1. Apa perbedaan mendasar antara **IaaS**, **PaaS**, dan **SaaS** dari sisi tanggung jawab pengelolaan?
+2. Kenapa sebuah perusahaan *healthcare* lebih memilih **private cloud** dibanding **public cloud**?
+3. Apa yang dimaksud dengan ***high availability***, dan mekanisme apa yang membuatnya mungkin?
