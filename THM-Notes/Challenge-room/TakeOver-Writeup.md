@@ -88,7 +88,7 @@ Saya juga mencoba wordlist yang lebih besar (`subdomains-top1million-20000.txt` 
 
 Dari deskripsi room disebutkan bahwa perusahaan sedang *"rebuilding their **support**"*, ini adalah petunjuk bahwa kemungkinan ada subdomain bernama `support`.
 
-Tambahkan subdomain tersebut ke `/etc/hosts` agar bisa diakses secara lokal:
+Saya menambahkan subdomain tersebut ke `/etc/hosts` agar bisa diakses secara lokal:
 
 ```bash
 echo "10.49.134.120 support.futurevera.thm" >> /etc/hosts
