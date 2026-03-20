@@ -1,7 +1,8 @@
-# OSI Model
+# TryHackMe: [OSI Model]
+- **Room Link:** [https://tryhackme.com/room/osimodelzi](https://tryhackme.com/room/osimodelzi)
+- **Category:** Pre-Security
+- **Difficulty:** Easy
 
-_Catatan dari TryHackMe | Networking Fundamental — Easy_
-_Room: [OSI Model](https://tryhackme.com/room/osimodelzi)_
 
 _(Ringkasan praktis OSI + TCP/IP ada di catatan [Networking Concepts](../Networking-Concept.md). Untuk memahami bagaimana data dibungkus per layer, cek [Packets & Frames](../Packet&Frames.md))_
 
