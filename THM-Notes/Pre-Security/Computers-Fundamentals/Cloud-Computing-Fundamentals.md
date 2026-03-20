@@ -43,11 +43,11 @@ Setelah memahami kenapa cloud muncul, mudah untuk melihat kenapa adopsinya begit
 
 | Karakteristik | Penjelasan |
 | :--- | :--- |
-| **Scalability** | Kapasitas bisa dinaikkan atau diturunkan sesuai beban — tanpa perlu membeli hardware baru. |
+| **Scalability** | Kapasitas bisa dinaikkan atau diturunkan sesuai beban, tanpa perlu membeli hardware baru. |
 | **On-demand self-service** | Server dan storage bisa dibuat atau dihapus secara instan, tanpa menunggu proses pengadaan fisik. |
 | **Pay only for what you use** | Biaya dihitung berdasarkan pemakaian aktual, bukan biaya tetap di muka. |
 | **Security** | Penyedia cloud mengelola keamanan infrastruktur fisik dengan standar enterprise. |
-| **High availability** | Sistem dirancang redundan — jika satu komponen gagal, komponen lain mengambil alih secara otomatis. |
+| **High availability** | Sistem dirancang redundan, jika satu komponen gagal, komponen lain mengambil alih secara otomatis. |
 | **Global access** | Aplikasi bisa diakses dari seluruh dunia dengan latensi rendah karena data center tersebar secara geografis. |
 
 > **for your information:** **Redundan** berarti ada duplikasi komponen penting di dalam sistem, sehingga jika satu bagian gagal, bagian lain sudah siap mengambil alih tanpa mengganggu layanan.
