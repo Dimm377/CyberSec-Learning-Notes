@@ -1,4 +1,4 @@
-# TryHackMe: [OSI Model]
+# TryHackMe: OSI Model
 - **Room Link:** [https://tryhackme.com/room/osimodelzi](https://tryhackme.com/room/osimodelzi)
 - **Category:** Pre-Security
 - **Difficulty:** Easy
