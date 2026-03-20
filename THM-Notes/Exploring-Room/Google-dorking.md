@@ -1,179 +1,281 @@
-# TryHackMe : Google Dorking
+# TryHackMe: Google Dorking
+- **Room Link:** [Google Dorking](https://tryhackme.com/room/googledorking)
+- **Category:** Exploring room
+- **Difficulty:** Easy
 
 ---
 
-* **Room Link:** [Google Dorking](https://tryhackme.com/room/googledorking)
-* **Category:** Exploring Room
-* **Difficulty:** Easy
+## Introduction
+
+Google bukan sekadar alat pencari biasa. Di balik kotak pencarian yang sederhana, ada sistem yang secara terus-menerus menjelajahi, mengindeks, dan menyimpan informasi dari miliaran halaman web di seluruh internet.
+
+Bagi seorang praktisi cyber security, memahami cara kerja mesin pencari membuka satu kemampuan yang sangat berguna: **menemukan informasi sensitif yang tidak sengaja terekspos ke publik** — tanpa menyentuh infrastruktur target secara langsung.
+
+Teknik ini disebut **Google Dorking** — penggunaan operator pencarian khusus untuk menemukan hasil yang sangat spesifik. Ini adalah bagian dari **OSINT** (_Open Source Intelligence_), yaitu proses pengumpulan informasi dari sumber yang tersedia secara publik.
+
+> **for your information:** **OSINT** (_Open Source Intelligence_) adalah proses pengumpulan dan analisis informasi dari sumber yang tersedia secara publik — website, media sosial, dokumen publik, dan mesin pencari. OSINT tidak melibatkan akses tidak sah ke sistem manapun.
+
+**Attack Context:**
+
+- **Kapan dipakai?** Tahap **Reconnaissance** — langkah paling awal dalam attack chain, sebelum penyerang menyentuh infrastruktur target secara langsung.
+- **Syarat yang dibutuhkan:** Hanya membutuhkan browser dan akses ke Google. Tidak perlu tools khusus atau akses ke sistem target.
+- **Tanda keberhasilan:** Menemukan informasi sensitif yang terekspos melalui hasil pencarian — file konfigurasi, halaman login yang tidak terlindungi, directory listing terbuka, atau kredensial yang bocor dalam file log.
+
+Setelah menyelesaikan room ini, kamu akan paham:
+
+- Bagaimana mesin pencari mengumpulkan dan mengindeks informasi dari internet.
+- Apa itu `robots.txt` dan bagaimana file ini bisa menjadi sumber informasi bagi penyerang.
+- Cara menggunakan Google Dorking operator untuk menemukan informasi spesifik.
 
 ---
 
-## Ye Ol' Search Engine
+## How Search Engines Work
 
-Google itu sebenernya "tukang index". Dia punya bot (spider/crawler) yang jalan-jalan terus di internet buat nyatet semua website yang dia temui.
+### Crawling and Indexing
 
-### Attack Context
+Mesin pencari seperti Google tidak menyimpan salinan internet secara real-time. Sebaliknya, mereka mengoperasikan program otomatis yang disebut **crawler** (juga dikenal sebagai **spider** atau **bot**) — program yang secara otomatis menjelajahi internet, mengikuti setiap tautan yang ditemukan, dan mengumpulkan konten dari halaman-halaman tersebut.
 
-* **Kapan teknik ini dipakai?** Tahap **Reconnaissance / OSINT** — langkah paling awal untuk mengumpulkan informasi tentang target tanpa menyentuh infrastruktur mereka langsung.
-* **Syaratnya:** Hanya butuh browser dan akses ke Google. Tidak perlu tools khusus.
-* **Tanda keberhasilan:** Menemukan informasi sensitif yang terekspos (file config, login page, directory listing, credential) lewat hasil pencarian Google.
+> **for your information:** **Crawler** (juga disebut **spider** atau **web bot**) adalah program otomatis yang menjelajahi internet secara sistematis dengan mengikuti tautan dari satu halaman ke halaman lain untuk mengumpulkan informasi. **Googlebot** adalah nama crawler milik Google.
 
-Cara kerjanya:
-1.  **Crawling:** Bot jalan-jalan mencari konten.
-2.  **Indexing:** Konten disimpen di database raksasa Google.
-3.  **Searching:** Saat kita mengetik di Google, dia mencari di database-nya itu, bukan langsung ke website aslinya saat itu juga.
+Konten yang dikumpulkan crawler kemudian disimpan ke dalam **index** — database raksasa yang diorganisir berdasarkan kata kunci dan relevansi konten.
 
----
+```mermaid
+graph LR
+    A["Internet\n(Miliaran halaman)"] -->|Crawler mengikuti tautan| B["Crawling\n(Pengumpulan konten)"]
+    B -->|Konten dianalisis| C["Indexing\n(Penyimpanan di database)"]
+    C -->|Query pengguna dicocokkan| D["Search Results\n(Hasil pencarian)"]
+```
 
-## Let's Learn About Crawlers
+Penting untuk dipahami: saat kamu mengetik sesuatu di Google, mesin pencari tidak langsung mengunjungi website tersebut saat itu juga. Google mencari di dalam index-nya sendiri — database yang sudah dibangun sebelumnya oleh crawler.
 
-Crawler itu seperti agen rahasia yang tugasnya mengumpulkan informasi.
+**Apa yang dikumpulkan crawler?**
 
-**Istilah Penting:**
-*   **Crawler / Spider:** Program yang otomatis jelajahin internet.
-*   **Index:** Database tempat menyimpan hasil jelajah si crawler.
-
-**Apa yang diambil Crawler?**
-Dia mengambil macem-macem, tapi yang paling penting itu **Keywords**. Dari keywords ini Google tau website kita itu tentang apa (misal: "Resep Masakan", "Tutorial Hacking", dll).
-
-**Answer the questions below:**
-
-* **Question:** Name the key term of what a "Crawler" is used to do?
-* **Answer:** ?
-
-* **Question:** What is the name of the technique that "Search Engines" use to retrieve this information about websites?
-* **Answer:** ?
-
-* **Question:** What is an example of the type of contents that could be gathered from a website?
-* **Answer:** ?
+- **Keywords** — kata kunci dari konten halaman, yang menentukan topik website tersebut.
+- **Metadata** — informasi deskriptif tentang halaman seperti judul, deskripsi, dan tag.
+- **Tautan** — semua link di halaman yang akan menjadi target crawling berikutnya.
+- **File dan dokumen** — PDF, spreadsheet, file konfigurasi, dan tipe file lain yang dapat diakses publik.
 
 ---
 
-## Enter: Search Engine Optimisation (SEO)
+### Search Engine Optimisation (SEO)
 
-SEO itu seni membuat website kita disukai sama Google agar muncul di halaman pertama.
+**SEO** (_Search Engine Optimisation_) adalah praktik mengoptimalkan sebuah website agar mendapat peringkat lebih tinggi di hasil pencarian mesin pencari.
 
-**Topik SEO:**
-1.  **Keywords:** Kata kunci yang relevan.
-2.  **Meta Title:** Judul halaman yang muncul di tab browser & hasil pencarian.
-3.  **Sitemap:** Peta situs.
+> **for your information:** **SEO** (_Search Engine Optimisation_) adalah serangkaian teknik yang digunakan untuk meningkatkan visibilitas sebuah website di hasil pencarian organik mesin pencari.
 
-Task ini sebenernya memerintah kita pakai tool seperti "SEO Site Checkup" buat mengecek performa website `tryhackme.com` vs `googledorking.cmnatic.co.uk`.
+Beberapa elemen kunci yang dinilai mesin pencari:
 
-**Answer the questions below:**
+| Elemen | Penjelasan |
+| :--- | :--- |
+| **Keywords** | Kata kunci yang relevan dengan konten halaman |
+| **Meta Title** | Judul halaman yang muncul di tab browser dan hasil pencarian |
+| **Meta Description** | Deskripsi singkat halaman yang muncul di bawah judul di hasil pencarian |
+| **Sitemap** | File XML yang mendaftarkan semua halaman di website untuk memudahkan crawler |
+| **Page Speed** | Kecepatan loading halaman — semakin cepat, semakin disukai mesin pencari |
 
-* **Question:** Using the SEO Site Checkup tool on "tryhackme.com", does TryHackMe pass the "Meta Title Test"? (Yea / Nay)
-* **Answer:** ?
-
-* **Question:** Does "tryhackme.com" pass the "Keywords Usage Test?" (Yea / Nay)
-* **Answer:** ?
-
-* **Question:** From a "rating score" perspective alone, what website would list first? tryhackme.com or googledorking.cmnatic.co.uk
-* **Answer:** ?
-
-* **Question:** With the same tool and domain in Question #3 (previous) How many pages use "flash"?
-* **Answer:** ?
+> **for your information:** **Sitemap** adalah file — umumnya berformat XML — yang mendaftarkan semua URL di sebuah website beserta informasi tambahan seperti kapan terakhir diperbarui. Sitemap membantu crawler menemukan semua halaman di website dengan lebih efisien. Biasanya dapat diakses di `/sitemap.xml`.
 
 ---
 
-## Beepboop : robots.txt
+## robots.txt
 
-Task ini membahas soal file sakral buat mesin pencari, yaitu **`robots.txt`**.
+### What is robots.txt?
 
-**Apa itu robots.txt?**
-File teks biasa yang dipakai webmaster buat memberi tau crawler (seperti Googlebot, Bingbot, dll) halaman mana yang boleh diambil (index) dan mana yang enggak.
+**robots.txt** adalah file teks sederhana yang ditempatkan di root domain sebuah website untuk memberikan instruksi kepada crawler tentang halaman atau direktori mana yang boleh dan tidak boleh diindeks.
 
-**Poin Penting:**
+Lokasi file ini selalu konsisten: `domain.com/robots.txt`. File ini tidak bisa ditempatkan di subdirektori — harus berada tepat di root domain.
 
-1.  **Lokasi File:** Wajib ada di root domain.
-    *   Misal website `ablog.com`, filenya pasti ada di `ablog.com/robots.txt`.
-    *   Ga bisa ditaruh di subfolder seperti `ablog.com/site/robots.txt`.
+> **for your information:** **Root domain** adalah level paling dasar dari sebuah domain — misalnya `ablog.com`. File yang ditempatkan di root domain dapat diakses langsung di `ablog.com/namafile`.
 
-2.  **Sitemap:** Peta situs yang isinya daftar semua link di website. Biasanya lokasinya di `/sitemap.xml`.
+### robots.txt Syntax
 
-3.  **User-agent:** Identitas crawler yang mau diatur.
-    *   `User-agent: *` = Berlaku buat semua bot.
-    *   `User-agent: Bingbot` = Khusus buat botnya Bing.
+Berikut contoh struktur `robots.txt` beserta penjelasan setiap komponennya:
 
-4.  **Disallow:** Perintah larangan.
-    *   `Disallow: /` = Ga boleh index seluruh website.
-    *   `Disallow: /admin/` = Ga boleh index folder admin.
-    *   `Disallow: /dont-index-me/` = Ga boleh index folder rahasia ini.
+```
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /dont-index-me/
 
-5.  **Extensi File:** File konfigurasi Linux seringkali punya ekstensi `.conf`. Kalo kesebar bisa bahaya!
+User-agent: Bingbot
+Disallow: /
 
-**Answer the questions below:**
+Sitemap: https://ablog.com/sitemap.xml
+```
 
-* **Question:** Where would "robots.txt" be located on the domain "ablog.com"?
-* **Answer:** ?
+| Direktif | Nilai | Penjelasan |
+| :--- | :--- | :--- |
+| `User-agent` | `*` | Berlaku untuk semua crawler |
+| `User-agent` | `Bingbot` | Hanya berlaku untuk crawler Bing |
+| `Disallow` | `/` | Larang seluruh website diindeks |
+| `Disallow` | `/admin/` | Larang direktori `/admin/` diindeks |
+| `Allow` | `/public/` | Izinkan direktori `/public/` diindeks secara eksplisit |
+| `Sitemap` | URL sitemap | Memberitahu crawler lokasi sitemap website |
 
-* **Question:** If a website was to have a sitemap, where would that be located?
-* **Answer:** ?
+### robots.txt as an Information Source
 
-* **Question:** How would we only allow "Bingbot" to index the website?
-* **Answer:** ?
+Dari perspektif keamanan, `robots.txt` sering kali justru menjadi sumber informasi yang berguna bagi penyerang. Logikanya sederhana: direktori yang sengaja di-`Disallow` oleh webmaster kemungkinan besar berisi sesuatu yang dianggap sensitif — halaman admin, direktori backup, file konfigurasi, atau area yang belum seharusnya publik.
 
-* **Question:** How would we prevent a "Crawler" from indexing the directory "/dont-index-me/"?
-* **Answer:** ?
+```mermaid
+graph TD
+    A["robots.txt\nDisallow: /admin/\nDisallow: /backup/\nDisallow: /config/"] -->|Dibaca attacker| B["Daftar path sensitif\nyang perlu diperiksa"]
+    B --> C["/admin/ — panel administrasi"]
+    B --> D["/backup/ — file backup"]
+    B --> E["/config/ — file konfigurasi"]
+```
 
-* **Question:** What is the typical file structure of a "Sitemap"?
-* **Answer:** ?
-
-* **Question:** What real life example can "Sitemaps" be compared to?
-* **Answer:** ?
-
-* **Question:** Name the keyword for the path taken for content on a website.
-* **Answer:** ?
-
----
+> **Common Mistake:** Banyak webmaster berpikir bahwa mendaftarkan direktori sensitif di `robots.txt` dengan `Disallow` sudah cukup untuk menyembunyikannya. Faktanya sebaliknya — `robots.txt` adalah file publik yang bisa dibaca siapa saja, termasuk penyerang. `Disallow` hanya instruksi untuk crawler yang patuh, bukan mekanisme keamanan. Perlindungan akses yang sebenarnya harus menggunakan autentikasi dan konfigurasi server.
 
 ---
 
-## What is Google Dorking?
+## Google Dorking
 
-Ini dia menu utamanya: **Google Dorking**.
-Teknik menggunakan operator pencarian Google untuk menemukan hasil yang sangat spesifik. Di dunia security, ini digunakan untuk **Reconnaissance** (mencari info target).
+### What is Google Dorking?
 
-### 1. Basic Operators (Operator Dasar)
-* **`site:`** : Mencari di domain spesifik.
-* Contoh: `site:tryhackme.com` (Cuma hasil dari THM).
-* Contoh: `site:.go.id` (Cuma hasil dari domain pemerintah Indonesia).
-* **`filetype:`** (atau `ext:`) : Mencari jenis file tertentu.
-* Contoh: `filetype:pdf` (Dokumen PDF).
-* Contoh: `ext:log` (File log, bahaya kalo bocor!).
-* **`inurl:`** : Mencari kata di dalam URL.
-* Contoh: `inurl:admin` (Kemungkinan halaman admin).
-* **`intitle:`** : Mencari kata di Judul Halaman (Tab Browser).
-* Contoh: `intitle:login` (Halaman login).
-* **`intext:`** : Mencari kata di dalam isi artikel/body halaman.
-* Contoh: `intext:"password"` (Mencari kata password di halaman).
+**Google Dorking** adalah teknik menggunakan operator pencarian khusus (_search operators_) yang didukung Google untuk menyaring hasil pencarian secara sangat spesifik. Dalam konteks keamanan, teknik ini digunakan untuk menemukan informasi sensitif yang tidak sengaja terekspos ke publik melalui indexing mesin pencari.
 
-### 2. Advanced Combinations (Combo Sakti)
-Gabungkan operator di atas untuk hasil yang lebih tajam.
+> **for your information:** **GHDB** (_Google Hacking Database_) adalah database publik yang dikurasi oleh **Exploit-DB** berisi ribuan Google Dork yang sudah terbukti menemukan informasi sensitif — mulai dari panel CCTV yang terbuka, printer yang terekspos ke internet, hingga file yang berisi kredensial.
 
-**a. Mencari Halaman Login / Admin Panel:**
-* `site:target.com intitle:"login"` : Halaman login di target.
-* `inurl:admin intitle:"login"` : Halaman login admin secara umum.
+---
 
-**b. Mencari File Sensitif / Bocor:**
-* `filetype:log intext:"password"` : Mencari file log yang isinya ada kata password.
-* `intitle:"index of" "backup"` : **Directory Listing** (Folder kebuka) yang isinya file backup.
-* `site:gov.id filetype:pdf "rahasia"` : Dokumen rahasia instansi pemerintah (Jangan disalahgunain!).
+### Core Operators
 
-**c. Mencari Config File:**
-* `ext:conf` atau `ext:cnf` : File konfigurasi server.
-* `inurl:wp-config.txt` : Konfigurasi WordPress yang bocor.
+#### `site:` — Membatasi Pencarian ke Domain Tertentu
 
-### 3. Google Dorking Database (GHDB)
-Ada database isinya ribuan dork yang sudah ditemuin orang lain: **Exploit-DB (GHDB)**. Isinya dork buat mencari CCTV, printer online, password, dll.
+Membatasi hasil pencarian hanya dari domain atau subdomain yang ditentukan.
 
-**Answer the questions below:**
+```
+site:tryhackme.com
+site:.go.id
+site:bbc.co.uk "flood defences"
+```
 
-* **Question:** What would be the format used to query the site bbc.co.uk about flood defences?
-* **Answer:** ?
+#### `filetype:` / `ext:` — Mencari Tipe File Tertentu
 
-* **Question:** What term would you use to search by file type?
-* **Answer:** ?
+Membatasi hasil hanya pada tipe file yang ditentukan.
 
-* **Question:** What term can we use to look for login pages?
-* **Answer:** ?
+```
+filetype:pdf
+filetype:xls
+ext:log
+ext:conf
+ext:sql
+```
+
+File seperti `.log`, `.conf`, `.sql`, dan `.env` sangat berbahaya jika terindeks karena sering berisi informasi sistem atau kredensial.
+
+#### `inurl:` — Mencari Kata di dalam URL
+
+Mencari halaman yang URL-nya mengandung kata tertentu.
+
+```
+inurl:admin
+inurl:login
+inurl:wp-config
+inurl:dashboard
+```
+
+#### `intitle:` — Mencari Kata di Judul Halaman
+
+Mencari halaman yang judulnya (HTML `<title>`) mengandung kata tertentu.
+
+```
+intitle:"login"
+intitle:"index of"
+intitle:"admin panel"
+```
+
+#### `intext:` — Mencari Kata di dalam Konten Halaman
+
+Mencari halaman yang isi kontennya mengandung kata tertentu.
+
+```
+intext:"password"
+intext:"confidential"
+intext:"not for public distribution"
+```
+
+---
+
+### Advanced Combinations
+
+Operator-operator di atas bisa dikombinasikan untuk menghasilkan query yang jauh lebih spesifik dan efektif.
+
+**Mencari halaman login dan panel administrasi:**
+
+```
+site:target.com intitle:"login"
+inurl:admin intitle:"login"
+inurl:wp-admin site:target.com
+```
+
+**Mencari file sensitif yang terekspos:**
+
+```
+filetype:log intext:"password"
+ext:sql intext:"INSERT INTO"
+ext:env intext:"DB_PASSWORD"
+```
+
+**Mencari directory listing yang terbuka:**
+
+Directory listing terjadi ketika server menampilkan isi direktori karena tidak ada file index di dalamnya — kondisi ini mengekspos seluruh isi folder ke publik.
+
+```
+intitle:"index of" "backup"
+intitle:"index of" "config"
+intitle:"index of" ".git"
+```
+
+**Mencari file konfigurasi yang bocor:**
+
+```
+ext:conf inurl:server
+inurl:wp-config.txt
+ext:cnf intext:"password"
+```
+
+**Mencari dokumen sensitif di domain tertentu:**
+
+```
+site:gov.id filetype:pdf "rahasia"
+site:target.com filetype:xls "email"
+```
+
+---
+
+### Operator Reference Table
+
+| Operator | Fungsi | Contoh |
+| :--- | :--- | :--- |
+| `site:` | Batasi ke domain tertentu | `site:bbc.co.uk` |
+| `filetype:` / `ext:` | Filter berdasarkan tipe file | `filetype:pdf`, `ext:log` |
+| `inurl:` | Cari kata di dalam URL | `inurl:admin` |
+| `intitle:` | Cari kata di judul halaman | `intitle:"login"` |
+| `intext:` | Cari kata di konten halaman | `intext:"password"` |
+| `"kata"` | Pencarian frasa eksak | `"index of"` |
+| `-kata` | Kecualikan kata dari hasil | `site:target.com -www` |
+
+---
+
+### Google Hacking Database (GHDB)
+
+**Exploit-DB** menyediakan **GHDB** (_Google Hacking Database_) — koleksi publik berisi ribuan dork yang sudah diverifikasi dan dikategorikan berdasarkan jenis informasi yang ditemukan:
+
+- **Footholds** — titik masuk awal ke sistem
+- **Files Containing Passwords** — file yang mengandung kredensial
+- **Sensitive Directories** — direktori sensitif yang terekspos
+- **Web Server Detection** — identifikasi versi dan tipe web server
+- **Vulnerable Files** — file yang mengindikasikan kerentanan spesifik
+
+GHDB dapat diakses di: `https://www.exploit-db.com/google-hacking-database`
+
+> **Common Mistake:** Google Dorking adalah teknik OSINT yang memanfaatkan informasi yang sudah terindeks secara publik. Mengakses informasi yang ditemukan melalui dork pada sistem yang bukan milikmu — bahkan jika informasinya terekspos secara tidak sengaja — bisa masuk ke ranah legal yang bermasalah. Selalu pastikan kamu punya izin eksplisit sebelum melakukan pengujian pada target nyata.
+
+---
+
+## Quick Review
+
+- Apa perbedaan antara `inurl:` dan `intitle:` — kapan kamu memilih salah satunya saat melakukan reconnaissance?
+- Kenapa `robots.txt` yang berisi banyak entri `Disallow` justru bisa menguntungkan penyerang?
+- Jelaskan kenapa file dengan ekstensi `.env`, `.log`, dan `.conf` menjadi target pencarian yang berbahaya jika terindeks oleh mesin pencari.
