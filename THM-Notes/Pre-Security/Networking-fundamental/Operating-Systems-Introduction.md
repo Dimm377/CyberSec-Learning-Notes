@@ -36,7 +36,7 @@ Susunan lapisannya seperti ini:
 
 <img src="../../Assets/Images/OS-layer.png" width="500">
 
-Kenapa kita butuh OS? Karena tanpanya, setiap aplikasi harus mengakses CPU, memory, file, perangkat, dan keamanan secara langsung — dan pasti bakal bentrok satu sama lain. OS hadir sebagai pengatur pusat yang mencegah kekacauan itu.
+Kenapa kita butuh OS? Karena tanpanya, setiap aplikasi harus mengakses CPU, memory, file, perangkat, dan keamanan secara langsung, dan pasti bakal bentrok satu sama lain. OS hadir sebagai pengatur pusat yang mencegah kekacauan itu.
 
 Cara paling gampang memahaminya: bayangkan komputermu sebagai **bandara yang sibuk**.
 
@@ -90,3 +90,115 @@ Sebelum antivirus, *firewall*, atau tool keamanan apapun dipasang, OS sudah menj
 - **System Protection**: Menjaga file-file sistem yang kritikal dan pengaturan penting dari perubahan yang tidak sah.
 
 ---
+
+## OS Interaction and Landscape
+
+### OS Interfaces
+
+Sekarang kamu sudah paham apa itu OS dan apa saja tanggung jawabnya. Pertanyaan berikutnya: bagaimana cara kamu berinteraksi dengan OS itu sendiri? Ada dua cara utama:
+
+#### Graphical User Interface (GUI)
+
+**GUI** adalah antarmuka yang paling sering kamu jumpai sehari-hari. Semua informasi ditampilkan secara visual: ikon folder, jendela aplikasi, menu pengaturan. Kamu cukup klik, drag, dan scroll untuk melakukan sesuatu.
+
+Analoginya seperti aplikasi navigasi di HP. Kamu tinggal mengetuk ikon lokasi tujuan, dan aplikasi yang mencarikan rute-nya untuk kamu. Tidak perlu mengetik apapun.
+
+#### Command-Line Interface (CLI)
+
+**CLI** (_Command-Line Interface_) adalah antarmuka berbasis teks. Alih-alih mengklik ikon, kamu mengetik perintah spesifik yang langsung dipahami oleh sistem. CLI memberikan presisi, kontrol, dan kecepatan yang jauh lebih tinggi dibanding GUI, terutama untuk tugas-tugas tingkat lanjut. Tapi konsekuensinya: kamu harus hafal sintaks perintahnya.
+
+Kembali ke analogi navigasi: kalau GUI itu mengetuk lokasi di peta, maka CLI itu seperti memasukkan **koordinat GPS secara manual**. Hasilnya lebih akurat, tapi kamu harus tahu persis koordinat yang benar.
+
+<img src="../../Assets/Images/OS-interface.png" width="600">
+
+Pada screenshot di atas, GUI dan CLI sama-sama dipakai untuk menampilkan isi direktori `home` milik user `ubuntu`. GUI membutuhkan beberapa klik navigasi folder, sedangkan CLI cukup satu perintah untuk menampilkan hasil yang sama.
+
+> **for your information:** Nanti di bagian selanjutnya, kamu akan belajar perintah-perintah CLI di Linux dan Windows untuk menavigasi file, memeriksa informasi sistem, dan berinteraksi dengan OS secara langsung.
+
+---
+
+### The Operating System Landscape
+
+Tidak semua OS itu sama. Perangkat yang berbeda dengan pekerjaan yang berbeda membutuhkan desain OS yang berbeda pula. Dari HP di kantongmu sampai web server di data center, ada lima kategori besar OS yang akan kamu temui:
+
+| Tipe OS | Kegunaan Utama | Karakteristik |
+| :--- | :--- | :--- |
+| **Desktop** | Komputer pribadi, pekerjaan harian, gaming, pembuatan konten | Antarmuka grafis yang kaya, menjalankan banyak aplikasi sekaligus, berfokus pada pengalaman user |
+| **Server** | Web hosting, database, layanan cloud, back-end | Tanpa GUI (headless), mengutamakan uptime maksimal, multi-user, akses remote |
+| **Mobile** | Smartphone dan tablet | UI berbasis sentuhan, hemat daya, selalu terhubung ke jaringan, sandbox antar aplikasi |
+| **Embedded** | Perangkat IoT, smart TV, router, mobil | Ukuran sangat kecil (tiny footprint), berjalan di hardware yang terbatas |
+| **Virtual/Cloud** | Virtual machine, container, instance cloud | Ringan, scalable, bisa di-deploy dalam hitungan detik |
+
+---
+
+### Real World Operating Systems
+
+Sekarang kamu tahu kategori-kategorinya. Saatnya melihat OS apa saja yang benar-benar dipakai di dunia nyata, dikelompokkan berdasarkan kategori di atas.
+
+#### Desktop
+
+- **Windows**: OS desktop paling banyak digunakan di dunia. Versi yang beredar saat ini: *Windows 10 (end-of-life)*, *Windows 11*.
+- **macOS**: OS desktop buatan Apple, dikenal karena GUI-nya yang smooth dan integrasinya dengan ekosistem Apple. Versi: *Sonoma (14)*, *Sequoia (15)*, *Tahoe (26)*.
+- **Linux**: Bukan satu OS tunggal, tapi **keluarga besar** OS open-source yang disebut **distribusi** (distro). Contoh: *Ubuntu*, *Debian*, *Fedora*, *Arch*.
+
+#### Server
+
+- **Windows Server**: Dipakai di jaringan besar, data center, dan lingkungan enterprise. Versi: *Server 2016*, *2019*, *2022*, *2025*.
+- **Linux Server**: Mendominasi mayoritas web server di dunia karena keandalan dan sifat open-source-nya. Distro populer: *Ubuntu Server*, *Debian*, *CentOS*, *Red Hat*.
+- **Unix**: Dipakai oleh perusahaan besar di sektor keuangan, telekomunikasi, dan pemerintahan. Contoh: *IBM AIX*, *Oracle Solaris*.
+
+#### Mobile
+
+- **Android**: OS mobile paling banyak dipakai di dunia, berjalan di ponsel, tablet, dan perangkat pintar. Versi: *Android 14 - 16* serta varian dari masing-masing produsen.
+- **iOS**: OS mobile milik Apple yang berjalan di iPhone, iPad, dan perangkat Apple lainnya. Versi: *iOS 17*, *18*, *26*.
+
+#### Embedded and IoT Devices
+
+- **Embedded Linux**: OS khusus yang ditanamkan langsung ke dalam perangkat dengan fungsi spesifik. Contoh: *OpenWrt* (untuk router), *Ubuntu Core*, *Yocto Project*.
+- **Real-Time OS (RTOS)**: Dirancang untuk aplikasi yang membutuhkan waktu respons yang terjamin, seperti kendali pesawat terbang atau sistem medis. Contoh: *FreeRTOS*, *VxWorks*, *QNX*.
+
+> **for your information:** **RTOS** (_Real-Time Operating System_) — OS yang menjamin sebuah tugas akan selesai dalam batas waktu tertentu. Berbeda dengan OS biasa di mana sedikit keterlambatan masih bisa ditoleransi, di RTOS keterlambatan bisa berakibat fatal (bayangkan sistem rem otomatis mobil yang telat merespons).
+
+#### Virtual and Cloud
+
+- **Cloud/VM OS**: OS yang berjalan di data center besar untuk hosting website, aplikasi, dan layanan streaming. Contoh: *Ubuntu LTS*, *Amazon Linux*, *Rocky Linux*.
+- **Container-optimized OS**: Alternatif ringan dari VM yang hanya membungkus aplikasi beserta dependensinya. Contoh: *Alpine Linux*, *Bottlerocket AWS*, *Flatcar Linux*.
+
+---
+
+### Why So Many Operating Systems?
+
+Kenapa tidak ada satu OS saja yang bisa dipakai untuk semua perangkat? Jawabannya sederhana: setiap lingkungan punya kebutuhan yang berbeda.
+
+- Laptop harus **mudah dipakai** dan mendukung multitasking berat.
+- Server harus stabil, aman, dan mampu berjalan **terus-menerus tanpa gangguan**.
+- Perangkat mobile harus **hemat daya** dan terintegrasi erat dengan hardware-nya.
+- Embedded system harus **sangat ringan** dan berjalan di hardware yang terbatas.
+
+Perusahaan dan komunitas yang mengembangkan OS ini pun punya tujuan berbeda-beda. Ada yang mengutamakan kemudahan, ada yang fokus ke performa, ada yang mengedepankan keamanan, ada yang sepenuhnya open-source. Karena setiap lingkungan menghargai kapabilitas yang berbeda, tidak ada satu OS yang sempurna untuk semua situasi. Yang ada adalah **ekosistem** OS yang terus berevolusi sesuai kebutuhan masing-masing.
+
+---
+
+## Conclusion
+
+Di room ini kamu sudah melihat apa yang sebenarnya dilakukan OS di balik layar: mengelola privilege, mengatur memory, menangani user, dan menjaga proses-proses tetap berjalan tanpa saling mengganggu. Kamu juga sudah melihat bagaimana bermacam-macam OS lahir karena kebutuhan yang berbeda-beda, mulai dari desktop, server, mobile, embedded, hingga cloud.
+
+### Key Terminology
+
+Sebelum lanjut ke room berikutnya, pastikan kamu paham istilah-istilah inti berikut:
+
+| Istilah | Definisi |
+| :--- | :--- |
+| **Operating System (OS)** | Software inti yang mengelola hardware, aplikasi, dan seluruh sumber daya sistem. |
+| **Kernel Space** | Area dengan privilege tertinggi di dalam OS, tempat kernel berjalan dan mengakses hardware secara langsung. |
+| **User Space** | Area tempat aplikasi biasa berjalan dengan permission terbatas, demi keamanan dan stabilitas sistem. |
+| **GUI** (*Graphical User Interface*) | Antarmuka visual (ikon, jendela, menu) yang memungkinkan interaksi lewat klik dan sentuh. |
+| **CLI** (*Command-Line Interface*) | Antarmuka berbasis teks yang memberikan kontrol presisi melalui perintah yang diketik manual. |
+
+### Further Learning
+
+Di room-room selanjutnya, kamu akan menyelam lebih dalam ke OS Windows dan Linux, belajar menavigasi file system, menggali informasi sistem, dan berinteraksi langsung dengan OS lewat GUI maupun CLI:
+
+- [Windows Basics](https://tryhackme.com/room/windowsbasics)
+- [Linux CLI Basics](https://tryhackme.com/room/linuxclibasics)
+- [Windows CLI Basics](https://tryhackme.com/room/windowsclibasics)

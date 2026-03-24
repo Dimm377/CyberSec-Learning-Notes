@@ -38,6 +38,7 @@
 | 3.  | [OSI Model](THM-Notes/Pre-Security/Networking-fundamental/OSI-Model.md)                           | OSI 7 Layers             |
 | 4.  | [Packet & Frames](THM-Notes/Pre-Security/Networking-fundamental/Packet%26Frames.md)               | Data encapsulation       |
 | 5.  | [Extending Your Network](THM-Notes/Pre-Security/Networking-fundamental/Extending-Your-Network.md) | Routers, firewalls, VPNs |
+| 6.  | [Operating Systems Introduction](THM-Notes/Pre-Security/Networking-fundamental/Operating-Systems-Introduction.md) | OS fundamentals, interfaces & landscape |
 
 </details>
 
@@ -266,5 +267,6 @@
 | No. | Notes                                                        | Description                   |
 | :-: | ------------------------------------------------------------ | ----------------------------- |
 | 1.  | [TakeOver](THM-Notes/Challenge-room/TakeOver-Writeup.md)             | Subdomain Enumeration Challenge |
+| 2.  | [Simple CTF](THM-Notes/Challenge-room/SimpleCTF-Writeups.md)         | Beginner CTF Challenge |
 
 </details>
