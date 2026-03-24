@@ -249,8 +249,9 @@ Informasi yang bisa dibaca dari setiap entry:
 
 ---
 
-## Quick Review
+## Review
 
-- Apa yang dimaksud dengan stateless pada HTTP, dan mekanisme apa yang digunakan aplikasi web untuk mengatasi keterbatasan ini?
-- Kenapa status code `403 Forbidden` lebih informatif dibanding `404 Not Found` dari perspektif attacker yang sedang melakukan enumeration?
-- Jelaskan peran DNS dalam proses komunikasi Client-Server — apa yang terjadi jika DNS server tidak bisa dihubungi?
+- HTTP bersifat **stateless** — setiap request dianggap independen tanpa mengingat request sebelumnya. Aplikasi web menggunakan mekanisme seperti **cookies** dan **session** untuk menjaga state antar interaksi.
+- Status code **403 Forbidden** lebih informatif bagi attacker dibanding **404 Not Found** karena 403 mengkonfirmasi bahwa resource _ada_ tapi aksesnya dibatasi — ini membantu proses enumeration.
+- **DNS** menerjemahkan domain ke IP Address sebelum koneksi Client-Server terjadi. Jika DNS tidak bisa dihubungi, browser tidak bisa me-resolve domain dan koneksi gagal total.
+

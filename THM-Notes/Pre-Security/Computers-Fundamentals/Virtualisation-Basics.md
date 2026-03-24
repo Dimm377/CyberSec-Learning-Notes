@@ -203,8 +203,9 @@ Pilihan antara VM dan container bukan soal mana yang lebih baik — tapi soal ma
 
 ---
 
-## Quick Review
+## Review
 
-- Apa perbedaan mendasar antara Type 1 dan Type 2 hypervisor, dan kapan kamu memilih salah satunya?
-- Kenapa container bisa start lebih cepat dibanding VM?
-- Dalam konteks malware analysis, mengapa isolasi jaringan pada VM itu krusial?
+- **Type 1 hypervisor** berjalan langsung di atas hardware (tanpa OS host), cocok untuk server dan data center. **Type 2 hypervisor** berjalan di atas OS host, cocok untuk penggunaan personal seperti lab dan testing.
+- **Container** bisa start lebih cepat dibanding VM karena tidak perlu mem-boot seluruh OS — container berbagi kernel host OS dan hanya menjalankan proses aplikasi beserta dependensinya.
+- Dalam **malware analysis**, isolasi jaringan pada VM itu krusial agar malware yang dijalankan tidak bisa berkomunikasi keluar (misalnya ke C2 server) dan tidak menginfeksi jaringan host yang sebenarnya.
+

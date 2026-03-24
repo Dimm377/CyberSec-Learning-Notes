@@ -139,8 +139,9 @@ Dalam konteks penetration testing, VPN digunakan untuk dua tujuan utama. Pertama
 
 ---
 
-## Quick Review
+## Review
 
-- Apa yang terjadi jika port forwarding dikonfigurasi untuk meneruskan port 3389 (RDP) ke mesin internal tanpa pembatasan IP sumber — dan kenapa ini berbahaya?
-- Jelaskan perbedaan mendasar antara stateful dan stateless firewall dari sisi kemampuan mendeteksi serangan yang memecah payload ke beberapa paket.
-- Kenapa PPTP tidak direkomendasikan untuk lingkungan yang membutuhkan keamanan tinggi meskipun mudah dikonfigurasi?
+- **Port forwarding** meneruskan koneksi dari IP publik ke perangkat internal berdasarkan port. Jika dikonfigurasi secara sembarangan (misalnya port RDP 3389 terbuka ke `0.0.0.0`), layanan internal langsung terekspos ke internet.
+- **Stateful firewall** melacak seluruh status koneksi sehingga lebih akurat mendeteksi serangan multi-paket, sedangkan **stateless firewall** mengevaluasi setiap paket secara independen — lebih cepat tapi rentan terhadap teknik _packet fragmentation_.
+- **PPTP** mudah dikonfigurasi tapi enkripsinya lemah, sehingga tidak cocok untuk lingkungan yang membutuhkan keamanan tinggi. **IPSec** menawarkan enkripsi yang jauh lebih kuat sebagai alternatif.
+

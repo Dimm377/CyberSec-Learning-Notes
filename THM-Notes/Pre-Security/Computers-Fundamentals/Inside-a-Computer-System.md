@@ -246,8 +246,9 @@ Kenapa OS harus dimuat ke RAM terlebih dahulu? Karena CPU membutuhkan akses yang
 
 ---
 
-## Quick Review
+## Review
 
-- Apa perbedaan mendasar antara RAM dan storage dalam hal persistensi data saat komputer dimatikan?
-- Kenapa proses boot bisa menjadi target serangan — di tahap mana attacker paling mungkin menyisipkan malware?
-- Jelaskan fungsi POST dan apa yang terjadi jika salah satu komponen gagal dalam pengujiannya.
+- **RAM** menyimpan data sementara yang hilang saat komputer mati (_volatile_), sedangkan **storage** (HDD/SSD) menyimpan data secara permanen (_non-volatile_).
+- Proses **boot** dimulai dari BIOS/UEFI → POST (pengujian hardware) → bootloader → kernel OS. Tahap ini bisa menjadi target serangan _bootkit/rootkit_ karena berjalan sebelum OS dan antivirus aktif.
+- **POST** (_Power-On Self-Test_) adalah pengujian otomatis terhadap komponen hardware saat komputer dinyalakan — jika komponen gagal, sistem menghentikan proses boot dan mengeluarkan kode error (biasanya berupa bunyi _beep_).
+

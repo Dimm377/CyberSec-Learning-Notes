@@ -274,8 +274,10 @@ GHDB dapat diakses di: `https://www.exploit-db.com/google-hacking-database`
 
 ---
 
-## Quick Review
+## Review
 
-- Apa perbedaan antara `inurl:` dan `intitle:` — kapan kamu memilih salah satunya saat melakukan reconnaissance?
-- Kenapa `robots.txt` yang berisi banyak entri `Disallow` justru bisa menguntungkan penyerang?
-- Jelaskan kenapa file dengan ekstensi `.env`, `.log`, dan `.conf` menjadi target pencarian yang berbahaya jika terindeks oleh mesin pencari.
+- Mesin pencari bekerja melalui **crawling** (menjelajahi dan mengumpulkan konten) lalu **indexing** (menyimpan ke database terstruktur) — kamu tidak mencari ke internet secara langsung, tapi ke index yang sudah dibangun.
+- **robots.txt** adalah file publik yang berisi instruksi untuk crawler, dan entri `Disallow` justru sering mengungkap path sensitif yang bisa dimanfaatkan penyerang saat reconnaissance.
+- **Google Dorking** menggunakan operator seperti `site:`, `filetype:`, `inurl:`, `intitle:`, dan `intext:` untuk menyaring hasil pencarian secara presisi — teknik ini termasuk tahap **Recon** dalam attack chain.
+- File berekstensi `.env`, `.log`, `.conf`, dan `.sql` menjadi target utama karena sering berisi kredensial atau konfigurasi internal yang seharusnya tidak terindeks.
+

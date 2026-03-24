@@ -154,8 +154,9 @@ Pola yang sama berulang di semua kasus: cloud memungkinkan perusahaan fokus pada
 
 ---
 
-## Pertanyaan Singkat
+## Review
 
-1. Apa perbedaan mendasar antara **IaaS**, **PaaS**, dan **SaaS** dari sisi tanggung jawab pengelolaan?
-2. Kenapa sebuah perusahaan *healthcare* lebih memilih **private cloud** dibanding **public cloud**?
-3. Apa yang dimaksud dengan ***high availability***, dan mekanisme apa yang membuatnya mungkin?
+- **IaaS** menyediakan infrastruktur (server, storage, jaringan) yang kamu kelola sendiri. **PaaS** menambahkan platform runtime sehingga kamu cukup fokus ke kode. **SaaS** menyediakan aplikasi siap pakai tanpa perlu mengelola apapun di bawahnya.
+- Perusahaan _healthcare_ cenderung memilih **private cloud** karena regulasi ketat (HIPAA, dsb.) yang mengharuskan data pasien disimpan di infrastruktur terisolasi dengan kontrol penuh.
+- **High availability** adalah kemampuan sistem tetap beroperasi meskipun salah satu komponen gagal — dicapai melalui mekanisme redundansi, load balancing, dan multi-region deployment.
+

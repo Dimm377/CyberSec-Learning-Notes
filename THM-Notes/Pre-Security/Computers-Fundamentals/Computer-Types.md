@@ -145,8 +145,9 @@ Memahami trade-off ini penting karena keputusan desain yang dibuat oleh produsen
 
 ---
 
-## Quick Review
+## Review
 
-- Apa yang membuat server menjadi target bernilai tinggi dibanding laptop biasa dari perspektif penyerang?
-- Kenapa perangkat IoT sering menjadi titik masuk yang dieksploitasi dalam serangan jaringan?
-- Jelaskan perbedaan mendasar antara IoT device dan embedded system dari sisi konektivitas dan fungsinya.
+- **Server** adalah target bernilai tinggi karena menyimpan data banyak pengguna dan menjalankan layanan kritis — kompromi satu server bisa berdampak ke seluruh organisasi.
+- **Perangkat IoT** sering menjadi titik masuk serangan karena banyak yang memiliki keamanan lemah: firmware jarang di-update, kredensial default tidak diganti, dan konektivitas jaringannya terus aktif.
+- **Embedded system** berbeda dari IoT karena dirancang untuk satu tugas spesifik dan umumnya tidak terhubung ke jaringan, sedangkan IoT device selalu terkoneksi ke internet atau jaringan lokal.
+
