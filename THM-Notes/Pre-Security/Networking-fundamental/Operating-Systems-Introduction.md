@@ -36,7 +36,7 @@ Susunan lapisannya seperti ini:
 
 <img src="../../Assets/Images/OS-layer.png" width="500">
 
-Kenapa kita butuh OS? Karena tanpanya, setiap aplikasi harus mengakses CPU, memory, file, perangkat, dan keamanan secara langsung, dan pasti bakal bentrok satu sama lain. OS hadir sebagai pengatur pusat yang mencegah kekacauan itu.
+Kenapa kita butuh OS? Karena tanpanya, setiap aplikasi harus mengakses CPU, memory, file, perangkat, dan keamanan secara langsung, dan pasti bakal bentrok satu sama lain. OS hadir sebagai pengatur pusat yang mencegah konflik akses resource.
 
 Cara paling gampang memahaminya: bayangkan komputermu sebagai **bandara yang sibuk**.
 
@@ -64,18 +64,18 @@ Pemisahan ini krusial karena menjaga OS tetap stabil: satu aplikasi yang bermasa
 
 ### Operating System Duties
 
-Sekarang kamu sudah paham apa itu OS dan bagaimana privilege-nya dipisahkan. Saatnya melihat tugas-tugas inti apa saja yang dijalankan OS di balik layar agar komputermu bisa berjalan dengan aman, efisien, dan konsisten.
+OS punya beberapa tugas inti yang berjalan terus-menerus di balik layar agar komputermu bisa berjalan dengan aman, efisien, dan konsisten.
 
 | Tanggung Jawab | Yang Dilakukan OS | Contoh |
 | :--- | :--- | :--- |
 | **Process Management** | Membuat, menjadwalkan, memprioritaskan, dan menghentikan program yang sedang berjalan. OS yang menentukan berapa banyak waktu CPU yang didapat setiap proses agar *multitasking* terasa mulus. | Membuka browser, music player, dan media sosial bersamaan tanpa komputer *freeze*. |
-| **Memory Management** | Mengalokasikan **RAM** (*Random Access Memory* — memori utama yang dipakai untuk menyimpan data sementara selagi program berjalan) ke setiap proses, melindunginya dari proses lain, dan merebut kembali memori saat aplikasi ditutup. Kalau RAM mulai penuh, OS memakai **virtual memory** untuk menjaga stabilitas. | Membuka banyak aplikasi sekaligus — OS memastikan masing-masing mendapat jatah RAM sendiri dan tidak saling mengganggu. |
+| **Memory Management** | Mengalokasikan **RAM** (*Random Access Memory* — memori utama yang dipakai untuk menyimpan data sementara selagi program berjalan) ke setiap proses, melindunginya dari proses lain, dan mengambil kembali alokasi memori saat aplikasi ditutup. Kalau RAM mulai penuh, OS memakai **virtual memory** untuk menjaga stabilitas. | Membuka banyak aplikasi sekaligus — OS memastikan masing-masing mendapat jatah RAM sendiri dan tidak saling mengganggu. |
 | **File System Management** | Mengorganisir file ke dalam folder, menangani penamaan, path, permissions, dan metadata (nama, ukuran, tipe, timestamp). | Membuat folder baru, menyimpan foto, atau mengatur file menjadi "read only". |
 | **User Management** | Mengelola banyak akun pengguna, proses autentikasi, dan permission untuk menentukan siapa yang boleh mengakses apa. | Login dengan password milikmu dan file-filemu tidak bisa diakses oleh akun user lain. |
 | **Device Management** | Memuat driver dan menyediakan antarmuka universal (**Hardware Abstraction Layer**) sehingga aplikasi cukup memerintahkan "cetak ini" atau "putar suara ini" tanpa perlu tahu detail hardware-nya. | Mencolokkan mouse baru, printer, atau hard drive eksternal — dan langsung bisa dipakai. |
 
 > **for your information:**
-> **Virtual memory** — mekanisme di mana OS "meminjam" sebagian ruang storage (hard disk/SSD) untuk berpura-pura menjadi RAM tambahan saat RAM fisik sudah penuh.
+> **Virtual memory** — mekanisme di mana OS "meminjam" sebagian ruang storage (hard disk/SSD) sebagai ekstensi RAM saat RAM fisik sudah penuh.
 > **Hardware Abstraction Layer (HAL)** — lapisan software yang menyembunyikan perbedaan hardware dari aplikasi, sehingga satu perintah yang sama bisa berjalan di berbagai perangkat tanpa modifikasi.
 
 ---
@@ -86,7 +86,7 @@ Sebelum antivirus, *firewall*, atau tool keamanan apapun dipasang, OS sudah menj
 
 - **Authentication**: Memverifikasi identitas pengguna melalui password, PIN, atau biometrik.
 - **Permissions**: Mengontrol secara persis apa yang boleh dilakukan oleh setiap user dan aplikasi — membaca, menulis, atau mengeksekusi file.
-- **Isolation**: Memisahkan setiap proses ke dalam "kotak" terisolasinya sendiri (ingat pemisahan kernel space dan user space). Satu proses yang rusak tidak akan bisa menjatuhkan proses lain.
+- **Isolation**: Memisahkan setiap proses ke dalam lingkungan terisolasinya sendiri (ingat pemisahan kernel space dan user space). Satu proses yang rusak tidak akan bisa menjatuhkan proses lain.
 - **System Protection**: Menjaga file-file sistem yang kritikal dan pengaturan penting dari perubahan yang tidak sah.
 
 ---
@@ -95,7 +95,7 @@ Sebelum antivirus, *firewall*, atau tool keamanan apapun dipasang, OS sudah menj
 
 ### OS Interfaces
 
-Sekarang kamu sudah paham apa itu OS dan apa saja tanggung jawabnya. Pertanyaan berikutnya: bagaimana cara kamu berinteraksi dengan OS itu sendiri? Ada dua cara utama:
+Lalu, bagaimana cara kamu berinteraksi dengan OS itu sendiri? Ada dua cara utama:
 
 #### Graphical User Interface (GUI)
 
@@ -133,7 +133,7 @@ Tidak semua OS itu sama. Perangkat yang berbeda dengan pekerjaan yang berbeda me
 
 ### Real World Operating Systems
 
-Sekarang kamu tahu kategori-kategorinya. Saatnya melihat OS apa saja yang benar-benar dipakai di dunia nyata, dikelompokkan berdasarkan kategori di atas.
+Dari kategori di atas, berikut OS yang benar-benar dipakai di dunia nyata.
 
 #### Desktop
 
