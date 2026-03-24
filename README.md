@@ -38,7 +38,6 @@
 | 3.  | [OSI Model](THM-Notes/Pre-Security/Networking-fundamental/OSI-Model.md)                           | OSI 7 Layers             |
 | 4.  | [Packet & Frames](THM-Notes/Pre-Security/Networking-fundamental/Packet%26Frames.md)               | Data encapsulation       |
 | 5.  | [Extending Your Network](THM-Notes/Pre-Security/Networking-fundamental/Extending-Your-Network.md) | Routers, firewalls, VPNs |
-| 6.  | [Operating Systems Introduction](THM-Notes/Pre-Security/Networking-fundamental/Operating-Systems-Introduction.md) | OS fundamentals, interfaces & landscape |
 
 </details>
 
@@ -63,7 +62,17 @@
 | 3.  | [Client-Server Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Client-Server-Basics.md)          | Basics of client-server interaction |
 | 4.  | [Virtualisation Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Virtualisation-Basics.md)        | Introduction to Virtual Machines & Hypervisors |
 | 5.  | [Cloud Computing Fundamentals](THM-Notes/Pre-Security/Computers-Fundamentals/Cloud-Computing-Fundamentals.md) | Introduction to Cloud Computing concepts |
-| 6.  | [Windows Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Windows-Basics.md)                      | Windows interface, settings, and security basics |
+
+</details>
+
+<details>
+<summary>Operating System Basics</summary>
+
+| No. | Notes                                                                                                          | Description                   |
+| :-: | -------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| 1.  | [Operating Systems Introduction](THM-Notes/Pre-Security/Operating-System-Basics/Operating-Systems-Introduction.md) | OS fundamentals, interfaces & landscape |
+| 2.  | [Windows Basics](THM-Notes/Pre-Security/Operating-System-Basics/Windows-Basics.md)                      | Windows interface, settings, and security basics |
+
 </details>
 
 </details>
