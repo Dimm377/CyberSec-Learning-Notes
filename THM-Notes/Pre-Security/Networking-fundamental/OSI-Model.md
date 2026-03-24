@@ -244,8 +244,3 @@ Ringkasan vektor serangan per layer:
 
 ---
 
-## Quick Review
-
-- Saat seorang attacker menjalankan `ping` flood ke target, di layer berapa serangan tersebut terjadi dan protokol apa yang dieksploitasi?
-- Apa perbedaan mendasar antara TCP dan UDP dari sisi keandalan — dan kenapa UDP tetap dipakai meskipun tidak reliable?
-- Jelaskan kenapa ARP Spoofing bisa menjadi titik awal untuk serangan Man-in-the-Middle di jaringan lokal.

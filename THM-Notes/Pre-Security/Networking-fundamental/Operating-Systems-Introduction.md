@@ -34,17 +34,7 @@ Setelah menyelesaikan room ini, kamu akan paham:
 
 Susunan lapisannya seperti ini:
 
-```
-┌─────────────────────┐
-│       User          │
-├─────────────────────┤
-│    Applications     │
-├─────────────────────┤
-│  Operating System   │
-├─────────────────────┤
-│     Hardware        │
-└─────────────────────┘
-```
+<img src="../../Assets/Images/OS-layer.png" width="500">
 
 Kenapa kita butuh OS? Karena tanpanya, setiap aplikasi harus mengakses CPU, memory, file, perangkat, dan keamanan secara langsung — dan pasti bakal bentrok satu sama lain. OS hadir sebagai pengatur pusat yang mencegah kekacauan itu.
 
