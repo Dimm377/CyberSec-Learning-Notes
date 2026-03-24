@@ -111,6 +111,173 @@ Halaman ini menampilkan informasi penting:
 
 > **for your information:** Informasi ini sangat berguna dalam konteks keamanan. Saat melakukan pentest atau forensik, mengetahui versi OS, arsitektur (32/64-bit), dan build number membantu menentukan exploit mana yang relevan dan patch mana yang sudah atau belum diterapkan.
 
+## Configuring and Securing Windows
+
+### File Exploration and Management
+
+Windows mengorganisir data menggunakan **struktur folder hierarkis** — folder bisa berisi folder lain di dalamnya, dan di dalam folder-folder itu ada file. Struktur ini menjaga data tetap rapi dan mudah ditemukan seiring bertambahnya isi sistem.
+
+**File Explorer** adalah tools utama untuk navigasi struktur ini. Beberapa lokasi yang paling sering diakses:
+
+| Lokasi | Fungsi |
+| :--- | :--- |
+| **Desktop** | Tempat shortcut dan file yang sering dipakai langsung dari layar utama |
+| **Documents** | Folder default untuk menyimpan dokumen kerja |
+| **Downloads** | Tempat semua file yang diunduh dari internet masuk secara otomatis |
+
+Setiap lokasi bisa memiliki **subfolder** untuk mengelompokkan file berdasarkan kategori. Memahami layout ini penting — saat melakukan forensik atau investigasi, kamu perlu tahu di mana Windows menyimpan file secara default.
+
+### Updating Your Applications
+
+Menjaga OS dan aplikasi tetap up-to-date adalah salah satu langkah keamanan paling mendasar. Update biasanya berisi **security patches** (menambal kerentanan), perbaikan bug, dan peningkatan performa.
+
+**Windows Update**
+
+Windows punya tools bawaan bernama **Windows Update** yang menangani pembaruan OS dan beberapa fitur keamanan bawaan. Aksesnya lewat **Settings → Update & Security → Windows Update**.
+
+Dari sini, kamu bisa melihat update yang tersedia, mengecek secara manual, dan mengatur jadwal instalasi. Beberapa organisasi mengontrol kebijakan update secara terpusat — dalam kasus itu, akan muncul pesan _"Some settings are managed by your organization"_.
+
+**Update Aplikasi**
+
+Untuk aplikasi selain komponen OS, mekanisme update-nya berbeda-beda tergantung bagaimana software tersebut diinstal:
+
+- Aplikasi bawaan Windows sering update otomatis di background.
+- Aplikasi pihak ketiga biasanya punya mekanisme update sendiri.
+- Beberapa aplikasi menampilkan prompt update saat diluncurkan.
+- Ada juga yang mengharuskan kamu mengecek dan mengunduh installer baru secara manual.
+
+> **Common Mistake:** Menunda update adalah kebiasaan yang sangat berisiko. Banyak serangan besar (seperti WannaCry) memanfaatkan kerentanan yang patch-nya _sudah tersedia_ berminggu-minggu sebelum serangan terjadi. Organisasi yang telat menerapkan patch menjadi korban.
+
+### Installing Applications
+
+Ada dua cara utama menginstal aplikasi di Windows:
+
+1. **Microsoft Store** — menyediakan aplikasi yang sudah dikurasi dan relatif aman. Tapi perlu dicatat: Microsoft Store **tidak tersedia secara default di Windows Server**.
+2. **Dari Internet** — mengunduh installer langsung dari website vendor tepercaya. File installer biasanya berformat `.exe` atau `.msi`.
+
+> **for your information:** File **`.exe`** (_Executable_) adalah format standar untuk program yang bisa dijalankan di Windows. File **`.msi`** (_Microsoft Installer_) adalah format installer khusus Windows yang menyediakan fitur instalasi terstruktur seperti rollback dan repair.
+
+### Uninstalling Applications
+
+Untuk menghapus aplikasi yang sudah tidak diperlukan, Windows menyediakan beberapa cara:
+
+- Lewat **Microsoft Store** (untuk aplikasi yang diinstal dari sana).
+- Lewat **Settings → Apps & Features** (Add or Remove Programs).
+- Lewat **Control Panel → Programs → Uninstall a program**.
+- Menggunakan **uninstaller bawaan** aplikasi itu sendiri.
+
+### Diving Into Settings
+
+Windows punya dua antarmuka konfigurasi yang hidup berdampingan:
+
+| Antarmuka | Karakteristik |
+| :--- | :--- |
+| **Windows Settings** | Antarmuka modern dan terpusat. Mengelola konfigurasi perangkat, sistem, personalisasi, dan keamanan. |
+| **Control Panel** | Antarmuka legacy yang masih menyediakan akses ke beberapa tools konfigurasi lama yang belum sepenuhnya dimigrasikan ke Settings. |
+
+Dari kedua antarmuka ini, kamu bisa mengatur:
+- System preferences (display, audio).
+- User accounts dan permission.
+- Pengaturan jaringan dan konektivitas.
+- Opsi aksesibilitas.
+- Fitur keamanan dan firewall.
+
+> **for your information:** Secara bertahap, Microsoft memindahkan semua fungsi dari **Control Panel** ke **Windows Settings**. Tapi di versi Windows saat ini, beberapa konfigurasi lanjutan masih hanya bisa diakses lewat Control Panel — terutama di lingkungan Windows Server.
+
+### The Task Manager
+
+**Task Manager** adalah tools monitoring bawaan Windows yang menampilkan kondisi sistem secara _real-time_. Dari sini kamu bisa melihat aplikasi yang sedang berjalan, proses di background, serta penggunaan CPU dan memori.
+
+Task Manager memiliki **lima tab utama**:
+
+| Tab | Fungsi |
+| :--- | :--- |
+| **Processes** | Daftar semua aplikasi dan proses background yang aktif beserta konsumsi resource-nya (CPU, RAM, Disk, Network). |
+| **Performance** | Grafik dan statistik _real-time_ untuk CPU, memori, disk, dan jaringan. Berguna untuk mendeteksi anomali performa. |
+| **Users** | Menampilkan user yang sedang login beserta resource yang dikonsumsi masing-masing. |
+| **Details** | Tampilan teknis yang lebih detail — termasuk **PID** (_Process ID_), nama executable, dan status setiap proses. |
+| **Services** | Daftar semua Windows services beserta statusnya (Running atau Stopped). |
+
+> **for your information:** **PID** (_Process ID_) adalah nomor unik yang diberikan sistem operasi ke setiap proses yang sedang berjalan. PID penting dalam konteks forensik dan incident response — kamu menggunakannya untuk mengidentifikasi, melacak, dan menghentikan proses tertentu secara presisi.
+
+### Native Windows Security
+
+Windows sudah dilengkapi dengan tools keamanan bawaan yang aktif secara default. Tools ini dirancang untuk melindungi sistem dari malware, aplikasi berbahaya, dan akses jaringan yang tidak sah.
+
+**Windows Security**
+
+Aplikasi **Windows Security** adalah dashboard utama untuk mengelola seluruh proteksi bawaan Windows. Ada empat area utama:
+
+| Area | Fungsi |
+| :--- | :--- |
+| **Virus & threat protection** | Mendeteksi dan menghapus malware menggunakan proteksi real-time dan scan yang bisa dikustomisasi. |
+| **Firewall & network protection** | Mengontrol traffic jaringan masuk dan keluar untuk mencegah akses tidak sah. |
+| **App & browser control** | Melindungi dari aplikasi, file, dan website yang berpotensi berbahaya. |
+| **Device security** | Proteksi berbasis hardware yang membantu mengamankan sistem di level firmware. |
+
+**Menjalankan Custom Scan**
+
+Kamu bisa menjalankan scan khusus untuk memeriksa folder tertentu:
+
+1. Buka **Windows Security** (lewat shortcut di Desktop atau Start Menu).
+2. Pilih bagian **Virus & Threat protection**.
+3. Klik **Scan options**.
+4. Pilih **Custom scan** → **Scan now**.
+5. Tentukan folder target yang ingin diperiksa.
+
+Jika scan menemukan ancaman, Windows menampilkan detail temuan beserta opsi tindakan:
+
+- **Allow on device** — mengizinkan file tetap ada (hanya jika kamu yakin itu _false positive_).
+- **Quarantine** — mengisolasi file berbahaya agar tidak bisa dieksekusi, tapi belum dihapus permanen.
+- **Remove** — menghapus file sepenuhnya dari sistem.
+
+> **for your information:** **EICAR test file** adalah file standar yang digunakan untuk menguji apakah antivirus berfungsi dengan benar. File ini tidak berbahaya sama sekali — isinya hanya string teks khusus yang sengaja dikenali semua antivirus sebagai "ancaman" untuk keperluan testing.
+
+**Windows Defender Firewall**
+
+**Windows Defender Firewall** adalah firewall bawaan yang memonitor koneksi jaringan dan menerapkan aturan untuk menentukan traffic mana yang diizinkan dan mana yang diblokir. Firewall ini beroperasi berdasarkan **network profile** — tiga profil yang masing-masing punya tingkat keamanan berbeda:
+
+| Profil | Digunakan Saat | Tingkat Keamanan |
+| :--- | :--- | :--- |
+| **Domain** | Sistem terhubung ke jaringan domain organisasi (Active Directory) | Dikelola oleh administrator jaringan |
+| **Private** | Jaringan yang dipercaya, seperti jaringan rumah atau lab | Lebih permisif, mengizinkan _network discovery_ |
+| **Public** | Jaringan yang tidak dipercaya, seperti Wi-Fi publik | Paling ketat, membatasi sebagian besar koneksi masuk |
+
+> **Common Mistake:** Saat terhubung ke Wi-Fi publik (kafe, bandara), pastikan profil jaringan di-set ke **Public**. Jika secara tidak sengaja di-set ke Private, firewall akan lebih longgar dan perangkat lain di jaringan yang sama bisa menemukan dan mencoba mengakses komputermu.
+
+## Conclusion
+
+Room ini menggunakan **Windows Server 2019** sebagai lingkungan lab. Kamu sudah mengeksplorasi interface Windows, memeriksa spesifikasi sistem, mengelola file dan aplikasi, serta menjalankan scan keamanan — semua skill dasar yang menjadi pondasi sebelum masuk ke eksplorasi lebih dalam.
+
+### Key Terminology
+
+| Istilah | Definisi |
+| :--- | :--- |
+| **Desktop** | Ruang kerja utama tempat file, folder, dan shortcut ditampilkan |
+| **Taskbar** | Strip kontrol yang menyediakan akses ke aplikasi, tools, settings, dan notifikasi |
+| **Start Menu** | Titik akses utama ke aplikasi, settings, dan opsi power (ditandai logo Windows) |
+| **Search** | Fitur pencarian cepat untuk menemukan aplikasi, settings, dan file berdasarkan kata kunci |
+| **File Explorer** | Tools bawaan untuk menjelajahi, mengelola, dan mengorganisir file dan folder |
+| **Windows Update** | Tools bawaan untuk menjaga OS, aplikasi native, dan fitur keamanan tetap up-to-date |
+| **Microsoft Store** | Aplikasi Windows untuk menginstal aplikasi yang sudah dikurasi |
+| **Windows Settings** | Antarmuka modern dan terpusat untuk konfigurasi sistem, perangkat, personalisasi, dan keamanan |
+| **Control Panel** | Antarmuka legacy untuk konfigurasi sistem yang belum sepenuhnya dimigrasikan ke Settings |
+| **Task Manager** | Tools monitoring real-time untuk memantau proses, performa, dan resource sistem |
+| **Windows Security** | Dashboard utama untuk mengelola seluruh proteksi keamanan bawaan Windows |
+| **Windows Defender Firewall** | Firewall bawaan untuk melindungi sistem dari traffic jaringan yang tidak sah |
+
+### Further Learning
+
+Room selanjutnya dalam modul ini akan mengajak kamu berinteraksi dengan OS lewat **CLI** (_Command-Line Interface_) — antarmuka berbasis teks yang jauh lebih powerful dibanding GUI untuk keperluan administrasi dan keamanan.
+
+- [Linux CLI Basics](https://tryhackme.com/room/introtoshells)
+- [Windows CLI Basics](https://tryhackme.com/room/introtoshells)
+
 ---
 
-_Catatan ini masih dalam proses drafting. Task selanjutnya akan ditambahkan setelah materi lengkap diterima._
+## Review
+
+- Windows menggunakan **tiga tipe akun** (Guest/Standard/Administrator) dengan level izin berbeda — menjalankan aktivitas sehari-hari sebagai Administrator adalah kebiasaan berisiko karena malware juga mendapat hak akses penuh.
+- **Windows Security** adalah dashboard terpusat dengan 4 area proteksi, dan **Windows Defender Firewall** beroperasi berdasarkan 3 network profile (Domain/Private/Public) yang menentukan keketatan aturan filtering.
+- **Task Manager** menyediakan monitoring real-time lewat 5 tab (Processes, Performance, Users, Details, Services) — kemampuan membaca informasi di sini adalah skill dasar untuk troubleshooting dan incident response.
+- Menjaga sistem **up-to-date** lewat Windows Update adalah langkah keamanan paling mendasar — banyak serangan besar memanfaatkan kerentanan yang patch-nya sudah tersedia tapi belum diterapkan.
