@@ -63,7 +63,7 @@ Tools buat mendapatkan visibilitas mendalam tentang hardware dan penggunaan reso
 
 ### Windows Registry (regedit)
 
-**Registry** itu database hierarkis yang menyimpan hampir seluruh pengaturan sistem operasi. Ibarat **DNA dari Windows** — mengontrol perilaku seluruh sistem.
+**Registry** itu database hierarkis yang menyimpan hampir seluruh pengaturan sistem operasi. Seperti **DNA dari Windows** — mengontrol perilaku seluruh sistem.
 
 | Hive | Cakupan | Fungsi |
 | ---- | ------- | ------ |

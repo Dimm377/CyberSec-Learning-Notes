@@ -11,7 +11,7 @@
 
 ## Task 1: Introduction
 
-**Wireshark** adalah alat analisis paket jaringan (_open-source_) yang paling populer di dunia. Ibarat sebuah **mikroskop** untuk jaringan — memungkinkan kamu melihat apa yang sebenarnya terjadi di dalam kabel jaringan atau udara (Wi-Fi), membedah setiap bit data yang lewat.
+**Wireshark** adalah alat analisis paket jaringan (_open-source_) yang paling populer di dunia. Seperti sebuah **mikroskop** untuk jaringan — memungkinkan kamu melihat apa yang sebenarnya terjadi di dalam kabel jaringan atau udara (Wi-Fi), membedah setiap bit data yang lewat.
 
 **Kegunaan Utama:**
 * **Sniffing:** Memantau _traffic_ yang sedang berjalan secara _live_.
@@ -59,12 +59,12 @@ Sebelum mulai membedah data, kamu harus memasukkan file rekamannya (`.pcap` atau
 2. **Drag & drop** file langsung ke jendela Wireshark, atau
 3. **Klik ganda** di file `.pcap` yang mau dianalisis.
 
-Begitu file masuk, layar akan penuh barisan data. Supaya tidak _overwhelmed_, kamu cukup fokus ke **3 jendela utama (_panes_)**. Ibarat kamu menjadi detektif yang memeriksa surat, 3 jendela ini mewakili tingkat kedalaman analisis:
+Begitu file masuk, layar akan penuh barisan data. Supaya tidak _overwhelmed_, kamu cukup fokus ke **3 jendela utama (_panes_)**. Seperti kamu menjadi detektif yang memeriksa surat, 3 jendela ini mewakili tingkat kedalaman analisis:
 
 | Jendela Utama (_Pane_) | Fungsi |
 | ---------------------- | ------ |
-| **1. Packet List** | **Ibarat buku tamu.** Daftar semua paket yang tertangkap. Menampilkan rangkuman _high-level_: nomor urut, waktu, pengirim (_Source_), tujuan (_Destination_), protokol, dan info singkat |
-| **2. Packet Details** | **Ibarat membuka isi amplop surat.** Mengurai isi paket berlapis-lapis sesuai teori _OSI Layers_ — dari bungkus luar (lapisan fisik/MAC) sampai ke inti (protokol aplikasi seperti HTTP) |
+| **1. Packet List** | **Seperti buku tamu.** Daftar semua paket yang tertangkap. Menampilkan rangkuman _high-level_: nomor urut, waktu, pengirim (_Source_), tujuan (_Destination_), protokol, dan info singkat |
+| **2. Packet Details** | **Seperti membuka isi amplop surat.** Mengurai isi paket berlapis-lapis sesuai teori _OSI Layers_ — dari bungkus luar (lapisan fisik/MAC) sampai ke inti (protokol aplikasi seperti HTTP) |
 | **3. Packet Bytes** | **Data paling mentah.** Menampilkan data paket dalam wujud _Hexadecimal_ dan _ASCII_. Kadang kamu bisa menemukan teks _password_ atau _payload_ tersembunyi di sini |
 
 Informasi tambahan di pojok layar:

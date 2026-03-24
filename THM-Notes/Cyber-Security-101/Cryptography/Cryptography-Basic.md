@@ -13,7 +13,7 @@
 
 Room ini yang pertama dari tiga room pengantar tentang cryptography. Di sini kita belajar dasar-dasar yang penting sebelum masuk ke penjelasan lebih kompleks.
 
-(Setelah memahami dasar-dasar ini, lanjut ke catatan [Hashing Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Hashing-basic.md) dan [Public Key Cryptography](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Public-Key-Cryptography.md))
+(Untuk pembahasan lanjutan, cek catatan [Hashing Basic](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Hashing-basic.md) dan [Public Key Cryptography](file:///home/dimm/CyberSec-Learning-Notes/THM-Notes/Cyber-Security-101/Cryptography/Public-Key-Cryptography.md))
 
 *(Room lanjutannya: [Hashing Basic](./Hashing-basic.md) dan [Public Key Cryptography](./Public-Key-Cryptography.md))*
 

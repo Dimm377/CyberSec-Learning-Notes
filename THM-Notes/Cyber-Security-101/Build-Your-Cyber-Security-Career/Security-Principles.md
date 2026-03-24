@@ -105,7 +105,7 @@ Memastikan bahwa pengirim data atau pelaku transaksi tidak bisa menyangkal perbu
 
 ## Parkerian Hexad
 
-Pada tahun 1998, Donn Parker mengusulkan **Parkerian Hexad**, yaitu kumpulan enam elemen keamanan. Empat di antaranya sudah kita bahas (Availability, Integrity, Authenticity, Confidentiality). Mari kita bahas dua elemen sisanya:
+Pada tahun 1998, Donn Parker mengusulkan **Parkerian Hexad**, yaitu kumpulan enam elemen keamanan. Empat di antaranya sudah kita bahas (Availability, Integrity, Authenticity, Confidentiality). Berikut dua elemen sisanya:
 
 ### 1. Utility (Kegunaan)
 Fokus pada seberapa bermanfaat informasi tersebut. Data mungkin ada, tapi kalau tidak bisa digunakan, nilainya nol (*no utility*).
@@ -141,7 +141,7 @@ Bayangkan kamu ingin masuk ke rumahmu, tapi seseorang mengelas pintu rumahmu ata
 
 ### Studi Kasus: Rekam Medis Pasien
 
-Mari kita satukan semuanya dengan contoh sistem rumah sakit:
+Untuk menyatukan semuanya, perhatikan contoh sistem rumah sakit berikut:
 
 * **Disclosure:** Hacker mencuri database riwayat penyakit pasien dan menjualnya di *dark web*. Pasien malu dan rumah sakit kehilangan kepercayaan karena kegagalan menjaga kerahasiaan.
 * **Alteration:** Bayangkan betapa bahayanya jika hacker mengubah golongan darah pasien di database, Dokter bisa memberikan transfusi yang salah, dan ini bisa berakibat **fatal (kematian)** karena rusaknya integritas data.

@@ -48,7 +48,7 @@ Perintah Linux jarang dipakai sendirian. Sebagian besar perintah punya **Flags**
 
 ### Filesystem Management
 
-Manajemen file itu kemampuan dasar buat mengorganisir data di dalam sistem. Ibarat **penataan barang di rumah** — kamu harus bisa membuat lemari baru, memindahkan barang, menyalin dokumen, dan membuang yang tidak perlu.
+Manajemen file itu kemampuan dasar buat mengorganisir data di dalam sistem. Seperti **penataan barang di rumah** — kamu harus bisa membuat lemari baru, memindahkan barang, menyalin dokumen, dan membuang yang tidak perlu.
 
 | Command | Fungsi | Catatan Penting |
 | ------- | ------ | --------------- |

@@ -18,7 +18,7 @@ Room ini memberikan pondasi ilmu tentang cara kerja **Burp Suite**, alat yang wa
 
 _Dashboard_ adalah pusat kendali (_command center_) di Burp Suite. Kalau kamu membuka versi **Community 2026.1.1**, fitur ini menampilkan ringkasan bagian penting:
 
-* **Task Log**: Ibarat buku absen — menampilkan riwayat _log_ dari _task/crawler_ otomatis yang sedang (atau baru saja selesai) dijalankan.
+* **Task Log**: Seperti buku absen — menampilkan riwayat _log_ dari _task/crawler_ otomatis yang sedang (atau baru saja selesai) dijalankan.
 * **Issue Activity**: Tempat munculnya temuan kerentanan keamanan. Di versi Pro, fitur ini sangat detail; di versi Community, hanya menampilkan temuan minor.
 * **Shortcut**: Tekan `Ctrl + Shift + D` untuk langsung melompat ke tab _Dashboard_ kapan pun.
 

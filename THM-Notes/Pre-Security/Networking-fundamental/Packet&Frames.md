@@ -80,7 +80,7 @@ TCP/IP itu versi ringkas dari OSI Model — yang benar-benar diimplementasikan d
 
 ### Three-Way Handshake
 
-Three-Way Handshake itu proses **tiga tahap** yang dipakai TCP buat membangun koneksi yang stabil sebelum data asli ditransfer. Analogi: Ibarat **jabat tangan** sebelum mulai bicara — memastikan kedua pihak siap.
+Three-Way Handshake itu proses **tiga tahap** yang dipakai TCP buat membangun koneksi yang stabil sebelum data asli ditransfer. Analogi: Seperti **jabat tangan** sebelum mulai bicara — memastikan kedua pihak siap.
 
 | Tahap | Flag | Yang Terjadi |
 | ----- | ---- | ------------ |

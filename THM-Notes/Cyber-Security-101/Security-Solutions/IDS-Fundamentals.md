@@ -131,7 +131,7 @@ gen-msg.map            snort.conf        unicode.map
 
 ### Rule Format
 
-Agar Snort bisa bekerja, kita harus menulis aturan dengan tata letak (*Syntax*) yang sangat presisi. Sebagai contoh, mari kita bedah anatomi dari sebuah *rule* sederhana yang dirancang untuk mendeteksi datangnya paket *ping* (Protokol ICMP) ke dalam jaringan pangkalan kita:
+Agar Snort bisa bekerja, kita harus menulis aturan dengan tata letak (*Syntax*) yang sangat presisi. Sebagai contoh, berikut anatomi dari sebuah *rule* sederhana yang dirancang untuk mendeteksi datangnya paket *ping* (Protokol ICMP) ke dalam jaringan pangkalan kita:
 
 <p align="center">
 <img src="../../Assets/Images/snort-format.png" alt="Snort Format" width="700px"/>
@@ -152,12 +152,12 @@ Aturan tersebut terlihat seperti baris kode yang membingungkan, namun fungsinya 
 * **Rule Metadata / Options (*Informasi Tambahan*):** `(msg:...; sid:...; rev:...;)`
   Bagian yang dikurung sepasang tanda kurung ini adalah informasi tambahan (*Rule Options*). Semuanya diletakkan berderet di bagian paling akhir kalimat:
 * **`msg` (*Message*):** Teks pesan (contoh: "Ping Detected") yang akan langsung dimunculkan di layar (*console*) saat peringatan terpicu. Ini adalah pesan yang disampaikan snort agar tim analis keamanan paham jenis bahaya apa yang sedang terjadi.
-* **`sid` (*Signature ID*):** Nomor identitas unik (*Signature*) milik aturan ini. Ibarat nomor KTP, setiap *rule* wajib memiliki nomor tunggal yang berbeda (di sini nilainya: `10001`) agar tidak tertukar satu sama lain saat proses evaluasi.
+* **`sid` (*Signature ID*):** Nomor identitas unik (*Signature*) milik aturan ini. Seperti nomor KTP, setiap *rule* wajib memiliki nomor tunggal yang berbeda (di sini nilainya: `10001`) agar tidak tertukar satu sama lain saat proses evaluasi.
 * **`rev` (*Revision*):** Nomor rekaman edisi referensi. Jika besok hari tim analis merevisi *rule* ini menjadi lebih canggih, nilai `rev` wajib mereka naikkan satu angka (misal menjadi `rev:2`). Tujuannya murni sebagai rekam jejak versi.
 
 ### Rule Creation
 
-Mari kita praktikkan penulisan resep keamanan di atas. Semua *rule* buatan sendiri (*Custom Rules*) biasanya dikumpulkan ke dalam satu *file* spesifik bernama `local.rules`.
+Sekarang, praktikkan penulisan resep keamanan di atas. Semua *rule* buatan sendiri (*Custom Rules*) biasanya dikumpulkan ke dalam satu *file* spesifik bernama `local.rules`.
 
 Pertama, buka *file* `local.rules` tersebut menggunakan teks editor (misalnya `nano`) dengan hak akses penuh (`sudo`):
 ```bash
@@ -177,7 +177,7 @@ Setelah ditambahkan, simpan modifikasi *file* tersebut.
 
 ### Rule Testing
 
-Setelah diberikan instruksi baru, saatnya kita mengaktifkan Snort untuk menguji apakah ia benar-benar bisa menaati dan mendeteksi ancaman sesuai *rule* `local.rules` kita.
+Setelah diberikan instruksi baru, kita mengaktifkan Snort untuk menguji apakah ia benar-benar bisa menaati dan mendeteksi ancaman sesuai *rule* `local.rules` kita.
 
 Jalankan perintah pengaktifan Snort berikut di layar terminal:
 ```bash

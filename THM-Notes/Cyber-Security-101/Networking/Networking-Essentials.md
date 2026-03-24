@@ -29,7 +29,7 @@ Memahami perbedaan antar perangkat yang menghubungkan jaringan — seperti memah
 
 ### MAC Addresses
 
-**Identitas fisik permanen** yang tertanam di kartu jaringan (NIC). Ibarat **akta kelahiran** — setiap perangkat punya satu yang unik sejak diproduksi.
+**Identitas fisik permanen** yang tertanam di kartu jaringan (NIC). Seperti **akta kelahiran** — setiap perangkat punya satu yang unik sejak diproduksi.
 
 | Aspek | Detail |
 | ----- | ------ |
@@ -55,7 +55,7 @@ ARP itu protokol yang jadi **jembatan** antara Layer 2 (MAC) dan Layer 3 (IP). A
 
 ### Dynamic Host Configuration Protocol (DHCP)
 
-DHCP itu protokol yang **otomatis memberi IP Address** ke perangkat di jaringan, Ibarat proses **sewa kamar apartemen** — kamu datang, minta kamar, diberikan nomor kamar untuk jangka waktu tertentu.
+DHCP itu protokol yang **otomatis memberi IP Address** ke perangkat di jaringan, Seperti proses **sewa kamar apartemen** — kamu datang, minta kamar, diberikan nomor kamar untuk jangka waktu tertentu.
 
 **DORA Process (wajib diingat):**
 

@@ -80,7 +80,7 @@ Sebelum mendalami Gobuster, kita bahas secara singkat konsep **Enumeration** dan
 
 * **Brute Force**
 
-  Ini adalah teknik mencoba setiap kemungkinan yang ada sampai menemukan kecocokan. Ibarat punya 10 kunci tapi tidak tau mana yang pas, jadinya harus dicoba satu-satu sampai gemboknya kebuka.
+  Ini adalah teknik mencoba setiap kemungkinan yang ada sampai menemukan kecocokan. Seperti punya 10 kunci tapi tidak tau mana yang pas, jadinya harus dicoba satu-satu sampai gemboknya kebuka.
 
   Gobuster menggunakan **wordlists** (daftar kata) untuk melakukan hal ini secara otomatis.
 

@@ -47,7 +47,7 @@ TLD sendiri dibagi jadi dua kelompok utama:
 
 ### DNS Record Types
 
-Server DNS tidak cuma menyimpan nama dan nomor. Mereka menggunakan berbagai formulir(record) untuk menyimpan jenis data yang berbeda. Ibarat *Buku Identitas*, ini tipe-tipe informasi yang disimpan DNS:
+Server DNS tidak cuma menyimpan nama dan nomor. Mereka menggunakan berbagai formulir(record) untuk menyimpan jenis data yang berbeda. Seperti *Buku Identitas*, ini tipe-tipe informasi yang disimpan DNS:
 
 | Record Type | Analogi & Fungsi Utama |
 | ----------- | ---------------- |

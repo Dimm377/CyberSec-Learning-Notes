@@ -43,7 +43,7 @@ Aplikasi web bekerja dengan arsitektur **Client-Server**. Client (browser) mengi
 
 ## Uniform Resource Locator (URL)
 
-URL itu pada dasarnya alamat lengkap untuk mencari resource di internet/web server. Ibaratnya seperti alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
+URL itu pada dasarnya alamat lengkap untuk mencari resource di internet/web server. Seperti seperti alamat rumah lengkap (Jalan, Nomor, Kota, Kode Pos).
 
 **Bedah Anatomi URL:**
 Misal ada URL: `https://www.tryhackme.com/room/network?join=true#task1`

@@ -6,9 +6,9 @@
 
 ## Introduction
 
-Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *malware* berbasis Linux, sekarang saatnya kita kenalan sama saudara kandungnya di dunia Windows: **FlareVM**.
+Kalau di materi sebelumnya kita sudah bahas **REMnux** sebagai meja operasi *malware* berbasis Linux, kali ini kita kenalan sama saudara kandungnya di dunia Windows: **FlareVM**.
 
-**FlareVM** (singkatan dari *Forensics, Logic Analysis, and Reverse Engineering*) adalah seperangkat kotak perkakas khusus rakitan tim FLARE dari **FireEye**. Isinya sudah dipenuhi ratusan program spesialis yang murni diciptakan untuk membantu _reverse engineers_, analis _malware_, dan investigator forensik. Ibaratnya, kalau kamu mau menguliti sistem Windows atau membongkar wujud asli (_reverse engineer_) dari sebuah virus `.exe`, ini VM andalan.
+**FlareVM** (singkatan dari *Forensics, Logic Analysis, and Reverse Engineering*) adalah seperangkat kotak perkakas khusus rakitan tim FLARE dari **FireEye**. Isinya sudah dipenuhi ratusan program spesialis yang murni diciptakan untuk membantu _reverse engineers_, analis _malware_, dan investigator forensik. Seperti, kalau kamu mau menguliti sistem Windows atau membongkar wujud asli (_reverse engineer_) dari sebuah virus `.exe`, ini VM andalan.
 
 ### Learning Objectives
 
@@ -42,7 +42,7 @@ Alat yang sering dipakai:
 * **RetDec**: *Decompiler open-source* tangguh buat menerjemahkan kembali bahasa mesin agar lebih gampang dibaca.
 
 ### 3. Static & Dynamic Analysis
-Ada dua metode utama dalam menginvestigasi sebuah *malware*. Ibarat pos satpam yang sedang memeriksa paket kotak mencurigakan:
+Ada dua metode utama dalam menginvestigasi sebuah *malware*. Seperti pos satpam yang sedang memeriksa paket kotak mencurigakan:
 > : **Static Analysis:** Membedah wujud fisik, tulisan pengirim, dan isi kotak tersebut menggunakan alat *X-Ray* **tanpa** membuka kotaknya secara langsung (metode aman).
 > : **Dynamic Analysis:** Mengambil paket tersebut, memasukkannya ke dalam ruangan isolasi tebal (*sandbox*), lalu sengaja **membuka dan memicunya** untuk melihat efek apa yang terjadi pada ruangan tersebut (metode tes langsung).
 
@@ -61,7 +61,7 @@ Alat spesialis forensik:
 * **FTK Imager**: Alat standar industri forensik untuk mengkloning (membuat *image*) isi *harddisk* mentah-mentah secara aman untuk dianalisis.
 
 ### 5. Network Analysis
-Ini dia alat penyadap jaringannya analis cyber. Ibarat memasang CCTV dan alat penyadap telepon di seluruh rumah, alat-alat ini membantu kamu memeriksa aliran pola data yang keluar-masuk di kabel jaringan.
+Ini dia alat penyadap jaringannya analis cyber. Seperti memasang CCTV dan alat penyadap telepon di seluruh rumah, alat-alat ini membantu kamu memeriksa aliran pola data yang keluar-masuk di kabel jaringan.
 
 Alat pemantau jaringan:
 * **Wireshark**: Mikroskop jaringan paling populer di dunia. Bisa merekam dan membedah percakapan data (protokol) antar komputer secara *live*.
@@ -69,7 +69,7 @@ Alat pemantau jaringan:
 * **Netcat**: Tool Swiss Army Knife dunia jaringan. Bisa dipakai untuk membaca dan menulis data kosong ke dalam koneksi jaringan, sangat berguna untuk tes sederhana.
 
 ### 6. File Analysis
-Ibarat meneliti sidik jari dan komposisi kimiawi darah di lab, teknik ini murni digunakan untuk meneliti susunan komponen sebuah *file* dari dasar untuk mencari bibit ancaman keamanan di dalamnya.
+Seperti meneliti sidik jari dan komposisi kimiawi darah di lab, teknik ini murni digunakan untuk meneliti susunan komponen sebuah *file* dari dasar untuk mencari bibit ancaman keamanan di dalamnya.
 
 Alat bedah *file*:
 * **FileInsight**: Program spesialis untuk membaca dan mengedit *file* biner (kumpulan angka bahasa komputer).
@@ -127,7 +127,7 @@ Karena kemampuannya yang sangat detail, *tool* ini menjadi andalan untuk riset *
 
 **Contoh Investigasi Menggunakan Procmon:**
 
-Mari kita lihat gambar layar dari hasil rekaman Procmon di bawah ini:
+Perhatikan gambar layar dari hasil rekaman Procmon di bawah ini:
 
 ![Procmon Activity Log](../../Assets/Images/Procmon.png)
 
@@ -228,7 +228,7 @@ Coba amati hasil foto rontgen visual dari jaringan yang sedang diobservasi ini:
 Dalam gambar di atas, kamu bisa melihat rentetan koneksi antar komputer. Hal yang paling menarik adalah baris paket data yang menggunakan protokol **TLSv1.2**.
 
 **Mengapa ini penting?**
-Protokol TLS (*Transport Layer Security*) sejatinya adalah terowongan baja pelindung (*encrypted connection*) yang biasa dipakai supaya percakapan rahasia di internet tidak mudah disadap. Namun, Protokol ini pedang bermata dua. *Hacker* yang cerdik juga sering memanfaatkan jalur aman enkripsi TLSv1.2 ini untuk menutupi dan menyelundupkan kodenya agar lolos dari blokade keamanan jaringan (ibarat maling yang naik mobil lapis baja milik pejabat aparat).
+Protokol TLS (*Transport Layer Security*) sejatinya adalah terowongan baja pelindung (*encrypted connection*) yang biasa dipakai supaya percakapan rahasia di internet tidak mudah disadap. Namun, Protokol ini pedang bermata dua. *Hacker* yang cerdik juga sering memanfaatkan jalur aman enkripsi TLSv1.2 ini untuk menutupi dan menyelundupkan kodenya agar lolos dari blokade keamanan jaringan (seperti maling yang naik mobil lapis baja milik pejabat aparat).
 
 ---
 
@@ -242,7 +242,7 @@ Terakhir, mari berkenalan dengan **PEstudio**. Alat ini adalah rajanya **Static 
 
 Gambar di atas menunjukkan layar PEstudio yang sedang memeriksa secara detail aplikasi biner bernama `PSexec.exe` *(Hanya sebagai sampel analisis)*.
 
-Mari kita bahas temuan pentingnya:
+Berikut temuan pentingnya:
 1. **Angka *Entropy* (6.596):** *Entropy* adalah pengukur tingkat kebingungan atau seberapa padat/acak sebuah *file*. Nilai logis dari 6.596 mengindikasikan bahwa *file* ini kemungkinan besar sedang dibungkus rapat (*packed*) atau dienkripsi. Di dunia analis, ini adalah tanda bahaya karena mayoritas *malware* menggunakan trik *packing* untuk menyembunyikan diri dari deteksi Antivirus.
 2. **Pedang Bermata Dua (*Dual-Use Nature*):** *File* `PSexec.exe` versi 2.34 (rakitan *Visual C++ 8*) yang sedang dicek ternyata adalah alat **resmi** Administrator sistem yang biasa dipakai untuk mengeksekusi program di komputer orang lain secara jarak jauh (*remote*). 
 
@@ -260,7 +260,7 @@ Tugas utama FLOSS adalah memaksa program jahat ini mengeluarkan secara otomatis 
 
 **Contoh Eksekusi Terminal FLOSS:**
 
-Mari kita lihat interogasi FLOSS saat menyidang *malware* ganas bernama `cobaltstrike.exe` lewat *Command Line/Terminal*:
+Berikut interogasi FLOSS saat menyidang *malware* ganas bernama `cobaltstrike.exe` lewat *Command Line/Terminal*:
 
 ```powershell
 PS C:\Users\Administrator\Desktop\Sample > floss .\cobaltstrike.exe

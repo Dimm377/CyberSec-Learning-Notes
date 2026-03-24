@@ -81,7 +81,7 @@ Mengelola perangkat lunak di distribusi berbasis Debian/Ubuntu:
 
 ### Maintaining Your System: Logs
 
-Sistem Linux mencatat semua aktivitas di dalam file log yang tersimpan di `/var/log`. Ibarat **rekaman CCTV** — kalau ada masalah atau insiden keamanan, log adalah tempat pertama yang harus dicek.
+Sistem Linux mencatat semua aktivitas di dalam file log yang tersimpan di `/var/log`. Seperti **rekaman CCTV** — kalau ada masalah atau insiden keamanan, log adalah tempat pertama yang harus dicek.
 
 ---
 

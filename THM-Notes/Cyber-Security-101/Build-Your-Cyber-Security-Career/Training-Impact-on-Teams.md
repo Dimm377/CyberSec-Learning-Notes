@@ -55,13 +55,13 @@ Perusahaan yang cerdas memandang karyawan sebagai aset berharga, mirip seperti o
 
 ### Menghitung Dampak Finansial Training (ROI)
 
-Cara paling ampuh meyakinkan bos adalah dengan **angka**. Mari kita bedah skenario perhitungan **Return On Investment (ROI)** berikut:
+Cara paling ampuh meyakinkan bos adalah dengan **angka**. Coba perhatikan skenario perhitungan **Return On Investment (ROI)** berikut:
 
 * **Situasi:** Sebuah tim cybersecurity punya **10 karyawan**.
 * **Biaya Gaji:** Masing-masing digaji **$80,000** per tahun.
 * **Asumsi:** Training bisa meningkatkan produktivitas tim sebesar **4%**.
 
-**Mari kita hitung simulasinya:**
+**Berikut simulasi perhitungannya:**
 1. **Penghematan/Keuntungan (Gains):** 10 orang x 4% x $80,000 = **$32,000**.
 2. **Biaya Training:** Misal biaya training $500/orang, maka totalnya **$5,000** (10 x $500).
 3. **ROI (Return On Investment):** $32,000 / $5,000 = **640%**.

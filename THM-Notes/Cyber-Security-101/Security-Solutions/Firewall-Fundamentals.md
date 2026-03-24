@@ -40,9 +40,9 @@ flowchart LR
 
 kenyataannya ada banyak **tipe Firewall berbeda** di luar sana—masing-masing dirancang dengan tujuannya sendiri
 
-Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjanya. Mereka beroperasi di **lapisan (*layer*) OSI Model yang berbeda-beda**. Ibaratnya, ada satpam yang hanya memeriksa KTP di pagar depan, ada juga yang sampai memeriksa isi tas sampai ke dalam-dalamnya di ruang VIP
+Yang membuat keren Firewall adalah beda jenis Firewall, beda juga tempat kerjanya. Mereka beroperasi di **lapisan (*layer*) OSI Model yang berbeda-beda**. Seperti, ada satpam yang hanya memeriksa KTP di pagar depan, ada juga yang sampai memeriksa isi tas sampai ke dalam-dalamnya di ruang VIP
 
-Supaya gampang membedakannya, mari kita bedah arsitektur dasar *firewall* ke dalam beberapa kategori utama:
+Berikut arsitektur dasar *firewall* yang dipecah ke dalam beberapa kategori utama:
 
 ### 1. Stateless Firewall (Satpam Pemalas)
 

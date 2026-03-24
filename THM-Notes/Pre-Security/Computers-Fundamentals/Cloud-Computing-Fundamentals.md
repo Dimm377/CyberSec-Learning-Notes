@@ -39,7 +39,7 @@ Cloud tidak muncul tiba-tiba. Ini adalah hasil dari bertahun-tahun evolusi cara 
 
 ## Cloud Benefits and Characteristics
 
-Setelah memahami kenapa cloud muncul, mudah untuk melihat kenapa adopsinya begitu masif. Cloud dirancang langsung untuk menjawab keterbatasan infrastruktur tradisional.
+Dari situ, mudah untuk melihat kenapa adopsinya begitu masif. Cloud dirancang langsung untuk menjawab keterbatasan infrastruktur tradisional.
 
 | Karakteristik | Penjelasan |
 | :--- | :--- |

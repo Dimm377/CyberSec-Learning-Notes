@@ -10,7 +10,7 @@
 
 ## Introduction
 
-Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan dan pemetaan jaringan. Ibarat radar, *tool* ini membantu kamu mengirim paket khusus ke target dan menganalisis respons baliknya. Dari situ, kamu bisa mengetahui *host* mana saja yang aktif, *port* mana yang terbuka, sampai jenis OS apa yang dipakai target.
+Nmap (Network Mapper) itu *tool open-source* paling populer untuk audit keamanan dan pemetaan jaringan. Seperti radar, *tool* ini membantu kamu mengirim paket khusus ke target dan menganalisis respons baliknya. Dari situ, kamu bisa mengetahui *host* mana saja yang aktif, *port* mana yang terbuka, sampai jenis OS apa yang dipakai target.
 
 ### Attack Context
 

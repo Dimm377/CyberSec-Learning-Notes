@@ -54,7 +54,7 @@ Komponen-komponen URL:
 
 ### HTTP Request & Response
 
-Ini contoh nyata percakapan antara browser (client) dan server. Ibarat **surat pesanan** dan **balasan dari dapur**:
+Ini contoh nyata percakapan antara browser (client) dan server. Seperti **surat pesanan** dan **balasan dari dapur**:
 
 ```mermaid
 sequenceDiagram
@@ -162,7 +162,7 @@ Status code itu seperti **reaksi pelayan** setelah kamu menyampaikan pesanan. Ko
 
 ### HTTP Headers
 
-Headers itu **metadata** — informasi tambahan yang dikirim bersama request atau response. Ibarat **catatan tambahan** yang disertakan bersama surat pesanan maupun surat balasan.
+Headers itu **metadata** — informasi tambahan yang dikirim bersama request atau response. Seperti **catatan tambahan** yang disertakan bersama surat pesanan maupun surat balasan.
 
 #### Request Headers (Catatan dari Client)
 

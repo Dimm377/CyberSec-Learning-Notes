@@ -54,7 +54,7 @@ Windows pakai **NTFS** (New Technology File System) sebagai standar penyimpanan 
 
 ### The Heart of Windows: System32
 
-Struktur direktori paling penting buat integritas sistem operasi. Ibarat **otak** dari Windows — kalau rusak, seluruh sistem bisa lumpuh.
+Struktur direktori paling penting buat integritas sistem operasi. Seperti **otak** dari Windows — kalau rusak, seluruh sistem bisa lumpuh.
 
 | Direktori | Fungsi | Catatan Keamanan |
 | --------- | ------ | ---------------- |

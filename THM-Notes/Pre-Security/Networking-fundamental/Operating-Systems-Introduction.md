@@ -10,7 +10,7 @@
 
 Setiap hari kamu menyalakan laptop atau HP, dan semuanya langsung *just works*,  aplikasi terbuka, file bisa diakses, musik bisa diputar. Tapi pernahkah kamu berpikir, siapa yang sebenarnya mengatur semua itu di balik layar?
 
-Di room Computer Fundamentals sebelumnya, kamu sudah belajar soal komponen fisik komputer dan jenis-jenis perangkat komputasi. Sekarang saatnya membongkar lapisan tak terlihat yang menyatukan semua komponen itu menjadi satu kesatuan yang bisa kamu pakai: **Operating System** (OS).
+Di room Computer Fundamentals sebelumnya, kamu sudah belajar soal komponen fisik komputer dan jenis-jenis perangkat komputasi. Di room ini, kita membongkar lapisan tak terlihat yang menyatukan semua komponen itu menjadi satu kesatuan yang bisa kamu pakai: **Operating System** (OS).
 
 ### Scenario
 

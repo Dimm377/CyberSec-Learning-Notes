@@ -139,7 +139,7 @@ Berikut beberapa manfaat yang didapet dengan belajar dan pakai SQL:
 
 ### Time to Learn
 
-Saatnya mulai belajar SQL dan bagaimana cara memakainya buat berinteraksi sama database. Di task ini, kita akan mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
+Langsung saja, kita mulai belajar SQL dan bagaimana cara memakainya buat berinteraksi sama database. Di task ini, kita akan mulai belajar pakai database dan pernyataan tabel. Pernyataan inilah yang pertama-tama kita butuhin buat membuat database/tabel dan memulai.
 
 ### Database Statements
 
@@ -195,7 +195,7 @@ mysql> DROP database bookstore_db;
 
 ### Table Statements
 
-Sekarang setelah kita paham cara mengelola database (mulai dari membuat, melihat daftar, menggunakan, sampai menghapus), saatnya kita masuk ke bagian yang lebih seru: mengisi database itu dengan tabel dan belajar cara berinteraksi langsung dengan data di dalamnya.
+Sekarang kita sudah paham cara mengelola database (mulai dari membuat, melihat daftar, menggunakan, sampai menghapus), lanjut ke bagian yang lebih seru: mengisi database itu dengan tabel dan belajar cara berinteraksi langsung dengan data di dalamnya.
 
 * **CREATE TABLE**
 

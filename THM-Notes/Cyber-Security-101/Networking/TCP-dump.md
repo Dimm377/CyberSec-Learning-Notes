@@ -13,7 +13,7 @@
 
 ## Introduction
 
-`tcpdump` itu penganalisis paket berbasis CLI yang jadi standar industri buat troubleshooting jaringan dan pengujian keamanan. Ibarat **penyadap telepon** — dia diam-diam mendengar dan mencatat semua percakapan yang terjadi di jaringan. Terutama berguna di sistem tanpa GUI (headless).
+`tcpdump` itu penganalisis paket berbasis CLI yang jadi standar industri buat troubleshooting jaringan dan pengujian keamanan. Seperti **penyadap telepon** — dia diam-diam mendengar dan mencatat semua percakapan yang terjadi di jaringan. Terutama berguna di sistem tanpa GUI (headless).
 
 *(Kalau butuh versi GUI-nya, lihat catatan [Wireshark](./Wireshark-basic.md))*
 

@@ -24,7 +24,7 @@ Setelah menyelesaikan room ini, kamu akan paham:
 
 ## The Client-Server Model
 
-### Core Concept
+### How It Works
 
 Model Client-Server membagi peran dalam komunikasi jaringan menjadi dua:
 
