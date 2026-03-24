@@ -159,6 +159,138 @@ Your next assignment is to collect a small system report:
 
 > **for your information:** Nama `cat` berasal dari **concatenate** (menggabungkan), karena fungsi aslinya adalah menggabungkan beberapa file menjadi satu output. Tapi dalam penggunaan sehari-hari, `cat` paling sering dipakai untuk menampilkan isi satu file secara cepat.
 
+## Investigating the System
+
+Supervisor-mu ingin kamu mengumpulkan informasi dasar tentang sistem yang sedang kamu gunakan. Jenis investigasi ini penting dalam cyber security, memahami environment tempat kamu beroperasi (versi OS, kernel, resource yang tersedia) adalah langkah awal sebelum melakukan apa pun.
+
+Tugas dari `mission_brief.txt` sudah jelas, kumpulkan empat informasi: siapa user yang sedang login, versi kernel, total kapasitas disk, dan nama distribusi Linux.
+
+### Step 1: "Who Are You Logged in As?" — `whoami`
+
+Perintah paling simpel sekaligus paling berguna di Linux:
+
+```bash
+ubuntu@tryhackme:~$ whoami
+ubuntu
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `whoami` | Menampilkan username yang sedang aktif di sesi terminal saat ini |
+
+### Step 2: "What System Are You On?" — `uname`
+
+Untuk melihat detail tentang OS, versi kernel, dan arsitektur mesin, gunakan `uname -a`:
+
+```bash
+ubuntu@tryhackme:~$ uname -a
+Linux tryhackme <REDACTED>-aws #17-Ubuntu SMP Mon Sep 2 13:48:07 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `uname` | _Unix Name_ — menampilkan informasi tentang sistem |
+| `-a` | Menampilkan _semua_ informasi sekaligus (kernel, hostname, arsitektur, OS) |
+
+**Breakdown Output:**
+
+| Field | Nilai | Artinya |
+| :--- | :--- | :--- |
+| OS Kernel | `Linux` | Sistem berjalan di atas kernel Linux |
+| Hostname | `tryhackme` | Nama komputer di jaringan |
+| Kernel Version | `<REDACTED>-aws` | Versi kernel yang terinstal |
+| Architecture | `x86_64` | Platform hardware 64-bit |
+| OS Type | `GNU/Linux` | Kernel Linux + tools GNU |
+
+Kalau kamu hanya butuh nama OS tanpa detail lain, cukup jalankan `uname` tanpa flag:
+
+```bash
+ubuntu@tryhackme:~$ uname
+Linux
+```
+
+### Step 3: Check Disk and Storage Info — `df`
+
+Di lingkungan kerja nyata, kamu sering perlu mengecek kapasitas disk, misalnya sebelum menjalankan tools yang menghasilkan log besar, atau saat menyelidiki kenapa suatu service gagal (bisa jadi disk penuh). Perintah `df -h` menampilkan informasi ini dalam format yang mudah dibaca:
+
+```bash
+ubuntu@tryhackme:~$ df -h
+Filesystem      Size  Used  Avail Use% Mounted on
+/dev/root        ~G   12G    ~G   17%  /
+tmpfs           1.9G    0  1.9G    0%  /dev/shm
+tmpfs           774M  1.2M  773M   1%  /run
+...
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `df` | _Disk Free_ — menampilkan penggunaan disk setiap filesystem |
+| `-h` | _Human readable_ — menampilkan ukuran dalam format yang mudah dibaca (G, M) alih-alih byte mentah |
+
+**Breakdown Output:**
+
+| Filesystem | Keterangan |
+| :--- | :--- |
+| `/dev/root` | Disk utama sistem — tempat OS dan semua data kamu berada. Kolom `Use%` menunjukkan seberapa penuh disk ini. |
+| `tmpfs` | Filesystem sementara yang tersimpan di **RAM**, bukan di disk fisik. Hilang saat sistem di-reboot. |
+| `/dev/shm` | Area _shared memory_ — digunakan untuk komunikasi antar proses. |
+
+### Step 4: Read a System File — `/etc`
+
+Linux menyimpan file konfigurasi dan informasi sistem di direktori **`/etc`**. Direktori ini adalah "pusat konfigurasi" sistem — hampir semua pengaturan penting ada di sini.
+
+```bash
+ubuntu@tryhackme:~$ cd /etc
+ubuntu@tryhackme:/etc$ ls
+```
+
+> **for your information:** **`/etc`** adalah singkatan historis dari _"et cetera"_, tapi dalam Linux modern, direktori ini secara spesifik menyimpan **file konfigurasi sistem**. File-file seperti `hostname`, `passwd`, `fstab`, dan `os-release` semuanya ada di sini.
+
+Untuk mengetahui distribusi Linux yang digunakan, baca file `os-release`:
+
+```bash
+ubuntu@tryhackme:/etc$ cat os-release
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.1 LTS (Noble Numbat)"
+...
+```
+
+File ini memberikan informasi yang lebih jelas dan terstruktur tentang distribusi Linux dibanding output `uname`. Informasi seperti nama distribusi, versi, dan codename semuanya tersedia di sini.
+
+### Mini Challenge
+
+Sebelum hari pertama berakhir, supervisor meninggalkan satu tantangan terakhir: temukan file bernama `day1_report.txt` yang ada di suatu tempat dalam home directory. Tantangan ini tidak ada petunjuk langkah demi langkah — kamu sudah punya semua tools yang dibutuhkan:
+
+1. Gunakan `find` untuk menemukan lokasi file.
+2. Navigasi ke folder tempat file berada dengan `cd`.
+3. Baca isinya menggunakan `cat`.
+
 ---
 
-_Catatan ini masih dalam proses drafting. Task selanjutnya akan ditambahkan setelah materi lengkap diterima._
+## Conclusion
+
+Room ini mengajarkan skill navigasi Linux yang menjadi pondasi untuk semua hal yang akan datang setelahnya, file permissions, manajemen user dan grup, proses, package management, dan akhirnya penggunaan security tools sungguhan.
+
+### Key Commands Summary
+
+| Command | Fungsi |
+| :--- | :--- |
+| `pwd` | Menampilkan direktori aktif saat ini |
+| `ls` | Melihat isi direktori (tambah `-l` untuk detail, `-a` untuk hidden files) |
+| `cd` | Berpindah direktori (`cd ..` untuk naik satu level) |
+| `find` | Mencari file berdasarkan nama di seluruh hierarki folder |
+| `cat` | Membaca dan menampilkan isi file |
+| `whoami` | Menampilkan username yang sedang login |
+| `uname -a` | Menampilkan informasi lengkap tentang sistem (kernel, arsitektur, hostname) |
+| `df -h` | Menampilkan penggunaan disk dalam format human-readable |
+
+---
+
+## Review
+
+- **Terminal** adalah antarmuka utama untuk bekerja di Linux — lebih cepat, lebih powerful, dan banyak security tools yang hanya tersedia di sini.
+- Lima perintah navigasi dasar (`pwd`, `ls`, `cd`, `find`, `cat`) sudah cukup untuk menjelajahi filesystem, menemukan file, dan membaca isinya.
+- Perintah investigasi sistem (`whoami`, `uname -a`, `df -h`, `cat /etc/os-release`) memberikan gambaran lengkap tentang environment: siapa yang login, kernel apa yang jalan, berapa kapasitas disk, dan distribusi Linux apa yang digunakan.
+- Direktori `/etc` adalah pusat konfigurasi sistem Linux — memahami isinya penting untuk administrasi dan security.

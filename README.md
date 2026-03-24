@@ -72,6 +72,7 @@
 | :-: | -------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | 1.  | [Operating Systems Introduction](THM-Notes/Pre-Security/Operating-System-Basics/Operating-Systems-Introduction.md) | OS fundamentals, interfaces & landscape |
 | 2.  | [Windows Basics](THM-Notes/Pre-Security/Operating-System-Basics/Windows-Basics.md)                      | Windows interface, settings, and security basics |
+| 3.  | [Linux CLI Basics](THM-Notes/Pre-Security/Operating-System-Basics/Linux-CLI-Basics.md)                  | Linux terminal navigation and system investigation |
 
 </details>
 
