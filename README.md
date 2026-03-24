@@ -63,6 +63,7 @@
 | 3.  | [Client-Server Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Client-Server-Basics.md)          | Basics of client-server interaction |
 | 4.  | [Virtualisation Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Virtualisation-Basics.md)        | Introduction to Virtual Machines & Hypervisors |
 | 5.  | [Cloud Computing Fundamentals](THM-Notes/Pre-Security/Computers-Fundamentals/Cloud-Computing-Fundamentals.md) | Introduction to Cloud Computing concepts |
+| 6.  | [Windows Basics](THM-Notes/Pre-Security/Computers-Fundamentals/Windows-Basics.md)                      | Windows interface, settings, and security basics |
 </details>
 
 </details>
