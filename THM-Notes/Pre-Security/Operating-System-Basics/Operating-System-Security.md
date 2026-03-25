@@ -202,7 +202,7 @@ ssh johnny@MACHINE_IP
 
 ![Johnny SSH Login](../../Assets/Images/Johnny-SSH.png)
 
-Perhatikan screenshot — ada dua kali `Permission denied, please try again.` sebelum berhasil masuk di percobaan ketiga. Ini mensimulasikan skenario di mana penyerang harus menebak password secara manual. Di dunia nyata, proses ini diotomatiskan menggunakan tool seperti **Hydra** atau **Medusa** yang bisa mencoba ribuan kombinasi dari sebuah _wordlist_ dalam hitungan menit.
+Perhatikan screenshot, ada dua kali `Permission denied, please try again.` sebelum berhasil masuk di percobaan ketiga. Ini mensimulasikan skenario di mana penyerang harus menebak password secara manual. Di dunia nyata, proses ini diotomatiskan menggunakan tool seperti **Hydra** atau **Medusa** yang bisa mencoba ribuan kombinasi dari sebuah _wordlist_ dalam hitungan menit.
 
 ### Step 5: Privilege Escalation to Root
 
@@ -238,7 +238,7 @@ cat flag.txt
 
 Flag: **`THM{YouGotRoot}`**
 
-> **Common Mistake:** Ingat — prompt `Password:` di Linux tidak menampilkan karakter apapun saat kamu mengetik. Jangan panik, langsung ketik password-nya dan tekan Enter.
+> **Common Mistake:** Ingat, prompt `Password:` di Linux tidak menampilkan karakter apapun saat kamu mengetik. Jangan panik, langsung ketik password-nya dan tekan Enter.
 
 ### Attack Flow Summary
 
