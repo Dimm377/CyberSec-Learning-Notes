@@ -74,6 +74,7 @@
 | 2.  | [Windows Basics](THM-Notes/Pre-Security/Operating-System-Basics/Windows-Basics.md)                      | Windows interface, settings, and security basics |
 | 3.  | [Linux CLI Basics](THM-Notes/Pre-Security/Operating-System-Basics/Linux-CLI-Basics.md)                  | Linux terminal navigation and system investigation |
 | 4.  | [Windows CLI Basics](THM-Notes/Pre-Security/Operating-System-Basics/Windows-CLI-Basics.md)                | Windows Command Prompt navigation and investigation |
+| 5.  | [Operating System Security](THM-Notes/Pre-Security/Operating-System-Basics/Operating-System-Security.md)  | OS hardware hierarchy, CIA triad, and common attacks |
 
 </details>
 

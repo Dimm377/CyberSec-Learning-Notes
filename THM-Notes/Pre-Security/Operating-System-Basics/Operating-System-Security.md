@@ -92,15 +92,177 @@ Ancaman fatal terakhir adalah hadirnya program atau perangkat lunak berbahaya (*
 
 ---
 
+## Practical Example of OS Security
+
+Skenarionya: kamu berperan sebagai tim keamanan yang disewa untuk menguji keamanan sebuah perusahaan. Saat mengunjungi kantor klien, kamu menemukan _sticky note_ di salah satu monitor dengan dua kata tertulis: **`sammie`** dan **`dragon`**. Tujuan akhirmu? Masuk ke sistem, menebak password pengguna lain, lalu berusaha menaikkan hakmu sampai ke level **root** (akun dengan kendali penuh di sistem Linux, setara `administrator` di Windows).
+
+> **for your information:** **SSH** (_Secure Shell_) adalah protokol standar untuk mengakses server Linux dari jarak jauh. Command yang kamu ketik di terminal lokal akan dieksekusi di mesin target. Seluruh komunikasi terenkripsi, jadi aman dari penyadapan — tapi kalau password-nya lemah, enkripsi tidak akan menyelamatkanmu.
+
+Lima command Linux yang digunakan di lab ini:
+
+| Command | Fungsi |
+| :--- | :--- |
+| `whoami` | Menampilkan username yang sedang aktif (siapa kamu di sistem) |
+| `ssh USERNAME@MACHINE_IP` | Login remote ke mesin target via SSH |
+| `ls` | Menampilkan daftar file di direktori saat ini |
+| `cat FILENAME` | Menampilkan isi file teks ke layar terminal |
+| `history` | Menampilkan riwayat command yang pernah dieksekusi oleh user |
+
+### Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap _Initial Access_ dan _Privilege Escalation_ dalam attack chain.
+- **Syarat yang dibutuhkan:** Mengetahui IP target, port SSH terbuka (default: 22), dan setidaknya satu pasang username-password yang valid.
+- **Tanda keberhasilan:** Prompt terminal berubah menjadi `user@hostname:~$` (akses user biasa) atau `root@hostname:~#` (akses root).
+
+### Step 1: SSH Login as Sammie
+
+Dari sticky note tadi, kamu punya dua petunjuk: `sammie` (kemungkinan username) dan `dragon` (kemungkinan password). Coba login:
+
+```
+ssh sammie@MACHINE_IP
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `ssh` | Memulai koneksi SSH ke mesin remote |
+| `sammie` | Username untuk login |
+| `@MACHINE_IP` | Alamat IP mesin target (ganti dengan IP asli) |
+
+Saat diminta password, masukkan `dragon`. Ternyata berhasil, password dari sticky note itu valid.
+
+![Sammie SSH Login](../../Assets/Images/Sammie-SSH.png)
+
+> **Common Mistake:** Saat mengetik password SSH, **tidak ada karakter apapun yang tampil di layar** — tidak ada bintang, tidak ada titik. Ini bukan error; Linux memang menyembunyikan input password sepenuhnya untuk keamanan. Ketik saja dan tekan Enter.
+
+### Step 2: Confirming Identity and Exploring Files
+
+Setelah berhasil masuk, konfirmasi identitasmu dan mulai eksplorasi:
+
+```
+whoami
+ls
+cat draft.md
+```
+
+Perintah `whoami` memastikan kamu login sebagai `sammie`. Lalu `ls` menampilkan isi home directory: `country.txt`, `draft.md`, `icon.png`, `password.txt`, dan `profile.jpg`.
+
+File `draft.md` berisi catatan yang menarik:
+
+```
+# Operating System Security
+Reusing passwords means that your password for other sites
+becomes exposed if one service is hacked.
+```
+
+Pesan ini mengingatkan tentang bahaya _password reuse_ — tapi ironisnya, pemilik akun ini sendiri menyimpan password dalam _plaintext_ di file lain.
+
+![Sammie Directory and Password](../../Assets/Images/Sammie-Directory.png)
+
+Buka `password.txt`:
+
+```
+cat password.txt
+```
+
+Isinya:
+
+```
+sammie
+dragon
+```
+
+Dua kelemahan fatal sekaligus:
+- **Password tersimpan dalam plaintext** — file teks biasa tanpa enkripsi, bisa dibaca siapa saja yang punya akses ke akun ini.
+- **`dragon`** termasuk salah satu dari daftar password paling umum di dunia (masuk top 20 di laporan NCSC yang sudah dibahas sebelumnya).
+
+### Step 3: Checking Sammie's Command History
+
+```
+history
+```
+
+![Sammie History](../../Assets/Images/Sammie-History.png)
+
+Output `history` menunjukkan jejak command yang pernah dijalankan `sammie`. Yang menarik: `sammie` pernah menjalankan `su - root`, artinya dia pernah mencoba berpindah ke akun _root_.
+
+> **for your information:** `su - root` adalah perintah _switch user_ untuk berpindah ke akun `root` (administrator). Tanda `-` memuat ulang seluruh environment milik root, bukan sekadar izin sementara.
+
+### Step 4: Moving to Johnny's Account
+
+Dari hasil investigasi, kamu mengetahui ada dua user lain di mesin ini: **`johnny`** dan **`linda`** — keduanya dikenal punya kebiasaan keamanan yang buruk. Ada dua cara untuk mengakses akun mereka:
+
+- **Dari luar:** logout dulu, lalu `ssh johnny@MACHINE_IP`
+- **Dari dalam session `sammie`:** gunakan `su - johnny` untuk berpindah user langsung
+
+Kali ini, coba langsung via SSH:
+
+```
+ssh johnny@MACHINE_IP
+```
+
+![Johnny SSH Login](../../Assets/Images/Johnny-SSH.png)
+
+Perhatikan screenshot — ada dua kali `Permission denied, please try again.` sebelum berhasil masuk di percobaan ketiga. Ini mensimulasikan skenario di mana penyerang harus menebak password secara manual. Di dunia nyata, proses ini diotomatiskan menggunakan tool seperti **Hydra** atau **Medusa** yang bisa mencoba ribuan kombinasi dari sebuah _wordlist_ dalam hitungan menit.
+
+### Step 5: Privilege Escalation to Root
+
+Bagian paling kritis. Cek `history` milik `johnny`:
+
+```
+history
+```
+
+![Johnny History](../../Assets/Images/Johnny-History.png)
+
+Di baris ke-8, `johnny` mengetik `happyHack!NG` — ini bukan command Linux yang valid. Coba perhatikan polanya:
+
+1. `su - root` (baris 7) — perintah untuk berpindah ke root
+2. **`happyHack!NG`** (baris 8) — password yang _keketik_ di prompt biasa, bukan di prompt password
+3. `su - root` (baris 9) — percobaan ulang, kali ini dimasukkan di tempat yang benar
+
+Apa yang terjadi? `johnny` mau mengetik password root, tapi tidak sadar prompt password belum muncul atau sudah lewat. Akibatnya, password diketik sebagai command biasa dan **terekam permanen di `.bash_history`**. Ini contoh nyata dari **information leakage** via command history.
+
+Gunakan informasi ini untuk naik ke root:
+
+```
+su - root
+```
+
+Masukkan password `happyHack!NG`, lalu baca flag:
+
+```
+cat flag.txt
+```
+
+![Johnny Flag](../../Assets/Images/Johnny-Flag.png)
+
+Flag: **`THM{YouGotRoot}`**
+
+> **Common Mistake:** Ingat — prompt `Password:` di Linux tidak menampilkan karakter apapun saat kamu mengetik. Jangan panik, langsung ketik password-nya dan tekan Enter.
+
+### Attack Flow Summary
+
+```mermaid
+graph LR
+    A["Sticky Note\n(Recon)"] --> B["SSH as Sammie\n(Initial Access)"]
+    B --> C["Explore Files\n(ls, cat, whoami)"]
+    C --> D["SSH as Johnny\n(Lateral Movement)"]
+    D --> E["Read history\n(Info Leakage)"]
+    E --> F["su - root\n(Privilege Escalation)"]
+    F --> G["cat flag.txt\n(Goal)"]
+```
+
+---
+
 ## Real-World Relevance
 
-Di eksploitasi dunia nyata maupun pengetesan keamanan (pentest), sebagian besar insiden bermula dari celah keamanan mendasar ini:
-- **Sandi yang Lemah (Passwords):** Mayoritas pembobolan data berawal dari serangan _brute force_ atau _credential stuffing_ pada kredensial karyawan yang buruk (atau kebiasaan menggunakan sandi yang sama di berbagai akun institusi).
-- **Izin yang Asal (Weak File Permissions):** Teknik dasar eskalasi hak istimewa (_Privilege Escalation_) di server Linux maupun OS Windows hampir selalu memanfaatkan celah izin *file* esensial yang dibiarkan terbuka oleh admin.
-- **Ransomware Paralysis:** Kelumpuhan total rumah sakit atau infrastruktur transportasi publik sering kali dipicu oleh keteledoran seorang staf yang secara tidak sengaja mengunduh *Trojan* dari *email phishing*.
+Konsep keamanan dasar ini menjadi target eksploitasi dalam skenario penetration testing (pentest) maupun insiden keamanan nyata:
+- **Authentication Bypass:** Penggunaan ulang kata sandi (_password reuse_) lintas aplikasi sering dimanfaatkan penyerang sebagai _initial access_ (akses awal) menggunakan metode _brute force_ atau _credential stuffing_.
+- **Privilege Escalation:** Konfigurasi _file permissions_ yang tidak menerapkan prinsip _least privilege_ di server Windows atau Linux sering dimanfaatkan penyerang yang sudah memiliki akses level pengguna (low-privileged user) untuk membaca kredensial cadangan atau mengeksekusi _file_ dengan akses administrator.
+- **Malware Execution:** Insiden _ransomware_ operasional pada organisasi sering berawal dari eksekusi statis aplikasi _Trojan_ akibat lampiran _phishing_. Enkripsi masal oleh malware ini mencederai prinsip ketersediaan (_Availability_).
 
 ## Review
 
-- **Konsep Hardware-Software:** _Hardware_ adalah jajaran perangkat fisik murni; ia membutuhkan Sistem Operasi (OS) sebagai lapisan penerjemah agar aplikasi bisa berjalan.
-- **The CIA Triad:** Tiga pilar fundamental perlindungan data meliputi Kerahasiaan (_Confidentiality_), Integritas (_Integrity_), dan Ketersediaan (_Availability_).
-- **Vektor Ancaman Paling Umum:** _Attacker_ paling sering menyasar _password_ yang mudah ditebak, pengaturan hak akses (_file permissions_) yang terlalu longgar, hingga penyebaran *malware* (seperti _Trojan_ atau _Ransomware_) untuk menumbangkan sistem tanpa disadari pengguna.
+- **Struktur OS:** _Hardware_ merupakan perangkat keras yang memerlukan Sistem Operasi (OS) sebagai pengendali pusat agar _software_ memiliki rute untuk memproses komponen fisik.
+- **CIA Triad:** Standar evaluasi keamanan sistem informasi bersandar pada tiga aspek: Kerahasiaan (_Confidentiality_), Integritas (_Integrity_), dan Ketersediaan (_Availability_).
+- **OS Security Focus:** Celah yang mendasar dan sering tereksploitasi dalam evaluasi keamanan bersumber dari parameter pengamanan autentikasi kata sandi, izin _file commands_, dan mitigasi dari eksekusi logis program berbahaya.
