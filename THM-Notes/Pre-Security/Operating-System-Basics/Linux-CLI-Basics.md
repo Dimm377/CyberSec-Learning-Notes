@@ -12,7 +12,9 @@ _(Prerequisite: [Operating Systems Introduction](Operating-Systems-Introduction.
 
 Di dunia cyber security, **Linux** ada di mana-mana — server, security tools, bahkan environment untuk hacking semuanya dominan menggunakan Linux. Sebelum bisa menjalankan tool apapun atau menyelidiki insiden, kamu harus bisa menavigasi sistem Linux lewat **CLI** (_Command-Line Interface_), yaitu antarmuka berbasis teks di mana kamu mengetik perintah langsung ke sistem.
 
-Room ini menggunakan skenario: kamu adalah IT Support Engineer baru di tim **Cyber Operations Support**. Supervisor-mu pergi terburu-buru menangani insiden dan meninggalkan catatan di meja, isinya memintamu membuka terminal Linux dan mulai mengeksplorasi sistem sendiri. Setiap task di room ini memandu langkah demi langkah dari nol.
+### Scenario
+
+Kamu adalah IT Support Engineer baru di tim **Cyber Operations Support**. Supervisor-mu pergi terburu-buru menangani insiden dan meninggalkan catatan di meja, isinya memintamu membuka terminal Linux dan mulai mengeksplorasi sistem sendiri. Setiap task di room ini memandu langkah demi langkah dari nol.
 
 Setelah menyelesaikan room ini, kamu akan paham:
 
