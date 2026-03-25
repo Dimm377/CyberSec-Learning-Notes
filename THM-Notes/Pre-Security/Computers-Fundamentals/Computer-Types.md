@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Ketika sebagian besar orang mendengar kata "komputer", yang terbayang adalah laptop atau desktop. Kenyataannya, komputer ada dalam bentuk yang jauh lebih beragam — mulai dari server yang melayani jutaan pengguna secara bersamaan, hingga chip kecil yang tertanam di dalam mesin cuci atau sistem kendali lift.
+Ketika sebagian besar orang mendengar kata "komputer", yang terbayang adalah laptop atau desktop. Kenyataannya, komputer ada dalam bentuk yang jauh lebih beragam, mulai dari server yang melayani jutaan pengguna secara bersamaan, hingga chip kecil yang tertanam di dalam mesin cuci atau sistem kendali lift.
 
 Untuk seorang praktisi cyber security, memahami jenis-jenis komputer ini bukan sekadar pengetahuan umum. Setiap jenis punya arsitektur, keterbatasan, dan permukaan serangan (_attack surface_) yang berbeda. Strategi pertahanan yang tepat untuk sebuah laptop tidak akan sama dengan strategi untuk server atau perangkat IoT.
 
