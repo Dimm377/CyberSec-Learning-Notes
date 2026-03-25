@@ -3,8 +3,8 @@
 - **Room Link:** [Simple CTF Challenge](https://tryhackme.com/room/simplectfchallenge)
 - **Category:** Challenge Room
 - **Difficulty:** Easy
-- **Tools Used:** Nmap, FTP client, CVE-2019-9053 exploit (Python), SSH, Vim
-- **Main Techniques:** Port scanning, anonymous FTP enumeration, SQL injection (CMS Made Simple), SSH brute force / credential reuse, privilege escalation via sudo vim
+- **Tools Used:** Nmap, FTP client, Searchsploit, CVE-2019-9053 exploit (Python), Hydra, SSH, Vim
+- **Main Techniques:** Port scanning, anonymous FTP enumeration, exploit research, SQL injection (CMS Made Simple), SSH brute force, privilege escalation via sudo vim
 
 ---
 
@@ -109,6 +109,30 @@ Setelah menelusuri, ternyata server ini menjalankan **CMS Made Simple** — sebu
 
 ## Exploitation
 
+### Mencari Exploit yang Tepat
+
+Setelah tahu server menjalankan CMS Made Simple, langkah berikutnya adalah mencari apakah ada exploit publik yang tersedia. Ada dua cara yang dipakai:
+
+**Cara 1: Google Search**
+
+Cari keyword seperti `cms made simple exploit` di Google untuk melihat CVE yang sudah dipublikasikan.
+
+![Google Search CVE](Documentation-assets/Simple-CTF/Search-CVE.png)
+
+Hasil pertama langsung mengarah ke Exploit Database — **CMS Made Simple < 2.2.10 - SQL Injection** (CVE-2019-9053).
+
+**Cara 2: Searchsploit (Offline)**
+
+> **for your information:** **Searchsploit** adalah tool command-line untuk mencari exploit dari database lokal Exploit-DB. Berguna saat kamu butuh cari exploit tanpa koneksi internet, atau ingin melihat semua exploit yang tersedia untuk satu target sekaligus.
+
+```
+searchsploit cms made simple
+```
+
+![Searchsploit Results](Documentation-assets/Simple-CTF/Searchsploit-CMS-Made-simple.png)
+
+Output-nya menampilkan puluhan exploit untuk berbagai versi CMS Made Simple. Yang relevan ada di baris paling bawah: **CMS Made Simple < 2.2.10 – SQL Injection** (path: `php/webapps/46635.py`).
+
 ### CVE-2019-9053: SQL Injection on CMS Made Simple
 
 Kerentanan **CVE-2019-9053** mempengaruhi CMS Made Simple versi di bawah 2.2.10. Exploit ini memungkinkan _Unauthenticated SQL Injection_ — artinya penyerang bisa mengekstrak data dari database **tanpa perlu login** ke aplikasi.
@@ -138,9 +162,34 @@ Password hash yang didapat kemudian di-_crack_ — dan sesuai petunjuk dari `For
 
 ## Initial Access
 
+### Hydra: SSH Brute Force
+
+> **for your information:** **Hydra** adalah tool brute force yang mendukung berbagai protokol (SSH, FTP, HTTP, dll). Hydra mencoba login secara otomatis menggunakan kombinasi username dan password dari wordlist.
+
+Dari clue `ForMitch.txt`, kamu tahu password-nya lemah dan username kemungkinan `mitch`. Gunakan Hydra untuk brute force SSH di port 2222:
+
+```
+sudo hydra -l mitch -P /home/dimm/Downloads/rockyou.txt ssh://MACHINE_IP -s 2222 -t 4
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `hydra` | Tool brute force login |
+| `-l mitch` | Username target (lowercase `-l` = single username) |
+| `-P rockyou.txt` | Path ke wordlist password (uppercase `-P` = password list) |
+| `ssh://MACHINE_IP` | Protokol dan target |
+| `-s 2222` | Menentukan port service (SSH di port non-standar) |
+| `-t 4` | Jumlah thread paralel (4 koneksi simultan) |
+
+![Hydra Brute Force](Documentation-assets/Simple-CTF/hydra-BruteForce-blur.png)
+
+Hydra berhasil menemukan credential: **login: `mitch`** — **password: `[REDACTED]`**. Ini mengonfirmasi clue dari `ForMitch.txt` bahwa password-nya sangat lemah.
+
+> **Common Mistake:** Jangan lupa flag `-s` untuk menentukan port kustom. Tanpa `-s 2222`, Hydra akan mencoba SSH di port 22 (default) dan gagal koneksi.
+
 ### SSH Login as Mitch
 
-Dari `ForMitch.txt`, kamu sudah tahu bahwa password system user **sama** dengan password CMS. Karena username-nya `mitch` dan password sudah di-crack dari SQLi, login via SSH di port 2222:
+Dengan credential yang sudah didapat, login via SSH:
 
 ```
 ssh -p 2222 mitch@MACHINE_IP
@@ -153,7 +202,7 @@ ssh -p 2222 mitch@MACHINE_IP
 | `mitch` | Username target |
 | `@MACHINE_IP` | IP mesin target |
 
-![SSH Login and User Flag](Documentation-assets/Simple-CTF/Flag-SimpleCTF.png)
+![SSH Login and User Flag](Documentation-assets/Simple-CTF/Flag-SimpleCTF-blur.png)
 
 Login berhasil. Langsung ambil _user flag_:
 
@@ -161,7 +210,7 @@ Login berhasil. Langsung ambil _user flag_:
 $ ls
 user.txt
 $ cat user.txt
-G00d j0b, keep up!
+[FLAG]
 ```
 
 Untuk menjawab pertanyaan room tentang user lain di home directory:
@@ -237,17 +286,32 @@ root@Machine:~# cat /root/root.txt
 graph LR
     A["Nmap Scan\n(Recon)"] --> B["FTP Anonymous\n(Enumeration)"]
     B --> C["ForMitch.txt\n(Clue)"]
-    C --> D["CVE-2019-9053\n(SQLi Exploit)"]
-    D --> E["SSH as Mitch\n(Initial Access)"]
-    E --> F["sudo vim\n(PrivEsc)"]
-    F --> G["Root Flag\n(Goal)"]
+    C --> D["Searchsploit\n(Exploit Research)"]
+    D --> E["CVE-2019-9053\n(SQLi Exploit)"]
+    E --> F["Hydra\n(SSH Brute Force)"]
+    F --> G["SSH as Mitch\n(Initial Access)"]
 ```
+
+```mermaid
+graph LR
+    G["SSH as Mitch\n(Initial Access)"] --> H["sudo -l\n(Recon PrivEsc)"]
+    H --> I["sudo vim\n(PrivEsc)"]
+    I --> J["Root Flag\n(Goal)"]
+```
+
+---
+
+## Room Questions
+
+![Room Questions Part 1](Documentation-assets/Simple-CTF/question1-SimpleCTF-blur.png)
+
+![Room Questions Part 2](Documentation-assets/Simple-CTF/question2-SimpleCTF-blur.png)
 
 ---
 
 ## Review
 
 - **Anonymous FTP** jadi entry point utama — file `ForMitch.txt` membocorkan informasi soal _credential reuse_ dan _weak password_. Selalu periksa service FTP yang mengizinkan login tanpa autentikasi.
-- **CMS Made Simple < 2.2.10** rentan terhadap _Unauthenticated SQL Injection_ (CVE-2019-9053), memungkinkan ekstraksi username dan password hash tanpa login.
-- **Credential reuse** — password CMS yang di-crack ternyata juga password SSH user `mitch`. Ini kesalahan keamanan yang sangat umum di dunia nyata.
-- **Vim sebagai vektor privilege escalation** — jika user punya hak `sudo` untuk vim, penyerang bisa spawn root shell lewat `:!bash`. Referensi lengkap: [GTFOBins - vim](https://gtfobins.github.io/gtfobins/vim/).
+- **Riset exploit** bisa dilakukan lewat Google maupun `searchsploit` secara offline — keduanya mengarah ke CVE-2019-9053 (SQLi pada CMS Made Simple < 2.2.10).
+- **Hydra** mengonfirmasi password lemah untuk SSH user `mitch`. Selalu gunakan flag `-s` untuk port non-standar.
+- **`sudo -l` wajib dicek** sebelum mencoba privilege escalation — di sini `mitch` bisa menjalankan `vim` sebagai root, yang kemudian digunakan untuk spawn shell via `:!bash`. Referensi lengkap: [GTFOBins - vim](https://gtfobins.github.io/gtfobins/vim/).
