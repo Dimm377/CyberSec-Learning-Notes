@@ -8,6 +8,14 @@
 
 ---
 
+## Attack Context
+
+- **Kapan teknik ini dipakai?** Tahap _Recon_ sampai _Privilege Escalation_ — room ini mencakup seluruh attack chain dari awal hingga root.
+- **Syarat yang dibutuhkan:** Koneksi ke jaringan TryHackMe (VPN atau AttackBox) dan IP target.
+- **Tanda keberhasilan:** Mendapatkan _user flag_ (`user.txt`) dan _root flag_ (`root.txt`).
+
+---
+
 ## Reconnaissance
 
 ### Nmap Scan
@@ -93,9 +101,9 @@ Informasi berharga dari pesan ini:
 
 ### Web Application — CMS Made Simple
 
-Dari hasil Nmap, port 80 menjalankan Apache dengan path `/openemr-5_0_1_3` di `robots.txt`. Tapi setelah menyelidiki lebih lanjut, server ini juga menjalankan **CMS Made Simple** — sebuah Content Management System berbasis PHP.
+Sekarang pindah ke port 80. Buka `http://MACHINE_IP` di browser, yang muncul hanyalah halaman default Apache ("It works"). Tapi ingat hasil Nmap tadi: `robots.txt` menyebutkan path `/openemr-5_0_1_3`. Coba akses path tersebut dan eksplorasi direktori web lainnya.
 
-Kenapa ini penting? Karena CMS Made Simple versi lama punya kerentanan SQL Injection yang sudah terdokumentasi publik.
+Setelah menelusuri, ternyata server ini menjalankan **CMS Made Simple** — sebuah _Content Management System_ berbasis PHP. Versi CMS biasanya terlihat di footer halaman login atau di source HTML. Ini informasi krusial, karena CMS Made Simple versi lama punya kerentanan SQL Injection yang sudah terdokumentasi publik.
 
 ---
 
@@ -171,11 +179,22 @@ Ada satu user lain: **sunbath**.
 
 ### Sudo Vim to Root Shell
 
-Pertanyaan terakhir dari room: _"What can you leverage to spawn a privileged shell?"_ — jawabannya: **vim**.
+Sebelum mencoba apapun, selalu cek dulu hak `sudo` yang dimiliki user saat ini:
 
-> **for your information:** **Vim** adalah text editor di terminal Linux. Tapi vim punya fitur yang bisa dimanfaatkan untuk escalation: dari dalam vim, kamu bisa menjalankan command sistem dengan `:!command`. Jika vim dijalankan dengan `sudo`, command yang dieksekusi juga berjalan sebagai root.
+```
+sudo -l
+```
 
-Jika `mitch` punya hak `sudo` untuk menjalankan `vim` tanpa password, prosesnya:
+| Komponen | Fungsi |
+| :--- | :--- |
+| `sudo` | Menjalankan command dengan hak akses lebih tinggi |
+| `-l` | Menampilkan daftar command yang boleh dijalankan user ini via `sudo` |
+
+Output-nya menunjukkan bahwa `mitch` boleh menjalankan `/usr/bin/vim` sebagai root **tanpa password** (`NOPASSWD`). Ini artinya vim jadi vektor privilege escalation yang valid.
+
+> **for your information:** **Vim** adalah text editor di terminal Linux. Tapi vim punya fitur yang bisa dimanfaatkan untuk escalation: dari dalam vim, kamu bisa menjalankan command sistem dengan `:!command`. Jika vim dijalankan dengan `sudo`, command yang dieksekusi juga berjalan sebagai root. Teknik ini terdokumentasi di [GTFOBins - vim](https://gtfobins.github.io/gtfobins/vim/).
+
+Jalankan vim dengan sudo:
 
 ```
 sudo vim
