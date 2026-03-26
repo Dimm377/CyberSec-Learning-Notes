@@ -91,7 +91,11 @@ Informasi berharga dari pesan ini:
 
 ### Web Application — CMS Made Simple
 
-Sekarang pindah ke port 80. Buka `http://MACHINE_IP` di browser — yang muncul hanyalah halaman default Apache ("It works"). Path `/openemr-5_0_1_3` dari `robots.txt` juga tidak memberikan hasil yang berguna. Untuk menemukan direktori tersembunyi, gunakan **Gobuster**:
+Sekarang pindah ke port 80. Buka `http://MACHINE_IP` di browser dan yang muncul hanyalah halaman default Apache.
+
+![Apache Default Page](Documentation-assets/Simple-CTF/apache-page.png)
+
+Path `/openemr-5_0_1_3` dari `robots.txt` juga tidak memberikan hasil yang berguna. Untuk menemukan direktori tersembunyi, gunakan **Gobuster**:
 
 > **for your information:** **Gobuster** adalah tool directory/file brute force yang mengirim HTTP request ke path-path dari wordlist untuk menemukan halaman atau direktori yang tidak di-link dari halaman utama.
 
