@@ -20,7 +20,7 @@
 
 ### Nmap Scan
 
-Langkah pertama di setiap CTF: identifikasi service yang berjalan di target.
+identifikasi service yang berjalan di target.
 
 ```
 nmap -sC -sV MACHINE_IP
@@ -64,16 +64,6 @@ ftp MACHINE_IP
 Saat diminta username, ketik `anonymous` dan tekan Enter (password kosong atau ketik apapun).
 
 ![FTP Login and ForMitch.txt](Documentation-assets/Simple-CTF/Ftp-Login-SimpleCTF.png)
-
-Setelah masuk, eksplorasi isi server:
-
-```
-ftp> ls
-ftp> cd pub
-ftp> ls
-ftp> get ForMitch.txt
-ftp> quit
-```
 
 | Command | Fungsi |
 | :--- | :--- |
