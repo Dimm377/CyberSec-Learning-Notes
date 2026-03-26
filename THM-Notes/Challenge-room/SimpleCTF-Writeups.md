@@ -255,9 +255,9 @@ Hydra berhasil menemukan credential: **login: `mitch`** — **password: `[REDACT
 
 ### Approach 2: SQLi Exploit (CVE-2019-9053)
 
-Pendekatan ini memberikan hasil yang lebih kaya. Selain password, exploit juga mengekstrak **username CMS**, **email**, **salt**, dan **password hash** dari database — informasi yang berguna untuk investigasi lebih dalam atau serangan lanjutan. Detail lengkap ada di section [Exploitation](#exploitation) di atas.
+Pendekatan ini memberikan hasil yang lebih detail. Selain password, exploit juga mengekstrak **username CMS**, **email**, **salt**, dan **password hash** dari database — informasi yang berguna untuk investigasi lebih dalam atau serangan lanjutan. Detail lengkap ada di section [Exploitation](#exploitation) di atas.
 
-Kedua pendekatan menghasilkan credential yang sama. Perbedaannya: Hydra hanya menemukan password, sedangkan SQLi exploit membongkar seluruh isi database CMS.
+Kedua pendekatan menghasilkan credential yang sama. Perbedaannya: Hydra hanya menemukan password, sedangkan SQLi exploit membedah seluruh isi database CMS.
 
 ### SSH Login as Mitch
 
