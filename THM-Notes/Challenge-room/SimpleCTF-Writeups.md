@@ -43,7 +43,7 @@ Hasilnya menunjukkan tiga port terbuka:
 | 2222/tcp | SSH | OpenSSH 7.2p2 | Port non-standar (biasanya SSH di port 22) |
 
 Tiga hal itu memberikan petunjuk:
-- **FTP mengizinkan anonymous login** — siapa saja bisa masuk tanpa password. Ini harus dieksplorasi pertama.
+- **FTP mengizinkan anonymous login** — siapa saja bisa masuk tanpa password. Ini yang ku akses pertama.
 - **`robots.txt`** menyebutkan path `/openemr-5_0_1_3` — ini petunjuk bahwa ada aplikasi web yang terinstall.
 - **SSH di port 2222**, bukan port default 22. Ini penting untuk diingat saat nanti login via SSH.
 
