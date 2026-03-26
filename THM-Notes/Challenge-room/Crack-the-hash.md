@@ -138,7 +138,7 @@ hashcat -m 3200 bcrypt.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyo
 
 Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apakah hash ini sudah pernah dipecahkan sebelumnya. **Hashes.com** menyimpan hasil crack dari berbagai hash yang sudah pernah diproses orang lain — termasuk hash-hash bcrypt yang berat sekalipun.
 
-Paste hash ke kolom pencarian di Hashes.com.
+Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
 ![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt.png)
 
