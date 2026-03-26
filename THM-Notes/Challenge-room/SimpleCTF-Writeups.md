@@ -20,7 +20,7 @@
 
 ### Nmap Scan
 
-identifikasi service yang berjalan di target.
+Langkah pertama adalah mengidentifikasi service yang berjalan di target.
 
 ```
 nmap -sC -sV MACHINE_IP
@@ -369,9 +369,9 @@ graph TD
 
 ```mermaid
 graph LR
-    G["SSH as Mitch\n(Initial Access)"] --> H["sudo -l\n(Recon PrivEsc)"]
-    H --> I["sudo vim\n(PrivEsc)"]
-    I --> J["Root Flag\n(Goal)"]
+    A["SSH as Mitch\n(Initial Access)"] --> B["sudo -l\n(Recon PrivEsc)"]
+    B --> C["sudo vim\n(PrivEsc)"]
+    C --> D["Root Flag\n(Goal)"]
 ```
 
 ---
@@ -388,5 +388,5 @@ graph LR
 
 - **Anonymous FTP** jadi entry point utama — file `ForMitch.txt` membocorkan informasi soal _credential reuse_ dan _weak password_. Selalu periksa service FTP yang mengizinkan login tanpa autentikasi.
 - **Riset exploit** bisa dilakukan lewat Google maupun `searchsploit` secara offline — keduanya mengarah ke CVE-2019-9053 (SQLi pada CMS Made Simple < 2.2.10).
-- **Hydra** mengonfirmasi password lemah untuk SSH user `mitch`. Selalu gunakan flag `-s` untuk port non-standar.
+- Ada dua cara mendapat credential SSH — **Hydra** brute force langsung, atau ekstraksi via **SQLi exploit**. Keduanya menghasilkan password yang sama, tapi SQLi memberikan data tambahan (username CMS, email, hash).
 - **`sudo -l` wajib dicek** sebelum mencoba privilege escalation — di sini `mitch` bisa menjalankan `vim` sebagai root, yang kemudian digunakan untuk spawn shell via `:!bash`. Referensi lengkap: [GTFOBins - vim](https://gtfobins.github.io/gtfobins/vim/).
