@@ -136,7 +136,7 @@ hashcat -m 3200 bcrypt.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyo
 
 ### Approach 2: Online Hash Lookup dengan Hashes.com
 
-Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apakah hash ini sudah pernah dipecahkan sebelumnya. **Hashes.com** menyimpan hasil crack dari berbagai hash yang sudah pernah diproses orang lain — termasuk hash-hash bcrypt yang berat sekalipun.
+Karena cracking offline menggunakan **Hashcat** tidak berhasil, langkah berikutnya adalah mengecek apakah hash ini sudah pernah dipecahkan sebelumnya. **Hashes.com** menyimpan hasil crack dari berbagai hash yang sudah pernah diproses orang lain — termasuk hash-hash bcrypt yang berat sekalipun.
 
 Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
