@@ -106,6 +106,8 @@ gobuster dir -u http://MACHINE_IP -w /home/dimm/SecLists/Discovery/Web-Content/c
 | `-u` | Target URL |
 | `-w` | Path ke wordlist |
 
+Sesuaikan path wordlist dengan lokasi instalasi SecLists di sistemmu.
+
 ![Gobuster Directory Enumeration](Documentation-assets/Simple-CTF/Simple-enum.png)
 
 Gobuster menemukan beberapa path, tapi yang paling menarik:
