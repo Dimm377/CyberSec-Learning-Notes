@@ -28,7 +28,7 @@ Kita akan menggunakan kombinasi tool online (_CrackStation_, _Hashes.com_) dan t
 
 ## Hash Identification 101
 
-Sebelum masuk ke pemecahan, kamu harus tahu dulu jenis hash apa yang sedang dihadapi. Memilih algoritma yang salah di tool cracker akan langsung membuat seluruh proses gagal.
+Sebelum masuk ke pemecahan, kamu harus tahu dulu jenis hash apa yang sedang digunakan. Memilih algoritma yang salah di tool cracker akan langsung membuat seluruh proses gagal.
 
 Ada dua cara utama untuk mengidentifikasi hash:
 
