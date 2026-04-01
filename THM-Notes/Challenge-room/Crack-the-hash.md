@@ -28,7 +28,7 @@ Kita akan menggunakan kombinasi tool online (_CrackStation_, _Hashes.com_) dan t
 
 ## Hash Identification 101
 
-Sebelum masuk ke pemecahan, kamu harus tahu dulu jenis hash apa yang sedang digunakan. Memilih algoritma yang salah di tool cracker akan langsung membuat seluruh proses gagal.
+Sebelum masuk ke pemecahan, kamu harus tahu dulu jenis hash apa yang sedang dihadapi. Memilih algoritma yang salah di tool cracker akan langsung membuat seluruh proses gagal.
 
 Ada dua cara utama untuk mengidentifikasi hash:
 
@@ -136,7 +136,7 @@ hashcat -m 3200 bcrypt.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyo
 
 ### Approach 2: Online Hash Lookup dengan Hashes.com
 
-Karena cracking offline menggunakan **Hashcat** tidak berhasil, langkah berikutnya adalah mengecek apakah hash ini sudah pernah dipecahkan sebelumnya. **Hashes.com** menyimpan hasil crack dari berbagai hash yang sudah pernah diproses orang lain — termasuk hash-hash bcrypt yang berat sekalipun.
+Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apakah hash ini sudah pernah dipecahkan sebelumnya. **Hashes.com** menyimpan hasil crack dari berbagai hash yang sudah pernah diproses orang lain — termasuk hash-hash bcrypt yang berat sekalipun.
 
 Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
@@ -148,20 +148,12 @@ Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
 ---
 
-## Review
-
-- **Identifikasi dulu, crack kemudian.** Panjang karakter dan prefix hash sudah cukup untuk menentukan algoritmanya sebelum memilih tool atau mode yang tepat.
-- **CrackStation untuk hash standar.** MD5, SHA-1, SHA-256 tanpa salt — langsung cek ke CrackStation sebelum repot menjalankan tool offline.
-- **Bcrypt bukan hash biasa.** Mekanisme key stretching-nya membuat setiap percobaan jauh lebih lambat. Brute-force bcrypt di laptop biasa bukan pilihan realistis.
-- **Online lookup adalah langkah pertama, bukan cadangan.** Kalau hash sudah ada di database publik, tidak perlu menghabiskan resource komputasi sama sekali.
-
----
 
 ## Task 2: Level 2 (Advanced Hashes)
 
 Di Level 2, CrackStation tidak lagi bisa diandalkan sepenuhnya — beberapa hash di sini cukup spesifik sehingga tidak ada di database pre-computed online. Pendekatan utama bergeser ke tool CLI dan offline cracking.
 
-### 1. Hash Identification dengan Tool CLI
+### 1. Hash Identification via CLI Tool
 
 Selain menebak dari panjang karakter, kita bisa menggunakan tool **HashID** untuk mengidentifikasi jenis hash secara otomatis. HashID mencocokkan pola karakter hash dengan daftar signature algoritma yang sudah dipetakan di dalamnya.
 
@@ -176,7 +168,7 @@ hashid F09EDCB1FCEFC6DFB23DC3505A882655FF77375ED8AA2D1C13F640FCCC2D0C85
 
 HashID menampilkan daftar kemungkinan algoritma. Kandidat teratas yang paling probable adalah **SHA-256** — sesuai dengan panjangnya yang 64 karakter Hex.
 
-### 2. Persiapan File Target
+### 2. Preparing the Target File
 
 Sebelum menjalankan Hashcat, simpan hash ke dalam file `.txt` terpisah. Meneruskan string hash langsung sebagai argumen ke Hashcat berisiko memicu parsing error jika hash mengandung karakter khusus bash seperti `$` — menyimpannya ke file menghindari masalah ini sekaligus membuat proses lebih rapi.
 
@@ -192,7 +184,7 @@ Untuk hash kedua (`1DFECA0C002AE40B8619ECF94819CC1B`), simpan ke file terpisah `
 
 ![Save Hash MD5](Documentation-assets/Crack-the-hash/MD5-txt.png)
 
-### 3. Eksekusi Offline Cracking (Hashcat)
+### 3. Offline Cracking with Hashcat
 
 Jalankan Hashcat terhadap `SHA-256.txt` dengan mode `1400` sesuai hasil identifikasi. Wordlist yang dipakai adalah `rockyou-lab.txt` — file wordlist yang disediakan langsung oleh room ini.
 
@@ -209,13 +201,13 @@ hashcat -m 1400 SHA-256.txt /home/dimm/Downloads/rockyou-lab.txt
 | `SHA-256.txt` | File input berisi hash target |
 | `rockyou-lab.txt` | Wordlist yang disediakan oleh room untuk dictionary attack |
 
-### 4. Hasil Cracking SHA-256
+### 4. SHA-256 Cracking Result
 
 ![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-256.png)
 
 **Hasil:** Hash SHA-256 berhasil dipecahkan — Password: `[REDACTED]`
 
-### 5. Cracking Hash MD5
+### 5. Cracking the MD5 Hash
 
 Untuk hash MD5 (`1DFECA0C002AE40B8619ECF94819CC1B`) yang sudah disimpan di `MD5.txt`, prosesnya identik. Satu-satunya perbedaan adalah mode Hashcat yang berubah menjadi `-m 0`.
 
