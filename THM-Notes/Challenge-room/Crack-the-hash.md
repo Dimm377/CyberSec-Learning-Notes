@@ -203,7 +203,7 @@ hashcat -m 1400 SHA-256.txt /home/dimm/Downloads/rockyou-lab.txt
 
 ### 4. SHA-256 Cracking Result
 
-![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-256.png)
+![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-2560-blur.png)
 
 **Hasil:** Hash SHA-256 berhasil dipecahkan — Password: `[REDACTED]`
 
