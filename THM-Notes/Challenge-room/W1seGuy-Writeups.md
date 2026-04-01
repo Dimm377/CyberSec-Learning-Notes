@@ -172,7 +172,7 @@ Output menampilkan Flag 1 dalam format `THM{...}`.
 
 Kembali ke terminal yang masih terhubung ke server via Netcat. Ketik key `ljmSr` saat server meminta `What is the encryption key?`.
 
-![Flag Revealed](Documentation-assets/W1seGuy/Flag-2.png)
+![Flag Revealed](Documentation-assets/W1seGuy/Flag-2-blur.png)
 
 Server merespons dengan Flag 2: `THM{BrUt3_ForC1nG_XOR_cAn_B3_FuN_nO?}`
 
