@@ -283,5 +283,6 @@
 | 2.  | [Simple CTF](THM-Notes/Challenge-room/SimpleCTF-Writeups.md)         | Beginner CTF Challenge          |
 | 3.  | [Crack the Hash](THM-Notes/Challenge-room/Crack-the-hash.md)        | Hash Identification & Cracking  |
 | 4.  | [W1seGuy](THM-Notes/Challenge-room/W1seGuy-Writeups.md)             | XOR Crypto & Known-Plaintext Attack |
+| 5.  | [OhSINT](THM-Notes/Challenge-room/OhSINT-Writeups.md)              | OSINT & Metadata Investigation  |
 
 </details>
