@@ -256,3 +256,37 @@ hashcat -m 1800 sha512.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyo
 
 > **for your information:** Hash ber-salt memaksa Hashcat menghitung ulang seluruh proses hashing untuk setiap entri di wordlist, karena hasilnya unik per kombinasi `password + salt`. Database lookup online seperti CrackStation tidak menyimpan kombinasi ini — offline cracking dengan wordlist besar adalah satu-satunya pendekatan yang viable.
 
+### 7. Cracking HMAC-SHA1 (Hash + Salt)
+
+Masih di level yang sama, hash selanjutnya adalah:
+`e5d8870e5bdd26602cab8dbe07a942c8669e56d6`
+Salt: `tryhackme`
+
+Berdasarkan Hashcat Examples, format standar untuk memasukkan hash yang memiliki salt eksternal secara eksplisit adalah dengan menyatukannya menggunakan titik dua (`:`), yaitu `hash:salt`. Di kasus ini formatnya menjadi HMAC-SHA1 di mana *key*-nya adalah *salt*.
+
+Mari simpan ke file `sha1salt.txt`:
+
+```bash
+echo 'e5d8870e5bdd26602cab8dbe07a942c8669e56d6:tryhackme' > sha1salt.txt
+```
+
+![Create Hash SHA-1 Salt](Documentation-assets/Crack-the-hash/Create-Hash-sha1.png)
+
+Mode Hashcat untuk HMAC-SHA1 (key = $salt) adalah `160`. Sekali lagi, gunakan wordlist `rockyou.txt` yang utuh karena salt yang unik membutuhkan jangkauan tebakan password yang luas.
+
+```bash
+hashcat -m 160 sha1salt.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyou.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `-m 160` | Mode Hashcat untuk HMAC-SHA1 |
+| `sha1salt.txt` | File input yang berisi kombinasi `hash:salt` |
+| `rockyou.txt` | Wordlist utama |
+
+Eksekusi berjalan sangat cepat (kurang dari 10 detik).
+
+![Cracked SHA-1 Salt](Documentation-assets/Crack-the-hash/Cracked-sha1-blur.png)
+
+**Hasil:** Hash HMAC-SHA1 berhasil dipecahkan — Password: `[REDACTED]`
+
