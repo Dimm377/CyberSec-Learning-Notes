@@ -140,7 +140,7 @@ Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apak
 
 Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
-![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt.png)
+![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt-blur.png)
 
 **Hasil:** Hash ditemukan di database Hashes.com — Password: `[REDACTED]`
 
@@ -202,7 +202,7 @@ hashcat -m 1400 SHA-256.txt /home/dimm/Downloads/rockyou-lab.txt
 
 ### 4. SHA-256 Cracking Result
 
-![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-256.png)
+![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-2560-blur.png)
 
 **Hasil:** Hash SHA-256 berhasil dipecahkan — Password: `[REDACTED]`
 
