@@ -197,7 +197,7 @@ graph TD
 | Flag | Value |
 | :--- | :--- |
 | Flag 1 | `[REDACTED]` (hasil dekripsi ciphertext via CyberChef) |
-| Flag 2 | `THM{BrUt3_ForC1nG_XOR_cAn_B3_FuN_nO?}` |
+| Flag 2 | `THM{xxxxxxxxxxxx}` |
 
 ---
 
