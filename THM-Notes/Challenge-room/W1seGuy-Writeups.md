@@ -76,7 +76,7 @@ def setup(server, key):
 
 | Komponen | Fungsi |
 | :--- | :--- |
-| `random.choices(..., k=5)` | Men-generate key acak sepanjang **5 karakter** dari huruf (a-z, A-Z) dan angka (0-9) |
+| `random.choices(..., k=5)` | Mengenerate key acak sepanjang **5 karakter** dari huruf (a-z, A-Z) dan angka (0-9) |
 | `flag[i]` | Karakter ke-`i` dari plaintext (flag asli) |
 | `key[i % len(key)]` | Karakter key di posisi `i mod panjang_key` — operator `%` membuat key berulang dari awal jika plaintext lebih panjang dari key |
 | `ord()` / `chr()` | Konversi karakter ↔ integer (ASCII) untuk operasi XOR |
@@ -99,15 +99,15 @@ nc 10.49.176.18 1337
 
 | Komponen | Fungsi |
 | :--- | :--- |
-| `nc` | Netcat — tool untuk membaca dan mengirim data melalui koneksi TCP/UDP |
+| `nc` | Netcat, tool untuk membaca dan mengirim data melalui koneksi TCP/UDP |
 | `10.49.176.18` | Alamat IP mesin target |
 | `1337` | Port yang menjalankan layanan enkripsi XOR |
 
 ![Initial Connection](Documentation-assets/W1seGuy/Questions-after-connect-port.png)
 
-Server merespons dengan ciphertext hex, lalu langsung bertanya `What is the encryption key?`. Karena key di-generate ulang per sesi, ciphertext yang kamu terima **pasti berbeda** dari contoh di catatan ini — itu normal.
+Server merespons dengan ciphertext hex, lalu langsung bertanya `What is the encryption key?`. Karena key digenerate ulang per sesi, ciphertext yang kamu terima **pasti berbeda** dari contoh di catatan ini, itu normal.
 
-> **Common Mistake:** Jangan tutup koneksi Netcat ini setelah mendapat ciphertext-nya. Key di-generate ulang setiap kali koneksi baru dibuka — ciphertext dari sesi lama tidak bisa didekripsi dengan key dari sesi baru. Biarkan koneksi ini tetap terbuka di terminal, lalu kerjakan dekripsi di tab terminal yang berbeda.
+> **Common Mistake:** Jangan tutup koneksi Netcat ini setelah mendapat ciphertext-nya. Key digenerate ulang setiap kali koneksi baru dibuka, ciphertext dari sesi lama tidak bisa didekripsi dengan key dari sesi baru. Biarkan koneksi ini tetap terbuka di terminal, lalu kerjakan dekripsi di tab terminal yang berbeda.
 
 ---
 
