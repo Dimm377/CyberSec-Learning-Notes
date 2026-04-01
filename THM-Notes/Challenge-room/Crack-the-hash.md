@@ -140,7 +140,7 @@ Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apak
 
 Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
-![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt.png)
+![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt-blur.png)
 
 **Hasil:** Hash ditemukan di database Hashes.com — Password: `[REDACTED]`
 
