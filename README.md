@@ -277,9 +277,11 @@
 
 <br>
 
-| No. | Notes                                                        | Description                   |
-| :-: | ------------------------------------------------------------ | ----------------------------- |
+| No. | Writeup                                                              | Description                     |
+| :-: | -------------------------------------------------------------------- | ------------------------------- |
 | 1.  | [TakeOver](THM-Notes/Challenge-room/TakeOver-Writeup.md)             | Subdomain Enumeration Challenge |
-| 2.  | [Simple CTF](THM-Notes/Challenge-room/SimpleCTF-Writeups.md)         | Beginner CTF Challenge |
+| 2.  | [Simple CTF](THM-Notes/Challenge-room/SimpleCTF-Writeups.md)         | Beginner CTF Challenge          |
+| 3.  | [Crack the Hash](THM-Notes/Challenge-room/Crack-the-hash.md)        | Hash Identification & Cracking  |
+| 4.  | [W1seGuy](THM-Notes/Challenge-room/W1seGuy-Writeups.md)             | XOR Crypto & Known-Plaintext Attack |
 
 </details>
