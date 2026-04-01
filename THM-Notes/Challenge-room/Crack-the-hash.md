@@ -222,3 +222,38 @@ hashcat -m 0 MD5.txt /home/dimm/Downloads/rockyou-lab.txt
 | `rockyou-lab.txt` | Wordlist yang disediakan oleh room |
 
 **Hasil:** Hash MD5 berhasil dipecahkan — Password: `[REDACTED]`
+
+### 6. Cracking the SHA-512 Crypt Hash (Salted)
+
+Tantangan berlanjut dengan hash ketiga di Level 2 yang jauh lebih kompleks dan panjang:
+`$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJML9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.`
+
+Dari pola strukturnya, hash ini menggunakan Modular Crypt Format (MCF). Prefix `$6$` adalah penanda standar untuk algoritma **SHA-512 crypt (Unix)**. String di antara tanda `$` setelahnya (`aReallyHardSalt`) adalah *salt* yang digunakan untuk mengacak proses komputasi hash. Ini berarti hash ini di-*salt* secara eksplisit!
+
+Langkah pertama, simpan hash tersebut ke dalam file `sha512.txt`. Mengingat hash ini memakai banyak karakter unik seperti `$`, cara teraman menyimpannya via terminal adalah dibungkus dengan kutip tunggal (`'`).
+
+```bash
+echo '$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJML9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.' > sha512.txt
+```
+
+![Create Hash SHA-512](Documentation-assets/Crack-the-hash/Create-Hash-sha512.png)
+
+Selanjutnya, kita gunakan Hashcat. Sesuai dokumentasi *Hashcat Examples*, mode untuk `sha512crypt $6$` adalah `-m 1800`. Kali ini wordlist yang digunakan adalah versi penuh `rockyou.txt` standar, bukan versi lab.
+
+```bash
+hashcat -m 1800 sha512.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyou.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `-m 1800` | Mode Hashcat untuk SHA-512 (Unix) Crypt |
+| `sha512.txt` | File input berisi string hash tersalt |
+| `rockyou.txt` | File wordlist utama SecLists |
+
+Proses cracking untuk SHA-512 Crypt memakan waktu komputasi yang jauh lebih lama dibanding MD5 atau SHA-256 biasa.
+
+![Cracked SHA-512](Documentation-assets/Crack-the-hash/Cracked-Sha512-blur.png)
+
+**Hasil:** Hash SHA-512 berhasil dipecahkan — Password: `[REDACTED]`
+
+> **for your information:** Algoritma yang menggunakan *salt* (seperti `$6$`) memaksa cracker untuk melakukan komputasi hash secara manual untuk setiap baris di dalam wordlist. Lookup table online (*CrackStation*) hampir dipastikan tidak akan efektif melawan hash bersalt karena setiap perhitungan bersifat unik terhadap *salt* tersebut. Metode offline seperti inilah yang menjadi jawaban satu-satunya.
