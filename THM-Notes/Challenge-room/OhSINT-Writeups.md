@@ -82,11 +82,13 @@ Dari profil Twitter target, informasi yang bisa diekstrak:
 
 > **for your information:** **BSSID (Basic Service Set Identifier)** adalah alamat MAC unik dari sebuah access point WiFi. Berbeda dengan SSID (nama jaringan yang kamu lihat saat mencari WiFi), BSSID bersifat unik per perangkat fisik. Database publik seperti **Wigle.net** mengumpulkan data BSSID dari wardriving — sehingga kamu bisa mengetahui nama jaringan dan lokasi fisik access point hanya dari BSSID-nya.
 
-### BSSID Lookup via Wigle.net
+### BSSID Lookup
 
-Buka [wigle.net](https://wigle.net), login, lalu cari BSSID `B4:5D:50:AA:86:41` di fitur pencarian.
+Pendekatan standar untuk menerjemahkan BSSID ke SSID adalah menggunakan **Wigle.net** — buka [wigle.net](https://wigle.net), login, lalu cari BSSID `B4:5D:50:AA:86:41` di fitur Advanced Search.
 
-Hasilnya menunjukkan:
+Dalam kasus ini, akun Wigle.net yang dipakai mengalami masalah verifikasi sehingga fitur pencarian tidak bisa diakses. Jawaban akhirnya dikonfirmasi melalui cross-reference dari writeup komunitas yang sudah melakukan lookup BSSID ini sebelumnya.
+
+> **Common Mistake:** Wigle.net mengharuskan akun terverifikasi untuk melakukan pencarian. Kalau kamu mengalami kendala serupa, alternatifnya bisa cari BSSID langsung di Google (contoh: `"B4:5D:50:AA:86:41"`) — hasilnya sering muncul dari database wardriving publik atau writeup lain. Tool lain yang bisa dicoba: **mylnikov.org** atau **macaddress.io**.
 
 | Data | Value | Menjawab Pertanyaan |
 | :--- | :--- | :--- |
