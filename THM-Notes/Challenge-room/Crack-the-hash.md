@@ -140,14 +140,13 @@ Karena komputasi offline tidak berhasil, langkah berikutnya adalah mengecek apak
 
 Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 
-![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt-blur.png)
+![Answer Hash Bcrypt via Hashes.com](Documentation-assets/Crack-the-hash/Answer-Hash-Bcrypt.png)
 
 **Hasil:** Hash ditemukan di database Hashes.com — Password: `[REDACTED]`
 
 > **for your information:** Untuk hash yang berat seperti bcrypt, selalu cek layanan online lookup terlebih dahulu sebelum menjalankan Hashcat. Kalau hash tersebut sudah ada di database publik, kamu menghemat waktu komputasi yang bisa memakan berjam-jam bahkan berhari-hari.
 
 ---
-
 
 ## Task 2: Level 2 (Advanced Hashes)
 
@@ -203,7 +202,7 @@ hashcat -m 1400 SHA-256.txt /home/dimm/Downloads/rockyou-lab.txt
 
 ### 4. SHA-256 Cracking Result
 
-![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-2560-blur.png)
+![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-256.png)
 
 **Hasil:** Hash SHA-256 berhasil dipecahkan — Password: `[REDACTED]`
 
@@ -223,22 +222,23 @@ hashcat -m 0 MD5.txt /home/dimm/Downloads/rockyou-lab.txt
 
 **Hasil:** Hash MD5 berhasil dipecahkan — Password: `[REDACTED]`
 
-### 6. Cracking the SHA-512 Crypt Hash (Salted)
+### 6. Cracking the SHA-512crypt Hash (Salted)
 
-Tantangan berlanjut dengan hash ketiga di Level 2 yang jauh lebih kompleks dan panjang:
-`$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJML9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.`
+Hash ketiga di Level 2 menggunakan format yang berbeda dari dua sebelumnya:
 
-Dari pola strukturnya, hash ini menggunakan Modular Crypt Format (MCF). Prefix `$6$` adalah penanda standar untuk algoritma **SHA-512 crypt (Unix)**. String di antara tanda `$` setelahnya (`aReallyHardSalt`) adalah *salt* yang digunakan untuk mengacak proses komputasi hash. Ini berarti hash ini di-*salt* secara eksplisit!
+`$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJMl9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.`
 
-Langkah pertama, simpan hash tersebut ke dalam file `sha512.txt`. Mengingat hash ini memakai banyak karakter unik seperti `$`, cara teraman menyimpannya via terminal adalah dibungkus dengan kutip tunggal (`'`).
+Prefix `$6$` adalah penanda **SHA-512crypt** dalam format MCF. String `aReallyHardSalt` di antara tanda `$` kedua dan ketiga adalah salt yang digunakan selama proses hashing. Mode Hashcat untuk algoritma ini adalah `1800`.
+
+Simpan hash ke file terlebih dahulu. Karena string ini mengandung karakter `$`, wajib dibungkus dengan single quote agar shell tidak menginterpretasikannya sebagai variabel:
 
 ```bash
-echo '$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJML9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.' > sha512.txt
+echo '$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJMl9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02.' > sha512.txt
 ```
 
-![Create Hash SHA-512](Documentation-assets/Crack-the-hash/Create-Hash-sha512.png)
+> **Common Mistake:** Gunakan single quote (`'`), bukan double quote (`"`). Di dalam double quote, shell akan mencoba mengekspansi `$6` dan `$aReallyHardSalt` sebagai nama variabel — hasilnya string yang masuk ke file akan rusak dan Hashcat tidak bisa membacanya.
 
-Selanjutnya, kita gunakan Hashcat. Sesuai dokumentasi *Hashcat Examples*, mode untuk `sha512crypt $6$` adalah `-m 1800`. Kali ini wordlist yang digunakan adalah versi penuh `rockyou.txt` standar, bukan versi lab.
+Wordlist `rockyou-75.txt` yang dipakai di hash sebelumnya tidak cukup untuk hash ini — hanya memuat 59 ribu entri dan terbukti exhausted tanpa hasil. Gunakan `rockyou.txt` versi penuh yang memuat 14 juta entri:
 
 ```bash
 hashcat -m 1800 sha512.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyou.txt
@@ -246,14 +246,13 @@ hashcat -m 1800 sha512.txt /home/dimm/SecLists/Passwords/Leaked-Databases/rockyo
 
 | Komponen | Fungsi |
 | :--- | :--- |
-| `-m 1800` | Mode Hashcat untuk SHA-512 (Unix) Crypt |
-| `sha512.txt` | File input berisi string hash tersalt |
-| `rockyou.txt` | File wordlist utama SecLists |
-
-Proses cracking untuk SHA-512 Crypt memakan waktu komputasi yang jauh lebih lama dibanding MD5 atau SHA-256 biasa.
+| `-m 1800` | Mode SHA-512crypt (`$6$`) di Hashcat |
+| `sha512.txt` | File input berisi hash target beserta salt-nya |
+| `rockyou.txt` | Wordlist penuh SecLists — 14 juta entri |
 
 ![Cracked SHA-512](Documentation-assets/Crack-the-hash/Cracked-Sha512-blur.png)
 
-**Hasil:** Hash SHA-512 berhasil dipecahkan — Password: `[REDACTED]`
+**Hasil:** Hash SHA-512crypt berhasil dipecahkan dalam 1 menit 9 detik di progress 19.77% — Password: `[REDACTED]`
 
-> **for your information:** Algoritma yang menggunakan *salt* (seperti `$6$`) memaksa cracker untuk melakukan komputasi hash secara manual untuk setiap baris di dalam wordlist. Lookup table online (*CrackStation*) hampir dipastikan tidak akan efektif melawan hash bersalt karena setiap perhitungan bersifat unik terhadap *salt* tersebut. Metode offline seperti inilah yang menjadi jawaban satu-satunya.
+> **for your information:** Hash ber-salt memaksa Hashcat menghitung ulang seluruh proses hashing untuk setiap entri di wordlist, karena hasilnya unik per kombinasi `password + salt`. Database lookup online seperti CrackStation tidak menyimpan kombinasi ini — offline cracking dengan wordlist besar adalah satu-satunya pendekatan yang viable.
+
