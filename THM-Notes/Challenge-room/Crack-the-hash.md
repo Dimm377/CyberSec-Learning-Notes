@@ -154,3 +154,79 @@ Buka Hashes.com di browser, lalu paste hash ke kolom pencarian yang tersedia.
 - **CrackStation untuk hash standar.** MD5, SHA-1, SHA-256 tanpa salt — langsung cek ke CrackStation sebelum repot menjalankan tool offline.
 - **Bcrypt bukan hash biasa.** Mekanisme key stretching-nya membuat setiap percobaan jauh lebih lambat. Brute-force bcrypt di laptop biasa bukan pilihan realistis.
 - **Online lookup adalah langkah pertama, bukan cadangan.** Kalau hash sudah ada di database publik, tidak perlu menghabiskan resource komputasi sama sekali.
+
+---
+
+## Task 2: Level 2 (Advanced Hashes)
+
+Di Level 2, CrackStation tidak lagi bisa diandalkan sepenuhnya — beberapa hash di sini cukup spesifik sehingga tidak ada di database pre-computed online. Pendekatan utama bergeser ke tool CLI dan offline cracking.
+
+### 1. Hash Identification dengan Tool CLI
+
+Selain menebak dari panjang karakter, kita bisa menggunakan tool **HashID** untuk mengidentifikasi jenis hash secara otomatis. HashID mencocokkan pola karakter hash dengan daftar signature algoritma yang sudah dipetakan di dalamnya.
+
+Hash pertama dari Task 2:
+`F09EDCB1FCEFC6DFB23DC3505A882655FF77375ED8AA2D1C13F640FCCC2D0C85`
+
+```bash
+hashid F09EDCB1FCEFC6DFB23DC3505A882655FF77375ED8AA2D1C13F640FCCC2D0C85
+```
+
+![Analyze Hash SHA-256](Documentation-assets/Crack-the-hash/Analyze-Hash-256-task2.png)
+
+HashID menampilkan daftar kemungkinan algoritma. Kandidat teratas yang paling probable adalah **SHA-256** — sesuai dengan panjangnya yang 64 karakter Hex.
+
+### 2. Persiapan File Target
+
+Sebelum menjalankan Hashcat, simpan hash ke dalam file `.txt` terpisah. Meneruskan string hash langsung sebagai argumen ke Hashcat berisiko memicu parsing error jika hash mengandung karakter khusus bash seperti `$` — menyimpannya ke file menghindari masalah ini sekaligus membuat proses lebih rapi.
+
+Buat file `SHA-256.txt` via Nano:
+
+```bash
+nano SHA-256.txt
+```
+
+![Save Hash SHA-256](Documentation-assets/Crack-the-hash/Paste-The-Hash-256-txt.png)
+
+Untuk hash kedua (`1DFECA0C002AE40B8619ECF94819CC1B`), simpan ke file terpisah `MD5.txt` dengan langkah yang sama.
+
+![Save Hash MD5](Documentation-assets/Crack-the-hash/MD5-txt.png)
+
+### 3. Eksekusi Offline Cracking (Hashcat)
+
+Jalankan Hashcat terhadap `SHA-256.txt` dengan mode `1400` sesuai hasil identifikasi. Wordlist yang dipakai adalah `rockyou-lab.txt` — file wordlist yang disediakan langsung oleh room ini.
+
+```bash
+hashcat -m 1400 SHA-256.txt /home/dimm/Downloads/rockyou-lab.txt
+```
+
+![Crack execution SHA-256](Documentation-assets/Crack-the-hash/Crack-the-hash-256.png)
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `hashcat` | Tool password recovery berbasis CPU/GPU |
+| `-m 1400` | Mode SHA-256 di Hashcat |
+| `SHA-256.txt` | File input berisi hash target |
+| `rockyou-lab.txt` | Wordlist yang disediakan oleh room untuk dictionary attack |
+
+### 4. Hasil Cracking SHA-256
+
+![Crack Result SHA-256](Documentation-assets/Crack-the-hash/Crack-Hashcat-Result-256.png)
+
+**Hasil:** Hash SHA-256 berhasil dipecahkan — Password: `[REDACTED]`
+
+### 5. Cracking Hash MD5
+
+Untuk hash MD5 (`1DFECA0C002AE40B8619ECF94819CC1B`) yang sudah disimpan di `MD5.txt`, prosesnya identik. Satu-satunya perbedaan adalah mode Hashcat yang berubah menjadi `-m 0`.
+
+```bash
+hashcat -m 0 MD5.txt /home/dimm/Downloads/rockyou-lab.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `-m 0` | Mode MD5 di Hashcat |
+| `MD5.txt` | File input berisi hash MD5 target |
+| `rockyou-lab.txt` | Wordlist yang disediakan oleh room |
+
+**Hasil:** Hash MD5 berhasil dipecahkan — Password: `[REDACTED]`
