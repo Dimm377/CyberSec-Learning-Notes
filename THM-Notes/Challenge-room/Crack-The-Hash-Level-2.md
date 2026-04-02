@@ -92,10 +92,6 @@ Hash kedua:
 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee
 ```
 
-```bash
-haiti 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee
-```
-
 ![Keccak-256 Hash Identification](Documentation-assets/Crack-the-hash-lv2/Kecak-hash256.png)
 
 Outputnya panjang karena hash 64 karakter hex cocok dengan banyak algoritma 256-bit. Yang dicari room ini adalah **Keccak-256**:
