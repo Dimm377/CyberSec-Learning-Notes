@@ -64,10 +64,6 @@ Hash pertama yang diberikan:
 
 Jalankan Haiti terhadap hash ini:
 
-```bash
-haiti 741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853
-```
-
 ![Check RIPEMD-320 with Haiti](Documentation-assets/Crack-the-hash-lv2/Check-hash320-with-haiti.png)
 
 Output Haiti menampilkan beberapa kemungkinan:
