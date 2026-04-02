@@ -224,3 +224,123 @@ Dari output di atas, wordlist pertama di daftar adalah **CommonAdminBase64**.
 **Jawaban:** `CommonAdminBase64`
 
 ![Task 3 Questions](Documentation-assets/Crack-the-hash-lv2/Task3-questions.png)
+
+---
+
+## Task 4: Cracking Tools, Modes & Rules
+
+Dua tool cracking yang paling umum dipakai di room ini:
+
+- **Hashcat** — Cracker berbasis GPU, unggul dalam kecepatan raw computation untuk hash sederhana.
+- **John the Ripper** (jumbo version) — Cracker berbasis CPU, lebih fleksibel dalam hal format hash yang didukung dan fitur rule mangling.
+
+### Cracking Modes
+
+Ada tiga mode operasi yang tersedia:
+
+| Mode | Cara Kerja | Kapan Dipakai |
+| :--- | :--- | :--- |
+| **Wordlist** | Mencoba semua kata dari sebuah file dictionary | Password kemungkinan ada di daftar password umum |
+| **Incremental** | Mencoba semua kemungkinan kombinasi karakter (brute force murni) | Tidak ada petunjuk tentang password — tapi sangat lambat untuk password panjang |
+| **Rule** | Mengambil wordlist lalu mengubah setiap entri dengan pola tertentu (mutasi) | Password kemungkinan adalah variasi dari kata umum — misalnya `password` → `P@ssw0rd123` |
+
+Di Level 1, kamu hanya menggunakan Wordlist mode. Rule mode jauh lebih powerful karena mengalikan jumlah kandidat tanpa perlu menyimpan wordlist raksasa — cukup simpan beberapa wordlist inti dan kombinasikan dengan rule yang berbeda-beda.
+
+### Mutation Rules
+
+Rule mode bekerja dengan menerapkan transformasi (mutasi) ke setiap entri wordlist. Ada dua cara menerapkannya: membuat custom wordlist yang sudah dimutasi terlebih dahulu, atau menyuruh tool cracking menerapkan mutasi secara on-the-fly saat proses berjalan. Room ini menggunakan pendekatan kedua — lebih efisien karena tidak perlu menyimpan file berukuran gigabytes yang hanya dipakai sekali.
+
+Jenis-jenis mutasi yang umum:
+
+| Mutation Type | Cara Kerja | Contoh |
+| :--- | :--- | :--- |
+| **Border** | Menambahkan digit/simbol di awal, akhir, atau keduanya | `password` → `password99` |
+| **Freak** | Mengganti huruf dengan simbol yang mirip (leet speak) | `password` → `p@$$w0rd` |
+| **Case** | Mengubah variasi uppercase/lowercase | `password` → `Password`, `PASSWORD` |
+| **Order** | Membalik urutan karakter | `password` → `drowssap` |
+| **Repetition** | Mengulang kelompok karakter | `password` → `passpass` |
+| **Vowels** | Menghilangkan atau mengkapitalisasi vokal | `password` → `psswrd` |
+| **Strip** | Menghapus satu atau beberapa karakter | `password` → `pasword` |
+| **Swap** | Menukar posisi karakter | `password` → `apssword` |
+| **Duplicate** | Menduplikasi karakter tertentu | `password` → `ppassword` |
+| **Delimiter** | Menambahkan delimiter antar karakter | `password` → `p.a.s.s.w.o.r.d` |
+
+### Creating a Custom Rule in John the Ripper
+
+John menyimpan rule di file konfigurasi. Daripada mengedit file konfigurasi utama, buat file lokal terpisah di direktori yang sama — `/usr/share/john/john-local.conf`:
+
+```bash
+sudo nano /usr/share/john/john-local.conf
+```
+
+Tambahkan rule berikut:
+
+```
+[List.Rules:THM01]
+$[0-9]$[0-9]
+```
+
+![Rule John](Documentation-assets/Crack-the-hash-lv2/Rule-john.png)
+
+Bedah per komponen:
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `[List.Rules:THM01]` | Nama rule — dipanggil nanti dengan `--rules=THM01` |
+| `$[0-9]` | Menambahkan satu digit (0-9) di akhir kata |
+| `$[0-9]$[0-9]` | Dua directive `$[0-9]` — menambahkan dua digit di akhir |
+
+Rule ini menerapkan **border mutation**: setiap kata di wordlist akan menghasilkan 100 kandidat baru dengan kombinasi dua digit di belakangnya (00–99). Kata `moonligh` misalnya akan menghasilkan `moonligh00`, `moonligh01`, hingga `moonligh99`.
+
+> **for your information:** Simbol `$` di sintaks rule John bukan karakter variabel shell — melainkan operator yang berarti "append character di akhir kata". `$[0-9]` berarti tambahkan satu karakter dari range 0–9. Ini adalah sintaks khusus John the Ripper, bukan Bash.
+
+### Preparing the Hash File
+
+Hash SHA-1 yang diberikan room:
+
+```
+2d5c517a4f7a14dcb38329d228a7d18a3b78ce83
+```
+
+Simpan ke file:
+
+```bash
+echo '2d5c517a4f7a14dcb38329d228a7d18a3b78ce83' > sha1-john.txt
+```
+
+![Create Hash File](Documentation-assets/Crack-the-hash-lv2/make-John-sha1-txt.png)
+
+### Cracking with Rule-Based Attack
+
+Jalankan John dengan wordlist `10k-most-common.txt` dari SecLists dan rule `THM01` yang baru saja dibuat:
+
+```bash
+john sha1-john.txt --format=raw-sha1 --wordlist=/usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt --rules=THM01
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `john` | John the Ripper — tool cracking password |
+| `sha1-john.txt` | File input berisi hash target |
+| `--format=raw-sha1` | Menentukan tipe hash (SHA-1 tanpa salt) |
+| `--wordlist=...` | Path ke wordlist yang digunakan |
+| `--rules=THM01` | Menerapkan rule mutasi `THM01` yang sudah dibuat |
+
+![John Cracking Output](Documentation-assets/Crack-the-hash-lv2/Output-sha1-john-txt.png)
+
+John berhasil memecahkan hash dalam waktu kurang dari 1 detik. Total kandidat yang diproses hanya 1 juta kombinasi (10.000 kata × 100 variasi dua digit) — kecil untuk ukuran GPU modern, tapi rule mode terbukti efektif menemukan password yang tidak akan pernah ada secara harfiah di wordlist manapun.
+
+**Jawaban:** `moonligh56`
+
+> **Common Mistake:** Path wordlist di command di atas menggunakan path SecLists di sistem room TryHackMe. Kalau SecLists kamu terinstal di lokasi yang berbeda (misalnya `/home/dimm/SecLists/...`), sesuaikan path-nya sebelum menjalankan command.
+
+![Task 4 Questions](Documentation-assets/Crack-the-hash-lv2/task4-questions.png)
+
+---
+
+## Review
+
+- **Haiti lebih efisien dari identifikasi manual.** Output-nya langsung menyertakan kode Hashcat dan format JtR — tidak perlu bolak-balik ke Hashcat Examples Wiki.
+- **Pilih tool yang tepat per algoritma.** Hashcat unggul di kecepatan GPU untuk hash umum, tapi ada algoritma seperti RIPEMD-320 yang hanya didukung John the Ripper.
+- **Rule mode mengalikan kandidat tanpa memperbesar wordlist.** Wordlist 10.000 kata + rule 2 digit menghasilkan 1 juta kandidat — cukup untuk menemukan password seperti `moonligh56` yang tidak ada di wordlist manapun.
+- **wordlistctl mempermudah manajemen wordlist.** Cari, unduh, dan extract dari satu tool — tidak perlu download manual dari berbagai sumber.
