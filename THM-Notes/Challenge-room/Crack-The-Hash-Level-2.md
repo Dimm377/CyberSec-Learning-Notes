@@ -223,11 +223,11 @@ Dari output di atas, wordlist pertama di daftar adalah **CommonAdminBase64**.
 
 **Jawaban:** `CommonAdminBase64`
 
+## Task 4: Cracking Tools, Modes & Rules
+
 ![Task 3 Questions](Documentation-assets/Crack-the-hash-lv2/Task3-questions.png)
 
 ---
-
-## Task 4: Cracking Tools, Modes & Rules
 
 Dua tool cracking yang paling umum dipakai di room ini:
 
