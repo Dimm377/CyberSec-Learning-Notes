@@ -64,6 +64,10 @@ Hash pertama yang diberikan:
 
 Jalankan Haiti terhadap hash ini:
 
+```bash
+haiti 741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853
+```
+
 ![Check RIPEMD-320 with Haiti](Documentation-assets/Crack-the-hash-lv2/Check-hash320-with-haiti.png)
 
 Output Haiti menampilkan beberapa kemungkinan:
@@ -88,6 +92,10 @@ Hash kedua:
 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee
 ```
 
+```bash
+haiti 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee
+```
+
 ![Keccak-256 Hash Identification](Documentation-assets/Crack-the-hash-lv2/Kecak-hash256.png)
 
 Outputnya panjang karena hash 64 karakter hex cocok dengan banyak algoritma 256-bit. Yang dicari room ini adalah **Keccak-256**:
@@ -97,9 +105,9 @@ Outputnya panjang karena hash 64 karakter hex cocok dengan banyak algoritma 256-
 | Hashcat Code | `17800` |
 | John the Ripper Format | `raw-keccak-256` |
 
-> **for your information:** **Keccak-256** adalah varian asli dari algoritma yang memenangkan kompetisi standarisasi SHA-3 oleh NIST. Versi finalnya (SHA3-256) dimodifikasi pada parameter padding, sehingga Keccak-256 dan SHA3-256 menghasilkan output berbeda untuk input yang sama, dan Hashcat memperlakukan keduanya sebagai mode yang berbeda.
+> **for your information:** **Keccak-256** adalah varian asli dari algoritma yang memenangkan kompetisi standarisasi SHA-3 oleh NIST. Versi finalnya (SHA3-256) dimodifikasi pada parameter padding, sehingga Keccak-256 dan SHA3-256 menghasilkan output berbeda untuk input yang sama — dan Hashcat memperlakukan keduanya sebagai mode yang berbeda.
 
-Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR: raw-keccak-256`) di outputnya — tidak perlu lagi membuka Hashcat Examples Wiki.
+Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR: raw-keccak-256`) di outputnya — tidak perlu lagi membuka Hashcat Examples Wiki secara terpisah.
 
 **Jawaban Hashcat code:** `17800`
 **Jawaban JtR code:** `raw-keccak-256`
@@ -110,7 +118,7 @@ Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR:
 
 ## Task 3: Wordlists
 
-Punya tool cracking saja tidak cukup, kamu juga butuh kamus tebakan yang tepat. Room ini memperkenalkan tiga sumber utama wordlist dan satu tool pengelola:
+Punya tool cracking saja tidak cukup — kamu juga butuh kamus tebakan yang tepat. Room ini memperkenalkan tiga sumber utama wordlist dan satu tool pengelola:
 
 - **SecLists** — Koleksi daftar yang dipakai selama security assessment: passwords, usernames, URLs, payloads, dan lainnya.
 - **wordlistctl** — Script untuk mencari, mengunduh, dan mengelola arsip wordlist dari berbagai sumber online.
@@ -338,9 +346,95 @@ John berhasil memecahkan hash dalam waktu kurang dari 1 detik. Total kandidat ya
 
 ---
 
-## Review
+## Task 5: Custom Wordlist Generation
 
-- **Haiti lebih efisien dari identifikasi manual.** Output-nya langsung menyertakan kode Hashcat dan format JtR — tidak perlu bolak-balik ke Hashcat Examples Wiki.
-- **Pilih tool yang tepat per algoritma.** Hashcat unggul di kecepatan GPU untuk hash umum, tapi ada algoritma seperti RIPEMD-320 yang hanya didukung John the Ripper.
-- **Rule mode mengalikan kandidat tanpa memperbesar wordlist.** Wordlist 10.000 kata + rule 2 digit menghasilkan 1 juta kandidat — cukup untuk menemukan password seperti `moonligh56` yang tidak ada di wordlist manapun.
-- **wordlistctl mempermudah manajemen wordlist.** Cari, unduh, dan extract dari satu tool — tidak perlu download manual dari berbagai sumber.
+Rule mode di Task 4 menerapkan mutasi secara on-the-fly — efisien untuk wordlist yang hanya dipakai sekali. Tapi ada situasi di mana membuat custom wordlist terlebih dahulu lebih masuk akal:
+
+- Wordlist akan dipakai berulang kali di sesi cracking berbeda — generate sekali lebih hemat dibanding menjalankan rule setiap kali.
+- Kamu ingin menggunakan wordlist yang sama di beberapa tool yang berbeda.
+- Tool target mendukung wordlist tapi tidak mendukung mangling rules.
+
+Room memberikan hint bahwa password yang dicari berhubungan dengan anjing. Strateginya: unduh wordlist nama-nama ras anjing, terapkan mutasi menggunakan Mentalist, lalu crack hash-nya dengan wordlist hasil generate tersebut.
+
+> **for your information:** **Mentalist** adalah tool berbasis GUI untuk membangun chain mutasi wordlist secara visual. Tersedia di [GitHub: sc0tfree/mentalist](https://github.com/sc0tfree/mentalist) — install sesuai instruksi di repository. Dibanding menulis sintaks rule John secara manual, Mentalist menyediakan antarmuka di mana kamu bisa menambahkan node transformasi (Case, Substitution, Append, dan lainnya) lalu langsung melihat estimasi jumlah output.
+
+### Fetching a Themed Wordlist
+
+Cari wordlist `dogs` melalui wordlistctl:
+
+```bash
+wordlistctl search dogs
+```
+
+Output menunjukkan satu hasil: `dogs` (2.35 KB). Langsung unduh dan extract:
+
+```bash
+sudo wordlistctl fetch dogs -d
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `fetch` | Sub-command untuk mengunduh wordlist |
+| `dogs` | Nama wordlist target |
+| `-d` | Decompress — extract arsip setelah download |
+
+File tersimpan di `/usr/share/wordlists/misc/dogs.txt` dengan total 242 entri nama ras anjing.
+
+![Fetch Dogs Wordlist](Documentation-assets/Crack-the-hash-lv2/wordlist-dogs-txt.png)
+
+### Building Mutations with Mentalist
+
+Buka Mentalist dan susun chain transformasi berikut:
+
+| Node | Transformasi | Penjelasan |
+| :--- | :--- | :--- |
+| **1. Base Words** | File: `/usr/share/wordlists/misc/dogs.txt` | Memuat 242 nama ras anjing sebagai basis |
+| **2. Case** | Toggle: 2nd | Mengubah karakter ke-2 menjadi uppercase — `molossus` → `mOlossus` |
+| **3. Substitution** | Replace All: `s` → `$` (One at a time) | Mengganti semua huruf `s` dengan simbol `$` — `mOlossus` → `mOlo$$u$` |
+
+![Mentalist Configuration](Documentation-assets/Crack-the-hash-lv2/Create-custom-rules.png)
+
+Mentalist menerapkan semua transformasi secara sequential ke setiap kata — bukan menghasilkan semua kemungkinan varian. Satu kata masuk, satu kata termutasi keluar. Itulah kenapa output-nya tetap 242 entri meskipun ada dua tahap transformasi.
+
+Klik **Process** untuk menghasilkan wordlist. Output disimpan ke file yang kamu tentukan — dalam contoh ini `/home/dimm/wordlist-hashcat.txt`:
+
+![Mentalist Output](Documentation-assets/Crack-the-hash-lv2/save-rules.png)
+
+### Preparing the Hash File
+
+Hash MD5 yang diberikan room:
+
+```
+ed91365105bba79fdab20c376d83d752
+```
+
+Simpan ke file:
+
+```bash
+echo 'ed91365105bba79fdab20c376d83d752' > MD5-hash.txt
+```
+
+![Create MD5 Hash File](Documentation-assets/Crack-the-hash-lv2/Create-MD5-hash.png)
+
+### Cracking with Hashcat
+
+Jalankan Hashcat dengan mode MD5 dan custom wordlist yang baru dibuat:
+
+```bash
+hashcat -m 0 MD5-hash.txt wordlist-hashcat.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `hashcat` | Tool cracking password berbasis GPU |
+| `-m 0` | Mode hash: MD5 |
+| `MD5-hash.txt` | File berisi hash target |
+| `wordlist-hashcat.txt` | Custom wordlist hasil generate dari Mentalist |
+
+![Hashcat Cracking Process](Documentation-assets/Crack-the-hash-lv2/Crack-With-hashcat-using-custom-rules.png)
+
+![Hashcat Cracked Result](Documentation-assets/Crack-the-hash-lv2/Cracked-MD5-custom.png)
+
+Hashcat memecahkan hash dalam waktu kurang dari 1 detik. Output menunjukkan `Progress: 242/242 (100.00%)` — seluruh 242 kandidat dicoba dan satu cocok. Password aslinya adalah `mOlo$$u$`, yang berasal dari nama ras anjing **Molossus** setelah dua tahap mutasi: toggle karakter ke-2 (`molossus` → `mOlossus`) dan substitusi semua `s` → `$` (`mOlossus` → `mOlo$$u$`).
+
+**Jawaban:** `mOlo$$u$`
