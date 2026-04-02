@@ -231,11 +231,11 @@ Dari output di atas, wordlist pertama di daftar adalah **CommonAdminBase64**.
 
 **Jawaban:** `CommonAdminBase64`
 
-## Task 4: Cracking Tools, Modes & Rules
-
 ![Task 3 Questions](Documentation-assets/Crack-the-hash-lv2/Task3-questions.png)
 
 ---
+
+## Task 4: Cracking Tools, Modes & Rules
 
 Dua tool cracking yang paling umum dipakai di room ini:
 
@@ -252,7 +252,7 @@ Ada tiga mode operasi yang tersedia:
 | **Incremental** | Mencoba semua kemungkinan kombinasi karakter (brute force murni) | Tidak ada petunjuk tentang password — tapi sangat lambat untuk password panjang |
 | **Rule** | Mengambil wordlist lalu mengubah setiap entri dengan pola tertentu (mutasi) | Password kemungkinan adalah variasi dari kata umum — misalnya `password` → `P@ssw0rd123` |
 
-Di Level 1, kamu hanya menggunakan Wordlist mode. Rule mode jauh lebih powerful karena mengalikan jumlah kandidat tanpa perlu menyimpan wordlist raksasa — cukup simpan beberapa wordlist inti dan kombinasikan dengan rule yang berbeda-beda.
+Di Level 1, untuk cracking offline kamu hanya menggunakan Wordlist mode. Rule mode jauh lebih powerful karena mengalikan jumlah kandidat tanpa perlu menyimpan wordlist raksasa — cukup simpan beberapa wordlist inti dan kombinasikan dengan rule yang berbeda-beda.
 
 ### Mutation Rules
 
@@ -438,3 +438,4 @@ hashcat -m 0 MD5-hash.txt wordlist-hashcat.txt
 Hashcat memecahkan hash dalam waktu kurang dari 1 detik. Output menunjukkan `Progress: 242/242 (100.00%)` — seluruh 242 kandidat dicoba dan satu cocok. Password aslinya adalah `mOlo$$u$`, yang berasal dari nama ras anjing **Molossus** setelah dua tahap mutasi: toggle karakter ke-2 (`molossus` → `mOlossus`) dan substitusi semua `s` → `$` (`mOlossus` → `mOlo$$u$`).
 
 **Jawaban:** `mOlo$$u$`
+
