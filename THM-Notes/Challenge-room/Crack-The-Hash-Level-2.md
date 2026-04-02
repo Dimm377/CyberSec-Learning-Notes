@@ -97,9 +97,9 @@ Outputnya panjang karena hash 64 karakter hex cocok dengan banyak algoritma 256-
 | Hashcat Code | `17800` |
 | John the Ripper Format | `raw-keccak-256` |
 
-> **for your information:** **Keccak-256** adalah varian asli dari algoritma yang memenangkan kompetisi standarisasi SHA-3 oleh NIST. Versi finalnya (SHA3-256) dimodifikasi pada parameter padding, sehingga Keccak-256 dan SHA3-256 menghasilkan output berbeda untuk input yang sama — dan Hashcat memperlakukan keduanya sebagai mode yang berbeda.
+> **for your information:** **Keccak-256** adalah varian asli dari algoritma yang memenangkan kompetisi standarisasi SHA-3 oleh NIST. Versi finalnya (SHA3-256) dimodifikasi pada parameter padding, sehingga Keccak-256 dan SHA3-256 menghasilkan output berbeda untuk input yang sama, dan Hashcat memperlakukan keduanya sebagai mode yang berbeda.
 
-Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR: raw-keccak-256`) di outputnya — tidak perlu lagi membuka Hashcat Examples Wiki secara terpisah.
+Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR: raw-keccak-256`) di outputnya — tidak perlu lagi membuka Hashcat Examples Wiki.
 
 **Jawaban Hashcat code:** `17800`
 **Jawaban JtR code:** `raw-keccak-256`
@@ -110,7 +110,7 @@ Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR:
 
 ## Task 3: Wordlists
 
-Punya tool cracking saja tidak cukup — kamu juga butuh kamus tebakan yang tepat. Room ini memperkenalkan tiga sumber utama wordlist dan satu tool pengelola:
+Punya tool cracking saja tidak cukup, kamu juga butuh kamus tebakan yang tepat. Room ini memperkenalkan tiga sumber utama wordlist dan satu tool pengelola:
 
 - **SecLists** — Koleksi daftar yang dipakai selama security assessment: passwords, usernames, URLs, payloads, dan lainnya.
 - **wordlistctl** — Script untuk mencari, mengunduh, dan mengelola arsip wordlist dari berbagai sumber online.
