@@ -3,7 +3,7 @@
 - **Room Link:** [Crack the Hash Level 2](https://tryhackme.com/room/introtohashcracking)
 - **Category:** Challenge Room
 - **Difficulty:** Medium
-- **Tools Used:** Haiti, wordlistctl, Hashcat, John the Ripper
+- **Tools Used:** Haiti, Wordlistctl, Mentalist Hashcat, John the Ripper
 - **Main Techniques:** Hash Identification (CLI-based), Wordlist Management, Offline Hash Cracking
 
 ---
