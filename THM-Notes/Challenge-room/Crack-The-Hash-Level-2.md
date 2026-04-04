@@ -3,7 +3,7 @@
 - **Room Link:** [Crack the Hash Level 2](https://tryhackme.com/room/introtohashcracking)
 - **Category:** Challenge Room
 - **Difficulty:** Medium
-- **Tools Used:** Haiti, Wordlistctl, Mentalist Hashcat, John the Ripper
+- **Tools Used:** Haiti, wordlistctl, Hashcat, John the Ripper
 - **Main Techniques:** Hash Identification (CLI-based), Wordlist Management, Offline Hash Cracking
 
 ---
@@ -438,6 +438,123 @@ hashcat -m 0 MD5-hash.txt wordlist-hashcat.txt
 Hashcat memecahkan hash dalam waktu kurang dari 1 detik. Output menunjukkan `Progress: 242/242 (100.00%)` — seluruh 242 kandidat dicoba dan satu cocok. Password aslinya adalah `mOlo$$u$`, yang berasal dari nama ras anjing **Molossus** setelah dua tahap mutasi: toggle karakter ke-2 (`molossus` → `mOlossus`) dan substitusi semua `s` → `$` (`mOlossus` → `mOlo$$u$`).
 
 **Jawaban:** `mOlo$$u$`
+
+### Generating a Wordlist with TTPassGen
+
+Mentalist bagus untuk mutasi berbasis kata, tapi bagaimana kalau password-nya bukan dari kamus sama sekali — melainkan kombinasi angka dan huruf yang di-generate dari pola tertentu? Di sinilah **TTPassGen** masuk.
+
+> **for your information:** **TTPassGen** adalah tool command-line untuk membuat wordlist dari pola karakter yang kamu definisikan sendiri. Cocok untuk skenario di mana kamu tahu struktur password target — misalnya "4 digit angka diikuti 1-3 huruf kecil, dipisahkan dash".
+
+Room ini meminta kamu membuat tiga wordlist terpisah lalu menggabungkannya.
+
+**Langkah 1** — Generate semua kombinasi 4 digit PIN (0000–9999):
+
+```bash
+ttpassgen --rule '[?d]{4:4:*}' pin.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `ttpassgen` | Tool wordlist generator berbasis pola |
+| `--rule` | Mendefinisikan pola karakter yang akan di-generate |
+| `[?d]` | Character class digit (0-9) |
+| `{4:4:*}` | Panjang minimum 4, maksimum 4, semua kombinasi |
+| `pin.txt` | File output |
+
+**Langkah 2** — Generate semua kombinasi huruf kecil panjang 1 sampai 3:
+
+```bash
+ttpassgen --rule '[?l]{1:3:*}' abc.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `[?l]` | Character class lowercase (a-z) |
+| `{1:3:*}` | Panjang minimum 1, maksimum 3, semua kombinasi |
+| `abc.txt` | File output |
+
+**Langkah 3** — Gabungkan kedua wordlist dengan separator dash:
+
+```bash
+ttpassgen --dictlist 'pin.txt,abc.txt' --rule '$0[-]{1}$1' combination.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `--dictlist` | Daftar wordlist yang akan digabungkan, dipisah koma |
+| `$0` | Kata dari wordlist pertama (pin.txt) |
+| `[-]{1}` | Separator: satu karakter dash `-` |
+| `$1` | Kata dari wordlist kedua (abc.txt) |
+| `combination.txt` | File output gabungan |
+
+Format hasil akhirnya: `[4 digit]-[1-3 huruf]`. Contoh: `1551-li`, `0000-a`, `9999-zzz`.
+
+![Ketiga command ttpassgen dijalankan berurutan di terminal](Documentation-assets/Crack-the-hash-lv2/ttpassgen-generate-all.png)
+
+Verifikasi ukuran masing-masing file:
+
+```bash
+wc pin.txt && wc abc.txt && wc combination.txt
+```
+
+![Output wc ketiga file — pin.txt 10000 baris, abc.txt 18278 baris, combination.txt 182780000 baris](Documentation-assets/Crack-the-hash-lv2/ttpassgen-wc-output.png)
+
+`combination.txt` berisi 182 juta baris dan ukurannya mencapai 1.64 GB — wajar kalau proses generate-nya butuh waktu beberapa menit. Ini salah satu alasan kenapa pendekatan wordlist pre-generated seperti ini hanya worth it kalau kamu yakin dengan strukturnya, bukan coba-coba.
+
+### Cracking with combination.txt
+
+Hash MD5 yang diberikan:
+
+```
+e5b47b7e8df2597077e703c76ee86aee
+```
+
+Simpan ke file lalu crack:
+
+```bash
+echo 'e5b47b7e8df2597077e703c76ee86aee' > hash-combination.txt
+hashcat -m 0 hash-combination.txt combination.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `hashcat` | Tool cracking password berbasis GPU |
+| `-m 0` | Mode hash: MD5 |
+| `hash-combination.txt` | File berisi hash target |
+| `combination.txt` | Wordlist gabungan hasil TTPassGen |
+
+![Hashcat berhasil crack hash dengan combination.txt — menampilkan hasil 1551-li](Documentation-assets/Crack-the-hash-lv2/hashcat-combination-cracked.png)
+
+> **Common Mistake:** Kalau hashcat langsung skip dengan pesan "All hashes found as potfile", berarti hash yang sama pernah di-crack sebelumnya dan hasilnya tersimpan di potfile. Untuk melihat hasilnya: `hashcat -m 0 hash-combination.txt combination.txt --show`. Kalau mau jalankan ulang dari awal, hapus potfile dulu dengan `rm ~/.hashcat/hashcat.potfile`.
+
+**Jawaban:** `1551-li`
+
+### Generating a Wordlist with CeWL
+
+Selain membuat wordlist dari scratch menggunakan TTPassGen atau Mentalist, ada cara lain yang lebih kontekstual: **scraping langsung dari website**. Idenya sederhana — kalau target menggunakan password yang berhubungan dengan topik tertentu, kata-kata di website mereka bisa jadi kandidat yang relevan.
+
+> **for your information:** **CeWL** (_Custom Word List Generator_) adalah tool Ruby yang men-spider sebuah website dan mengumpulkan semua kata yang ditemukan sebagai wordlist. Berguna ketika kamu tahu konteks target — misalnya website perusahaan, blog pribadi, atau halaman produk.
+
+Untuk men-download semua kata dari `example.org` dengan kedalaman crawl 2:
+
+```bash
+cewl -d 2 -w $(pwd)/example.txt https://example.org
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `cewl` | Tool web scraper untuk generate wordlist |
+| `-d 2` | Depth 2 — spider akan mengikuti link sampai 2 level dari halaman awal |
+| `-w $(pwd)/example.txt` | Simpan output ke file `example.txt` di direktori aktif saat ini |
+| `https://example.org` | URL target yang akan di-spider |
+
+Angka di `-d` menentukan seberapa dalam spider mengikuti link. Depth 1 berarti hanya halaman utama, depth 2 berarti halaman utama + semua link yang ada di halaman utama, dan seterusnya.
+
+![Isi file example.txt hasil generate CeWL — 15 kata dengan "more" di baris terakhir](Documentation-assets/Crack-the-hash-lv2/cewl-example-txt-output.png)
+
+> **Common Mistake:** Hasil `cewl` sangat bergantung pada konten website saat command dijalankan. Soal ini mengharapkan kata `information` sebagai kata terakhir — tapi konten `example.org` sudah berubah sejak soal dibuat. Saat dicoba, CeWL hanya menghasilkan 15 kata dan kata terakhirnya adalah `more`, bukan `information`. Investigasi lebih lanjut menunjukkan satu-satunya link di `example.org` mengarah ke `iana.org` yang merupakan domain berbeda — sehingga CeWL tidak mengikutinya meski depth diset 2. Jawaban `information` diambil dari writeup lama yang dibuat saat konten website masih berbeda.
+
+**Jawaban:** `information`
 
 ---
 
