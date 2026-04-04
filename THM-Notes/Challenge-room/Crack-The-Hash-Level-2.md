@@ -659,3 +659,68 @@ john john-advice1.txt --format=raw-md5 --wordlist=/home/dimm/SecLists/Usernames/
 John berhasil memecahkan hash dalam waktu 4 detik. Output menunjukkan password `Zachariah1234*` — nama `ZACHARIAH` dari wordlist yang dinormalisasi menjadi `Zachariah` oleh operator `c`, lalu ditambahkan `1234*` di akhir sebagai 5 karakter border mutation. Dengan kecepatan 24020Kp/s (24 juta kandidat per detik), sekitar 96 juta kandidat sudah diproses sebelum match ditemukan.
 
 **Jawaban:** `Zachariah1234*`
+
+---
+
+### Advice 2: Border Mutation — Female Name
+
+**Clue dari Password Advisor:**
+
+- **Levy Tate @levy:** _"Hi, my name is Levy. I'm looking for a good advice to get a strong password too. Usually I use the name of my daughter but I fear it's not secure too."_
+- **Hacker @h4ck:** _"Like John, use border mutation."_
+
+![Advice 2 Clue](Documentation-assets/Crack-the-hash-lv2/advice2-question.png)
+
+Polanya sama dengan Advice 1 — border mutation pada nama orang. Bedanya kali ini nama **perempuan**, dan hacker langsung bilang _"Like John"_ yang artinya pendekatan yang sama.
+
+#### Choosing the Wordlist
+
+Wordlist yang dipakai adalah `femalenames-usa-top1000.txt` dari SecLists — 1000 nama perempuan paling umum di Amerika Serikat.
+
+![Lokasi wordlist femalenames di SecLists/Usernames/Names](Documentation-assets/Crack-the-hash-lv2/Finding-accurate-wordlist.png)
+
+Untuk gambaran awal, cek nama-nama perempuan yang kemungkinan relevan berdasarkan panjang karakter:
+
+```bash
+awk 'length==6' /home/dimm/SecLists/Usernames/Names/femalenames-usa-top1000.txt
+```
+
+![Output awk filter nama perempuan 6 huruf](Documentation-assets/Crack-the-hash-lv2/verify-length-name-character.png)
+
+Tapi perlu dicatat — asumsi panjang nama berdasarkan answer format tidak selalu akurat. Di Advice 2 ini, ternyata nama dasarnya 8 huruf (`Angelita`) dengan border hanya 3 karakter (`35!`), bukan 5 seperti yang diasumsikan dari answer format 11 karakter.
+
+#### Cracking with KoreLogic Rules
+
+Karena panjang border tidak bisa dipastikan hanya dari answer format, pendekatan yang lebih aman adalah memakai rule **KoreLogic** — kumpulan rule bawaan John yang sangat lengkap dan mencakup berbagai variasi border mutation dari 1 hingga beberapa karakter.
+
+Simpan hash MD5 target ke file:
+
+```bash
+echo '7463fcb720de92803d179e7f83070f97' > female-name-hash.txt
+```
+
+Jalankan John dengan KoreLogic:
+
+```bash
+john female-name-hash.txt --format=raw-md5 --wordlist=/home/dimm/SecLists/Usernames/Names/femalenames-usa-top1000.txt --rules=KoreLogic
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `john` | John the Ripper — tool cracking password |
+| `female-name-hash.txt` | File berisi hash MD5 target |
+| `--format=raw-md5` | Tipe hash: MD5 tanpa salt |
+| `--wordlist=...` | Path ke wordlist nama perempuan |
+| `--rules=KoreLogic` | Kumpulan rule lengkap yang mencakup berbagai variasi border mutation |
+
+![Command echo hash dan john dengan Border5 — percobaan awal](Documentation-assets/Crack-the-hash-lv2/Command-for-cracking-female-name.png)
+
+![John dengan KoreLogic berhasil crack — menampilkan Angelita35!](Documentation-assets/Crack-the-hash-lv2/Command-and-output-cracked-john.png)
+
+John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `ANGELITA` dari wordlist yang di-capitalize menjadi `Angelita`, lalu ditambahkan `35!` di akhir sebagai border mutation 3 karakter.
+
+> **for your information:** **KoreLogic** adalah kumpulan rule yang dikembangkan oleh tim KoreLogic Security untuk kompetisi cracking password. Rule ini jauh lebih exhaustive dibanding rule bawaan John — mencakup ratusan variasi mutasi termasuk border dengan panjang berbeda-beda, leet speak, case toggling, dan kombinasinya. Cocok dipakai ketika kamu tidak yakin persis pola mutasi yang digunakan.
+
+> **Common Mistake:** Rule `Border5` yang dibuat di Advice 1 hanya mencakup border **tepat 5 karakter**. Kalau password target ternyata pakai border 3 karakter seperti di sini, rule itu tidak akan menemukan apapun. Kalau cracking dengan custom rule gagal, coba fallback ke KoreLogic sebelum menyerah.
+
+**Jawaban:** `Angelita35!`
