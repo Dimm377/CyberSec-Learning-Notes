@@ -550,6 +550,8 @@ cewl -d 2 -w $(pwd)/example.txt https://example.org
 
 Angka di `-d` menentukan seberapa dalam spider mengikuti link. Depth 1 berarti hanya halaman utama, depth 2 berarti halaman utama + semua link yang ada di halaman utama, dan seterusnya.
 
+![Hasil cewl di terminal — menampilkan proses crawling example.org](Documentation-assets/Crack-the-hash-lv2/cewl-crawling-process.png)
+
 ![Isi file example.txt hasil generate CeWL — 15 kata dengan "more" di baris terakhir](Documentation-assets/Crack-the-hash-lv2/cewl-example-txt-output.png)
 
 > **Common Mistake:** Hasil `cewl` sangat bergantung pada konten website saat command dijalankan. Soal ini mengharapkan kata `information` sebagai kata terakhir — tapi konten `example.org` sudah berubah sejak soal dibuat. Saat dicoba, CeWL hanya menghasilkan 15 kata dan kata terakhirnya adalah `more`, bukan `information`. Investigasi lebih lanjut menunjukkan satu-satunya link di `example.org` mengarah ke `iana.org` yang merupakan domain berbeda — sehingga CeWL tidak mengikutinya meski depth diset 2. Jawaban `information` diambil dari writeup lama yang dibuat saat konten website masih berbeda.
@@ -732,21 +734,21 @@ John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `A
 - **Charlotte:** _"Good idea. But it's not matching my company's password policy."_
 - **Hacker @h4ck:** _"Use freak/1337 mutation. Replace some letters with similarly looking special symbols."_
 
-![Advice 3 Clue](Documentation-assets/Crack-the-hash-lv2/Advice3-question.png)
+![Advice 3 Clue](Documentation-assets/Crack-the-hash-lv2/advice3-clue.png)
 
-Charlotte lagi di Mexico dan pakai nama kota yang dikunjungi sebagai password — tapi karena tidak memenuhi password policy perusahaan, hacker sarankan **freak/1337 mutation**: ganti huruf dengan simbol yang mirip bentuknya, seperti `a` → `@`, `e` → `3`, `o` → `0`.
+Charlotte pakai nama kota yang dikunjungi di Mexico — ide bagus, tapi password policy kantornya tidak menerima kata biasa. Solusi hacker: **freak/1337 mutation** — ganti huruf dengan simbol yang mirip bentuknya, `a` → `@`, `e` → `3`, `o` → `0`, dan seterusnya.
 
 #### Preparing the Wordlist
 
-Wordlist yang dibutuhkan adalah nama-nama kota. SecLists punya `cities.txt` di kategori Miscellaneous:
+Kita butuh wordlist nama kota. SecLists punya `cities.txt` di kategori Miscellaneous:
 
 ```bash
 find /home/dimm/SecLists -name "*cit*" 2>/dev/null
 ```
 
-![Lokasi cities.txt di SecLists dan preview isi file](Documentation-assets/Crack-the-hash-lv2/Choose-and-check-wordlist.png)
+![Hasil find cities.txt di SecLists](Documentation-assets/Crack-the-hash-lv2/advice3-find-cities.png)
 
-Sebelum bisa dipakai, `cities.txt` perlu diproses dua tahap — pertama hapus spasi, lalu ubah semua huruf ke lowercase. Dua command `tr` yang dijalankan berurutan:
+Sebelum bisa dipakai, `cities.txt` ada dua masalah — nama kota yang terdiri dari dua kata punya spasi, dan hurufnya masih campur uppercase/lowercase. Dua command `tr` membereskan keduanya:
 
 ```bash
 tr -d ' ' < cities.txt > cities-no-space.txt
@@ -760,7 +762,7 @@ tr '[:upper:]' '[:lower:]' < cities-no-space.txt > cities-lowercase.txt
 | `< cities.txt` | Baca input dari file |
 | `> cities-no-space.txt` | Simpan output ke file baru |
 
-![Hasil tr — spasi dihapus dan head cities-no-space.txt](Documentation-assets/Crack-the-hash-lv2/make-it-to-no-space-with-tr.png)
+![Hasil head cities-lowercase.txt — semua lowercase tanpa spasi](Documentation-assets/Crack-the-hash-lv2/advice3-cities-lowercase.png)
 
 > **for your information:** `tr` (_translate_) adalah tool command-line untuk menukar atau menghapus karakter dari input teks. Berbeda dengan `sed` yang bekerja per kata, `tr` bekerja per karakter — cocok untuk operasi sederhana seperti menghapus spasi atau mengubah case seluruh file.
 
@@ -768,7 +770,7 @@ tr '[:upper:]' '[:lower:]' < cities-no-space.txt > cities-lowercase.txt
 
 #### Cracking with John l33t Rule
 
-Daripada membuat substitusi l33t manual satu per satu di Mentalist, John punya rule bawaan `l33t` yang sudah mencakup berbagai kombinasi penggantian huruf — `a`→`@`, `e`→`3`, `i`→`1`, `o`→`0`, `s`→`$`, dan variasinya.
+John punya rule bawaan `l33t` yang jauh lebih exhaustive dibanding substitusi manual di Mentalist — dia mencoba berbagai kombinasi penggantian huruf sekaligus, bukan hanya satu pola tetap.
 
 Simpan hash MD5 target ke file:
 
@@ -790,12 +792,10 @@ john advice3-hash.txt --format=raw-md5 --wordlist=cities-lowercase.txt --rules=l
 | `--wordlist=cities-lowercase.txt` | Wordlist nama kota yang sudah diproses |
 | `--rules=l33t` | Rule bawaan John untuk freak/leet speak mutation |
 
-![John dengan rule l33t berhasil crack — menampilkan Tl@xc@l@ncing0](Documentation-assets/Crack-the-hash-lv2/Cracked-advice3.png)
+![John dengan rule l33t berhasil crack — menampilkan Tl@xc@l@ncing0](Documentation-assets/Crack-the-hash-lv2/advice3-cracked.png)
 
-John menemukan password dalam waktu kurang dari 1 detik. Hasilnya `Tl@xc@l@ncing0` — berasal dari nama kota Mexico **Tlaxcalancingo** setelah freak mutation: semua `a` diganti `@` dan `o` di akhir diganti `0`.
+Kurang dari 1 detik, ketemu. Password-nya `Tl@xc@l@ncing0` — nama kota Mexico **Tlaxcalancingo** setelah freak mutation: semua `a` diganti `@` dan `o` di akhir diganti `0`.
 
 > **Common Mistake:** Pendekatan awal yang salah adalah membuat substitusi l33t manual di Mentalist lalu crack dengan Hashcat — hasilnya exhausted karena substitusi yang dibuat tidak cukup exhaustive. Rule `l33t` bawaan John jauh lebih lengkap karena mencoba berbagai kombinasi penggantian, bukan hanya satu pola tetap.
->
-> ![Konfigurasi Mentalist dengan substitusi l33t manual — pendekatan ini gagal karena tidak cukup exhaustive](Documentation-assets/Crack-the-hash-lv2/Create-border-rules-advice3.png)
 
 **Jawaban:** `Tl@xc@l@ncing0`
