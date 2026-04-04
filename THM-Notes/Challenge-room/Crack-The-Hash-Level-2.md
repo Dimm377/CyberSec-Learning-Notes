@@ -443,15 +443,7 @@ Hashcat memecahkan hash dalam waktu kurang dari 1 detik. Output menunjukkan `Pro
 
 ## Task 6: Cracking Challenges
 
-Di sinilah semua teknik dari Task 2–5 diuji dalam skenario yang lebih realistis. Kamu diminta deploy machine dan mengakses halaman **Password Advisor** di `http://MACHINE_IP`. Website ini menampilkan percakapan antara "user" yang menjelaskan kebiasaan password mereka dan seorang "hacker" yang memberikan saran tipe mutasi yang digunakan — petunjuk inilah yang kamu pakai untuk menentukan strategi cracking.
-
-Workflow untuk setiap challenge selalu sama:
-
-1. Baca clue dari Password Advisor — identifikasi pola password user
-2. Identifikasi tipe hash menggunakan Haiti
-3. Pilih atau buat wordlist yang relevan berdasarkan clue
-4. Tulis custom rule yang sesuai saran hacker
-5. Crack hash menggunakan John the Ripper atau Hashcat
+Task ini adalah muara dari semua yang sudah dipelajari. Deploy machine, buka browser, akses `http://MACHINE_IP` — di sana ada website **Password Advisor** yang isinya percakapan antara user biasa dan seorang hacker. User cerita tentang kebiasaan password mereka, hacker kasih saran tipe mutasi. Dari dua informasi itu — base word dan tipe mutasi — kamu tentukan strategi cracking untuk masing-masing hash.
 
 ### Advice 1: Border Mutation — Male Name
 
@@ -462,7 +454,7 @@ Workflow untuk setiap challenge selalu sama:
 
 ![Advice 1 Clue](Documentation-assets/Crack-the-hash-lv2/advice1-clue.png)
 
-Dari percakapan ini, kamu bisa menyimpulkan dua hal: password dasarnya adalah **nama laki-laki** (nama anak John), dan mutasi yang diterapkan adalah **border mutation** — menambahkan kombinasi digit dan simbol di akhir.
+Jelas sudah — password-nya adalah **nama anak John** (nama laki-laki), dan hacker sendiri yang bilang mutasinya adalah **border mutation**: tambahkan kombinasi digit dan simbol di awal, akhir, atau keduanya.
 
 #### Choosing the Wordlist
 
