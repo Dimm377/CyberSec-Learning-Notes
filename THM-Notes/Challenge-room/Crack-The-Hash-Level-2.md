@@ -669,7 +669,7 @@ John berhasil memecahkan hash dalam waktu 4 detik. Output menunjukkan password `
 - **Levy Tate @levy:** _"Hi, my name is Levy. I'm looking for a good advice to get a strong password too. Usually I use the name of my daughter but I fear it's not secure too."_
 - **Hacker @h4ck:** _"Like John, use border mutation."_
 
-![Advice 2 Clue](Documentation-assets/Crack-the-hash-lv2/advice2-question.png)
+![Advice 2 Clue](Documentation-assets/Crack-the-hash-lv2/advice2-clue.png)
 
 Polanya sama dengan Advice 1 — border mutation pada nama orang. Bedanya kali ini nama **perempuan**, dan hacker langsung bilang _"Like John"_ yang artinya pendekatan yang sama.
 
@@ -677,15 +677,13 @@ Polanya sama dengan Advice 1 — border mutation pada nama orang. Bedanya kali i
 
 Wordlist yang dipakai adalah `femalenames-usa-top1000.txt` dari SecLists — 1000 nama perempuan paling umum di Amerika Serikat.
 
-![Lokasi wordlist femalenames di SecLists/Usernames/Names](Documentation-assets/Crack-the-hash-lv2/Finding-accurate-wordlist.png)
-
 Untuk gambaran awal, cek nama-nama perempuan yang kemungkinan relevan berdasarkan panjang karakter:
 
 ```bash
 awk 'length==6' /home/dimm/SecLists/Usernames/Names/femalenames-usa-top1000.txt
 ```
 
-![Output awk filter nama perempuan 6 huruf](Documentation-assets/Crack-the-hash-lv2/verify-length-name-character.png)
+![Output awk filter nama perempuan 6 huruf](Documentation-assets/Crack-the-hash-lv2/advice2-awk-female.png)
 
 Tapi perlu dicatat — asumsi panjang nama berdasarkan answer format tidak selalu akurat. Di Advice 2 ini, ternyata nama dasarnya 8 huruf (`Angelita`) dengan border hanya 3 karakter (`35!`), bukan 5 seperti yang diasumsikan dari answer format 11 karakter.
 
@@ -713,9 +711,7 @@ john female-name-hash.txt --format=raw-md5 --wordlist=/home/dimm/SecLists/Userna
 | `--wordlist=...` | Path ke wordlist nama perempuan |
 | `--rules=KoreLogic` | Kumpulan rule lengkap yang mencakup berbagai variasi border mutation |
 
-![Command echo hash dan john dengan Border5 — percobaan awal](Documentation-assets/Crack-the-hash-lv2/Command-for-cracking-female-name.png)
-
-![John dengan KoreLogic berhasil crack — menampilkan Angelita35!](Documentation-assets/Crack-the-hash-lv2/Command-and-output-cracked-john.png)
+![John dengan KoreLogic berhasil crack — menampilkan Angelita35!](Documentation-assets/Crack-the-hash-lv2/advice2-cracked.png)
 
 John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `ANGELITA` dari wordlist yang di-capitalize menjadi `Angelita`, lalu ditambahkan `35!` di akhir sebagai border mutation 3 karakter.
 
@@ -724,3 +720,82 @@ John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `A
 > **Common Mistake:** Rule `Border5` yang dibuat di Advice 1 hanya mencakup border **tepat 5 karakter**. Kalau password target ternyata pakai border 3 karakter seperti di sini, rule itu tidak akan menemukan apapun. Kalau cracking dengan custom rule gagal, coba fallback ke KoreLogic sebelum menyerah.
 
 **Jawaban:** `Angelita35!`
+
+---
+
+### Advice 3: Freak Mutation — Mexico City Name
+
+**Clue dari Password Advisor:**
+
+- **Charlotte Ofreize @charlotte:** _"I'm Charlotte, 23 y/o. During my holidays in Mexico my professional account password expired. I need a new one, any idea?"_
+- **Hacker @h4ck:** _"Maybe pick a town you visited during your trip?"_
+- **Charlotte:** _"Good idea. But it's not matching my company's password policy."_
+- **Hacker @h4ck:** _"Use freak/1337 mutation. Replace some letters with similarly looking special symbols."_
+
+![Advice 3 Clue](Documentation-assets/Crack-the-hash-lv2/Advice3-question.png)
+
+Charlotte lagi di Mexico dan pakai nama kota yang dikunjungi sebagai password — tapi karena tidak memenuhi password policy perusahaan, hacker sarankan **freak/1337 mutation**: ganti huruf dengan simbol yang mirip bentuknya, seperti `a` → `@`, `e` → `3`, `o` → `0`.
+
+#### Preparing the Wordlist
+
+Wordlist yang dibutuhkan adalah nama-nama kota. SecLists punya `cities.txt` di kategori Miscellaneous:
+
+```bash
+find /home/dimm/SecLists -name "*cit*" 2>/dev/null
+```
+
+![Lokasi cities.txt di SecLists dan preview isi file](Documentation-assets/Crack-the-hash-lv2/Choose-and-check-wordlist.png)
+
+Sebelum bisa dipakai, `cities.txt` perlu diproses dua tahap — pertama hapus spasi, lalu ubah semua huruf ke lowercase. Dua command `tr` yang dijalankan berurutan:
+
+```bash
+tr -d ' ' < cities.txt > cities-no-space.txt
+tr '[:upper:]' '[:lower:]' < cities-no-space.txt > cities-lowercase.txt
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `tr -d ' '` | Hapus semua karakter spasi dari input |
+| `tr '[:upper:]' '[:lower:]'` | Konversi semua huruf kapital menjadi huruf kecil |
+| `< cities.txt` | Baca input dari file |
+| `> cities-no-space.txt` | Simpan output ke file baru |
+
+![Hasil tr — spasi dihapus dan head cities-no-space.txt](Documentation-assets/Crack-the-hash-lv2/make-it-to-no-space-with-tr.png)
+
+> **for your information:** `tr` (_translate_) adalah tool command-line untuk menukar atau menghapus karakter dari input teks. Berbeda dengan `sed` yang bekerja per kata, `tr` bekerja per karakter — cocok untuk operasi sederhana seperti menghapus spasi atau mengubah case seluruh file.
+
+> **Common Mistake:** `tr` tidak bisa membaca file secara langsung — perlu menggunakan redirection `<` untuk input dan `>` untuk output. Menulis `tr -d ' ' cities.txt` akan error karena `tr` mengira `cities.txt` adalah karakter yang ingin di-translate, bukan file yang dibaca.
+
+#### Cracking with John l33t Rule
+
+Daripada membuat substitusi l33t manual satu per satu di Mentalist, John punya rule bawaan `l33t` yang sudah mencakup berbagai kombinasi penggantian huruf — `a`→`@`, `e`→`3`, `i`→`1`, `o`→`0`, `s`→`$`, dan variasinya.
+
+Simpan hash MD5 target ke file:
+
+```bash
+echo 'f4476669333651be5b37ec6d81ef526f' > advice3-hash.txt
+```
+
+Jalankan John dengan rule l33t:
+
+```bash
+john advice3-hash.txt --format=raw-md5 --wordlist=cities-lowercase.txt --rules=l33t
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `john` | John the Ripper — tool cracking password |
+| `advice3-hash.txt` | File berisi hash MD5 target |
+| `--format=raw-md5` | Tipe hash: MD5 tanpa salt |
+| `--wordlist=cities-lowercase.txt` | Wordlist nama kota yang sudah diproses |
+| `--rules=l33t` | Rule bawaan John untuk freak/leet speak mutation |
+
+![John dengan rule l33t berhasil crack — menampilkan Tl@xc@l@ncing0](Documentation-assets/Crack-the-hash-lv2/Cracked-advice3.png)
+
+John menemukan password dalam waktu kurang dari 1 detik. Hasilnya `Tl@xc@l@ncing0` — berasal dari nama kota Mexico **Tlaxcalancingo** setelah freak mutation: semua `a` diganti `@` dan `o` di akhir diganti `0`.
+
+> **Common Mistake:** Pendekatan awal yang salah adalah membuat substitusi l33t manual di Mentalist lalu crack dengan Hashcat — hasilnya exhausted karena substitusi yang dibuat tidak cukup exhaustive. Rule `l33t` bawaan John jauh lebih lengkap karena mencoba berbagai kombinasi penggantian, bukan hanya satu pola tetap.
+>
+> ![Konfigurasi Mentalist dengan substitusi l33t manual — pendekatan ini gagal karena tidak cukup exhaustive](Documentation-assets/Crack-the-hash-lv2/Create-border-rules-advice3.png)
+
+**Jawaban:** `Tl@xc@l@ncing0`
