@@ -1,4 +1,4 @@
-# TryHackMe: Crack the Hash Level 2
+# TryHackMe: Crack the Hash Level 2 — Writeup
 
 - **Room Link:** [Crack the Hash Level 2](https://tryhackme.com/room/introtohashcracking)
 - **Category:** Challenge Room
@@ -11,14 +11,14 @@
 ## Attack Context
 
 - **Kapan teknik ini dipakai?** Tahap _Credential Access_ — ketika kamu sudah mendapatkan hash password dan perlu mengembalikan plaintext-nya. Room ini berfokus pada penguatan workflow: identifikasi hash secara akurat menggunakan tool CLI, lalu mengelola wordlist dengan efisien sebelum menjalankan proses cracking.
-- **Syarat yang dibutuhkan:** Hash target sudah diketahui. Pemahaman dasar tentang hash cracking dari [Crack the Hash Level 1](Crack-the-hash.md) sangat disarankan karena room ini melanjutkan konsep yang sudah dibahas di sana.
+- **Syarat yang dibutuhkan:** Hash target sudah diketahui. Pemahaman dasar tentang hash cracking dari Crack the Hash Level 1 sangat disarankan karena room ini melanjutkan konsep yang sudah dibahas di sana.
 - **Tanda keberhasilan:** Kamu bisa mengidentifikasi tipe hash secara akurat, menemukan wordlist yang tepat, dan berhasil memecahkan hash menggunakan Hashcat atau John the Ripper.
 
 ---
 
 ## Overview
 
-Room ini adalah kelanjutan dari [Crack the Hash Level 1](Crack-the-hash.md). Kalau di Level 1 identifikasi hash masih dilakukan secara manual — mengandalkan panjang karakter dan prefix — di sini kamu akan diperkenalkan dengan tool CLI yang lebih akurat: **Haiti**.
+Room ini adalah kelanjutan dari Crack the Hash Level 1. Kalau di Level 1 identifikasi hash masih dilakukan secara manual — mengandalkan panjang karakter dan prefix — di sini kamu akan diperkenalkan dengan tool CLI yang lebih akurat: **Haiti**.
 
 > **for your information:** **Haiti** adalah tool command-line untuk mengidentifikasi tipe hash. Kelebihannya dibanding menebak manual: Haiti langsung menampilkan kode mode Hashcat (`HC`) dan format John the Ripper (`JtR`) untuk setiap kemungkinan algoritma, sehingga kamu tidak perlu bolak-balik ke Hashcat Examples Wiki.
 
@@ -52,7 +52,7 @@ gem install haiti-hash
 | `install` | Sub-command untuk memasang package |
 | `haiti-hash` | Nama package Haiti di registry RubyGems |
 
-![Install Haiti](Documentation-assets/Crack-the-hash-lv2/Install-haiti.png)
+![Install-haiti.png]
 
 ### Identifying Hash 1: RIPEMD-320
 
@@ -68,7 +68,7 @@ Jalankan Haiti terhadap hash ini:
 haiti 741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853
 ```
 
-![Check RIPEMD-320 with Haiti](Documentation-assets/Crack-the-hash-lv2/Check-hash320-with-haiti.png)
+![Check-hash320-with-haiti.png]
 
 Output Haiti menampilkan beberapa kemungkinan:
 
@@ -96,7 +96,7 @@ Hash kedua:
 haiti 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee
 ```
 
-![Keccak-256 Hash Identification](Documentation-assets/Crack-the-hash-lv2/Kecak-hash256.png)
+![Kecak-hash256.png]
 
 Outputnya panjang karena hash 64 karakter hex cocok dengan banyak algoritma 256-bit. Yang dicari room ini adalah **Keccak-256**:
 
@@ -112,7 +112,7 @@ Haiti langsung menyertakan kode mode Hashcat (`HC: 17800`) dan format JtR (`JtR:
 **Jawaban Hashcat code:** `17800`
 **Jawaban JtR code:** `raw-keccak-256`
 
-![Task 2 - Hash Identification Overview](Documentation-assets/Crack-the-hash-lv2/Task2-Hash-identification.png)
+![Task2-Hash-identification.png]
 
 ---
 
@@ -124,7 +124,7 @@ Punya tool cracking saja tidak cukup — kamu juga butuh kamus tebakan yang tepa
 - **wordlistctl** — Script untuk mencari, mengunduh, dan mengelola arsip wordlist dari berbagai sumber online.
 - **Rawsec's CyberSecurity Inventory** — Direktori tool dan resource keamanan siber. Kategori _Cracking_ di sana berguna untuk menemukan wordlist generator.
 
-![Task 3 Instructions](Documentation-assets/Crack-the-hash-lv2/Task3-instruction.png)
+![Task3-instruction.png]
 
 ### Searching for a Wordlist
 
@@ -140,7 +140,7 @@ wordlistctl search rockyou
 | `search` | Sub-command untuk mencari wordlist berdasarkan kata kunci |
 | `rockyou` | Kata kunci pencarian |
 
-![Search Rockyou](Documentation-assets/Crack-the-hash-lv2/Using-wordlistctl-find-rockyou.png)
+![Using-wordlistctl-find-rockyou.png]
 
 Output menampilkan 18 varian rockyou dari repository BlackArch, lengkap dengan ukuran file masing-masing — mulai dari `rockyou-05` (104 bytes) hingga `rockyou` versi penuh (53.29 MB).
 
@@ -166,7 +166,7 @@ Untuk mengunduh wordlist rockyou ke mesin lokal:
 sudo wordlistctl fetch rockyou
 ```
 
-![Install Rockyou](Documentation-assets/Crack-the-hash-lv2/install-rockyou-with-wordlistctl.png)
+![install-rockyou-with-wordlistctl.png]
 
 > **Common Mistake:** Gunakan `sudo` saat menjalankan `wordlistctl fetch` — tool ini menulis file ke direktori sistem `/usr/share/wordlists/` yang membutuhkan privilege root. Tanpa `sudo`, proses akan gagal dengan error _Permission denied_.
 
@@ -197,7 +197,7 @@ Setelah dekompresi, jalankan pencarian lokal lagi untuk memverifikasi path akhir
 wordlistctl search -l rockyou
 ```
 
-![Rockyou Local](Documentation-assets/Crack-the-hash-lv2/Wordlist-rockyou-local.png)
+![Wordlist-rockyou-local.png]
 
 **Jawaban path:** `/usr/share/wordlists/passwords/rockyou.txt`
 
@@ -209,7 +209,7 @@ Kalau kamu tidak yakin flag apa yang tersedia, cek help menu:
 wordlistctl search -h
 ```
 
-![Wordlistctl Help](Documentation-assets/Crack-the-hash-lv2/wordlistctl-local-archives-flag.png)
+![wordlistctl-local-archives-flag.png]
 
 ### Browsing Wordlists by Category
 
@@ -225,13 +225,13 @@ wordlistctl list -g usernames
 | `-g` | Filter berdasarkan group/kategori |
 | `usernames` | Nama kategori yang ingin ditampilkan |
 
-![Wordlistctl Usernames](Documentation-assets/Crack-the-hash-lv2/Wordlistctl-usernames-category.png)
+![Wordlistctl-usernames-category.png]
 
 Dari output di atas, wordlist pertama di daftar adalah **CommonAdminBase64**.
 
 **Jawaban:** `CommonAdminBase64`
 
-![Task 3 Questions](Documentation-assets/Crack-the-hash-lv2/Task3-questions.png)
+![Task3-questions.png]
 
 ---
 
@@ -288,7 +288,7 @@ Tambahkan rule berikut:
 $[0-9]$[0-9]
 ```
 
-![Rule John](Documentation-assets/Crack-the-hash-lv2/Rule-john.png)
+![Rule-john.png]
 
 Bedah per komponen:
 
@@ -316,7 +316,7 @@ Simpan ke file:
 echo '2d5c517a4f7a14dcb38329d228a7d18a3b78ce83' > sha1-john.txt
 ```
 
-![Create Hash File](Documentation-assets/Crack-the-hash-lv2/make-John-sha1-txt.png)
+![make-John-sha1-txt.png]
 
 ### Cracking with Rule-Based Attack
 
@@ -334,7 +334,7 @@ john sha1-john.txt --format=raw-sha1 --wordlist=/usr/share/seclists/Passwords/Co
 | `--wordlist=...` | Path ke wordlist yang digunakan |
 | `--rules=THM01` | Menerapkan rule mutasi `THM01` yang sudah dibuat |
 
-![John Cracking Output](Documentation-assets/Crack-the-hash-lv2/Output-sha1-john-txt.png)
+![Output-sha1-john-txt.png]
 
 John berhasil memecahkan hash dalam waktu kurang dari 1 detik. Total kandidat yang diproses hanya 1 juta kombinasi (10.000 kata × 100 variasi dua digit) — kecil untuk ukuran GPU modern, tapi rule mode terbukti efektif menemukan password yang tidak akan pernah ada secara harfiah di wordlist manapun.
 
@@ -342,7 +342,7 @@ John berhasil memecahkan hash dalam waktu kurang dari 1 detik. Total kandidat ya
 
 > **Common Mistake:** Path wordlist di command di atas menggunakan path SecLists di sistem room TryHackMe. Kalau SecLists kamu terinstal di lokasi yang berbeda (misalnya `/home/dimm/SecLists/...`), sesuaikan path-nya sebelum menjalankan command.
 
-![Task 4 Questions](Documentation-assets/Crack-the-hash-lv2/task4-questions.png)
+![task4-questions.png]
 
 ---
 
@@ -380,7 +380,7 @@ sudo wordlistctl fetch dogs -d
 
 File tersimpan di `/usr/share/wordlists/misc/dogs.txt` dengan total 242 entri nama ras anjing.
 
-![Fetch Dogs Wordlist](Documentation-assets/Crack-the-hash-lv2/wordlist-dogs-txt.png)
+![wordlist-dogs-txt.png]
 
 ### Building Mutations with Mentalist
 
@@ -392,13 +392,13 @@ Buka Mentalist dan susun chain transformasi berikut:
 | **2. Case** | Toggle: 2nd | Mengubah karakter ke-2 menjadi uppercase — `molossus` → `mOlossus` |
 | **3. Substitution** | Replace All: `s` → `$` (One at a time) | Mengganti semua huruf `s` dengan simbol `$` — `mOlossus` → `mOlo$$u$` |
 
-![Mentalist Configuration](Documentation-assets/Crack-the-hash-lv2/Create-custom-rules.png)
+![Create-custom-rules.png]
 
 Mentalist menerapkan semua transformasi secara sequential ke setiap kata — bukan menghasilkan semua kemungkinan varian. Satu kata masuk, satu kata termutasi keluar. Itulah kenapa output-nya tetap 242 entri meskipun ada dua tahap transformasi.
 
 Klik **Process** untuk menghasilkan wordlist. Output disimpan ke file yang kamu tentukan — dalam contoh ini `/home/dimm/wordlist-hashcat.txt`:
 
-![Mentalist Output](Documentation-assets/Crack-the-hash-lv2/save-rules.png)
+![save-rules.png]
 
 ### Preparing the Hash File
 
@@ -414,7 +414,7 @@ Simpan ke file:
 echo 'ed91365105bba79fdab20c376d83d752' > MD5-hash.txt
 ```
 
-![Create MD5 Hash File](Documentation-assets/Crack-the-hash-lv2/Create-MD5-hash.png)
+![Create-MD5-hash.png]
 
 ### Cracking with Hashcat
 
@@ -431,122 +431,10 @@ hashcat -m 0 MD5-hash.txt wordlist-hashcat.txt
 | `MD5-hash.txt` | File berisi hash target |
 | `wordlist-hashcat.txt` | Custom wordlist hasil generate dari Mentalist |
 
-![Hashcat Cracking Process](Documentation-assets/Crack-the-hash-lv2/Crack-With-hashcat-using-custom-rules.png)
+![Crack-With-hashcat-using-custom-rules.png]
 
-![Hashcat Cracked Result](Documentation-assets/Crack-the-hash-lv2/Cracked-MD5-custom.png)
+![Cracked-MD5-custom.png]
 
 Hashcat memecahkan hash dalam waktu kurang dari 1 detik. Output menunjukkan `Progress: 242/242 (100.00%)` — seluruh 242 kandidat dicoba dan satu cocok. Password aslinya adalah `mOlo$$u$`, yang berasal dari nama ras anjing **Molossus** setelah dua tahap mutasi: toggle karakter ke-2 (`molossus` → `mOlossus`) dan substitusi semua `s` → `$` (`mOlossus` → `mOlo$$u$`).
 
 **Jawaban:** `mOlo$$u$`
-
----
-
-## Task 6: Cracking Challenges
-
-Di sinilah semua teknik dari Task 2–5 diuji dalam skenario yang lebih realistis. Kamu diminta deploy machine dan mengakses halaman **Password Advisor** di `http://MACHINE_IP`. Website ini menampilkan percakapan antara "user" yang menjelaskan kebiasaan password mereka dan seorang "hacker" yang memberikan saran tipe mutasi yang digunakan — petunjuk inilah yang kamu pakai untuk menentukan strategi cracking.
-
-Workflow untuk setiap challenge selalu sama:
-
-1. Baca clue dari Password Advisor — identifikasi pola password user
-2. Identifikasi tipe hash menggunakan Haiti
-3. Pilih atau buat wordlist yang relevan berdasarkan clue
-4. Tulis custom rule yang sesuai saran hacker
-5. Crack hash menggunakan John the Ripper atau Hashcat
-
-### Advice 1: Border Mutation — Male Name
-
-**Clue dari Password Advisor:**
-
-- **John Neige @john:** _"Hi, my name is John. I'm looking for a good advice to get a strong password. Usually I use the name of my son but I fear it's not secure enough."_
-- **Hacker @h4ck:** _"You can use border mutation. It's commonly used, add a combination of digits and special symbols at the end or at the beginning, or both."_
-
-![Advice 1 Clue](Documentation-assets/Crack-the-hash-lv2/advice1-clue.png)
-
-Dari percakapan ini, kamu bisa menyimpulkan dua hal: password dasarnya adalah **nama laki-laki** (nama anak John), dan mutasi yang diterapkan adalah **border mutation** — menambahkan kombinasi digit dan simbol di akhir.
-
-#### Choosing the Wordlist
-
-Clue mengarah ke nama laki-laki. SecLists punya file `malenames-usa-top1000.txt` di kategori Usernames/Names — berisi 1000 nama laki-laki paling umum di Amerika Serikat, semua dalam format uppercase.
-
-Sebelum cracking, kamu bisa verifikasi dulu apakah wordlist memuat nama dengan panjang yang relevan. Answer format soal ini 14 karakter, dan border mutation-nya 5 karakter, jadi nama dasarnya kemungkinan 9 huruf:
-
-```bash
-awk 'length==9' /home/dimm/SecLists/Usernames/Names/malenames-usa-top1000.txt
-```
-
-| Komponen | Fungsi |
-| :--- | :--- |
-| `awk` | Text processing tool |
-| `'length==9'` | Kondisi: hanya tampilkan baris yang panjangnya tepat 9 karakter |
-| `malenames-usa-top1000.txt` | Wordlist nama laki-laki dari SecLists |
-
-![Check Male Name Wordlist](Documentation-assets/Crack-the-hash-lv2/Check-availability-malename-wordlist.png)
-
-Output menampilkan nama-nama seperti FREDERICK, ALEXANDER, NATHANIEL, ZACHARIAH, dan lainnya. Ini hanya verifikasi — saat cracking nanti, John akan memproses seluruh isi wordlist (1000 nama), bukan hanya yang 9 huruf.
-
-> **Common Mistake:** Path SecLists di atas menggunakan lokasi lokal `/home/dimm/SecLists/...`. Di machine TryHackMe, path-nya biasanya `/usr/share/seclists/...`. Sesuaikan dengan environment kamu.
-
-#### Writing the Custom Rule
-
-Saran hacker mengatakan **border mutation** — menambahkan kombinasi digit dan simbol di akhir. Kamu perlu membuat rule John the Ripper yang menambahkan 5 karakter dari set digit (0-9) dan simbol umum (`!@#$%^&*`) di akhir setiap kata.
-
-Buka file konfigurasi John dan tambahkan rule baru di bagian paling bawah file:
-
-```bash
-sudo nano /usr/share/john/john.conf
-```
-
-Tambahkan di baris paling bawah:
-
-```
-[List.Rules:Border5]
-cAz"[0-9!@#$%^&*][0-9!@#$%^&*][0-9!@#$%^&*][0-9!@#$%^&*][0-9!@#$%^&*]"
-```
-
-![Custom Border Rule](Documentation-assets/Crack-the-hash-lv2/Custom-border-advice1.png)
-
-Bedah per komponen:
-
-| Komponen | Fungsi |
-| :--- | :--- |
-| `[List.Rules:Border5]` | Nama rule — dipanggil dengan `--rules=Border5` |
-| `c` | Capitalize: ubah huruf pertama menjadi uppercase, sisanya lowercase |
-| `Az"..."` | Append string di akhir kata — `A` = command insert, `z` = posisi akhir |
-| `[0-9!@#$%^&*]` | Character class berisi 18 karakter: digit 0-9 dan simbol `!@#$%^&*` |
-| (5 class dalam 1 string) | String 5 karakter, setiap posisi di-expand → 18^5 = 1,889,568 kombinasi |
-
-Cara kerjanya: rule ini adalah satu command `cAz"XXXXX"` — capitalize kata, lalu append string 5 karakter di akhir. Karena setiap posisi ditulis sebagai character class `[0-9!@#$%^&*]`, **preprocessor** John meng-expand baris ini menjadi 1,889,568 baris rule individual sebelum cracking dimulai. Dengan wordlist 1000 nama, total kandidat yang dihasilkan adalah 1000 × 1,889,568 ≈ **1.89 miliar** kombinasi.
-
-> **for your information:** Preprocessor John the Ripper bekerja mirip macro expansion. Notasi `[0-9!@#$%^&*]` di dalam definisi rule bukan berarti "pilih salah satu saat runtime" — melainkan "generate satu baris rule terpisah untuk setiap karakter di set ini sebelum eksekusi dimulai". Ini yang membedakannya dari operator `$` biasa: `$[0-9]` menghasilkan 10 rule (satu per digit), sedangkan `Az` dengan string multi-karakter bisa menghasilkan jutaan rule sekaligus.
-
-> **Common Mistake:** Pastikan `[List.Rules:Border5]` ditambahkan di **paling bawah** file `john.conf`, bukan di tengah section `[List.Rules:Wordlist]` yang sudah ada. Kalau tercampur, John tidak akan bisa mengenali rule `Border5` sebagai section terpisah dan akan error "No Border5 mode rules found".
-
-#### Cracking with John the Ripper
-
-Simpan hash MD5 target ke file terlebih dahulu:
-
-```bash
-echo 'b16f211a8ad7f97778e5006c7cecdf31' > john-advice1.txt
-```
-
-Lalu jalankan John:
-
-```bash
-john john-advice1.txt --format=raw-md5 --wordlist=/home/dimm/SecLists/Usernames/Names/malenames-usa-top1000.txt --rules=Border5
-```
-
-| Komponen | Fungsi |
-| :--- | :--- |
-| `john` | John the Ripper — tool cracking password |
-| `john-advice1.txt` | File berisi hash MD5 target |
-| `--format=raw-md5` | Tipe hash: MD5 tanpa salt |
-| `--wordlist=...` | Path ke wordlist nama laki-laki |
-| `--rules=Border5` | Menerapkan rule border mutation yang baru dibuat |
-
-![John Command](Documentation-assets/Crack-the-hash-lv2/john-command-advice1.png)
-
-![Advice 1 Cracked](Documentation-assets/Crack-the-hash-lv2/advice1-cracked.png)
-
-John berhasil memecahkan hash dalam waktu 4 detik. Output menunjukkan password `Zachariah1234*` — nama `ZACHARIAH` dari wordlist yang dinormalisasi menjadi `Zachariah` oleh operator `c`, lalu ditambahkan `1234*` di akhir sebagai 5 karakter border mutation. Dengan kecepatan 24020Kp/s (24 juta kandidat per detik), sekitar 96 juta kandidat sudah diproses sebelum match ditemukan.
-
-**Jawaban:** `Zachariah1234*`
