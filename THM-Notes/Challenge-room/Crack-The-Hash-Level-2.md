@@ -237,6 +237,8 @@ Dari output di atas, wordlist pertama di daftar adalah **CommonAdminBase64**.
 
 ## Task 4: Cracking Tools, Modes & Rules
 
+![Task 4 Instructions](Documentation-assets/Crack-the-hash-lv2/task4-Instruction.png)
+
 Dua tool cracking yang paling umum dipakai di room ini:
 
 - **Hashcat** — Cracker berbasis GPU, unggul dalam kecepatan raw computation untuk hash sederhana.
@@ -347,6 +349,8 @@ John berhasil memecahkan hash dalam waktu kurang dari 1 detik. Total kandidat ya
 ---
 
 ## Task 5: Custom Wordlist Generation
+
+![Task 5 Instructions](Documentation-assets/Crack-the-hash-lv2/Task5-instruction..png)
 
 Rule mode di Task 4 menerapkan mutasi secara on-the-fly — efisien untuk wordlist yang hanya dipakai sekali. Tapi ada situasi di mana membuat custom wordlist terlebih dahulu lebih masuk akal:
 
@@ -550,13 +554,13 @@ cewl -d 2 -w $(pwd)/example.txt https://example.org
 
 Angka di `-d` menentukan seberapa dalam spider mengikuti link. Depth 1 berarti hanya halaman utama, depth 2 berarti halaman utama + semua link yang ada di halaman utama, dan seterusnya.
 
-![Hasil cewl di terminal — menampilkan proses crawling example.org](Documentation-assets/Crack-the-hash-lv2/cewl-crawling-process.png)
-
 ![Isi file example.txt hasil generate CeWL — 15 kata dengan "more" di baris terakhir](Documentation-assets/Crack-the-hash-lv2/cewl-example-txt-output.png)
 
 > **Common Mistake:** Hasil `cewl` sangat bergantung pada konten website saat command dijalankan. Soal ini mengharapkan kata `information` sebagai kata terakhir — tapi konten `example.org` sudah berubah sejak soal dibuat. Saat dicoba, CeWL hanya menghasilkan 15 kata dan kata terakhirnya adalah `more`, bukan `information`. Investigasi lebih lanjut menunjukkan satu-satunya link di `example.org` mengarah ke `iana.org` yang merupakan domain berbeda — sehingga CeWL tidak mengikutinya meski depth diset 2. Jawaban `information` diambil dari writeup lama yang dibuat saat konten website masih berbeda.
 
 **Jawaban:** `information`
+
+![Task 5 Questions](Documentation-assets/Crack-the-hash-lv2/Task5-questions.png)
 
 ---
 
@@ -671,7 +675,7 @@ John berhasil memecahkan hash dalam waktu 4 detik. Output menunjukkan password `
 - **Levy Tate @levy:** _"Hi, my name is Levy. I'm looking for a good advice to get a strong password too. Usually I use the name of my daughter but I fear it's not secure too."_
 - **Hacker @h4ck:** _"Like John, use border mutation."_
 
-![Advice 2 Clue](Documentation-assets/Crack-the-hash-lv2/advice2-clue.png)
+![Advice 2 Clue](Documentation-assets/Crack-the-hash-lv2/advice2-question.png)
 
 Polanya sama dengan Advice 1 — border mutation pada nama orang. Bedanya kali ini nama **perempuan**, dan hacker langsung bilang _"Like John"_ yang artinya pendekatan yang sama.
 
@@ -685,7 +689,7 @@ Untuk gambaran awal, cek nama-nama perempuan yang kemungkinan relevan berdasarka
 awk 'length==6' /home/dimm/SecLists/Usernames/Names/femalenames-usa-top1000.txt
 ```
 
-![Output awk filter nama perempuan 6 huruf](Documentation-assets/Crack-the-hash-lv2/advice2-awk-female.png)
+![Output awk filter nama perempuan 6 huruf](Documentation-assets/Crack-the-hash-lv2/verify-length-name-character.png)
 
 Tapi perlu dicatat — asumsi panjang nama berdasarkan answer format tidak selalu akurat. Di Advice 2 ini, ternyata nama dasarnya 8 huruf (`Angelita`) dengan border hanya 3 karakter (`35!`), bukan 5 seperti yang diasumsikan dari answer format 11 karakter.
 
@@ -713,7 +717,7 @@ john female-name-hash.txt --format=raw-md5 --wordlist=/home/dimm/SecLists/Userna
 | `--wordlist=...` | Path ke wordlist nama perempuan |
 | `--rules=KoreLogic` | Kumpulan rule lengkap yang mencakup berbagai variasi border mutation |
 
-![John dengan KoreLogic berhasil crack — menampilkan Angelita35!](Documentation-assets/Crack-the-hash-lv2/advice2-cracked.png)
+![John dengan KoreLogic berhasil crack — menampilkan Angelita35!](Documentation-assets/Crack-the-hash-lv2/Command-for-cracking-female-name.png)
 
 John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `ANGELITA` dari wordlist yang di-capitalize menjadi `Angelita`, lalu ditambahkan `35!` di akhir sebagai border mutation 3 karakter.
 
@@ -734,7 +738,7 @@ John menemukan password dalam waktu 31 detik. Hasilnya `Angelita35!` — nama `A
 - **Charlotte:** _"Good idea. But it's not matching my company's password policy."_
 - **Hacker @h4ck:** _"Use freak/1337 mutation. Replace some letters with similarly looking special symbols."_
 
-![Advice 3 Clue](Documentation-assets/Crack-the-hash-lv2/advice3-clue.png)
+![Advice 3 Clue](Documentation-assets/Crack-the-hash-lv2/Advice3-question.png)
 
 Charlotte pakai nama kota yang dikunjungi di Mexico — ide bagus, tapi password policy kantornya tidak menerima kata biasa. Solusi hacker: **freak/1337 mutation** — ganti huruf dengan simbol yang mirip bentuknya, `a` → `@`, `e` → `3`, `o` → `0`, dan seterusnya.
 
@@ -746,7 +750,7 @@ Kita butuh wordlist nama kota. SecLists punya `cities.txt` di kategori Miscellan
 find /home/dimm/SecLists -name "*cit*" 2>/dev/null
 ```
 
-![Hasil find cities.txt di SecLists](Documentation-assets/Crack-the-hash-lv2/advice3-find-cities.png)
+![Hasil find cities.txt di SecLists](Documentation-assets/Crack-the-hash-lv2/Finding-accurate-wordlist.png)
 
 Sebelum bisa dipakai, `cities.txt` ada dua masalah — nama kota yang terdiri dari dua kata punya spasi, dan hurufnya masih campur uppercase/lowercase. Dua command `tr` membereskan keduanya:
 
@@ -762,7 +766,7 @@ tr '[:upper:]' '[:lower:]' < cities-no-space.txt > cities-lowercase.txt
 | `< cities.txt` | Baca input dari file |
 | `> cities-no-space.txt` | Simpan output ke file baru |
 
-![Hasil head cities-lowercase.txt — semua lowercase tanpa spasi](Documentation-assets/Crack-the-hash-lv2/advice3-cities-lowercase.png)
+![Hasil head cities-lowercase.txt — semua lowercase tanpa spasi](Documentation-assets/Crack-the-hash-lv2/make-it-to-no-space-with-tr.png)
 
 > **for your information:** `tr` (_translate_) adalah tool command-line untuk menukar atau menghapus karakter dari input teks. Berbeda dengan `sed` yang bekerja per kata, `tr` bekerja per karakter — cocok untuk operasi sederhana seperti menghapus spasi atau mengubah case seluruh file.
 
@@ -792,10 +796,73 @@ john advice3-hash.txt --format=raw-md5 --wordlist=cities-lowercase.txt --rules=l
 | `--wordlist=cities-lowercase.txt` | Wordlist nama kota yang sudah diproses |
 | `--rules=l33t` | Rule bawaan John untuk freak/leet speak mutation |
 
-![John dengan rule l33t berhasil crack — menampilkan Tl@xc@l@ncing0](Documentation-assets/Crack-the-hash-lv2/advice3-cracked.png)
+![John dengan rule l33t berhasil crack — menampilkan Tl@xc@l@ncing0](Documentation-assets/Crack-the-hash-lv2/Cracked-advice3.png)
 
 Kurang dari 1 detik, ketemu. Password-nya `Tl@xc@l@ncing0` — nama kota Mexico **Tlaxcalancingo** setelah freak mutation: semua `a` diganti `@` dan `o` di akhir diganti `0`.
 
 > **Common Mistake:** Pendekatan awal yang salah adalah membuat substitusi l33t manual di Mentalist lalu crack dengan Hashcat — hasilnya exhausted karena substitusi yang dibuat tidak cukup exhaustive. Rule `l33t` bawaan John jauh lebih lengkap karena mencoba berbagai kombinasi penggantian, bukan hanya satu pola tetap.
 
 **Jawaban:** `Tl@xc@l@ncing0`
+
+---
+
+### Advice 4: Case Mutation — Own Name
+
+**Clue dari Password Advisor:**
+
+- **David Guettapan @david:** _"Hi, I'm David, I'm a dj. But I also love rap. For example this, Eminem song: [link]. 'Hi, my name is, what? My name is, who?' I really love this song."_
+- **Hacker @h4ck:** _"... What can I do for you? You need a password right?"_
+- **David:** _"Yeah I'll use my awesome name."_
+- **Hacker @h4ck:** _"That's too easy. Use case mutation, make variations of uppercase or lowercase letters for any character."_
+
+![Advice 4 Clue](Documentation-assets/Crack-the-hash-lv2/Advice4-question.png)
+
+David mau pakai namanya sendiri sebagai password — `davidguettapan`. Hacker bilang tambahkan **case mutation**: variasikan huruf besar dan kecil di setiap posisi. Hash-nya kali ini bukan MD5 — perhatikan panjangnya yang 40 karakter, itu SHA-1.
+
+![Identify Hash SHA-1](Documentation-assets/Crack-the-hash-lv2/Identify-hash-advice4.png)
+
+#### Preparing the Wordlist
+
+Wordlist-nya cuma satu kata: nama David sendiri. Tidak perlu SecLists, cukup buat file satu baris:
+
+```bash
+echo 'davidguettapan' > name-david.txt
+```
+
+John yang akan generate semua variasi case-nya lewat rule — tidak perlu list ribuan kata.
+
+#### Cracking with John NT Rule
+
+Hint bilang **existing rule** — artinya tidak perlu buat rule baru. John punya rule bawaan `NT` yang khusus untuk case mutation: dia generate semua kemungkinan variasi uppercase/lowercase dari setiap karakter dalam kata.
+
+Simpan hash SHA-1 target ke file:
+
+```bash
+echo 'a3a321e1c246c773177363200a6c0466a5030afc' > advice4-hash.txt
+```
+
+![Create Hash File](Documentation-assets/Crack-the-hash-lv2/Create-name-david-and-hash-txt.png)
+
+Jalankan John:
+
+```bash
+john advice4-hash.txt --format=raw-sha1 --wordlist=name-david.txt --rules=NT
+```
+
+| Komponen | Fungsi |
+| :--- | :--- |
+| `john` | John the Ripper — tool cracking password |
+| `advice4-hash.txt` | File berisi hash SHA-1 target |
+| `--format=raw-sha1` | Tipe hash: SHA-1 tanpa salt |
+| `--wordlist=name-david.txt` | Wordlist berisi satu kata: nama David |
+| `--rules=NT` | Rule bawaan John untuk case mutation |
+
+![John dengan rule NT berhasil crack — menampilkan DavIDgUEtTApAn](Documentation-assets/Crack-the-hash-lv2/Carcked-advice4.png)
+
+Selesai dalam hitungan detik. Hasilnya `DavIDgUEtTApAn` — nama `davidguettapan` dengan variasi case acak di setiap hurufnya. Rule `NT` mencoba semua 2^14 = 16.384 kemungkinan kombinasi uppercase/lowercase untuk kata 14 karakter, dan salah satunya cocok dengan hash target.
+
+> **for your information:** Rule `NT` di John the Ripper dinamai dari format hash NT (Windows NTLM), tapi bisa dipakai untuk tipe hash apapun. Cara kerjanya: untuk setiap kata di wordlist, dia generate semua permutasi case — setiap huruf bisa uppercase atau lowercase. Untuk kata 14 karakter, total kandidat yang dihasilkan adalah 2^14 = 16.384 variasi.
+
+> **Common Mistake:** Kasus ini berbeda dari Advice 1–3 yang butuh wordlist besar — di sini wordlist-nya cuma satu kata. Jangan tergoda untuk pakai rockyou atau wordlist besar lainnya. Kuncinya ada di rule, bukan di wordlist.
+
+**Jawaban:** `DavIDgUEtTApAn`
